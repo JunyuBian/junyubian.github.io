@@ -24,8 +24,8 @@ Trying to auto deploy Hugo blogs with Github Action.
 Most steps and tips have been covered by reference#1 and reference#2.
 
 # 3-Good to know
-Action will build from base url, coudl use to create different sub domain under github.io.
 
+Action will build from base url, could use this feature to create different sub domain under github.io.
 e.g. create a repo called `projects` to display different projects, this will be added to github.io/prjects
 
 # Reference

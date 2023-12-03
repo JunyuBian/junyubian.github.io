@@ -20,8 +20,7 @@
       <guid>https://junyubian.github.io/posts/2023-12-02-hugo-site-auto-deployment-with-github-action/</guid>
       <description>1-Background 2-Steps 3-Good to know Reference 1-Background Trying to auto deploy Hugo blogs with Github Action.
 2-Steps Most steps and tips have been covered by reference#1 and reference#2.
-3-Good to know Action will build from base url, coudl use to create different sub domain under github.io.
-e.g. create a repo called projects to display different projects, this will be added to github.io/prjects
+3-Good to know Action will build from base url, could use this feature to create different sub domain under github.io. e.g. create a repo called projects to display different projects, this will be added to github.io/prjects
 Reference 1-https://gohugo.io/hosting-and-deployment/hosting-on-github/ 2-https://lucumt.info/post/hugo/using-github-action-to-auto-build-deploy/</description>
     </item>
     
