@@ -19,8 +19,11 @@ tags:
 This is criterions for this site, self-reference only.
 
 # 1-Titles
+
 ## 1.1-All Cap for first letter of each word in post title.
+
 ## 1.2-Cap for first letter of first word inside post.
+
 ## 1.3-Titles inside post need follow format of this Criterions.
 
 # 2-Tags
