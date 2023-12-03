@@ -1,7 +1,7 @@
 baseURL: 'https://junyubian.github.io/'
 languageCode: 'en-us'
 title: 'Junyu Bian'
-theme: 'PaperMod'
+theme: 'hugo-PaperMod'
 paginate: 5
 
 enableRobotsTXT: true
