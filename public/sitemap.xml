@@ -3,25 +3,46 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://junyubian.github.io/categories/</loc>
-    <lastmod>2023-12-03T16:13:27+08:00</lastmod>
+    <lastmod>2023-12-02T19:40:43+00:00</lastmod>
   </url><url>
-    <loc>https://junyubian.github.io/tags/default/</loc>
-    <lastmod>2023-12-03T16:13:27+08:00</lastmod>
+    <loc>https://junyubian.github.io/categories/criterions/</loc>
+    <lastmod>2023-12-02T19:40:43+00:00</lastmod>
   </url><url>
-    <loc>https://junyubian.github.io/categories/default/</loc>
-    <lastmod>2023-12-03T16:13:27+08:00</lastmod>
+    <loc>https://junyubian.github.io/posts/2023-12-02-criterions-for-site/</loc>
+    <lastmod>2023-12-02T19:40:43+00:00</lastmod>
   </url><url>
-    <loc>https://junyubian.github.io/posts/2023-12-03-hello-world/</loc>
-    <lastmod>2023-12-03T16:13:27+08:00</lastmod>
+    <loc>https://junyubian.github.io/tags/en/</loc>
+    <lastmod>2023-12-02T19:40:43+00:00</lastmod>
   </url><url>
     <loc>https://junyubian.github.io/</loc>
-    <lastmod>2023-12-03T16:13:27+08:00</lastmod>
+    <lastmod>2023-12-02T19:40:43+00:00</lastmod>
   </url><url>
     <loc>https://junyubian.github.io/posts/</loc>
-    <lastmod>2023-12-03T16:13:27+08:00</lastmod>
+    <lastmod>2023-12-02T19:40:43+00:00</lastmod>
   </url><url>
     <loc>https://junyubian.github.io/tags/</loc>
-    <lastmod>2023-12-03T16:13:27+08:00</lastmod>
+    <lastmod>2023-12-02T19:40:43+00:00</lastmod>
+  </url><url>
+    <loc>https://junyubian.github.io/tags/git/</loc>
+    <lastmod>2023-12-02T18:53:43+00:00</lastmod>
+  </url><url>
+    <loc>https://junyubian.github.io/tags/hugo/</loc>
+    <lastmod>2023-12-02T18:53:43+00:00</lastmod>
+  </url><url>
+    <loc>https://junyubian.github.io/posts/2023-12-02-hugo-site-auto-deployment-with-github-action/</loc>
+    <lastmod>2023-12-02T18:53:43+00:00</lastmod>
+  </url><url>
+    <loc>https://junyubian.github.io/categories/notes/</loc>
+    <lastmod>2023-12-02T18:53:43+00:00</lastmod>
+  </url><url>
+    <loc>https://junyubian.github.io/tags/default/</loc>
+    <lastmod>2023-12-02T16:13:27+08:00</lastmod>
+  </url><url>
+    <loc>https://junyubian.github.io/categories/default/</loc>
+    <lastmod>2023-12-02T16:13:27+08:00</lastmod>
+  </url><url>
+    <loc>https://junyubian.github.io/posts/2023-12-02-hello-world/</loc>
+    <lastmod>2023-12-02T16:13:27+08:00</lastmod>
   </url><url>
     <loc>https://junyubian.github.io/posts/2023-11-07-fluent-bit-notes/</loc>
     <lastmod>2023-11-07T21:53:43+00:00</lastmod>
@@ -30,9 +51,6 @@
     <lastmod>2023-11-07T21:53:43+00:00</lastmod>
   </url><url>
     <loc>https://junyubian.github.io/tags/logging/</loc>
-    <lastmod>2023-11-07T21:53:43+00:00</lastmod>
-  </url><url>
-    <loc>https://junyubian.github.io/categories/notes/</loc>
     <lastmod>2023-11-07T21:53:43+00:00</lastmod>
   </url><url>
     <loc>https://junyubian.github.io/posts/2022-10-21-dev-null-and-21/</loc>
@@ -199,5 +217,8 @@
   </url><url>
     <loc>https://junyubian.github.io/posts/2020-04-15-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-1/</loc>
     <lastmod>2020-04-15T22:27:57+00:00</lastmod>
+  </url><url>
+    <loc>https://junyubian.github.io/about/</loc>
+    <lastmod>2016-11-05T21:05:33+05:30</lastmod>
   </url>
 </urlset>

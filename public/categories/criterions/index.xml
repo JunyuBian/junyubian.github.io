@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Criterions on Junyu Bian</title>
+    <link>https://junyubian.github.io/categories/criterions/</link>
+    <description>Recent content in Criterions on Junyu Bian</description>
+    <image>
+      <title>Junyu Bian</title>
+      <url>https://junyubian.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://junyubian.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Dec 2023 19:40:43 +0000</lastBuildDate><atom:link href="https://junyubian.github.io/categories/criterions/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Criterions For Site</title>
+      <link>https://junyubian.github.io/posts/2023-12-02-criterions-for-site/</link>
+      <pubDate>Sat, 02 Dec 2023 19:40:43 +0000</pubDate>
+      
+      <guid>https://junyubian.github.io/posts/2023-12-02-criterions-for-site/</guid>
+      <description>1-Titles 1.1-All Cap for first letter of each word in post title. 1.2-Cap for first letter of first word inside post. 1.3-Titles inside post need follow format of this Criterions. 2-Tags This is criterions for this site, self-reference only.
+1-Titles 1.1-All Cap for first letter of each word in post title. 1.2-Cap for first letter of first word inside post. 1.3-Titles inside post need follow format of this Criterions. 2-Tags Need specifiy language (EN/CH), best to have bi-lingular version for each post.</description>
+    </item>
+    
+  </channel>
+</rss>

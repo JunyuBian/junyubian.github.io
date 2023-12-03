@@ -1,159 +1,232 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on Junyu Bian</title>
     <link>https://junyubian.github.io/tags/</link>
     <description>Recent content in Tags on Junyu Bian</description>
+    <image>
+      <title>Junyu Bian</title>
+      <url>https://junyubian.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://junyubian.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 03 Dec 2023 16:13:27 +0800</lastBuildDate>
-    <atom:link href="https://junyubian.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Dec 2023 19:40:43 +0000</lastBuildDate><atom:link href="https://junyubian.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>EN</title>
+      <link>https://junyubian.github.io/tags/en/</link>
+      <pubDate>Sat, 02 Dec 2023 19:40:43 +0000</pubDate>
+      
+      <guid>https://junyubian.github.io/tags/en/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>https://junyubian.github.io/tags/git/</link>
+      <pubDate>Sat, 02 Dec 2023 18:53:43 +0000</pubDate>
+      
+      <guid>https://junyubian.github.io/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://junyubian.github.io/tags/hugo/</link>
+      <pubDate>Sat, 02 Dec 2023 18:53:43 +0000</pubDate>
+      
+      <guid>https://junyubian.github.io/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>default</title>
       <link>https://junyubian.github.io/tags/default/</link>
-      <pubDate>Sun, 03 Dec 2023 16:13:27 +0800</pubDate>
+      <pubDate>Sat, 02 Dec 2023 16:13:27 +0800</pubDate>
+      
       <guid>https://junyubian.github.io/tags/default/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Fluent-bit</title>
       <link>https://junyubian.github.io/tags/fluent-bit/</link>
       <pubDate>Tue, 07 Nov 2023 21:53:43 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/tags/fluent-bit/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Logging</title>
       <link>https://junyubian.github.io/tags/logging/</link>
       <pubDate>Tue, 07 Nov 2023 21:53:43 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/tags/logging/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Bash</title>
       <link>https://junyubian.github.io/tags/bash/</link>
       <pubDate>Fri, 21 Oct 2022 21:27:29 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/tags/bash/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Docker</title>
       <link>https://junyubian.github.io/tags/docker/</link>
       <pubDate>Sat, 05 Jun 2021 15:08:29 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/tags/docker/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>K8s</title>
       <link>https://junyubian.github.io/tags/k8s/</link>
       <pubDate>Sat, 05 Jun 2021 15:08:29 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/tags/k8s/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>VM</title>
       <link>https://junyubian.github.io/tags/vm/</link>
       <pubDate>Sat, 05 Jun 2021 15:01:29 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/tags/vm/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Cent OS</title>
       <link>https://junyubian.github.io/tags/cent-os/</link>
       <pubDate>Sat, 05 Jun 2021 00:31:29 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/tags/cent-os/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Command Line</title>
       <link>https://junyubian.github.io/tags/command-line/</link>
       <pubDate>Sat, 05 Jun 2021 00:31:29 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/tags/command-line/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>FD.io</title>
       <link>https://junyubian.github.io/tags/fd.io/</link>
       <pubDate>Mon, 26 Apr 2021 15:19:00 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/tags/fd.io/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Algorithm</title>
       <link>https://junyubian.github.io/tags/algorithm/</link>
       <pubDate>Sun, 08 Nov 2020 15:19:00 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/tags/algorithm/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>C&#43;&#43;</title>
       <link>https://junyubian.github.io/tags/c&#43;&#43;/</link>
       <pubDate>Sun, 08 Nov 2020 15:19:00 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/tags/c&#43;&#43;/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Linux</title>
       <link>https://junyubian.github.io/tags/linux/</link>
       <pubDate>Mon, 28 Sep 2020 22:43:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/tags/linux/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>算法</title>
       <link>https://junyubian.github.io/tags/%E7%AE%97%E6%B3%95/</link>
       <pubDate>Tue, 15 Sep 2020 22:12:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/tags/%E7%AE%97%E6%B3%95/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>数据库</title>
       <link>https://junyubian.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
       <pubDate>Tue, 01 Sep 2020 17:22:16 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>操作系统</title>
       <link>https://junyubian.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</link>
       <pubDate>Mon, 31 Aug 2020 19:32:21 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>计算机网络</title>
       <link>https://junyubian.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</link>
       <pubDate>Mon, 31 Aug 2020 16:40:10 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>测试</title>
       <link>https://junyubian.github.io/tags/%E6%B5%8B%E8%AF%95/</link>
       <pubDate>Thu, 23 Jul 2020 22:54:16 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/tags/%E6%B5%8B%E8%AF%95/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Database</title>
       <link>https://junyubian.github.io/tags/database/</link>
       <pubDate>Tue, 28 Apr 2020 22:59:02 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/tags/database/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Django</title>
       <link>https://junyubian.github.io/tags/django/</link>
       <pubDate>Tue, 28 Apr 2020 22:59:02 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/tags/django/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Web</title>
       <link>https://junyubian.github.io/tags/web/</link>
       <pubDate>Tue, 28 Apr 2020 22:59:02 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/tags/web/</guid>
       <description></description>
     </item>
+    
   </channel>
 </rss>

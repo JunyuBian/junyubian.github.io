@@ -1,47 +1,70 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Categories on Junyu Bian</title>
     <link>https://junyubian.github.io/categories/</link>
     <description>Recent content in Categories on Junyu Bian</description>
+    <image>
+      <title>Junyu Bian</title>
+      <url>https://junyubian.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://junyubian.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 03 Dec 2023 16:13:27 +0800</lastBuildDate>
-    <atom:link href="https://junyubian.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Dec 2023 19:40:43 +0000</lastBuildDate><atom:link href="https://junyubian.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>default</title>
-      <link>https://junyubian.github.io/categories/default/</link>
-      <pubDate>Sun, 03 Dec 2023 16:13:27 +0800</pubDate>
-      <guid>https://junyubian.github.io/categories/default/</guid>
+      <title>Criterions</title>
+      <link>https://junyubian.github.io/categories/criterions/</link>
+      <pubDate>Sat, 02 Dec 2023 19:40:43 +0000</pubDate>
+      
+      <guid>https://junyubian.github.io/categories/criterions/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Notes</title>
       <link>https://junyubian.github.io/categories/notes/</link>
-      <pubDate>Tue, 07 Nov 2023 21:53:43 +0000</pubDate>
+      <pubDate>Sat, 02 Dec 2023 18:53:43 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/categories/notes/</guid>
       <description></description>
     </item>
+    
+    <item>
+      <title>default</title>
+      <link>https://junyubian.github.io/categories/default/</link>
+      <pubDate>Sat, 02 Dec 2023 16:13:27 +0800</pubDate>
+      
+      <guid>https://junyubian.github.io/categories/default/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>LeetCode</title>
       <link>https://junyubian.github.io/categories/leetcode/</link>
       <pubDate>Tue, 15 Sep 2020 22:12:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/categories/leetcode/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Projects</title>
       <link>https://junyubian.github.io/categories/projects/</link>
       <pubDate>Tue, 28 Apr 2020 22:59:02 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/categories/projects/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>知识点</title>
       <link>https://junyubian.github.io/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/</link>
       <pubDate>Wed, 15 Apr 2020 22:27:57 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
       <description></description>
     </item>
+    
   </channel>
 </rss>

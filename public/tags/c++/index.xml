@@ -1,27 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>C&#43;&#43; on Junyu Bian</title>
     <link>https://junyubian.github.io/tags/c&#43;&#43;/</link>
     <description>Recent content in C&#43;&#43; on Junyu Bian</description>
+    <image>
+      <title>Junyu Bian</title>
+      <url>https://junyubian.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://junyubian.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 08 Nov 2020 15:19:00 +0000</lastBuildDate>
-    <atom:link href="https://junyubian.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 08 Nov 2020 15:19:00 +0000</lastBuildDate><atom:link href="https://junyubian.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Diff Array</title>
       <link>https://junyubian.github.io/posts/2020-11-08-diff-array/</link>
       <pubDate>Sun, 08 Nov 2020 15:19:00 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-11-08-diff-array/</guid>
       <description>&lt;p&gt;In this blog, we will talk about one trick can be used to solve problems to do with frequent addition and subtraction to a subsection of an array  - &lt;a href=&#34;https://labuladong.gitbook.io/algo/suan-fa-si-wei-xi-lie/3.3-yi-xiang-bu-dao-xi-lie/cha-fen-ji-qiao&#34;&gt;Diff Array&lt;/a&gt;.&lt;/p&gt;
 &lt;h1 id=&#34;functionality&#34;&gt;Functionality&lt;/h1&gt;
 &lt;p&gt;Todo with frequent addition and subtraction to a subsection of an array.&lt;/p&gt;
 &lt;p&gt;e.g. Given array &lt;code&gt;arr&lt;/code&gt;, add 1 for elements between  &lt;code&gt;arr[0]&lt;/code&gt; and &lt;code&gt;arr[3]&lt;/code&gt; inclusively, then, substract 3 for elements between  &lt;code&gt;arr[2]&lt;/code&gt; and &lt;code&gt;arr[5]&lt;/code&gt; inclusively, what will be the final &lt;code&gt;arr&lt;/code&gt;.&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>LeetCode题目总结-Recursion&#43;Backtrack</title>
       <link>https://junyubian.github.io/posts/2020-09-15-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-recursion&#43;backtrack/</link>
       <pubDate>Tue, 15 Sep 2020 22:12:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-09-15-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-recursion&#43;backtrack/</guid>
       <description>&lt;h3 id=&#34;题目17电话号码的字母组合httpsleetcode-cncomproblemsletter-combinations-of-a-phone-number&#34;&gt;题目17:&lt;a href=&#34;https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/&#34;&gt;电话号码的字母组合&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
@@ -32,10 +39,12 @@
 &lt;p&gt;输入：&amp;ldquo;23&amp;rdquo;
 输出：[&amp;ldquo;ad&amp;rdquo;, &amp;ldquo;ae&amp;rdquo;, &amp;ldquo;af&amp;rdquo;, &amp;ldquo;bd&amp;rdquo;, &amp;ldquo;be&amp;rdquo;, &amp;ldquo;bf&amp;rdquo;, &amp;ldquo;cd&amp;rdquo;, &amp;ldquo;ce&amp;rdquo;, &amp;ldquo;cf&amp;rdquo;].&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>LeetCode题目总结-Graph</title>
       <link>https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-graph/</link>
       <pubDate>Sat, 12 Sep 2020 21:32:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-graph/</guid>
       <description>&lt;h3 id=&#34;题目133克隆图httpsleetcode-cncomproblemsclone-graph&#34;&gt;题目133:&lt;a href=&#34;https://leetcode-cn.com/problems/clone-graph/&#34;&gt;克隆图&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
@@ -47,10 +56,12 @@ public int val;
 public List&lt;!-- raw HTML omitted --&gt; neighbors;
 }&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>LeetCode题目总结-Queue&#43;TopologicalSort</title>
       <link>https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-queue&#43;topologicalsort/</link>
       <pubDate>Sat, 12 Sep 2020 21:32:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-queue&#43;topologicalsort/</guid>
       <description>&lt;h3 id=&#34;题目621任务调度器httpsleetcode-cncomproblemstask-scheduler&#34;&gt;题目621:&lt;a href=&#34;https://leetcode-cn.com/problems/task-scheduler/&#34;&gt;任务调度器&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
@@ -58,10 +69,12 @@ public List&lt;!-- raw HTML omitted --&gt; neighbors;
 &lt;p&gt;给定一个用字符数组表示的 CPU 需要执行的任务列表。其中包含使用大写的 A - Z 字母表示的26 种不同种类的任务。任务可以以任意顺序执行，并且每个任务都可以在 1 个单位时间内执行完。CPU 在任何一个单位时间内都可以执行一个任务，或者在待命状态。&lt;/p&gt;
 &lt;p&gt;然而，两个相同种类的任务之间必须有长度为 n 的冷却时间，因此至少有连续 n 个单位时间内 CPU 在执行不同的任务，或者在待命状态。&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>LeetCode题目总结-DP&#43;Greedy</title>
       <link>https://junyubian.github.io/posts/2020-09-11-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dp&#43;greedy/</link>
       <pubDate>Fri, 11 Sep 2020 11:52:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-09-11-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dp&#43;greedy/</guid>
       <description>&lt;h3 id=&#34;题目5最长回文子串httpsleetcode-cncomproblemslongest-palindromic-substring&#34;&gt;题目5:&lt;a href=&#34;https://leetcode-cn.com/problems/longest-palindromic-substring/&#34;&gt;最长回文子串&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
@@ -72,10 +85,12 @@ public List&lt;!-- raw HTML omitted --&gt; neighbors;
 输出: &amp;ldquo;bab&amp;rdquo;
 注意: &amp;ldquo;aba&amp;rdquo; 也是一个有效答案。&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>LeetCode题目总结-Heap&#43;Stack</title>
       <link>https://junyubian.github.io/posts/2020-09-09-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-heap&#43;stack/</link>
       <pubDate>Wed, 09 Sep 2020 12:32:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-09-09-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-heap&#43;stack/</guid>
       <description>&lt;h3 id=&#34;题目20有效的括号httpsleetcode-cncomproblemsvalid-parentheses&#34;&gt;题目20:&lt;a href=&#34;https://leetcode-cn.com/problems/valid-parentheses/&#34;&gt;有效的括号&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
@@ -86,10 +101,12 @@ public List&lt;!-- raw HTML omitted --&gt; neighbors;
 左括号必须以正确的顺序闭合。
 注意空字符串可被认为是有效字符串。&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>LeetCode题目总结-DFS&#43;BFS</title>
       <link>https://junyubian.github.io/posts/2020-09-08-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dfs&#43;bfs/</link>
       <pubDate>Tue, 08 Sep 2020 14:03:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-09-08-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dfs&#43;bfs/</guid>
       <description>&lt;h3 id=&#34;题目116填充每个节点的下一个右侧节点指针httpsleetcode-cncomproblemspopulating-next-right-pointers-in-each-node&#34;&gt;题目116:&lt;a href=&#34;https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/&#34;&gt;填充每个节点的下一个右侧节点指针&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
@@ -102,10 +119,12 @@ Node *right;
 Node *next;
 }&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>LeetCode题目总结-Tree&#43;BST</title>
       <link>https://junyubian.github.io/posts/2020-09-07-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-tree&#43;bst/</link>
       <pubDate>Mon, 07 Sep 2020 21:13:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-09-07-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-tree&#43;bst/</guid>
       <description>&lt;h3 id=&#34;题目94二叉树的中序遍历httpsleetcode-cncomproblemsbinary-tree-inorder-traversal&#34;&gt;题目94:&lt;a href=&#34;https://leetcode-cn.com/problems/binary-tree-inorder-traversal/&#34;&gt;二叉树的中序遍历&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
@@ -121,10 +140,12 @@ Node *next;
 &lt;p&gt;输出: [1,3,2]
 进阶: 递归算法很简单，你可以通过迭代算法完成吗？&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>LeetCode题目总结-Two Pointer&#43;Linked List</title>
       <link>https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-two-pointer&#43;linked-list/</link>
       <pubDate>Sun, 06 Sep 2020 23:33:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-two-pointer&#43;linked-list/</guid>
       <description>&lt;h3 id=&#34;题目3无重复字符的最长子串httpsleetcode-cncomproblemslongest-substring-without-repeating-characters&#34;&gt;题目3:&lt;a href=&#34;https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/&#34;&gt;无重复字符的最长子串&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
@@ -135,10 +156,12 @@ Node *next;
 输出: 3
 解释: 因为无重复字符的最长子串是 &amp;ldquo;abc&amp;rdquo;，所以其长度为 3。&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>LeetCode题目总结-Array</title>
       <link>https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-array/</link>
       <pubDate>Sun, 06 Sep 2020 21:09:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-array/</guid>
       <description>&lt;h3 id=&#34;题目31下一个排列httpsleetcode-cncomproblemsnext-permutation&#34;&gt;题目31:&lt;a href=&#34;https://leetcode-cn.com/problems/next-permutation&#34;&gt;下一个排列&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
@@ -151,10 +174,12 @@ Node *next;
 3,2,1 → 1,2,3
 1,1,5 → 1,5,1&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>C&#43;&#43;知识点总结</title>
       <link>https://junyubian.github.io/posts/2020-09-01-c&#43;&#43;%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</link>
       <pubDate>Tue, 01 Sep 2020 21:33:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-09-01-c&#43;&#43;%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</guid>
       <description>&lt;h3 id=&#34;1-虚函数和纯虚函数&#34;&gt;1. 虚函数和纯虚函数&lt;/h3&gt;
 &lt;hr&gt;
@@ -164,45 +189,53 @@ Node *next;
 &lt;li&gt;基类需要虚析构函数的原因：防止内存泄漏，假如没有虚析构函数，释放一个由基类指向派生类的对象是，不触发动态绑定，则只会调用基类析构函数，而不会调用派生类的，从而导致派生类内存空间的不到释放。&lt;/li&gt;
 &lt;/ol&gt;</description>
     </item>
+    
     <item>
       <title>知识点整理-6</title>
       <link>https://junyubian.github.io/posts/2020-07-23-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-6/</link>
       <pubDate>Thu, 23 Jul 2020 22:54:16 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-07-23-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-6/</guid>
       <description>&lt;h3 id=&#34;1-linux和端口号进程文件相关的命令&#34;&gt;1. Linux和端口号、进程、文件相关的命令&lt;/h3&gt;
 &lt;hr&gt;
 &lt;p&gt;&lt;strong&gt;静态进程查看&lt;/strong&gt;: ps&lt;/p&gt;
 &lt;p&gt;例：通过进程名查看进程号&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ps ax | fgrep &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;进程名&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;ps ax &lt;span class=&#34;p&#34;&gt;|&lt;/span&gt; fgrep &lt;span class=&#34;o&#34;&gt;[&lt;/span&gt;进程名&lt;span class=&#34;o&#34;&gt;]&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;网络查看&lt;/strong&gt;: netstat&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>SWAP Function</title>
       <link>https://junyubian.github.io/posts/2020-05-17-swap-function/</link>
       <pubDate>Sun, 17 May 2020 19:28:00 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-05-17-swap-function/</guid>
       <description>&lt;p&gt;In this blog, we will look into several ways of implementing swap in different ways.&lt;/p&gt;
 &lt;h1 id=&#34;intermedia-variable&#34;&gt;Intermedia Variable&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; b &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; tem &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; a;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;a &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; b;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;b &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; temp;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;tem&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;temp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
+    
     <item>
       <title>EMPLACE_BACK in C&#43;&#43;</title>
       <link>https://junyubian.github.io/posts/2020-05-16-emplace_back-in-c&#43;&#43;/</link>
       <pubDate>Sat, 16 May 2020 09:39:00 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-05-16-emplace_back-in-c&#43;&#43;/</guid>
       <description>&lt;p&gt;There are different type of containers in C++ STL. To add a new element into the back of a container, we normally use &lt;code&gt;push_back()&lt;/code&gt;. In this blog, we will look into a new way of performing push back - &lt;code&gt;emplace_back()&lt;/code&gt;.&lt;/p&gt;
 &lt;h1 id=&#34;background-knowledge&#34;&gt;Background Knowledge&lt;/h1&gt;
 &lt;p&gt;Rvalue References: with aim of increasing the efficiency of C++, rvalues are included. It doesn&amp;rsquo;t  need to copy the value, the rvalue reference is bound to the value itself.&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>Sorting Algorithms - Quick Sort</title>
       <link>https://junyubian.github.io/posts/2020-04-23-sorting-algorithms---quick-sort/</link>
       <pubDate>Thu, 23 Apr 2020 13:42:56 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-04-23-sorting-algorithms---quick-sort/</guid>
       <description>&lt;p&gt;In this series of blogs, we will talk about different sorting algorithms.&lt;/p&gt;
 &lt;p&gt;All the algorithms in the table below will be covered.&lt;/p&gt;
@@ -315,10 +348,12 @@ Node *next;
 &lt;p&gt;All elements in the first part should be all less than the elements in the second part.&lt;/p&gt;
 &lt;p&gt;Loop until the array is sorted.&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>Sorting Algorithms - Bubble Sort</title>
       <link>https://junyubian.github.io/posts/2020-04-22-sorting-algorithms---bubble-sort/</link>
       <pubDate>Wed, 22 Apr 2020 09:23:36 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-04-22-sorting-algorithms---bubble-sort/</guid>
       <description>&lt;p&gt;In this series of blogs, we will talk about different sorting algorithms.&lt;/p&gt;
 &lt;p&gt;All the algorithms in the table below will be covered.&lt;/p&gt;
@@ -431,28 +466,34 @@ Node *next;
 &lt;p&gt;Loop until reaching the last pair of elements.&lt;/p&gt;
 &lt;p&gt;Repeat until all the array is sorted.&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>Sorting Algorithms - Summary</title>
       <link>https://junyubian.github.io/posts/2020-04-21-sorting-algorithms---summary/</link>
       <pubDate>Tue, 21 Apr 2020 22:18:10 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-04-21-sorting-algorithms---summary/</guid>
       <description>&lt;p&gt;In this series of blogs, we will talk about different sorting algorithms.&lt;/p&gt;
 &lt;p&gt;All the algorithms in the table below will be covered.&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>知识点整理-5</title>
       <link>https://junyubian.github.io/posts/2020-04-19-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-5/</link>
       <pubDate>Mon, 20 Apr 2020 00:51:32 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-04-19-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-5/</guid>
       <description>&lt;h3 id=&#34;1-mysql查询10-20条的数据&#34;&gt;1. MySQL查询10-20条的数据&lt;/h3&gt;
 &lt;hr&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-mysql&#34; data-lang=&#34;mysql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;table&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;limit&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;</description>
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-mysql&#34; data-lang=&#34;mysql&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;select&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;from&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;table&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;k&#34;&gt;limit&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;w&#34;&gt; &lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;20&lt;/span&gt;&lt;span class=&#34;w&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;</description>
     </item>
+    
     <item>
       <title>知识点整理-4</title>
       <link>https://junyubian.github.io/posts/2020-04-19-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-4/</link>
       <pubDate>Sun, 19 Apr 2020 21:07:23 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-04-19-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-4/</guid>
       <description>&lt;h3 id=&#34;1-黑盒测试和白盒测试&#34;&gt;1. 黑盒测试和白盒测试&lt;/h3&gt;
 &lt;hr&gt;
@@ -463,10 +504,12 @@ Node *next;
 &lt;p&gt;&lt;strong&gt;边界值分析&lt;/strong&gt;：对各种边界情况设计测试用例。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;因果图法&lt;/strong&gt;：根据输入的各种组合来设计测试用例，用于检查程序输入条件的各种组合情况。&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>知识点整理-3</title>
       <link>https://junyubian.github.io/posts/2020-04-17-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-3/</link>
       <pubDate>Fri, 17 Apr 2020 14:22:01 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-04-17-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-3/</guid>
       <description>&lt;h3 id=&#34;1-计算机网络分层模型&#34;&gt;1. 计算机网络分层模型&lt;/h3&gt;
 &lt;hr&gt;
@@ -478,50 +521,56 @@ Node *next;
 &lt;p&gt;&lt;strong&gt;会话层&lt;/strong&gt;：建立、维护、管理会话链接。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;传输层&lt;/strong&gt;：建立、维护、管理端到端链接。&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>KMP Algorithm</title>
       <link>https://junyubian.github.io/posts/2020-04-17-kmp-algorithm/</link>
       <pubDate>Fri, 17 Apr 2020 00:31:29 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-04-17-kmp-algorithm/</guid>
       <description>&lt;h1 id=&#34;background&#34;&gt;Background&amp;hellip;&lt;/h1&gt;
 &lt;p&gt;Once upon a time, Tom asked his father to find &lt;code&gt;abab&lt;/code&gt; inside &lt;code&gt;abcaabababaa&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Tom&amp;rsquo;s dad did this in a traditional way (brute force). He compared each character of the first string with each character of the second string. When he find one character not matching, for example, the third character in the second string in this case, he start again from the second character of the second string. It went on and on and on&amp;hellip;&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>知识点整理-2</title>
       <link>https://junyubian.github.io/posts/2020-04-16-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-2/</link>
       <pubDate>Thu, 16 Apr 2020 21:29:34 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-04-16-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-2/</guid>
       <description>&lt;h3 id=&#34;1-两个有序链表合并成一个leetcode-21&#34;&gt;1. 两个有序链表合并成一个(leetcode 21)&lt;/h3&gt;
 &lt;hr&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;ListNode&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; val;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   ListNode &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt;next;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   ListNode(&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; x) &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; val(x), next(NULL) {}
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;};
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ListNode&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;mergeTwoLists&lt;/span&gt;(ListNode&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; l1, ListNode&lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; l2) {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt;(l1 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; NULL){
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; l2;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (l2 &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; NULL){
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; l1;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; (l1&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;val &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;&lt;/span&gt; l2&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;val){
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      l1&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;next &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; mergeTwoLists(l1&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;next, l2);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; l1;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   &lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      l2&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;next &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; mergeTwoLists(l1, l2&lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt;next);
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; l2;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;   }
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;ListNode&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;val&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;n&#34;&gt;ListNode&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;next&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;n&#34;&gt;ListNode&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;val&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;next&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;n&#34;&gt;ListNode&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;mergeTwoLists&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ListNode&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;l1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ListNode&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;l2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;l1&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;l2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;l2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;NULL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;l1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;l1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;val&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;l2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;val&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;l1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;next&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mergeTwoLists&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;l1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;next&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;l2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;l1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;n&#34;&gt;l2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;next&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mergeTwoLists&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;l1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;l2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;next&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;      &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;l2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;   &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;</description>
     </item>
+    
     <item>
       <title>知识点整理-1</title>
       <link>https://junyubian.github.io/posts/2020-04-15-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-1/</link>
       <pubDate>Wed, 15 Apr 2020 22:27:57 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-04-15-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-1/</guid>
       <description>&lt;h3 id=&#34;1-c的内存管理分哪些区分别有什么作用&#34;&gt;1. C++的内存管理分哪些区，分别有什么作用&lt;/h3&gt;
 &lt;hr&gt;
@@ -532,5 +581,6 @@ Node *next;
 &lt;p&gt;&lt;strong&gt;全局区/静态区&lt;/strong&gt;：全局变量和静态变量分配在同一块内存中。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;常量存储区&lt;/strong&gt;：存放不可修改的常量值。&lt;/p&gt;</description>
     </item>
+    
   </channel>
 </rss>

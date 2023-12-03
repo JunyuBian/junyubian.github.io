@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Command Line on Junyu Bian</title>
     <link>https://junyubian.github.io/tags/command-line/</link>
     <description>Recent content in Command Line on Junyu Bian</description>
+    <image>
+      <title>Junyu Bian</title>
+      <url>https://junyubian.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://junyubian.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 05 Jun 2021 00:31:29 +0000</lastBuildDate>
-    <atom:link href="https://junyubian.github.io/tags/command-line/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 Jun 2021 00:31:29 +0000</lastBuildDate><atom:link href="https://junyubian.github.io/tags/command-line/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Command Line Related Notes</title>
       <link>https://junyubian.github.io/posts/2021-06-05-command-line-related-notes/</link>
       <pubDate>Sat, 05 Jun 2021 00:31:29 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2021-06-05-command-line-related-notes/</guid>
       <description>&lt;h4 id=&#34;1-switch-to-end-of-line-in-vi&#34;&gt;1. Switch to end of line in vi:&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;shift+G
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;shift+G
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;2-switch-to-end-of-line-in-normal-command-line&#34;&gt;2. Switch to end of line in normal command line:&lt;/h4&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ctrl+E
 &lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;3-switch-to-specific-line-in-target-file&#34;&gt;3. Switch to specific line in target file:&lt;/h4&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;vi &amp;lt;file directory&amp;gt; +&amp;lt;n&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;</description>
     </item>
+    
   </channel>
 </rss>

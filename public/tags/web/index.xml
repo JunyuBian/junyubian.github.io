@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Web on Junyu Bian</title>
     <link>https://junyubian.github.io/tags/web/</link>
     <description>Recent content in Web on Junyu Bian</description>
+    <image>
+      <title>Junyu Bian</title>
+      <url>https://junyubian.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://junyubian.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 Apr 2020 22:59:02 +0000</lastBuildDate>
-    <atom:link href="https://junyubian.github.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 28 Apr 2020 22:59:02 +0000</lastBuildDate><atom:link href="https://junyubian.github.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Insurance Management System - Overview</title>
       <link>https://junyubian.github.io/posts/2020-04-28-insurance-management-system---overview/</link>
       <pubDate>Tue, 28 Apr 2020 22:59:02 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-04-28-insurance-management-system---overview/</guid>
       <description>&lt;p&gt;In this series of blogs, we will talk about how to build a Insurance Management web application together with database system.&lt;/p&gt;
 &lt;h1 id=&#34;background&#34;&gt;Background&lt;/h1&gt;
 &lt;p&gt;Tom&amp;rsquo;s dad works in an insurance company. His work is to drop down who bought what kind of insurance, on which day does the customer receives an invoice, and on which day does the customer makes a payment.&lt;/p&gt;</description>
     </item>
+    
   </channel>
 </rss>

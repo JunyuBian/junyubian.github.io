@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>LeetCode on Junyu Bian</title>
     <link>https://junyubian.github.io/categories/leetcode/</link>
     <description>Recent content in LeetCode on Junyu Bian</description>
+    <image>
+      <title>Junyu Bian</title>
+      <url>https://junyubian.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://junyubian.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 15 Sep 2020 22:12:19 +0000</lastBuildDate>
-    <atom:link href="https://junyubian.github.io/categories/leetcode/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 15 Sep 2020 22:12:19 +0000</lastBuildDate><atom:link href="https://junyubian.github.io/categories/leetcode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LeetCode题目总结-Recursion&#43;Backtrack</title>
       <link>https://junyubian.github.io/posts/2020-09-15-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-recursion&#43;backtrack/</link>
       <pubDate>Tue, 15 Sep 2020 22:12:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-09-15-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-recursion&#43;backtrack/</guid>
       <description>&lt;h3 id=&#34;题目17电话号码的字母组合httpsleetcode-cncomproblemsletter-combinations-of-a-phone-number&#34;&gt;题目17:&lt;a href=&#34;https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/&#34;&gt;电话号码的字母组合&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
@@ -22,10 +27,12 @@
 &lt;p&gt;输入：&amp;ldquo;23&amp;rdquo;
 输出：[&amp;ldquo;ad&amp;rdquo;, &amp;ldquo;ae&amp;rdquo;, &amp;ldquo;af&amp;rdquo;, &amp;ldquo;bd&amp;rdquo;, &amp;ldquo;be&amp;rdquo;, &amp;ldquo;bf&amp;rdquo;, &amp;ldquo;cd&amp;rdquo;, &amp;ldquo;ce&amp;rdquo;, &amp;ldquo;cf&amp;rdquo;].&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>LeetCode题目总结-Graph</title>
       <link>https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-graph/</link>
       <pubDate>Sat, 12 Sep 2020 21:32:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-graph/</guid>
       <description>&lt;h3 id=&#34;题目133克隆图httpsleetcode-cncomproblemsclone-graph&#34;&gt;题目133:&lt;a href=&#34;https://leetcode-cn.com/problems/clone-graph/&#34;&gt;克隆图&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
@@ -37,10 +44,12 @@ public int val;
 public List&lt;!-- raw HTML omitted --&gt; neighbors;
 }&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>LeetCode题目总结-Queue&#43;TopologicalSort</title>
       <link>https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-queue&#43;topologicalsort/</link>
       <pubDate>Sat, 12 Sep 2020 21:32:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-queue&#43;topologicalsort/</guid>
       <description>&lt;h3 id=&#34;题目621任务调度器httpsleetcode-cncomproblemstask-scheduler&#34;&gt;题目621:&lt;a href=&#34;https://leetcode-cn.com/problems/task-scheduler/&#34;&gt;任务调度器&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
@@ -48,10 +57,12 @@ public List&lt;!-- raw HTML omitted --&gt; neighbors;
 &lt;p&gt;给定一个用字符数组表示的 CPU 需要执行的任务列表。其中包含使用大写的 A - Z 字母表示的26 种不同种类的任务。任务可以以任意顺序执行，并且每个任务都可以在 1 个单位时间内执行完。CPU 在任何一个单位时间内都可以执行一个任务，或者在待命状态。&lt;/p&gt;
 &lt;p&gt;然而，两个相同种类的任务之间必须有长度为 n 的冷却时间，因此至少有连续 n 个单位时间内 CPU 在执行不同的任务，或者在待命状态。&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>LeetCode题目总结-DP&#43;Greedy</title>
       <link>https://junyubian.github.io/posts/2020-09-11-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dp&#43;greedy/</link>
       <pubDate>Fri, 11 Sep 2020 11:52:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-09-11-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dp&#43;greedy/</guid>
       <description>&lt;h3 id=&#34;题目5最长回文子串httpsleetcode-cncomproblemslongest-palindromic-substring&#34;&gt;题目5:&lt;a href=&#34;https://leetcode-cn.com/problems/longest-palindromic-substring/&#34;&gt;最长回文子串&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
@@ -62,10 +73,12 @@ public List&lt;!-- raw HTML omitted --&gt; neighbors;
 输出: &amp;ldquo;bab&amp;rdquo;
 注意: &amp;ldquo;aba&amp;rdquo; 也是一个有效答案。&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>LeetCode题目总结-Heap&#43;Stack</title>
       <link>https://junyubian.github.io/posts/2020-09-09-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-heap&#43;stack/</link>
       <pubDate>Wed, 09 Sep 2020 12:32:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-09-09-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-heap&#43;stack/</guid>
       <description>&lt;h3 id=&#34;题目20有效的括号httpsleetcode-cncomproblemsvalid-parentheses&#34;&gt;题目20:&lt;a href=&#34;https://leetcode-cn.com/problems/valid-parentheses/&#34;&gt;有效的括号&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
@@ -76,10 +89,12 @@ public List&lt;!-- raw HTML omitted --&gt; neighbors;
 左括号必须以正确的顺序闭合。
 注意空字符串可被认为是有效字符串。&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>LeetCode题目总结-DFS&#43;BFS</title>
       <link>https://junyubian.github.io/posts/2020-09-08-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dfs&#43;bfs/</link>
       <pubDate>Tue, 08 Sep 2020 14:03:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-09-08-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dfs&#43;bfs/</guid>
       <description>&lt;h3 id=&#34;题目116填充每个节点的下一个右侧节点指针httpsleetcode-cncomproblemspopulating-next-right-pointers-in-each-node&#34;&gt;题目116:&lt;a href=&#34;https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/&#34;&gt;填充每个节点的下一个右侧节点指针&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
@@ -92,10 +107,12 @@ Node *right;
 Node *next;
 }&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>LeetCode题目总结-Tree&#43;BST</title>
       <link>https://junyubian.github.io/posts/2020-09-07-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-tree&#43;bst/</link>
       <pubDate>Mon, 07 Sep 2020 21:13:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-09-07-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-tree&#43;bst/</guid>
       <description>&lt;h3 id=&#34;题目94二叉树的中序遍历httpsleetcode-cncomproblemsbinary-tree-inorder-traversal&#34;&gt;题目94:&lt;a href=&#34;https://leetcode-cn.com/problems/binary-tree-inorder-traversal/&#34;&gt;二叉树的中序遍历&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
@@ -111,10 +128,12 @@ Node *next;
 &lt;p&gt;输出: [1,3,2]
 进阶: 递归算法很简单，你可以通过迭代算法完成吗？&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>LeetCode题目总结-Two Pointer&#43;Linked List</title>
       <link>https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-two-pointer&#43;linked-list/</link>
       <pubDate>Sun, 06 Sep 2020 23:33:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-two-pointer&#43;linked-list/</guid>
       <description>&lt;h3 id=&#34;题目3无重复字符的最长子串httpsleetcode-cncomproblemslongest-substring-without-repeating-characters&#34;&gt;题目3:&lt;a href=&#34;https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/&#34;&gt;无重复字符的最长子串&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
@@ -125,10 +144,12 @@ Node *next;
 输出: 3
 解释: 因为无重复字符的最长子串是 &amp;ldquo;abc&amp;rdquo;，所以其长度为 3。&lt;/p&gt;</description>
     </item>
+    
     <item>
       <title>LeetCode题目总结-Array</title>
       <link>https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-array/</link>
       <pubDate>Sun, 06 Sep 2020 21:09:19 +0000</pubDate>
+      
       <guid>https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-array/</guid>
       <description>&lt;h3 id=&#34;题目31下一个排列httpsleetcode-cncomproblemsnext-permutation&#34;&gt;题目31:&lt;a href=&#34;https://leetcode-cn.com/problems/next-permutation&#34;&gt;下一个排列&lt;/a&gt;&lt;/h3&gt;
 &lt;hr&gt;
@@ -141,5 +162,6 @@ Node *next;
 3,2,1 → 1,2,3
 1,1,5 → 1,5,1&lt;/p&gt;</description>
     </item>
+    
   </channel>
 </rss>

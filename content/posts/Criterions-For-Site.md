@@ -1,13 +1,13 @@
 ---
 title: Criterions For Site
-date: 2023-12-03 19:40:43
-slug: 2023-12-03-Criterions-For-Site
+date: 2023-12-02 19:40:43
+slug: 2023-12-02-Criterions-For-Site
 type: posts
 draft: false
 categories: 
-- Criterions
+  - Criterions
 tags:
-- EN
+  - EN
 ---
 
 - [1-Titles](#1-titles)

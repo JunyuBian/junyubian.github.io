@@ -1,16 +1,17 @@
 ---
 title: Hugo Site Auto Deployment With Github Action
-date: 2023-12-03 18:53:43
-slug: 2023-12-03-Hugo-Site-Auto-Deployment-With-Github-Action
+date: 2023-12-02 18:53:43
+slug: 2023-12-02-Hugo-Site-Auto-Deployment-With-Github-Action
 type: posts
 draft: false
 categories: 
-- Notes
+  - Notes
 tags:
-- Hugo
-- Git
-- EN
+  - Hugo
+  - Git
+  - EN
 ---
+
 - [1-Background](#1-background)
 - [2-Steps](#2-steps)
 - [3-Good to know](#3-good-to-know)

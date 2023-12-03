@@ -1,499 +1,325 @@
-<!DOCTYPE html>
-<html lang="en-us">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<style type=text/css>body{font-family:monospace;}</style>
-	<title>LeetCode题目总结-Tree&#43;BST</title>
-	
-	
-	<link rel="stylesheet" href="/css/style.css">
-	
-	
-</head>
-<body>
-	<header>
-	================<br>
-	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
-	================
-	<div style="float: right;">Notes of Junyu.</div><br>
-	<p>
-	<nav>
-			<a href="/"><b>Start</b></a>.
-			
-			
-			<a href="/posts/"><b>Posts</b></a>.
-			
-			<a href="/categories/"><b>Categories</b></a>.
-			
-			<a href="/tags/"><b>Tags</b></a>.
-			
-	</nav>
-	</p>
-	
-</header>
+<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>LeetCode题目总结-Tree+BST | Junyu Bian</title>
+<meta name=keywords content="C++,算法"><meta name=description content="题目94:二叉树的中序遍历
 
-	
-	<main>
-		<article>
-			<h1>LeetCode题目总结-Tree&#43;BST</h1>
-			<b><time>09/07/2020 21:13</time></b>
-		       
-		           <a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
-        	       
-		           <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>
-        	       
+描述：
+给定一个二叉树，返回它的中序 遍历。
+示例:
+输入: [1,null,2,3]
+1
 
-			<div>
-				<h3 id="题目94二叉树的中序遍历httpsleetcode-cncomproblemsbinary-tree-inorder-traversal">题目94:<a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/">二叉树的中序遍历</a></h3>
-<hr>
-<p>描述：</p>
-<p>给定一个二叉树，返回它的中序 遍历。</p>
-<p>示例:</p>
-<p>输入: [1,null,2,3]
-1
-<br>
 2
 /
-3</p>
-<p>输出: [1,3,2]
-进阶: 递归算法很简单，你可以通过迭代算法完成吗？</p>
-<p><a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/che-di-chi-tou-er-cha-shu-de-qian-zhong-hou-xu-di-/">思路一</a>：</p>
-<p>突破点：<code>递归。</code></p>
-<p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">traversal</span>(TreeNode<span style="color:#f92672">*</span> cur, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> vec) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> cur) <span style="color:#66d9ef">return</span>;
-</span></span><span style="display:flex;"><span>    traversal(cur<span style="color:#f92672">-&gt;</span>left, vec);  <span style="color:#75715e">// 左
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    vec.push_back(cur<span style="color:#f92672">-&gt;</span>val);    <span style="color:#75715e">// 中
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    traversal(cur<span style="color:#f92672">-&gt;</span>right, vec); <span style="color:#75715e">// 右
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>}
-</span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/che-di-chi-tou-er-cha-shu-de-qian-zhong-hou-xu-di-/">思路二</a>：</p>
-<p>突破点：<code>迭代。</code></p>
-<p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> inorderTraversal(TreeNode<span style="color:#f92672">*</span> root) {
-</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> result;
-</span></span><span style="display:flex;"><span>        stack<span style="color:#f92672">&lt;</span>TreeNode<span style="color:#f92672">*&gt;</span> tempStack;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">!=</span> root) tempStack.push(root);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>tempStack.empty()) {
-</span></span><span style="display:flex;"><span>            TreeNode<span style="color:#f92672">*</span> node <span style="color:#f92672">=</span> tempStack.top();
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">!=</span> node) {
-</span></span><span style="display:flex;"><span>              	<span style="color:#75715e">// 将该节点弹出，避免重复操作，下面再将右中左节点添加到栈中
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                tempStack.pop(); 
-</span></span><span style="display:flex;"><span>              	<span style="color:#75715e">// 添加右节点
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> (node<span style="color:#f92672">-&gt;</span>right) tempStack.push(node<span style="color:#f92672">-&gt;</span>right); 
-</span></span><span style="display:flex;"><span>              	<span style="color:#75715e">// 添加中节点
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                tempStack.push(node);
-</span></span><span style="display:flex;"><span>              	<span style="color:#75715e">// 中节点访问过，但是还没有处理，需要做一下标记。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                tempStack.push(<span style="color:#66d9ef">nullptr</span>); 
-</span></span><span style="display:flex;"><span>								<span style="color:#75715e">// 添加左节点
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> (node<span style="color:#f92672">-&gt;</span>left) tempStack.push(node<span style="color:#f92672">-&gt;</span>left); 
-</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>              	<span style="color:#75715e">// 将空节点弹出
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                tempStack.pop(); 
-</span></span><span style="display:flex;"><span>              	<span style="color:#75715e">// 重新取出栈中元素
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                node <span style="color:#f92672">=</span> tempStack.top(); 
-</span></span><span style="display:flex;"><span>                tempStack.pop();
-</span></span><span style="display:flex;"><span>              	<span style="color:#75715e">// 加入到数组中
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                result.push_back(node<span style="color:#f92672">-&gt;</span>val); 
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><hr>
-<h3 id="题目144二叉树的前序遍历httpsleetcode-cncomproblemsbinary-tree-preorder-traversal">题目144:<a href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/">二叉树的前序遍历</a></h3>
-<hr>
-<p>描述：</p>
-<p>给定一个二叉树，返回它的 前序 遍历。</p>
-<p>示例:</p>
-<p>输入: [1,null,2,3]<br>
+3
+输出: [1,3,2]
+进阶: 递归算法很简单，你可以通过迭代算法完成吗？"><meta name=author content="Me"><link rel=canonical href=https://junyubian.github.io/posts/2020-09-07-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-tree+bst/><meta name=google-site-verification content="XYZabc"><meta name=yandex-verification content="XYZabc"><meta name=msvalidate.01 content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.5cfc680b1eeaeef9efbced92d46c2a9e876b72ee14fba85846afc4cff9e6e6f8.css integrity="sha256-XPxoCx7q7vnvvO2S1Gwqnodrcu4U+6hYRq/Ez/nm5vg=" rel="preload stylesheet" as=style><script defer crossorigin=anonymous src=/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG+9vmJ0cTS+ovo0FeA=" onload=hljs.initHighlightingOnLoad()></script><link rel=icon href=https://junyubian.github.io/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=16x16 href=https://junyubian.github.io/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=32x32 href=https://junyubian.github.io/%3Clink%20/%20abs%20url%3E><link rel=apple-touch-icon href=https://junyubian.github.io/%3Clink%20/%20abs%20url%3E><link rel=mask-icon href=https://junyubian.github.io/%3Clink%20/%20abs%20url%3E><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,i=t.createElement(n),a=t.getElementsByTagName(n)[0],i.async=1,i.src=s,a.parentNode.insertBefore(i,a)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-123-45","auto"),ga("send","pageview"))</script><meta property="og:title" content="LeetCode题目总结-Tree+BST"><meta property="og:description" content="题目94:二叉树的中序遍历
+
+描述：
+给定一个二叉树，返回它的中序 遍历。
+示例:
+输入: [1,null,2,3]
 1
-<br>
+
 2
 /
-3</p>
-<p>输出: [1,2,3]
-进阶: 递归算法很简单，你可以通过迭代算法完成吗？</p>
-<p><a href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/solution/dai-ma-sui-xiang-lu-chi-tou-qian-zhong-hou-xu-de-d/">思路一</a>：</p>
-<p>突破点：<code>递归。</code></p>
-<p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> traversal(TreeNode<span style="color:#f92672">*</span> cur, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> vec) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> cur) <span style="color:#66d9ef">return</span>;
-</span></span><span style="display:flex;"><span>        vec.push_back(cur<span style="color:#f92672">-&gt;</span>val);    <span style="color:#75715e">// 中
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        traversal(cur<span style="color:#f92672">-&gt;</span>left, vec);  <span style="color:#75715e">// 左
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        traversal(cur<span style="color:#f92672">-&gt;</span>right, vec); <span style="color:#75715e">// 右
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> preorderTraversal(TreeNode<span style="color:#f92672">*</span> root) {
-</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> result;
-</span></span><span style="display:flex;"><span>        traversal(root, result);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/solution/dai-ma-sui-xiang-lu-chi-tou-qian-zhong-hou-xu-de-d/">思路二</a>：</p>
-<p>突破点：<code>迭代。</code></p>
-<p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> preorderTraversal(TreeNode<span style="color:#f92672">*</span> root) {
-</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> result;
-</span></span><span style="display:flex;"><span>        stack<span style="color:#f92672">&lt;</span>TreeNode<span style="color:#f92672">*&gt;</span> tempStack;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">!=</span> root) tempStack.push(root);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>tempStack.empty()) {
-</span></span><span style="display:flex;"><span>            TreeNode<span style="color:#f92672">*</span> node <span style="color:#f92672">=</span> tempStack.top();
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">!=</span> node) {
-</span></span><span style="display:flex;"><span>                tempStack.pop();
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (node<span style="color:#f92672">-&gt;</span>right) tempStack.push(node<span style="color:#f92672">-&gt;</span>right);  <span style="color:#75715e">// 右
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> (node<span style="color:#f92672">-&gt;</span>left) tempStack.push(node<span style="color:#f92672">-&gt;</span>left);    <span style="color:#75715e">// 左
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                tempStack.push(node);                          <span style="color:#75715e">// 中
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                tempStack.push(NULL);
-</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>                tempStack.pop();
-</span></span><span style="display:flex;"><span>                node <span style="color:#f92672">=</span> tempStack.top();
-</span></span><span style="display:flex;"><span>                tempStack.pop();
-</span></span><span style="display:flex;"><span>                result.push_back(node<span style="color:#f92672">-&gt;</span>val);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><hr>
-<h3 id="题目145二叉树的后序遍历httpsleetcode-cncomproblemsbinary-tree-postorder-traversal">题目145:<a href="https://leetcode-cn.com/problems/binary-tree-postorder-traversal/">二叉树的后序遍历</a></h3>
-<hr>
-<p>描述：</p>
-<p>给定一个二叉树，返回它的 后序 遍历。</p>
-<p>示例:</p>
-<p>输入: [1,null,2,3]<br>
+3
+输出: [1,3,2]
+进阶: 递归算法很简单，你可以通过迭代算法完成吗？"><meta property="og:type" content="article"><meta property="og:url" content="https://junyubian.github.io/posts/2020-09-07-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-tree+bst/"><meta property="og:image" content="https://junyubian.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="article:section" content="posts"><meta property="article:published_time" content="2020-09-07T21:13:19+00:00"><meta property="article:modified_time" content="2020-09-07T21:13:19+00:00"><meta property="og:site_name" content="Junyu Bian"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://junyubian.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:title content="LeetCode题目总结-Tree+BST"><meta name=twitter:description content="题目94:二叉树的中序遍历
+
+描述：
+给定一个二叉树，返回它的中序 遍历。
+示例:
+输入: [1,null,2,3]
 1
-<br>
+
 2
 /
-3</p>
-<p>输出: [3,2,1]
-进阶: 递归算法很简单，你可以通过迭代算法完成吗？</p>
-<p>思路一：</p>
-<p>突破点：<code>递归。</code></p>
-<p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> traversal(TreeNode<span style="color:#f92672">*</span> cur, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> vec) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> cur) <span style="color:#66d9ef">return</span>;
-</span></span><span style="display:flex;"><span>        traversal(cur<span style="color:#f92672">-&gt;</span>left, vec);  <span style="color:#75715e">// 左
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        traversal(cur<span style="color:#f92672">-&gt;</span>right, vec); <span style="color:#75715e">// 右
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        vec.push_back(cur<span style="color:#f92672">-&gt;</span>val);    <span style="color:#75715e">// 中
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> postorderTraversal(TreeNode<span style="color:#f92672">*</span> root) {
-</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> result;
-</span></span><span style="display:flex;"><span>        traversal(root, result);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/solution/dai-ma-sui-xiang-lu-chi-tou-qian-zhong-hou-xu-de-d/">思路二</a>：</p>
-<p>突破点：<code>迭代。</code></p>
-<p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> postorderTraversal(TreeNode<span style="color:#f92672">*</span> root) {
-</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> result;
-</span></span><span style="display:flex;"><span>        stack<span style="color:#f92672">&lt;</span>TreeNode<span style="color:#f92672">*&gt;</span> tempStack;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">!=</span> root) tempStack.push(root);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>tempStack.empty()) {
-</span></span><span style="display:flex;"><span>            TreeNode<span style="color:#f92672">*</span> node <span style="color:#f92672">=</span> tempStack.top();
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">!=</span> node) {
-</span></span><span style="display:flex;"><span>                tempStack.pop();
-</span></span><span style="display:flex;"><span>                tempStack.push(node);                          <span style="color:#75715e">// 中
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                tempStack.push(NULL);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (node<span style="color:#f92672">-&gt;</span>right) tempStack.push(node<span style="color:#f92672">-&gt;</span>right);  <span style="color:#75715e">// 右
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> (node<span style="color:#f92672">-&gt;</span>left) tempStack.push(node<span style="color:#f92672">-&gt;</span>left);    <span style="color:#75715e">// 左
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>                tempStack.pop();
-</span></span><span style="display:flex;"><span>                node <span style="color:#f92672">=</span> tempStack.top();
-</span></span><span style="display:flex;"><span>                tempStack.pop();
-</span></span><span style="display:flex;"><span>                result.push_back(node<span style="color:#f92672">-&gt;</span>val);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><hr>
-<h3 id="题目112路径总和httpsleetcode-cncomproblemspath-sum">题目112:<a href="https://leetcode-cn.com/problems/path-sum/">路径总和</a></h3>
-<hr>
-<p>描述：
-给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。</p>
-<p><strong>说明:</strong> 叶子节点是指没有子节点的节点。</p>
-<p><strong>示例:</strong>
-给定如下二叉树，以及目标和 <code>sum = 22</code>，</p>
-<pre tabindex="0"><code>              5
+3
+输出: [1,3,2]
+进阶: 递归算法很简单，你可以通过迭代算法完成吗？"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://junyubian.github.io/posts/"},{"@type":"ListItem","position":2,"name":"LeetCode题目总结-Tree+BST","item":"https://junyubian.github.io/posts/2020-09-07-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-tree+bst/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"LeetCode题目总结-Tree+BST","name":"LeetCode题目总结-Tree\u002bBST","description":"题目94:二叉树的中序遍历 描述：\n给定一个二叉树，返回它的中序 遍历。\n示例:\n输入: [1,null,2,3] 1 2 / 3\n输出: [1,3,2] 进阶: 递归算法很简单，你可以通过迭代算法完成吗？\n","keywords":["C++","算法"],"articleBody":"题目94:二叉树的中序遍历 描述：\n给定一个二叉树，返回它的中序 遍历。\n示例:\n输入: [1,null,2,3] 1 2 / 3\n输出: [1,3,2] 进阶: 递归算法很简单，你可以通过迭代算法完成吗？\n思路一：\n突破点：递归。\n代码：\nvoid traversal(TreeNode* cur, vector\u003cint\u003e\u0026 vec) { if (nullptr == cur) return; traversal(cur-\u003eleft, vec); // 左 vec.push_back(cur-\u003eval); // 中 traversal(cur-\u003eright, vec); // 右 } 思路二：\n突破点：迭代。\n代码：\nclass Solution { public: vector\u003cint\u003e inorderTraversal(TreeNode* root) { vector\u003cint\u003e result; stack\u003cTreeNode*\u003e tempStack; if (nullptr != root) tempStack.push(root); while (!tempStack.empty()) { TreeNode* node = tempStack.top(); if (nullptr != node) { // 将该节点弹出，避免重复操作，下面再将右中左节点添加到栈中 tempStack.pop(); // 添加右节点 if (node-\u003eright) tempStack.push(node-\u003eright); // 添加中节点 tempStack.push(node); // 中节点访问过，但是还没有处理，需要做一下标记。 tempStack.push(nullptr); // 添加左节点 if (node-\u003eleft) tempStack.push(node-\u003eleft); } else { // 将空节点弹出 tempStack.pop(); // 重新取出栈中元素 node = tempStack.top(); tempStack.pop(); // 加入到数组中 result.push_back(node-\u003eval); } } return result; } }; 题目144:二叉树的前序遍历 描述：\n给定一个二叉树，返回它的 前序 遍历。\n示例:\n输入: [1,null,2,3]\n1 2 / 3\n输出: [1,2,3] 进阶: 递归算法很简单，你可以通过迭代算法完成吗？\n思路一：\n突破点：递归。\n代码：\nclass Solution { public: void traversal(TreeNode* cur, vector\u003cint\u003e\u0026 vec) { if (nullptr == cur) return; vec.push_back(cur-\u003eval); // 中 traversal(cur-\u003eleft, vec); // 左 traversal(cur-\u003eright, vec); // 右 } vector\u003cint\u003e preorderTraversal(TreeNode* root) { vector\u003cint\u003e result; traversal(root, result); return result; } }; 思路二：\n突破点：迭代。\n代码：\nclass Solution { public: vector\u003cint\u003e preorderTraversal(TreeNode* root) { vector\u003cint\u003e result; stack\u003cTreeNode*\u003e tempStack; if (nullptr != root) tempStack.push(root); while (!tempStack.empty()) { TreeNode* node = tempStack.top(); if (nullptr != node) { tempStack.pop(); if (node-\u003eright) tempStack.push(node-\u003eright); // 右 if (node-\u003eleft) tempStack.push(node-\u003eleft); // 左 tempStack.push(node); // 中 tempStack.push(NULL); } else { tempStack.pop(); node = tempStack.top(); tempStack.pop(); result.push_back(node-\u003eval); } } return result; } }; 题目145:二叉树的后序遍历 描述：\n给定一个二叉树，返回它的 后序 遍历。\n示例:\n输入: [1,null,2,3]\n1 2 / 3\n输出: [3,2,1] 进阶: 递归算法很简单，你可以通过迭代算法完成吗？\n思路一：\n突破点：递归。\n代码：\nclass Solution { public: void traversal(TreeNode* cur, vector\u003cint\u003e\u0026 vec) { if (nullptr == cur) return; traversal(cur-\u003eleft, vec); // 左 traversal(cur-\u003eright, vec); // 右 vec.push_back(cur-\u003eval); // 中 } vector\u003cint\u003e postorderTraversal(TreeNode* root) { vector\u003cint\u003e result; traversal(root, result); return result; } }; 思路二：\n突破点：迭代。\n代码：\nclass Solution { public: vector\u003cint\u003e postorderTraversal(TreeNode* root) { vector\u003cint\u003e result; stack\u003cTreeNode*\u003e tempStack; if (nullptr != root) tempStack.push(root); while (!tempStack.empty()) { TreeNode* node = tempStack.top(); if (nullptr != node) { tempStack.pop(); tempStack.push(node); // 中 tempStack.push(NULL); if (node-\u003eright) tempStack.push(node-\u003eright); // 右 if (node-\u003eleft) tempStack.push(node-\u003eleft); // 左 } else { tempStack.pop(); node = tempStack.top(); tempStack.pop(); result.push_back(node-\u003eval); } } return result; } }; 题目112:路径总和 描述： 给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。\n说明: 叶子节点是指没有子节点的节点。\n示例: 给定如下二叉树，以及目标和 sum = 22，\n5 / \\ 4 8 / / \\ 11 13 4 / \\ \\ 7 2 1 返回 true, 因为存在目标和为 22 的根节点到叶子节点的路径 5-\u003e4-\u003e11-\u003e2。\n思路一：\n突破点：广度优先搜索。\n步骤：\n使用广度优先搜索，计算从根节点到当前节点的路径和； 使用两个队列，分别存储要遍历的节点和根节点到这些节点的路径和。 代码：\nclass Solution { public: bool hasPathSum(TreeNode *root, int sum) { if (nullptr == root) { return false; } queue\u003cTreeNode *\u003e queNode; queue\u003cint\u003e queVal; queNode.push(root); queVal.push(root-\u003eval); while (!queNode.empty()) { TreeNode *now = queNode.front(); int temp = queVal.front(); queNode.pop(); queVal.pop(); if (nullptr ==now-\u003eleft \u0026\u0026 nullptr == now-\u003eright) { if (temp == sum) return true; continue; } if (nullptr != now-\u003eleft) { queNode.push(now-\u003eleft); queVal.push(now-\u003eleft-\u003eval + temp); } if (now-\u003eright != nullptr) { queNode.push(now-\u003eright); queVal.push(now-\u003eright-\u003eval + temp); } } return false; } }; 思路二：\n突破点：递归。\n步骤：\n问题细化，即为求是否存在从当前节点的子节点到叶子节点的路径，使得路径和为sum-val； 若当前节点为叶子节点，则直接判断sum是否与val相等； 若非叶子节点，需递归进行查询。 代码：\nclass Solution { public: bool hasPathSum(TreeNode *root, int sum) { if (nullptr == root) { return false; } if (nullptr == root-\u003eleft \u0026\u0026 nullptr == root-\u003eright) { return sum == root-\u003eval; } return hasPathSum(root-\u003eleft, sum - root-\u003eval) || hasPathSum(root-\u003eright, sum - root-\u003eval); } }; 题目113:路径总和 II 描述： 给定一个二叉树和一个目标和，找到所有从根节点到叶子节点路径总和等于给定目标和的路径。\n说明: 叶子节点是指没有子节点的节点。\n示例: 给定如下二叉树，以及目标和 sum = 22，\n5 / \\ 4 8 / / \\ 11 13 4 / \\ / \\ 7 2 5 1 返回:\n[ [5,4,11,2], [5,8,4,5] ] 思路：\n突破点：DFS。\n步骤：\n递归记录当前路径上所有节点的值； 当递归至叶子节点，计算路径总和并比较。 代码：\n/** * Definition for a binary tree node. * struct TreeNode { * int val; * TreeNode *left; * TreeNode *right; * TreeNode(int x) : val(x), left(NULL), right(NULL) {} * }; */ class Solution { public: vector\u003cvector\u003cint\u003e \u003e ans; void dfs(TreeNode* root, int sum, vector\u003cint\u003e valVec){ valVec.push_back(root-\u003eval); if(nullptr == root-\u003eleft \u0026\u0026 nullptr == root-\u003eright){ int s = 0; for(auto n: valVec) s += n; if(s == sum) ans.push_back(valVec); } if(root-\u003eleft) dfs(root-\u003eleft, sum, valVec); if(root-\u003eright) dfs(root-\u003eright, sum, valVec); } vector\u003cvector\u003cint\u003e \u003e pathSum(TreeNode* root, int sum) { if(root == NULL) return ans; dfs(root, sum, {}); return ans; } }; 题目235:二叉搜索树的最近公共祖先 描述：\n给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。\n百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”\n示例 1:\n输入: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8 输出: 6 解释: 节点 2 和节点 8 的最近公共祖先是 6。 示例 2:\n输入: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4 输出: 2 解释: 节点 2 和节点 4 的最近公共祖先是 2, 因为根据定义最近公共祖先节点可以为节点本身。\n说明:\n所有节点的值都是唯一的。 p、q 为不同节点且均存在于给定的二叉搜索树中。\n思路：\n突破点：递归。\n步骤：\n分左右两边进行递归； 如果左边没有找到，说明公共祖先在右边； 如果右边没有找到，说明公共祖先在左边； 如果左右均不为空，则说明找到了。 代码：\nTreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) { //递归边界返回空或者返回存在的那个结点 if(nullptr == root || root == p || root == q) return root; //左边找一找 TreeNode* leftNode = lowestCommonAncestor(root-\u003eleft,p,q); //右边找一找 TreeNode* rightNode = lowestCommonAncestor(root-\u003eright,p,q); //返回NULL或者有的那一侧 if(nullptr == leftNode)return rightNode; if(nullptr == rightNode)return leftNode; //当前祖先左边有p，右边有q return root; } 题目1382:将二叉搜索树变平衡 描述：\n给你一棵二叉搜索树，请你返回一棵 平衡后 的二叉搜索树，新生成的树应该与原来的树有着相同的节点值。\n如果一棵二叉搜索树中，每个节点的两棵子树高度差不超过 1 ，我们就称这棵二叉搜索树是 平衡的 。\n如果有多种构造方法，请你返回任意一种。\n示例：\n输入：root = [1,null,2,null,3,null,4,null,null] 输出：[2,1,3,null,null,null,4] 解释：这不是唯一的正确答案，[3,1,4,null,2,null,null] 也是一个可行的构造方案。\n提示：\n树节点的数目在 1 到 10^4 之间。 树节点的值互不相同，且在 1 到 10^5 之间。\n思路：\n突破点：DFS。\n步骤：\n使用升序数组构造平衡二叉搜索树； 设长度为n，则n/2处元素为根节点； 递归进行构造。 代码：\n/** * Definition for a binary tree node. * struct TreeNode { * int val; * TreeNode *left; * TreeNode *right; * TreeNode(int x) : val(x), left(NULL), right(NULL) {} * }; */ class Solution { void dfs(TreeNode *root, vector\u003cint\u003e \u0026vec) { if(nullptr == root) { return; } dfs(root-\u003eleft, vec); vec.push_back(root-\u003eval); dfs(root-\u003eright, vec); } TreeNode* construct(const vector\u003cint\u003e \u0026vec, int leftVal, int rightVal) { if(leftVal \u003e rightVal) { return nullptr; } int mid = (leftVal+rightVal)\u003e\u003e1; auto ptr = new TreeNode(vec[mid]); ptr-\u003eright = construct(vec, mid+1, rightVal); ptr-\u003eleft = construct(vec, leftVal, mid-1); return ptr; } public: TreeNode* balanceBST(TreeNode* root) { if(nullptr == root) { return nullptr; } vector\u003cint\u003e data; dfs(root, data); return construct(data, 0, data.size()-1); } }; ","wordCount":"924","inLanguage":"en","datePublished":"2020-09-07T21:13:19Z","dateModified":"2020-09-07T21:13:19Z","author":{"@type":"Person","name":"Me"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://junyubian.github.io/posts/2020-09-07-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-tree+bst/"},"publisher":{"@type":"Organization","name":"Junyu Bian","logo":{"@type":"ImageObject","url":"https://junyubian.github.io/%3Clink%20/%20abs%20url%3E"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://junyubian.github.io/ accesskey=h title="Home (Alt + H)"><img src=https://junyubian.github.io/apple-touch-icon.png alt aria-label=logo height=35>Home</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://junyubian.github.io/categories/ title=Categories><span>Categories</span></a></li><li><a href=https://junyubian.github.io/tags/ title=Tags><span>Tags</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://junyubian.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://junyubian.github.io/posts/>Posts</a></div><h1 class=post-title>LeetCode题目总结-Tree+BST</h1><div class=post-meta><span title='2020-09-07 21:13:19 +0000 UTC'>September 7, 2020</span>&nbsp;·&nbsp;5 min&nbsp;·&nbsp;924 words&nbsp;·&nbsp;Me&nbsp;|&nbsp;<a href=https://github.com/JunyuBian/junyubian.github.io/tree/main/content/posts/2020-09-07-LeetCode%e9%a2%98%e7%9b%ae%e6%80%bb%e7%bb%93-Tree+BST.md rel="noopener noreferrer" target=_blank>Suggest Changes</a></div></header><div class=post-content><h3 id=题目94二叉树的中序遍历httpsleetcode-cncomproblemsbinary-tree-inorder-traversal>题目94:<a href=https://leetcode-cn.com/problems/binary-tree-inorder-traversal/>二叉树的中序遍历</a><a hidden class=anchor aria-hidden=true href=#题目94二叉树的中序遍历httpsleetcode-cncomproblemsbinary-tree-inorder-traversal>#</a></h3><hr><p>描述：</p><p>给定一个二叉树，返回它的中序 遍历。</p><p>示例:</p><p>输入: [1,null,2,3]
+1<br>2
+/
+3</p><p>输出: [1,3,2]
+进阶: 递归算法很简单，你可以通过迭代算法完成吗？</p><p><a href=https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/che-di-chi-tou-er-cha-shu-de-qian-zhong-hou-xu-di-/>思路一</a>：</p><p>突破点：<code>递归。</code></p><p>代码：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=kt>void</span> <span class=nf>traversal</span><span class=p>(</span><span class=n>TreeNode</span><span class=o>*</span> <span class=n>cur</span><span class=p>,</span> <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;&amp;</span> <span class=n>vec</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=k>nullptr</span> <span class=o>==</span> <span class=n>cur</span><span class=p>)</span> <span class=k>return</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>traversal</span><span class=p>(</span><span class=n>cur</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>vec</span><span class=p>);</span>  <span class=c1>// 左
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>vec</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>cur</span><span class=o>-&gt;</span><span class=n>val</span><span class=p>);</span>    <span class=c1>// 中
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>traversal</span><span class=p>(</span><span class=n>cur</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>vec</span><span class=p>);</span> <span class=c1>// 右
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span></code></pre></div><p><a href=https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/che-di-chi-tou-er-cha-shu-de-qian-zhong-hou-xu-di-/>思路二</a>：</p><p>突破点：<code>迭代。</code></p><p>代码：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=k>class</span> <span class=nc>Solution</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>inorderTraversal</span><span class=p>(</span><span class=n>TreeNode</span><span class=o>*</span> <span class=n>root</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>result</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>stack</span><span class=o>&lt;</span><span class=n>TreeNode</span><span class=o>*&gt;</span> <span class=n>tempStack</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=k>nullptr</span> <span class=o>!=</span> <span class=n>root</span><span class=p>)</span> <span class=n>tempStack</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>root</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>while</span> <span class=p>(</span><span class=o>!</span><span class=n>tempStack</span><span class=p>.</span><span class=n>empty</span><span class=p>())</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=n>TreeNode</span><span class=o>*</span> <span class=n>node</span> <span class=o>=</span> <span class=n>tempStack</span><span class=p>.</span><span class=n>top</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=p>(</span><span class=k>nullptr</span> <span class=o>!=</span> <span class=n>node</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>              	<span class=c1>// 将该节点弹出，避免重复操作，下面再将右中左节点添加到栈中
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=n>tempStack</span><span class=p>.</span><span class=n>pop</span><span class=p>();</span> 
+</span></span><span class=line><span class=cl>              	<span class=c1>// 添加右节点
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=k>if</span> <span class=p>(</span><span class=n>node</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>)</span> <span class=n>tempStack</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>node</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>);</span> 
+</span></span><span class=line><span class=cl>              	<span class=c1>// 添加中节点
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=n>tempStack</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>node</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>              	<span class=c1>// 中节点访问过，但是还没有处理，需要做一下标记。
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=n>tempStack</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=k>nullptr</span><span class=p>);</span> 
+</span></span><span class=line><span class=cl>								<span class=c1>// 添加左节点
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=k>if</span> <span class=p>(</span><span class=n>node</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>)</span> <span class=n>tempStack</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>node</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>);</span> 
+</span></span><span class=line><span class=cl>            <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>              	<span class=c1>// 将空节点弹出
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=n>tempStack</span><span class=p>.</span><span class=n>pop</span><span class=p>();</span> 
+</span></span><span class=line><span class=cl>              	<span class=c1>// 重新取出栈中元素
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=n>node</span> <span class=o>=</span> <span class=n>tempStack</span><span class=p>.</span><span class=n>top</span><span class=p>();</span> 
+</span></span><span class=line><span class=cl>                <span class=n>tempStack</span><span class=p>.</span><span class=n>pop</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>              	<span class=c1>// 加入到数组中
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=n>result</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>node</span><span class=o>-&gt;</span><span class=n>val</span><span class=p>);</span> 
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>result</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></div><hr><h3 id=题目144二叉树的前序遍历httpsleetcode-cncomproblemsbinary-tree-preorder-traversal>题目144:<a href=https://leetcode-cn.com/problems/binary-tree-preorder-traversal/>二叉树的前序遍历</a><a hidden class=anchor aria-hidden=true href=#题目144二叉树的前序遍历httpsleetcode-cncomproblemsbinary-tree-preorder-traversal>#</a></h3><hr><p>描述：</p><p>给定一个二叉树，返回它的 前序 遍历。</p><p>示例:</p><p>输入: [1,null,2,3]<br>1<br>2
+/
+3</p><p>输出: [1,2,3]
+进阶: 递归算法很简单，你可以通过迭代算法完成吗？</p><p><a href=https://leetcode-cn.com/problems/binary-tree-preorder-traversal/solution/dai-ma-sui-xiang-lu-chi-tou-qian-zhong-hou-xu-de-d/>思路一</a>：</p><p>突破点：<code>递归。</code></p><p>代码：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=k>class</span> <span class=nc>Solution</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=kt>void</span> <span class=n>traversal</span><span class=p>(</span><span class=n>TreeNode</span><span class=o>*</span> <span class=n>cur</span><span class=p>,</span> <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;&amp;</span> <span class=n>vec</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=k>nullptr</span> <span class=o>==</span> <span class=n>cur</span><span class=p>)</span> <span class=k>return</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>vec</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>cur</span><span class=o>-&gt;</span><span class=n>val</span><span class=p>);</span>    <span class=c1>// 中
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>traversal</span><span class=p>(</span><span class=n>cur</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>vec</span><span class=p>);</span>  <span class=c1>// 左
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>traversal</span><span class=p>(</span><span class=n>cur</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>vec</span><span class=p>);</span> <span class=c1>// 右
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>preorderTraversal</span><span class=p>(</span><span class=n>TreeNode</span><span class=o>*</span> <span class=n>root</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>result</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>traversal</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>result</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>result</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></div><p><a href=https://leetcode-cn.com/problems/binary-tree-preorder-traversal/solution/dai-ma-sui-xiang-lu-chi-tou-qian-zhong-hou-xu-de-d/>思路二</a>：</p><p>突破点：<code>迭代。</code></p><p>代码：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=k>class</span> <span class=nc>Solution</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>preorderTraversal</span><span class=p>(</span><span class=n>TreeNode</span><span class=o>*</span> <span class=n>root</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>result</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>stack</span><span class=o>&lt;</span><span class=n>TreeNode</span><span class=o>*&gt;</span> <span class=n>tempStack</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=k>nullptr</span> <span class=o>!=</span> <span class=n>root</span><span class=p>)</span> <span class=n>tempStack</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>root</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>while</span> <span class=p>(</span><span class=o>!</span><span class=n>tempStack</span><span class=p>.</span><span class=n>empty</span><span class=p>())</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=n>TreeNode</span><span class=o>*</span> <span class=n>node</span> <span class=o>=</span> <span class=n>tempStack</span><span class=p>.</span><span class=n>top</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=p>(</span><span class=k>nullptr</span> <span class=o>!=</span> <span class=n>node</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=n>tempStack</span><span class=p>.</span><span class=n>pop</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=p>(</span><span class=n>node</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>)</span> <span class=n>tempStack</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>node</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>);</span>  <span class=c1>// 右
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=k>if</span> <span class=p>(</span><span class=n>node</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>)</span> <span class=n>tempStack</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>node</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>);</span>    <span class=c1>// 左
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=n>tempStack</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>node</span><span class=p>);</span>                          <span class=c1>// 中
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=n>tempStack</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=nb>NULL</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=n>tempStack</span><span class=p>.</span><span class=n>pop</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>                <span class=n>node</span> <span class=o>=</span> <span class=n>tempStack</span><span class=p>.</span><span class=n>top</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>                <span class=n>tempStack</span><span class=p>.</span><span class=n>pop</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>                <span class=n>result</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>node</span><span class=o>-&gt;</span><span class=n>val</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>result</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></div><hr><h3 id=题目145二叉树的后序遍历httpsleetcode-cncomproblemsbinary-tree-postorder-traversal>题目145:<a href=https://leetcode-cn.com/problems/binary-tree-postorder-traversal/>二叉树的后序遍历</a><a hidden class=anchor aria-hidden=true href=#题目145二叉树的后序遍历httpsleetcode-cncomproblemsbinary-tree-postorder-traversal>#</a></h3><hr><p>描述：</p><p>给定一个二叉树，返回它的 后序 遍历。</p><p>示例:</p><p>输入: [1,null,2,3]<br>1<br>2
+/
+3</p><p>输出: [3,2,1]
+进阶: 递归算法很简单，你可以通过迭代算法完成吗？</p><p>思路一：</p><p>突破点：<code>递归。</code></p><p>代码：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=k>class</span> <span class=nc>Solution</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=kt>void</span> <span class=n>traversal</span><span class=p>(</span><span class=n>TreeNode</span><span class=o>*</span> <span class=n>cur</span><span class=p>,</span> <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;&amp;</span> <span class=n>vec</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=k>nullptr</span> <span class=o>==</span> <span class=n>cur</span><span class=p>)</span> <span class=k>return</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>traversal</span><span class=p>(</span><span class=n>cur</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>vec</span><span class=p>);</span>  <span class=c1>// 左
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>traversal</span><span class=p>(</span><span class=n>cur</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>vec</span><span class=p>);</span> <span class=c1>// 右
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>vec</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>cur</span><span class=o>-&gt;</span><span class=n>val</span><span class=p>);</span>    <span class=c1>// 中
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>postorderTraversal</span><span class=p>(</span><span class=n>TreeNode</span><span class=o>*</span> <span class=n>root</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>result</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>traversal</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>result</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>result</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></div><p><a href=https://leetcode-cn.com/problems/binary-tree-preorder-traversal/solution/dai-ma-sui-xiang-lu-chi-tou-qian-zhong-hou-xu-de-d/>思路二</a>：</p><p>突破点：<code>迭代。</code></p><p>代码：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=k>class</span> <span class=nc>Solution</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>postorderTraversal</span><span class=p>(</span><span class=n>TreeNode</span><span class=o>*</span> <span class=n>root</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>result</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>stack</span><span class=o>&lt;</span><span class=n>TreeNode</span><span class=o>*&gt;</span> <span class=n>tempStack</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=k>nullptr</span> <span class=o>!=</span> <span class=n>root</span><span class=p>)</span> <span class=n>tempStack</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>root</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>while</span> <span class=p>(</span><span class=o>!</span><span class=n>tempStack</span><span class=p>.</span><span class=n>empty</span><span class=p>())</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=n>TreeNode</span><span class=o>*</span> <span class=n>node</span> <span class=o>=</span> <span class=n>tempStack</span><span class=p>.</span><span class=n>top</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=p>(</span><span class=k>nullptr</span> <span class=o>!=</span> <span class=n>node</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=n>tempStack</span><span class=p>.</span><span class=n>pop</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>                <span class=n>tempStack</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>node</span><span class=p>);</span>                          <span class=c1>// 中
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=n>tempStack</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=nb>NULL</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=p>(</span><span class=n>node</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>)</span> <span class=n>tempStack</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>node</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>);</span>  <span class=c1>// 右
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=k>if</span> <span class=p>(</span><span class=n>node</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>)</span> <span class=n>tempStack</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>node</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>);</span>    <span class=c1>// 左
+</span></span></span><span class=line><span class=cl><span class=c1></span>            <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=n>tempStack</span><span class=p>.</span><span class=n>pop</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>                <span class=n>node</span> <span class=o>=</span> <span class=n>tempStack</span><span class=p>.</span><span class=n>top</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>                <span class=n>tempStack</span><span class=p>.</span><span class=n>pop</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>                <span class=n>result</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>node</span><span class=o>-&gt;</span><span class=n>val</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>result</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></div><hr><h3 id=题目112路径总和httpsleetcode-cncomproblemspath-sum>题目112:<a href=https://leetcode-cn.com/problems/path-sum/>路径总和</a><a hidden class=anchor aria-hidden=true href=#题目112路径总和httpsleetcode-cncomproblemspath-sum>#</a></h3><hr><p>描述：
+给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。</p><p><strong>说明:</strong> 叶子节点是指没有子节点的节点。</p><p><strong>示例:</strong>
+给定如下二叉树，以及目标和 <code>sum = 22</code>，</p><pre tabindex=0><code>              5
              / \
             4   8
            /   / \
           11  13  4
          /  \      \
         7    2      1
-</code></pre><p>返回 <code>true</code>, 因为存在目标和为 22 的根节点到叶子节点的路径 <code>5-&gt;4-&gt;11-&gt;2</code>。</p>
-<p><a href="https://leetcode-cn.com/problems/path-sum/solution/lu-jing-zong-he-by-leetcode-solution/">思路一</a>：</p>
-<p>突破点：<code>广度优先搜索。</code></p>
-<p>步骤：</p>
-<ol>
-<li>使用广度优先搜索，计算从根节点到当前节点的路径和；</li>
-<li>使用两个队列，分别存储要遍历的节点和根节点到这些节点的路径和。</li>
-</ol>
-<p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> hasPathSum(TreeNode <span style="color:#f92672">*</span>root, <span style="color:#66d9ef">int</span> sum) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> root) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> false;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        queue<span style="color:#f92672">&lt;</span>TreeNode <span style="color:#f92672">*&gt;</span> queNode;
-</span></span><span style="display:flex;"><span>        queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> queVal;
-</span></span><span style="display:flex;"><span>        queNode.push(root);
-</span></span><span style="display:flex;"><span>        queVal.push(root<span style="color:#f92672">-&gt;</span>val);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>queNode.empty()) {
-</span></span><span style="display:flex;"><span>            TreeNode <span style="color:#f92672">*</span>now <span style="color:#f92672">=</span> queNode.front();
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> temp <span style="color:#f92672">=</span> queVal.front();
-</span></span><span style="display:flex;"><span>            queNode.pop();
-</span></span><span style="display:flex;"><span>            queVal.pop();
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span>now<span style="color:#f92672">-&gt;</span>left <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> now<span style="color:#f92672">-&gt;</span>right) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (temp <span style="color:#f92672">==</span> sum) <span style="color:#66d9ef">return</span> true;
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">continue</span>;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">!=</span> now<span style="color:#f92672">-&gt;</span>left) {
-</span></span><span style="display:flex;"><span>                queNode.push(now<span style="color:#f92672">-&gt;</span>left);
-</span></span><span style="display:flex;"><span>                queVal.push(now<span style="color:#f92672">-&gt;</span>left<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">+</span> temp);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (now<span style="color:#f92672">-&gt;</span>right <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>) {
-</span></span><span style="display:flex;"><span>                queNode.push(now<span style="color:#f92672">-&gt;</span>right);
-</span></span><span style="display:flex;"><span>                queVal.push(now<span style="color:#f92672">-&gt;</span>right<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">+</span> temp);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> false;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/path-sum/solution/lu-jing-zong-he-by-leetcode-solution/">思路二</a>：</p>
-<p>突破点：<code>递归。</code></p>
-<p>步骤：</p>
-<ol>
-<li>问题细化，即为求是否存在从当前节点的子节点到叶子节点的路径，使得路径和为sum-val；</li>
-<li>若当前节点为叶子节点，则直接判断sum是否与val相等；</li>
-<li>若非叶子节点，需递归进行查询。</li>
-</ol>
-<p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> hasPathSum(TreeNode <span style="color:#f92672">*</span>root, <span style="color:#66d9ef">int</span> sum) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> root) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> false;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> root<span style="color:#f92672">-&gt;</span>left <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> root<span style="color:#f92672">-&gt;</span>right) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> sum <span style="color:#f92672">==</span> root<span style="color:#f92672">-&gt;</span>val;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">hasPathSum</span>(root<span style="color:#f92672">-&gt;</span>left, sum <span style="color:#f92672">-</span> root<span style="color:#f92672">-&gt;</span>val) <span style="color:#f92672">||</span>
-</span></span><span style="display:flex;"><span>               hasPathSum(root<span style="color:#f92672">-&gt;</span>right, sum <span style="color:#f92672">-</span> root<span style="color:#f92672">-&gt;</span>val);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><hr>
-<h3 id="题目113路径总和-iihttpsleetcode-cncomproblemspath-sum-ii">题目113:<a href="https://leetcode-cn.com/problems/path-sum-ii/">路径总和 II</a></h3>
-<hr>
-<p>描述：
-给定一个二叉树和一个目标和，找到所有从根节点到叶子节点路径总和等于给定目标和的路径。</p>
-<p><strong>说明:</strong> 叶子节点是指没有子节点的节点。</p>
-<p><strong>示例:</strong>
-给定如下二叉树，以及目标和 <code>sum = 22</code>，</p>
-<pre tabindex="0"><code>              5
+</code></pre><p>返回 <code>true</code>, 因为存在目标和为 22 的根节点到叶子节点的路径 <code>5->4->11->2</code>。</p><p><a href=https://leetcode-cn.com/problems/path-sum/solution/lu-jing-zong-he-by-leetcode-solution/>思路一</a>：</p><p>突破点：<code>广度优先搜索。</code></p><p>步骤：</p><ol><li>使用广度优先搜索，计算从根节点到当前节点的路径和；</li><li>使用两个队列，分别存储要遍历的节点和根节点到这些节点的路径和。</li></ol><p>代码：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=k>class</span> <span class=nc>Solution</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=kt>bool</span> <span class=n>hasPathSum</span><span class=p>(</span><span class=n>TreeNode</span> <span class=o>*</span><span class=n>root</span><span class=p>,</span> <span class=kt>int</span> <span class=n>sum</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=k>nullptr</span> <span class=o>==</span> <span class=n>root</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=nb>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=n>queue</span><span class=o>&lt;</span><span class=n>TreeNode</span> <span class=o>*&gt;</span> <span class=n>queNode</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>queue</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>queVal</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>queNode</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>root</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>queVal</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>root</span><span class=o>-&gt;</span><span class=n>val</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>while</span> <span class=p>(</span><span class=o>!</span><span class=n>queNode</span><span class=p>.</span><span class=n>empty</span><span class=p>())</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=n>TreeNode</span> <span class=o>*</span><span class=n>now</span> <span class=o>=</span> <span class=n>queNode</span><span class=p>.</span><span class=n>front</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>            <span class=kt>int</span> <span class=n>temp</span> <span class=o>=</span> <span class=n>queVal</span><span class=p>.</span><span class=n>front</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>            <span class=n>queNode</span><span class=p>.</span><span class=n>pop</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>            <span class=n>queVal</span><span class=p>.</span><span class=n>pop</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=p>(</span><span class=k>nullptr</span> <span class=o>==</span><span class=n>now</span><span class=o>-&gt;</span><span class=n>left</span> <span class=o>&amp;&amp;</span> <span class=k>nullptr</span> <span class=o>==</span> <span class=n>now</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=p>(</span><span class=n>temp</span> <span class=o>==</span> <span class=n>sum</span><span class=p>)</span> <span class=k>return</span> <span class=nb>true</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>                <span class=k>continue</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=p>(</span><span class=k>nullptr</span> <span class=o>!=</span> <span class=n>now</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=n>queNode</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>now</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>                <span class=n>queVal</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>now</span><span class=o>-&gt;</span><span class=n>left</span><span class=o>-&gt;</span><span class=n>val</span> <span class=o>+</span> <span class=n>temp</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=p>(</span><span class=n>now</span><span class=o>-&gt;</span><span class=n>right</span> <span class=o>!=</span> <span class=k>nullptr</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>                <span class=n>queNode</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>now</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>                <span class=n>queVal</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>now</span><span class=o>-&gt;</span><span class=n>right</span><span class=o>-&gt;</span><span class=n>val</span> <span class=o>+</span> <span class=n>temp</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>            <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nb>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></div><p><a href=https://leetcode-cn.com/problems/path-sum/solution/lu-jing-zong-he-by-leetcode-solution/>思路二</a>：</p><p>突破点：<code>递归。</code></p><p>步骤：</p><ol><li>问题细化，即为求是否存在从当前节点的子节点到叶子节点的路径，使得路径和为sum-val；</li><li>若当前节点为叶子节点，则直接判断sum是否与val相等；</li><li>若非叶子节点，需递归进行查询。</li></ol><p>代码：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=k>class</span> <span class=nc>Solution</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=kt>bool</span> <span class=n>hasPathSum</span><span class=p>(</span><span class=n>TreeNode</span> <span class=o>*</span><span class=n>root</span><span class=p>,</span> <span class=kt>int</span> <span class=n>sum</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=k>nullptr</span> <span class=o>==</span> <span class=n>root</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=nb>false</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=k>nullptr</span> <span class=o>==</span> <span class=n>root</span><span class=o>-&gt;</span><span class=n>left</span> <span class=o>&amp;&amp;</span> <span class=k>nullptr</span> <span class=o>==</span> <span class=n>root</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=n>sum</span> <span class=o>==</span> <span class=n>root</span><span class=o>-&gt;</span><span class=n>val</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nf>hasPathSum</span><span class=p>(</span><span class=n>root</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>sum</span> <span class=o>-</span> <span class=n>root</span><span class=o>-&gt;</span><span class=n>val</span><span class=p>)</span> <span class=o>||</span>
+</span></span><span class=line><span class=cl>               <span class=n>hasPathSum</span><span class=p>(</span><span class=n>root</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>sum</span> <span class=o>-</span> <span class=n>root</span><span class=o>-&gt;</span><span class=n>val</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></div><hr><h3 id=题目113路径总和-iihttpsleetcode-cncomproblemspath-sum-ii>题目113:<a href=https://leetcode-cn.com/problems/path-sum-ii/>路径总和 II</a><a hidden class=anchor aria-hidden=true href=#题目113路径总和-iihttpsleetcode-cncomproblemspath-sum-ii>#</a></h3><hr><p>描述：
+给定一个二叉树和一个目标和，找到所有从根节点到叶子节点路径总和等于给定目标和的路径。</p><p><strong>说明:</strong> 叶子节点是指没有子节点的节点。</p><p><strong>示例:</strong>
+给定如下二叉树，以及目标和 <code>sum = 22</code>，</p><pre tabindex=0><code>              5
              / \
             4   8
            /   / \
           11  13  4
          /  \    / \
         7    2  5   1
-</code></pre><p>返回:</p>
-<pre tabindex="0"><code>[
+</code></pre><p>返回:</p><pre tabindex=0><code>[
    [5,4,11,2],
    [5,8,4,5]
 ]
-</code></pre><p><a href="https://leetcode-cn.com/problems/path-sum-ii/solution/di-gui-ji-suan-lu-jing-zong-he-by-jarvis1890/">思路</a>：</p>
-<p>突破点：<code>DFS。</code></p>
-<p>步骤：</p>
-<ol>
-<li>递归记录当前路径上所有节点的值；</li>
-<li>当递归至叶子节点，计算路径总和并比较。</li>
-</ol>
-<p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Definition for a binary tree node.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * struct TreeNode {
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *     int val;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *     TreeNode *left;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *     TreeNode *right;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * };
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> ans;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">dfs</span>(TreeNode<span style="color:#f92672">*</span> root, <span style="color:#66d9ef">int</span> sum, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> valVec){
-</span></span><span style="display:flex;"><span>        valVec.push_back(root<span style="color:#f92672">-&gt;</span>val);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> root<span style="color:#f92672">-&gt;</span>left <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> root<span style="color:#f92672">-&gt;</span>right){
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> s <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">auto</span> n: valVec) s <span style="color:#f92672">+=</span> n;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(s <span style="color:#f92672">==</span> sum) ans.push_back(valVec);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(root<span style="color:#f92672">-&gt;</span>left) dfs(root<span style="color:#f92672">-&gt;</span>left, sum, valVec);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(root<span style="color:#f92672">-&gt;</span>right) dfs(root<span style="color:#f92672">-&gt;</span>right, sum, valVec);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> pathSum(TreeNode<span style="color:#f92672">*</span> root, <span style="color:#66d9ef">int</span> sum) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(root <span style="color:#f92672">==</span> NULL) <span style="color:#66d9ef">return</span> ans;
-</span></span><span style="display:flex;"><span>        dfs(root, sum, {});
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ans; 
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div><hr>
-<h3 id="题目235二叉搜索树的最近公共祖先httpsleetcode-cncomproblemslowest-common-ancestor-of-a-binary-search-tree">题目235:<a href="https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-search-tree/">二叉搜索树的最近公共祖先</a></h3>
-<hr>
-<p>描述：</p>
-<p>给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。</p>
-<p>百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”</p>
-<p>示例 1:</p>
-<p>输入: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
+</code></pre><p><a href=https://leetcode-cn.com/problems/path-sum-ii/solution/di-gui-ji-suan-lu-jing-zong-he-by-jarvis1890/>思路</a>：</p><p>突破点：<code>DFS。</code></p><p>步骤：</p><ol><li>递归记录当前路径上所有节点的值；</li><li>当递归至叶子节点，计算路径总和并比较。</li></ol><p>代码：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=cm>/**
+</span></span></span><span class=line><span class=cl><span class=cm> * Definition for a binary tree node.
+</span></span></span><span class=line><span class=cl><span class=cm> * struct TreeNode {
+</span></span></span><span class=line><span class=cl><span class=cm> *     int val;
+</span></span></span><span class=line><span class=cl><span class=cm> *     TreeNode *left;
+</span></span></span><span class=line><span class=cl><span class=cm> *     TreeNode *right;
+</span></span></span><span class=line><span class=cl><span class=cm> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+</span></span></span><span class=line><span class=cl><span class=cm> * };
+</span></span></span><span class=line><span class=cl><span class=cm> */</span>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Solution</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>vector</span><span class=o>&lt;</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>ans</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kt>void</span> <span class=nf>dfs</span><span class=p>(</span><span class=n>TreeNode</span><span class=o>*</span> <span class=n>root</span><span class=p>,</span> <span class=kt>int</span> <span class=n>sum</span><span class=p>,</span> <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>valVec</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>        <span class=n>valVec</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>root</span><span class=o>-&gt;</span><span class=n>val</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span><span class=p>(</span><span class=k>nullptr</span> <span class=o>==</span> <span class=n>root</span><span class=o>-&gt;</span><span class=n>left</span> <span class=o>&amp;&amp;</span> <span class=k>nullptr</span> <span class=o>==</span> <span class=n>root</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>            <span class=kt>int</span> <span class=n>s</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=k>for</span><span class=p>(</span><span class=k>auto</span> <span class=nl>n</span><span class=p>:</span> <span class=n>valVec</span><span class=p>)</span> <span class=n>s</span> <span class=o>+=</span> <span class=n>n</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span><span class=p>(</span><span class=n>s</span> <span class=o>==</span> <span class=n>sum</span><span class=p>)</span> <span class=n>ans</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>valVec</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span><span class=p>(</span><span class=n>root</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>)</span> <span class=n>dfs</span><span class=p>(</span><span class=n>root</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>sum</span><span class=p>,</span> <span class=n>valVec</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span><span class=p>(</span><span class=n>root</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>)</span> <span class=n>dfs</span><span class=p>(</span><span class=n>root</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>sum</span><span class=p>,</span> <span class=n>valVec</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=n>vector</span><span class=o>&lt;</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>pathSum</span><span class=p>(</span><span class=n>TreeNode</span><span class=o>*</span> <span class=n>root</span><span class=p>,</span> <span class=kt>int</span> <span class=n>sum</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span><span class=p>(</span><span class=n>root</span> <span class=o>==</span> <span class=nb>NULL</span><span class=p>)</span> <span class=k>return</span> <span class=n>ans</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>dfs</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>sum</span><span class=p>,</span> <span class=p>{});</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>ans</span><span class=p>;</span> 
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></div><hr><h3 id=题目235二叉搜索树的最近公共祖先httpsleetcode-cncomproblemslowest-common-ancestor-of-a-binary-search-tree>题目235:<a href=https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-search-tree/>二叉搜索树的最近公共祖先</a><a hidden class=anchor aria-hidden=true href=#题目235二叉搜索树的最近公共祖先httpsleetcode-cncomproblemslowest-common-ancestor-of-a-binary-search-tree>#</a></h3><hr><p>描述：</p><p>给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。</p><p>百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”</p><p>示例 1:</p><p>输入: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
 输出: 6
 解释: 节点 2 和节点 8 的最近公共祖先是 6。
-示例 2:</p>
-<p>输入: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
+示例 2:</p><p>输入: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 4
 输出: 2
-解释: 节点 2 和节点 4 的最近公共祖先是 2, 因为根据定义最近公共祖先节点可以为节点本身。</p>
-<p>说明:</p>
-<p>所有节点的值都是唯一的。
-p、q 为不同节点且均存在于给定的二叉搜索树中。</p>
-<p><a href="https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solution/lca-by-ai-mao-de-xiao-gen-ban/">思路</a>：</p>
-<p>突破点：<code>递归。</code></p>
-<p>步骤：</p>
-<ol>
-<li>分左右两边进行递归；</li>
-<li>如果左边没有找到，说明公共祖先在右边；</li>
-<li>如果右边没有找到，说明公共祖先在左边；</li>
-<li>如果左右均不为空，则说明找到了。</li>
-</ol>
-<p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>TreeNode<span style="color:#f92672">*</span> <span style="color:#a6e22e">lowestCommonAncestor</span>(TreeNode<span style="color:#f92672">*</span> root, TreeNode<span style="color:#f92672">*</span> p, TreeNode<span style="color:#f92672">*</span> q) {
-</span></span><span style="display:flex;"><span>				<span style="color:#75715e">//递归边界返回空或者返回存在的那个结点
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> root <span style="color:#f92672">||</span> root <span style="color:#f92672">==</span> p <span style="color:#f92672">||</span> root <span style="color:#f92672">==</span> q) <span style="color:#66d9ef">return</span> root;
-</span></span><span style="display:flex;"><span>				<span style="color:#75715e">//左边找一找
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        TreeNode<span style="color:#f92672">*</span> leftNode <span style="color:#f92672">=</span> lowestCommonAncestor(root<span style="color:#f92672">-&gt;</span>left,p,q);
-</span></span><span style="display:flex;"><span>				<span style="color:#75715e">//右边找一找
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        TreeNode<span style="color:#f92672">*</span> rightNode <span style="color:#f92672">=</span> lowestCommonAncestor(root<span style="color:#f92672">-&gt;</span>right,p,q);
-</span></span><span style="display:flex;"><span>				<span style="color:#75715e">//返回NULL或者有的那一侧
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> leftNode)<span style="color:#66d9ef">return</span> rightNode;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> rightNode)<span style="color:#66d9ef">return</span> leftNode;
-</span></span><span style="display:flex;"><span>				<span style="color:#75715e">//当前祖先左边有p，右边有q
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> root;  
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><hr>
-<h3 id="题目1382将二叉搜索树变平衡httpsleetcode-cncomproblemsbalance-a-binary-search-tree">题目1382:<a href="https://leetcode-cn.com/problems/balance-a-binary-search-tree/">将二叉搜索树变平衡</a></h3>
-<hr>
-<p>描述：</p>
-<p>给你一棵二叉搜索树，请你返回一棵 平衡后 的二叉搜索树，新生成的树应该与原来的树有着相同的节点值。</p>
-<p>如果一棵二叉搜索树中，每个节点的两棵子树高度差不超过 1 ，我们就称这棵二叉搜索树是 平衡的 。</p>
-<p>如果有多种构造方法，请你返回任意一种。</p>
-<p>示例：</p>
-<p>输入：root = [1,null,2,null,3,null,4,null,null]
+解释: 节点 2 和节点 4 的最近公共祖先是 2, 因为根据定义最近公共祖先节点可以为节点本身。</p><p>说明:</p><p>所有节点的值都是唯一的。
+p、q 为不同节点且均存在于给定的二叉搜索树中。</p><p><a href=https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-search-tree/solution/lca-by-ai-mao-de-xiao-gen-ban/>思路</a>：</p><p>突破点：<code>递归。</code></p><p>步骤：</p><ol><li>分左右两边进行递归；</li><li>如果左边没有找到，说明公共祖先在右边；</li><li>如果右边没有找到，说明公共祖先在左边；</li><li>如果左右均不为空，则说明找到了。</li></ol><p>代码：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=n>TreeNode</span><span class=o>*</span> <span class=nf>lowestCommonAncestor</span><span class=p>(</span><span class=n>TreeNode</span><span class=o>*</span> <span class=n>root</span><span class=p>,</span> <span class=n>TreeNode</span><span class=o>*</span> <span class=n>p</span><span class=p>,</span> <span class=n>TreeNode</span><span class=o>*</span> <span class=n>q</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>				<span class=c1>//递归边界返回空或者返回存在的那个结点
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=k>if</span><span class=p>(</span><span class=k>nullptr</span> <span class=o>==</span> <span class=n>root</span> <span class=o>||</span> <span class=n>root</span> <span class=o>==</span> <span class=n>p</span> <span class=o>||</span> <span class=n>root</span> <span class=o>==</span> <span class=n>q</span><span class=p>)</span> <span class=k>return</span> <span class=n>root</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>				<span class=c1>//左边找一找
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>TreeNode</span><span class=o>*</span> <span class=n>leftNode</span> <span class=o>=</span> <span class=n>lowestCommonAncestor</span><span class=p>(</span><span class=n>root</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span><span class=n>p</span><span class=p>,</span><span class=n>q</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>				<span class=c1>//右边找一找
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=n>TreeNode</span><span class=o>*</span> <span class=n>rightNode</span> <span class=o>=</span> <span class=n>lowestCommonAncestor</span><span class=p>(</span><span class=n>root</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span><span class=n>p</span><span class=p>,</span><span class=n>q</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>				<span class=c1>//返回NULL或者有的那一侧
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=k>if</span><span class=p>(</span><span class=k>nullptr</span> <span class=o>==</span> <span class=n>leftNode</span><span class=p>)</span><span class=k>return</span> <span class=n>rightNode</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span><span class=p>(</span><span class=k>nullptr</span> <span class=o>==</span> <span class=n>rightNode</span><span class=p>)</span><span class=k>return</span> <span class=n>leftNode</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>				<span class=c1>//当前祖先左边有p，右边有q
+</span></span></span><span class=line><span class=cl><span class=c1></span>        <span class=k>return</span> <span class=n>root</span><span class=p>;</span>  
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><hr><h3 id=题目1382将二叉搜索树变平衡httpsleetcode-cncomproblemsbalance-a-binary-search-tree>题目1382:<a href=https://leetcode-cn.com/problems/balance-a-binary-search-tree/>将二叉搜索树变平衡</a><a hidden class=anchor aria-hidden=true href=#题目1382将二叉搜索树变平衡httpsleetcode-cncomproblemsbalance-a-binary-search-tree>#</a></h3><hr><p>描述：</p><p>给你一棵二叉搜索树，请你返回一棵 平衡后 的二叉搜索树，新生成的树应该与原来的树有着相同的节点值。</p><p>如果一棵二叉搜索树中，每个节点的两棵子树高度差不超过 1 ，我们就称这棵二叉搜索树是 平衡的 。</p><p>如果有多种构造方法，请你返回任意一种。</p><p>示例：</p><p>输入：root = [1,null,2,null,3,null,4,null,null]
 输出：[2,1,3,null,null,null,4]
-解释：这不是唯一的正确答案，[3,1,4,null,2,null,null] 也是一个可行的构造方案。</p>
-<p>提示：</p>
-<p>树节点的数目在 1 到 10^4 之间。
-树节点的值互不相同，且在 1 到 10^5 之间。</p>
-<p><a href="https://leetcode-cn.com/problems/balance-a-binary-search-tree/solution/di-gui-on-jie-fa-c-you-xian-dui-lie-by-time-limit/">思路</a>：</p>
-<p>突破点：<code>DFS。</code></p>
-<p>步骤：</p>
-<ol>
-<li>使用升序数组构造平衡二叉搜索树；</li>
-<li>设长度为n，则n/2处元素为根节点；</li>
-<li>递归进行构造。</li>
-</ol>
-<p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#75715e">/**
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * Definition for a binary tree node.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * struct TreeNode {
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *     int val;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *     TreeNode *left;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *     TreeNode *right;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> * };
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"> */</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">dfs</span>(TreeNode <span style="color:#f92672">*</span>root, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>vec) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> root) { 
-</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span>; 
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        dfs(root<span style="color:#f92672">-&gt;</span>left, vec);
-</span></span><span style="display:flex;"><span>        vec.push_back(root<span style="color:#f92672">-&gt;</span>val);
-</span></span><span style="display:flex;"><span>        dfs(root<span style="color:#f92672">-&gt;</span>right, vec);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  
-</span></span><span style="display:flex;"><span>    TreeNode<span style="color:#f92672">*</span> <span style="color:#a6e22e">construct</span>(<span style="color:#66d9ef">const</span> vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>vec, <span style="color:#66d9ef">int</span> leftVal, <span style="color:#66d9ef">int</span> rightVal) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(leftVal <span style="color:#f92672">&gt;</span> rightVal) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nullptr</span>;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> (leftVal<span style="color:#f92672">+</span>rightVal)<span style="color:#f92672">&gt;&gt;</span><span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> ptr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> TreeNode(vec[mid]);
-</span></span><span style="display:flex;"><span>        ptr<span style="color:#f92672">-&gt;</span>right <span style="color:#f92672">=</span> construct(vec, mid<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, rightVal);
-</span></span><span style="display:flex;"><span>        ptr<span style="color:#f92672">-&gt;</span>left <span style="color:#f92672">=</span> construct(vec, leftVal, mid<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ptr;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    TreeNode<span style="color:#f92672">*</span> balanceBST(TreeNode<span style="color:#f92672">*</span> root) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> root) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nullptr</span>;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> data;
-</span></span><span style="display:flex;"><span>        dfs(root, data);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">construct</span>(data, <span style="color:#ae81ff">0</span>, data.size()<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
-</span></span></code></pre></div>
-			</div>
-		</article>
-	</main>
-<aside>
-	<div>
-		<div>
-			<h3>LATEST POSTS</h3>
-		</div>
-		<div>
-			<ul>
-				
-				<li><a href="/posts/2023-12-03-hello-world/">Hello World</a></li>
-				
-				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
-				
-				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
-				
-				<li><a href="/posts/2022-10-21-getopts-in-bash/">getopts in Bash</a></li>
-				
-				<li><a href="/posts/2021-06-05-k8s-and-docker-related-notes/">K8s and docker Related Notes</a></li>
-				
-			</ul>
-		</div>
-	</div>
-</aside>
-
-
-	<footer>
-	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
-	<a href="https://github.com/junyubian"><b>Github</b></a>.
-	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
-	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
-	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
-	</p>
-</footer>
-
-</body>
-</html>
+解释：这不是唯一的正确答案，[3,1,4,null,2,null,null] 也是一个可行的构造方案。</p><p>提示：</p><p>树节点的数目在 1 到 10^4 之间。
+树节点的值互不相同，且在 1 到 10^5 之间。</p><p><a href=https://leetcode-cn.com/problems/balance-a-binary-search-tree/solution/di-gui-on-jie-fa-c-you-xian-dui-lie-by-time-limit/>思路</a>：</p><p>突破点：<code>DFS。</code></p><p>步骤：</p><ol><li>使用升序数组构造平衡二叉搜索树；</li><li>设长度为n，则n/2处元素为根节点；</li><li>递归进行构造。</li></ol><p>代码：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=cm>/**
+</span></span></span><span class=line><span class=cl><span class=cm> * Definition for a binary tree node.
+</span></span></span><span class=line><span class=cl><span class=cm> * struct TreeNode {
+</span></span></span><span class=line><span class=cl><span class=cm> *     int val;
+</span></span></span><span class=line><span class=cl><span class=cm> *     TreeNode *left;
+</span></span></span><span class=line><span class=cl><span class=cm> *     TreeNode *right;
+</span></span></span><span class=line><span class=cl><span class=cm> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+</span></span></span><span class=line><span class=cl><span class=cm> * };
+</span></span></span><span class=line><span class=cl><span class=cm> */</span>
+</span></span><span class=line><span class=cl><span class=k>class</span> <span class=nc>Solution</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=kt>void</span> <span class=nf>dfs</span><span class=p>(</span><span class=n>TreeNode</span> <span class=o>*</span><span class=n>root</span><span class=p>,</span> <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=o>&amp;</span><span class=n>vec</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span><span class=p>(</span><span class=k>nullptr</span> <span class=o>==</span> <span class=n>root</span><span class=p>)</span> <span class=p>{</span> 
+</span></span><span class=line><span class=cl>          <span class=k>return</span><span class=p>;</span> 
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=n>dfs</span><span class=p>(</span><span class=n>root</span><span class=o>-&gt;</span><span class=n>left</span><span class=p>,</span> <span class=n>vec</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>vec</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>root</span><span class=o>-&gt;</span><span class=n>val</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>dfs</span><span class=p>(</span><span class=n>root</span><span class=o>-&gt;</span><span class=n>right</span><span class=p>,</span> <span class=n>vec</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>    <span class=n>TreeNode</span><span class=o>*</span> <span class=nf>construct</span><span class=p>(</span><span class=k>const</span> <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=o>&amp;</span><span class=n>vec</span><span class=p>,</span> <span class=kt>int</span> <span class=n>leftVal</span><span class=p>,</span> <span class=kt>int</span> <span class=n>rightVal</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span><span class=p>(</span><span class=n>leftVal</span> <span class=o>&gt;</span> <span class=n>rightVal</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=k>nullptr</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=kt>int</span> <span class=n>mid</span> <span class=o>=</span> <span class=p>(</span><span class=n>leftVal</span><span class=o>+</span><span class=n>rightVal</span><span class=p>)</span><span class=o>&gt;&gt;</span><span class=mi>1</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=k>auto</span> <span class=n>ptr</span> <span class=o>=</span> <span class=k>new</span> <span class=n>TreeNode</span><span class=p>(</span><span class=n>vec</span><span class=p>[</span><span class=n>mid</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>        <span class=n>ptr</span><span class=o>-&gt;</span><span class=n>right</span> <span class=o>=</span> <span class=n>construct</span><span class=p>(</span><span class=n>vec</span><span class=p>,</span> <span class=n>mid</span><span class=o>+</span><span class=mi>1</span><span class=p>,</span> <span class=n>rightVal</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=n>ptr</span><span class=o>-&gt;</span><span class=n>left</span> <span class=o>=</span> <span class=n>construct</span><span class=p>(</span><span class=n>vec</span><span class=p>,</span> <span class=n>leftVal</span><span class=p>,</span> <span class=n>mid</span><span class=o>-</span><span class=mi>1</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>ptr</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
+</span></span><span class=line><span class=cl>    <span class=n>TreeNode</span><span class=o>*</span> <span class=n>balanceBST</span><span class=p>(</span><span class=n>TreeNode</span><span class=o>*</span> <span class=n>root</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>if</span><span class=p>(</span><span class=k>nullptr</span> <span class=o>==</span> <span class=n>root</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=k>nullptr</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=p>}</span>
+</span></span><span class=line><span class=cl>        <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>data</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>        <span class=n>dfs</span><span class=p>(</span><span class=n>root</span><span class=p>,</span> <span class=n>data</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nf>construct</span><span class=p>(</span><span class=n>data</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=n>data</span><span class=p>.</span><span class=n>size</span><span class=p>()</span><span class=o>-</span><span class=mi>1</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>};</span>
+</span></span></code></pre></div></div><footer class=post-footer><ul class=post-tags><li><a href=https://junyubian.github.io/tags/c++/>C++</a></li><li><a href=https://junyubian.github.io/tags/%E7%AE%97%E6%B3%95/>算法</a></li></ul><nav class=paginav><a class=prev href=https://junyubian.github.io/posts/2020-09-08-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dfs+bfs/><span class=title>« Prev</span><br><span>LeetCode题目总结-DFS+BFS</span>
+</a><a class=next href=https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-two-pointer+linked-list/><span class=title>Next »</span><br><span>LeetCode题目总结-Two Pointer+Linked List</span></a></nav><div class=share-buttons><a target=_blank rel="noopener noreferrer" aria-label="share LeetCode题目总结-Tree+BST on x" href="https://x.com/intent/tweet/?text=LeetCode%e9%a2%98%e7%9b%ae%e6%80%bb%e7%bb%93-Tree%2bBST&amp;url=https%3a%2f%2fjunyubian.github.io%2fposts%2f2020-09-07-leetcode%25E9%25A2%2598%25E7%259B%25AE%25E6%2580%25BB%25E7%25BB%2593-tree%2bbst%2f&amp;hashtags=C%2b%2b%2c%e7%ae%97%e6%b3%95"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M512 62.554V449.446C512 483.97 483.97 512 449.446 512H62.554C28.03 512 0 483.97.0 449.446V62.554C0 28.03 28.029.0 62.554.0H449.446C483.971.0 512 28.03 512 62.554zM269.951 190.75 182.567 75.216H56L207.216 272.95 63.9 436.783h61.366L235.9 310.383l96.667 126.4H456L298.367 228.367l134-153.151H371.033zM127.633 110h36.468l219.38 290.065H349.5z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share LeetCode题目总结-Tree+BST on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fjunyubian.github.io%2fposts%2f2020-09-07-leetcode%25E9%25A2%2598%25E7%259B%25AE%25E6%2580%25BB%25E7%25BB%2593-tree%2bbst%2f&amp;title=LeetCode%e9%a2%98%e7%9b%ae%e6%80%bb%e7%bb%93-Tree%2bBST&amp;summary=LeetCode%e9%a2%98%e7%9b%ae%e6%80%bb%e7%bb%93-Tree%2bBST&amp;source=https%3a%2f%2fjunyubian.github.io%2fposts%2f2020-09-07-leetcode%25E9%25A2%2598%25E7%259B%25AE%25E6%2580%25BB%25E7%25BB%2593-tree%2bbst%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share LeetCode题目总结-Tree+BST on reddit" href="https://reddit.com/submit?url=https%3a%2f%2fjunyubian.github.io%2fposts%2f2020-09-07-leetcode%25E9%25A2%2598%25E7%259B%25AE%25E6%2580%25BB%25E7%25BB%2593-tree%2bbst%2f&title=LeetCode%e9%a2%98%e7%9b%ae%e6%80%bb%e7%bb%93-Tree%2bBST"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share LeetCode题目总结-Tree+BST on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fjunyubian.github.io%2fposts%2f2020-09-07-leetcode%25E9%25A2%2598%25E7%259B%25AE%25E6%2580%25BB%25E7%25BB%2593-tree%2bbst%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share LeetCode题目总结-Tree+BST on whatsapp" href="https://api.whatsapp.com/send?text=LeetCode%e9%a2%98%e7%9b%ae%e6%80%bb%e7%bb%93-Tree%2bBST%20-%20https%3a%2f%2fjunyubian.github.io%2fposts%2f2020-09-07-leetcode%25E9%25A2%2598%25E7%259B%25AE%25E6%2580%25BB%25E7%25BB%2593-tree%2bbst%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23C231.8 264.15 222.81 249.484 220.198 245s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share LeetCode题目总结-Tree+BST on telegram" href="https://telegram.me/share/url?text=LeetCode%e9%a2%98%e7%9b%ae%e6%80%bb%e7%bb%93-Tree%2bBST&amp;url=https%3a%2f%2fjunyubian.github.io%2fposts%2f2020-09-07-leetcode%25E9%25A2%2598%25E7%259B%25AE%25E6%2580%25BB%25E7%25BB%2593-tree%2bbst%2f"><svg viewBox="2 2 28 28" height="30" width="30" fill="currentcolor"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share LeetCode题目总结-Tree+BST on ycombinator" href="https://news.ycombinator.com/submitlink?t=LeetCode%e9%a2%98%e7%9b%ae%e6%80%bb%e7%bb%93-Tree%2bBST&u=https%3a%2f%2fjunyubian.github.io%2fposts%2f2020-09-07-leetcode%25E9%25A2%2598%25E7%259B%25AE%25E6%2580%25BB%25E7%25BB%2593-tree%2bbst%2f"><svg width="30" height="30" viewBox="0 0 512 512" fill="currentcolor" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"><path d="M449.446.0C483.971.0 512 28.03 512 62.554V449.446C512 483.97 483.97 512 449.446 512H62.554C28.03 512 0 483.97.0 449.446V62.554C0 28.03 28.029.0 62.554.0H449.446zM183.8767 87.9921h-62.034L230.6673 292.4508V424.0079h50.6655V292.4508L390.1575 87.9921H328.1233L256 238.2489z"/></svg></a></div></footer></article></main><footer class=footer><span>&copy; 2023 <a href=https://junyubian.github.io/>Junyu Bian</a></span>
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg></a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>
