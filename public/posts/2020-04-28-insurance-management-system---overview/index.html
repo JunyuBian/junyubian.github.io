@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>Insurance Management System - Overview</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+	
+</head>
+<body>
+	<header>
+	================<br>
+	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
+	================
+	<div style="float: right;">&#34;Salvation lies within.&#34;</div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/posts/"><b>Posts</b></a>.
+			
+			<a href="/categories/"><b>Categories</b></a>.
+			
+			<a href="/tags/"><b>Tags</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
+
+	
+	<main>
+		<article>
+			<h1>Insurance Management System - Overview</h1>
+			<b><time>04/28/2020 22:59</time></b>
+		       
+		           <a href="/tags/web">Web</a>
+        	       
+		           <a href="/tags/django">Django</a>
+        	       
+		           <a href="/tags/database">Database</a>
+        	       
+
+			<div>
+				<p>In this series of blogs, we will talk about how to build a Insurance Management web application together with database system.</p>
+<h1 id="background">Background</h1>
+<p>Tom&rsquo;s dad works in an insurance company. His work is to drop down who bought what kind of insurance, on which day does the customer receives an invoice, and on which day does the customer makes a payment.</p>
+<p>Oneday, Tom&rsquo;s dad talks to Tom: &ldquo;Oh Tom, you see see you, one day day, only eat, do nothing, build a management system for me.&rdquo; Tom becomes not happy.</p>
+<h1 id="rlational-model">Rlational Model</h1>
+<p>Tom&rsquo;s dad talks to Tom about what information is needed. After discussion, Tom draws the following relational model:
+<figure>
+  <img src="https://raw.githubusercontent.com/JYBian/BlogPic/master/%e6%88%aa%e5%b1%8f2020-04-09%e4%b8%8b%e5%8d%888.28.00.png" alt="Relational Model" />
+</figure>
+
+
+</p>
+<h1 id="summary-of-development-environment">Summary of development environment</h1>
+<p>Tom thinks it over and over, finally decides to apply the following development environment:</p>
+<ol>
+<li>
+<p>Programming language: Python3.5</p>
+</li>
+<li>
+<p>Framework: Django2.1.1</p>
+</li>
+<li>
+<p>Database: SQLite</p>
+</li>
+<li>
+<p>Code editor: Pycharm</p>
+</li>
+</ol>
+<h1 id="application-features">Application Features</h1>
+<p>To build the application, Tom mainly used the ORM model characteristic provided by Django. With ORM, so that he can treat each table as a CLASS in python and each time he insert data into that table, he simply instantiate an object, together with Object-Oriented Programming, he can make queries, add items, change information and delete object in a convenient way.</p>
+<p>The features of the application are but not restricted to:</p>
+<h2 id="normal-users">Normal Users</h2>
+<p>For users who are new to the application, he/she can register themselves in the REGISTER page. As shown below, the REGISTER page can be access by clicking the REGISTER button on the right of system bar.</p>
+<p>
+<figure>
+  <img src="https://github.com/JYBian/BlogPic/raw/master/%E6%88%AA%E5%B1%8F2020-04-28%E4%B8%8B%E5%8D%888.08.13.png" alt="Registration Page" />
+</figure>
+
+
+</p>
+<p>If information is filled not properly, application will generate warnings to helper users. When information filled in the correct way, user will be directed to the login page with notice of successful account creation.</p>
+<p>
+<figure>
+  <img src="https://github.com/JYBian/BlogPic/raw/master/%E6%88%AA%E5%B1%8F2020-04-28%E4%B8%8B%E5%8D%888.08.13.png" alt="Login Page" />
+</figure>
+
+
+</p>
+<p>After logging in, application will go to welcome page, where the username of user is confirmed again to make sure the user is about to purchase insurance. As long as the user has been logged in, the username and email will always be displayed on each page.</p>
+<p>
+<figure>
+  <img src="https://github.com/JYBian/BlogPic/raw/master/%E6%88%AA%E5%B1%8F2020-04-28%E4%B8%8B%E5%8D%888.19.43.png" alt="Welcome Page" />
+</figure>
+
+
+</p>
+<p>After confirmation, the user will be guided to the insurance purchase page, the first insurance is Home insurance, after which user is required to enter the information about home under insurance. When Home insurance purchase is finished, user is going to the Auto insurance purchase page, after which the information about vehicle under insurance needs to be provided, and finally the driver information is also needed. Notice the side bar, there are more detailed instruction about how to buy different kinds of insurance.</p>
+<p>
+<figure>
+  <img src="https://github.com/JYBian/BlogPic/raw/master/%E6%88%AA%E5%B1%8F2020-04-28%E4%B8%8B%E5%8D%889.23.05.png" alt="Purchase Page" />
+</figure>
+
+
+</p>
+<p>If the user want to check detailed information about the insurances purchased, he/she can click on the PROFILE button. In the PROFILE window, user can update email address if needed. And for each insurance listed, to check the detail information, just click on the insurance number will work.</p>
+<p>
+<figure>
+  <img src="https://github.com/JYBian/BlogPic/raw/master/%E6%88%AA%E5%B1%8F2020-04-28%E4%B8%8B%E5%8D%889.29.35.png" alt="Profile Page" />
+</figure>
+
+
+</p>
+<p>When finish browsing, user can click on LOGOUT to logout the account.</p>
+<p>
+<figure>
+  <img src="https://github.com/JYBian/BlogPic/raw/master/%E6%88%AA%E5%B1%8F2020-04-28%E4%B8%8B%E5%8D%889.32.17.png" alt="Logout Page" />
+</figure>
+
+
+</p>
+<h2 id="super-user">Super User</h2>
+<p>For users with administration power, they can go to 127.0.0.1:8000/admin/ to access the administrative page.</p>
+<p>
+<figure>
+  <img src="https://github.com/JYBian/BlogPic/raw/master/%E6%88%AA%E5%B1%8F2020-04-28%E4%B8%8B%E5%8D%889.44.37.png" alt="Login Page for Admin" />
+</figure>
+
+
+</p>
+<p>After logging in, Tom can manage all stored data, including add invoice and payment information for different users. (Notice that users pay their bill in other sites, this site is just designed for users to choose insurance and look for records.)</p>
+<p>
+<figure>
+  <img src="https://github.com/JYBian/BlogPic/raw/master/%E6%88%AA%E5%B1%8F2020-04-28%E4%B8%8B%E5%8D%889.47.26.png" alt="Adding Invocie Page" />
+</figure>
+
+
+</p>
+<h1 id="project-outcome">Project Outcome</h1>
+<p>In this project, Tom designed and built a web-based database application. There are three fields Tom have outcomes:</p>
+<ol>
+<li>web development</li>
+<li>database development</li>
+<li>connection between web development and database development</li>
+</ol>
+<p>For the web development, Tom chose to use python as programming language and django as web framework. This combination guaranteed us a good view of Object Oriented Programming experience. All the users and each recorded were created as an object from CLASS Tom defined.</p>
+<p>Django is a MVT like frame, therefore, during web development, it is important to get clear of which page Tom are working on, which html Tom want to return and which template is required by django.</p>
+<p>For database, Tom used the simple but powerful SQLite to perform its duty. Together with Pycharm, Tom can clearly see the structure of our project and database, in addition to manage through admin page, Tom can also open the SQLite database with Navicat or other database management software to easily manage our SQL.</p>
+<p>The connection between database and web application is established by the ORM character of django, Tom can use OOP procedure to create and manage different records. But Tom also need to be clear about the foreign key relationship between different tables, each time Tom create or delete a record, Tom need to guarantee its foreign key (if any) is assigned. This gives us a good taste of how database is used in reality.</p>
+<p>Tom is happy now.</p>
+			</div>
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/2023-12-03-hello-world/">Hello World</a></li>
+				
+				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
+				
+				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
+				
+				<li><a href="/posts/2022-10-21-getopts-in-bash/">getopts in Bash</a></li>
+				
+				<li><a href="/posts/2021-06-05-k8s-and-docker-related-notes/">K8s and docker Related Notes</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
+	<a href="https://github.com/junyubian"><b>Github</b></a>.
+	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
+	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
+	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>

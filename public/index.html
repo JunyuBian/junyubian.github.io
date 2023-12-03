@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta name="generator" content="Hugo 0.120.4">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>Junyu Bian</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="alternate" type="application/rss+xml" href="/index.xml" title="Junyu Bian">
+</head>
+<body>
+	<header>
+	================<br>
+	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
+	================
+	<div style="float: right;">&#34;Salvation lies within.&#34;</div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/posts/"><b>Posts</b></a>.
+			
+			<a href="/categories/"><b>Categories</b></a>.
+			
+			<a href="/tags/"><b>Tags</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
+
+	
+	<main>
+		
+		
+			<article>
+	<h1><a href="https://junyubian.github.io/posts/2023-12-03-hello-world/">Hello World</a></h1>
+	<b><time>12/03/2023 16:13</time></b>
+	
+	<a href="/tags/default">default</a>
+	
+	<div>
+		Hello World!
+This is a test file.
+		
+	</div>
+</article>
+
+		
+			<article>
+	<h1><a href="https://junyubian.github.io/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></h1>
+	<b><time>11/07/2023 21:53</time></b>
+	
+	<a href="/tags/fluent-bit">Fluent-bit</a>
+	
+	<a href="/tags/logging">Logging</a>
+	
+	<div>
+		What is Fluent Bit One day, the Insurance Management System Tom built crashed. Good news is the system recovered through rebooting, bad news is Tom did not know what had gone wrong. Tom&rsquo;s dad comes by and says to Tom &ldquo;Fluent Bit is a telemetry agent designed to collect and process telemetry data from constrained systems to cloud infrastructures. Why don&rsquo;t you give it a try?&rdquo;
+Structural Sketch Tom is a good listener.
+		
+			<a href="https://junyubian.github.io/posts/2023-11-07-fluent-bit-notes/">Read more...</a>
+		
+	</div>
+</article>
+
+		
+			<article>
+	<h1><a href="https://junyubian.github.io/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></h1>
+	<b><time>10/21/2022 21:27</time></b>
+	
+	<a href="/tags/bash">Bash</a>
+	
+	<div>
+		<h1 id="1-notice">1. Notice</h1>
+<p>1.1 <code>/dev/null</code> is the null file. Anything written to it is discarded.
+1.2 <code>2&gt;</code> means &ldquo;redirect standard-error&rdquo; to the given file.
+1.3 <code>2&gt;/dev/null</code> means &ldquo;throw away any error messages&rdquo;.
+1.4 <code>1</code> is stdout. <code>2</code> is stderr.
+1.5 <code>2&gt;&amp;1</code> means redirecting stderr to stdout.</p>
+		
+			<a href="https://junyubian.github.io/posts/2022-10-21-dev-null-and-21/">Read more...</a>
+		
+	</div>
+</article>
+
+		
+			<article>
+	<h1><a href="https://junyubian.github.io/posts/2022-10-21-getopts-in-bash/">getopts in Bash</a></h1>
+	<b><time>10/21/2022 14:17</time></b>
+	
+	<a href="/tags/bash">Bash</a>
+	
+	<div>
+		<h1 id="1-notice">1. Notice</h1>
+<p>1.1 <code>getopts</code> is different from <code>getopt</code>.
+1.2 <code>getopts</code> runs on any system running bash in POSIX mode (e.g., set -o posix), <code>getopt</code> is a system tool varies in different systems.
+1.3 <code>getopts</code> parses short options, which are a single dash (&quot;-&quot;) and a letter or digit.e.g. -2, -d, and -D. It can also parse short options in combination, for instance -2dD. But each option will be treated seperately, i.e. -2dD = -2 -d -D not equal -&ldquo;2dD&rdquo;, will need <code>getopt</code> to cope with -&ldquo;2dD&rdquo;.</p>
+		
+			<a href="https://junyubian.github.io/posts/2022-10-21-getopts-in-bash/">Read more...</a>
+		
+	</div>
+</article>
+
+		
+			<article>
+	<h1><a href="https://junyubian.github.io/posts/2021-06-05-k8s-and-docker-related-notes/">K8s and docker Related Notes</a></h1>
+	<b><time>06/05/2021 15:08</time></b>
+	
+	<a href="/tags/k8s">K8s</a>
+	
+	<a href="/tags/docker">Docker</a>
+	
+	<div>
+		<h4 id="1-management-tools-for-clusters-pods-deployments-etc-">1. Management tools for clusters, pods, deployments, etc. :</h4>
+<p>k9s</p>
+<h4 id="2-when-not-able-to-delete-resources-in-k8s">2. When not able to delete resources in k8s:</h4>
+<p>First edit resource:</p>
+<pre tabindex="0"><code>kubectl edit &lt;resource name&gt;
+</code></pre><p>then delete the <code>finalizer</code> part and try again.</p>
+<h4 id="3-filtering-docker-images">3. filtering docker images</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker image <span style="color:#e6db74">&#34;name*&#34;</span>
+</span></span></code></pre></div>
+		
+			<a href="https://junyubian.github.io/posts/2021-06-05-k8s-and-docker-related-notes/">Read more...</a>
+		
+	</div>
+</article>
+
+		
+			<article>
+	<h1><a href="https://junyubian.github.io/posts/2021-06-05-vm-related-notes/">VM Related Notes</a></h1>
+	<b><time>06/05/2021 15:01</time></b>
+	
+	<a href="/tags/vm">VM</a>
+	
+	<div>
+		<h4 id="1-list-all-vms">1. List all VMs:</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>virsh list
+</span></span></code></pre></div><h4 id="2-list-network-setting-xml">2. List network setting xml:</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>virsh net-dumpxml &lt;network&gt;
+</span></span></code></pre></div><h4 id="3-list-and-revert-vm-from-snapshots">3. list and revert vm from snapshots:</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>virsh snapshot-list <span style="color:#ae81ff">476</span>
+</span></span><span style="display:flex;"><span>virsh snapshot-revert --domain freebsd --snapshotname 5Sep2016_S1 --running
+</span></span></code></pre></div>
+		
+	</div>
+</article>
+
+		
+			<article>
+	<h1><a href="https://junyubian.github.io/posts/2021-06-05-command-line-related-notes/">Command Line Related Notes</a></h1>
+	<b><time>06/05/2021 00:31</time></b>
+	
+	<a href="/tags/cent-os">Cent OS</a>
+	
+	<a href="/tags/command-line">Command Line</a>
+	
+	<div>
+		<h4 id="1-switch-to-end-of-line-in-vi">1. Switch to end of line in vi:</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>shift+G
+</span></span></code></pre></div><h4 id="2-switch-to-end-of-line-in-normal-command-line">2. Switch to end of line in normal command line:</h4>
+<pre tabindex="0"><code>ctrl+E
+</code></pre><h4 id="3-switch-to-specific-line-in-target-file">3. Switch to specific line in target file:</h4>
+<pre tabindex="0"><code>vi &lt;file directory&gt; +&lt;n&gt;
+</code></pre>
+		
+			<a href="https://junyubian.github.io/posts/2021-06-05-command-line-related-notes/">Read more...</a>
+		
+	</div>
+</article>
+
+		
+			<article>
+	<h1><a href="https://junyubian.github.io/posts/2021-04-26-fdio%E7%AE%80%E4%BB%8B/">FD.io简介</a></h1>
+	<b><time>04/26/2021 15:19</time></b>
+	
+	<a href="/tags/fd.io">FD.io</a>
+	
+	<div>
+		<p>总结自<a href="https://www.youtube.com/watch?v=rfat_guzoEI">fd.io Youtube</a></p>
+		
+			<a href="https://junyubian.github.io/posts/2021-04-26-fdio%E7%AE%80%E4%BB%8B/">Read more...</a>
+		
+	</div>
+</article>
+
+		
+			<article>
+	<h1><a href="https://junyubian.github.io/posts/2020-11-08-diff-array/">Diff Array</a></h1>
+	<b><time>11/08/2020 15:19</time></b>
+	
+	<a href="/tags/algorithm">Algorithm</a>
+	
+	<a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
+	
+	<div>
+		<p>In this blog, we will talk about one trick can be used to solve problems to do with frequent addition and subtraction to a subsection of an array  - <a href="https://labuladong.gitbook.io/algo/suan-fa-si-wei-xi-lie/3.3-yi-xiang-bu-dao-xi-lie/cha-fen-ji-qiao">Diff Array</a>.</p>
+<h1 id="functionality">Functionality</h1>
+<p>Todo with frequent addition and subtraction to a subsection of an array.</p>
+<p>e.g. Given array <code>arr</code>, add 1 for elements between  <code>arr[0]</code> and <code>arr[3]</code> inclusively, then, substract 3 for elements between  <code>arr[2]</code> and <code>arr[5]</code> inclusively, what will be the final <code>arr</code>.</p>
+		
+			<a href="https://junyubian.github.io/posts/2020-11-08-diff-array/">Read more...</a>
+		
+	</div>
+</article>
+
+		
+			<article>
+	<h1><a href="https://junyubian.github.io/posts/2020-09-28-linux%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">Linux知识点总结</a></h1>
+	<b><time>09/28/2020 22:43</time></b>
+	
+	<a href="/tags/linux">Linux</a>
+	
+	<div>
+		<h3 id="1-find命令">1. find命令</h3>
+<hr>
+<ol>
+<li>查找指定文件名文件（不区分大小写）：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find -iname <span style="color:#e6db74">&#34;ProgramToFind.java&#34;</span>
+</span></span></code></pre></div><ol start="2">
+<li>对找到的文件执行某命令</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find -iname <span style="color:#e6db74">&#34;ProgramToOperate.java&#34;</span> -exec md5sum <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
+</span></span></code></pre></div><ol start="3">
+<li>查找home目录下所有空文件</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find ~ -empty
+</span></span></code></pre></div>
+		
+			<a href="https://junyubian.github.io/posts/2020-09-28-linux%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">Read more...</a>
+		
+	</div>
+</article>
+
+		
+		<div>
+
+1 of 4
+
+	<a href="/page/2/">Next Page</a>
+
+</div>
+
+	</main>
+
+	<footer>
+	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
+	<a href="https://github.com/junyubian"><b>Github</b></a>.
+	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
+	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
+	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>

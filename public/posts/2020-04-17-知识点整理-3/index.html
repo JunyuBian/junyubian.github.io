@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>知识点整理-3</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+	
+</head>
+<body>
+	<header>
+	================<br>
+	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
+	================
+	<div style="float: right;">&#34;Salvation lies within.&#34;</div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/posts/"><b>Posts</b></a>.
+			
+			<a href="/categories/"><b>Categories</b></a>.
+			
+			<a href="/tags/"><b>Tags</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
+
+	
+	<main>
+		<article>
+			<h1>知识点整理-3</h1>
+			<b><time>04/17/2020 14:22</time></b>
+		       
+		           <a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
+        	       
+		           <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93">数据库</a>
+        	       
+		           <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>
+        	       
+		           <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>
+        	       
+		           <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F">操作系统</a>
+        	       
+
+			<div>
+				<h3 id="1-计算机网络分层模型">1. 计算机网络分层模型</h3>
+<hr>
+<blockquote>
+<p><strong>7层</strong> (osi国际标准组织定制)：</p>
+</blockquote>
+<p><strong>应用层</strong>：为程序提供网络服务。</p>
+<p><strong>表示层</strong>：数据格式化，加密、解密。</p>
+<p><strong>会话层</strong>：建立、维护、管理会话链接。</p>
+<p><strong>传输层</strong>：建立、维护、管理端到端链接。</p>
+<p><strong>网络层</strong>：IP寻址和路由选择。</p>
+<p><strong>数据链路层</strong>：控制网络层与物理层之间的通信。</p>
+<p><strong>物理层</strong>：比特流传输。</p>
+<blockquote>
+<p><strong>四层</strong> (TCP/IP)：</p>
+</blockquote>
+<p><strong>应用层</strong>：ping、DNS、telnet</p>
+<p><strong>传输层</strong>：UDP、TCP</p>
+<p><strong>网络层</strong>：ICMP、IP</p>
+<p><strong>数据链路层</strong>：ARP、DataLink、RARP</p>
+<hr>
+<h3 id="2-http请求包含哪几个部分">2. HTTP请求包含哪几个部分</h3>
+<hr>
+<blockquote>
+<p><strong>请求行</strong>：</p>
+</blockquote>
+<p><strong>请求方法</strong>：HTTP最常见的请求方法为GET和POST。</p>
+<p><strong>请求URL</strong>：请求对应的URL地址。</p>
+<p><strong>HTTP协议及版本</strong>：协议名称及版本号。</p>
+<blockquote>
+<p>请求头：</p>
+</blockquote>
+<p>包含多个属性，格式为“属性名：属性值”，服务器根据请求头来获取客户端的信息。</p>
+<blockquote>
+<p>请求体：</p>
+</blockquote>
+<p>将一个页面表单中的组件值通过param1=value &amp; param2=value2的键值对形式编码成一个格式化串，承载多个请求参数的数据。</p>
+<hr>
+<h3 id="3-tcp拥塞控制">3. TCP拥塞控制</h3>
+<hr>
+<p>主要为四个算法：</p>
+<p><strong>慢开始</strong>：在TCP链接刚建立时，一点一点地增大拥塞窗口cwnd，慢慢变为指数增长，试探网络的承受能力，直到cwnd大于等于ssthresh（slow start threshold）则进入<strong>拥塞避免</strong>。</p>
+<p><strong>拥塞避免</strong>：收到一个ACK，即每经过一个往返时间RTT，就把发送方的cwnd加1，使其按线性规律缓慢增长。</p>
+<p><strong>乘法减小</strong>【TCP Tahoe】：不论在慢开始阶段还是拥塞避免阶段，只要出现超时，即可能发生了阻塞，发生丢包，就把慢开始门限ssthresh的值减半，即设置为当前cwnd的一半，并开始执行<strong>慢开始</strong>算法。</p>
+<p><strong>快速重传</strong>【TCP Reno】：发生丢包时，把cwnd设置为当前的一半，ssthresh设置为缩小后的cwnd大小，进入<strong>快速恢复</strong>算法。</p>
+<p><strong>快速恢复</strong>【TCP Reno】：设置cwnd=cwnd+3*MSS（因为收到3个重复的ACK，所以加三个MSS），重传DACKs指定的数据包，如果再收到DACKs，则cwnd增加1，若收到新的ACK，表明重传包成功，退出快速恢复，将cwnd设置为ssthresh，进入<strong>拥塞避免</strong>算法。</p>
+<hr>
+<h3 id="4-死锁与死锁的处理">4. 死锁与死锁的处理</h3>
+<hr>
+<blockquote>
+<p>形成死锁的四个必要条件：</p>
+</blockquote>
+<p><strong>互斥</strong>：在某段时间内某资源只由一个进程占用。</p>
+<p><strong>持有并等待</strong>：某进程已经持有一个或多个资源，但是还需请求其他资源，而它请求的资源不能立即获得，需要等待。</p>
+<p><strong>不可抢占</strong>：进程已经获取的资源在使用过程中不能被其他进程抢占，只能在使用完后，由该进程自己释放。</p>
+<p><strong>环路等待</strong>：形成进程和请求资源之间的环路。</p>
+<blockquote>
+<p>死锁的预防：</p>
+</blockquote>
+<p><strong>互斥</strong>：不易预防</p>
+<p><strong>占有并等待</strong>：方法一：不持有并等待，如果一个进程一次请求获取不了所有资源，那么它不可占用任何资源，即释放掉它已经占有的资源；方法二：持有不等待，保证资源充足，只要请求资源，就分配给资源。</p>
+<p><strong>不可抢占</strong>：如果一个进程所请求的资源被另一进程占有，使它可以抢占另一进程占有的资源。</p>
+<p><strong>环路等待</strong>：对资源进行排序，每个进程按照固定的顺序访问资源。</p>
+<blockquote>
+<p>死锁的避免：</p>
+</blockquote>
+<p><strong>资源请求图算法</strong>：利用资源分配图，引入需求边表示进程可能在将来某个时候申请资源，只有申请边变为分配边而不会导致资源分配图形成环时，才允许申请。</p>
+<p><strong>银行家算法</strong>：当新进程进入系统，系统对其所需资源的最大数量进行统计，若超过当前资源综合，则该进程必须等待直到其他进程释放资源。</p>
+<hr>
+<h3 id="5-什么是关系型数据库">5. 什么是关系型数据库</h3>
+<hr>
+<p>关系型数据库建立在关系型数据模型的基础上，借助于集合、代数等数学概念和方法来处理数据的数据库。</p>
+<hr>
+<h3 id="6-kv存储">6. KV存储</h3>
+<hr>
+<p>举例：Redis、MongoDB</p>
+<p>不经常更新的、重要的数据一般使用关系数据库存储。</p>
+<p>数据结构简单、有分布式数据存储的需求使用KV数据库。</p>
+<hr>
+<h3 id="7-非递归前中后序遍历二叉树">7. 非递归前中后序遍历二叉树</h3>
+<hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">TreeNode</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> val;
+</span></span><span style="display:flex;"><span>  TreeNode <span style="color:#f92672">*</span> left;
+</span></span><span style="display:flex;"><span>  TreeNode <span style="color:#f92672">*</span> right;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">PreOrder</span> (TreeNode <span style="color:#f92672">*</span> root) {
+</span></span><span style="display:flex;"><span>  stack<span style="color:#f92672">&lt;</span>TreeNode <span style="color:#f92672">*&gt;</span>s;
+</span></span><span style="display:flex;"><span>  TreeNode <span style="color:#f92672">*</span> ptr <span style="color:#f92672">=</span> root;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (ptr <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">||</span> <span style="color:#f92672">!</span>s.empty()) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ptr <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>) {
+</span></span><span style="display:flex;"><span>      cout <span style="color:#f92672">&lt;&lt;</span> ptr<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>      s.push(ptr);
+</span></span><span style="display:flex;"><span>      ptr <span style="color:#f92672">=</span> ptr<span style="color:#f92672">-&gt;</span>left;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      ptr <span style="color:#f92672">=</span> s.top();
+</span></span><span style="display:flex;"><span>      s.pop();
+</span></span><span style="display:flex;"><span>      ptr <span style="color:#f92672">=</span> ptr<span style="color:#f92672">-&gt;</span>right;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">InOrder</span> (TreeNode <span style="color:#f92672">*</span> root) {
+</span></span><span style="display:flex;"><span>  stack<span style="color:#f92672">&lt;</span>TreeNode <span style="color:#f92672">*&gt;</span> s;
+</span></span><span style="display:flex;"><span>  TreeNode <span style="color:#f92672">*</span> ptr <span style="color:#f92672">=</span> root;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (ptr <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">||</span> <span style="color:#f92672">!</span>s.empty()) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ptr <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>) {
+</span></span><span style="display:flex;"><span>      s.push(ptr);
+</span></span><span style="display:flex;"><span>      ptr <span style="color:#f92672">=</span> ptr<span style="color:#f92672">-&gt;</span>left;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      ptr <span style="color:#f92672">=</span> s.top();
+</span></span><span style="display:flex;"><span>      cout <span style="color:#f92672">&lt;&lt;</span> ptr<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>      s.pop();
+</span></span><span style="display:flex;"><span>      ptr <span style="color:#f92672">=</span> ptr<span style="color:#f92672">-&gt;</span>right;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">PostOrder</span> (TreeNode <span style="color:#f92672">*</span> root) {
+</span></span><span style="display:flex;"><span>  stack<span style="color:#f92672">&lt;</span>TreeNode <span style="color:#f92672">*&gt;</span> s;
+</span></span><span style="display:flex;"><span>  TreeNode <span style="color:#f92672">*</span> ptr <span style="color:#f92672">=</span> root;
+</span></span><span style="display:flex;"><span>  TreeNode <span style="color:#f92672">*</span> TemNode <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (ptr <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">||</span> <span style="color:#f92672">!</span>s.empty()) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ptr <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> {
+</span></span><span style="display:flex;"><span>      s.push(ptr);
+</span></span><span style="display:flex;"><span>      ptr <span style="color:#f92672">=</span> ptr<span style="color:#f92672">-&gt;</span>left;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      ptr <span style="color:#f92672">=</span> s.top();
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (ptr<span style="color:#f92672">-&gt;</span>right <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">&amp;&amp;</span> ptr<span style="color:#f92672">-&gt;</span>right <span style="color:#f92672">!-</span> TemNode){
+</span></span><span style="display:flex;"><span>        ptr <span style="color:#f92672">=</span> ptr<span style="color:#f92672">-&gt;</span>right;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#f92672">&lt;&lt;</span> ptr<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>        s.pop();
+</span></span><span style="display:flex;"><span>        TemNode <span style="color:#f92672">=</span> ptr;
+</span></span><span style="display:flex;"><span>        ptr <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }   
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h3 id="8-如何实现一个栈">8. 如何实现一个栈</h3>
+<hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QueueStack</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>  queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> first;
+</span></span><span style="display:flex;"><span>  queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> second;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">bool</span> empty() {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (first.empty() <span style="color:#f92672">&amp;&amp;</span> second.empty()){
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">top</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (first.empty()){
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> second.front();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> first.front();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pop</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (first.empty()) {
+</span></span><span style="display:flex;"><span>      second.pop();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      first.pop();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">push</span> (<span style="color:#66d9ef">int</span> x){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (frist.empty()){
+</span></span><span style="display:flex;"><span>      first.push(x);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>second.empty()) {
+</span></span><span style="display:flex;"><span>        first.push(second.front());
+</span></span><span style="display:flex;"><span>        second.pop();
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      second.push(x);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">while</span>(<span style="color:#f92672">!</span>first.empty()) {
+</span></span><span style="display:flex;"><span>        second.push(first.front());
+</span></span><span style="display:flex;"><span>        first.pop();
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h3 id="9-http状态码">9. HTTP状态码</h3>
+<hr>
+<blockquote>
+<p>1xx：收到请求，需要请求者继续操作。</p>
+</blockquote>
+<p><strong>100</strong>：继续。</p>
+<p><strong>101</strong>：切换协议。</p>
+<blockquote>
+<p>2xx：操作被成功接收并处理。</p>
+</blockquote>
+<p><strong>200</strong>：请求成功。</p>
+<p><strong>201</strong>：已创建。</p>
+<p><strong>202</strong>：已接受。</p>
+<p><strong>203</strong>：非授权信息。请求成功。</p>
+<p><strong>204</strong>：无内容。</p>
+<p><strong>205</strong>：重置内容。</p>
+<p><strong>206</strong>：部分内容。</p>
+<blockquote>
+<p>3xx：重定向，需要进一步操作以完成请求。</p>
+</blockquote>
+<p><strong>300</strong>：多种选择。</p>
+<p><strong>301</strong>：永久移动。</p>
+<p><strong>302</strong>：临时移动。</p>
+<p><strong>303</strong>：查看其他地址。</p>
+<p><strong>304</strong>：未修改。</p>
+<p><strong>305</strong>：使用代理。</p>
+<p><strong>307</strong>：临时重定向。</p>
+<blockquote>
+<p>4xx：客户端错误，请求包含语法错误或无法完成请求。</p>
+</blockquote>
+<p><strong>400</strong>：Bad Request。</p>
+<p><strong>401</strong>：Unauthorized。</p>
+<p><strong>403</strong>：服务器理解客户端的请求，但是拒绝执行。</p>
+<p><strong>404</strong>：无法根据请求找到资源。</p>
+<p><strong>405</strong>：客户端请求中的方法被禁止。</p>
+<p><strong>406</strong>：Not Acceptable。</p>
+<p><strong>407</strong>：Proxy Authentication Required。</p>
+<p><strong>408</strong>：Request Timeout。</p>
+<p><strong>409</strong>：服务器处理请求时发生了冲突。</p>
+<p><strong>410</strong>：客户端请求的资源已经不存在。</p>
+<p><strong>411</strong>：Length Required。</p>
+<p><strong>412</strong>：Precondition Failed。</p>
+<p><strong>413</strong>：Request Entity Too Large。</p>
+<p><strong>414</strong>：Request URI Too Large。</p>
+<p><strong>415</strong>：Unsupported Media Type。</p>
+<p><strong>416</strong>：客户端请求的范围无效。</p>
+<p><strong>417</strong>：Expectation Failed。</p>
+<blockquote>
+<p>5xx：服务器错误，服务器在处理请求的过程中发生了错误。</p>
+</blockquote>
+<p><strong>500</strong>：服务器内部错误，无法完成请求。</p>
+<p><strong>501</strong>：服务器不支持请求的功能。</p>
+<p><strong>502</strong>：Bad Gateway。</p>
+<p><strong>503</strong>：Service Unavailable。</p>
+<p><strong>504</strong>：Gateway Timeout。</p>
+<p><strong>505</strong>：HTTP version not supported。</p>
+			</div>
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/2023-12-03-hello-world/">Hello World</a></li>
+				
+				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
+				
+				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
+				
+				<li><a href="/posts/2022-10-21-getopts-in-bash/">getopts in Bash</a></li>
+				
+				<li><a href="/posts/2021-06-05-k8s-and-docker-related-notes/">K8s and docker Related Notes</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
+	<a href="https://github.com/junyubian"><b>Github</b></a>.
+	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
+	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
+	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>

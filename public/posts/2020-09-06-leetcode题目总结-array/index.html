@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>LeetCode题目总结-Array</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+	
+</head>
+<body>
+	<header>
+	================<br>
+	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
+	================
+	<div style="float: right;">&#34;Salvation lies within.&#34;</div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/posts/"><b>Posts</b></a>.
+			
+			<a href="/categories/"><b>Categories</b></a>.
+			
+			<a href="/tags/"><b>Tags</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
+
+	
+	<main>
+		<article>
+			<h1>LeetCode题目总结-Array</h1>
+			<b><time>09/06/2020 21:09</time></b>
+		       
+		           <a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
+        	       
+		           <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>
+        	       
+
+			<div>
+				<h3 id="题目31下一个排列httpsleetcode-cncomproblemsnext-permutation">题目31:<a href="https://leetcode-cn.com/problems/next-permutation">下一个排列</a></h3>
+<hr>
+<p><strong>描述：</strong></p>
+<p>实现获取下一个排列的函数，算法需要将给定数字序列重新排列成字典序中下一个更大的排列。</p>
+<p>如果不存在下一个更大的排列，则将数字重新排列成最小的排列（即升序排列）。</p>
+<p>必须原地修改，只允许使用额外常数空间。</p>
+<p>以下是一些例子，输入位于左侧列，其相应输出位于右侧列。
+1,2,3 → 1,3,2
+3,2,1 → 1,2,3
+1,1,5 → 1,5,1</p>
+<p><strong><a href="https://leetcode-cn.com/problems/next-permutation/solution/c-4msti-jie-si-lu-jian-dan-4bu-jie-jue-by-jie-yi/">思路</a>：</strong></p>
+<p>突破点：<code>下一个更大排列的特性是什么。</code></p>
+<p>步骤（以[5,6,11,9,7,5,3,1]举例）：</p>
+<ol>
+<li>从尾部查找，直到找到当前元素大于前一元素，记录所在位置；</li>
+</ol>
+<p>例：[5,6,11,9,7,5,3,1]，找到11大于6，记录位置2；</p>
+<ol start="2">
+<li>从1.中的位置到数组尾部的子序列中，找到一个比前一位置的大且相差最小的数；</li>
+</ol>
+<p>例：[5,6,11,9,7,5,3,1]，在[11,9,7,5,3,1]找到7，7是比6大且最接近6的，从尾部开始遍历，遍历到大于6的索引即可；</p>
+<ol start="3">
+<li>交换2.中找到的数以及1.中确定的前一位置的数；</li>
+</ol>
+<p>例：[5,6,11,9,7,5,3,1]，交换后变为[5,7,11,9,6,5,3,1]；</p>
+<ol start="4">
+<li>将该位置到数组尾部的子序列进行升序排列，因为已经为降序（1.中确定的位置为首次部位降序的位置），所以首尾两两交换即可；</li>
+</ol>
+<p>例：[5,7,11,9,6,5,3,1],交换后为[5,7,1,3,5,6,9,11]；</p>
+<ol start="5">
+<li>另外，对于最大的排列，从小到大排列即可。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#75715e">// 步骤2函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">findMin</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> nums, <span style="color:#66d9ef">int</span> i) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> pivotEle <span style="color:#f92672">=</span> nums[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> nums.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&gt;</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; i<span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (nums[i] <span style="color:#f92672">&gt;</span> pivotEle) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> i;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 步骤4函数，也可以用 reverse(nums.begin()+i, nums.end());实现
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">swap</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>nums, <span style="color:#66d9ef">int</span> i) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> end <span style="color:#f92672">=</span> nums.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> end) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> temp <span style="color:#f92672">=</span> nums[i];
+</span></span><span style="display:flex;"><span>    nums[i] <span style="color:#f92672">=</span> nums[end];
+</span></span><span style="display:flex;"><span>    nums[end] <span style="color:#f92672">=</span> temp;
+</span></span><span style="display:flex;"><span>    i<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>    end<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> nextPermutation(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> i;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(i <span style="color:#f92672">=</span> nums.size()<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>; i<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">--</span>){
+</span></span><span style="display:flex;"><span>          	<span style="color:#75715e">// 步骤1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span>(nums[i] <span style="color:#f92672">&gt;</span> nums[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> minIndex <span style="color:#f92672">=</span> findMin(nums, i);
+</span></span><span style="display:flex;"><span>              	<span style="color:#75715e">//步骤3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">int</span> minEle <span style="color:#f92672">=</span> nums[minIndex];
+</span></span><span style="display:flex;"><span>                nums[minIndex] <span style="color:#f92672">=</span> nums[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>                nums[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> minEle;
+</span></span><span style="display:flex;"><span>                swap(nums, i);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>;                
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#ae81ff">0</span> <span style="color:#f92672">==</span> i) {
+</span></span><span style="display:flex;"><span>          	sort(nums.begin(), nums.end());
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目46全排列httpsleetcode-cncomproblemspermutations">题目46:<a href="https://leetcode-cn.com/problems/permutations">全排列</a></h3>
+<hr>
+<p><strong>描述：</strong></p>
+<p>给定一个 没有重复 数字的序列，返回其所有可能的全排列。</p>
+<p>示例:</p>
+<p>输入: [1,2,3]
+输出:
+[
+[1,2,3],
+[1,3,2],
+[2,1,3],
+[2,3,1],
+[3,1,2],
+[3,2,1]
+]</p>
+<p><a href="https://leetcode-cn.com/problems/permutations/solution/quan-pai-lie-by-leetcode-solution-2/">思路一</a>：</p>
+<p>突破点：<code>回溯法。</code></p>
+<p>步骤（以[2, 5, 8, 9, 10]为例）：</p>
+<ol>
+<li>
+<p>定义backtrack(first, ouput)函数，表示从左到右填到第first个位置，当前排列为ouput，进行递归；</p>
+</li>
+<li>
+<p>如果n==first，证明已经填完，结束递归；</p>
+</li>
+<li>
+<p>如果n&gt;first，可通过标记数组标记已经填过的数，填入未标记的数字后，调用backtrack(first+1, output)；</p>
+</li>
+<li>
+<p>优化空间：将标记数组划分为左右两部分，左边已填过，右边未填过，动态维护。</p>
+</li>
+</ol>
+<p>例：[2, 5, 8, 9, 10]中已经填了[8, 9]，此时数组为[8, 9 | 2, 5, 10]，要填10，则交换2和10，数组变为[8, 9, 10 | 2, 5]。</p>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> backtrack(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;&amp;</span> res, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> output, <span style="color:#66d9ef">int</span> first, <span style="color:#66d9ef">int</span> len){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (first <span style="color:#f92672">==</span> len) {
+</span></span><span style="display:flex;"><span>          	<span style="color:#75715e">// 关于emplace_back有专门的文章
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            res.emplace_back(output);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> first; i <span style="color:#f92672">&lt;</span> len; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 动态维护数组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            swap(output[i], output[first]);
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 继续递归填下一个数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            backtrack(res, output, first <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, len);
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 撤销操作
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            swap(output[i], output[first]);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> permute(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums) {
+</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> res;
+</span></span><span style="display:flex;"><span>        backtrack(res, nums, <span style="color:#ae81ff">0</span>, (<span style="color:#66d9ef">int</span>)nums.size());
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> res;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><strong><a href="https://leetcode-cn.com/problems/permutations/solution/c-ru-ci-jian-ji-qie-jian-dan-de-di-gui-ni-ye-neng-/">思路二</a></strong>：（注意输出顺序与题目要求不符）</p>
+<p>突破点：<code>递归。</code></p>
+<p>步骤（以[1, 2, 3]为例）：</p>
+<ol>
+<li>数组中每一个元素与最后一个元素互换；</li>
+</ol>
+<p>例：[1, 2, 3]得到：[3, 2, 1]、[1, 3, 2]、[1, 2, 3]；</p>
+<ol start="2">
+<li>将最后一个元素进行保存，考虑剩余元素，对剩余元素进行递归全排列求解；</li>
+</ol>
+<p>例：对1.中[3, 2, 1]，递归求解[3, 2]得到[[3, 2], [2, 3]]；</p>
+<ol start="3">
+<li>将2.中保存的最后元素加入子序列，得到结果；</li>
+</ol>
+<p>例：对2.中，得到[[3, 2, 1], [2, 3, 1]]；</p>
+<ol start="4">
+<li>继续循环完成剩余情况。</li>
+</ol>
+<p>例：[1, 2, 3]剩余[1, 3, 2]和[1, 2, 3]。</p>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> permute(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums) {
+</span></span><span style="display:flex;"><span>		vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> ans;
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">==</span> nums.size()) {
+</span></span><span style="display:flex;"><span>			ans.push_back(nums);
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> ans;
+</span></span><span style="display:flex;"><span>		} <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>			vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> tempAns;
+</span></span><span style="display:flex;"><span>			vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> ncp <span style="color:#f92672">=</span> nums;
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">//步骤4
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> nums.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//步骤1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>				<span style="color:#66d9ef">int</span> temp <span style="color:#f92672">=</span> nums[i];
+</span></span><span style="display:flex;"><span>				nums[i] <span style="color:#f92672">=</span> nums[nums.size()<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>				nums[nums.size()<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> temp;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//步骤2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>				<span style="color:#66d9ef">int</span> end <span style="color:#f92672">=</span> nums[nums.size()<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>				nums.pop_back();
+</span></span><span style="display:flex;"><span>				tempAns<span style="color:#f92672">=</span>permute(nums);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//步骤3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>				<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> j : tempAns) {
+</span></span><span style="display:flex;"><span>        	j.push_back(end);
+</span></span><span style="display:flex;"><span>        	ans.push_back(j);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>				nums <span style="color:#f92672">=</span> ncp;
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> ans; 
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }    
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目79单词搜索httpsleetcode-cncomproblemsword-search">题目79:<a href="https://leetcode-cn.com/problems/word-search/">单词搜索</a></h3>
+<hr>
+<p><strong>描述：</strong></p>
+<p>给定一个二维网格和一个单词，找出该单词是否存在于网格中。</p>
+<p>单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。</p>
+<p><strong>示例:</strong></p>
+<pre tabindex="0"><code>board =
+[
+  [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;E&#39;],
+  [&#39;S&#39;,&#39;F&#39;,&#39;C&#39;,&#39;S&#39;],
+  [&#39;A&#39;,&#39;D&#39;,&#39;E&#39;,&#39;E&#39;]
+]
+
+给定 word = &#34;ABCCED&#34;, 返回 true
+给定 word = &#34;SEE&#34;, 返回 true
+给定 word = &#34;ABCB&#34;, 返回 false
+</code></pre><p><strong>提示：</strong></p>
+<ul>
+<li><code>board</code> 和 <code>word</code> 中只包含大写和小写英文字母。</li>
+<li><code>1 &lt;= board.length &lt;= 200</code></li>
+<li><code>1 &lt;= board[i].length &lt;= 200</code></li>
+<li><code>1 &lt;= word.length &lt;= 10^3</code></li>
+</ul>
+<p><a href="https://leetcode-cn.com/problems/word-search/solution/tu-jie-di-gui-shen-du-you-xian-sou-suo-by-z1m/">思路</a>：</p>
+<p>突破点：<code>深度优先搜索。</code></p>
+<p>步骤（以ABCCEE为例）：</p>
+<ol>
+<li>采用暴力搜索找到第一个字符；</li>
+</ol>
+<p>例：ABCCEE中的A；</p>
+<ol start="2">
+<li>按照深度优先搜索寻找是否有匹配字符串，找到返回true，没有则寻找下一个第一字符；</li>
+</ol>
+<p>例：如果没找到，继续寻找下一个A；</p>
+<ol start="3">
+<li>为了避免重复，将搜索过的字符置为0。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> exist(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;&gt;&amp;</span> board, string word) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#ae81ff">0</span> <span style="color:#f92672">==</span> board.size()) {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>        }  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> board.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> board[<span style="color:#ae81ff">0</span>].size(); j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (dfs(board, word, i, j, <span style="color:#ae81ff">0</span>)){
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">dfs</span>(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;&gt;&amp;</span> board, string<span style="color:#f92672">&amp;</span> word, <span style="color:#66d9ef">int</span> i,<span style="color:#66d9ef">int</span> j,<span style="color:#66d9ef">int</span> length){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">&gt;=</span> board.size() <span style="color:#f92672">||</span> j <span style="color:#f92672">&gt;=</span> board[<span style="color:#ae81ff">0</span>].size() <span style="color:#f92672">||</span> i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> j <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> length <span style="color:#f92672">&gt;=</span> word.size() <span style="color:#f92672">||</span> word[length] <span style="color:#f92672">!=</span> board[i][j]) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(length <span style="color:#f92672">==</span> word.size()<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> word[length] <span style="color:#f92672">==</span> board[i][j]) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">char</span> temp <span style="color:#f92672">=</span> board[i][j];
+</span></span><span style="display:flex;"><span>        board[i][j] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">bool</span> flag <span style="color:#f92672">=</span> dfs(board, word, i, j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, length<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">||</span> dfs(board, word, i, j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, length<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">||</span> dfs(board, word, i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, j, length<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>) <span style="color:#f92672">||</span> dfs(board, word, i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, j, length<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>      	<span style="color:#75715e">// 标记过的点恢复原状，以便进行下一次搜索
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        board[i][j] <span style="color:#f92672">=</span> temp;  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> flag;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目212单词搜索iihttpsleetcode-cncomproblemsword-search-ii">题目212:<a href="https://leetcode-cn.com/problems/word-search-ii/">单词搜索II</a></h3>
+<hr>
+<p><strong>描述：</strong></p>
+<p>给定一个二维网格 board 和一个字典中的单词列表 words，找出所有同时在二维网格和字典中出现的单词。</p>
+<p>单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母在一个单词中不允许被重复使用。</p>
+<p>示例:</p>
+<p>输入:
+words = [&ldquo;oath&rdquo;,&ldquo;pea&rdquo;,&ldquo;eat&rdquo;,&ldquo;rain&rdquo;] and board =
+[
+[&lsquo;o&rsquo;,&lsquo;a&rsquo;,&lsquo;a&rsquo;,&rsquo;n&rsquo;],
+[&rsquo;e&rsquo;,&rsquo;t&rsquo;,&lsquo;a&rsquo;,&rsquo;e&rsquo;],
+[&lsquo;i&rsquo;,&lsquo;h&rsquo;,&lsquo;k&rsquo;,&lsquo;r&rsquo;],
+[&lsquo;i&rsquo;,&lsquo;f&rsquo;,&rsquo;l&rsquo;,&lsquo;v&rsquo;]
+]</p>
+<p>输出: [&ldquo;eat&rdquo;,&ldquo;oath&rdquo;]
+说明:
+你可以假设所有输入都由小写字母 a-z 组成。</p>
+<p>提示:</p>
+<p>你需要优化回溯算法以通过更大数据量的测试。你能否早点停止回溯？
+如果当前单词不存在于所有单词的前缀中，则可以立即停止回溯。什么样的数据结构可以有效地执行这样的操作？散列表是否可行？为什么？ 前缀树如何？如果你想学习如何实现一个基本的前缀树，请先查看这个问题： 实现Trie（前缀树）。</p>
+<p><a href="https://leetcode-cn.com/problems/word-search-ii/solution/cqian-zhui-shu-ju-ta-ma-rong-yi-dong-by-chashao/">思路</a>：</p>
+<p>突破点：<code>前缀树。</code></p>
+<p>步骤：</p>
+<ol>
+<li>对于board使用DFS；</li>
+<li>使用前缀树，在递归遍历前缀树时，在当前字符不同时分开遍历。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Node</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> word;
+</span></span><span style="display:flex;"><span>    string str;
+</span></span><span style="display:flex;"><span>    unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span>, Node<span style="color:#f92672">*&gt;</span> words;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Trie</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    Trie() {
+</span></span><span style="display:flex;"><span>        root <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Node();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">insert</span>(string word) {
+</span></span><span style="display:flex;"><span>        Node<span style="color:#f92672">*</span> p <span style="color:#f92672">=</span> root;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">char</span> c: word) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (p<span style="color:#f92672">-&gt;</span>words.find(c) <span style="color:#f92672">==</span> p<span style="color:#f92672">-&gt;</span>words.end()) {
+</span></span><span style="display:flex;"><span>                Node<span style="color:#f92672">*</span> t <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Node();
+</span></span><span style="display:flex;"><span>                p<span style="color:#f92672">-&gt;</span>words[c] <span style="color:#f92672">=</span> t;
+</span></span><span style="display:flex;"><span>            } 
+</span></span><span style="display:flex;"><span>            p <span style="color:#f92672">=</span> p<span style="color:#f92672">-&gt;</span>words[c];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      	<span style="color:#75715e">// node对应的word，为了之后根据node来找到结果
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        p<span style="color:#f92672">-&gt;</span>str <span style="color:#f92672">=</span> word; 
+</span></span><span style="display:flex;"><span>        p<span style="color:#f92672">-&gt;</span>word <span style="color:#f92672">=</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">search</span>(vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;&amp;</span> res, vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;&gt;&amp;</span> board) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> board.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> board[i].size(); j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>                help(res, board, root, i, j);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">help</span>(vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;&amp;</span>res, vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;&gt;&amp;</span> board, Node<span style="color:#f92672">*</span> p, <span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (p<span style="color:#f92672">-&gt;</span>word) {
+</span></span><span style="display:flex;"><span>          	<span style="color:#75715e">// 其他方向就不会再把答案放进去了
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            p<span style="color:#f92672">-&gt;</span>word <span style="color:#f92672">=</span> false; 
+</span></span><span style="display:flex;"><span>            res.push_back(p<span style="color:#f92672">-&gt;</span>str);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>        } 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (x <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> x <span style="color:#f92672">==</span> board.size() <span style="color:#f92672">||</span> y <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> y <span style="color:#f92672">==</span> board[x].size()) <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (p<span style="color:#f92672">-&gt;</span>words.find(board[x][y]) <span style="color:#f92672">==</span> p<span style="color:#f92672">-&gt;</span>words.end()) <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>      	<span style="color:#75715e">// 此时的p是其他字符了
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        p <span style="color:#f92672">=</span> p<span style="color:#f92672">-&gt;</span>words[board[x][y]]; 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">char</span> cur <span style="color:#f92672">=</span> board[x][y];
+</span></span><span style="display:flex;"><span>        board[x][y] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>;
+</span></span><span style="display:flex;"><span>        help(res, board, p, x<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, y);
+</span></span><span style="display:flex;"><span>        help(res, board, p, x<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, y);
+</span></span><span style="display:flex;"><span>        help(res, board, p, x, y<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>        help(res, board, p, x, y<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>        board[x][y] <span style="color:#f92672">=</span> cur;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    Node<span style="color:#f92672">*</span> root;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> findWords(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;&gt;&amp;</span> board, vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;&amp;</span> words) {
+</span></span><span style="display:flex;"><span>        Trie trie;
+</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> res;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (string<span style="color:#f92672">&amp;</span> w: words) {
+</span></span><span style="display:flex;"><span>            trie.insert(w);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        trie.search(res, board);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> res;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目84柱状图中最大的矩形httpsleetcode-cncomproblemslargest-rectangle-in-histogram">题目84:<a href="https://leetcode-cn.com/problems/largest-rectangle-in-histogram">柱状图中最大的矩形</a></h3>
+<hr>
+<p><strong>描述：</strong></p>
+<p>给定 n 个非负整数，用来表示柱状图中各个柱子的高度。每个柱子彼此相邻，且宽度为 1 。</p>
+<p>求在该柱状图中，能够勾勒出来的矩形的最大面积。</p>
+<p>例，给定的高度为 [2,1,5,6,2,3]。</p>
+<p>所能勾勒出的最大矩形面积为 10 个单位。</p>
+<p><a href="">思路</a>：</p>
+<p>突破点：<code>单调栈。</code></p>
+<p>步骤：</p>
+<ol>
+<li>对于每一个高度，利用单调栈获取向左和向右的边界；</li>
+<li>对每个高度求一次面积；</li>
+<li>遍历所有高度，求出最大面积。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">largestRectangleArea</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> heights) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> ans <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> monoStack;
+</span></span><span style="display:flex;"><span>    heights.insert(heights.begin(), <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    heights.push_back(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> heights.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>monoStack.empty() <span style="color:#f92672">&amp;&amp;</span> heights[monoStack.back()] <span style="color:#f92672">&gt;</span> heights[i]) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> cur <span style="color:#f92672">=</span> monoStack.back();
+</span></span><span style="display:flex;"><span>            monoStack.pop_back();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> left <span style="color:#f92672">=</span> monoStack.back() <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> right <span style="color:#f92672">=</span> i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>            ans <span style="color:#f92672">=</span> max(ans, (right <span style="color:#f92672">-</span> left <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">*</span> heights[cur]);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        monoStack.push_back(i);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ans;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h3 id="题目85最大矩形httpsleetcode-cncomproblemsmaximal-rectangle">题目85:<a href="https://leetcode-cn.com/problems/maximal-rectangle/">最大矩形</a></h3>
+<hr>
+<p><strong>描述：</strong></p>
+<p>给定一个仅包含 0 和 1 的二维二进制矩阵，找出只包含 1 的最大矩形，并返回其面积。</p>
+<p>示例:</p>
+<p>输入:
+[
+[&ldquo;1&rdquo;,&ldquo;0&rdquo;,&ldquo;1&rdquo;,&ldquo;0&rdquo;,&ldquo;0&rdquo;],
+[&ldquo;1&rdquo;,&ldquo;0&rdquo;,&ldquo;1&rdquo;,&ldquo;1&rdquo;,&ldquo;1&rdquo;],
+[&ldquo;1&rdquo;,&ldquo;1&rdquo;,&ldquo;1&rdquo;,&ldquo;1&rdquo;,&ldquo;1&rdquo;],
+[&ldquo;1&rdquo;,&ldquo;0&rdquo;,&ldquo;0&rdquo;,&ldquo;1&rdquo;,&ldquo;0&rdquo;]
+]
+输出: 6</p>
+<p><a href="https://leetcode-cn.com/problems/maximal-rectangle/solution/dong-tai-gui-hua-by-leeyupeng-5/">思路</a>：</p>
+<p>突破点：<code>动态规划。</code></p>
+<p>步骤：</p>
+<ol>
+<li>heights[i][j]代表[i, j]的高度；</li>
+<li>dp[i][j][p]代表以[i, j]为右下角，高度为k可以组成的面积。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> maximalRectangle(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;&amp;</span> matrix) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> matrix.size();
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> m <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (n <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) { 
+</span></span><span style="display:flex;"><span>      m <span style="color:#f92672">=</span> matrix[<span style="color:#ae81ff">0</span>].size(); 
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>		vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> heights(n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>(m<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>));
+</span></span><span style="display:flex;"><span>		vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> dp(n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span>(m<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>(n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>)));
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> ans <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> n; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;=</span> m; j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> (<span style="color:#e6db74">&#39;0&#39;</span> <span style="color:#f92672">==</span> matrix[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]) { 
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">continue</span>; 
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>				heights[i][j] <span style="color:#f92672">=</span> heights[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][j] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; k <span style="color:#f92672">&lt;=</span> heights[i][j]; k<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>					dp[i][j][k] <span style="color:#f92672">=</span> dp[i][j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][k] <span style="color:#f92672">+</span> k;
+</span></span><span style="display:flex;"><span>					ans <span style="color:#f92672">=</span> max(ans, dp[i][j][k]);
+</span></span><span style="display:flex;"><span>				}
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> ans;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目153寻找旋转排序数组中的最小值httpsleetcode-cncomproblemsfind-minimum-in-rotated-sorted-array">题目153:<a href="https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/">寻找旋转排序数组中的最小值</a></h3>
+<hr>
+<p><strong>描述：</strong></p>
+<p>假设按照升序排序的数组在预先未知的某个点上进行了旋转。</p>
+<p>( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。</p>
+<p>请找出其中最小的元素。</p>
+<p>你可以假设数组中不存在重复元素。</p>
+<p>示例 1:</p>
+<p>输入: [3,4,5,1,2]
+输出: 1</p>
+<p><a href="https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/solution/er-fen-cha-zhao-wei-shi-yao-zuo-you-bu-dui-cheng-z/">思路</a>：</p>
+<p>突破点：<code>二分查找。</code></p>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> findMin(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> left <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> right <span style="color:#f92672">=</span> nums.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (left <span style="color:#f92672">&lt;</span> right) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> left <span style="color:#f92672">+</span> (right <span style="color:#f92672">-</span> left) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (nums[mid] <span style="color:#f92672">&gt;</span> nums[right]) {          
+</span></span><span style="display:flex;"><span>                left <span style="color:#f92672">=</span> mid <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {                               
+</span></span><span style="display:flex;"><span>                right <span style="color:#f92672">=</span> mid;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> nums[left];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目154寻找旋转排序数组中的最小值-iihttpsleetcode-cncomproblemsfind-minimum-in-rotated-sorted-array-ii">题目154:<a href="https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/">寻找旋转排序数组中的最小值 II</a></h3>
+<hr>
+<p><strong>描述：</strong></p>
+<p>假设按照升序排序的数组在预先未知的某个点上进行了旋转。</p>
+<p>( 例如，数组 [0,1,2,4,5,6,7] 可能变为 [4,5,6,7,0,1,2] )。</p>
+<p>请找出其中最小的元素。</p>
+<p>注意数组中可能存在重复的元素。</p>
+<p>示例 1：</p>
+<p>输入: [1,3,5]
+输出: 1
+示例 2：</p>
+<p>输入: [2,2,2,0,1]
+输出: 0
+说明：</p>
+<p>这道题是 寻找旋转排序数组中的最小值 的延伸题目。
+允许重复会影响算法的时间复杂度吗？会如何影响，为什么？</p>
+<p><a href="https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/solution/zi-jie-ti-ku-154-kun-nan-xun-zhao-xuan-zhuan-pai-x/">思路</a>：</p>
+<p>突破点：<code>二分查找。</code></p>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> findMin(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(nums.empty()) <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">==</span> nums.size()) <span style="color:#66d9ef">return</span> nums[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> p1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, p2 <span style="color:#f92672">=</span> nums.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>      	<span style="color:#75715e">// 假如旋转了数组的前面0个元素（也就是没有旋转），我们直接返回numbers[p1]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> p1; 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span>(nums[p1] <span style="color:#f92672">&gt;=</span> nums[p2]) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(<span style="color:#ae81ff">1</span> <span style="color:#f92672">==</span> p2 <span style="color:#f92672">-</span> p1) {
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 循环终止条件：当p2-p1=1时，p2所指元素为最小值
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                mid <span style="color:#f92672">=</span> p2;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>          	<span style="color:#75715e">// 二分法找中点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            mid <span style="color:#f92672">=</span> (p2 <span style="color:#f92672">+</span> p1) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>; 
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 特殊情况：p1、mid、p2三处的元素的值一样，无法判断最小值在mid前面还是后面，就只能顺序查找了
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span>(nums[p1] <span style="color:#f92672">==</span> nums[p2] <span style="color:#f92672">&amp;&amp;</span> nums[p1] <span style="color:#f92672">==</span> nums[mid]) <span style="color:#66d9ef">return</span> findMin(nums, p1, p2);
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 缩小范围，mid处值大于等于p1处值的话，说明最小值在mid处或mid后面，故将p1挪到mid处
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span>(nums[mid] <span style="color:#f92672">&gt;=</span> nums[p1]) p1 <span style="color:#f92672">=</span> mid;
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 缩小范围，mid处值小于p1处值的话，说明最小值在mid处或mid前面，故将p2挪到mid处
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">else</span> p2 <span style="color:#f92672">=</span> mid;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> nums[mid];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  	<span style="color:#75715e">// 顺序查找
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">findMin</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums, <span style="color:#66d9ef">int</span> p1, <span style="color:#66d9ef">int</span> p2) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> res <span style="color:#f92672">=</span> nums[p1];
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span>p1<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>; i<span style="color:#f92672">&lt;=</span>p2; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(nums[i] <span style="color:#f92672">&lt;</span> res) <span style="color:#66d9ef">return</span> nums[i];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> res;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div>
+			</div>
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/2023-12-03-hello-world/">Hello World</a></li>
+				
+				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
+				
+				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
+				
+				<li><a href="/posts/2022-10-21-getopts-in-bash/">getopts in Bash</a></li>
+				
+				<li><a href="/posts/2021-06-05-k8s-and-docker-related-notes/">K8s and docker Related Notes</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
+	<a href="https://github.com/junyubian"><b>Github</b></a>.
+	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
+	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
+	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>

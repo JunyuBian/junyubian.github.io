@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>LeetCode题目总结-DP&#43;Greedy</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+	
+</head>
+<body>
+	<header>
+	================<br>
+	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
+	================
+	<div style="float: right;">&#34;Salvation lies within.&#34;</div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/posts/"><b>Posts</b></a>.
+			
+			<a href="/categories/"><b>Categories</b></a>.
+			
+			<a href="/tags/"><b>Tags</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
+
+	
+	<main>
+		<article>
+			<h1>LeetCode题目总结-DP&#43;Greedy</h1>
+			<b><time>09/11/2020 11:52</time></b>
+		       
+		           <a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
+        	       
+		           <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>
+        	       
+
+			<div>
+				<h3 id="题目5最长回文子串httpsleetcode-cncomproblemslongest-palindromic-substring">题目5:<a href="https://leetcode-cn.com/problems/longest-palindromic-substring/">最长回文子串</a></h3>
+<hr>
+<p>描述：</p>
+<p>给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。</p>
+<p>示例 1：</p>
+<p>输入: &ldquo;babad&rdquo;
+输出: &ldquo;bab&rdquo;
+注意: &ldquo;aba&rdquo; 也是一个有效答案。</p>
+<p>示例 2：</p>
+<p>输入: &ldquo;cbbd&rdquo;
+输出: &ldquo;bb&rdquo;</p>
+<p><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zui-chang-hui-wen-zi-chuan-c-by-gpe3dbjds1/">思路一</a>：（时间超限）</p>
+<p>突破点：<code>反转字符串的公共子串。</code></p>
+<p>步骤：</p>
+<ol>
+<li>将输入的字符串反转；</li>
+<li>求两者的公共子串；</li>
+<li>判断该子串是否为所需的最长回文子串。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    string longestPalindrome(string s) {
+</span></span><span style="display:flex;"><span>      	<span style="color:#75715e">//大小为1的字符串必为回文串
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span>(s.length() <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> s;
+</span></span><span style="display:flex;"><span>        string rev <span style="color:#f92672">=</span> s;
+</span></span><span style="display:flex;"><span>        string res;
+</span></span><span style="display:flex;"><span>        std<span style="color:#f92672">::</span>reverse(rev.begin(),rev.end());
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(rev <span style="color:#f92672">==</span> s) <span style="color:#66d9ef">return</span> s;
+</span></span><span style="display:flex;"><span>	      <span style="color:#75715e">//存放回文子串的长度
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>	      <span style="color:#75715e">//查找s与rev的最长公共子串
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>; i<span style="color:#f92672">&lt;</span>s.length(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>          	<span style="color:#75715e">//存放待验证子串
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            string temp;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> j<span style="color:#f92672">=</span>i; j<span style="color:#f92672">&lt;</span>s.length(); j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>                temp <span style="color:#f92672">=</span> temp<span style="color:#f92672">+</span>s[j];
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span>(len <span style="color:#f92672">&gt;=</span> temp.length()) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span>(rev.find(temp) <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {<span style="color:#75715e">//在rev中找到temp
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    string q <span style="color:#f92672">=</span> temp;<span style="color:#75715e">//q用来验证temp是否是回文子串
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    std<span style="color:#f92672">::</span>reverse(q.begin(),q.end());
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span>(q <span style="color:#f92672">==</span> temp) {
+</span></span><span style="display:flex;"><span>                        len <span style="color:#f92672">=</span> temp.length();
+</span></span><span style="display:flex;"><span>                        res <span style="color:#f92672">=</span> temp;
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                  <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            temp<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> res;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zui-chang-hui-wen-zi-chuan-by-leetcode-solution/">思路二</a>：</p>
+<p>突破点：<code>动态规划。</code></p>
+<p>步骤：</p>
+<ol>
+<li>P(i, j) 表示字符串s的第i到j个字母组成的子串是否为回文串；</li>
+<li>状态转移方程：<code>P(i, j) = P(i+1, j-1)$\and$ (Si == Sj)</code>，即只有当s[i+1:j-1]是回文串，并且s的第i和j个字母相同时，s[i:j]才会是回文串；</li>
+<li>边界条件：当长度为1时，一定为回文串，当长度为2时，若两字母相同，则为回文串。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    string longestPalindrome(string s) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> s.size();
+</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> dp(n, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>(n));
+</span></span><span style="display:flex;"><span>        string ans;
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> l <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; l <span style="color:#f92672">&lt;</span> n; <span style="color:#f92672">++</span>l) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">+</span> l <span style="color:#f92672">&lt;</span> n; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> l;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (l <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>                    dp[i][j] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (l <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>                    dp[i][j] <span style="color:#f92672">=</span> (s[i] <span style="color:#f92672">==</span> s[j]);
+</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                    dp[i][j] <span style="color:#f92672">=</span> (s[i] <span style="color:#f92672">==</span> s[j] <span style="color:#f92672">&amp;&amp;</span> dp[i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>][j <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (dp[i][j] <span style="color:#f92672">&amp;&amp;</span> l <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&gt;</span> ans.size()) {
+</span></span><span style="display:flex;"><span>                    ans <span style="color:#f92672">=</span> s.substr(i, l <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ans;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目139-单词拆分httpsleetcode-cncomproblemsword-break">题目139:<a href="https://leetcode-cn.com/problems/word-break/"> 单词拆分</a></h3>
+<hr>
+<p>描述：</p>
+<p>给定一个非空字符串 s 和一个包含非空单词列表的字典 wordDict，判定 s 是否可以被空格拆分为一个或多个在字典中出现的单词。</p>
+<p>说明：</p>
+<p>拆分时可以重复使用字典中的单词。
+你可以假设字典中没有重复的单词。
+示例 1：</p>
+<p>输入: s = &ldquo;leetcode&rdquo;, wordDict = [&ldquo;leet&rdquo;, &ldquo;code&rdquo;]
+输出: true
+解释: 返回 true 因为 &ldquo;leetcode&rdquo; 可以被拆分成 &ldquo;leet code&rdquo;。
+示例 2：</p>
+<p>输入: s = &ldquo;applepenapple&rdquo;, wordDict = [&ldquo;apple&rdquo;, &ldquo;pen&rdquo;]
+输出: true
+解释: 返回 true 因为 &ldquo;applepenapple&rdquo; 可以被拆分成 &ldquo;apple pen apple&rdquo;。
+注意你可以重复使用字典中的单词。
+示例 3：</p>
+<p>输入: s = &ldquo;catsandog&rdquo;, wordDict = [&ldquo;cats&rdquo;, &ldquo;dog&rdquo;, &ldquo;sand&rdquo;, &ldquo;and&rdquo;, &ldquo;cat&rdquo;]
+输出: false</p>
+<p><a href="https://leetcode-cn.com/problems/word-break/solution/dan-ci-chai-fen-by-leetcode-solution/">思路</a>：</p>
+<p>突破点：<code>动态规划。</code></p>
+<p>步骤：</p>
+<ol>
+<li>dp[i]表示前i个字符组成的字符串s[0&hellip;i-1]是否能够被空格拆分成若干个字典中出现的单词；</li>
+<li>对于转移方程，我们需要枚举s[0&hellip;i-1]中的分割点j，看s[0&hellip;j-1]组成的字符串s1和s[j&hellip;i-1]组成的字符串s2是否都合法，如果均合法，则s1s2拼成的字符串也合法：<code>dp[i] = dp[j]&amp;&amp;check(s[j...i-1])</code>；</li>
+<li>可通过哈希表快速判断字符串是否在给定的字符串列表里，也可以做简单剪枝，当分割点j到i的长度大于字典中最大单词长度，则返回false。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> wordBreak(string s, vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;&amp;</span> wordDict) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> wordDictSet <span style="color:#f92672">=</span> unordered_set <span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> ();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> word: wordDict) {
+</span></span><span style="display:flex;"><span>            wordDictSet.insert(word);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> dp <span style="color:#f92672">=</span> vector <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">bool</span><span style="color:#f92672">&gt;</span> (s.size() <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>        dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> true;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> s.size(); <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> i; <span style="color:#f92672">++</span>j) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (dp[j] <span style="color:#f92672">&amp;&amp;</span> wordDictSet.find(s.substr(j, i <span style="color:#f92672">-</span> j)) <span style="color:#f92672">!=</span> wordDictSet.end()) {
+</span></span><span style="display:flex;"><span>                    dp[i] <span style="color:#f92672">=</span> true;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> dp[s.size()];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目140单词拆分-iihttpsleetcode-cncomproblemsword-break-ii">题目140:<a href="https://leetcode-cn.com/problems/word-break-ii/">单词拆分 II</a></h3>
+<hr>
+<p>描述：</p>
+<p>给定一个非空字符串 s 和一个包含非空单词列表的字典 wordDict，在字符串中增加空格来构建一个句子，使得句子中所有的单词都在词典中。返回所有这些可能的句子。</p>
+<p>说明：</p>
+<p>分隔时可以重复使用字典中的单词。
+你可以假设字典中没有重复的单词。
+示例 1：</p>
+<p>输入:
+s = &ldquo;catsanddog&rdquo;
+wordDict = [&ldquo;cat&rdquo;, &ldquo;cats&rdquo;, &ldquo;and&rdquo;, &ldquo;sand&rdquo;, &ldquo;dog&rdquo;]
+输出:
+[
+&ldquo;cats and dog&rdquo;,
+&ldquo;cat sand dog&rdquo;
+]
+示例 2：</p>
+<p>输入:
+s = &ldquo;pineapplepenapple&rdquo;
+wordDict = [&ldquo;apple&rdquo;, &ldquo;pen&rdquo;, &ldquo;applepen&rdquo;, &ldquo;pine&rdquo;, &ldquo;pineapple&rdquo;]
+输出:
+[
+&ldquo;pine apple pen apple&rdquo;,
+&ldquo;pineapple pen apple&rdquo;,
+&ldquo;pine applepen apple&rdquo;
+]
+解释: 注意你可以重复使用字典中的单词。
+示例 3：</p>
+<p>输入:
+s = &ldquo;catsandog&rdquo;
+wordDict = [&ldquo;cats&rdquo;, &ldquo;dog&rdquo;, &ldquo;sand&rdquo;, &ldquo;and&rdquo;, &ldquo;cat&rdquo;]
+输出:
+[]</p>
+<p><a href="https://leetcode-cn.com/problems/word-break-ii/solution/140-by-ikaruga/">思路</a>：</p>
+<p>突破点：<code>动态规划。</code></p>
+<p>步骤：</p>
+<ol>
+<li>首先判断能否拆分；</li>
+<li>定义vector&lt;vector&lt;string&gt; &gt; dp(s.size() + 1, vector&lt;string&gt;())；</li>
+<li>假设从开始到i-1个字符是如字典匹配的一个词，则第i个字符是一个新词的开头字母；</li>
+<li>添加这个词到dp[i]中；</li>
+<li>从第i个字符开始，如果再匹配到一个词，把dp[i]中的每个词加上空格，再加上新词，添加到后面的dp[j]中；</li>
+<li>dp[i]表示第i个字符前的所有拆分情况。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>	vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> wordBreak(string s, vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;&amp;</span> wordDict) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>wordBreak_139(s, wordDict)) <span style="color:#66d9ef">return</span> {};
+</span></span><span style="display:flex;"><span>		size_t validEnd <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>		vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> dp(s.size() <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (size_t i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> s.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (i <span style="color:#f92672">==</span> validEnd <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> {};
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (i <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> dp[i].empty()) <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> word : wordDict) {
+</span></span><span style="display:flex;"><span>				size_t newEnd <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> word.size();
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> (newEnd <span style="color:#f92672">&gt;</span> s.size()) <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> (memcmp(<span style="color:#f92672">&amp;</span>s[i], <span style="color:#f92672">&amp;</span>word[<span style="color:#ae81ff">0</span>], word.size()) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>				validEnd <span style="color:#f92672">=</span> max(validEnd, newEnd);
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> (i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>					dp[newEnd].push_back(word);
+</span></span><span style="display:flex;"><span>					<span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>				}
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> d : dp[i]) {
+</span></span><span style="display:flex;"><span>					dp[newEnd].push_back(d <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; &#34;</span> <span style="color:#f92672">+</span> word);
+</span></span><span style="display:flex;"><span>				}
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> dp.back();
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">wordBreak_139</span>(string<span style="color:#f92672">&amp;</span> s, vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;&amp;</span> wordDict){
+</span></span><span style="display:flex;"><span>		size_t validEnd <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>		vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">bool</span><span style="color:#f92672">&gt;</span> dp(s.size() <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, false);
+</span></span><span style="display:flex;"><span>		dp[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> true;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (size_t i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> s.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (i <span style="color:#f92672">==</span> validEnd <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>dp[i]) <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> word : wordDict) {
+</span></span><span style="display:flex;"><span>				size_t newEnd <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> word.size();
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> (newEnd <span style="color:#f92672">&gt;</span> s.size()) <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> (memcmp(<span style="color:#f92672">&amp;</span>s[i], <span style="color:#f92672">&amp;</span>word[<span style="color:#ae81ff">0</span>], word.size()) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>					dp[newEnd] <span style="color:#f92672">=</span> true;
+</span></span><span style="display:flex;"><span>					validEnd <span style="color:#f92672">=</span> max(validEnd, newEnd);
+</span></span><span style="display:flex;"><span>				}
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> dp.back();
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目62不同路径httpsleetcode-cncomproblemsunique-paths">题目62:<a href="https://leetcode-cn.com/problems/unique-paths/">不同路径</a></h3>
+<hr>
+<p>描述：</p>
+<p>一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。</p>
+<p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。</p>
+<p>问总共有多少条不同的路径？</p>
+<p>示例 1:</p>
+<p>输入: m = 3, n = 2
+输出: 3
+解释:
+从左上角开始，总共有 3 条路径可以到达右下角。</p>
+<ol>
+<li>向右 -&gt; 向右 -&gt; 向下</li>
+<li>向右 -&gt; 向下 -&gt; 向右</li>
+<li>向下 -&gt; 向右 -&gt; 向右
+示例 2:</li>
+</ol>
+<p>输入: m = 7, n = 3
+输出: 28</p>
+<p>提示：</p>
+<p>1 &lt;= m, n &lt;= 100
+题目数据保证答案小于等于 2 * 10 ^ 9</p>
+<p><a href="https://leetcode-cn.com/problems/unique-paths/solution/kan-liao-jue-dui-dong-de-dong-tai-gui-hua-by-stree/">思路</a>：</p>
+<p>突破点：<code>动态规划。</code></p>
+<p>步骤：</p>
+<ol>
+<li>状态方程：dp[i][j]；</li>
+<li>状态转移方程：<code>dp[i][j] = dp[i-1][j] +dp[i][j-1]</code>；</li>
+<li>边界条件：dp[0][j]全为1，dp[i][0]全为1。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> uniquePaths(<span style="color:#66d9ef">int</span> m, <span style="color:#66d9ef">int</span> n) {
+</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> dp(m<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>(n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span>        dp[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> m; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;=</span> n; j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>                dp[i][j] <span style="color:#f92672">=</span> dp[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][j] <span style="color:#f92672">+</span> dp[i][j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> dp[m][n];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目63不同路径-iihttpsleetcode-cncomproblemsunique-paths-ii">题目63:<a href="https://leetcode-cn.com/problems/unique-paths-ii/">不同路径 II</a></h3>
+<hr>
+<p>一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。</p>
+<p>机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。</p>
+<p>现在考虑网格中有障碍物。那么从左上角到右下角将会有多少条不同的路径？</p>
+<p>网格中的障碍物和空位置分别用 1 和 0 来表示。</p>
+<p>说明：m 和 n 的值均不超过 100。</p>
+<p>示例 1:</p>
+<p>输入:
+[
+[0,0,0],
+[0,1,0],
+[0,0,0]
+]
+输出: 2
+解释:
+3x3 网格的正中间有一个障碍物。
+从左上角到右下角一共有 2 条不同的路径：</p>
+<ol>
+<li>向右 -&gt; 向右 -&gt; 向下 -&gt; 向下</li>
+<li>向下 -&gt; 向下 -&gt; 向右 -&gt; 向右</li>
+</ol>
+<p><a href="https://leetcode-cn.com/problems/unique-paths-ii/solution/dong-tai-gui-hua-by-acw_wangdh15-6/">思路</a>：</p>
+<p>突破点：<code>动态规划。</code></p>
+<p>步骤：</p>
+<ol>
+<li>状态方程：dp[i][j]表示到i, j的方法数；</li>
+<li>状态转移方程：
+<ol>
+<li>如果这个位置有障碍，则dp[i][j] = 0；</li>
+<li>如果没有障碍，则<code>dp\[i]\[j] = dp\[i-1]\[j] + dp\[i]\[j-1]</code>。</li>
+</ol>
+</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> uniquePathsWithObstacles(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;&amp;</span> ob) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> ob.size();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (ob[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> m <span style="color:#f92672">=</span> ob[<span style="color:#ae81ff">0</span>].size();
+</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> dp(n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>(m <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>));
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> n; i <span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; j <span style="color:#f92672">&lt;=</span> m; j <span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> j <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) dp[i][j] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (ob[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) dp[i][j] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">else</span> dp[i][j] <span style="color:#f92672">=</span> dp[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][j] <span style="color:#f92672">+</span> dp[i][j<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> dp[n][m];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目121买卖股票的最佳时机httpsleetcode-cncomproblemsbest-time-to-buy-and-sell-stock">题目121:<a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/">买卖股票的最佳时机</a></h3>
+<hr>
+<p>描述：</p>
+<p>给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。</p>
+<p>如果你最多只允许完成一笔交易（即买入和卖出一支股票一次），设计一个算法来计算你所能获取的最大利润。</p>
+<p>注意：你不能在买入股票前卖出股票。</p>
+<p>示例 1:</p>
+<p>输入: [7,1,5,3,6,4]
+输出: 5
+解释: 在第 2 天（股票价格 = 1）的时候买入，在第 5 天（股票价格 = 6）的时候卖出，最大利润 = 6-1 = 5 。
+注意利润不能是 7-1 = 6, 因为卖出价格需要大于买入价格；同时，你不能在买入前卖出股票。
+示例 2:</p>
+<p>输入: [7,6,4,3,1]
+输出: 0
+解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。</p>
+<p><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/solution/gu-piao-wen-ti-python3-c-by-z1m/">思路</a>：</p>
+<p>突破点：<code>动态规划。</code></p>
+<p>步骤：</p>
+<ol>
+<li>状态方程：dp[i]表示前i天的最大利润；</li>
+<li>状态转移方程：<code>dp[i] = max(dp[i-1], prices[i] - minPrice)</code>。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> maxProfit(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> prices) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> prices.size();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (n <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>; <span style="color:#75715e">// 边界条件
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> minprice <span style="color:#f92672">=</span> prices[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> dp (n, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> n; i<span style="color:#f92672">++</span>){
+</span></span><span style="display:flex;"><span>            minprice <span style="color:#f92672">=</span> min(minprice, prices[i]);
+</span></span><span style="display:flex;"><span>            dp[i] <span style="color:#f92672">=</span> max(dp[i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>], prices[i] <span style="color:#f92672">-</span> minprice);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> dp[n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目122买卖股票的最佳时机-iihttpsleetcode-cncomproblemsbest-time-to-buy-and-sell-stock-ii">题目122:<a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/">买卖股票的最佳时机 II</a></h3>
+<hr>
+<p>描述：</p>
+<p>给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。</p>
+<p>设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。</p>
+<p>注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+<p>示例 1:</p>
+<p>输入: [7,1,5,3,6,4]
+输出: 7
+解释: 在第 2 天（股票价格 = 1）的时候买入，在第 3 天（股票价格 = 5）的时候卖出, 这笔交易所能获得利润 = 5-1 = 4 。
+随后，在第 4 天（股票价格 = 3）的时候买入，在第 5 天（股票价格 = 6）的时候卖出, 这笔交易所能获得利润 = 6-3 = 3 。
+示例 2:</p>
+<p>输入: [1,2,3,4,5]
+输出: 4
+解释: 在第 1 天（股票价格 = 1）的时候买入，在第 5 天 （股票价格 = 5）的时候卖出, 这笔交易所能获得利润 = 5-1 = 4 。
+注意你不能在第 1 天和第 2 天接连购买股票，之后再将它们卖出。
+因为这样属于同时参与了多笔交易，你必须在再次购买前出售掉之前的股票。
+示例 3:</p>
+<p>输入: [7,6,4,3,1]
+输出: 0
+解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。</p>
+<p>提示：</p>
+<p>1 &lt;= prices.length &lt;= 3 * 10 ^ 4
+0 &lt;= prices[i] &lt;= 10 ^ 4</p>
+<p><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/solution/mai-mai-gu-piao-de-zui-jia-shi-ji-ii-tan-xin-suan-/">思路</a>：</p>
+<p>突破点：<code>动态规划。</code></p>
+<p>步骤：</p>
+<ol>
+<li>状态方程：dp[i][0]表示第i天不持有股票时的利益，dp[i][1]表示第i天持有股票时的利益；</li>
+<li>状态转移方程：<code>dp[i][0] = max(dp[i-1][0], dp[i-1][1] + prices[i])</code>，<code>dp[i][1] = max(dp[i-1][1], dp[i-1][0] - prices[i])</code>。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> maxProfit(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> prices) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 动态规划解法
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// 0.初始判断
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span>(prices.empty()) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> dp[prices.size()][<span style="color:#ae81ff">2</span>];
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 1.初始状态
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        dp[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        dp[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>prices[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 2.状态转移
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i<span style="color:#f92672">&lt;</span>prices.size();i<span style="color:#f92672">++</span>){
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 3.状态转移方程
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            dp[i][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> max(dp[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>], dp[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> prices[i]);
+</span></span><span style="display:flex;"><span>            dp[i][<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> max(dp[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">1</span>], dp[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>] <span style="color:#f92672">-</span> prices[i]);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> dp[prices.size()<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目55跳跃游戏httpsleetcode-cncomproblemsjump-game">题目55:<a href="https://leetcode-cn.com/problems/jump-game/">跳跃游戏</a></h3>
+<hr>
+<p>描述：</p>
+<p>给定一个非负整数数组，你最初位于数组的第一个位置。</p>
+<p>数组中的每个元素代表你在该位置可以跳跃的最大长度。</p>
+<p>判断你是否能够到达最后一个位置。</p>
+<p>示例 1:</p>
+<p>输入: [2,3,1,1,4]
+输出: true
+解释: 我们可以先跳 1 步，从位置 0 到达 位置 1, 然后再从位置 1 跳 3 步到达最后一个位置。
+示例 2:</p>
+<p>输入: [3,2,1,0,4]
+输出: false
+解释: 无论怎样，你总会到达索引为 3 的位置。但该位置的最大跳跃长度是 0 ， 所以你永远不可能到达最后一个位置。</p>
+<p><a href="https://leetcode-cn.com/problems/jump-game/solution/55-by-ikaruga/">思路</a>：</p>
+<p>突破点：<code>贪心。</code></p>
+<p>步骤：</p>
+<ol>
+<li>对于可以作为起跳点的格子都做一次尝试；</li>
+<li>更新能跳到的最远距离；</li>
+<li>如果能调到末尾，则成功。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">canJump</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> nums.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (i <span style="color:#f92672">&gt;</span> k) <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>		k <span style="color:#f92672">=</span> max(k, i <span style="color:#f92672">+</span> nums[i]);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h3 id="题目45跳跃游戏-iihttpsleetcode-cncomproblemsjump-game-ii">题目45:<a href="https://leetcode-cn.com/problems/jump-game-ii/">跳跃游戏 II</a></h3>
+<hr>
+<p>描述：
+给定一个非负整数数组，你最初位于数组的第一个位置。</p>
+<p>数组中的每个元素代表你在该位置可以跳跃的最大长度。</p>
+<p>你的目标是使用最少的跳跃次数到达数组的最后一个位置。</p>
+<p><strong>示例:</strong></p>
+<pre tabindex="0"><code>输入: [2,3,1,1,4]
+输出: 2
+解释: 跳到最后一个位置的最小跳跃数是 2。
+     从下标为 0 跳到下标为 1 的位置，跳 1 步，然后跳 3 步到达数组的最后一个位置。
+</code></pre><p><strong>说明:</strong></p>
+<p>假设你总是可以到达数组的最后一个位置。</p>
+<p><a href="https://leetcode-cn.com/problems/jump-game-ii/solution/45-by-ikaruga/">思路</a>：</p>
+<p>突破点：<code>贪心算法。</code></p>
+<p>步骤：</p>
+<ol>
+<li>每一次跳跃，更新下一次起跳点的范围；</li>
+<li>在新的范围内，更新能跳到的最远距离；</li>
+<li>记录跳跃次数，如果能到终点，则返回结果。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">jump</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> ans <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> end <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> maxPos <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> nums.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        maxPos <span style="color:#f92672">=</span> max(nums[i] <span style="color:#f92672">+</span> i, maxPos);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">==</span> end) {
+</span></span><span style="display:flex;"><span>            end <span style="color:#f92672">=</span> maxPos;
+</span></span><span style="display:flex;"><span>            ans<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ans;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+			</div>
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/2023-12-03-hello-world/">Hello World</a></li>
+				
+				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
+				
+				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
+				
+				<li><a href="/posts/2022-10-21-getopts-in-bash/">getopts in Bash</a></li>
+				
+				<li><a href="/posts/2021-06-05-k8s-and-docker-related-notes/">K8s and docker Related Notes</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
+	<a href="https://github.com/junyubian"><b>Github</b></a>.
+	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
+	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
+	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>

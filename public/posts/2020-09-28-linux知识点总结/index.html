@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>Linux知识点总结</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+	
+</head>
+<body>
+	<header>
+	================<br>
+	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
+	================
+	<div style="float: right;">&#34;Salvation lies within.&#34;</div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/posts/"><b>Posts</b></a>.
+			
+			<a href="/categories/"><b>Categories</b></a>.
+			
+			<a href="/tags/"><b>Tags</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
+
+	
+	<main>
+		<article>
+			<h1>Linux知识点总结</h1>
+			<b><time>09/28/2020 22:43</time></b>
+		       
+		           <a href="/tags/linux">Linux</a>
+        	       
+
+			<div>
+				<h3 id="1-find命令">1. find命令</h3>
+<hr>
+<ol>
+<li>查找指定文件名文件（不区分大小写）：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find -iname <span style="color:#e6db74">&#34;ProgramToFind.java&#34;</span>
+</span></span></code></pre></div><ol start="2">
+<li>对找到的文件执行某命令</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find -iname <span style="color:#e6db74">&#34;ProgramToOperate.java&#34;</span> -exec md5sum <span style="color:#f92672">{}</span> <span style="color:#ae81ff">\;</span>
+</span></span></code></pre></div><ol start="3">
+<li>查找home目录下所有空文件</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find ~ -empty
+</span></span></code></pre></div><ol start="4">
+<li>在/home下找到大小超过3MB的文件</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find /home -type f -size +3072k
+</span></span></code></pre></div><hr>
+<h3 id="2-static和const关键字">2. static和const关键字</h3>
+<hr>
+<p>static：存储在静态存储区，未初始化时自动初始化为0：</p>
+<ol>
+<li>局部变量：
+<ol>
+<li>变为静态局部变量；</li>
+<li>作用域仍为局部作用域；</li>
+<li>离开作用域仍驻留在内存中，但不可访问；</li>
+</ol>
+</li>
+<li>全局变量：
+<ol>
+<li>变为全局静态变量；</li>
+<li>在声明的文件之外不可见；</li>
+</ol>
+</li>
+<li>成员变量：
+<ol>
+<li>变为类的全局变量，被类的对象共享，包括派生类的对象；</li>
+<li>必须在类外进行初始化，如int base::var = 10;，但可以用const修饰static数据成员，从而在类内初始化；</li>
+</ol>
+</li>
+<li>成员函数：
+<ol>
+<li>使得成员函数为所有对象共享，不含this指针；</li>
+<li>可以独立访问，不需要创建实例，如base::func(3, 5);</li>
+<li>不可直接引用类的非静态成员，但是可以引用静态成员；</li>
+<li>不可同时用const和static修饰成员函数（const含this指针，static不含，冲突）；</li>
+</ol>
+</li>
+</ol>
+<p>const：</p>
+<ol>
+<li>表明变量不可修改；</li>
+<li>限定成员函数不可修改任何数据成员；</li>
+<li>const与指针：
+<ol>
+<li>const char *p：指向的内容不能改变；</li>
+<li>char * const p：将p声明为常指针，地址不能变，但是内容可变。</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h3 id="3-c的内存分区">3. C++的内存分区</h3>
+<hr>
+<ol>
+<li>栈区（stack）：主要存放函数参数以及局部变量，由系统自动分配释放；</li>
+<li>堆区（heap）：用户通过malloc/new手动申请释放，分配类似链表；</li>
+<li>全局/静态区：存放全局变量、静态变量；</li>
+<li>字符串常量区：字符串常量；</li>
+<li>代码区：程序的二进制代码。</li>
+</ol>
+<hr>
+<h3 id="4-stl容器">4. STL容器</h3>
+<hr>
+<p>底层数据结构：</p>
+<ol>
+<li>vector：数组；</li>
+<li>map、multimap：红黑树；</li>
+<li>unordered_map、unordered_nultimap：哈希表。</li>
+</ol>
+<hr>
+<h3 id="5-内存泄漏">5. 内存泄漏</h3>
+<hr>
+<ol>
+<li>一般为堆内存泄漏，即程序在运行中动态申请的内存空间不使用后，未及时释放；</li>
+<li>解决：
+<ol>
+<li>良好编程习惯；</li>
+<li>重载new和delete，以链表形式自动管理分配的内存；</li>
+<li>使用智能指针。</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h3 id="6-32位64位系统中常用内置数据类型所占字节数">6. 32位、64位系统中，常用内置数据类型所占字节数</h3>
+<hr>
+<ol>
+<li>32位：
+<ol>
+<li>char：1字节；</li>
+<li>指针变量：4字节；</li>
+<li>short int：2字节；</li>
+<li>int：4字节；</li>
+<li>unsigned int：4字节；</li>
+<li>float：4字节；</li>
+<li>double：8字节；</li>
+<li>long：4字节；</li>
+<li>unsigned long：4字节；</li>
+<li>long long：8字节；</li>
+</ol>
+</li>
+<li>64位：
+<ol>
+<li>char：1字节；</li>
+<li>指针变量：8字节；</li>
+<li>short int：2字节；</li>
+<li>int：4字节；</li>
+<li>unsigned int：4字节；</li>
+<li>float：4字节；</li>
+<li>double：8字节；</li>
+<li>long：8字节；</li>
+<li>unsigned long：8字节；</li>
+<li>long long：8字节。</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h3 id="7-inlinevolatile关键字">7. inline、volatile关键字</h3>
+<hr>
+<ol>
+<li>inline：解决频繁调用小函数大量消耗栈空间的问题；</li>
+<li>volatile：表明类型变量可悲更改，不再优化，需要从如内存中重新读取。</li>
+</ol>
+<hr>
+<h3 id="8-深拷贝与浅拷贝">8. 深拷贝与浅拷贝</h3>
+<hr>
+<p>拷贝函数使用场景：</p>
+<ol>
+<li>一个对象以值的方式传入函数体；</li>
+<li>一个对象以值的方式从函数返回；</li>
+<li>一个对象需通过另一个对象进行初始化；</li>
+</ol>
+<p>区别：</p>
+<ol>
+<li>浅拷贝：只是增加一个指针指向已存在的内存地址；</li>
+<li>深拷贝：增加一个指针，并且申请一个新的内存用于存放复制的对象。</li>
+</ol>
+<hr>
+<h3 id="9-派生类构造析构函数调用顺序">9. 派生类构造/析构函数调用顺序</h3>
+<hr>
+<ol>
+<li>构造函数：先基后派；</li>
+<li>析构函数：先派后基。</li>
+</ol>
+<hr>
+<h3 id="10-数据成员初始化顺序">10. 数据成员初始化顺序</h3>
+<hr>
+<p>顺序：</p>
+<ol>
+<li>基类的静态变量或全局变量；</li>
+<li>派生类的静态变量或全局变量；</li>
+<li>基类的成员变量；</li>
+<li>派生类的成员变量。</li>
+</ol>
+<hr>
+<h3 id="11-static_cast-dynamic_cast-const_cast-reinpreter_cast区别">11. static_cast, dynamic_cast, const_cast, reinpreter_cast区别</h3>
+<hr>
+<p>static_cast与dynamic_cast：</p>
+<ol>
+<li>发生时间不同，一个是static编译时，一个是runtime运行时；</li>
+<li>static_cast为强制类型转换，不提供运行时的检查；</li>
+<li>dynamic_cast用于转换指针和引用，不可用于转换对象，主要用于类层次间的上行和下行转换：
+<ol>
+<li>上行转换：B继承自A，由B转换为A；</li>
+<li>下行转换：B继承自A，A转换为B；</li>
+</ol>
+</li>
+<li>上行转换时，static_cast和dynamic_cast效果相同，下行转换时，dynamic_cast具有类型检查，更安全。</li>
+</ol>
+<hr>
+<h3 id="12-定义一个空类-编译器会做什么">12. 定义一个空类 编译器会做什么</h3>
+<hr>
+<ol>
+<li>当用到相关函数时，编译器会去自动生成：默认构造函数、默认拷贝构造函数、默认拷贝赋值操作符、默认析构函数；</li>
+<li>所有自动生成的函数都是inline和public的。</li>
+</ol>
+<hr>
+<h3 id="13-哪些函数不能成为虚函数">13. 哪些函数不能成为虚函数</h3>
+<hr>
+<ol>
+<li>构造函数：假如子类继承基类构造函数，则子类对象将使用基类构造函数构造，而积累的构造函数并不知道自类的成员，不符合语义，且，多态是通过基类指针指向子类对象实现多态的，在对象构造之前，并没有对象产生，因此无法使用多态特性，是矛盾的；</li>
+<li>内联成员函数：内联函数在编译时展开，而虚函数是在运行时绑定的，两者相违背；</li>
+<li>静态成员函数：在编译时确定，无法动态绑定，不支持多态。</li>
+</ol>
+<hr>
+<h3 id="14-内联函数与宏定义的区别">14. 内联函数与宏定义的区别</h3>
+<hr>
+<ol>
+<li>宏定义在于处理时把所有宏名用宏体替换，内联函数在编译时进行代码插入、展开、省去调用的开销；</li>
+<li>宏定义没有类型检查，内联函数满足函数的性质，如有返回值、参数列表等。</li>
+</ol>
+<hr>
+<h3 id="15-左值引用和右值引用">15. 左值引用和右值引用</h3>
+<hr>
+<ol>
+<li>
+<p>左值引用要求右边的值必须能够取地址，如果不能取地址，可以使用常引用；</p>
+<ol>
+<li>
+<p>例：<code>const int &amp;var = 10;</code>等价于</p>
+<ol>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> temp <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>var <span style="color:#f92672">=</span> temp;
+</span></span></code></pre></div></li>
+</ol>
+</li>
+<li>
+<p>但常引用修饰后，不可以通过引用进行修改，只能进行读取；</p>
+</li>
+</ol>
+</li>
+<li>
+<p>右值引用用来绑定到右值；</p>
+<ol>
+<li>左值：可以取地址的，有名字的，非临时的值；</li>
+<li>右值：不能取地址的，没有名字的，临时的值；</li>
+<li>定义格式<code>类型 &amp;&amp; 引用名 = 右值表达式;</code></li>
+<li>例：<code>int &amp;&amp;var = 10;</code></li>
+</ol>
+</li>
+</ol>
+<hr>
+<h3 id="16-substr用法">16. substr用法</h3>
+<hr>
+<ol>
+<li>
+<p>目的：构建一个string；</p>
+</li>
+<li>
+<p>用法：s.substr(pos, n)：</p>
+<ol>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>string <span style="color:#a6e22e">s</span>(<span style="color:#e6db74">&#34;testString&#34;</span>);
+</span></span><span style="display:flex;"><span>string newStr <span style="color:#f92672">=</span> s.substr(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">6</span>);
+</span></span></code></pre></div></li>
+</ol>
+</li>
+<li>
+<p>注意：返回一个从pos开始，包含pos的n个字符，pos默认值为0，n默认值为s.size()-pos。</p>
+</li>
+</ol>
+			</div>
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/2023-12-03-hello-world/">Hello World</a></li>
+				
+				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
+				
+				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
+				
+				<li><a href="/posts/2022-10-21-getopts-in-bash/">getopts in Bash</a></li>
+				
+				<li><a href="/posts/2021-06-05-k8s-and-docker-related-notes/">K8s and docker Related Notes</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
+	<a href="https://github.com/junyubian"><b>Github</b></a>.
+	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
+	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
+	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>

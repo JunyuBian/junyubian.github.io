@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>LeetCode题目总结-Graph</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+	
+</head>
+<body>
+	<header>
+	================<br>
+	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
+	================
+	<div style="float: right;">&#34;Salvation lies within.&#34;</div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/posts/"><b>Posts</b></a>.
+			
+			<a href="/categories/"><b>Categories</b></a>.
+			
+			<a href="/tags/"><b>Tags</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
+
+	
+	<main>
+		<article>
+			<h1>LeetCode题目总结-Graph</h1>
+			<b><time>09/12/2020 21:32</time></b>
+		       
+		           <a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
+        	       
+		           <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>
+        	       
+
+			<div>
+				<h3 id="题目133克隆图httpsleetcode-cncomproblemsclone-graph">题目133:<a href="https://leetcode-cn.com/problems/clone-graph/">克隆图</a></h3>
+<hr>
+<p>描述：</p>
+<p>给你无向连通图中一个节点的引用，请你返回该图的 深拷贝（克隆）。</p>
+<p>图中的每个节点都包含它的值 val（int） 和其邻居的列表（list[Node]）。</p>
+<p>class Node {
+public int val;
+public List<!-- raw HTML omitted --> neighbors;
+}</p>
+<p>测试用例格式：</p>
+<p>简单起见，每个节点的值都和它的索引相同。例如，第一个节点值为 1（val = 1），第二个节点值为 2（val = 2），以此类推。该图在测试用例中使用邻接列表表示。</p>
+<p>邻接列表 是用于表示有限图的无序列表的集合。每个列表都描述了图中节点的邻居集。</p>
+<p>给定节点将始终是图中的第一个节点（值为 1）。你必须将给定节点的拷贝作为对克隆图的引用返回。</p>
+<p>示例 1：</p>
+<p>输入：adjList = [[2,4],[1,3],[2,4],[1,3]]
+输出：[[2,4],[1,3],[2,4],[1,3]]
+解释：
+图中有 4 个节点。
+节点 1 的值是 1，它有两个邻居：节点 2 和 4 。
+节点 2 的值是 2，它有两个邻居：节点 1 和 3 。
+节点 3 的值是 3，它有两个邻居：节点 2 和 4 。
+节点 4 的值是 4，它有两个邻居：节点 1 和 3 。
+示例 2：</p>
+<p>输入：adjList = [[]]
+输出：[[]]
+解释：输入包含一个空列表。该图仅仅只有一个值为 1 的节点，它没有任何邻居。
+示例 3：</p>
+<p>输入：adjList = []
+输出：[]
+解释：这个图是空的，它不含任何节点。
+示例 4：</p>
+<p>输入：adjList = [[2],[1]]
+输出：[[2],[1]]</p>
+<p>提示：</p>
+<p>节点数不超过 100 。
+每个节点值 Node.val 都是唯一的，1 &lt;= Node.val &lt;= 100。
+无向图是一个简单图，这意味着图中没有重复的边，也没有自环。
+由于图是无向的，如果节点 p 是节点 q 的邻居，那么节点 q 也必须是节点 p 的邻居。
+图是连通图，你可以从给定节点访问到所有节点。</p>
+<p><a href="https://leetcode-cn.com/problems/clone-graph/solution/ke-long-tu-by-leetcode-solution/">思路一</a>：</p>
+<p>突破点：<code>深度优先遍历。</code></p>
+<p>步骤：</p>
+<ol>
+<li>使用一个哈希表存储所有已被访问和克隆的节点，key对应原始节点，value对应克隆图中的节点；</li>
+<li>从给定节点开始遍历图，如果某个节点已经被访问过，则返回其克隆图中对应节点；</li>
+<li>如果当前访问的节点不在哈希表中，则创建它的克隆节点并保存在哈希表中；</li>
+<li>递归调用每个节点的邻接点。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    unordered_map<span style="color:#f92672">&lt;</span>Node<span style="color:#f92672">*</span>, Node<span style="color:#f92672">*&gt;</span> visited;
+</span></span><span style="display:flex;"><span>    Node<span style="color:#f92672">*</span> <span style="color:#a6e22e">cloneGraph</span>(Node<span style="color:#f92672">*</span> node) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (node <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> node;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 如果该节点已经被访问过了，则直接从哈希表中取出对应的克隆节点返回
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (visited.find(node) <span style="color:#f92672">!=</span> visited.end()) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> visited[node];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 克隆节点，注意到为了深拷贝我们不会克隆它的邻居的列表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Node<span style="color:#f92672">*</span> cloneNode <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Node(node<span style="color:#f92672">-&gt;</span>val);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 哈希表存储
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        visited[node] <span style="color:#f92672">=</span> cloneNode;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 遍历该节点的邻居并更新克隆节点的邻居列表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> neighbor: node<span style="color:#f92672">-&gt;</span>neighbors) {
+</span></span><span style="display:flex;"><span>            cloneNode<span style="color:#f92672">-&gt;</span>neighbors.emplace_back(cloneGraph(neighbor));
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> cloneNode;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/clone-graph/solution/ke-long-tu-by-leetcode-solution/">思路二</a>：</p>
+<p>突破点：<code>广度优先遍历。</code></p>
+<p>步骤：</p>
+<ol>
+<li>使用一个哈希表存储所有已被访问和克隆的节点，key对应原始节点，value对应克隆图中的节点；</li>
+<li>将题目给定节点添加到队列，克隆该节点并存储到哈希表中；</li>
+<li>每次从队首取一个节点，遍历其所有邻接点；</li>
+<li>如果某个邻接点已被访问，则从visited中取出；</li>
+<li>否则创建新的节点进行存储；</li>
+<li>重复操作直到队列为空。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    Node<span style="color:#f92672">*</span> cloneGraph(Node<span style="color:#f92672">*</span> node) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (node <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> node;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        unordered_map<span style="color:#f92672">&lt;</span>Node<span style="color:#f92672">*</span>, Node<span style="color:#f92672">*&gt;</span> visited;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 将题目给定的节点添加到队列
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        queue<span style="color:#f92672">&lt;</span>Node<span style="color:#f92672">*&gt;</span> Q;
+</span></span><span style="display:flex;"><span>        Q.push(node);
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 克隆第一个节点并存储到哈希表中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        visited[node] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Node(node<span style="color:#f92672">-&gt;</span>val);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 广度优先搜索
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>Q.empty()) {
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 取出队列的头节点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">auto</span> n <span style="color:#f92672">=</span> Q.front();
+</span></span><span style="display:flex;"><span>            Q.pop();
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 遍历该节点的邻居
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> neighbor: n<span style="color:#f92672">-&gt;</span>neighbors) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (visited.find(neighbor) <span style="color:#f92672">==</span> visited.end()) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e">// 如果没有被访问过，就克隆并存储在哈希表中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    visited[neighbor] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Node(neighbor<span style="color:#f92672">-&gt;</span>val);
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e">// 将邻居节点加入队列中
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    Q.push(neighbor);
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 更新当前节点的邻居列表
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                visited[n]<span style="color:#f92672">-&gt;</span>neighbors.emplace_back(visited[neighbor]);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> visited[node];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目310最小高度树httpsleetcode-cncomproblemsminimum-height-trees">题目310:<a href="https://leetcode-cn.com/problems/minimum-height-trees/">最小高度树</a></h3>
+<hr>
+<p>描述：</p>
+<p>对于一个具有树特征的无向图，我们可选择任何一个节点作为根。图因此可以成为树，在所有可能的树中，具有最小高度的树被称为最小高度树。给出这样的一个图，写出一个函数找到所有的最小高度树并返回他们的根节点。</p>
+<p>格式</p>
+<p>该图包含 n 个节点，标记为 0 到 n - 1。给定数字 n 和一个无向边 edges 列表（每一个边都是一对标签）。</p>
+<p>你可以假设没有重复的边会出现在 edges 中。由于所有的边都是无向边， [0, 1]和 [1, 0] 是相同的，因此不会同时出现在 edges 里。</p>
+<p>示例 1:</p>
+<p>输入: n = 4, edges = [[1, 0], [1, 2], [1, 3]]</p>
+<pre><code>    0
+    |
+    1
+   / \
+  2   3 
+</code></pre>
+<p>输出: [1]
+示例 2:</p>
+<p>输入: n = 6, edges = [[0, 3], [1, 3], [2, 3], [4, 3], [5, 4]]</p>
+<pre><code> 0  1  2
+  \ | /
+    3
+    |
+    4
+    |
+    5 
+</code></pre>
+<p>输出: [3, 4]
+说明:</p>
+<p>根据树的定义，树是一个无向图，其中任何两个顶点只通过一条路径连接。 换句话说，一个任何没有简单环路的连通图都是一棵树。
+树的高度是指根节点和叶子节点之间最长向下路径上边的数量。</p>
+<p><a href="https://leetcode-cn.com/problems/minimum-height-trees/solution/c-9623-jian-ji-yi-dong-tuo-bu-pai-xu-bian-shi-by-t/">思路</a>：</p>
+<p>突破点：<code>拓扑排序。</code></p>
+<p>步骤：</p>
+<ol>
+<li>使用拓扑排序，不断缩小图，至只剩下1或2个点；</li>
+<li>在一个循环中，删除无向图中入度为1的点。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> findMinHeightTrees(<span style="color:#66d9ef">int</span> n, vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;&amp;</span> edges) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> { <span style="color:#ae81ff">0</span> };
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (n <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>{ <span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span> };
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">//入度数组，并初始化
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> indegree(n,<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>	vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> v;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//图形表示，并初始化
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> graph(n,v);
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//构造图与入度数组：无向图，两个点都要处理
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> edges.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>		graph[edges[i][<span style="color:#ae81ff">0</span>]].push_back(edges[i][<span style="color:#ae81ff">1</span>]);
+</span></span><span style="display:flex;"><span>		graph[edges[i][<span style="color:#ae81ff">1</span>]].push_back(edges[i][<span style="color:#ae81ff">0</span>]);
+</span></span><span style="display:flex;"><span>		indegree[edges[i][<span style="color:#ae81ff">0</span>]]<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>		indegree[edges[i][<span style="color:#ae81ff">1</span>]]<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//装载入度为1的queue
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> myqueue;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (indegree[i] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>			myqueue.push(i);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//！！令cnt等于myqueue.size()，一次性将入度为1的点全部删去。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> cnt <span style="color:#f92672">=</span> myqueue.size();
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (n<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">2</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//一次性将入度为一的点全部删去！！不能一个一个删！
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		n <span style="color:#f92672">-=</span> cnt;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">while</span> (cnt<span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">int</span> temp <span style="color:#f92672">=</span> myqueue.front();
+</span></span><span style="display:flex;"><span>			myqueue.pop();
+</span></span><span style="display:flex;"><span>			indegree[temp] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">//更新temp的邻接点：若temp临接点的入度为1，则将其放入queue中。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> graph[temp].size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> (indegree[graph[temp][i]] <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>					indegree[graph[temp][i]]<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>					<span style="color:#66d9ef">if</span> (indegree[graph[temp][i]] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)<span style="color:#75715e">//放在这里做！只判断邻接点。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>						myqueue.push(graph[temp][i]);
+</span></span><span style="display:flex;"><span>				}
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		cnt <span style="color:#f92672">=</span> myqueue.size();
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> result;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>myqueue.empty()){
+</span></span><span style="display:flex;"><span>		result.push_back(myqueue.front());
+</span></span><span style="display:flex;"><span>		myqueue.pop();
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> result;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目332重新安排行程httpsleetcode-cncomproblemsreconstruct-itinerary">题目332:<a href="https://leetcode-cn.com/problems/reconstruct-itinerary/">重新安排行程</a></h3>
+<hr>
+<p>描述：</p>
+<p>给定一个机票的字符串二维数组 [from, to]，子数组中的两个成员分别表示飞机出发和降落的机场地点，对该行程进行重新规划排序。所有这些机票都属于一个从 JFK（肯尼迪国际机场）出发的先生，所以该行程必须从 JFK 开始。</p>
+<p>提示：</p>
+<p>如果存在多种有效的行程，请你按字符自然排序返回最小的行程组合。例如，行程 [&ldquo;JFK&rdquo;, &ldquo;LGA&rdquo;] 与 [&ldquo;JFK&rdquo;, &ldquo;LGB&rdquo;] 相比就更小，排序更靠前
+所有的机场都用三个大写字母表示（机场代码）。
+假定所有机票至少存在一种合理的行程。
+所有的机票必须都用一次 且 只能用一次。</p>
+<p>示例 1：</p>
+<p>输入：[[&ldquo;MUC&rdquo;, &ldquo;LHR&rdquo;], [&ldquo;JFK&rdquo;, &ldquo;MUC&rdquo;], [&ldquo;SFO&rdquo;, &ldquo;SJC&rdquo;], [&ldquo;LHR&rdquo;, &ldquo;SFO&rdquo;]]
+输出：[&ldquo;JFK&rdquo;, &ldquo;MUC&rdquo;, &ldquo;LHR&rdquo;, &ldquo;SFO&rdquo;, &ldquo;SJC&rdquo;]
+示例 2：</p>
+<p>输入：[[&ldquo;JFK&rdquo;,&ldquo;SFO&rdquo;],[&ldquo;JFK&rdquo;,&ldquo;ATL&rdquo;],[&ldquo;SFO&rdquo;,&ldquo;ATL&rdquo;],[&ldquo;ATL&rdquo;,&ldquo;JFK&rdquo;],[&ldquo;ATL&rdquo;,&ldquo;SFO&rdquo;]]
+输出：[&ldquo;JFK&rdquo;,&ldquo;ATL&rdquo;,&ldquo;JFK&rdquo;,&ldquo;SFO&rdquo;,&ldquo;ATL&rdquo;,&ldquo;SFO&rdquo;]
+解释：另一种有效的行程是 [&ldquo;JFK&rdquo;,&ldquo;SFO&rdquo;,&ldquo;ATL&rdquo;,&ldquo;JFK&rdquo;,&ldquo;ATL&rdquo;,&ldquo;SFO&rdquo;]。但是它自然排序更大更靠后。</p>
+<p><a href="https://leetcode-cn.com/problems/reconstruct-itinerary/solution/zhong-xin-an-pai-xing-cheng-by-leetcode-solution/">思路一</a>：</p>
+<p>突破点：<code>Hierholzer 算法（寻找欧拉路径）。</code></p>
+<p>步骤：</p>
+<ol>
+<li>从起点出发，进行深度优先搜索；</li>
+<li>每次沿着某条边从某个顶点移动到另外一个顶点时，删除这条边；</li>
+<li>如果没有可移动的路径，则将所在节点加入栈并返回；</li>
+<li>对于出入度差为1的节点，可能产生死胡同，最后入栈。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    unordered_map<span style="color:#f92672">&lt;</span>string, priority_queue<span style="color:#f92672">&lt;</span>string, vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span>, std<span style="color:#f92672">::</span>greater<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> vec;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> stk;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">dfs</span>(<span style="color:#66d9ef">const</span> string<span style="color:#f92672">&amp;</span> curr) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (vec.count(curr) <span style="color:#f92672">&amp;&amp;</span> vec[curr].size() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            string tmp <span style="color:#f92672">=</span> vec[curr].top();
+</span></span><span style="display:flex;"><span>            vec[curr].pop();
+</span></span><span style="display:flex;"><span>            dfs(move(tmp));
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        stk.emplace_back(curr);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> findItinerary(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;&amp;</span> tickets) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> it : tickets) {
+</span></span><span style="display:flex;"><span>            vec[it[<span style="color:#ae81ff">0</span>]].emplace(it[<span style="color:#ae81ff">1</span>]);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        dfs(<span style="color:#e6db74">&#34;JFK&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        reverse(stk.begin(), stk.end());
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> stk;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/reconstruct-itinerary/solution/332-zhong-xin-an-pai-xing-cheng-hui-su-fa-shen-sou/">思路二</a>：</p>
+<p>突破点：<code>回溯。</code></p>
+<p>步骤：</p>
+<ol>
+<li>使用unordered_map记录城市间的映射；</li>
+<li>回溯遍历时，遇到的机场个数达到航班数量+1，则终止回溯。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// unordered_map&lt;出发城市, map&lt;到达城市, 航班次数&gt;&gt; targets
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>unordered_map<span style="color:#f92672">&lt;</span>string, map<span style="color:#f92672">&lt;</span>string, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> targets;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">backtracking</span>(<span style="color:#66d9ef">int</span> ticketNum, vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;&amp;</span> result) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (result.size() <span style="color:#f92672">==</span> ticketNum <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (pair<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">const</span> string, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> target : targets[result[result.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]]) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (target.second <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> ) { <span style="color:#75715e">// 使用int字段来记录到达城市是否使用过了
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            result.push_back(target.first);
+</span></span><span style="display:flex;"><span>            target.second<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (backtracking(ticketNum, result)) <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>            result.pop_back();
+</span></span><span style="display:flex;"><span>            target.second<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> findItinerary(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;&gt;&amp;</span> tickets) {
+</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> result;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;&amp;</span> vec : tickets) {
+</span></span><span style="display:flex;"><span>            targets[vec[<span style="color:#ae81ff">0</span>]][vec[<span style="color:#ae81ff">1</span>]]<span style="color:#f92672">++</span>; <span style="color:#75715e">// 记录映射关系
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
+</span></span><span style="display:flex;"><span>        result.push_back(<span style="color:#e6db74">&#34;JFK&#34;</span>);
+</span></span><span style="display:flex;"><span>        backtracking(tickets.size(), result);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目684冗余连接httpsleetcode-cncomproblemsredundant-connection">题目684:<a href="https://leetcode-cn.com/problems/redundant-connection/">冗余连接</a></h3>
+<hr>
+<p>描述：</p>
+<p>在本问题中, 树指的是一个连通且无环的无向图。</p>
+<p>输入一个图，该图由一个有着N个节点 (节点值不重复1, 2, &hellip;, N) 的树及一条附加的边构成。附加的边的两个顶点包含在1到N中间，这条附加的边不属于树中已存在的边。</p>
+<p>结果图是一个以边组成的二维数组。每一个边的元素是一对[u, v] ，满足 u &lt; v，表示连接顶点u 和v的无向图的边。</p>
+<p>返回一条可以删去的边，使得结果图是一个有着N个节点的树。如果有多个答案，则返回二维数组中最后出现的边。答案边 [u, v] 应满足相同的格式 u &lt; v。</p>
+<p>示例 1：</p>
+<p>输入: [[1,2], [1,3], [2,3]]
+输出: [2,3]
+解释: 给定的无向图为:
+1
+/ <br>
+2 - 3
+示例 2：</p>
+<p>输入: [[1,2], [2,3], [3,4], [1,4], [1,5]]
+输出: [1,4]
+解释: 给定的无向图为:
+5 - 1 - 2
+|   |
+4 - 3
+注意:</p>
+<p>输入的二维数组大小在 3 到 1000。
+二维数组中的整数在1到N之间，其中N是输入数组的大小。</p>
+<p><a href="https://leetcode-cn.com/problems/redundant-connection/solution/684-rong-yu-lian-jie-bing-cha-ji-shi-xian-by-xiao-/">思路</a>：</p>
+<p>突破点：<code>并查集。</code></p>
+<p>步骤：</p>
+<ol>
+<li>遍历所有边，将连通的节点放入同一个集合，形成连通分量；</li>
+<li>遍历过程中，如果某一边的两个节点已经属于同一连通分量，则为冗余边。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> parent[<span style="color:#ae81ff">1001</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">find_root</span>(<span style="color:#66d9ef">int</span> x) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (parent[x] <span style="color:#f92672">!=</span> x) {
+</span></span><span style="display:flex;"><span>            parent[x] <span style="color:#f92672">=</span> parent[parent[x]];
+</span></span><span style="display:flex;"><span>            x <span style="color:#f92672">=</span> parent[x];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> x;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">union_root</span>(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> root_x <span style="color:#f92672">=</span> find_root(x);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> root_y <span style="color:#f92672">=</span> find_root(y);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (root_x <span style="color:#f92672">==</span> root_y) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        parent[root_x] <span style="color:#f92672">=</span> root_y;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }    
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> findRedundantConnection(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;&amp;</span> edges) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1000</span>; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            parent[i] <span style="color:#f92672">=</span> i;
+</span></span><span style="display:flex;"><span>        }        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> edge : edges) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>union_root(edge[<span style="color:#ae81ff">0</span>], edge[<span style="color:#ae81ff">1</span>])) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> edge;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {};
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目685冗余连接-iihttpsleetcode-cncomproblemsredundant-connection-ii">题目685:<a href="https://leetcode-cn.com/problems/redundant-connection-ii/">冗余连接 II</a></h3>
+<hr>
+<p>描述：</p>
+<p>在本问题中，有根树指满足以下条件的有向图。该树只有一个根节点，所有其他节点都是该根节点的后继。每一个节点只有一个父节点，除了根节点没有父节点。</p>
+<p>输入一个有向图，该图由一个有着N个节点 (节点值不重复1, 2, &hellip;, N) 的树及一条附加的边构成。附加的边的两个顶点包含在1到N中间，这条附加的边不属于树中已存在的边。</p>
+<p>结果图是一个以边组成的二维数组。 每一个边 的元素是一对 [u, v]，用以表示有向图中连接顶点 u 和顶点 v 的边，其中 u 是 v 的一个父节点。</p>
+<p>返回一条能删除的边，使得剩下的图是有N个节点的有根树。若有多个答案，返回最后出现在给定二维数组的答案。</p>
+<p>示例 1:</p>
+<p>输入: [[1,2], [1,3], [2,3]]
+输出: [2,3]
+解释: 给定的有向图如下:
+1
+/ <br>
+v   v
+2&ndash;&gt;3
+示例 2:</p>
+<p>输入: [[1,2], [2,3], [3,4], [4,1], [1,5]]
+输出: [4,1]
+解释: 给定的有向图如下:
+5 &lt;- 1 -&gt; 2
+^    |
+|    v
+4 &lt;- 3
+注意:</p>
+<p>二维数组大小的在3到1000范围内。
+二维数组中的每个整数在1到N之间，其中 N 是二维数组的大小。</p>
+<p><a href="https://leetcode-cn.com/problems/redundant-connection-ii/solution/zui-jian-dan-fang-fa-bu-yong-fen-lei-yi-kan-jiu-do/">思路</a>：</p>
+<p>突破点：<code>并查集。</code></p>
+<p>步骤：</p>
+<ol>
+<li>遍历一遍寻找入读为2的点，记录为root；</li>
+<li>遍历第二遍，将非指向root的边用并查集合并，指向root的边用数组记录；</li>
+<li>遍历数组记录的点，判断该点是否与root指向同一点；</li>
+<li>若不是，说明没有联通，进行合并；</li>
+<li>若指向同一点，说明[该点, root]的边冗余，可以删去；</li>
+<li>当入度全为1， 返回环中最后出现的边即可。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> pre[<span style="color:#ae81ff">1005</span>],ind[<span style="color:#ae81ff">1005</span>];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">find</span>(<span style="color:#66d9ef">int</span> x){
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> pre[x]<span style="color:#f92672">==</span>x<span style="color:#f92672">?</span>x:pre[x]<span style="color:#f92672">=</span>find(pre[x]);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> findRedundantDirectedConnection(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;&amp;</span> edges) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> n<span style="color:#f92672">=</span>edges.size(),root<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> v;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;i<span style="color:#f92672">&lt;=</span>n;<span style="color:#f92672">++</span>i) pre[i]<span style="color:#f92672">=</span>i;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">auto</span> i:edges){
+</span></span><span style="display:flex;"><span>            ind[i[<span style="color:#ae81ff">1</span>]]<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(ind[i[<span style="color:#ae81ff">1</span>]]<span style="color:#f92672">==</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>                root<span style="color:#f92672">=</span>i[<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(root <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">auto</span> i : edges) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> find(i[<span style="color:#ae81ff">0</span>]), b <span style="color:#f92672">=</span> find(i[<span style="color:#ae81ff">1</span>]);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span>(a <span style="color:#f92672">!=</span> b) pre[b] <span style="color:#f92672">=</span> a;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">return</span> i;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">auto</span> i:edges){
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(i[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">!=</span>root){
+</span></span><span style="display:flex;"><span>                pre[find(i[<span style="color:#ae81ff">1</span>])]<span style="color:#f92672">=</span>find(i[<span style="color:#ae81ff">0</span>]);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>                v.emplace_back(i[<span style="color:#ae81ff">0</span>]);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(find(root)<span style="color:#f92672">!=</span>find(v[<span style="color:#ae81ff">0</span>]))
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> {v[<span style="color:#ae81ff">1</span>],root};
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> {v[<span style="color:#ae81ff">0</span>],root};
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div>
+			</div>
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/2023-12-03-hello-world/">Hello World</a></li>
+				
+				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
+				
+				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
+				
+				<li><a href="/posts/2022-10-21-getopts-in-bash/">getopts in Bash</a></li>
+				
+				<li><a href="/posts/2021-06-05-k8s-and-docker-related-notes/">K8s and docker Related Notes</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
+	<a href="https://github.com/junyubian"><b>Github</b></a>.
+	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
+	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
+	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>

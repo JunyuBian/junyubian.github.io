@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>KMP Algorithm</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+	
+</head>
+<body>
+	<header>
+	================<br>
+	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
+	================
+	<div style="float: right;">&#34;Salvation lies within.&#34;</div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/posts/"><b>Posts</b></a>.
+			
+			<a href="/categories/"><b>Categories</b></a>.
+			
+			<a href="/tags/"><b>Tags</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
+
+	
+	<main>
+		<article>
+			<h1>KMP Algorithm</h1>
+			<b><time>04/17/2020 00:31</time></b>
+		       
+		           <a href="/tags/algorithm">Algorithm</a>
+        	       
+		           <a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
+        	       
+		           <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>
+        	       
+
+			<div>
+				<h1 id="background">Background&hellip;</h1>
+<p>Once upon a time, Tom asked his father to find <code>abab</code> inside <code>abcaabababaa</code>.</p>
+<p>Tom&rsquo;s dad did this in a traditional way (brute force). He compared each character of the first string with each character of the second string. When he find one character not matching, for example, the third character in the second string in this case, he start again from the second character of the second string. It went on and on and on&hellip;</p>
+<h1 id="moving-on">Moving on&hellip;</h1>
+<p>Unfortunately, Tom had a bad temper about waiting. He wanted to make some change. Tom noticed that, if the n-th character in the first string happened to be not match, even if he start again, he will make a compare with that character again in the future. Therefore, Tom decided not to start from the begining each time a not match is found.</p>
+<p>He talked to his dad, &ldquo;when we have a not match for the n-th character, if we consider the characters before, we do have a big match, and if so, we actually can use the head of <code>abab</code> to try to match the tail of <code>abab</code>, the longest mathing substring will be the place for us to start again.&rdquo;</p>
+<p>For example, for <code>abab</code>, there will be 3 possible heads: <code>a</code>, <code>ab</code>, <code>aba</code>. And there will be 3 possible tails: <code>b</code>, <code>ab</code>, <code>bab</code>. The <strong>longest matching</strong> is <code>ab</code>, so each time there&rsquo;s a not mathing, we don&rsquo;t need to start from begin, instead we can start from the 3-rd character to make a comparison.</p>
+<h1 id="coding-work">Coding work&hellip;</h1>
+<p>Taking the above thought into real code, c++, for example:</p>
+<p>We first need a function to generate all the <strong>longest matching</strong> for each substring of the string we are trying to search.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">FindLongestMatching</span>(string first){
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> tableOfFirst <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span>[first.length()];
+</span></span><span style="display:flex;"><span>  tableOfFirst[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> p.length() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">||</span> first[i] <span style="color:#f92672">==</span> first[j]) {
+</span></span><span style="display:flex;"><span>      i<span style="color:#f92672">++</span><span style="color:#960050;background-color:#1e0010">；</span>
+</span></span><span style="display:flex;"><span>      j<span style="color:#f92672">++</span><span style="color:#960050;background-color:#1e0010">；</span>
+</span></span><span style="display:flex;"><span>      tableOfFirst[i] <span style="color:#f92672">=</span> j;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      j <span style="color:#f92672">=</span> tableOfFirst[j];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> tableOfFirst;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>With this function, we can make a linear time matching:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">KMP</span> (string first, string second) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span> tableOfFirst <span style="color:#f92672">=</span> FindLongestMatching(first);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (i <span style="color:#f92672">&lt;</span> second.length() <span style="color:#f92672">&amp;&amp;</span> j <span style="color:#f92672">&lt;</span> first.length()) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">||</span> second[i] <span style="color:#f92672">==</span> first[j]) {
+</span></span><span style="display:flex;"><span>      i<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>      j<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      j <span style="color:#f92672">=</span> tableOfFirst[j];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (j <span style="color:#f92672">==</span> first.length()){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> i<span style="color:#f92672">-</span>j;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Tom is happy now.</p>
+			</div>
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/2023-12-03-hello-world/">Hello World</a></li>
+				
+				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
+				
+				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
+				
+				<li><a href="/posts/2022-10-21-getopts-in-bash/">getopts in Bash</a></li>
+				
+				<li><a href="/posts/2021-06-05-k8s-and-docker-related-notes/">K8s and docker Related Notes</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
+	<a href="https://github.com/junyubian"><b>Github</b></a>.
+	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
+	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
+	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>

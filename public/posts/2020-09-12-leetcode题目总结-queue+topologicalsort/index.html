@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>LeetCode题目总结-Queue&#43;TopologicalSort</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+	
+</head>
+<body>
+	<header>
+	================<br>
+	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
+	================
+	<div style="float: right;">&#34;Salvation lies within.&#34;</div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/posts/"><b>Posts</b></a>.
+			
+			<a href="/categories/"><b>Categories</b></a>.
+			
+			<a href="/tags/"><b>Tags</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
+
+	
+	<main>
+		<article>
+			<h1>LeetCode题目总结-Queue&#43;TopologicalSort</h1>
+			<b><time>09/12/2020 21:32</time></b>
+		       
+		           <a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
+        	       
+		           <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>
+        	       
+
+			<div>
+				<h3 id="题目621任务调度器httpsleetcode-cncomproblemstask-scheduler">题目621:<a href="https://leetcode-cn.com/problems/task-scheduler/">任务调度器</a></h3>
+<hr>
+<p>描述：</p>
+<p>给定一个用字符数组表示的 CPU 需要执行的任务列表。其中包含使用大写的 A - Z 字母表示的26 种不同种类的任务。任务可以以任意顺序执行，并且每个任务都可以在 1 个单位时间内执行完。CPU 在任何一个单位时间内都可以执行一个任务，或者在待命状态。</p>
+<p>然而，两个相同种类的任务之间必须有长度为 n 的冷却时间，因此至少有连续 n 个单位时间内 CPU 在执行不同的任务，或者在待命状态。</p>
+<p>你需要计算完成所有任务所需要的最短时间。</p>
+<p>示例 ：</p>
+<p>输入：tasks = [&ldquo;A&rdquo;,&ldquo;A&rdquo;,&ldquo;A&rdquo;,&ldquo;B&rdquo;,&ldquo;B&rdquo;,&ldquo;B&rdquo;], n = 2
+输出：8
+解释：A -&gt; B -&gt; (待命) -&gt; A -&gt; B -&gt; (待命) -&gt; A -&gt; B.
+在本示例中，两个相同类型任务之间必须间隔长度为 n = 2 的冷却时间，而执行一个任务只需要一个单位时间，所以中间出现了（待命）状态。</p>
+<p>提示：</p>
+<p>任务的总个数为 [1, 10000]。
+n 的取值范围为 [0, 100]。</p>
+<p><a href="https://leetcode-cn.com/problems/task-scheduler/solution/tong-zi-by-popopop/">思路</a>：</p>
+<p>突破点：<code>桶思想。</code></p>
+<p>步骤：</p>
+<ol>
+<li>建立大小为n+1的桶，个数为数量最多的任务；</li>
+<li>每个桶视为一轮任务；</li>
+<li>总排队时间=(桶个数-1)*(n+1)+最后一个桶的任务数；</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">leastInterval</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;&amp;</span> tasks, <span style="color:#66d9ef">int</span> n) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> len<span style="color:#f92672">=</span>tasks.size();
+</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> vec(<span style="color:#ae81ff">26</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">char</span> c:tasks) <span style="color:#f92672">++</span>vec[c<span style="color:#f92672">-</span><span style="color:#e6db74">&#39;A&#39;</span>];
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>        sort(vec.begin(),vec.end(),[](<span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> x,<span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span>y){<span style="color:#66d9ef">return</span> x<span style="color:#f92672">&gt;</span>y;});
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> cnt<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span>(cnt<span style="color:#f92672">&lt;</span>vec.size()<span style="color:#f92672">&amp;&amp;</span>vec[cnt]<span style="color:#f92672">==</span>vec[<span style="color:#ae81ff">0</span>]) cnt<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> max(len,cnt<span style="color:#f92672">+</span>(n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">*</span>(vec[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) );
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><hr>
+<h3 id="题目641设计循环双端队列httpsleetcode-cncomproblemsdesign-circular-deque">题目641:<a href="https://leetcode-cn.com/problems/design-circular-deque/">设计循环双端队列</a></h3>
+<hr>
+<p>描述：</p>
+<p>设计实现双端队列。
+你的实现需要支持以下操作：</p>
+<p>MyCircularDeque(k)：构造函数,双端队列的大小为k。
+insertFront()：将一个元素添加到双端队列头部。 如果操作成功返回 true。
+insertLast()：将一个元素添加到双端队列尾部。如果操作成功返回 true。
+deleteFront()：从双端队列头部删除一个元素。 如果操作成功返回 true。
+deleteLast()：从双端队列尾部删除一个元素。如果操作成功返回 true。
+getFront()：从双端队列头部获得一个元素。如果双端队列为空，返回 -1。
+getRear()：获得双端队列的最后一个元素。 如果双端队列为空，返回 -1。
+isEmpty()：检查双端队列是否为空。
+isFull()：检查双端队列是否满了。
+示例：</p>
+<p>MyCircularDeque circularDeque = new MycircularDeque(3); // 设置容量大小为3
+circularDeque.insertLast(1);			        // 返回 true
+circularDeque.insertLast(2);			        // 返回 true
+circularDeque.insertFront(3);			        // 返回 true
+circularDeque.insertFront(4);			        // 已经满了，返回 false
+circularDeque.getRear();  				// 返回 2
+circularDeque.isFull();				        // 返回 true
+circularDeque.deleteLast();			        // 返回 true
+circularDeque.insertFront(4);			        // 返回 true
+circularDeque.getFront();				// 返回 4</p>
+<p>提示：</p>
+<p>所有值的范围为 [1, 1000]
+操作次数的范围为 [1, 1000]
+请不要使用内置的双端队列库。</p>
+<p><a href="">思路</a>：</p>
+<p>突破点：<code>双端链表。</code></p>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyCircularDeque</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">DLNode</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> val;
+</span></span><span style="display:flex;"><span>        DLNode<span style="color:#f92672">*</span> next;
+</span></span><span style="display:flex;"><span>        DLNode<span style="color:#f92672">*</span> prev;
+</span></span><span style="display:flex;"><span>        DLNode() <span style="color:#f92672">:</span> val(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>), next(NULL), prev(NULL) {}
+</span></span><span style="display:flex;"><span>        DLNode(<span style="color:#66d9ef">int</span> v) <span style="color:#f92672">:</span> val(v), next(NULL), prev(NULL) {}
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> size;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> capacity;
+</span></span><span style="display:flex;"><span>    DLNode<span style="color:#f92672">*</span> head;
+</span></span><span style="display:flex;"><span>    DLNode<span style="color:#f92672">*</span> tail;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Initialize your data structure here. Set the size of the deque to be k. */</span>
+</span></span><span style="display:flex;"><span>    MyCircularDeque(<span style="color:#66d9ef">int</span> k) {
+</span></span><span style="display:flex;"><span>        size <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        capacity <span style="color:#f92672">=</span> k;
+</span></span><span style="display:flex;"><span>        head <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DLNode();
+</span></span><span style="display:flex;"><span>        tail <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DLNode();
+</span></span><span style="display:flex;"><span>        head<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> tail;
+</span></span><span style="display:flex;"><span>        tail<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Adds an item at the front of Deque. Return true if the operation is successful. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">insertFront</span>(<span style="color:#66d9ef">int</span> value) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isFull()) <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> node <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DLNode(value);
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> head<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> node;
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>prev<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> node;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">++</span>size;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Adds an item at the rear of Deque. Return true if the operation is successful. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">insertLast</span>(<span style="color:#66d9ef">int</span> value) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isFull()) <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> node <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DLNode(value);
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> tail<span style="color:#f92672">-&gt;</span>prev;
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> tail;
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>prev<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> node;
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> node;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">++</span>size;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Deletes an item from the front of Deque. Return true if the operation is successful. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">deleteFront</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isEmpty()) <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> node <span style="color:#f92672">=</span> head<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> node<span style="color:#f92672">-&gt;</span>prev;
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>prev<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> node<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">delete</span> node;
+</span></span><span style="display:flex;"><span>        node <span style="color:#f92672">=</span> NULL;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">--</span>size;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Deletes an item from the rear of Deque. Return true if the operation is successful. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">deleteLast</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isEmpty()) <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> node <span style="color:#f92672">=</span> tail<span style="color:#f92672">-&gt;</span>prev;
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> node<span style="color:#f92672">-&gt;</span>prev;
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>prev<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> node<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">delete</span> node;
+</span></span><span style="display:flex;"><span>        node <span style="color:#f92672">=</span> NULL;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">--</span>size;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Get the front item from the deque. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getFront</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> head<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>val;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Get the last item from the deque. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getRear</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> tail<span style="color:#f92672">-&gt;</span>prev<span style="color:#f92672">-&gt;</span>val;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Checks whether the circular deque is empty or not. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isEmpty</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> size <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Checks whether the circular deque is full or not. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isFull</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> size <span style="color:#f92672">==</span> capacity;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目622设计循环队列httpsleetcode-cncomproblemsdesign-circular-queue">题目622:<a href="https://leetcode-cn.com/problems/design-circular-queue/">设计循环队列</a></h3>
+<hr>
+<p>描述：</p>
+<p>设计你的循环队列实现。 循环队列是一种线性数据结构，其操作表现基于 FIFO（先进先出）原则并且队尾被连接在队首之后以形成一个循环。它也被称为“环形缓冲器”。</p>
+<p>循环队列的一个好处是我们可以利用这个队列之前用过的空间。在一个普通队列里，一旦一个队列满了，我们就不能插入下一个元素，即使在队列前面仍有空间。但是使用循环队列，我们能使用这些空间去存储新的值。</p>
+<p>你的实现应该支持如下操作：</p>
+<p>MyCircularQueue(k): 构造器，设置队列长度为 k 。
+Front: 从队首获取元素。如果队列为空，返回 -1 。
+Rear: 获取队尾元素。如果队列为空，返回 -1 。
+enQueue(value): 向循环队列插入一个元素。如果成功插入则返回真。
+deQueue(): 从循环队列中删除一个元素。如果成功删除则返回真。
+isEmpty(): 检查循环队列是否为空。
+isFull(): 检查循环队列是否已满。</p>
+<p>示例：</p>
+<p>MyCircularQueue circularQueue = new MyCircularQueue(3); // 设置长度为 3
+circularQueue.enQueue(1);  // 返回 true
+circularQueue.enQueue(2);  // 返回 true
+circularQueue.enQueue(3);  // 返回 true
+circularQueue.enQueue(4);  // 返回 false，队列已满
+circularQueue.Rear();  // 返回 3
+circularQueue.isFull();  // 返回 true
+circularQueue.deQueue();  // 返回 true
+circularQueue.enQueue(4);  // 返回 true
+circularQueue.Rear();  // 返回 4</p>
+<p>提示：</p>
+<p>所有的值都在 0 至 1000 的范围内；
+操作数将在 1 至 1000 的范围内；
+请不要使用内置的队列库。</p>
+<p><a href="https://leetcode-cn.com/problems/design-circular-queue/solution/xun-huan-dui-lie-by-zheng-rui-jia/">思路</a>：</p>
+<p>突破点：<code>下标%数组大小。</code></p>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyCircularQueue</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> start;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> end;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> count;
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> nums;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Initialize your data structure here. Set the size of the queue to be k. */</span>
+</span></span><span style="display:flex;"><span>    MyCircularQueue(<span style="color:#66d9ef">int</span> k)<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        start(<span style="color:#ae81ff">0</span>),
+</span></span><span style="display:flex;"><span>        end(<span style="color:#ae81ff">0</span>),
+</span></span><span style="display:flex;"><span>        count(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        nums.resize(k);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Insert an element into the circular queue. Return true if the operation is successful. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">enQueue</span>(<span style="color:#66d9ef">int</span> value) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (count <span style="color:#f92672">==</span> nums.size())
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>        nums[start<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> value;
+</span></span><span style="display:flex;"><span>        start <span style="color:#f92672">%=</span> nums.size();
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">++</span>count;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Delete an element from the circular queue. Return true if the operation is successful. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">deQueue</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (count <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>        nums[end<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        end <span style="color:#f92672">%=</span> nums.size();
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">--</span>count;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Get the front item from the queue. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Front</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (count <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> nums[end];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Get the last item from the queue. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Rear</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (count <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> nums[(start <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> nums.size()) <span style="color:#f92672">%</span> nums.size()];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Checks whether the circular queue is empty or not. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isEmpty</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> count <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Checks whether the circular queue is full or not. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isFull</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> nums.size() <span style="color:#f92672">==</span> count;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目329矩阵中的最长递增路径httpsleetcode-cncomproblemslongest-increasing-path-in-a-matrix">题目329:<a href="https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/">矩阵中的最长递增路径</a></h3>
+<hr>
+<p>描述：</p>
+<p>给定一个整数矩阵，找出最长递增路径的长度。</p>
+<p>对于每个单元格，你可以往上，下，左，右四个方向移动。 你不能在对角线方向上移动或移动到边界外（即不允许环绕）。</p>
+<p>示例 1:</p>
+<p>输入: nums =
+[
+[9,9,4],
+[6,6,8],
+[2,1,1]
+]
+输出: 4
+解释: 最长递增路径为 [1, 2, 6, 9]。
+示例 2:</p>
+<p>输入: nums =
+[
+[3,4,5],
+[3,2,6],
+[2,2,1]
+]
+输出: 4
+解释: 最长递增路径是 [3, 4, 5, 6]。注意不允许在对角线方向上移动。</p>
+<p><a href="https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/solution/ju-zhen-zhong-de-zui-chang-di-zeng-lu-jing-by-le-2/">思路一</a>：</p>
+<p>突破点：<code>优化的深度优先搜索。</code></p>
+<p>步骤：</p>
+<ol>
+<li>将矩阵视为有向图，若相邻两个单元格大小不等，则在两相邻单元格中存在一条小值指向大值的有向边；</li>
+<li>在有向图中，寻找最长路径；</li>
+<li>从一个单元格开始DFS，直到搜索结束；</li>
+<li>使用缓存矩阵优化，已经计算过的单元格进行保存。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">int</span> dirs[<span style="color:#ae81ff">4</span>][<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> {{<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>}, {<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>}};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> rows, columns;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">longestIncreasingPath</span>(vector<span style="color:#f92672">&lt;</span> vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>matrix) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (matrix.size() <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> matrix[<span style="color:#ae81ff">0</span>].size() <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        rows <span style="color:#f92672">=</span> matrix.size();
+</span></span><span style="display:flex;"><span>        columns <span style="color:#f92672">=</span> matrix[<span style="color:#ae81ff">0</span>].size();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> memo <span style="color:#f92672">=</span> vector<span style="color:#f92672">&lt;</span> vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> (rows, vector <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> (columns));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> ans <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> rows; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> columns; <span style="color:#f92672">++</span>j) {
+</span></span><span style="display:flex;"><span>                ans <span style="color:#f92672">=</span> max(ans, dfs(matrix, i, j, memo));
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ans;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">dfs</span>(vector<span style="color:#f92672">&lt;</span> vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>matrix, <span style="color:#66d9ef">int</span> row, <span style="color:#66d9ef">int</span> column, vector<span style="color:#f92672">&lt;</span> vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>memo) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (memo[row][column] <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> memo[row][column];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">++</span>memo[row][column];
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">4</span>; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> newRow <span style="color:#f92672">=</span> row <span style="color:#f92672">+</span> dirs[i][<span style="color:#ae81ff">0</span>], newColumn <span style="color:#f92672">=</span> column <span style="color:#f92672">+</span> dirs[i][<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (newRow <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> newRow <span style="color:#f92672">&lt;</span> rows <span style="color:#f92672">&amp;&amp;</span> newColumn <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> newColumn <span style="color:#f92672">&lt;</span> columns <span style="color:#f92672">&amp;&amp;</span> matrix[newRow][newColumn] <span style="color:#f92672">&gt;</span> matrix[row][column]) {
+</span></span><span style="display:flex;"><span>                memo[row][column] <span style="color:#f92672">=</span> max(memo[row][column], dfs(matrix, newRow, newColumn, memo) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> memo[row][column];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/solution/ju-zhen-zhong-de-zui-chang-di-zeng-lu-jing-by-le-2/">思路二</a>：</p>
+<p>突破点：<code>拓扑排序+动态规划。</code></p>
+<p>步骤：</p>
+<ol>
+<li>状态转移方程：memo[i][j] = max{memo[x][y]} + 1，(x, y)与(i, j)相邻，且matrix[x][y]&gt;matrix[i][j]；</li>
+<li>使用拓扑排序，从所有出度为0的单元格开始DFS；</li>
+<li>更新其余单元格出度，并将出度为0的加入下一层搜索；</li>
+<li>搜索结束后，总层数即为所求答案。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">int</span> dirs[<span style="color:#ae81ff">4</span>][<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> {{<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>}, {<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>}};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> rows, columns;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">longestIncreasingPath</span>(vector<span style="color:#f92672">&lt;</span> vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>matrix) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (matrix.size() <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> matrix[<span style="color:#ae81ff">0</span>].size() <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        rows <span style="color:#f92672">=</span> matrix.size();
+</span></span><span style="display:flex;"><span>        columns <span style="color:#f92672">=</span> matrix[<span style="color:#ae81ff">0</span>].size();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> outdegrees <span style="color:#f92672">=</span> vector<span style="color:#f92672">&lt;</span> vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> (rows, vector <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> (columns));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> rows; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> columns; <span style="color:#f92672">++</span>j) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; k <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">4</span>; <span style="color:#f92672">++</span>k) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">int</span> newRow <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> dirs[k][<span style="color:#ae81ff">0</span>], newColumn <span style="color:#f92672">=</span> j <span style="color:#f92672">+</span> dirs[k][<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (newRow <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> newRow <span style="color:#f92672">&lt;</span> rows <span style="color:#f92672">&amp;&amp;</span> newColumn <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> newColumn <span style="color:#f92672">&lt;</span> columns <span style="color:#f92672">&amp;&amp;</span> matrix[newRow][newColumn] <span style="color:#f92672">&gt;</span> matrix[i][j]) {
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">++</span>outdegrees[i][j];
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        queue <span style="color:#f92672">&lt;</span> pair<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> q;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> rows; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> columns; <span style="color:#f92672">++</span>j) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (outdegrees[i][j] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>                    q.push({i, j});
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> ans <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>q.empty()) {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">++</span>ans;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> size <span style="color:#f92672">=</span> q.size();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> size; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">auto</span> cell <span style="color:#f92672">=</span> q.front(); q.pop();
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> row <span style="color:#f92672">=</span> cell.first, column <span style="color:#f92672">=</span> cell.second;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; k <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">4</span>; <span style="color:#f92672">++</span>k) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">int</span> newRow <span style="color:#f92672">=</span> row <span style="color:#f92672">+</span> dirs[k][<span style="color:#ae81ff">0</span>], newColumn <span style="color:#f92672">=</span> column <span style="color:#f92672">+</span> dirs[k][<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (newRow <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> newRow <span style="color:#f92672">&lt;</span> rows <span style="color:#f92672">&amp;&amp;</span> newColumn <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> newColumn <span style="color:#f92672">&lt;</span> columns <span style="color:#f92672">&amp;&amp;</span> matrix[newRow][newColumn] <span style="color:#f92672">&lt;</span> matrix[row][column]) {
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">--</span>outdegrees[newRow][newColumn];
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">if</span> (outdegrees[newRow][newColumn] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>                            q.push({newRow, newColumn});
+</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ans;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目1203项目管理httpsleetcode-cncomproblemssort-items-by-groups-respecting-dependencies">题目1203:<a href="https://leetcode-cn.com/problems/sort-items-by-groups-respecting-dependencies/">项目管理</a></h3>
+<hr>
+<p>描述：</p>
+<p>公司共有 n 个项目和  m 个小组，每个项目要不没有归属，要不就由其中的一个小组负责。</p>
+<p>我们用 group[i] 代表第 i 个项目所属的小组，如果这个项目目前无人接手，那么 group[i] 就等于 -1。（项目和小组都是从零开始编号的）</p>
+<p>请你帮忙按要求安排这些项目的进度，并返回排序后的项目列表：</p>
+<p>同一小组的项目，排序后在列表中彼此相邻。
+项目之间存在一定的依赖关系，我们用一个列表 beforeItems 来表示，其中 beforeItems[i] 表示在进行第 i 个项目前（位于第 i 个项目左侧）应该完成的所有项目。
+结果要求：</p>
+<p>如果存在多个解决方案，只需要返回其中任意一个即可。</p>
+<p>如果没有合适的解决方案，就请返回一个 空列表</p>
+<p>示例 1：</p>
+<p>输入：n = 8, m = 2, group = [-1,-1,1,0,0,1,0,-1], beforeItems = [[],[6],[5],[6],[3,6],[],[],[]]
+输出：[6,3,4,1,5,2,0,7]
+示例 2：</p>
+<p>输入：n = 8, m = 2, group = [-1,-1,1,0,0,1,0,-1], beforeItems = [[],[6],[5],[6],[3],[],[4],[]]
+输出：[]
+解释：与示例 1 大致相同，但是在排序后的列表中，4 必须放在 6 的前面。</p>
+<p>提示：</p>
+<p>1 &lt;= m &lt;= n &lt;= 3*10^4
+group.length == beforeItems.length == n
+-1 &lt;= group[i] &lt;= m-1
+0 &lt;= beforeItems[i].length &lt;= n-1
+0 &lt;= beforeItems[i][j] &lt;= n-1
+i != beforeItems[i][j]</p>
+<p><a href="https://leetcode-cn.com/problems/sort-items-by-groups-respecting-dependencies/solution/chuang-jian-xin-zu-fen-qu-yu-jin-xing-tuo-bu-pai-x/">思路</a>：</p>
+<p>突破点：<code>拓扑排序。</code></p>
+<p>步骤：</p>
+<ol>
+<li>将组别为-1的项目都创建一个新组；</li>
+<li>遍历beforeItems[i][j]数组；</li>
+<li>如果i和j属于同组，则确定组内优先级关系；</li>
+<li>若不同组，则确定小组间优先级关系；</li>
+<li>对每个组内拓扑排序；</li>
+<li>对不同组拓扑排序。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//拓扑排序的节点结构体声明
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">tpnod</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//组外的优先级比该节点小的节点索引，维护不同的小组排序后的优先级关系
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>next1;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//组内的优先级比该节点小的节点索引，维护同一小组的任务排序后的优先级关系
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>ingnext;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//不同组间的在完成该节点之前需要完成的任务数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> deg <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//组内的在完成该节点之前需要完成的任务数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> igdeg <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>tpnod nos[<span style="color:#ae81ff">30001</span>];
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//小组的数组，每个单元都是一个小组，可能不只m个，因为新创建了一些小组，但一定不会超过30000；
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>tpnod itogroup[<span style="color:#ae81ff">30001</span>];
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//维护同一个组的项目
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>grouptoi[<span style="color:#ae81ff">30001</span>];
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//维护同一组的不同项目之间的顺序
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>ingroup[<span style="color:#ae81ff">30001</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> sortItems(<span style="color:#66d9ef">int</span> n, <span style="color:#66d9ef">int</span> m, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> group, vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;&amp;</span> beforeItems) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//numOfG为包括创建的新组的组数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> numOfG <span style="color:#f92672">=</span> m;
+</span></span><span style="display:flex;"><span>	vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>res;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> group.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (group[i] <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>			grouptoi[group[i]].push_back(i);
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//否则创建新组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>			grouptoi[numOfG].push_back(i);
+</span></span><span style="display:flex;"><span>			group[i] <span style="color:#f92672">=</span> numOfG;
+</span></span><span style="display:flex;"><span>			numOfG<span style="color:#f92672">++</span>;<span style="color:#75715e">//创建后加一
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> beforeItems.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> beforeItems[i].size(); j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">//在同一组就看作组内项目优先级关系
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#66d9ef">if</span> (group[beforeItems[i][j]] <span style="color:#f92672">==</span> group[i])
+</span></span><span style="display:flex;"><span>				nos[i].igdeg<span style="color:#f92672">++</span>, nos[beforeItems[i][j]].next1.push_back(i);
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">//在不同组就看作组之间的优先级关系，因为同组的肯定是聚在一起的
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#66d9ef">else</span> itogroup[group[i]].deg<span style="color:#f92672">++</span>,
+</span></span><span style="display:flex;"><span>				itogroup[group[beforeItems[i][j]]].next1.push_back(group[i]);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//确定不同小组组内项目优先级顺序     
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> numOfG; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>		queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>q;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> grouptoi[i].size(); j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (nos[grouptoi[i][j]].igdeg <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>				q.push(grouptoi[i][j]);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> cnt2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>q.empty()) {
+</span></span><span style="display:flex;"><span>			cnt2<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">int</span> tp2 <span style="color:#f92672">=</span> q.front();
+</span></span><span style="display:flex;"><span>			ingroup[i].push_back(tp2);
+</span></span><span style="display:flex;"><span>			q.pop();
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> nos[tp2].next1.size(); j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>				nos[nos[tp2].next1[j]].igdeg<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//在该节点之前的工作处理完了就把该节点放入队列
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>				<span style="color:#66d9ef">if</span> (nos[nos[tp2].next1[j]].igdeg <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>					q.push(nos[tp2].next1[j]);
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//判断是否矛盾 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">if</span> (cnt2 <span style="color:#f92672">!=</span> grouptoi[i].size()) {
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">//res此时为空
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">return</span> res;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>q;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> numOfG; i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (itogroup[i].deg <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>			q.push(i);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> cnt3 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> tp7;
+</span></span><span style="display:flex;"><span>	vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>grorder;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//之前已经处理好了不同小组优先级关系，现在开始确定不同小组的顺序。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>q.empty()) {
+</span></span><span style="display:flex;"><span>		tp7 <span style="color:#f92672">=</span> q.front();
+</span></span><span style="display:flex;"><span>		grorder.push_back(tp7);
+</span></span><span style="display:flex;"><span>		q.pop();
+</span></span><span style="display:flex;"><span>		cnt3<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> itogroup[tp7].next1.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>			(itogroup[itogroup[tp7].next1[i]].deg)<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (itogroup[itogroup[tp7].next1[i]].deg <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>				q.push(itogroup[tp7].next1[i]);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//判断是否矛盾
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> (cnt3 <span style="color:#f92672">!=</span> numOfG) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//res为空
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">return</span> res;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> numOfG; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> ingroup[grorder[i]].size(); j<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>			res.push_back(ingroup[grorder[i]][j]);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> res;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div>
+			</div>
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/2023-12-03-hello-world/">Hello World</a></li>
+				
+				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
+				
+				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
+				
+				<li><a href="/posts/2022-10-21-getopts-in-bash/">getopts in Bash</a></li>
+				
+				<li><a href="/posts/2021-06-05-k8s-and-docker-related-notes/">K8s and docker Related Notes</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
+	<a href="https://github.com/junyubian"><b>Github</b></a>.
+	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
+	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
+	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>LeetCode题目总结-Two Pointer&#43;Linked List</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+	
+</head>
+<body>
+	<header>
+	================<br>
+	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
+	================
+	<div style="float: right;">&#34;Salvation lies within.&#34;</div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/posts/"><b>Posts</b></a>.
+			
+			<a href="/categories/"><b>Categories</b></a>.
+			
+			<a href="/tags/"><b>Tags</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
+
+	
+	<main>
+		<article>
+			<h1>LeetCode题目总结-Two Pointer&#43;Linked List</h1>
+			<b><time>09/06/2020 23:33</time></b>
+		       
+		           <a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
+        	       
+		           <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>
+        	       
+
+			<div>
+				<h3 id="题目3无重复字符的最长子串httpsleetcode-cncomproblemslongest-substring-without-repeating-characters">题目3:<a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/">无重复字符的最长子串</a></h3>
+<hr>
+<p>描述：</p>
+<p>给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。</p>
+<p>示例 1:</p>
+<p>输入: &ldquo;abcabcbb&rdquo;
+输出: 3
+解释: 因为无重复字符的最长子串是 &ldquo;abc&rdquo;，所以其长度为 3。</p>
+<p>示例 2:</p>
+<p>输入: &ldquo;bbbbb&rdquo;
+输出: 1
+解释: 因为无重复字符的最长子串是 &ldquo;b&rdquo;，所以其长度为 1。
+示例 3:</p>
+<p>输入: &ldquo;pwwkew&rdquo;
+输出: 3
+解释: 因为无重复字符的最长子串是 &ldquo;wke&rdquo;，所以其长度为 3。
+请注意，你的答案必须是 子串 的长度，&ldquo;pwke&rdquo; 是一个子序列，不是子串。</p>
+<p><a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/solution/wu-zhong-fu-zi-fu-de-zui-chang-zi-chuan-cshi-xian-/">思路一</a>：</p>
+<p>突破点：<code>滑动窗口。</code></p>
+<p>步骤：</p>
+<ol>
+<li>设立指针a和指针b；</li>
+<li>b指针向右伸缩，对于每个A[b]判断是否之前出现过；</li>
+<li>若出现，则a指向出现过的未知的下一位置，更新右指针和最大长度。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> lengthOfLongestSubstring(string s) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//s[start,end) 前面包含 后面不包含
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">start</span>(<span style="color:#ae81ff">0</span>), end(<span style="color:#ae81ff">0</span>), length(<span style="color:#ae81ff">0</span>), result(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> stringSize <span style="color:#f92672">=</span> <span style="color:#66d9ef">int</span>(s.size());
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (end <span style="color:#f92672">&lt;</span> stringSize) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">char</span> tmpChar <span style="color:#f92672">=</span> s[end];
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> start; index <span style="color:#f92672">&lt;</span> end; index<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (tmpChar <span style="color:#f92672">==</span> s[index]) {
+</span></span><span style="display:flex;"><span>                    start <span style="color:#f92672">=</span> index <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>                    length <span style="color:#f92672">=</span> end <span style="color:#f92672">-</span> start;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            end<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            length<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            result <span style="color:#f92672">=</span> max(result, length);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/solution/wu-zhong-fu-zi-fu-de-zui-chang-zi-chuan-cshi-xian-/">思路二</a>：</p>
+<p>突破点：<code>hashMap。</code></p>
+<p>步骤：</p>
+<ol>
+<li>与思路一类似；</li>
+<li>在判断是否出现过时，使用hashmap优化时间。</li>
+<li>b指针向右伸缩，对于每个A[b]判断是否之前出现过；</li>
+<li>若出现，则a指向出现过的未知的下一位置，更新右指针和最大长度。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> lengthOfLongestSubstring(string s) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//s[start,end) 前面包含 后面不包含
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">start</span>(<span style="color:#ae81ff">0</span>), end(<span style="color:#ae81ff">0</span>), length(<span style="color:#ae81ff">0</span>), result(<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> sSize <span style="color:#f92672">=</span> <span style="color:#66d9ef">int</span>(s.size());
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>        unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> hash;
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (end <span style="color:#f92672">&lt;</span> sSize) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">char</span> tmpChar <span style="color:#f92672">=</span> s[end];
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">//仅当s[start,end) 中存在s[end]时更新start
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (hash.find(tmpChar) <span style="color:#f92672">!=</span> hash.end() <span style="color:#f92672">&amp;&amp;</span> hash[tmpChar] <span style="color:#f92672">&gt;=</span> start) {
+</span></span><span style="display:flex;"><span>                start <span style="color:#f92672">=</span> hash[tmpChar] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>                length <span style="color:#f92672">=</span> end <span style="color:#f92672">-</span> start;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            hash[tmpChar] <span style="color:#f92672">=</span> end;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            end<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            length<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            result <span style="color:#f92672">=</span> max(result, length);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目75颜色分类httpsleetcode-cncomproblemssort-colors">题目75:<a href="https://leetcode-cn.com/problems/sort-colors/">颜色分类</a></h3>
+<hr>
+<p>描述：</p>
+<p>给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。</p>
+<p>此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。</p>
+<p>注意:
+不能使用代码库中的排序函数来解决这道题。</p>
+<p>示例:</p>
+<p>输入: [2,0,2,1,1,0]
+输出: [0,0,1,1,2,2]
+进阶：</p>
+<p>一个直观的解决方案是使用计数排序的两趟扫描算法。
+首先，迭代计算出0、1 和 2 元素的个数，然后按照0、1、2的排序，重写当前数组。
+你能想出一个仅使用常数空间的一趟扫描算法吗？</p>
+<p><a href="https://leetcode-cn.com/problems/sort-colors/solution/yan-se-fen-lei-by-leetcode/">思路</a>：</p>
+<p>突破点：<code>三指针。</code></p>
+<p>步骤：</p>
+<ol>
+<li>定义三个指针p0、p2、curr来追踪0、2的边界以及当前考虑的元素；</li>
+<li>初始化p0 = 0，p2 = n-1；</li>
+<li>当curr&lt;=p2时，如果nums[curr] = 0，则交换curr和p0所指元素，并将curr和p0右移；</li>
+<li>如果nums[curr] = 2，则交换curr和p2所指元素，并将p2左移，注意此时为了将判断移过来的元素类型而不右移curr；</li>
+<li>如果nums[curr] = 1，则curr右移。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  荷兰三色旗问题解
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> sortColors(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 对于所有 idx &lt; p0 : nums[idx &lt; p0] = 0
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// curr 是当前考虑元素的下标
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> p0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, curr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 对于所有 idx &gt; p2 : nums[idx &gt; p2] = 2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> p2 <span style="color:#f92672">=</span> nums.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (curr <span style="color:#f92672">&lt;=</span> p2) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (nums[curr] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        swap(nums[curr<span style="color:#f92672">++</span>], nums[p0<span style="color:#f92672">++</span>]);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (nums[curr] <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>) {
+</span></span><span style="display:flex;"><span>        swap(nums[curr], nums[p2<span style="color:#f92672">--</span>]);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">else</span> curr<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目88合并两个有序数组httpsleetcode-cncomproblemsmerge-sorted-array">题目88:<a href="https://leetcode-cn.com/problems/merge-sorted-array/">合并两个有序数组</a></h3>
+<hr>
+<p>描述：</p>
+<p>给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。</p>
+<p>说明:</p>
+<p>初始化 nums1 和 nums2 的元素数量分别为 m 和 n 。
+你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。</p>
+<p>示例:</p>
+<p>输入:
+nums1 = [1,2,3,0,0,0], m = 3
+nums2 = [2,5,6],       n = 3</p>
+<p>输出: [1,2,2,3,5,6]</p>
+<p><a href="https://leetcode-cn.com/problems/merge-sorted-array/solution/88-by-ikaruga/">思路</a>:</p>
+<p>突破点：<code>归并排序思想。</code></p>
+<p>步骤：</p>
+<ol>
+<li>获取nums1数组的尾部指针；</li>
+<li>从两数组尾部开始，交换较大值和nums1尾部位置。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">merge</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums1, <span style="color:#66d9ef">int</span> m, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums2, <span style="color:#66d9ef">int</span> n) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> nums1.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    m<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>    n<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (n <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (m <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> nums1[m] <span style="color:#f92672">&gt;</span> nums2[n]) {
+</span></span><span style="display:flex;"><span>            swap(nums1[i<span style="color:#f92672">--</span>], nums1[m<span style="color:#f92672">--</span>]);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        swap(nums1[i<span style="color:#f92672">--</span>], nums2[n<span style="color:#f92672">--</span>]);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h3 id="题目125验证回文串httpsleetcode-cncomproblemsvalid-palindrome">题目125:<a href="https://leetcode-cn.com/problems/valid-palindrome/">验证回文串</a></h3>
+<hr>
+<p>描述：
+给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。</p>
+<p>**说明：**本题中，我们将空字符串定义为有效的回文串。</p>
+<p><strong>示例 1:</strong></p>
+<pre tabindex="0"><code>输入: &#34;A man, a plan, a canal: Panama&#34;
+输出: true
+</code></pre><p><strong>示例 2:</strong></p>
+<pre tabindex="0"><code>输入: &#34;race a car&#34;
+输出: false
+</code></pre><p><a href="https://leetcode-cn.com/problems/valid-palindrome/solution/cdai-ma-by-orange-32-6/">思路</a>：</p>
+<p>突破点：<code>首尾指针比较。</code></p>
+<p>步骤：</p>
+<ol>
+<li>一个指针指向头部，一个指针指向尾部；</li>
+<li>分别从首尾开始比较，数字全部转化为小写比较；</li>
+<li>如果有不同，则返回false。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> isPalindrome(string s) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, j <span style="color:#f92672">=</span> s.length() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> j; i <span style="color:#f92672">++</span>, j <span style="color:#f92672">--</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span>(i <span style="color:#f92672">&lt;</span> j <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>isalnum(s[i])) i <span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span>(i <span style="color:#f92672">&lt;</span> j <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>isalnum(s[j])) j <span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(tolower(s[i]) <span style="color:#f92672">!=</span> tolower(s[j])) <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目76最小覆盖子串httpsleetcode-cncomproblemsminimum-window-substring">题目76:<a href="https://leetcode-cn.com/problems/minimum-window-substring/">最小覆盖子串</a></h3>
+<hr>
+<p>描述：</p>
+<p>给你一个字符串 S、一个字符串 T 。请你设计一种算法，可以在 O(n) 的时间复杂度内，从字符串 S 里面找出：包含 T 所有字符的最小子串。</p>
+<p>示例：</p>
+<p>输入：S = &ldquo;ADOBECODEBANC&rdquo;, T = &ldquo;ABC&rdquo;
+输出：&ldquo;BANC&rdquo;</p>
+<p>提示：</p>
+<p>如果 S 中不存这样的子串，则返回空字符串 &ldquo;&quot;。
+如果 S 中存在这样的子串，我们保证它是唯一的答案。</p>
+<p><a href="https://leetcode-cn.com/problems/minimum-window-substring/solution/zui-xiao-fu-gai-zi-chuan-by-leetcode-solution/">思路</a>：</p>
+<p>突破点：<code>滑动窗口。</code></p>
+<p>步骤：</p>
+<ol>
+<li>声明两个指针left和right，right用于延伸窗口，left用于收缩窗口；</li>
+<li>首先移动right使得窗口内包含t所有字符；</li>
+<li>然后收缩left且保证收缩过程中t仍在窗口内；</li>
+<li>使用哈希表动态维护窗口中字符数以及t中字符数。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    unordered_map <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> ori, cnt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  	<span style="color:#75715e">// 步骤4
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">check</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span> <span style="color:#f92672">&amp;</span>p: ori) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (cnt[p.first] <span style="color:#f92672">&lt;</span> p.second) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  	<span style="color:#75715e">// 滑窗
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    string <span style="color:#a6e22e">minWindow</span>(string s, string t) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span> <span style="color:#f92672">&amp;</span>c: t) {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">++</span>ori[c];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      	<span style="color:#75715e">// 步骤1
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> l <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, r <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> INT_MAX, ansL <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, ansR <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      	<span style="color:#75715e">// 步骤2
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (r <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">int</span>(s.size())) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (ori.find(s[<span style="color:#f92672">++</span>r]) <span style="color:#f92672">!=</span> ori.end()) {
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">++</span>cnt[s[r]];
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>          	<span style="color:#75715e">// 步骤3
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">while</span> (check() <span style="color:#f92672">&amp;&amp;</span> l <span style="color:#f92672">&lt;=</span> r) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (r <span style="color:#f92672">-</span> l <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> len) {
+</span></span><span style="display:flex;"><span>                    len <span style="color:#f92672">=</span> r <span style="color:#f92672">-</span> l <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>                    ansL <span style="color:#f92672">=</span> l;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (ori.find(s[l]) <span style="color:#f92672">!=</span> ori.end()) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">--</span>cnt[s[l]];
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">++</span>l;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ansL <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">?</span> string() <span style="color:#f92672">:</span> s.substr(ansL, len);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目206反转链表httpsleetcode-cncomproblemsreverse-linked-list">题目206:<a href="https://leetcode-cn.com/problems/reverse-linked-list/">反转链表</a></h3>
+<hr>
+<p>描述：</p>
+<p>反转一个单链表。</p>
+<p>示例:</p>
+<p>输入: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL
+输出: 5-&gt;4-&gt;3-&gt;2-&gt;1-&gt;NULL
+进阶:
+你可以迭代或递归地反转链表。你能否用两种方法解决这道题？</p>
+<p><a href="https://leetcode-cn.com/problems/reverse-linked-list/solution/fan-zhuan-lian-biao-shuang-zhi-zhen-di-gui-yao-mo-/">思路一</a>：</p>
+<p>突破点：<code>双指针。</code></p>
+<p>步骤：</p>
+<ol>
+<li>定义一前一后两个指针pre和cur；</li>
+<li>每次让pre的next指向cur，实现局部反转；</li>
+<li>局部反转后，两个指针同时前移一位，直到pre到达链表结尾。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> reverseList(ListNode<span style="color:#f92672">*</span> head) {
+</span></span><span style="display:flex;"><span>        ListNode<span style="color:#f92672">*</span> cur <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>, <span style="color:#f92672">*</span>pre <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">!=</span> pre) {
+</span></span><span style="display:flex;"><span>            ListNode<span style="color:#f92672">*</span> t <span style="color:#f92672">=</span> pre<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>            pre<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> cur;
+</span></span><span style="display:flex;"><span>            cur <span style="color:#f92672">=</span> pre;
+</span></span><span style="display:flex;"><span>            pre <span style="color:#f92672">=</span> t;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> cur;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/reverse-linked-list/solution/fan-zhuan-lian-biao-shuang-zhi-zhen-di-gui-yao-mo-/">思路二</a>：</p>
+<p>突破点：<code>递归。</code></p>
+<p>步骤：</p>
+<ol>
+<li>一直递归到链表最后一个节点；</li>
+<li>每次返回时，让当前节点的下一节点的next指针指向当前节点；</li>
+<li>让当前节点的next指针指向nullptr；</li>
+<li>递归函数全部出栈后，反转完成。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> reverseList(ListNode<span style="color:#f92672">*</span> head) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> head <span style="color:#f92672">||</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> head<span style="color:#f92672">-&gt;</span>next) {
+</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> head;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      	ListNode<span style="color:#f92672">*</span> ret <span style="color:#f92672">=</span> reverseList(head<span style="color:#f92672">-&gt;</span>next);
+</span></span><span style="display:flex;"><span>      	head<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>     	 	head<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>      	<span style="color:#66d9ef">return</span> ret;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目21合并两个有序链表httpsleetcode-cncomproblemsmerge-two-sorted-lists">题目21:<a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/">合并两个有序链表</a></h3>
+<hr>
+<p>描述：</p>
+<p>将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</p>
+<p>示例：</p>
+<p>输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4
+输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</p>
+<p><a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/solution/he-bing-liang-ge-you-xu-lian-biao-by-leetcode-solu/">思路</a>：</p>
+<p>突破点：<code>递归。</code></p>
+<p>步骤：</p>
+<ol>
+<li>递归时，首先比较两个输入头节点的大小；</li>
+<li>若list1小于list2的头节点，则尾部添加list1后继续递归；</li>
+<li>若list1大于list2的头节点，则尾部添加list2后继续递归。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> mergeTwoLists(ListNode<span style="color:#f92672">*</span> l1, ListNode<span style="color:#f92672">*</span> l2) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> l1) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> l2;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> l2) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> l1;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (l1<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">&lt;</span> l2<span style="color:#f92672">-&gt;</span>val) {
+</span></span><span style="display:flex;"><span>            l1<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> mergeTwoLists(l1<span style="color:#f92672">-&gt;</span>next, l2);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> l1;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            l2<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> mergeTwoLists(l1, l2<span style="color:#f92672">-&gt;</span>next);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> l2;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目23合并k个升序链表httpsleetcode-cncomproblemsmerge-k-sorted-lists">题目23:<a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/">合并K个升序链表</a></h3>
+<hr>
+<p>描述：</p>
+<p>给你一个链表数组，每个链表都已经按升序排列。</p>
+<p>请你将所有链表合并到一个升序链表中，返回合并后的链表。</p>
+<p>示例 1：</p>
+<p>输入：lists = [[1,4,5],[1,3,4],[2,6]]
+输出：[1,1,2,3,4,4,5,6]
+解释：链表数组如下：
+[
+1-&gt;4-&gt;5,
+1-&gt;3-&gt;4,
+2-&gt;6
+]
+将它们合并到一个有序链表中得到。
+1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6
+示例 2：</p>
+<p>输入：lists = []
+输出：[]
+示例 3：</p>
+<p>输入：lists = [[]]
+输出：[]</p>
+<p>提示：</p>
+<p>k == lists.length
+0 &lt;= k &lt;= 10^4
+0 &lt;= lists[i].length &lt;= 500
+-10^4 &lt;= lists[i][j] &lt;= 10^4
+lists[i] 按 升序 排列
+lists[i].length 的总和不超过 10^4</p>
+<p><a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/he-bing-kge-pai-xu-lian-biao-by-leetcode-solutio-2/">思路一</a>：</p>
+<p>突破点：<code>分治合并。</code></p>
+<p>步骤：</p>
+<ol>
+<li>将k个链表配对，并两两合并；</li>
+<li>重复1.中过程，直到得到最终链表。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> mergeTwoLists(ListNode <span style="color:#f92672">*</span>a, ListNode <span style="color:#f92672">*</span>b) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> ((<span style="color:#f92672">!</span>a) <span style="color:#f92672">||</span> (<span style="color:#f92672">!</span>b)) <span style="color:#66d9ef">return</span> a <span style="color:#f92672">?</span> a : b;
+</span></span><span style="display:flex;"><span>        ListNode head, <span style="color:#f92672">*</span>tail <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>head, <span style="color:#f92672">*</span>aPtr <span style="color:#f92672">=</span> a, <span style="color:#f92672">*</span>bPtr <span style="color:#f92672">=</span> b;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (aPtr <span style="color:#f92672">&amp;&amp;</span> bPtr) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (aPtr<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">&lt;</span> bPtr<span style="color:#f92672">-&gt;</span>val) {
+</span></span><span style="display:flex;"><span>                tail<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> aPtr; 
+</span></span><span style="display:flex;"><span>              	aPtr <span style="color:#f92672">=</span> aPtr<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                tail<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> bPtr; 
+</span></span><span style="display:flex;"><span>              	bPtr <span style="color:#f92672">=</span> bPtr<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            tail <span style="color:#f92672">=</span> tail<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        tail<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> (aPtr <span style="color:#f92672">?</span> aPtr : bPtr);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> head.next;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> <span style="color:#a6e22e">merge</span>(vector <span style="color:#f92672">&lt;</span>ListNode<span style="color:#f92672">*&gt;</span> <span style="color:#f92672">&amp;</span>lists, <span style="color:#66d9ef">int</span> l, <span style="color:#66d9ef">int</span> r) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (l <span style="color:#f92672">==</span> r) <span style="color:#66d9ef">return</span> lists[l];
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (l <span style="color:#f92672">&gt;</span> r) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nullptr</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> (l <span style="color:#f92672">+</span> r) <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> mergeTwoLists(merge(lists, l, mid), merge(lists, mid <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, r));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> <span style="color:#a6e22e">mergeKLists</span>(vector<span style="color:#f92672">&lt;</span>ListNode<span style="color:#f92672">*&gt;&amp;</span> lists) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> merge(lists, <span style="color:#ae81ff">0</span>, lists.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/he-bing-kge-pai-xu-lian-biao-by-leetcode-solutio-2/">思路二</a>：</p>
+<p>突破点：<code>优先队列。</code></p>
+<p>步骤：</p>
+<ol>
+<li>维护当前每个链表没有别合并的元素最前面的一个；</li>
+<li>每次在1.中选取val值最小的元素合并到result中；</li>
+<li>使用优先队列进行优化。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Status</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> val;
+</span></span><span style="display:flex;"><span>        ListNode <span style="color:#f92672">*</span>ptr;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span> <span style="color:#f92672">&lt;</span> (<span style="color:#66d9ef">const</span> Status <span style="color:#f92672">&amp;</span>rhs) <span style="color:#66d9ef">const</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> val <span style="color:#f92672">&gt;</span> rhs.val;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    priority_queue <span style="color:#f92672">&lt;</span>Status<span style="color:#f92672">&gt;</span> q;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> <span style="color:#a6e22e">mergeKLists</span>(vector<span style="color:#f92672">&lt;</span>ListNode<span style="color:#f92672">*&gt;&amp;</span> lists) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> node: lists) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (node) q.push({node<span style="color:#f92672">-&gt;</span>val, node});
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        ListNode head, <span style="color:#f92672">*</span>tail <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>head;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>q.empty()) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">auto</span> f <span style="color:#f92672">=</span> q.top(); q.pop();
+</span></span><span style="display:flex;"><span>            tail<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> f.ptr; 
+</span></span><span style="display:flex;"><span>            tail <span style="color:#f92672">=</span> tail<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (f.ptr<span style="color:#f92672">-&gt;</span>next) q.push({f.ptr<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>val, f.ptr<span style="color:#f92672">-&gt;</span>next});
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> head.next;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div>
+			</div>
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/2023-12-03-hello-world/">Hello World</a></li>
+				
+				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
+				
+				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
+				
+				<li><a href="/posts/2022-10-21-getopts-in-bash/">getopts in Bash</a></li>
+				
+				<li><a href="/posts/2021-06-05-k8s-and-docker-related-notes/">K8s and docker Related Notes</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
+	<a href="https://github.com/junyubian"><b>Github</b></a>.
+	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
+	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
+	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>

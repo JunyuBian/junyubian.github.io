@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>知识点整理-1</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+	
+</head>
+<body>
+	<header>
+	================<br>
+	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
+	================
+	<div style="float: right;">&#34;Salvation lies within.&#34;</div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/posts/"><b>Posts</b></a>.
+			
+			<a href="/categories/"><b>Categories</b></a>.
+			
+			<a href="/tags/"><b>Tags</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
+
+	
+	<main>
+		<article>
+			<h1>知识点整理-1</h1>
+			<b><time>04/15/2020 22:27</time></b>
+		       
+		           <a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
+        	       
+		           <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F">操作系统</a>
+        	       
+		           <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>
+        	       
+
+			<div>
+				<h3 id="1-c的内存管理分哪些区分别有什么作用">1. C++的内存管理分哪些区，分别有什么作用</h3>
+<hr>
+<p>C++的内存主要分为五大区：堆区、栈区、自由存储区、全局/静态存储区、常量存储区。</p>
+<p><strong>堆区</strong>：程序员分配释放，使用new分配内存块，使用delete归还内存空间。</p>
+<p><strong>栈区</strong>：编译器自动分配释放，用于存放局部变量、函数参数等。</p>
+<p><strong>自由存储区</strong>：程序员分配释放，使用malloc分配内存块，使用free归还内存空间。</p>
+<p><strong>全局区/静态区</strong>：全局变量和静态变量分配在同一块内存中。</p>
+<p><strong>常量存储区</strong>：存放不可修改的常量值。</p>
+<hr>
+<h3 id="2-c源文本到可执行文件需要经历哪些阶段">2. C++源文本到可执行文件需要经历哪些阶段</h3>
+<hr>
+<p><strong>预处理</strong>：将源代码和相关头文件处理成一个.i文件。</p>
+<p><strong>编译</strong>：将预处理的文件进行词法分析、语义分析，优化后产生相应的汇编代码。</p>
+<p><strong>汇编</strong>：将汇编语言代码翻译成目标机器码。</p>
+<p><strong>链接</strong>：把每个机器码文件按照要求连接起来，解决代码间的相互依赖问题。</p>
+<hr>
+<h3 id="3-析构函数为什么必须是虚函数">3. 析构函数为什么必须是虚函数</h3>
+<hr>
+<p>为了保证整个派生类的对象完全被释放。</p>
+<p>当析构函数不为虚函数时，在删除基类指针时，只会调用基类析构函数，而不调用派生类的析构函数，这样会导致基类指针指向的派生类对象析构不完全。</p>
+<p>当析构函数为虚函数时，在删除基类指针时，会调用该指针指向派生类的析构函数，同时派生类的析构函数自动调用基类析构函数，保证对象被完全释放。</p>
+<hr>
+<h3 id="4-虚函数和纯虚函数有什么区别">4. 虚函数和纯虚函数有什么区别</h3>
+<hr>
+<p><strong>虚函数</strong>：在基类中存在定义，可以直接使用，也可以被派生类重写后使用。</p>
+<p><strong>纯虚函数</strong>：在基类中不存在定义，只有声明，必须在子类中定义后才能使用。</p>
+<hr>
+<h3 id="5-虚函数的实现机制">5. 虚函数的实现机制</h3>
+<hr>
+<p>编译器自动为存在虚函数的类生成一个虚函数表，当声明该类的对象时，放入一个隐式指针变量，指向虚函数表。</p>
+<p>在调用方法时，系统根据不同对象的指针，寻找到对应的虚函数表，进而找到所需的函数地址进行调用。</p>
+<hr>
+<h3 id="6野指针怎么出现的">6.野指针怎么出现的</h3>
+<hr>
+<p>指针变量未初始化。</p>
+<p>指针释放后未置空。</p>
+<p>返回指向栈内存的指针。</p>
+<hr>
+<h3 id="7-类和结构体有什么区别">7. 类和结构体有什么区别</h3>
+<hr>
+<p>class中默认成员访问权限为private，而struct中为public。</p>
+<p>class可以用于表示模板类型，sruct不行。</p>
+<p>class是引用类型，struct是值类型。</p>
+<p>class多用来存储数据量大、逻辑复杂的对象，struct多用来存储轻量级对象。</p>
+<p>class多用于表现抽象和多级别的对象层次。</p>
+<hr>
+<h3 id="8-什么情况会导致内存泄漏">8. 什么情况会导致内存泄漏</h3>
+<hr>
+<p>程序循环new创建出来的对象没有及时delete掉。</p>
+<p>delete掉一个void*类型的指针，导致没有调用到对象的析构函数。</p>
+<p>new创建了一组对象，回收时未调用delete[]，而调用了delete，导致只有对象数组的第一个对象的析构函数得到执行并回收了内存。</p>
+<hr>
+<h3 id="9-五种io模型">9. 五种IO模型</h3>
+<hr>
+<p><strong>阻塞IO</strong>：进程发起IO系统调用后，进程被阻塞，转到内核空间处理，处理完毕后返回进程。</p>
+<p><strong>非阻塞IO</strong>：进程发起IO系统调用后，如果内核缓冲区没有数据，返回给进程一个错误，而不会阻塞进程，如果缓冲区有数据，则将数据返回给进程。【发起IO后，内核便开始处理，一直有返回值，但是直到内核处理完才有数据。】</p>
+<p><strong>IO复用</strong>：多个进程的IO注册到一个复用器（select）上，select监听所有进来的IO。【同时负责很多水龙头，哪个水龙头要来水了，就打开哪一个。】</p>
+<p><strong>信号驱动IO</strong>：进程发起IO系统调用后，向内核注册信号处理函数，然后进程返回不阻塞，当内核数据就绪则通知进程发起IO调用读取数据。【首先用信号通知内核空间，等到数据就绪再发起IO。】</p>
+<p><strong>异步IO</strong>：进程发起IO系统调用后，进程返回不阻塞，等内核将IO处理完，通知进程数据结果。</p>
+<hr>
+<h3 id="10-tcp如何保证传输的可靠性">10. TCP如何保证传输的可靠性</h3>
+<hr>
+<p><strong>校验和</strong>：接收方和发送方均进行校验和的计算，并进行对比。</p>
+<p><strong>序列号</strong>：TCP传输时将每个字节的数据都进行编号。</p>
+<p><strong>确认应答</strong>：TCP传输过程中，每次接收方收到数据后，均对传输方进行确认应答（ACK）。</p>
+<p><strong>超时重传</strong>：发送方在发送完数据后进行等待，一段时间后没有收到ACK，则对刚才的数据进行重新发送。</p>
+<p><strong>连接管理</strong>：三次握手与四次挥手。</p>
+<p><strong>流量控制</strong>：在回复ACK时，接收端介绍自己接受数据的缓冲区剩余大小。</p>
+<p><strong>拥塞控制</strong>：慢开始、拥塞避免等操作。</p>
+<hr>
+<h3 id="11-tcp快速重传的实现">11. TCP快速重传的实现</h3>
+<hr>
+<p>举例：发送方发出1、2、3、4、5五份数据，1送到了，则回复ACK2，但是2没送到，3送到了，于是继续回复ACK2，后面4和5都送到了，继续回复ACK2，直到发送端收到三次ACK2，则重新发送2，然后接收端收到2，因为3、4、5都已经收到，所以回复ACK6。</p>
+			</div>
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/2023-12-03-hello-world/">Hello World</a></li>
+				
+				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
+				
+				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
+				
+				<li><a href="/posts/2022-10-21-getopts-in-bash/">getopts in Bash</a></li>
+				
+				<li><a href="/posts/2021-06-05-k8s-and-docker-related-notes/">K8s and docker Related Notes</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
+	<a href="https://github.com/junyubian"><b>Github</b></a>.
+	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
+	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
+	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>

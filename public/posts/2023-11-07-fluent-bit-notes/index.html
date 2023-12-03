@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>Fluent Bit Client Notes</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+	
+</head>
+<body>
+	<header>
+	================<br>
+	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
+	================
+	<div style="float: right;">&#34;Salvation lies within.&#34;</div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/posts/"><b>Posts</b></a>.
+			
+			<a href="/categories/"><b>Categories</b></a>.
+			
+			<a href="/tags/"><b>Tags</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
+
+	
+	<main>
+		<article>
+			<h1>Fluent Bit Client Notes</h1>
+			<b><time>11/07/2023 21:53</time></b>
+		       
+		           <a href="/tags/fluent-bit">Fluent-bit</a>
+        	       
+		           <a href="/tags/logging">Logging</a>
+        	       
+
+			<div>
+				<h1 id="what-is-fluent-bit">What is Fluent Bit</h1>
+<p>One day, the Insurance Management System Tom built crashed. Good news is the system recovered through rebooting, bad news is Tom did not know what had gone wrong. Tom&rsquo;s dad comes by and says to Tom &ldquo;Fluent Bit is a telemetry agent designed to collect and process telemetry data from constrained systems to cloud infrastructures. Why don&rsquo;t you give it a try?&rdquo;</p>
+<h1 id="structural-sketch">Structural Sketch</h1>
+<p>Tom is a good listener. He listened to his dad and checked the Fluent Bit website <a href="https://docs.fluentbit.io">https://docs.fluentbit.io</a>, and found one great picture shows the rough structure of Fluent Bit:
+
+<figure>
+  <img src="https://github.com/JunyuBian/PicsForBlogs/blob/main/iShot_2023-11-08_22.24.51.png" alt="Structural Sketch" />
+</figure>
+
+
+</p>
+<h1 id="how-to-set-it-up">How to Set it Up</h1>
+<p>Tom told his dad there&rsquo;re two different methods to config Fluent Bit:</p>
+<h2 id="through-config-file">Through Config File</h2>
+<p>Fluent Bit could use config file to set Input sources, Filters, Output destinations, etc. Sample config file, which locates in <code>/etc/fluent-bit/fluent-bit.conf</code> by default:</p>
+<pre tabindex="0"><code>[INPUT]
+    Name    forward
+    Listen  0.0.0.0
+    Port    24224
+    Tag     sampleTag
+
+[FILTER]
+    Name    rewrite_tag
+    Match   sampleTag
+    Rule    $name ^\/.+[-_]([a-z\-]+)[-_][0-9]+$ esp-$1 false
+
+[OUTPUT]
+    Name    stdout
+    Match   *
+</code></pre><p>To use a specific config file instead of the default one, we could use this command: <code>bin/fluent-bit -c example.conf</code>, <code>-c</code> will indicate a new config file.</p>
+<h2 id="though-command-line-parameters">Though Command Line Parameters</h2>
+<p>Instead of a config file, we could directly reveal INPUTs, FILTERs and OUTPUTs in command line, one example would be:</p>
+<pre tabindex="0"><code>bin/fluent-bit -i systemd \
+        -p systemd_filter=_SYSTEMD_UNIT=docker.service \
+        -p tag=&#39;sampletag&#39; \
+        -o forward://${fording_server}:24224
+</code></pre><h1 id="other-notes">Other Notes</h1>
+<p>While using fluent-bit, Tom also found it has below characteristics:</p>
+<ol>
+<li>It could recive forwarded logs from other fluent-bit client, and together forward or output to other destinations.</li>
+<li>If we&rsquo;re going to install two deb packages including fluent-bit on one same machine, it may incur resource race. Since both fluent-bit will leverage <code>/etc/fluent-bit/fluent-bit.conf</code>. One way to resolve this is, ask one of the client to use different config file or passing config through command line, and while installing the other client, adding <code>--force-overwrite</code>.</li>
+</ol>
+<p>Tom is not complete happy, he thinks there should be more to discover for this topic.</p>
+
+			</div>
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/2023-12-03-hello-world/">Hello World</a></li>
+				
+				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
+				
+				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
+				
+				<li><a href="/posts/2022-10-21-getopts-in-bash/">getopts in Bash</a></li>
+				
+				<li><a href="/posts/2021-06-05-k8s-and-docker-related-notes/">K8s and docker Related Notes</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
+	<a href="https://github.com/junyubian"><b>Github</b></a>.
+	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
+	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
+	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>

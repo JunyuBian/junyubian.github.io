@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>Sorting Algorithms - Bubble Sort</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+	
+</head>
+<body>
+	<header>
+	================<br>
+	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
+	================
+	<div style="float: right;">&#34;Salvation lies within.&#34;</div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/posts/"><b>Posts</b></a>.
+			
+			<a href="/categories/"><b>Categories</b></a>.
+			
+			<a href="/tags/"><b>Tags</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
+
+	
+	<main>
+		<article>
+			<h1>Sorting Algorithms - Bubble Sort</h1>
+			<b><time>04/22/2020 09:23</time></b>
+		       
+		           <a href="/tags/algorithm">Algorithm</a>
+        	       
+		           <a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
+        	       
+
+			<div>
+				<p>In this series of blogs, we will talk about different sorting algorithms.</p>
+<p>All the algorithms in the table below will be covered.</p>
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Time Complexity (Average Case)</th>
+<th>Time Complexity (Worst Case)</th>
+<th>Time Complexity (Best Case)</th>
+<th>Merg</th>
+<th>Stability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bubble Sort</td>
+<td>O(N^2)</td>
+<td>O(N^2)</td>
+<td>O(N^2)</td>
+<td>O(1)</td>
+<td>Stable</td>
+</tr>
+<tr>
+<td>Quick Sort</td>
+<td>O(NlogN)</td>
+<td>O(N^2)</td>
+<td>O(NlogN)</td>
+<td>O(logN)</td>
+<td>Not Stable</td>
+</tr>
+<tr>
+<td>Quick Sort (with Random Selection)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(logN)</td>
+<td>Not Stable</td>
+</tr>
+<tr>
+<td>Insertion Sort</td>
+<td>O(N^2)</td>
+<td>O(N^2)</td>
+<td>O(N)</td>
+<td>O(1)</td>
+<td>Stable</td>
+</tr>
+<tr>
+<td>Selection Sort</td>
+<td>O(N^2)</td>
+<td>O(N^2)</td>
+<td>O(N^2)</td>
+<td>O(1)</td>
+<td>Not Stable</td>
+</tr>
+<tr>
+<td>Heap Sort</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(1)</td>
+<td>Not Stable</td>
+</tr>
+<tr>
+<td>Merge Sort (with double divides)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(N)</td>
+<td>Stable</td>
+</tr>
+<tr>
+<td>Merge Sort (with multi divides)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(N)</td>
+<td>Stable</td>
+</tr>
+<tr>
+<td>Counting Sort</td>
+<td>O(N+M)</td>
+<td>O(N+M)</td>
+<td>O(N+M)</td>
+<td>O(N+M)</td>
+<td>Stable</td>
+</tr>
+<tr>
+<td>Bucket Sort</td>
+<td>O(N+M)</td>
+<td>O(N^2)</td>
+<td>O(N+M)</td>
+<td>O(N+M)</td>
+<td>Stable</td>
+</tr>
+<tr>
+<td>Radix Sort</td>
+<td>O(N*M)</td>
+<td>O(N*M)</td>
+<td>O(N*M)</td>
+<td>O(N+M)</td>
+<td>Stable</td>
+</tr>
+</tbody>
+</table>
+<h1 id="bubble-sort">Bubble Sort</h1>
+<h2 id="how-to-do-it">How to do it&hellip;</h2>
+<p>Compare the adjacent elements.</p>
+<p>If the first element is greater than the second element, swap them.</p>
+<p>Loop until reaching the last pair of elements.</p>
+<p>Repeat until all the array is sorted.</p>
+<h2 id="how-to-code-it">How to code it&hellip;</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">BubbleSort</span>(<span style="color:#66d9ef">int</span> array[]) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> array.length(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>  	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> array.length() <span style="color:#f92672">-</span> i; j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (array[j] <span style="color:#f92672">&gt;</span> array[j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]) {
+</span></span><span style="display:flex;"><span>      	swap(array[j], array[j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]);
+</span></span><span style="display:flex;"><span>    	}
+</span></span><span style="display:flex;"><span>  	}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="how-to-improve-it">How to improve it&hellip;</h2>
+<p>We can make a judgement before we do the algorithm.</p>
+<p>Check whether the array is already sorted or not.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">BubbleSortwithCheck</span>(<span style="color:#66d9ef">int</span> array[]) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> array.length(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>  	<span style="color:#66d9ef">bool</span> sorted <span style="color:#f92672">=</span> true;
+</span></span><span style="display:flex;"><span>  	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> length() <span style="color:#f92672">-</span> i; j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (array[j] <span style="color:#f92672">&gt;</span> array[j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]) {
+</span></span><span style="display:flex;"><span>      	swap(array[j], array[j<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]);
+</span></span><span style="display:flex;"><span>      	sorted <span style="color:#f92672">=</span> false;
+</span></span><span style="display:flex;"><span>    	}
+</span></span><span style="display:flex;"><span>  	}
+</span></span><span style="display:flex;"><span>  	<span style="color:#66d9ef">if</span> (sorted) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>  	}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+			</div>
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/2023-12-03-hello-world/">Hello World</a></li>
+				
+				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
+				
+				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
+				
+				<li><a href="/posts/2022-10-21-getopts-in-bash/">getopts in Bash</a></li>
+				
+				<li><a href="/posts/2021-06-05-k8s-and-docker-related-notes/">K8s and docker Related Notes</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
+	<a href="https://github.com/junyubian"><b>Github</b></a>.
+	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
+	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
+	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>

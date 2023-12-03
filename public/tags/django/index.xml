@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Django on Junyu Bian</title>
+    <link>https://junyubian.github.io/tags/django/</link>
+    <description>Recent content in Django on Junyu Bian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 28 Apr 2020 22:59:02 +0000</lastBuildDate>
+    <atom:link href="https://junyubian.github.io/tags/django/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Insurance Management System - Overview</title>
+      <link>https://junyubian.github.io/posts/2020-04-28-insurance-management-system---overview/</link>
+      <pubDate>Tue, 28 Apr 2020 22:59:02 +0000</pubDate>
+      <guid>https://junyubian.github.io/posts/2020-04-28-insurance-management-system---overview/</guid>
+      <description>&lt;p&gt;In this series of blogs, we will talk about how to build a Insurance Management web application together with database system.&lt;/p&gt;
+&lt;h1 id=&#34;background&#34;&gt;Background&lt;/h1&gt;
+&lt;p&gt;Tom&amp;rsquo;s dad works in an insurance company. His work is to drop down who bought what kind of insurance, on which day does the customer receives an invoice, and on which day does the customer makes a payment.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

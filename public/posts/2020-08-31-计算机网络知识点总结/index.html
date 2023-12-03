@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>计算机网络知识点总结</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+	
+</head>
+<body>
+	<header>
+	================<br>
+	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
+	================
+	<div style="float: right;">&#34;Salvation lies within.&#34;</div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/posts/"><b>Posts</b></a>.
+			
+			<a href="/categories/"><b>Categories</b></a>.
+			
+			<a href="/tags/"><b>Tags</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
+
+	
+	<main>
+		<article>
+			<h1>计算机网络知识点总结</h1>
+			<b><time>08/31/2020 16:40</time></b>
+		       
+		           <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>
+        	       
+
+			<div>
+				<h3 id="1-https加密过程">1. Https加密过程</h3>
+<hr>
+<ol>
+<li>客户端发起握手请求；</li>
+<li>服务端返回已有的<code>证书公钥</code>（服务端通过CA认证后，拥有<code>证书公钥</code>和<code>证书私钥</code>）；</li>
+<li>客户端验证证书是否有效；</li>
+<li>若证书有效，则生成一个<code>随机数</code>；</li>
+<li>用<code>证书公钥</code>加密生成的随机数；</li>
+<li>将加密后的<code>密钥</code>发送给服务端；</li>
+<li>服务端用<code>证书私钥</code>解密密钥；</li>
+<li>服务端使用解密出的密钥加密要发送的内容并发送给客户端；</li>
+<li>客户端使用秘钥解密信息。</li>
+</ol>
+<hr>
+<h3 id="2-对称加密与非对称加密">2. 对称加密与非对称加密</h3>
+<hr>
+<p>对称加密：加密和解密使用同一个密钥；</p>
+<p>非对称加密：使用公钥和私钥进行加解密。</p>
+<hr>
+<h3 id="3-close_wait和time_wait">3. CLOSE_WAIT和TIME_WAIT</h3>
+<hr>
+<p>在四次挥手中，</p>
+<p>CLOSE_WAIT：服务端收到FIN后，发送ACK给客户端，之后进入CLOSE_WAIT状态；</p>
+<p>TIME_WAIT：客户端收到FIN后，发送ACK给服务端，之后进入TIME_WAIT状态。</p>
+<hr>
+<h3 id="4-tcp如何保证传输可靠性">4. TCP如何保证传输可靠性</h3>
+<hr>
+<ol>
+<li>数据包校验；</li>
+<li>重排序：TCP将失序数据进行重新排序后才交给应用层；</li>
+<li>应答机制：回复ACK；</li>
+<li>超时重传；</li>
+<li>流量控制：TCP连接的每一方都有固定大小缓冲空间，通过可变大小的滑窗协议完成。</li>
+</ol>
+<hr>
+<h3 id="5如何预防tcp的ddos攻击">5.如何预防TCP的DDos攻击</h3>
+<hr>
+<ol>
+<li>
+<p>限制同时打开SYN半链接的数目；</p>
+<p>方法：在注册表中对TCPMaxHalfOpen相关参数进行调整；</p>
+<p>TCPMaxHalfOpen相关参数：</p>
+<ol>
+<li>SynAttackProtect：决定了系统受到SYN攻击时采取的保护措施，包括减少系统SYN+ACK的重试次数等；</li>
+<li>TcpMaxHalfOpen：系统允许同时打开的半链接值；</li>
+<li>TcpMaxHalfOpenRetried：决定在什么情况下系统打开SYN攻击保护；</li>
+</ol>
+</li>
+<li>
+<p>缩短SYN半链接的Time out时间。</p>
+</li>
+</ol>
+<hr>
+<h3 id="6-tcp如何实现拥塞控制">6. TCP如何实现拥塞控制</h3>
+<hr>
+<ol>
+<li>慢启动：以指数方式，由小到大逐渐增加拥塞窗口(cwnd)的大小，慢启动达到ssthresh阈值则进入拥塞避免；</li>
+<li>拥塞避免：每经过一个往返时间RTT就把发送方拥塞窗口增加1，按照线性增长，发生拥塞，cwnd降为1，重新慢启动；</li>
+<li>快重传：接收方收到失序报文后，立即发出重复确认，发送方收到三个连续重复确认则立即重传；</li>
+<li>快恢复：发送方收到重复确认后，执行<code>乘法减小</code> ，把ssthresh减半，但不执行慢开始，因为如果发生阻塞，不会收到多个重复确认，而是将cwnd设置为ssthresh大小进行拥塞避免。</li>
+</ol>
+<hr>
+<h3 id="7-从输入网址到获得页面的过程">7. 从输入网址到获得页面的过程</h3>
+<hr>
+<ol>
+<li>浏览器通过DNS查询对应IP地址：
+<ol>
+<li>浏览器搜索自身DNS缓存；</li>
+<li>搜索操作系统DNS缓存；</li>
+<li>向本地DNS服务器进行查询；</li>
+<li>若不在本地域名服务器，则递归或迭代查询：
+<ol>
+<li>递归查询：服务器作为DNS客户向根服务器查询；</li>
+<li>迭代查询：根服务器告知服务器需要查询的IP，服务器自己进行查询；</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>获取IP地址后，浏览器向服务器请求建立连接，发起三次握手；</li>
+<li>TCP连接建立后，浏览器向服务器发送HTTP请求；</li>
+<li>浏览器对请求进行处理，并将处理结果返回给浏览器；</li>
+<li>浏览器进行渲染，呈现页面给用户。</li>
+</ol>
+<hr>
+<h3 id="8-session-与-cookie">8. Session 与 Cookie</h3>
+<hr>
+<p><strong>Session</strong>：</p>
+<ol>
+<li>
+<p>用户访问服务器时，服务器首先检查请求中是否包含sessionId，若包含，说明session已创建，若不包含，则为用户建立一个session并分配sessionId（依赖Cookie）；</p>
+</li>
+<li>
+<p>用户提交表单时，浏览器将用户的SessionId附在HTTP头信息中，服务器处理完表单将结果返回sessionId对应的用户；</p>
+</li>
+<li>
+<p>若Cookie被禁用：</p>
+<ol>
+<li>URL重写：直接将sessionId附在URL后；
+2. 表单隐藏字段：修改表单，添加一个隐藏字段，以便提交时能够回传sessionId</li>
+</ol>
+</li>
+<li>
+<p>session共享：修改cookie的域名为父域名；</p>
+</li>
+<li>
+<p>使用场景：购物车；</p>
+</li>
+</ol>
+<p><strong>Cookie</strong>：</p>
+<ol>
+<li>若服务器需要记录用户状态，则使用response向客户端颁发一个cookie，再次请求时，浏览器将请求网址连同cookie一起提交给服务器；</li>
+<li>会话Cookie和持久Cookie：
+<ol>
+<li>会话cookie：不设置过期时间，关闭浏览器窗口，cookie就消失，一般保存在内存里而不是硬盘上；</li>
+<li>持久cookie：设置了过期时间，cookie有效指导超过了设定的过期时间，一般存储在硬盘上；</li>
+</ol>
+</li>
+<li>使用场景：登录网站。</li>
+</ol>
+<hr>
+<h3 id="9-七层网络体系结构">9. 七层网络体系结构</h3>
+<hr>
+<ol>
+<li>物理层：实现相邻计算机节点之间比特流透明传送；</li>
+<li>数据链路层：接手物理层的位流行驶数据，封装成帧，传送到上一层，同样，也将上一层的数据帧，拆装成位流转发到物理层；</li>
+<li>网络层：将网络地址翻译为对应的物理地址，并通过路由算法选择最佳路径；</li>
+<li>传输层：为不同主机上运行的进程提供逻辑通信；
+<ol>
+<li>区别于网络层：网络层完成主机间的逻辑通信，传输层完成应用进程间的逻辑通信；</li>
+</ol>
+</li>
+<li>会话层：应用程序与网络之间的接口，负责在网络中的两节点之间建立、维持和终止通信；</li>
+<li>表示层：对来自应用层的命令和数据进行解释；</li>
+<li>应用层：为用户的应用进程提供网络通信服务。</li>
+</ol>
+<hr>
+<h3 id="10-tcp和udp对应的常见应用层协议">10. TCP和UDP对应的常见应用层协议</h3>
+<ol>
+<li>TCP：
+<ol>
+<li>FTP：文件传输协议；</li>
+<li>Telnet：用于远程登录的端口：
+<ol>
+<li>和ssh的区别：
+<ol>
+<li>telnet为明文传送，ssh为加密传送；</li>
+<li>ssh使用公钥对服务器的用户进行身份验证，telnet没有使用公钥；</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>SMTP：邮件传送协议，用于发送邮件；</li>
+<li>POP3：用于接收邮件；</li>
+<li>HTTP；</li>
+</ol>
+</li>
+<li>UDP：
+<ol>
+<li>DNS：域名解析服务；</li>
+<li>SNMP：网络管理协议，用于管理网络设备；</li>
+<li>TFTP：简单文件传输协议。</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h3 id="11-arp">11. ARP</h3>
+<hr>
+<ol>
+<li>将IP地址转换为MAC地址；</li>
+<li>网络通过帧进行传输，帧里面需要目标主机的MAC地址。</li>
+</ol>
+<hr>
+<h3 id="12-常见状态码">12. 常见状态码</h3>
+<hr>
+<p>1XX：请求已被接受，正在处理；</p>
+<p>2XX：请求成功被处理；</p>
+<p>3XX：重定向：</p>
+<p>​	301：永久性转移；</p>
+<p>​	302：暂时性转移；</p>
+<p>​	304：已缓存；</p>
+<p>4XX：客户端请求不合法：</p>
+<p>​	400：请求语法有问题；</p>
+<p>​	403：拒绝请求；</p>
+<p>​	404：客户端所访问的页面不存在；</p>
+<p>5XX：服务器不能处理合法请求：</p>
+<p>​	500：服务器内部错误；</p>
+<p>​	503：服务暂时不可用。</p>
+			</div>
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/2023-12-03-hello-world/">Hello World</a></li>
+				
+				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
+				
+				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
+				
+				<li><a href="/posts/2022-10-21-getopts-in-bash/">getopts in Bash</a></li>
+				
+				<li><a href="/posts/2021-06-05-k8s-and-docker-related-notes/">K8s and docker Related Notes</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
+	<a href="https://github.com/junyubian"><b>Github</b></a>.
+	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
+	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
+	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>

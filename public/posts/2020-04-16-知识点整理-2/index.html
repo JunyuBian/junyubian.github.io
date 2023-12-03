@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>知识点整理-2</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+	
+</head>
+<body>
+	<header>
+	================<br>
+	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
+	================
+	<div style="float: right;">&#34;Salvation lies within.&#34;</div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/posts/"><b>Posts</b></a>.
+			
+			<a href="/categories/"><b>Categories</b></a>.
+			
+			<a href="/tags/"><b>Tags</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
+
+	
+	<main>
+		<article>
+			<h1>知识点整理-2</h1>
+			<b><time>04/16/2020 21:29</time></b>
+		       
+		           <a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
+        	       
+		           <a href="/tags/linux">Linux</a>
+        	       
+		           <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>
+        	       
+		           <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>
+        	       
+
+			<div>
+				<h3 id="1-两个有序链表合并成一个leetcode-21">1. 两个有序链表合并成一个(leetcode 21)</h3>
+<hr>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">ListNode</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">int</span> val;
+</span></span><span style="display:flex;"><span>   ListNode <span style="color:#f92672">*</span>next;
+</span></span><span style="display:flex;"><span>   ListNode(<span style="color:#66d9ef">int</span> x) <span style="color:#f92672">:</span> val(x), next(NULL) {}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ListNode<span style="color:#f92672">*</span> <span style="color:#a6e22e">mergeTwoLists</span>(ListNode<span style="color:#f92672">*</span> l1, ListNode<span style="color:#f92672">*</span> l2) {
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">if</span>(l1 <span style="color:#f92672">==</span> NULL){
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> l2;
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">if</span> (l2 <span style="color:#f92672">==</span> NULL){
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> l1;
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">if</span> (l1<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">&lt;</span> l2<span style="color:#f92672">-&gt;</span>val){
+</span></span><span style="display:flex;"><span>      l1<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> mergeTwoLists(l1<span style="color:#f92672">-&gt;</span>next, l2);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> l1;
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      l2<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> mergeTwoLists(l1, l2<span style="color:#f92672">-&gt;</span>next);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> l2;
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><hr>
+<h3 id="2-get和post的区别">2. GET和POST的区别</h3>
+<hr>
+<p>GET所发送的数据是URL的一部分，POST数据不会显示在URL中。</p>
+<p>GET和POST方法没有本质区别，只是报文格式不同，两者都使用HTTP，都是不安全的，想要安全传输需要使用HTTPS。</p>
+<hr>
+<h3 id="3-https的实现原理">3. HTTPS的实现原理</h3>
+<hr>
+<p>HTTPS原理：在传输层（TCP）和应用层（HTTP）之间加了一层SSL/TLS。</p>
+<p>具体加密过程：1. 服务器端发送公钥证书；2. 客户端检验证书是否有效，是，则生成一个随机密钥，并用服务端的公钥进行加密后发送；3. 服务器端用自己私钥加密，取出客户端的随机密钥，将需要发送的内容用该密钥加密并发送。</p>
+<hr>
+<h3 id="4-linux查看最近的日志用什么指令">4. Linux查看最近的日志用什么指令</h3>
+<hr>
+<p><strong>tail</strong>：</p>
+<blockquote>
+<p>tail -f test.log</p>
+</blockquote>
+<p><strong>head</strong>：</p>
+<blockquote>
+<p>cat test.log | tail -n +3000 | head -n 1000</p>
+</blockquote>
+<p><strong>cat</strong>：</p>
+<blockquote>
+<p>cat filename</p>
+</blockquote>
+<p><strong>tac</strong>：把cat的内容反写过来</p>
+<blockquote>
+<p>tac filename</p>
+</blockquote>
+<p><strong>echo</strong>：</p>
+<blockquote>
+<p>echo &ldquo;the echo command test!&rdquo;</p>
+</blockquote>
+<hr>
+<h3 id="5-hash冲突解决">5. hash冲突解决</h3>
+<hr>
+<p><strong>开放地址法</strong>：再散列函数：</p>
+<blockquote>
+<p>Hi = (H(key) + di) % m, i = 1, 2, &hellip;, n</p>
+</blockquote>
+<p>不同di值对应不同散列方法。</p>
+<p><strong>再哈希法</strong>：同时构造多个不同的哈希函数，某一个发生冲突时计算下一个，直到冲突不再产生。</p>
+<p><strong>链地址法</strong>：将所有哈希地址为i的元素构成一个单链表。</p>
+<p><strong>建立公共溢出区</strong>：将哈希表分为基本表和溢出表，和基本表发生冲突的元素填入溢出表。</p>
+<hr>
+<h3 id="6-快排的时间复杂度和空间复杂度">6. 快排的时间复杂度和空间复杂度</h3>
+<hr>
+<p>平均情况下快速排序的时间复杂度是O(nlgn)，最坏情况是n的平方，可通过随机算法避免最坏情况，或者可先求序列的中值，然后选取中值作为主元素。</p>
+<p>由于递归调用，快排的空间复杂度是O(lgn)。</p>
+<hr>
+<h3 id="7-堆排序的时间复杂度和空间复杂度">7. 堆排序的时间复杂度和空间复杂度</h3>
+<hr>
+<p>第一次建堆时间复杂度：O(n)。</p>
+<p>更改元素时建堆时间复杂度：O(nlgn)。</p>
+<p>堆排序平均时间复杂度：O(nlgn)。</p>
+<p>空间复杂度：O(1)。</p>
+<hr>
+<h3 id="8-b树和b树的定义">8. B树和B+树的定义</h3>
+<hr>
+<p>B树中每个节点的关键字都有data域。</p>
+<p>B+树除了叶子节点，其他节点只有索引。</p>
+<hr>
+<h3 id="9-c-vector里size和capacity的区别">9. C++ vector里size和capacity的区别</h3>
+<hr>
+<p>size是当前vector容器的真实占用大小。</p>
+<p>capacity是当前允许的最大元素数。</p>
+			</div>
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/2023-12-03-hello-world/">Hello World</a></li>
+				
+				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
+				
+				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
+				
+				<li><a href="/posts/2022-10-21-getopts-in-bash/">getopts in Bash</a></li>
+				
+				<li><a href="/posts/2021-06-05-k8s-and-docker-related-notes/">K8s and docker Related Notes</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
+	<a href="https://github.com/junyubian"><b>Github</b></a>.
+	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
+	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
+	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>

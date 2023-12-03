@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on Junyu Bian</title>
+    <link>https://junyubian.github.io/tags/docker/</link>
+    <description>Recent content in Docker on Junyu Bian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 05 Jun 2021 15:08:29 +0000</lastBuildDate>
+    <atom:link href="https://junyubian.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>K8s and docker Related Notes</title>
+      <link>https://junyubian.github.io/posts/2021-06-05-k8s-and-docker-related-notes/</link>
+      <pubDate>Sat, 05 Jun 2021 15:08:29 +0000</pubDate>
+      <guid>https://junyubian.github.io/posts/2021-06-05-k8s-and-docker-related-notes/</guid>
+      <description>&lt;h4 id=&#34;1-management-tools-for-clusters-pods-deployments-etc-&#34;&gt;1. Management tools for clusters, pods, deployments, etc. :&lt;/h4&gt;
+&lt;p&gt;k9s&lt;/p&gt;
+&lt;h4 id=&#34;2-when-not-able-to-delete-resources-in-k8s&#34;&gt;2. When not able to delete resources in k8s:&lt;/h4&gt;
+&lt;p&gt;First edit resource:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;kubectl edit &amp;lt;resource name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;then delete the &lt;code&gt;finalizer&lt;/code&gt; part and try again.&lt;/p&gt;
+&lt;h4 id=&#34;3-filtering-docker-images&#34;&gt;3. filtering docker images&lt;/h4&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker image &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name*&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>
