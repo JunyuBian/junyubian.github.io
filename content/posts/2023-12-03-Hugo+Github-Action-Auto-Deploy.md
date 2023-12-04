@@ -29,6 +29,8 @@ Most steps and tips have been covered by reference#1 and reference#2.
 
 Action will build from base url, could use this feature to create different sub domain under github.io. e.g. create a repo called `projects` to display different projects, this will be added to github.io/prjects
 
+If site deployment is automatically triggered by Github Action, need to notice the time difference between Github server and local time zone.
+
 # Reference
 
 1-https://gohugo.io/hosting-and-deployment/hosting-on-github/
