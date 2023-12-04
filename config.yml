@@ -75,7 +75,7 @@ params:
   # home-info mode
   homeInfoParams:
     Title: "Hi there \U0001F44B"
-    Content: I'm Junyu Bian. I'm an engineer of cloud native software, an amateur of piano playing, a neighbor by your side, an 8hrs+ sleeper. Make yourself at home.
+    Content: Welcome! Make yourself at home.
 
   socialIcons:
     - name: twitter
