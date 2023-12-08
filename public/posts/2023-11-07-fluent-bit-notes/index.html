@@ -46,11 +46,26 @@
         	       
 		           <a href="/tags/logging">Logging</a>
         	       
+		           <a href="/tags/tom-show">Tom Show</a>
+        	       
+		           <a href="/tags/en">en</a>
+        	       
 
 			<div>
-				<h1 id="what-is-fluent-bit">What is Fluent Bit</h1>
+				<ul>
+<li><a href="#what-is-fluent-bit">What is fluent bit</a></li>
+<li><a href="#structural-sketch">Structural sketch</a></li>
+<li><a href="#how-to-set-it-up">How to set it up</a>
+<ul>
+<li><a href="#through-config-file">Through config file</a></li>
+<li><a href="#though-command-line-parameters">Though command line parameters</a></li>
+</ul>
+</li>
+<li><a href="#other-ootes">Other ootes</a></li>
+</ul>
+<h1 id="what-is-fluent-bit">What is fluent bit</h1>
 <p>One day, the Insurance Management System Tom built crashed. Good news is the system recovered through rebooting, bad news is Tom did not know what had gone wrong. Tom&rsquo;s dad comes by and says to Tom &ldquo;Fluent Bit is a telemetry agent designed to collect and process telemetry data from constrained systems to cloud infrastructures. Why don&rsquo;t you give it a try?&rdquo;</p>
-<h1 id="structural-sketch">Structural Sketch</h1>
+<h1 id="structural-sketch">Structural sketch</h1>
 <p>Tom is a good listener. He listened to his dad and checked the Fluent Bit website <a href="https://docs.fluentbit.io">https://docs.fluentbit.io</a>, and found one great picture shows the rough structure of Fluent Bit:
 
 <figure>
@@ -59,9 +74,9 @@
 
 
 </p>
-<h1 id="how-to-set-it-up">How to Set it Up</h1>
+<h1 id="how-to-set-it-up">How to set it up</h1>
 <p>Tom told his dad there&rsquo;re two different methods to config Fluent Bit:</p>
-<h2 id="through-config-file">Through Config File</h2>
+<h2 id="through-config-file">Through config file</h2>
 <p>Fluent Bit could use config file to set Input sources, Filters, Output destinations, etc. Sample config file, which locates in <code>/etc/fluent-bit/fluent-bit.conf</code> by default:</p>
 <pre tabindex="0"><code>[INPUT]
     Name    forward
@@ -78,20 +93,19 @@
     Name    stdout
     Match   *
 </code></pre><p>To use a specific config file instead of the default one, we could use this command: <code>bin/fluent-bit -c example.conf</code>, <code>-c</code> will indicate a new config file.</p>
-<h2 id="though-command-line-parameters">Though Command Line Parameters</h2>
+<h2 id="though-command-line-parameters">Though command line parameters</h2>
 <p>Instead of a config file, we could directly reveal INPUTs, FILTERs and OUTPUTs in command line, one example would be:</p>
 <pre tabindex="0"><code>bin/fluent-bit -i systemd \
         -p systemd_filter=_SYSTEMD_UNIT=docker.service \
         -p tag=&#39;sampletag&#39; \
         -o forward://${fording_server}:24224
-</code></pre><h1 id="other-notes">Other Notes</h1>
+</code></pre><h1 id="other-ootes">Other ootes</h1>
 <p>While using fluent-bit, Tom also found it has below characteristics:</p>
 <ol>
 <li>It could recive forwarded logs from other fluent-bit client, and together forward or output to other destinations.</li>
 <li>If we&rsquo;re going to install two deb packages including fluent-bit on one same machine, it may incur resource race. Since both fluent-bit will leverage <code>/etc/fluent-bit/fluent-bit.conf</code>. One way to resolve this is, ask one of the client to use different config file or passing config through command line, and while installing the other client, adding <code>--force-overwrite</code>.</li>
 </ol>
 <p>Tom is not complete happy, he thinks there should be more to discover for this topic.</p>
-
 			</div>
 		</article>
 	</main>
@@ -105,7 +119,7 @@
 				
 				<li><a href="/posts/2023-12-02-criterions-for-site/">Criterions for Site</a></li>
 				
-				<li><a href="/posts/2023-12-02-hugo-site-auto-deployment-with-github-action/">Hugo Site Auto Deployment With Github Action</a></li>
+				<li><a href="/posts/2023-12-02-hugo-site-auto-deployment-with-github-action/">Hugo Site Auto Deployment with Github Action</a></li>
 				
 				<li><a href="/posts/2023-12-02-hello-world/">Hello World</a></li>
 				

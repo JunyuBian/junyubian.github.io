@@ -6,6 +6,7 @@ categories:
 tags:
 - K8s
 - Docker
+- en
 ---
 
 #### 1. Management tools for clusters, pods, deployments, etc. : 

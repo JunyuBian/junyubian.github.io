@@ -9,7 +9,7 @@
     <lastBuildDate>Sat, 02 Dec 2023 19:40:43 +0000</lastBuildDate>
     <atom:link href="https://junyubian.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>EN</title>
+      <title>en</title>
       <link>https://junyubian.github.io/tags/en/</link>
       <pubDate>Sat, 02 Dec 2023 19:40:43 +0000</pubDate>
       <guid>https://junyubian.github.io/tags/en/</guid>
@@ -48,6 +48,13 @@
       <link>https://junyubian.github.io/tags/logging/</link>
       <pubDate>Tue, 07 Nov 2023 21:53:43 +0000</pubDate>
       <guid>https://junyubian.github.io/tags/logging/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tom Show</title>
+      <link>https://junyubian.github.io/tags/tom-show/</link>
+      <pubDate>Tue, 07 Nov 2023 21:53:43 +0000</pubDate>
+      <guid>https://junyubian.github.io/tags/tom-show/</guid>
       <description></description>
     </item>
     <item>
@@ -90,6 +97,13 @@
       <link>https://junyubian.github.io/tags/command-line/</link>
       <pubDate>Sat, 05 Jun 2021 00:31:29 +0000</pubDate>
       <guid>https://junyubian.github.io/tags/command-line/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>ch</title>
+      <link>https://junyubian.github.io/tags/ch/</link>
+      <pubDate>Mon, 26 Apr 2021 15:19:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/tags/ch/</guid>
       <description></description>
     </item>
     <item>

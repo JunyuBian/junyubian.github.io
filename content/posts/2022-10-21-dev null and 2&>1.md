@@ -5,6 +5,7 @@ categories:
 - Notes
 tags:
 - Bash
+- en
 ---
 
 # 1. Notice

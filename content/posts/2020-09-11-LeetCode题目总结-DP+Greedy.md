@@ -6,6 +6,7 @@ categories:
 tags:
 - C++
 - 算法
+- ch
 ---
 
 ### 题目5:[最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)

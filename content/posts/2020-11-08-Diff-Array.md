@@ -6,6 +6,7 @@ categories:
 tags:
 - Algorithm
 - C++
+- en
 ---
 
 In this blog, we will talk about one trick can be used to solve problems to do with frequent addition and subtraction to a subsection of an array  - [Diff Array](https://labuladong.gitbook.io/algo/suan-fa-si-wei-xi-lie/3.3-yi-xiang-bu-dao-xi-lie/cha-fen-ji-qiao).

@@ -7,6 +7,8 @@ tags:
 - Algorithm
 - C++
 - 算法
+- Tom Show
+- en
 ---
 
 # Background...

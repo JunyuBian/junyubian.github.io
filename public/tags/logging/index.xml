@@ -13,8 +13,19 @@
       <link>https://junyubian.github.io/posts/2023-11-07-fluent-bit-notes/</link>
       <pubDate>Tue, 07 Nov 2023 21:53:43 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2023-11-07-fluent-bit-notes/</guid>
-      <description>What is Fluent Bit One day, the Insurance Management System Tom built crashed. Good news is the system recovered through rebooting, bad news is Tom did not know what had gone wrong. Tom&amp;rsquo;s dad comes by and says to Tom &amp;ldquo;Fluent Bit is a telemetry agent designed to collect and process telemetry data from constrained systems to cloud infrastructures. Why don&amp;rsquo;t you give it a try?&amp;rdquo;
-Structural Sketch Tom is a good listener.</description>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#what-is-fluent-bit&#34;&gt;What is fluent bit&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#structural-sketch&#34;&gt;Structural sketch&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#how-to-set-it-up&#34;&gt;How to set it up&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#through-config-file&#34;&gt;Through config file&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#though-command-line-parameters&#34;&gt;Though command line parameters&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#other-ootes&#34;&gt;Other ootes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;what-is-fluent-bit&#34;&gt;What is fluent bit&lt;/h1&gt;
+&lt;p&gt;One day, the Insurance Management System Tom built crashed. Good news is the system recovered through rebooting, bad news is Tom did not know what had gone wrong. Tom&amp;rsquo;s dad comes by and says to Tom &amp;ldquo;Fluent Bit is a telemetry agent designed to collect and process telemetry data from constrained systems to cloud infrastructures. Why don&amp;rsquo;t you give it a try?&amp;rdquo;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

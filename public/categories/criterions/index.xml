@@ -13,8 +13,18 @@
       <link>https://junyubian.github.io/posts/2023-12-02-criterions-for-site/</link>
       <pubDate>Sat, 02 Dec 2023 19:40:43 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2023-12-02-criterions-for-site/</guid>
-      <description>1-Titles 1.1-All Cap for first letter of each word in post title, except for preposition. 1.2-Cap for first letter of first word inside post. 1.3-Titles inside post need follow format of this Criterions. 2-Tags 3-TOC This is criterions for this site, self-reference only.
-1-Titles 1.1-All Cap for first letter of each word in post title, except for preposition. 1.2-Cap for first letter of first word inside post. 1.3-Titles inside post need follow format of this Criterions.</description>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#1-titles&#34;&gt;1-Titles&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#11-all-cap-for-first-letter-of-each-word-in-post-title-except-for-preposition&#34;&gt;1.1-All Cap for first letter of each word in post title, except for preposition.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#12-cap-for-first-letter-of-first-word-inside-post&#34;&gt;1.2-Cap for first letter of first word inside post.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#13-titles-inside-post-need-follow-format-of-this-criterions&#34;&gt;1.3-Titles inside post need follow format of this Criterions.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-tags&#34;&gt;2-Tags&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-toc&#34;&gt;3-TOC&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is criterions for this site, self-reference only.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

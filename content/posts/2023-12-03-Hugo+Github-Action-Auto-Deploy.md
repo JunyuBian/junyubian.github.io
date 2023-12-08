@@ -1,7 +1,7 @@
 ---
-title: Hugo Site Auto Deployment With Github Action
+title: Hugo Site Auto Deployment with Github Action
 date: 2023-12-02 18:53:43
-slug: 2023-12-02-Hugo-Site-Auto-Deployment-With-Github-Action
+slug: 2023-12-02-Hugo-Site-Auto-Deployment-with-Github-Action
 type: posts
 draft: false
 categories: 
@@ -9,7 +9,7 @@ categories:
 tags:
   - Hugo
   - Git
-  - EN
+  - en
 ---
 
 - [1-Background](#1-background)
@@ -20,6 +20,8 @@ tags:
 # 1-Background
 
 Trying to auto deploy Hugo blogs with Github Action. 
+
+<!--more-->
 
 # 2-Steps
 

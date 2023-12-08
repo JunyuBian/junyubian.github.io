@@ -6,22 +6,33 @@ categories:
 tags:
 - Fluent-bit
 - Logging
+- Tom Show
+- en
 ---
 
-# What is Fluent Bit
+- [What is fluent bit](#what-is-fluent-bit)
+- [Structural sketch](#structural-sketch)
+- [How to set it up](#how-to-set-it-up)
+  - [Through config file](#through-config-file)
+  - [Though command line parameters](#though-command-line-parameters)
+- [Other ootes](#other-ootes)
+
+# What is fluent bit
 
 One day, the Insurance Management System Tom built crashed. Good news is the system recovered through rebooting, bad news is Tom did not know what had gone wrong. Tom's dad comes by and says to Tom "Fluent Bit is a telemetry agent designed to collect and process telemetry data from constrained systems to cloud infrastructures. Why don't you give it a try?"
 
-# Structural Sketch
+<!--more-->
+
+# Structural sketch
 
 Tom is a good listener. He listened to his dad and checked the Fluent Bit website https://docs.fluentbit.io, and found one great picture shows the rough structure of Fluent Bit:
 ![Structural Sketch](https://github.com/JunyuBian/PicsForBlogs/blob/main/iShot_2023-11-08_22.24.51.png)
 
-# How to Set it Up
+# How to set it up
 
 Tom told his dad there're two different methods to config Fluent Bit:
 
-## Through Config File
+## Through config file
 
 Fluent Bit could use config file to set Input sources, Filters, Output destinations, etc. Sample config file, which locates in `/etc/fluent-bit/fluent-bit.conf` by default:
 
@@ -44,7 +55,7 @@ Fluent Bit could use config file to set Input sources, Filters, Output destinati
 
 To use a specific config file instead of the default one, we could use this command: `bin/fluent-bit -c example.conf`, `-c` will indicate a new config file.
 
-## Though Command Line Parameters
+## Though command line parameters
 
 Instead of a config file, we could directly reveal INPUTs, FILTERs and OUTPUTs in command line, one example would be:
 
@@ -55,7 +66,7 @@ bin/fluent-bit -i systemd \
         -o forward://${fording_server}:24224
 ```
 
-# Other Notes
+# Other ootes
 
 While using fluent-bit, Tom also found it has below characteristics:
 1. It could recive forwarded logs from other fluent-bit client, and together forward or output to other destinations.

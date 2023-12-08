@@ -9,14 +9,18 @@
     <lastBuildDate>Sat, 02 Dec 2023 18:53:43 +0000</lastBuildDate>
     <atom:link href="https://junyubian.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hugo Site Auto Deployment With Github Action</title>
+      <title>Hugo Site Auto Deployment with Github Action</title>
       <link>https://junyubian.github.io/posts/2023-12-02-hugo-site-auto-deployment-with-github-action/</link>
       <pubDate>Sat, 02 Dec 2023 18:53:43 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2023-12-02-hugo-site-auto-deployment-with-github-action/</guid>
-      <description>1-Background 2-Steps 3-Good to know Reference 1-Background Trying to auto deploy Hugo blogs with Github Action.
-2-Steps Most steps and tips have been covered by reference#1 and reference#2.
-3-Good to know Action will build from base url, could use this feature to create different sub domain under github.io. e.g. create a repo called projects to display different projects, this will be added to github.io/prjects
-If site deployment is automatically triggered by Github Action, need to notice the time difference between Github server and local time zone.</description>
+      <description>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#1-background&#34;&gt;1-Background&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-steps&#34;&gt;2-Steps&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-good-to-know&#34;&gt;3-Good to know&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#reference&#34;&gt;Reference&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;1-background&#34;&gt;1-Background&lt;/h1&gt;
+&lt;p&gt;Trying to auto deploy Hugo blogs with Github Action.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

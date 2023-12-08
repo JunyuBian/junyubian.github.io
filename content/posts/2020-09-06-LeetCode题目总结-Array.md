@@ -6,6 +6,7 @@ categories:
 tags:
 - C++
 - 算法
+- ch
 ---
 
 ### 题目31:[下一个排列](https://leetcode-cn.com/problems/next-permutation)

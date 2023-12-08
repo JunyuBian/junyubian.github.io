@@ -7,7 +7,7 @@ draft: false
 categories: 
   - Criterions
 tags:
-  - EN
+  - en
 ---
 
 - [1-Titles](#1-titles)
@@ -18,6 +18,8 @@ tags:
 - [3-TOC](#3-toc)
 
 This is criterions for this site, self-reference only.
+
+<!--more-->
 
 # 1-Titles
 

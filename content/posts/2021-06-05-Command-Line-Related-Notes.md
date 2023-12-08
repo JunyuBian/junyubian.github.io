@@ -6,6 +6,7 @@ categories:
 tags:
 - Cent OS
 - Command Line
+- en
 ---
 
 #### 1. Switch to end of line in vi:

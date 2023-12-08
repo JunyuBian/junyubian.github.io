@@ -6,6 +6,7 @@ categories:
 tags:
 - Algorithm
 - C++
+- en
 ---
 
 In this series of blogs, we will talk about different sorting algorithms. 

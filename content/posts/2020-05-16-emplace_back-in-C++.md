@@ -6,8 +6,7 @@ categories:
 tags:
 - Algorithm
 - C++
-
-
+- ch
 ---
 
 There are different type of containers in C++ STL. To add a new element into the back of a container, we normally use `push_back()`. In this blog, we will look into a new way of performing push back - `emplace_back()`.

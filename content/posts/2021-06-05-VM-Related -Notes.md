@@ -5,6 +5,7 @@ categories:
 - Notes
 tags:
 - VM
+- en
 ---
 
 #### 1. List all VMs:
@@ -12,6 +13,8 @@ tags:
 ```shell
 virsh list
 ```
+
+<!--more-->
 
 #### 2. List network setting xml:
 
@@ -23,5 +26,3 @@ virsh net-dumpxml <network>
 virsh snapshot-list 476
 virsh snapshot-revert --domain freebsd --snapshotname 5Sep2016_S1 --running
 ```
-
-<!--more-->

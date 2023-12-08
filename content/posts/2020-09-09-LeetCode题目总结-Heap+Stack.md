@@ -6,6 +6,7 @@ categories:
 tags:
 - C++
 - 算法
+- ch
 ---
 
 ### 题目20:[有效的括号](https://leetcode-cn.com/problems/valid-parentheses/)

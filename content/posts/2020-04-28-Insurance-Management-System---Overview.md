@@ -7,7 +7,8 @@ tags:
 - Web
 - Django
 - Database
-
+- Tom Show
+- en
 ---
 
 In this series of blogs, we will talk about how to build a Insurance Management web application together with database system.
