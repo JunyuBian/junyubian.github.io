@@ -1,38 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>EN on Junyu Bian</title>
     <link>https://junyubian.github.io/tags/en/</link>
     <description>Recent content in EN on Junyu Bian</description>
-    <image>
-      <title>Junyu Bian</title>
-      <url>https://junyubian.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://junyubian.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
-    </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 Dec 2023 19:40:43 +0000</lastBuildDate><atom:link href="https://junyubian.github.io/tags/en/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 02 Dec 2023 19:40:43 +0000</lastBuildDate>
+    <atom:link href="https://junyubian.github.io/tags/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Criterions For Site</title>
       <link>https://junyubian.github.io/posts/2023-12-02-criterions-for-site/</link>
       <pubDate>Sat, 02 Dec 2023 19:40:43 +0000</pubDate>
-      
       <guid>https://junyubian.github.io/posts/2023-12-02-criterions-for-site/</guid>
       <description>1-Titles 1.1-All Cap for first letter of each word in post title. 1.2-Cap for first letter of first word inside post. 1.3-Titles inside post need follow format of this Criterions. 2-Tags This is criterions for this site, self-reference only.
 1-Titles 1.1-All Cap for first letter of each word in post title. 1.2-Cap for first letter of first word inside post. 1.3-Titles inside post need follow format of this Criterions. 2-Tags Need specifiy language (EN/CH), best to have bi-lingular version for each post.</description>
     </item>
-    
     <item>
       <title>Hugo Site Auto Deployment With Github Action</title>
       <link>https://junyubian.github.io/posts/2023-12-02-hugo-site-auto-deployment-with-github-action/</link>
       <pubDate>Sat, 02 Dec 2023 18:53:43 +0000</pubDate>
-      
       <guid>https://junyubian.github.io/posts/2023-12-02-hugo-site-auto-deployment-with-github-action/</guid>
       <description>1-Background 2-Steps 3-Good to know Reference 1-Background Trying to auto deploy Hugo blogs with Github Action.
 2-Steps Most steps and tips have been covered by reference#1 and reference#2.
 3-Good to know Action will build from base url, could use this feature to create different sub domain under github.io. e.g. create a repo called projects to display different projects, this will be added to github.io/prjects
 If site deployment is automatically triggered by Github Action, need to notice the time difference between Github server and local time zone.</description>
     </item>
-    
   </channel>
 </rss>

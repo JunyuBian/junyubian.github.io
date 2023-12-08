@@ -1,34 +1,95 @@
-<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>LeetCode题目总结-Queue+TopologicalSort | Junyu Bian</title>
-<meta name=keywords content="C++,算法"><meta name=description content="题目621:任务调度器
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<style type=text/css>body{font-family:monospace;}</style>
+	<title>LeetCode题目总结-Queue&#43;TopologicalSort</title>
+	
+	
+	<link rel="stylesheet" href="/css/style.css">
+	
+	
+</head>
+<body>
+	<header>
+	================<br>
+	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
+	================
+	<div style="float: right;">&#34;Salvation lies within.&#34;</div><br>
+	<p>
+	<nav>
+			<a href="/"><b>Start</b></a>.
+			
+			
+			<a href="/posts/"><b>Posts</b></a>.
+			
+			<a href="/categories/"><b>Categories</b></a>.
+			
+			<a href="/tags/"><b>Tags</b></a>.
+			
+			<a href="/about/"><b>About</b></a>.
+			
+	</nav>
+	</p>
+	
+</header>
 
-描述：
-给定一个用字符数组表示的 CPU 需要执行的任务列表。其中包含使用大写的 A - Z 字母表示的26 种不同种类的任务。任务可以以任意顺序执行，并且每个任务都可以在 1 个单位时间内执行完。CPU 在任何一个单位时间内都可以执行一个任务，或者在待命状态。
-然而，两个相同种类的任务之间必须有长度为 n 的冷却时间，因此至少有连续 n 个单位时间内 CPU 在执行不同的任务，或者在待命状态。"><meta name=author content="Me"><link rel=canonical href=https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-queue+topologicalsort/><meta name=google-site-verification content="XYZabc"><meta name=yandex-verification content="XYZabc"><meta name=msvalidate.01 content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.5cfc680b1eeaeef9efbced92d46c2a9e876b72ee14fba85846afc4cff9e6e6f8.css integrity="sha256-XPxoCx7q7vnvvO2S1Gwqnodrcu4U+6hYRq/Ez/nm5vg=" rel="preload stylesheet" as=style><script defer crossorigin=anonymous src=/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG+9vmJ0cTS+ovo0FeA=" onload=hljs.initHighlightingOnLoad()></script><link rel=icon href=https://junyubian.github.io/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=16x16 href=https://junyubian.github.io/%3Clink%20/%20abs%20url%3E><link rel=icon type=image/png sizes=32x32 href=https://junyubian.github.io/%3Clink%20/%20abs%20url%3E><link rel=apple-touch-icon href=https://junyubian.github.io/%3Clink%20/%20abs%20url%3E><link rel=mask-icon href=https://junyubian.github.io/%3Clink%20/%20abs%20url%3E><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,i=t.createElement(n),a=t.getElementsByTagName(n)[0],i.async=1,i.src=s,a.parentNode.insertBefore(i,a)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-123-45","auto"),ga("send","pageview"))</script><meta property="og:title" content="LeetCode题目总结-Queue+TopologicalSort"><meta property="og:description" content="题目621:任务调度器
+	
+	<main>
+		<article>
+			<h1>LeetCode题目总结-Queue&#43;TopologicalSort</h1>
+			<b><time>09/12/2020 21:32</time></b>
+		       
+		           <a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
+        	       
+		           <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>
+        	       
 
-描述：
-给定一个用字符数组表示的 CPU 需要执行的任务列表。其中包含使用大写的 A - Z 字母表示的26 种不同种类的任务。任务可以以任意顺序执行，并且每个任务都可以在 1 个单位时间内执行完。CPU 在任何一个单位时间内都可以执行一个任务，或者在待命状态。
-然而，两个相同种类的任务之间必须有长度为 n 的冷却时间，因此至少有连续 n 个单位时间内 CPU 在执行不同的任务，或者在待命状态。"><meta property="og:type" content="article"><meta property="og:url" content="https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-queue+topologicalsort/"><meta property="og:image" content="https://junyubian.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="article:section" content="posts"><meta property="article:published_time" content="2020-09-12T21:32:19+00:00"><meta property="article:modified_time" content="2020-09-12T21:32:19+00:00"><meta property="og:site_name" content="Junyu Bian"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://junyubian.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:title content="LeetCode题目总结-Queue+TopologicalSort"><meta name=twitter:description content="题目621:任务调度器
-
-描述：
-给定一个用字符数组表示的 CPU 需要执行的任务列表。其中包含使用大写的 A - Z 字母表示的26 种不同种类的任务。任务可以以任意顺序执行，并且每个任务都可以在 1 个单位时间内执行完。CPU 在任何一个单位时间内都可以执行一个任务，或者在待命状态。
-然而，两个相同种类的任务之间必须有长度为 n 的冷却时间，因此至少有连续 n 个单位时间内 CPU 在执行不同的任务，或者在待命状态。"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://junyubian.github.io/posts/"},{"@type":"ListItem","position":2,"name":"LeetCode题目总结-Queue+TopologicalSort","item":"https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-queue+topologicalsort/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"LeetCode题目总结-Queue+TopologicalSort","name":"LeetCode题目总结-Queue\u002bTopologicalSort","description":"题目621:任务调度器 描述：\n给定一个用字符数组表示的 CPU 需要执行的任务列表。其中包含使用大写的 A - Z 字母表示的26 种不同种类的任务。任务可以以任意顺序执行，并且每个任务都可以在 1 个单位时间内执行完。CPU 在任何一个单位时间内都可以执行一个任务，或者在待命状态。\n然而，两个相同种类的任务之间必须有长度为 n 的冷却时间，因此至少有连续 n 个单位时间内 CPU 在执行不同的任务，或者在待命状态。\n","keywords":["C++","算法"],"articleBody":"题目621:任务调度器 描述：\n给定一个用字符数组表示的 CPU 需要执行的任务列表。其中包含使用大写的 A - Z 字母表示的26 种不同种类的任务。任务可以以任意顺序执行，并且每个任务都可以在 1 个单位时间内执行完。CPU 在任何一个单位时间内都可以执行一个任务，或者在待命状态。\n然而，两个相同种类的任务之间必须有长度为 n 的冷却时间，因此至少有连续 n 个单位时间内 CPU 在执行不同的任务，或者在待命状态。\n你需要计算完成所有任务所需要的最短时间。\n示例 ：\n输入：tasks = [“A”,“A”,“A”,“B”,“B”,“B”], n = 2 输出：8 解释：A -\u003e B -\u003e (待命) -\u003e A -\u003e B -\u003e (待命) -\u003e A -\u003e B. 在本示例中，两个相同类型任务之间必须间隔长度为 n = 2 的冷却时间，而执行一个任务只需要一个单位时间，所以中间出现了（待命）状态。\n提示：\n任务的总个数为 [1, 10000]。 n 的取值范围为 [0, 100]。\n思路：\n突破点：桶思想。\n步骤：\n建立大小为n+1的桶，个数为数量最多的任务； 每个桶视为一轮任务； 总排队时间=(桶个数-1)*(n+1)+最后一个桶的任务数； 代码：\nint leastInterval(vector\u003cchar\u003e\u0026 tasks, int n) { int len=tasks.size(); vector\u003cint\u003e vec(26); for(char c:tasks) ++vec[c-'A']; sort(vec.begin(),vec.end(),[](int\u0026 x,int\u0026y){return x\u003ey;}); int cnt=1; while(cnt\u003cvec.size()\u0026\u0026vec[cnt]==vec[0]) cnt++; return max(len,cnt+(n+1)*(vec[0]-1) ); } 题目641:设计循环双端队列 描述：\n设计实现双端队列。 你的实现需要支持以下操作：\nMyCircularDeque(k)：构造函数,双端队列的大小为k。 insertFront()：将一个元素添加到双端队列头部。 如果操作成功返回 true。 insertLast()：将一个元素添加到双端队列尾部。如果操作成功返回 true。 deleteFront()：从双端队列头部删除一个元素。 如果操作成功返回 true。 deleteLast()：从双端队列尾部删除一个元素。如果操作成功返回 true。 getFront()：从双端队列头部获得一个元素。如果双端队列为空，返回 -1。 getRear()：获得双端队列的最后一个元素。 如果双端队列为空，返回 -1。 isEmpty()：检查双端队列是否为空。 isFull()：检查双端队列是否满了。 示例：\nMyCircularDeque circularDeque = new MycircularDeque(3); // 设置容量大小为3 circularDeque.insertLast(1);\t// 返回 true circularDeque.insertLast(2);\t// 返回 true circularDeque.insertFront(3);\t// 返回 true circularDeque.insertFront(4);\t// 已经满了，返回 false circularDeque.getRear(); // 返回 2 circularDeque.isFull();\t// 返回 true circularDeque.deleteLast();\t// 返回 true circularDeque.insertFront(4);\t// 返回 true circularDeque.getFront();\t// 返回 4\n提示：\n所有值的范围为 [1, 1000] 操作次数的范围为 [1, 1000] 请不要使用内置的双端队列库。\n思路：\n突破点：双端链表。\n代码：\nclass MyCircularDeque { public: struct DLNode { int val; DLNode* next; DLNode* prev; DLNode() : val(-1), next(NULL), prev(NULL) {} DLNode(int v) : val(v), next(NULL), prev(NULL) {} }; int size; int capacity; DLNode* head; DLNode* tail; /** Initialize your data structure here. Set the size of the deque to be k. */ MyCircularDeque(int k) { size = 0; capacity = k; head = new DLNode(); tail = new DLNode(); head-\u003enext = tail; tail-\u003eprev = head; } /** Adds an item at the front of Deque. Return true if the operation is successful. */ bool insertFront(int value) { if (isFull()) return false; auto node = new DLNode(value); node-\u003eprev = head; node-\u003enext = head-\u003enext; node-\u003enext-\u003eprev = node; node-\u003eprev-\u003enext = node; ++size; return true; } /** Adds an item at the rear of Deque. Return true if the operation is successful. */ bool insertLast(int value) { if (isFull()) return false; auto node = new DLNode(value); node-\u003eprev = tail-\u003eprev; node-\u003enext = tail; node-\u003eprev-\u003enext = node; node-\u003enext-\u003eprev = node; ++size; return true; } /** Deletes an item from the front of Deque. Return true if the operation is successful. */ bool deleteFront() { if (isEmpty()) return false; auto node = head-\u003enext; node-\u003enext-\u003eprev = node-\u003eprev; node-\u003eprev-\u003enext = node-\u003enext; delete node; node = NULL; --size; return true; } /** Deletes an item from the rear of Deque. Return true if the operation is successful. */ bool deleteLast() { if (isEmpty()) return false; auto node = tail-\u003eprev; node-\u003enext-\u003eprev = node-\u003eprev; node-\u003eprev-\u003enext = node-\u003enext; delete node; node = NULL; --size; return true; } /** Get the front item from the deque. */ int getFront() { return head-\u003enext-\u003eval; } /** Get the last item from the deque. */ int getRear() { return tail-\u003eprev-\u003eval; } /** Checks whether the circular deque is empty or not. */ bool isEmpty() { return size == 0; } /** Checks whether the circular deque is full or not. */ bool isFull() { return size == capacity; } }; 题目622:设计循环队列 描述：\n设计你的循环队列实现。 循环队列是一种线性数据结构，其操作表现基于 FIFO（先进先出）原则并且队尾被连接在队首之后以形成一个循环。它也被称为“环形缓冲器”。\n循环队列的一个好处是我们可以利用这个队列之前用过的空间。在一个普通队列里，一旦一个队列满了，我们就不能插入下一个元素，即使在队列前面仍有空间。但是使用循环队列，我们能使用这些空间去存储新的值。\n你的实现应该支持如下操作：\nMyCircularQueue(k): 构造器，设置队列长度为 k 。 Front: 从队首获取元素。如果队列为空，返回 -1 。 Rear: 获取队尾元素。如果队列为空，返回 -1 。 enQueue(value): 向循环队列插入一个元素。如果成功插入则返回真。 deQueue(): 从循环队列中删除一个元素。如果成功删除则返回真。 isEmpty(): 检查循环队列是否为空。 isFull(): 检查循环队列是否已满。\n示例：\nMyCircularQueue circularQueue = new MyCircularQueue(3); // 设置长度为 3 circularQueue.enQueue(1); // 返回 true circularQueue.enQueue(2); // 返回 true circularQueue.enQueue(3); // 返回 true circularQueue.enQueue(4); // 返回 false，队列已满 circularQueue.Rear(); // 返回 3 circularQueue.isFull(); // 返回 true circularQueue.deQueue(); // 返回 true circularQueue.enQueue(4); // 返回 true circularQueue.Rear(); // 返回 4\n提示：\n所有的值都在 0 至 1000 的范围内； 操作数将在 1 至 1000 的范围内； 请不要使用内置的队列库。\n思路：\n突破点：下标%数组大小。\n代码：\nclass MyCircularQueue { private: int start; int end; int count; vector\u003cint\u003e nums; public: /** Initialize your data structure here. Set the size of the queue to be k. */ MyCircularQueue(int k): start(0), end(0), count(0) { nums.resize(k); } /** Insert an element into the circular queue. Return true if the operation is successful. */ bool enQueue(int value) { if (count == nums.size()) return false; nums[start++] = value; start %= nums.size(); ++count; return true; } /** Delete an element from the circular queue. Return true if the operation is successful. */ bool deQueue() { if (count == 0) return false; nums[end++] = 0; end %= nums.size(); --count; return true; } /** Get the front item from the queue. */ int Front() { if (count == 0) return -1; return nums[end]; } /** Get the last item from the queue. */ int Rear() { if (count == 0) return -1; return nums[(start - 1 + nums.size()) % nums.size()]; } /** Checks whether the circular queue is empty or not. */ bool isEmpty() { return count == 0; } /** Checks whether the circular queue is full or not. */ bool isFull() { return nums.size() == count; } }; 题目329:矩阵中的最长递增路径 描述：\n给定一个整数矩阵，找出最长递增路径的长度。\n对于每个单元格，你可以往上，下，左，右四个方向移动。 你不能在对角线方向上移动或移动到边界外（即不允许环绕）。\n示例 1:\n输入: nums = [ [9,9,4], [6,6,8], [2,1,1] ] 输出: 4 解释: 最长递增路径为 [1, 2, 6, 9]。 示例 2:\n输入: nums = [ [3,4,5], [3,2,6], [2,2,1] ] 输出: 4 解释: 最长递增路径是 [3, 4, 5, 6]。注意不允许在对角线方向上移动。\n思路一：\n突破点：优化的深度优先搜索。\n步骤：\n将矩阵视为有向图，若相邻两个单元格大小不等，则在两相邻单元格中存在一条小值指向大值的有向边； 在有向图中，寻找最长路径； 从一个单元格开始DFS，直到搜索结束； 使用缓存矩阵优化，已经计算过的单元格进行保存。 代码：\nclass Solution { public: static constexpr int dirs[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}}; int rows, columns; int longestIncreasingPath(vector\u003c vector\u003cint\u003e \u003e \u0026matrix) { if (matrix.size() == 0 || matrix[0].size() == 0) { return 0; } rows = matrix.size(); columns = matrix[0].size(); auto memo = vector\u003c vector\u003cint\u003e \u003e (rows, vector \u003cint\u003e (columns)); int ans = 0; for (int i = 0; i \u003c rows; ++i) { for (int j = 0; j \u003c columns; ++j) { ans = max(ans, dfs(matrix, i, j, memo)); } } return ans; } int dfs(vector\u003c vector\u003cint\u003e \u003e \u0026matrix, int row, int column, vector\u003c vector\u003cint\u003e \u003e \u0026memo) { if (memo[row][column] != 0) { return memo[row][column]; } ++memo[row][column]; for (int i = 0; i \u003c 4; ++i) { int newRow = row + dirs[i][0], newColumn = column + dirs[i][1]; if (newRow \u003e= 0 \u0026\u0026 newRow \u003c rows \u0026\u0026 newColumn \u003e= 0 \u0026\u0026 newColumn \u003c columns \u0026\u0026 matrix[newRow][newColumn] \u003e matrix[row][column]) { memo[row][column] = max(memo[row][column], dfs(matrix, newRow, newColumn, memo) + 1); } } return memo[row][column]; } }; 思路二：\n突破点：拓扑排序+动态规划。\n步骤：\n状态转移方程：memo[i][j] = max{memo[x][y]} + 1，(x, y)与(i, j)相邻，且matrix[x][y]\u003ematrix[i][j]； 使用拓扑排序，从所有出度为0的单元格开始DFS； 更新其余单元格出度，并将出度为0的加入下一层搜索； 搜索结束后，总层数即为所求答案。 代码：\nclass Solution { public: static constexpr int dirs[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}}; int rows, columns; int longestIncreasingPath(vector\u003c vector\u003cint\u003e \u003e \u0026matrix) { if (matrix.size() == 0 || matrix[0].size() == 0) { return 0; } rows = matrix.size(); columns = matrix[0].size(); auto outdegrees = vector\u003c vector\u003cint\u003e \u003e (rows, vector \u003cint\u003e (columns)); for (int i = 0; i \u003c rows; ++i) { for (int j = 0; j \u003c columns; ++j) { for (int k = 0; k \u003c 4; ++k) { int newRow = i + dirs[k][0], newColumn = j + dirs[k][1]; if (newRow \u003e= 0 \u0026\u0026 newRow \u003c rows \u0026\u0026 newColumn \u003e= 0 \u0026\u0026 newColumn \u003c columns \u0026\u0026 matrix[newRow][newColumn] \u003e matrix[i][j]) { ++outdegrees[i][j]; } } } } queue \u003c pair\u003cint, int\u003e \u003e q; for (int i = 0; i \u003c rows; ++i) { for (int j = 0; j \u003c columns; ++j) { if (outdegrees[i][j] == 0) { q.push({i, j}); } } } int ans = 0; while (!q.empty()) { ++ans; int size = q.size(); for (int i = 0; i \u003c size; ++i) { auto cell = q.front(); q.pop(); int row = cell.first, column = cell.second; for (int k = 0; k \u003c 4; ++k) { int newRow = row + dirs[k][0], newColumn = column + dirs[k][1]; if (newRow \u003e= 0 \u0026\u0026 newRow \u003c rows \u0026\u0026 newColumn \u003e= 0 \u0026\u0026 newColumn \u003c columns \u0026\u0026 matrix[newRow][newColumn] \u003c matrix[row][column]) { --outdegrees[newRow][newColumn]; if (outdegrees[newRow][newColumn] == 0) { q.push({newRow, newColumn}); } } } } } return ans; } }; 题目1203:项目管理 描述：\n公司共有 n 个项目和 m 个小组，每个项目要不没有归属，要不就由其中的一个小组负责。\n我们用 group[i] 代表第 i 个项目所属的小组，如果这个项目目前无人接手，那么 group[i] 就等于 -1。（项目和小组都是从零开始编号的）\n请你帮忙按要求安排这些项目的进度，并返回排序后的项目列表：\n同一小组的项目，排序后在列表中彼此相邻。 项目之间存在一定的依赖关系，我们用一个列表 beforeItems 来表示，其中 beforeItems[i] 表示在进行第 i 个项目前（位于第 i 个项目左侧）应该完成的所有项目。 结果要求：\n如果存在多个解决方案，只需要返回其中任意一个即可。\n如果没有合适的解决方案，就请返回一个 空列表\n示例 1：\n输入：n = 8, m = 2, group = [-1,-1,1,0,0,1,0,-1], beforeItems = [[],[6],[5],[6],[3,6],[],[],[]] 输出：[6,3,4,1,5,2,0,7] 示例 2：\n输入：n = 8, m = 2, group = [-1,-1,1,0,0,1,0,-1], beforeItems = [[],[6],[5],[6],[3],[],[4],[]] 输出：[] 解释：与示例 1 大致相同，但是在排序后的列表中，4 必须放在 6 的前面。\n提示：\n1 \u003c= m \u003c= n \u003c= 3*10^4 group.length == beforeItems.length == n -1 \u003c= group[i] \u003c= m-1 0 \u003c= beforeItems[i].length \u003c= n-1 0 \u003c= beforeItems[i][j] \u003c= n-1 i != beforeItems[i][j]\n思路：\n突破点：拓扑排序。\n步骤：\n将组别为-1的项目都创建一个新组； 遍历beforeItems[i][j]数组； 如果i和j属于同组，则确定组内优先级关系； 若不同组，则确定小组间优先级关系； 对每个组内拓扑排序； 对不同组拓扑排序。 代码：\nclass Solution { public: //拓扑排序的节点结构体声明 struct tpnod { //组外的优先级比该节点小的节点索引，维护不同的小组排序后的优先级关系 vector\u003cint\u003enext1; //组内的优先级比该节点小的节点索引，维护同一小组的任务排序后的优先级关系 vector\u003cint\u003eingnext; //不同组间的在完成该节点之前需要完成的任务数 int deg = 0; //组内的在完成该节点之前需要完成的任务数 int igdeg = 0; }; tpnod nos[30001]; //小组的数组，每个单元都是一个小组，可能不只m个，因为新创建了一些小组，但一定不会超过30000； tpnod itogroup[30001]; //维护同一个组的项目 vector\u003cint\u003egrouptoi[30001]; //维护同一组的不同项目之间的顺序 vector\u003cint\u003eingroup[30001]; vector\u003cint\u003e sortItems(int n, int m, vector\u003cint\u003e\u0026 group, vector\u003cvector\u003cint\u003e\u003e\u0026 beforeItems) { //numOfG为包括创建的新组的组数 int numOfG = m; vector\u003cint\u003eres; for (int i = 0; i \u003c group.size(); i++) { if (group[i] != -1) grouptoi[group[i]].push_back(i); //否则创建新组 else { grouptoi[numOfG].push_back(i); group[i] = numOfG; numOfG++;//创建后加一 } } for (int i = 0; i \u003c beforeItems.size(); i++) { for (int j = 0; j \u003c beforeItems[i].size(); j++) { //在同一组就看作组内项目优先级关系 if (group[beforeItems[i][j]] == group[i]) nos[i].igdeg++, nos[beforeItems[i][j]].next1.push_back(i); //在不同组就看作组之间的优先级关系，因为同组的肯定是聚在一起的 else itogroup[group[i]].deg++, itogroup[group[beforeItems[i][j]]].next1.push_back(group[i]); } } //确定不同小组组内项目优先级顺序 for (int i = 0; i \u003c numOfG; i++) { queue\u003cint\u003eq; for (int j = 0; j \u003c grouptoi[i].size(); j++) { if (nos[grouptoi[i][j]].igdeg == 0) q.push(grouptoi[i][j]); } int cnt2 = 0; while (!q.empty()) { cnt2++; int tp2 = q.front(); ingroup[i].push_back(tp2); q.pop(); for (int j = 0; j \u003c nos[tp2].next1.size(); j++) { nos[nos[tp2].next1[j]].igdeg--; //在该节点之前的工作处理完了就把该节点放入队列 if (nos[nos[tp2].next1[j]].igdeg == 0) q.push(nos[tp2].next1[j]); } } //判断是否矛盾 if (cnt2 != grouptoi[i].size()) { //res此时为空 return res; } } queue\u003cint\u003eq; for (int i = 0; i \u003c numOfG; i++) if (itogroup[i].deg == 0) q.push(i); int cnt3 = 0; int tp7; vector\u003cint\u003egrorder; //之前已经处理好了不同小组优先级关系，现在开始确定不同小组的顺序。 while (!q.empty()) { tp7 = q.front(); grorder.push_back(tp7); q.pop(); cnt3++; for (int i = 0; i \u003c itogroup[tp7].next1.size(); i++) { (itogroup[itogroup[tp7].next1[i]].deg)--; if (itogroup[itogroup[tp7].next1[i]].deg == 0) q.push(itogroup[tp7].next1[i]); } } //判断是否矛盾 if (cnt3 != numOfG) { //res为空 return res; } for (int i = 0; i \u003c numOfG; i++) { for (int j = 0; j \u003c ingroup[grorder[i]].size(); j++) res.push_back(ingroup[grorder[i]][j]); } return res; } }; ","wordCount":"1623","inLanguage":"en","datePublished":"2020-09-12T21:32:19Z","dateModified":"2020-09-12T21:32:19Z","author":{"@type":"Person","name":"Me"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-queue+topologicalsort/"},"publisher":{"@type":"Organization","name":"Junyu Bian","logo":{"@type":"ImageObject","url":"https://junyubian.github.io/%3Clink%20/%20abs%20url%3E"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://junyubian.github.io/ accesskey=h title="Home (Alt + H)"><img src=https://junyubian.github.io/apple-touch-icon.png alt aria-label=logo height=35>Home</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://junyubian.github.io/categories/ title=Categories><span>Categories</span></a></li><li><a href=https://junyubian.github.io/tags/ title=Tags><span>Tags</span></a></li><li><a href=https://junyubian.github.io/about/ title=About><span>About</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://junyubian.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://junyubian.github.io/posts/>Posts</a></div><h1 class=post-title>LeetCode题目总结-Queue+TopologicalSort</h1><div class=post-meta><span title='2020-09-12 21:32:19 +0000 UTC'>September 12, 2020</span>&nbsp;·&nbsp;8 min&nbsp;·&nbsp;1623 words&nbsp;·&nbsp;Me&nbsp;|&nbsp;<a href=https://github.com/JunyuBian/junyubian.github.io/tree/main/content/posts/2020-09-12-LeetCode%e9%a2%98%e7%9b%ae%e6%80%bb%e7%bb%93-Queue+TopologicalSort.md rel="noopener noreferrer" target=_blank>Suggest Changes</a></div></header><div class=post-content><h3 id=题目621任务调度器httpsleetcode-cncomproblemstask-scheduler>题目621:<a href=https://leetcode-cn.com/problems/task-scheduler/>任务调度器</a><a hidden class=anchor aria-hidden=true href=#题目621任务调度器httpsleetcode-cncomproblemstask-scheduler>#</a></h3><hr><p>描述：</p><p>给定一个用字符数组表示的 CPU 需要执行的任务列表。其中包含使用大写的 A - Z 字母表示的26 种不同种类的任务。任务可以以任意顺序执行，并且每个任务都可以在 1 个单位时间内执行完。CPU 在任何一个单位时间内都可以执行一个任务，或者在待命状态。</p><p>然而，两个相同种类的任务之间必须有长度为 n 的冷却时间，因此至少有连续 n 个单位时间内 CPU 在执行不同的任务，或者在待命状态。</p><p>你需要计算完成所有任务所需要的最短时间。</p><p>示例 ：</p><p>输入：tasks = [&ldquo;A&rdquo;,&ldquo;A&rdquo;,&ldquo;A&rdquo;,&ldquo;B&rdquo;,&ldquo;B&rdquo;,&ldquo;B&rdquo;], n = 2
+			<div>
+				<h3 id="题目621任务调度器httpsleetcode-cncomproblemstask-scheduler">题目621:<a href="https://leetcode-cn.com/problems/task-scheduler/">任务调度器</a></h3>
+<hr>
+<p>描述：</p>
+<p>给定一个用字符数组表示的 CPU 需要执行的任务列表。其中包含使用大写的 A - Z 字母表示的26 种不同种类的任务。任务可以以任意顺序执行，并且每个任务都可以在 1 个单位时间内执行完。CPU 在任何一个单位时间内都可以执行一个任务，或者在待命状态。</p>
+<p>然而，两个相同种类的任务之间必须有长度为 n 的冷却时间，因此至少有连续 n 个单位时间内 CPU 在执行不同的任务，或者在待命状态。</p>
+<p>你需要计算完成所有任务所需要的最短时间。</p>
+<p>示例 ：</p>
+<p>输入：tasks = [&ldquo;A&rdquo;,&ldquo;A&rdquo;,&ldquo;A&rdquo;,&ldquo;B&rdquo;,&ldquo;B&rdquo;,&ldquo;B&rdquo;], n = 2
 输出：8
-解释：A -> B -> (待命) -> A -> B -> (待命) -> A -> B.
-在本示例中，两个相同类型任务之间必须间隔长度为 n = 2 的冷却时间，而执行一个任务只需要一个单位时间，所以中间出现了（待命）状态。</p><p>提示：</p><p>任务的总个数为 [1, 10000]。
-n 的取值范围为 [0, 100]。</p><p><a href=https://leetcode-cn.com/problems/task-scheduler/solution/tong-zi-by-popopop/>思路</a>：</p><p>突破点：<code>桶思想。</code></p><p>步骤：</p><ol><li>建立大小为n+1的桶，个数为数量最多的任务；</li><li>每个桶视为一轮任务；</li><li>总排队时间=(桶个数-1)*(n+1)+最后一个桶的任务数；</li></ol><p>代码：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=kt>int</span> <span class=nf>leastInterval</span><span class=p>(</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>char</span><span class=o>&gt;&amp;</span> <span class=n>tasks</span><span class=p>,</span> <span class=kt>int</span> <span class=n>n</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=kt>int</span> <span class=n>len</span><span class=o>=</span><span class=n>tasks</span><span class=p>.</span><span class=n>size</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>        <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>vec</span><span class=p>(</span><span class=mi>26</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>        <span class=k>for</span><span class=p>(</span><span class=kt>char</span> <span class=nl>c</span><span class=p>:</span><span class=n>tasks</span><span class=p>)</span> <span class=o>++</span><span class=n>vec</span><span class=p>[</span><span class=n>c</span><span class=o>-</span><span class=sc>&#39;A&#39;</span><span class=p>];</span>
-</span></span><span class=line><span class=cl>  
-</span></span><span class=line><span class=cl>        <span class=n>sort</span><span class=p>(</span><span class=n>vec</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span><span class=n>vec</span><span class=p>.</span><span class=n>end</span><span class=p>(),[](</span><span class=kt>int</span><span class=o>&amp;</span> <span class=n>x</span><span class=p>,</span><span class=kt>int</span><span class=o>&amp;</span><span class=n>y</span><span class=p>){</span><span class=k>return</span> <span class=n>x</span><span class=o>&gt;</span><span class=n>y</span><span class=p>;});</span>
-</span></span><span class=line><span class=cl>  
-</span></span><span class=line><span class=cl>        <span class=kt>int</span> <span class=n>cnt</span><span class=o>=</span><span class=mi>1</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>  
-</span></span><span class=line><span class=cl>        <span class=k>while</span><span class=p>(</span><span class=n>cnt</span><span class=o>&lt;</span><span class=n>vec</span><span class=p>.</span><span class=n>size</span><span class=p>()</span><span class=o>&amp;&amp;</span><span class=n>vec</span><span class=p>[</span><span class=n>cnt</span><span class=p>]</span><span class=o>==</span><span class=n>vec</span><span class=p>[</span><span class=mi>0</span><span class=p>])</span> <span class=n>cnt</span><span class=o>++</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>max</span><span class=p>(</span><span class=n>len</span><span class=p>,</span><span class=n>cnt</span><span class=o>+</span><span class=p>(</span><span class=n>n</span><span class=o>+</span><span class=mi>1</span><span class=p>)</span><span class=o>*</span><span class=p>(</span><span class=n>vec</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span><span class=o>-</span><span class=mi>1</span><span class=p>)</span> <span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span></code></pre></div><hr><h3 id=题目641设计循环双端队列httpsleetcode-cncomproblemsdesign-circular-deque>题目641:<a href=https://leetcode-cn.com/problems/design-circular-deque/>设计循环双端队列</a><a hidden class=anchor aria-hidden=true href=#题目641设计循环双端队列httpsleetcode-cncomproblemsdesign-circular-deque>#</a></h3><hr><p>描述：</p><p>设计实现双端队列。
-你的实现需要支持以下操作：</p><p>MyCircularDeque(k)：构造函数,双端队列的大小为k。
+解释：A -&gt; B -&gt; (待命) -&gt; A -&gt; B -&gt; (待命) -&gt; A -&gt; B.
+在本示例中，两个相同类型任务之间必须间隔长度为 n = 2 的冷却时间，而执行一个任务只需要一个单位时间，所以中间出现了（待命）状态。</p>
+<p>提示：</p>
+<p>任务的总个数为 [1, 10000]。
+n 的取值范围为 [0, 100]。</p>
+<p><a href="https://leetcode-cn.com/problems/task-scheduler/solution/tong-zi-by-popopop/">思路</a>：</p>
+<p>突破点：<code>桶思想。</code></p>
+<p>步骤：</p>
+<ol>
+<li>建立大小为n+1的桶，个数为数量最多的任务；</li>
+<li>每个桶视为一轮任务；</li>
+<li>总排队时间=(桶个数-1)*(n+1)+最后一个桶的任务数；</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">leastInterval</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;&amp;</span> tasks, <span style="color:#66d9ef">int</span> n) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> len<span style="color:#f92672">=</span>tasks.size();
+</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> vec(<span style="color:#ae81ff">26</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">char</span> c:tasks) <span style="color:#f92672">++</span>vec[c<span style="color:#f92672">-</span><span style="color:#e6db74">&#39;A&#39;</span>];
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>        sort(vec.begin(),vec.end(),[](<span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> x,<span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span>y){<span style="color:#66d9ef">return</span> x<span style="color:#f92672">&gt;</span>y;});
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> cnt<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span>(cnt<span style="color:#f92672">&lt;</span>vec.size()<span style="color:#f92672">&amp;&amp;</span>vec[cnt]<span style="color:#f92672">==</span>vec[<span style="color:#ae81ff">0</span>]) cnt<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> max(len,cnt<span style="color:#f92672">+</span>(n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">*</span>(vec[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) );
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><hr>
+<h3 id="题目641设计循环双端队列httpsleetcode-cncomproblemsdesign-circular-deque">题目641:<a href="https://leetcode-cn.com/problems/design-circular-deque/">设计循环双端队列</a></h3>
+<hr>
+<p>描述：</p>
+<p>设计实现双端队列。
+你的实现需要支持以下操作：</p>
+<p>MyCircularDeque(k)：构造函数,双端队列的大小为k。
 insertFront()：将一个元素添加到双端队列头部。 如果操作成功返回 true。
 insertLast()：将一个元素添加到双端队列尾部。如果操作成功返回 true。
 deleteFront()：从双端队列头部删除一个元素。 如果操作成功返回 true。
@@ -37,187 +98,216 @@ getFront()：从双端队列头部获得一个元素。如果双端队列为空�
 getRear()：获得双端队列的最后一个元素。 如果双端队列为空，返回 -1。
 isEmpty()：检查双端队列是否为空。
 isFull()：检查双端队列是否满了。
-示例：</p><p>MyCircularDeque circularDeque = new MycircularDeque(3); // 设置容量大小为3
-circularDeque.insertLast(1); // 返回 true
-circularDeque.insertLast(2); // 返回 true
-circularDeque.insertFront(3); // 返回 true
-circularDeque.insertFront(4); // 已经满了，返回 false
-circularDeque.getRear(); // 返回 2
-circularDeque.isFull(); // 返回 true
-circularDeque.deleteLast(); // 返回 true
-circularDeque.insertFront(4); // 返回 true
-circularDeque.getFront(); // 返回 4</p><p>提示：</p><p>所有值的范围为 [1, 1000]
+示例：</p>
+<p>MyCircularDeque circularDeque = new MycircularDeque(3); // 设置容量大小为3
+circularDeque.insertLast(1);			        // 返回 true
+circularDeque.insertLast(2);			        // 返回 true
+circularDeque.insertFront(3);			        // 返回 true
+circularDeque.insertFront(4);			        // 已经满了，返回 false
+circularDeque.getRear();  				// 返回 2
+circularDeque.isFull();				        // 返回 true
+circularDeque.deleteLast();			        // 返回 true
+circularDeque.insertFront(4);			        // 返回 true
+circularDeque.getFront();				// 返回 4</p>
+<p>提示：</p>
+<p>所有值的范围为 [1, 1000]
 操作次数的范围为 [1, 1000]
-请不要使用内置的双端队列库。</p><p><a href>思路</a>：</p><p>突破点：<code>双端链表。</code></p><p>代码：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=k>class</span> <span class=nc>MyCircularDeque</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
-</span></span><span class=line><span class=cl>    <span class=k>struct</span> <span class=nc>DLNode</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=kt>int</span> <span class=n>val</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>DLNode</span><span class=o>*</span> <span class=n>next</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>DLNode</span><span class=o>*</span> <span class=n>prev</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>DLNode</span><span class=p>()</span> <span class=o>:</span> <span class=n>val</span><span class=p>(</span><span class=o>-</span><span class=mi>1</span><span class=p>),</span> <span class=n>next</span><span class=p>(</span><span class=nb>NULL</span><span class=p>),</span> <span class=n>prev</span><span class=p>(</span><span class=nb>NULL</span><span class=p>)</span> <span class=p>{}</span>
-</span></span><span class=line><span class=cl>        <span class=n>DLNode</span><span class=p>(</span><span class=kt>int</span> <span class=n>v</span><span class=p>)</span> <span class=o>:</span> <span class=n>val</span><span class=p>(</span><span class=n>v</span><span class=p>),</span> <span class=n>next</span><span class=p>(</span><span class=nb>NULL</span><span class=p>),</span> <span class=n>prev</span><span class=p>(</span><span class=nb>NULL</span><span class=p>)</span> <span class=p>{}</span>
-</span></span><span class=line><span class=cl>    <span class=p>};</span>
-</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>size</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>capacity</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=n>DLNode</span><span class=o>*</span> <span class=n>head</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=n>DLNode</span><span class=o>*</span> <span class=n>tail</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=cm>/** Initialize your data structure here. Set the size of the deque to be k. */</span>
-</span></span><span class=line><span class=cl>    <span class=n>MyCircularDeque</span><span class=p>(</span><span class=kt>int</span> <span class=n>k</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=n>size</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>capacity</span> <span class=o>=</span> <span class=n>k</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>head</span> <span class=o>=</span> <span class=k>new</span> <span class=n>DLNode</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>        <span class=n>tail</span> <span class=o>=</span> <span class=k>new</span> <span class=n>DLNode</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>        <span class=n>head</span><span class=o>-&gt;</span><span class=n>next</span> <span class=o>=</span> <span class=n>tail</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>tail</span><span class=o>-&gt;</span><span class=n>prev</span> <span class=o>=</span> <span class=n>head</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>    
-</span></span><span class=line><span class=cl>    <span class=cm>/** Adds an item at the front of Deque. Return true if the operation is successful. */</span>
-</span></span><span class=line><span class=cl>    <span class=kt>bool</span> <span class=nf>insertFront</span><span class=p>(</span><span class=kt>int</span> <span class=n>value</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>isFull</span><span class=p>())</span> <span class=k>return</span> <span class=nb>false</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=k>auto</span> <span class=n>node</span> <span class=o>=</span> <span class=k>new</span> <span class=n>DLNode</span><span class=p>(</span><span class=n>value</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>        <span class=n>node</span><span class=o>-&gt;</span><span class=n>prev</span> <span class=o>=</span> <span class=n>head</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>node</span><span class=o>-&gt;</span><span class=n>next</span> <span class=o>=</span> <span class=n>head</span><span class=o>-&gt;</span><span class=n>next</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>node</span><span class=o>-&gt;</span><span class=n>next</span><span class=o>-&gt;</span><span class=n>prev</span> <span class=o>=</span> <span class=n>node</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>node</span><span class=o>-&gt;</span><span class=n>prev</span><span class=o>-&gt;</span><span class=n>next</span> <span class=o>=</span> <span class=n>node</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=o>++</span><span class=n>size</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nb>true</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>    
-</span></span><span class=line><span class=cl>    <span class=cm>/** Adds an item at the rear of Deque. Return true if the operation is successful. */</span>
-</span></span><span class=line><span class=cl>    <span class=kt>bool</span> <span class=nf>insertLast</span><span class=p>(</span><span class=kt>int</span> <span class=n>value</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>isFull</span><span class=p>())</span> <span class=k>return</span> <span class=nb>false</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=k>auto</span> <span class=n>node</span> <span class=o>=</span> <span class=k>new</span> <span class=n>DLNode</span><span class=p>(</span><span class=n>value</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>        <span class=n>node</span><span class=o>-&gt;</span><span class=n>prev</span> <span class=o>=</span> <span class=n>tail</span><span class=o>-&gt;</span><span class=n>prev</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>node</span><span class=o>-&gt;</span><span class=n>next</span> <span class=o>=</span> <span class=n>tail</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>node</span><span class=o>-&gt;</span><span class=n>prev</span><span class=o>-&gt;</span><span class=n>next</span> <span class=o>=</span> <span class=n>node</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>node</span><span class=o>-&gt;</span><span class=n>next</span><span class=o>-&gt;</span><span class=n>prev</span> <span class=o>=</span> <span class=n>node</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=o>++</span><span class=n>size</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nb>true</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>    
-</span></span><span class=line><span class=cl>    <span class=cm>/** Deletes an item from the front of Deque. Return true if the operation is successful. */</span>
-</span></span><span class=line><span class=cl>    <span class=kt>bool</span> <span class=nf>deleteFront</span><span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>isEmpty</span><span class=p>())</span> <span class=k>return</span> <span class=nb>false</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=k>auto</span> <span class=n>node</span> <span class=o>=</span> <span class=n>head</span><span class=o>-&gt;</span><span class=n>next</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>node</span><span class=o>-&gt;</span><span class=n>next</span><span class=o>-&gt;</span><span class=n>prev</span> <span class=o>=</span> <span class=n>node</span><span class=o>-&gt;</span><span class=n>prev</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>node</span><span class=o>-&gt;</span><span class=n>prev</span><span class=o>-&gt;</span><span class=n>next</span> <span class=o>=</span> <span class=n>node</span><span class=o>-&gt;</span><span class=n>next</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=k>delete</span> <span class=n>node</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>node</span> <span class=o>=</span> <span class=nb>NULL</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=o>--</span><span class=n>size</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nb>true</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>    
-</span></span><span class=line><span class=cl>    <span class=cm>/** Deletes an item from the rear of Deque. Return true if the operation is successful. */</span>
-</span></span><span class=line><span class=cl>    <span class=kt>bool</span> <span class=nf>deleteLast</span><span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>isEmpty</span><span class=p>())</span> <span class=k>return</span> <span class=nb>false</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=k>auto</span> <span class=n>node</span> <span class=o>=</span> <span class=n>tail</span><span class=o>-&gt;</span><span class=n>prev</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>node</span><span class=o>-&gt;</span><span class=n>next</span><span class=o>-&gt;</span><span class=n>prev</span> <span class=o>=</span> <span class=n>node</span><span class=o>-&gt;</span><span class=n>prev</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>node</span><span class=o>-&gt;</span><span class=n>prev</span><span class=o>-&gt;</span><span class=n>next</span> <span class=o>=</span> <span class=n>node</span><span class=o>-&gt;</span><span class=n>next</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=k>delete</span> <span class=n>node</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>node</span> <span class=o>=</span> <span class=nb>NULL</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=o>--</span><span class=n>size</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nb>true</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>    
-</span></span><span class=line><span class=cl>    <span class=cm>/** Get the front item from the deque. */</span>
-</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=nf>getFront</span><span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>head</span><span class=o>-&gt;</span><span class=n>next</span><span class=o>-&gt;</span><span class=n>val</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>    
-</span></span><span class=line><span class=cl>    <span class=cm>/** Get the last item from the deque. */</span>
-</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=nf>getRear</span><span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>tail</span><span class=o>-&gt;</span><span class=n>prev</span><span class=o>-&gt;</span><span class=n>val</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>    
-</span></span><span class=line><span class=cl>    <span class=cm>/** Checks whether the circular deque is empty or not. */</span>
-</span></span><span class=line><span class=cl>    <span class=kt>bool</span> <span class=nf>isEmpty</span><span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>size</span> <span class=o>==</span> <span class=mi>0</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>    
-</span></span><span class=line><span class=cl>    <span class=cm>/** Checks whether the circular deque is full or not. */</span>
-</span></span><span class=line><span class=cl>    <span class=kt>bool</span> <span class=nf>isFull</span><span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>size</span> <span class=o>==</span> <span class=n>capacity</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>};</span>
-</span></span></code></pre></div><hr><h3 id=题目622设计循环队列httpsleetcode-cncomproblemsdesign-circular-queue>题目622:<a href=https://leetcode-cn.com/problems/design-circular-queue/>设计循环队列</a><a hidden class=anchor aria-hidden=true href=#题目622设计循环队列httpsleetcode-cncomproblemsdesign-circular-queue>#</a></h3><hr><p>描述：</p><p>设计你的循环队列实现。 循环队列是一种线性数据结构，其操作表现基于 FIFO（先进先出）原则并且队尾被连接在队首之后以形成一个循环。它也被称为“环形缓冲器”。</p><p>循环队列的一个好处是我们可以利用这个队列之前用过的空间。在一个普通队列里，一旦一个队列满了，我们就不能插入下一个元素，即使在队列前面仍有空间。但是使用循环队列，我们能使用这些空间去存储新的值。</p><p>你的实现应该支持如下操作：</p><p>MyCircularQueue(k): 构造器，设置队列长度为 k 。
+请不要使用内置的双端队列库。</p>
+<p><a href="">思路</a>：</p>
+<p>突破点：<code>双端链表。</code></p>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyCircularDeque</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">DLNode</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> val;
+</span></span><span style="display:flex;"><span>        DLNode<span style="color:#f92672">*</span> next;
+</span></span><span style="display:flex;"><span>        DLNode<span style="color:#f92672">*</span> prev;
+</span></span><span style="display:flex;"><span>        DLNode() <span style="color:#f92672">:</span> val(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>), next(NULL), prev(NULL) {}
+</span></span><span style="display:flex;"><span>        DLNode(<span style="color:#66d9ef">int</span> v) <span style="color:#f92672">:</span> val(v), next(NULL), prev(NULL) {}
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> size;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> capacity;
+</span></span><span style="display:flex;"><span>    DLNode<span style="color:#f92672">*</span> head;
+</span></span><span style="display:flex;"><span>    DLNode<span style="color:#f92672">*</span> tail;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Initialize your data structure here. Set the size of the deque to be k. */</span>
+</span></span><span style="display:flex;"><span>    MyCircularDeque(<span style="color:#66d9ef">int</span> k) {
+</span></span><span style="display:flex;"><span>        size <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        capacity <span style="color:#f92672">=</span> k;
+</span></span><span style="display:flex;"><span>        head <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DLNode();
+</span></span><span style="display:flex;"><span>        tail <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DLNode();
+</span></span><span style="display:flex;"><span>        head<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> tail;
+</span></span><span style="display:flex;"><span>        tail<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Adds an item at the front of Deque. Return true if the operation is successful. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">insertFront</span>(<span style="color:#66d9ef">int</span> value) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isFull()) <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> node <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DLNode(value);
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> head;
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> head<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> node;
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>prev<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> node;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">++</span>size;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Adds an item at the rear of Deque. Return true if the operation is successful. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">insertLast</span>(<span style="color:#66d9ef">int</span> value) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isFull()) <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> node <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DLNode(value);
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> tail<span style="color:#f92672">-&gt;</span>prev;
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> tail;
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>prev<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> node;
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> node;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">++</span>size;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Deletes an item from the front of Deque. Return true if the operation is successful. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">deleteFront</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isEmpty()) <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> node <span style="color:#f92672">=</span> head<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> node<span style="color:#f92672">-&gt;</span>prev;
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>prev<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> node<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">delete</span> node;
+</span></span><span style="display:flex;"><span>        node <span style="color:#f92672">=</span> NULL;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">--</span>size;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Deletes an item from the rear of Deque. Return true if the operation is successful. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">deleteLast</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isEmpty()) <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> node <span style="color:#f92672">=</span> tail<span style="color:#f92672">-&gt;</span>prev;
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> node<span style="color:#f92672">-&gt;</span>prev;
+</span></span><span style="display:flex;"><span>        node<span style="color:#f92672">-&gt;</span>prev<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> node<span style="color:#f92672">-&gt;</span>next;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">delete</span> node;
+</span></span><span style="display:flex;"><span>        node <span style="color:#f92672">=</span> NULL;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">--</span>size;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Get the front item from the deque. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getFront</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> head<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>val;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Get the last item from the deque. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getRear</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> tail<span style="color:#f92672">-&gt;</span>prev<span style="color:#f92672">-&gt;</span>val;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Checks whether the circular deque is empty or not. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isEmpty</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> size <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Checks whether the circular deque is full or not. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isFull</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> size <span style="color:#f92672">==</span> capacity;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目622设计循环队列httpsleetcode-cncomproblemsdesign-circular-queue">题目622:<a href="https://leetcode-cn.com/problems/design-circular-queue/">设计循环队列</a></h3>
+<hr>
+<p>描述：</p>
+<p>设计你的循环队列实现。 循环队列是一种线性数据结构，其操作表现基于 FIFO（先进先出）原则并且队尾被连接在队首之后以形成一个循环。它也被称为“环形缓冲器”。</p>
+<p>循环队列的一个好处是我们可以利用这个队列之前用过的空间。在一个普通队列里，一旦一个队列满了，我们就不能插入下一个元素，即使在队列前面仍有空间。但是使用循环队列，我们能使用这些空间去存储新的值。</p>
+<p>你的实现应该支持如下操作：</p>
+<p>MyCircularQueue(k): 构造器，设置队列长度为 k 。
 Front: 从队首获取元素。如果队列为空，返回 -1 。
 Rear: 获取队尾元素。如果队列为空，返回 -1 。
 enQueue(value): 向循环队列插入一个元素。如果成功插入则返回真。
 deQueue(): 从循环队列中删除一个元素。如果成功删除则返回真。
 isEmpty(): 检查循环队列是否为空。
-isFull(): 检查循环队列是否已满。</p><p>示例：</p><p>MyCircularQueue circularQueue = new MyCircularQueue(3); // 设置长度为 3
-circularQueue.enQueue(1); // 返回 true
-circularQueue.enQueue(2); // 返回 true
-circularQueue.enQueue(3); // 返回 true
-circularQueue.enQueue(4); // 返回 false，队列已满
-circularQueue.Rear(); // 返回 3
-circularQueue.isFull(); // 返回 true
-circularQueue.deQueue(); // 返回 true
-circularQueue.enQueue(4); // 返回 true
-circularQueue.Rear(); // 返回 4</p><p>提示：</p><p>所有的值都在 0 至 1000 的范围内；
+isFull(): 检查循环队列是否已满。</p>
+<p>示例：</p>
+<p>MyCircularQueue circularQueue = new MyCircularQueue(3); // 设置长度为 3
+circularQueue.enQueue(1);  // 返回 true
+circularQueue.enQueue(2);  // 返回 true
+circularQueue.enQueue(3);  // 返回 true
+circularQueue.enQueue(4);  // 返回 false，队列已满
+circularQueue.Rear();  // 返回 3
+circularQueue.isFull();  // 返回 true
+circularQueue.deQueue();  // 返回 true
+circularQueue.enQueue(4);  // 返回 true
+circularQueue.Rear();  // 返回 4</p>
+<p>提示：</p>
+<p>所有的值都在 0 至 1000 的范围内；
 操作数将在 1 至 1000 的范围内；
-请不要使用内置的队列库。</p><p><a href=https://leetcode-cn.com/problems/design-circular-queue/solution/xun-huan-dui-lie-by-zheng-rui-jia/>思路</a>：</p><p>突破点：<code>下标%数组大小。</code></p><p>代码：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=k>class</span> <span class=nc>MyCircularQueue</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl><span class=k>private</span><span class=o>:</span>
-</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>start</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>end</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>count</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>nums</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>  
-</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
-</span></span><span class=line><span class=cl>    <span class=cm>/** Initialize your data structure here. Set the size of the queue to be k. */</span>
-</span></span><span class=line><span class=cl>    <span class=n>MyCircularQueue</span><span class=p>(</span><span class=kt>int</span> <span class=n>k</span><span class=p>)</span><span class=o>:</span>
-</span></span><span class=line><span class=cl>        <span class=n>start</span><span class=p>(</span><span class=mi>0</span><span class=p>),</span>
-</span></span><span class=line><span class=cl>        <span class=n>end</span><span class=p>(</span><span class=mi>0</span><span class=p>),</span>
-</span></span><span class=line><span class=cl>        <span class=n>count</span><span class=p>(</span><span class=mi>0</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>    <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=n>nums</span><span class=p>.</span><span class=n>resize</span><span class=p>(</span><span class=n>k</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>    
-</span></span><span class=line><span class=cl>    <span class=cm>/** Insert an element into the circular queue. Return true if the operation is successful. */</span>
-</span></span><span class=line><span class=cl>    <span class=kt>bool</span> <span class=nf>enQueue</span><span class=p>(</span><span class=kt>int</span> <span class=n>value</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>count</span> <span class=o>==</span> <span class=n>nums</span><span class=p>.</span><span class=n>size</span><span class=p>())</span>
-</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=nb>false</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>nums</span><span class=p>[</span><span class=n>start</span><span class=o>++</span><span class=p>]</span> <span class=o>=</span> <span class=n>value</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>start</span> <span class=o>%=</span> <span class=n>nums</span><span class=p>.</span><span class=n>size</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>        <span class=o>++</span><span class=n>count</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nb>true</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>    
-</span></span><span class=line><span class=cl>    <span class=cm>/** Delete an element from the circular queue. Return true if the operation is successful. */</span>
-</span></span><span class=line><span class=cl>    <span class=kt>bool</span> <span class=nf>deQueue</span><span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>count</span> <span class=o>==</span> <span class=mi>0</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=nb>false</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>nums</span><span class=p>[</span><span class=n>end</span><span class=o>++</span><span class=p>]</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=n>end</span> <span class=o>%=</span> <span class=n>nums</span><span class=p>.</span><span class=n>size</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>        <span class=o>--</span><span class=n>count</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=nb>true</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>    
-</span></span><span class=line><span class=cl>    <span class=cm>/** Get the front item from the queue. */</span>
-</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=nf>Front</span><span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>count</span> <span class=o>==</span> <span class=mi>0</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=o>-</span><span class=mi>1</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>nums</span><span class=p>[</span><span class=n>end</span><span class=p>];</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>    
-</span></span><span class=line><span class=cl>    <span class=cm>/** Get the last item from the queue. */</span>
-</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=nf>Rear</span><span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>count</span> <span class=o>==</span> <span class=mi>0</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=o>-</span><span class=mi>1</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>nums</span><span class=p>[(</span><span class=n>start</span> <span class=o>-</span> <span class=mi>1</span> <span class=o>+</span> <span class=n>nums</span><span class=p>.</span><span class=n>size</span><span class=p>())</span> <span class=o>%</span> <span class=n>nums</span><span class=p>.</span><span class=n>size</span><span class=p>()];</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>    
-</span></span><span class=line><span class=cl>    <span class=cm>/** Checks whether the circular queue is empty or not. */</span>
-</span></span><span class=line><span class=cl>    <span class=kt>bool</span> <span class=nf>isEmpty</span><span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>count</span> <span class=o>==</span> <span class=mi>0</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>    
-</span></span><span class=line><span class=cl>    <span class=cm>/** Checks whether the circular queue is full or not. */</span>
-</span></span><span class=line><span class=cl>    <span class=kt>bool</span> <span class=nf>isFull</span><span class=p>()</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>nums</span><span class=p>.</span><span class=n>size</span><span class=p>()</span> <span class=o>==</span> <span class=n>count</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>};</span>
-</span></span></code></pre></div><hr><h3 id=题目329矩阵中的最长递增路径httpsleetcode-cncomproblemslongest-increasing-path-in-a-matrix>题目329:<a href=https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/>矩阵中的最长递增路径</a><a hidden class=anchor aria-hidden=true href=#题目329矩阵中的最长递增路径httpsleetcode-cncomproblemslongest-increasing-path-in-a-matrix>#</a></h3><hr><p>描述：</p><p>给定一个整数矩阵，找出最长递增路径的长度。</p><p>对于每个单元格，你可以往上，下，左，右四个方向移动。 你不能在对角线方向上移动或移动到边界外（即不允许环绕）。</p><p>示例 1:</p><p>输入: nums =
+请不要使用内置的队列库。</p>
+<p><a href="https://leetcode-cn.com/problems/design-circular-queue/solution/xun-huan-dui-lie-by-zheng-rui-jia/">思路</a>：</p>
+<p>突破点：<code>下标%数组大小。</code></p>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyCircularQueue</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> start;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> end;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> count;
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> nums;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Initialize your data structure here. Set the size of the queue to be k. */</span>
+</span></span><span style="display:flex;"><span>    MyCircularQueue(<span style="color:#66d9ef">int</span> k)<span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>        start(<span style="color:#ae81ff">0</span>),
+</span></span><span style="display:flex;"><span>        end(<span style="color:#ae81ff">0</span>),
+</span></span><span style="display:flex;"><span>        count(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>        nums.resize(k);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Insert an element into the circular queue. Return true if the operation is successful. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">enQueue</span>(<span style="color:#66d9ef">int</span> value) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (count <span style="color:#f92672">==</span> nums.size())
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>        nums[start<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> value;
+</span></span><span style="display:flex;"><span>        start <span style="color:#f92672">%=</span> nums.size();
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">++</span>count;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Delete an element from the circular queue. Return true if the operation is successful. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">deQueue</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (count <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>        nums[end<span style="color:#f92672">++</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        end <span style="color:#f92672">%=</span> nums.size();
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">--</span>count;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Get the front item from the queue. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Front</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (count <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> nums[end];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Get the last item from the queue. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Rear</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (count <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> nums[(start <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> nums.size()) <span style="color:#f92672">%</span> nums.size()];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Checks whether the circular queue is empty or not. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isEmpty</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> count <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Checks whether the circular queue is full or not. */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isFull</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> nums.size() <span style="color:#f92672">==</span> count;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目329矩阵中的最长递增路径httpsleetcode-cncomproblemslongest-increasing-path-in-a-matrix">题目329:<a href="https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/">矩阵中的最长递增路径</a></h3>
+<hr>
+<p>描述：</p>
+<p>给定一个整数矩阵，找出最长递增路径的长度。</p>
+<p>对于每个单元格，你可以往上，下，左，右四个方向移动。 你不能在对角线方向上移动或移动到边界外（即不允许环绕）。</p>
+<p>示例 1:</p>
+<p>输入: nums =
 [
 [9,9,4],
 [6,6,8],
@@ -225,215 +315,298 @@ circularQueue.Rear(); // 返回 4</p><p>提示：</p><p>所有的值都在 0 至
 ]
 输出: 4
 解释: 最长递增路径为 [1, 2, 6, 9]。
-示例 2:</p><p>输入: nums =
+示例 2:</p>
+<p>输入: nums =
 [
 [3,4,5],
 [3,2,6],
 [2,2,1]
 ]
 输出: 4
-解释: 最长递增路径是 [3, 4, 5, 6]。注意不允许在对角线方向上移动。</p><p><a href=https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/solution/ju-zhen-zhong-de-zui-chang-di-zeng-lu-jing-by-le-2/>思路一</a>：</p><p>突破点：<code>优化的深度优先搜索。</code></p><p>步骤：</p><ol><li>将矩阵视为有向图，若相邻两个单元格大小不等，则在两相邻单元格中存在一条小值指向大值的有向边；</li><li>在有向图中，寻找最长路径；</li><li>从一个单元格开始DFS，直到搜索结束；</li><li>使用缓存矩阵优化，已经计算过的单元格进行保存。</li></ol><p>代码：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=k>class</span> <span class=nc>Solution</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
-</span></span><span class=line><span class=cl>    <span class=k>static</span> <span class=k>constexpr</span> <span class=kt>int</span> <span class=n>dirs</span><span class=p>[</span><span class=mi>4</span><span class=p>][</span><span class=mi>2</span><span class=p>]</span> <span class=o>=</span> <span class=p>{{</span><span class=o>-</span><span class=mi>1</span><span class=p>,</span> <span class=mi>0</span><span class=p>},</span> <span class=p>{</span><span class=mi>1</span><span class=p>,</span> <span class=mi>0</span><span class=p>},</span> <span class=p>{</span><span class=mi>0</span><span class=p>,</span> <span class=o>-</span><span class=mi>1</span><span class=p>},</span> <span class=p>{</span><span class=mi>0</span><span class=p>,</span> <span class=mi>1</span><span class=p>}};</span>
-</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>rows</span><span class=p>,</span> <span class=n>columns</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=nf>longestIncreasingPath</span><span class=p>(</span><span class=n>vector</span><span class=o>&lt;</span> <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=o>&amp;</span><span class=n>matrix</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>matrix</span><span class=p>.</span><span class=n>size</span><span class=p>()</span> <span class=o>==</span> <span class=mi>0</span> <span class=o>||</span> <span class=n>matrix</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=n>size</span><span class=p>()</span> <span class=o>==</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=p>}</span>
-</span></span><span class=line><span class=cl>        <span class=n>rows</span> <span class=o>=</span> <span class=n>matrix</span><span class=p>.</span><span class=n>size</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>        <span class=n>columns</span> <span class=o>=</span> <span class=n>matrix</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=n>size</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>        <span class=k>auto</span> <span class=n>memo</span> <span class=o>=</span> <span class=n>vector</span><span class=o>&lt;</span> <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=p>(</span><span class=n>rows</span><span class=p>,</span> <span class=n>vector</span> <span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=p>(</span><span class=n>columns</span><span class=p>));</span>
-</span></span><span class=line><span class=cl>        <span class=kt>int</span> <span class=n>ans</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>rows</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>            <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>j</span> <span class=o>&lt;</span> <span class=n>columns</span><span class=p>;</span> <span class=o>++</span><span class=n>j</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>                <span class=n>ans</span> <span class=o>=</span> <span class=n>max</span><span class=p>(</span><span class=n>ans</span><span class=p>,</span> <span class=n>dfs</span><span class=p>(</span><span class=n>matrix</span><span class=p>,</span> <span class=n>i</span><span class=p>,</span> <span class=n>j</span><span class=p>,</span> <span class=n>memo</span><span class=p>));</span>
-</span></span><span class=line><span class=cl>            <span class=p>}</span>
-</span></span><span class=line><span class=cl>        <span class=p>}</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>ans</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=nf>dfs</span><span class=p>(</span><span class=n>vector</span><span class=o>&lt;</span> <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=o>&amp;</span><span class=n>matrix</span><span class=p>,</span> <span class=kt>int</span> <span class=n>row</span><span class=p>,</span> <span class=kt>int</span> <span class=n>column</span><span class=p>,</span> <span class=n>vector</span><span class=o>&lt;</span> <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=o>&amp;</span><span class=n>memo</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>memo</span><span class=p>[</span><span class=n>row</span><span class=p>][</span><span class=n>column</span><span class=p>]</span> <span class=o>!=</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=n>memo</span><span class=p>[</span><span class=n>row</span><span class=p>][</span><span class=n>column</span><span class=p>];</span>
-</span></span><span class=line><span class=cl>        <span class=p>}</span>
-</span></span><span class=line><span class=cl>        <span class=o>++</span><span class=n>memo</span><span class=p>[</span><span class=n>row</span><span class=p>][</span><span class=n>column</span><span class=p>];</span>
-</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>4</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>            <span class=kt>int</span> <span class=n>newRow</span> <span class=o>=</span> <span class=n>row</span> <span class=o>+</span> <span class=n>dirs</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=mi>0</span><span class=p>],</span> <span class=n>newColumn</span> <span class=o>=</span> <span class=n>column</span> <span class=o>+</span> <span class=n>dirs</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=mi>1</span><span class=p>];</span>
-</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=p>(</span><span class=n>newRow</span> <span class=o>&gt;=</span> <span class=mi>0</span> <span class=o>&amp;&amp;</span> <span class=n>newRow</span> <span class=o>&lt;</span> <span class=n>rows</span> <span class=o>&amp;&amp;</span> <span class=n>newColumn</span> <span class=o>&gt;=</span> <span class=mi>0</span> <span class=o>&amp;&amp;</span> <span class=n>newColumn</span> <span class=o>&lt;</span> <span class=n>columns</span> <span class=o>&amp;&amp;</span> <span class=n>matrix</span><span class=p>[</span><span class=n>newRow</span><span class=p>][</span><span class=n>newColumn</span><span class=p>]</span> <span class=o>&gt;</span> <span class=n>matrix</span><span class=p>[</span><span class=n>row</span><span class=p>][</span><span class=n>column</span><span class=p>])</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>                <span class=n>memo</span><span class=p>[</span><span class=n>row</span><span class=p>][</span><span class=n>column</span><span class=p>]</span> <span class=o>=</span> <span class=n>max</span><span class=p>(</span><span class=n>memo</span><span class=p>[</span><span class=n>row</span><span class=p>][</span><span class=n>column</span><span class=p>],</span> <span class=n>dfs</span><span class=p>(</span><span class=n>matrix</span><span class=p>,</span> <span class=n>newRow</span><span class=p>,</span> <span class=n>newColumn</span><span class=p>,</span> <span class=n>memo</span><span class=p>)</span> <span class=o>+</span> <span class=mi>1</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>            <span class=p>}</span>
-</span></span><span class=line><span class=cl>        <span class=p>}</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>memo</span><span class=p>[</span><span class=n>row</span><span class=p>][</span><span class=n>column</span><span class=p>];</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>};</span>
-</span></span></code></pre></div><p><a href=https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/solution/ju-zhen-zhong-de-zui-chang-di-zeng-lu-jing-by-le-2/>思路二</a>：</p><p>突破点：<code>拓扑排序+动态规划。</code></p><p>步骤：</p><ol><li>状态转移方程：memo[i][j] = max{memo[x][y]} + 1，(x, y)与(i, j)相邻，且matrix[x][y]>matrix[i][j]；</li><li>使用拓扑排序，从所有出度为0的单元格开始DFS；</li><li>更新其余单元格出度，并将出度为0的加入下一层搜索；</li><li>搜索结束后，总层数即为所求答案。</li></ol><p>代码：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=k>class</span> <span class=nc>Solution</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
-</span></span><span class=line><span class=cl>    <span class=k>static</span> <span class=k>constexpr</span> <span class=kt>int</span> <span class=n>dirs</span><span class=p>[</span><span class=mi>4</span><span class=p>][</span><span class=mi>2</span><span class=p>]</span> <span class=o>=</span> <span class=p>{{</span><span class=o>-</span><span class=mi>1</span><span class=p>,</span> <span class=mi>0</span><span class=p>},</span> <span class=p>{</span><span class=mi>1</span><span class=p>,</span> <span class=mi>0</span><span class=p>},</span> <span class=p>{</span><span class=mi>0</span><span class=p>,</span> <span class=o>-</span><span class=mi>1</span><span class=p>},</span> <span class=p>{</span><span class=mi>0</span><span class=p>,</span> <span class=mi>1</span><span class=p>}};</span>
-</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=n>rows</span><span class=p>,</span> <span class=n>columns</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=kt>int</span> <span class=nf>longestIncreasingPath</span><span class=p>(</span><span class=n>vector</span><span class=o>&lt;</span> <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=o>&amp;</span><span class=n>matrix</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=p>(</span><span class=n>matrix</span><span class=p>.</span><span class=n>size</span><span class=p>()</span> <span class=o>==</span> <span class=mi>0</span> <span class=o>||</span> <span class=n>matrix</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=n>size</span><span class=p>()</span> <span class=o>==</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>            <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=p>}</span>
-</span></span><span class=line><span class=cl>        <span class=n>rows</span> <span class=o>=</span> <span class=n>matrix</span><span class=p>.</span><span class=n>size</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>        <span class=n>columns</span> <span class=o>=</span> <span class=n>matrix</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=n>size</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>        <span class=k>auto</span> <span class=n>outdegrees</span> <span class=o>=</span> <span class=n>vector</span><span class=o>&lt;</span> <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=p>(</span><span class=n>rows</span><span class=p>,</span> <span class=n>vector</span> <span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=p>(</span><span class=n>columns</span><span class=p>));</span>
-</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>rows</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>            <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>j</span> <span class=o>&lt;</span> <span class=n>columns</span><span class=p>;</span> <span class=o>++</span><span class=n>j</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>                <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>k</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>k</span> <span class=o>&lt;</span> <span class=mi>4</span><span class=p>;</span> <span class=o>++</span><span class=n>k</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>                    <span class=kt>int</span> <span class=n>newRow</span> <span class=o>=</span> <span class=n>i</span> <span class=o>+</span> <span class=n>dirs</span><span class=p>[</span><span class=n>k</span><span class=p>][</span><span class=mi>0</span><span class=p>],</span> <span class=n>newColumn</span> <span class=o>=</span> <span class=n>j</span> <span class=o>+</span> <span class=n>dirs</span><span class=p>[</span><span class=n>k</span><span class=p>][</span><span class=mi>1</span><span class=p>];</span>
-</span></span><span class=line><span class=cl>                    <span class=k>if</span> <span class=p>(</span><span class=n>newRow</span> <span class=o>&gt;=</span> <span class=mi>0</span> <span class=o>&amp;&amp;</span> <span class=n>newRow</span> <span class=o>&lt;</span> <span class=n>rows</span> <span class=o>&amp;&amp;</span> <span class=n>newColumn</span> <span class=o>&gt;=</span> <span class=mi>0</span> <span class=o>&amp;&amp;</span> <span class=n>newColumn</span> <span class=o>&lt;</span> <span class=n>columns</span> <span class=o>&amp;&amp;</span> <span class=n>matrix</span><span class=p>[</span><span class=n>newRow</span><span class=p>][</span><span class=n>newColumn</span><span class=p>]</span> <span class=o>&gt;</span> <span class=n>matrix</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>])</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>                        <span class=o>++</span><span class=n>outdegrees</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>];</span>
-</span></span><span class=line><span class=cl>                    <span class=p>}</span>
-</span></span><span class=line><span class=cl>                <span class=p>}</span>
-</span></span><span class=line><span class=cl>            <span class=p>}</span>
-</span></span><span class=line><span class=cl>        <span class=p>}</span>
-</span></span><span class=line><span class=cl>        <span class=n>queue</span> <span class=o>&lt;</span> <span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>q</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>rows</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>            <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>j</span> <span class=o>&lt;</span> <span class=n>columns</span><span class=p>;</span> <span class=o>++</span><span class=n>j</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=p>(</span><span class=n>outdegrees</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>]</span> <span class=o>==</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>                    <span class=n>q</span><span class=p>.</span><span class=n>push</span><span class=p>({</span><span class=n>i</span><span class=p>,</span> <span class=n>j</span><span class=p>});</span>
-</span></span><span class=line><span class=cl>                <span class=p>}</span>
-</span></span><span class=line><span class=cl>            <span class=p>}</span>
-</span></span><span class=line><span class=cl>        <span class=p>}</span>
-</span></span><span class=line><span class=cl>        <span class=kt>int</span> <span class=n>ans</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=k>while</span> <span class=p>(</span><span class=o>!</span><span class=n>q</span><span class=p>.</span><span class=n>empty</span><span class=p>())</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>            <span class=o>++</span><span class=n>ans</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>            <span class=kt>int</span> <span class=n>size</span> <span class=o>=</span> <span class=n>q</span><span class=p>.</span><span class=n>size</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>            <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>size</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>                <span class=k>auto</span> <span class=n>cell</span> <span class=o>=</span> <span class=n>q</span><span class=p>.</span><span class=n>front</span><span class=p>();</span> <span class=n>q</span><span class=p>.</span><span class=n>pop</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>                <span class=kt>int</span> <span class=n>row</span> <span class=o>=</span> <span class=n>cell</span><span class=p>.</span><span class=n>first</span><span class=p>,</span> <span class=n>column</span> <span class=o>=</span> <span class=n>cell</span><span class=p>.</span><span class=n>second</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>                <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>k</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>k</span> <span class=o>&lt;</span> <span class=mi>4</span><span class=p>;</span> <span class=o>++</span><span class=n>k</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>                    <span class=kt>int</span> <span class=n>newRow</span> <span class=o>=</span> <span class=n>row</span> <span class=o>+</span> <span class=n>dirs</span><span class=p>[</span><span class=n>k</span><span class=p>][</span><span class=mi>0</span><span class=p>],</span> <span class=n>newColumn</span> <span class=o>=</span> <span class=n>column</span> <span class=o>+</span> <span class=n>dirs</span><span class=p>[</span><span class=n>k</span><span class=p>][</span><span class=mi>1</span><span class=p>];</span>
-</span></span><span class=line><span class=cl>                    <span class=k>if</span> <span class=p>(</span><span class=n>newRow</span> <span class=o>&gt;=</span> <span class=mi>0</span> <span class=o>&amp;&amp;</span> <span class=n>newRow</span> <span class=o>&lt;</span> <span class=n>rows</span> <span class=o>&amp;&amp;</span> <span class=n>newColumn</span> <span class=o>&gt;=</span> <span class=mi>0</span> <span class=o>&amp;&amp;</span> <span class=n>newColumn</span> <span class=o>&lt;</span> <span class=n>columns</span> <span class=o>&amp;&amp;</span> <span class=n>matrix</span><span class=p>[</span><span class=n>newRow</span><span class=p>][</span><span class=n>newColumn</span><span class=p>]</span> <span class=o>&lt;</span> <span class=n>matrix</span><span class=p>[</span><span class=n>row</span><span class=p>][</span><span class=n>column</span><span class=p>])</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>                        <span class=o>--</span><span class=n>outdegrees</span><span class=p>[</span><span class=n>newRow</span><span class=p>][</span><span class=n>newColumn</span><span class=p>];</span>
-</span></span><span class=line><span class=cl>                        <span class=k>if</span> <span class=p>(</span><span class=n>outdegrees</span><span class=p>[</span><span class=n>newRow</span><span class=p>][</span><span class=n>newColumn</span><span class=p>]</span> <span class=o>==</span> <span class=mi>0</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>                            <span class=n>q</span><span class=p>.</span><span class=n>push</span><span class=p>({</span><span class=n>newRow</span><span class=p>,</span> <span class=n>newColumn</span><span class=p>});</span>
-</span></span><span class=line><span class=cl>                        <span class=p>}</span>
-</span></span><span class=line><span class=cl>                    <span class=p>}</span>
-</span></span><span class=line><span class=cl>                <span class=p>}</span>
-</span></span><span class=line><span class=cl>            <span class=p>}</span>
-</span></span><span class=line><span class=cl>        <span class=p>}</span>
-</span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>ans</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>    <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>};</span>
-</span></span></code></pre></div><hr><h3 id=题目1203项目管理httpsleetcode-cncomproblemssort-items-by-groups-respecting-dependencies>题目1203:<a href=https://leetcode-cn.com/problems/sort-items-by-groups-respecting-dependencies/>项目管理</a><a hidden class=anchor aria-hidden=true href=#题目1203项目管理httpsleetcode-cncomproblemssort-items-by-groups-respecting-dependencies>#</a></h3><hr><p>描述：</p><p>公司共有 n 个项目和 m 个小组，每个项目要不没有归属，要不就由其中的一个小组负责。</p><p>我们用 group[i] 代表第 i 个项目所属的小组，如果这个项目目前无人接手，那么 group[i] 就等于 -1。（项目和小组都是从零开始编号的）</p><p>请你帮忙按要求安排这些项目的进度，并返回排序后的项目列表：</p><p>同一小组的项目，排序后在列表中彼此相邻。
+解释: 最长递增路径是 [3, 4, 5, 6]。注意不允许在对角线方向上移动。</p>
+<p><a href="https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/solution/ju-zhen-zhong-de-zui-chang-di-zeng-lu-jing-by-le-2/">思路一</a>：</p>
+<p>突破点：<code>优化的深度优先搜索。</code></p>
+<p>步骤：</p>
+<ol>
+<li>将矩阵视为有向图，若相邻两个单元格大小不等，则在两相邻单元格中存在一条小值指向大值的有向边；</li>
+<li>在有向图中，寻找最长路径；</li>
+<li>从一个单元格开始DFS，直到搜索结束；</li>
+<li>使用缓存矩阵优化，已经计算过的单元格进行保存。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">int</span> dirs[<span style="color:#ae81ff">4</span>][<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> {{<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>}, {<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>}};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> rows, columns;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">longestIncreasingPath</span>(vector<span style="color:#f92672">&lt;</span> vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>matrix) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (matrix.size() <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> matrix[<span style="color:#ae81ff">0</span>].size() <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        rows <span style="color:#f92672">=</span> matrix.size();
+</span></span><span style="display:flex;"><span>        columns <span style="color:#f92672">=</span> matrix[<span style="color:#ae81ff">0</span>].size();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> memo <span style="color:#f92672">=</span> vector<span style="color:#f92672">&lt;</span> vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> (rows, vector <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> (columns));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> ans <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> rows; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> columns; <span style="color:#f92672">++</span>j) {
+</span></span><span style="display:flex;"><span>                ans <span style="color:#f92672">=</span> max(ans, dfs(matrix, i, j, memo));
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ans;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">dfs</span>(vector<span style="color:#f92672">&lt;</span> vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>matrix, <span style="color:#66d9ef">int</span> row, <span style="color:#66d9ef">int</span> column, vector<span style="color:#f92672">&lt;</span> vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>memo) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (memo[row][column] <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> memo[row][column];
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">++</span>memo[row][column];
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">4</span>; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> newRow <span style="color:#f92672">=</span> row <span style="color:#f92672">+</span> dirs[i][<span style="color:#ae81ff">0</span>], newColumn <span style="color:#f92672">=</span> column <span style="color:#f92672">+</span> dirs[i][<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (newRow <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> newRow <span style="color:#f92672">&lt;</span> rows <span style="color:#f92672">&amp;&amp;</span> newColumn <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> newColumn <span style="color:#f92672">&lt;</span> columns <span style="color:#f92672">&amp;&amp;</span> matrix[newRow][newColumn] <span style="color:#f92672">&gt;</span> matrix[row][column]) {
+</span></span><span style="display:flex;"><span>                memo[row][column] <span style="color:#f92672">=</span> max(memo[row][column], dfs(matrix, newRow, newColumn, memo) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> memo[row][column];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/solution/ju-zhen-zhong-de-zui-chang-di-zeng-lu-jing-by-le-2/">思路二</a>：</p>
+<p>突破点：<code>拓扑排序+动态规划。</code></p>
+<p>步骤：</p>
+<ol>
+<li>状态转移方程：memo[i][j] = max{memo[x][y]} + 1，(x, y)与(i, j)相邻，且matrix[x][y]&gt;matrix[i][j]；</li>
+<li>使用拓扑排序，从所有出度为0的单元格开始DFS；</li>
+<li>更新其余单元格出度，并将出度为0的加入下一层搜索；</li>
+<li>搜索结束后，总层数即为所求答案。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">constexpr</span> <span style="color:#66d9ef">int</span> dirs[<span style="color:#ae81ff">4</span>][<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> {{<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>}, {<span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>}, {<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>}};
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> rows, columns;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">longestIncreasingPath</span>(vector<span style="color:#f92672">&lt;</span> vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>matrix) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (matrix.size() <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">||</span> matrix[<span style="color:#ae81ff">0</span>].size() <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        rows <span style="color:#f92672">=</span> matrix.size();
+</span></span><span style="display:flex;"><span>        columns <span style="color:#f92672">=</span> matrix[<span style="color:#ae81ff">0</span>].size();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">auto</span> outdegrees <span style="color:#f92672">=</span> vector<span style="color:#f92672">&lt;</span> vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> (rows, vector <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> (columns));
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> rows; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> columns; <span style="color:#f92672">++</span>j) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; k <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">4</span>; <span style="color:#f92672">++</span>k) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">int</span> newRow <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> dirs[k][<span style="color:#ae81ff">0</span>], newColumn <span style="color:#f92672">=</span> j <span style="color:#f92672">+</span> dirs[k][<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (newRow <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> newRow <span style="color:#f92672">&lt;</span> rows <span style="color:#f92672">&amp;&amp;</span> newColumn <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> newColumn <span style="color:#f92672">&lt;</span> columns <span style="color:#f92672">&amp;&amp;</span> matrix[newRow][newColumn] <span style="color:#f92672">&gt;</span> matrix[i][j]) {
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">++</span>outdegrees[i][j];
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        queue <span style="color:#f92672">&lt;</span> pair<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> q;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> rows; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> columns; <span style="color:#f92672">++</span>j) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (outdegrees[i][j] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>                    q.push({i, j});
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> ans <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>q.empty()) {
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">++</span>ans;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> size <span style="color:#f92672">=</span> q.size();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> size; <span style="color:#f92672">++</span>i) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">auto</span> cell <span style="color:#f92672">=</span> q.front(); q.pop();
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> row <span style="color:#f92672">=</span> cell.first, column <span style="color:#f92672">=</span> cell.second;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> k <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; k <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">4</span>; <span style="color:#f92672">++</span>k) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">int</span> newRow <span style="color:#f92672">=</span> row <span style="color:#f92672">+</span> dirs[k][<span style="color:#ae81ff">0</span>], newColumn <span style="color:#f92672">=</span> column <span style="color:#f92672">+</span> dirs[k][<span style="color:#ae81ff">1</span>];
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (newRow <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> newRow <span style="color:#f92672">&lt;</span> rows <span style="color:#f92672">&amp;&amp;</span> newColumn <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> newColumn <span style="color:#f92672">&lt;</span> columns <span style="color:#f92672">&amp;&amp;</span> matrix[newRow][newColumn] <span style="color:#f92672">&lt;</span> matrix[row][column]) {
+</span></span><span style="display:flex;"><span>                        <span style="color:#f92672">--</span>outdegrees[newRow][newColumn];
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">if</span> (outdegrees[newRow][newColumn] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>                            q.push({newRow, newColumn});
+</span></span><span style="display:flex;"><span>                        }
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ans;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><hr>
+<h3 id="题目1203项目管理httpsleetcode-cncomproblemssort-items-by-groups-respecting-dependencies">题目1203:<a href="https://leetcode-cn.com/problems/sort-items-by-groups-respecting-dependencies/">项目管理</a></h3>
+<hr>
+<p>描述：</p>
+<p>公司共有 n 个项目和  m 个小组，每个项目要不没有归属，要不就由其中的一个小组负责。</p>
+<p>我们用 group[i] 代表第 i 个项目所属的小组，如果这个项目目前无人接手，那么 group[i] 就等于 -1。（项目和小组都是从零开始编号的）</p>
+<p>请你帮忙按要求安排这些项目的进度，并返回排序后的项目列表：</p>
+<p>同一小组的项目，排序后在列表中彼此相邻。
 项目之间存在一定的依赖关系，我们用一个列表 beforeItems 来表示，其中 beforeItems[i] 表示在进行第 i 个项目前（位于第 i 个项目左侧）应该完成的所有项目。
-结果要求：</p><p>如果存在多个解决方案，只需要返回其中任意一个即可。</p><p>如果没有合适的解决方案，就请返回一个 空列表</p><p>示例 1：</p><p>输入：n = 8, m = 2, group = [-1,-1,1,0,0,1,0,-1], beforeItems = [[],[6],[5],[6],[3,6],[],[],[]]
+结果要求：</p>
+<p>如果存在多个解决方案，只需要返回其中任意一个即可。</p>
+<p>如果没有合适的解决方案，就请返回一个 空列表</p>
+<p>示例 1：</p>
+<p>输入：n = 8, m = 2, group = [-1,-1,1,0,0,1,0,-1], beforeItems = [[],[6],[5],[6],[3,6],[],[],[]]
 输出：[6,3,4,1,5,2,0,7]
-示例 2：</p><p>输入：n = 8, m = 2, group = [-1,-1,1,0,0,1,0,-1], beforeItems = [[],[6],[5],[6],[3],[],[4],[]]
+示例 2：</p>
+<p>输入：n = 8, m = 2, group = [-1,-1,1,0,0,1,0,-1], beforeItems = [[],[6],[5],[6],[3],[],[4],[]]
 输出：[]
-解释：与示例 1 大致相同，但是在排序后的列表中，4 必须放在 6 的前面。</p><p>提示：</p><p>1 &lt;= m &lt;= n &lt;= 3*10^4
+解释：与示例 1 大致相同，但是在排序后的列表中，4 必须放在 6 的前面。</p>
+<p>提示：</p>
+<p>1 &lt;= m &lt;= n &lt;= 3*10^4
 group.length == beforeItems.length == n
 -1 &lt;= group[i] &lt;= m-1
 0 &lt;= beforeItems[i].length &lt;= n-1
 0 &lt;= beforeItems[i][j] &lt;= n-1
-i != beforeItems[i][j]</p><p><a href=https://leetcode-cn.com/problems/sort-items-by-groups-respecting-dependencies/solution/chuang-jian-xin-zu-fen-qu-yu-jin-xing-tuo-bu-pai-x/>思路</a>：</p><p>突破点：<code>拓扑排序。</code></p><p>步骤：</p><ol><li>将组别为-1的项目都创建一个新组；</li><li>遍历beforeItems[i][j]数组；</li><li>如果i和j属于同组，则确定组内优先级关系；</li><li>若不同组，则确定小组间优先级关系；</li><li>对每个组内拓扑排序；</li><li>对不同组拓扑排序。</li></ol><p>代码：</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=k>class</span> <span class=nc>Solution</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl><span class=k>public</span><span class=o>:</span>
-</span></span><span class=line><span class=cl>  <span class=c1>//拓扑排序的节点结构体声明
-</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>struct</span> <span class=nc>tpnod</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>  <span class=c1>//组外的优先级比该节点小的节点索引，维护不同的小组排序后的优先级关系
-</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span><span class=n>next1</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>  <span class=c1>//组内的优先级比该节点小的节点索引，维护同一小组的任务排序后的优先级关系
-</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span><span class=n>ingnext</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>  <span class=c1>//不同组间的在完成该节点之前需要完成的任务数
-</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=kt>int</span> <span class=n>deg</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>  <span class=c1>//组内的在完成该节点之前需要完成的任务数
-</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=kt>int</span> <span class=n>igdeg</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
-</span></span><span class=line><span class=cl><span class=p>};</span>
-</span></span><span class=line><span class=cl>  
-</span></span><span class=line><span class=cl><span class=n>tpnod</span> <span class=n>nos</span><span class=p>[</span><span class=mi>30001</span><span class=p>];</span>
-</span></span><span class=line><span class=cl><span class=c1>//小组的数组，每个单元都是一个小组，可能不只m个，因为新创建了一些小组，但一定不会超过30000；
-</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>tpnod</span> <span class=n>itogroup</span><span class=p>[</span><span class=mi>30001</span><span class=p>];</span>
-</span></span><span class=line><span class=cl><span class=c1>//维护同一个组的项目
-</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span><span class=n>grouptoi</span><span class=p>[</span><span class=mi>30001</span><span class=p>];</span>
-</span></span><span class=line><span class=cl><span class=c1>//维护同一组的不同项目之间的顺序
-</span></span></span><span class=line><span class=cl><span class=c1></span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span><span class=n>ingroup</span><span class=p>[</span><span class=mi>30001</span><span class=p>];</span>
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>    <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>sortItems</span><span class=p>(</span><span class=kt>int</span> <span class=n>n</span><span class=p>,</span> <span class=kt>int</span> <span class=n>m</span><span class=p>,</span> <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;&amp;</span> <span class=n>group</span><span class=p>,</span> <span class=n>vector</span><span class=o>&lt;</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;&gt;&amp;</span> <span class=n>beforeItems</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>  <span class=c1>//numOfG为包括创建的新组的组数
-</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=kt>int</span> <span class=n>numOfG</span> <span class=o>=</span> <span class=n>m</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>	<span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span><span class=n>res</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>	<span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>group</span><span class=p>.</span><span class=n>size</span><span class=p>();</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>		<span class=k>if</span> <span class=p>(</span><span class=n>group</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>!=</span> <span class=o>-</span><span class=mi>1</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>			<span class=n>grouptoi</span><span class=p>[</span><span class=n>group</span><span class=p>[</span><span class=n>i</span><span class=p>]].</span><span class=n>push_back</span><span class=p>(</span><span class=n>i</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>		<span class=c1>//否则创建新组
-</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>else</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>			<span class=n>grouptoi</span><span class=p>[</span><span class=n>numOfG</span><span class=p>].</span><span class=n>push_back</span><span class=p>(</span><span class=n>i</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>			<span class=n>group</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>=</span> <span class=n>numOfG</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>			<span class=n>numOfG</span><span class=o>++</span><span class=p>;</span><span class=c1>//创建后加一
-</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=p>}</span>
-</span></span><span class=line><span class=cl>	<span class=p>}</span>
-</span></span><span class=line><span class=cl>	<span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>beforeItems</span><span class=p>.</span><span class=n>size</span><span class=p>();</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>		<span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>j</span> <span class=o>&lt;</span> <span class=n>beforeItems</span><span class=p>[</span><span class=n>i</span><span class=p>].</span><span class=n>size</span><span class=p>();</span> <span class=n>j</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>      <span class=c1>//在同一组就看作组内项目优先级关系
-</span></span></span><span class=line><span class=cl><span class=c1></span>			<span class=k>if</span> <span class=p>(</span><span class=n>group</span><span class=p>[</span><span class=n>beforeItems</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>]]</span> <span class=o>==</span> <span class=n>group</span><span class=p>[</span><span class=n>i</span><span class=p>])</span>
-</span></span><span class=line><span class=cl>				<span class=n>nos</span><span class=p>[</span><span class=n>i</span><span class=p>].</span><span class=n>igdeg</span><span class=o>++</span><span class=p>,</span> <span class=n>nos</span><span class=p>[</span><span class=n>beforeItems</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>]].</span><span class=n>next1</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>i</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>      <span class=c1>//在不同组就看作组之间的优先级关系，因为同组的肯定是聚在一起的
-</span></span></span><span class=line><span class=cl><span class=c1></span>			<span class=k>else</span> <span class=n>itogroup</span><span class=p>[</span><span class=n>group</span><span class=p>[</span><span class=n>i</span><span class=p>]].</span><span class=n>deg</span><span class=o>++</span><span class=p>,</span>
-</span></span><span class=line><span class=cl>				<span class=n>itogroup</span><span class=p>[</span><span class=n>group</span><span class=p>[</span><span class=n>beforeItems</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>]]].</span><span class=n>next1</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>group</span><span class=p>[</span><span class=n>i</span><span class=p>]);</span>
-</span></span><span class=line><span class=cl>		<span class=p>}</span>
-</span></span><span class=line><span class=cl>	<span class=p>}</span>
-</span></span><span class=line><span class=cl>  <span class=c1>//确定不同小组组内项目优先级顺序     
-</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>numOfG</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>		<span class=n>queue</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span><span class=n>q</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>		<span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>j</span> <span class=o>&lt;</span> <span class=n>grouptoi</span><span class=p>[</span><span class=n>i</span><span class=p>].</span><span class=n>size</span><span class=p>();</span> <span class=n>j</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>			<span class=k>if</span> <span class=p>(</span><span class=n>nos</span><span class=p>[</span><span class=n>grouptoi</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>]].</span><span class=n>igdeg</span> <span class=o>==</span> <span class=mi>0</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>				<span class=n>q</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>grouptoi</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=n>j</span><span class=p>]);</span>
-</span></span><span class=line><span class=cl>		<span class=p>}</span>
-</span></span><span class=line><span class=cl>		<span class=kt>int</span> <span class=n>cnt2</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>		<span class=k>while</span> <span class=p>(</span><span class=o>!</span><span class=n>q</span><span class=p>.</span><span class=n>empty</span><span class=p>())</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>			<span class=n>cnt2</span><span class=o>++</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>			<span class=kt>int</span> <span class=n>tp2</span> <span class=o>=</span> <span class=n>q</span><span class=p>.</span><span class=n>front</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>			<span class=n>ingroup</span><span class=p>[</span><span class=n>i</span><span class=p>].</span><span class=n>push_back</span><span class=p>(</span><span class=n>tp2</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>			<span class=n>q</span><span class=p>.</span><span class=n>pop</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>			<span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>j</span> <span class=o>&lt;</span> <span class=n>nos</span><span class=p>[</span><span class=n>tp2</span><span class=p>].</span><span class=n>next1</span><span class=p>.</span><span class=n>size</span><span class=p>();</span> <span class=n>j</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>				<span class=n>nos</span><span class=p>[</span><span class=n>nos</span><span class=p>[</span><span class=n>tp2</span><span class=p>].</span><span class=n>next1</span><span class=p>[</span><span class=n>j</span><span class=p>]].</span><span class=n>igdeg</span><span class=o>--</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>        <span class=c1>//在该节点之前的工作处理完了就把该节点放入队列
-</span></span></span><span class=line><span class=cl><span class=c1></span>				<span class=k>if</span> <span class=p>(</span><span class=n>nos</span><span class=p>[</span><span class=n>nos</span><span class=p>[</span><span class=n>tp2</span><span class=p>].</span><span class=n>next1</span><span class=p>[</span><span class=n>j</span><span class=p>]].</span><span class=n>igdeg</span> <span class=o>==</span> <span class=mi>0</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>					<span class=n>q</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>nos</span><span class=p>[</span><span class=n>tp2</span><span class=p>].</span><span class=n>next1</span><span class=p>[</span><span class=n>j</span><span class=p>]);</span>
-</span></span><span class=line><span class=cl>			<span class=p>}</span>
-</span></span><span class=line><span class=cl>		<span class=p>}</span>
-</span></span><span class=line><span class=cl>    <span class=c1>//判断是否矛盾 
-</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=k>if</span> <span class=p>(</span><span class=n>cnt2</span> <span class=o>!=</span> <span class=n>grouptoi</span><span class=p>[</span><span class=n>i</span><span class=p>].</span><span class=n>size</span><span class=p>())</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>			<span class=c1>//res此时为空
-</span></span></span><span class=line><span class=cl><span class=c1></span>      <span class=k>return</span> <span class=n>res</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>		<span class=p>}</span>
-</span></span><span class=line><span class=cl>	<span class=p>}</span>
-</span></span><span class=line><span class=cl>	<span class=n>queue</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span><span class=n>q</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>	<span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>numOfG</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>		<span class=k>if</span> <span class=p>(</span><span class=n>itogroup</span><span class=p>[</span><span class=n>i</span><span class=p>].</span><span class=n>deg</span> <span class=o>==</span> <span class=mi>0</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>			<span class=n>q</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>i</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>	<span class=kt>int</span> <span class=n>cnt3</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>	<span class=kt>int</span> <span class=n>tp7</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>	<span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span><span class=n>grorder</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>  <span class=c1>//之前已经处理好了不同小组优先级关系，现在开始确定不同小组的顺序。
-</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=k>while</span> <span class=p>(</span><span class=o>!</span><span class=n>q</span><span class=p>.</span><span class=n>empty</span><span class=p>())</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>		<span class=n>tp7</span> <span class=o>=</span> <span class=n>q</span><span class=p>.</span><span class=n>front</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>		<span class=n>grorder</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>tp7</span><span class=p>);</span>
-</span></span><span class=line><span class=cl>		<span class=n>q</span><span class=p>.</span><span class=n>pop</span><span class=p>();</span>
-</span></span><span class=line><span class=cl>		<span class=n>cnt3</span><span class=o>++</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>		<span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>itogroup</span><span class=p>[</span><span class=n>tp7</span><span class=p>].</span><span class=n>next1</span><span class=p>.</span><span class=n>size</span><span class=p>();</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>			<span class=p>(</span><span class=n>itogroup</span><span class=p>[</span><span class=n>itogroup</span><span class=p>[</span><span class=n>tp7</span><span class=p>].</span><span class=n>next1</span><span class=p>[</span><span class=n>i</span><span class=p>]].</span><span class=n>deg</span><span class=p>)</span><span class=o>--</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>			<span class=k>if</span> <span class=p>(</span><span class=n>itogroup</span><span class=p>[</span><span class=n>itogroup</span><span class=p>[</span><span class=n>tp7</span><span class=p>].</span><span class=n>next1</span><span class=p>[</span><span class=n>i</span><span class=p>]].</span><span class=n>deg</span> <span class=o>==</span> <span class=mi>0</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>				<span class=n>q</span><span class=p>.</span><span class=n>push</span><span class=p>(</span><span class=n>itogroup</span><span class=p>[</span><span class=n>tp7</span><span class=p>].</span><span class=n>next1</span><span class=p>[</span><span class=n>i</span><span class=p>]);</span>
-</span></span><span class=line><span class=cl>		<span class=p>}</span>
-</span></span><span class=line><span class=cl>	<span class=p>}</span>
-</span></span><span class=line><span class=cl>  <span class=c1>//判断是否矛盾
-</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=k>if</span> <span class=p>(</span><span class=n>cnt3</span> <span class=o>!=</span> <span class=n>numOfG</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>    <span class=c1>//res为空
-</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=k>return</span> <span class=n>res</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>	<span class=p>}</span>
-</span></span><span class=line><span class=cl>	<span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>numOfG</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span> <span class=p>{</span>
-</span></span><span class=line><span class=cl>		<span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>j</span> <span class=o>&lt;</span> <span class=n>ingroup</span><span class=p>[</span><span class=n>grorder</span><span class=p>[</span><span class=n>i</span><span class=p>]].</span><span class=n>size</span><span class=p>();</span> <span class=n>j</span><span class=o>++</span><span class=p>)</span>
-</span></span><span class=line><span class=cl>			<span class=n>res</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>ingroup</span><span class=p>[</span><span class=n>grorder</span><span class=p>[</span><span class=n>i</span><span class=p>]][</span><span class=n>j</span><span class=p>]);</span>
-</span></span><span class=line><span class=cl>	<span class=p>}</span>
-</span></span><span class=line><span class=cl>	<span class=k>return</span> <span class=n>res</span><span class=p>;</span>
-</span></span><span class=line><span class=cl>  <span class=p>}</span>
-</span></span><span class=line><span class=cl><span class=p>};</span>
-</span></span></code></pre></div></div><footer class=post-footer><ul class=post-tags><li><a href=https://junyubian.github.io/tags/c++/>C++</a></li><li><a href=https://junyubian.github.io/tags/%E7%AE%97%E6%B3%95/>算法</a></li></ul><nav class=paginav><a class=prev href=https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-graph/><span class=title>« Prev</span><br><span>LeetCode题目总结-Graph</span>
-</a><a class=next href=https://junyubian.github.io/posts/2020-09-11-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dp+greedy/><span class=title>Next »</span><br><span>LeetCode题目总结-DP+Greedy</span></a></nav><div class=share-buttons><a target=_blank rel="noopener noreferrer" aria-label="share LeetCode题目总结-Queue+TopologicalSort on x" href="https://x.com/intent/tweet/?text=LeetCode%e9%a2%98%e7%9b%ae%e6%80%bb%e7%bb%93-Queue%2bTopologicalSort&amp;url=https%3a%2f%2fjunyubian.github.io%2fposts%2f2020-09-12-leetcode%25E9%25A2%2598%25E7%259B%25AE%25E6%2580%25BB%25E7%25BB%2593-queue%2btopologicalsort%2f&amp;hashtags=C%2b%2b%2c%e7%ae%97%e6%b3%95"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M512 62.554V449.446C512 483.97 483.97 512 449.446 512H62.554C28.03 512 0 483.97.0 449.446V62.554C0 28.03 28.029.0 62.554.0H449.446C483.971.0 512 28.03 512 62.554zM269.951 190.75 182.567 75.216H56L207.216 272.95 63.9 436.783h61.366L235.9 310.383l96.667 126.4H456L298.367 228.367l134-153.151H371.033zM127.633 110h36.468l219.38 290.065H349.5z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share LeetCode题目总结-Queue+TopologicalSort on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fjunyubian.github.io%2fposts%2f2020-09-12-leetcode%25E9%25A2%2598%25E7%259B%25AE%25E6%2580%25BB%25E7%25BB%2593-queue%2btopologicalsort%2f&amp;title=LeetCode%e9%a2%98%e7%9b%ae%e6%80%bb%e7%bb%93-Queue%2bTopologicalSort&amp;summary=LeetCode%e9%a2%98%e7%9b%ae%e6%80%bb%e7%bb%93-Queue%2bTopologicalSort&amp;source=https%3a%2f%2fjunyubian.github.io%2fposts%2f2020-09-12-leetcode%25E9%25A2%2598%25E7%259B%25AE%25E6%2580%25BB%25E7%25BB%2593-queue%2btopologicalsort%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share LeetCode题目总结-Queue+TopologicalSort on reddit" href="https://reddit.com/submit?url=https%3a%2f%2fjunyubian.github.io%2fposts%2f2020-09-12-leetcode%25E9%25A2%2598%25E7%259B%25AE%25E6%2580%25BB%25E7%25BB%2593-queue%2btopologicalsort%2f&title=LeetCode%e9%a2%98%e7%9b%ae%e6%80%bb%e7%bb%93-Queue%2bTopologicalSort"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share LeetCode题目总结-Queue+TopologicalSort on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2fjunyubian.github.io%2fposts%2f2020-09-12-leetcode%25E9%25A2%2598%25E7%259B%25AE%25E6%2580%25BB%25E7%25BB%2593-queue%2btopologicalsort%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share LeetCode题目总结-Queue+TopologicalSort on whatsapp" href="https://api.whatsapp.com/send?text=LeetCode%e9%a2%98%e7%9b%ae%e6%80%bb%e7%bb%93-Queue%2bTopologicalSort%20-%20https%3a%2f%2fjunyubian.github.io%2fposts%2f2020-09-12-leetcode%25E9%25A2%2598%25E7%259B%25AE%25E6%2580%25BB%25E7%25BB%2593-queue%2btopologicalsort%2f"><svg viewBox="0 0 512 512" height="30" width="30" fill="currentcolor"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23C231.8 264.15 222.81 249.484 220.198 245s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share LeetCode题目总结-Queue+TopologicalSort on telegram" href="https://telegram.me/share/url?text=LeetCode%e9%a2%98%e7%9b%ae%e6%80%bb%e7%bb%93-Queue%2bTopologicalSort&amp;url=https%3a%2f%2fjunyubian.github.io%2fposts%2f2020-09-12-leetcode%25E9%25A2%2598%25E7%259B%25AE%25E6%2580%25BB%25E7%25BB%2593-queue%2btopologicalsort%2f"><svg viewBox="2 2 28 28" height="30" width="30" fill="currentcolor"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share LeetCode题目总结-Queue+TopologicalSort on ycombinator" href="https://news.ycombinator.com/submitlink?t=LeetCode%e9%a2%98%e7%9b%ae%e6%80%bb%e7%bb%93-Queue%2bTopologicalSort&u=https%3a%2f%2fjunyubian.github.io%2fposts%2f2020-09-12-leetcode%25E9%25A2%2598%25E7%259B%25AE%25E6%2580%25BB%25E7%25BB%2593-queue%2btopologicalsort%2f"><svg width="30" height="30" viewBox="0 0 512 512" fill="currentcolor" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"><path d="M449.446.0C483.971.0 512 28.03 512 62.554V449.446C512 483.97 483.97 512 449.446 512H62.554C28.03 512 0 483.97.0 449.446V62.554C0 28.03 28.029.0 62.554.0H449.446zM183.8767 87.9921h-62.034L230.6673 292.4508V424.0079h50.6655V292.4508L390.1575 87.9921H328.1233L256 238.2489z"/></svg></a></div></footer></article></main><footer class=footer><span>&copy; 2023 <a href=https://junyubian.github.io/>Junyu Bian</a></span>
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg></a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script></body></html>
+i != beforeItems[i][j]</p>
+<p><a href="https://leetcode-cn.com/problems/sort-items-by-groups-respecting-dependencies/solution/chuang-jian-xin-zu-fen-qu-yu-jin-xing-tuo-bu-pai-x/">思路</a>：</p>
+<p>突破点：<code>拓扑排序。</code></p>
+<p>步骤：</p>
+<ol>
+<li>将组别为-1的项目都创建一个新组；</li>
+<li>遍历beforeItems[i][j]数组；</li>
+<li>如果i和j属于同组，则确定组内优先级关系；</li>
+<li>若不同组，则确定小组间优先级关系；</li>
+<li>对每个组内拓扑排序；</li>
+<li>对不同组拓扑排序。</li>
+</ol>
+<p>代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//拓扑排序的节点结构体声明
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">tpnod</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//组外的优先级比该节点小的节点索引，维护不同的小组排序后的优先级关系
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>next1;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//组内的优先级比该节点小的节点索引，维护同一小组的任务排序后的优先级关系
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>ingnext;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//不同组间的在完成该节点之前需要完成的任务数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> deg <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//组内的在完成该节点之前需要完成的任务数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> igdeg <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>tpnod nos[<span style="color:#ae81ff">30001</span>];
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//小组的数组，每个单元都是一个小组，可能不只m个，因为新创建了一些小组，但一定不会超过30000；
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>tpnod itogroup[<span style="color:#ae81ff">30001</span>];
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//维护同一个组的项目
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>grouptoi[<span style="color:#ae81ff">30001</span>];
+</span></span><span style="display:flex;"><span><span style="color:#75715e">//维护同一组的不同项目之间的顺序
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>ingroup[<span style="color:#ae81ff">30001</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> sortItems(<span style="color:#66d9ef">int</span> n, <span style="color:#66d9ef">int</span> m, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> group, vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;&amp;</span> beforeItems) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//numOfG为包括创建的新组的组数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> numOfG <span style="color:#f92672">=</span> m;
+</span></span><span style="display:flex;"><span>	vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>res;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> group.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (group[i] <span style="color:#f92672">!=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>			grouptoi[group[i]].push_back(i);
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">//否则创建新组
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>			grouptoi[numOfG].push_back(i);
+</span></span><span style="display:flex;"><span>			group[i] <span style="color:#f92672">=</span> numOfG;
+</span></span><span style="display:flex;"><span>			numOfG<span style="color:#f92672">++</span>;<span style="color:#75715e">//创建后加一
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> beforeItems.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> beforeItems[i].size(); j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">//在同一组就看作组内项目优先级关系
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#66d9ef">if</span> (group[beforeItems[i][j]] <span style="color:#f92672">==</span> group[i])
+</span></span><span style="display:flex;"><span>				nos[i].igdeg<span style="color:#f92672">++</span>, nos[beforeItems[i][j]].next1.push_back(i);
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">//在不同组就看作组之间的优先级关系，因为同组的肯定是聚在一起的
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#66d9ef">else</span> itogroup[group[i]].deg<span style="color:#f92672">++</span>,
+</span></span><span style="display:flex;"><span>				itogroup[group[beforeItems[i][j]]].next1.push_back(group[i]);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//确定不同小组组内项目优先级顺序     
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> numOfG; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>		queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>q;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> grouptoi[i].size(); j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (nos[grouptoi[i][j]].igdeg <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>				q.push(grouptoi[i][j]);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> cnt2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>q.empty()) {
+</span></span><span style="display:flex;"><span>			cnt2<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">int</span> tp2 <span style="color:#f92672">=</span> q.front();
+</span></span><span style="display:flex;"><span>			ingroup[i].push_back(tp2);
+</span></span><span style="display:flex;"><span>			q.pop();
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> nos[tp2].next1.size(); j<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>				nos[nos[tp2].next1[j]].igdeg<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">//在该节点之前的工作处理完了就把该节点放入队列
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>				<span style="color:#66d9ef">if</span> (nos[nos[tp2].next1[j]].igdeg <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>					q.push(nos[tp2].next1[j]);
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//判断是否矛盾 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">if</span> (cnt2 <span style="color:#f92672">!=</span> grouptoi[i].size()) {
+</span></span><span style="display:flex;"><span>			<span style="color:#75715e">//res此时为空
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">return</span> res;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>q;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> numOfG; i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (itogroup[i].deg <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>			q.push(i);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> cnt3 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> tp7;
+</span></span><span style="display:flex;"><span>	vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>grorder;
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//之前已经处理好了不同小组优先级关系，现在开始确定不同小组的顺序。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>q.empty()) {
+</span></span><span style="display:flex;"><span>		tp7 <span style="color:#f92672">=</span> q.front();
+</span></span><span style="display:flex;"><span>		grorder.push_back(tp7);
+</span></span><span style="display:flex;"><span>		q.pop();
+</span></span><span style="display:flex;"><span>		cnt3<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> itogroup[tp7].next1.size(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>			(itogroup[itogroup[tp7].next1[i]].deg)<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (itogroup[itogroup[tp7].next1[i]].deg <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>				q.push(itogroup[tp7].next1[i]);
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//判断是否矛盾
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">if</span> (cnt3 <span style="color:#f92672">!=</span> numOfG) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//res为空
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">return</span> res;
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> numOfG; i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> ingroup[grorder[i]].size(); j<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>			res.push_back(ingroup[grorder[i]][j]);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> res;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div>
+			</div>
+		</article>
+	</main>
+<aside>
+	<div>
+		<div>
+			<h3>LATEST POSTS</h3>
+		</div>
+		<div>
+			<ul>
+				
+				<li><a href="/posts/2023-12-02-criterions-for-site/">Criterions For Site</a></li>
+				
+				<li><a href="/posts/2023-12-02-hugo-site-auto-deployment-with-github-action/">Hugo Site Auto Deployment With Github Action</a></li>
+				
+				<li><a href="/posts/2023-12-02-hello-world/">Hello World</a></li>
+				
+				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
+				
+				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</aside>
+
+
+	<footer>
+	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
+	<a href="https://github.com/junyubian"><b>Github</b></a>.
+	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
+	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
+	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
+	</p>
+</footer>
+
+</body>
+</html>
