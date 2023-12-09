@@ -13,36 +13,21 @@
       <link>https://junyubian.github.io/posts/2020-07-23-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-6/</link>
       <pubDate>Thu, 23 Jul 2020 22:54:16 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2020-07-23-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-6/</guid>
-      <description>&lt;h3 id=&#34;1-linux和端口号进程文件相关的命令&#34;&gt;1. Linux和端口号、进程、文件相关的命令&lt;/h3&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;静态进程查看&lt;/strong&gt;: ps&lt;/p&gt;
-&lt;p&gt;例：通过进程名查看进程号&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ps ax | fgrep &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;进程名&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;网络查看&lt;/strong&gt;: netstat&lt;/p&gt;</description>
+      <description>&lt;h3 id=&#34;1-linux和端口号进程文件相关的命令&#34;&gt;1. Linux和端口号、进程、文件相关的命令&lt;/h3&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;strong&gt;静态进程查看&lt;/strong&gt;: ps&lt;/p&gt;&#xA;&lt;p&gt;例：通过进程名查看进程号&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ps ax | fgrep &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt;进程名&lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;网络查看&lt;/strong&gt;: netstat&lt;/p&gt;</description>
     </item>
     <item>
       <title>知识点整理-5</title>
       <link>https://junyubian.github.io/posts/2020-04-19-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-5/</link>
       <pubDate>Mon, 20 Apr 2020 00:51:32 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2020-04-19-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-5/</guid>
-      <description>&lt;h3 id=&#34;1-mysql查询10-20条的数据&#34;&gt;1. MySQL查询10-20条的数据&lt;/h3&gt;
-&lt;hr&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-mysql&#34; data-lang=&#34;mysql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;table&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;limit&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;</description>
+      <description>&lt;h3 id=&#34;1-mysql查询10-20条的数据&#34;&gt;1. MySQL查询10-20条的数据&lt;/h3&gt;&#xA;&lt;hr&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-mysql&#34; data-lang=&#34;mysql&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;select&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;from&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;table&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;limit&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;20&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;</description>
     </item>
     <item>
       <title>知识点整理-4</title>
       <link>https://junyubian.github.io/posts/2020-04-19-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-4/</link>
       <pubDate>Sun, 19 Apr 2020 21:07:23 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2020-04-19-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-4/</guid>
-      <description>&lt;h3 id=&#34;1-黑盒测试和白盒测试&#34;&gt;1. 黑盒测试和白盒测试&lt;/h3&gt;
-&lt;hr&gt;
-&lt;blockquote&gt;
-&lt;p&gt;黑盒测试：即功能性测试&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;strong&gt;等价类划分&lt;/strong&gt;：有效等价类即对于程序的规格来说是合理的、有意义的；无效等价类即对程序的规格来说是不合理的、每有意义的。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;边界值分析&lt;/strong&gt;：对各种边界情况设计测试用例。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;因果图法&lt;/strong&gt;：根据输入的各种组合来设计测试用例，用于检查程序输入条件的各种组合情况。&lt;/p&gt;</description>
+      <description>&lt;h3 id=&#34;1-黑盒测试和白盒测试&#34;&gt;1. 黑盒测试和白盒测试&lt;/h3&gt;&#xA;&lt;hr&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;黑盒测试：即功能性测试&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;等价类划分&lt;/strong&gt;：有效等价类即对于程序的规格来说是合理的、有意义的；无效等价类即对程序的规格来说是不合理的、每有意义的。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;边界值分析&lt;/strong&gt;：对各种边界情况设计测试用例。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;因果图法&lt;/strong&gt;：根据输入的各种组合来设计测试用例，用于检查程序输入条件的各种组合情况。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

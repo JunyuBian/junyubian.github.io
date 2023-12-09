@@ -13,392 +13,105 @@
       <link>https://junyubian.github.io/posts/2023-12-02-criterions-for-site/</link>
       <pubDate>Sat, 02 Dec 2023 19:40:43 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2023-12-02-criterions-for-site/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#1-titles&#34;&gt;1-Titles&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#11-all-cap-for-first-letter-of-each-word-in-post-title-except-for-preposition&#34;&gt;1.1-All Cap for first letter of each word in post title, except for preposition.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#12-cap-for-first-letter-of-first-word-inside-post&#34;&gt;1.2-Cap for first letter of first word inside post.&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#13-titles-inside-post-need-follow-format-of-this-criterions&#34;&gt;1.3-Titles inside post need follow format of this Criterions.&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#2-tags&#34;&gt;2-Tags&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#3-toc&#34;&gt;3-TOC&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;This is criterions for this site, self-reference only.&lt;/p&gt;</description>
+      <description>&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#1-titles&#34;&gt;1-Titles&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#11-all-cap-for-first-letter-of-each-word-in-post-title-except-for-preposition&#34;&gt;1.1-All Cap for first letter of each word in post title, except for preposition.&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#12-cap-for-first-letter-of-first-word-inside-post&#34;&gt;1.2-Cap for first letter of first word inside post.&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#13-titles-inside-post-need-follow-format-of-this-criterions&#34;&gt;1.3-Titles inside post need follow format of this Criterions.&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#2-tags&#34;&gt;2-Tags&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#3-toc&#34;&gt;3-TOC&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;This is criterions for this site, self-reference only.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Hugo Site Auto Deployment with Github Action</title>
       <link>https://junyubian.github.io/posts/2023-12-02-hugo-site-auto-deployment-with-github-action/</link>
       <pubDate>Sat, 02 Dec 2023 18:53:43 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2023-12-02-hugo-site-auto-deployment-with-github-action/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#1-background&#34;&gt;1-Background&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#2-steps&#34;&gt;2-Steps&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#3-good-to-know&#34;&gt;3-Good to know&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#reference&#34;&gt;Reference&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;1-background&#34;&gt;1-Background&lt;/h1&gt;
-&lt;p&gt;Trying to auto deploy Hugo blogs with Github Action.&lt;/p&gt;</description>
+      <description>&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#1-background&#34;&gt;1-Background&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#2-steps&#34;&gt;2-Steps&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#3-good-to-know&#34;&gt;3-Good to know&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#reference&#34;&gt;Reference&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;1-background&#34;&gt;1-Background&lt;/h1&gt;&#xA;&lt;p&gt;Trying to auto deploy Hugo blogs with Github Action.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Fluent Bit Client Notes</title>
       <link>https://junyubian.github.io/posts/2023-11-07-fluent-bit-notes/</link>
       <pubDate>Tue, 07 Nov 2023 21:53:43 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2023-11-07-fluent-bit-notes/</guid>
-      <description>&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#what-is-fluent-bit&#34;&gt;What is fluent bit&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#structural-sketch&#34;&gt;Structural sketch&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#how-to-set-it-up&#34;&gt;How to set it up&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#through-config-file&#34;&gt;Through config file&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#though-command-line-parameters&#34;&gt;Though command line parameters&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#other-ootes&#34;&gt;Other ootes&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;what-is-fluent-bit&#34;&gt;What is fluent bit&lt;/h1&gt;
-&lt;p&gt;One day, the Insurance Management System Tom built crashed. Good news is the system recovered through rebooting, bad news is Tom did not know what had gone wrong. Tom&amp;rsquo;s dad comes by and says to Tom &amp;ldquo;Fluent Bit is a telemetry agent designed to collect and process telemetry data from constrained systems to cloud infrastructures. Why don&amp;rsquo;t you give it a try?&amp;rdquo;&lt;/p&gt;</description>
+      <description>&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#what-is-fluent-bit&#34;&gt;What is fluent bit&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#structural-sketch&#34;&gt;Structural sketch&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#how-to-set-it-up&#34;&gt;How to set it up&lt;/a&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#through-config-file&#34;&gt;Through config file&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#though-command-line-parameters&#34;&gt;Though command line parameters&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#other-ootes&#34;&gt;Other ootes&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;what-is-fluent-bit&#34;&gt;What is fluent bit&lt;/h1&gt;&#xA;&lt;p&gt;One day, the Insurance Management System Tom built crashed. Good news is the system recovered through rebooting, bad news is Tom did not know what had gone wrong. Tom&amp;rsquo;s dad comes by and says to Tom &amp;ldquo;Fluent Bit is a telemetry agent designed to collect and process telemetry data from constrained systems to cloud infrastructures. Why don&amp;rsquo;t you give it a try?&amp;rdquo;&lt;/p&gt;</description>
     </item>
     <item>
       <title>/dev/null and 2&amp;&gt;1</title>
-      <link>https://junyubian.github.io/posts/2022-10-21-dev-null-and-21/</link>
+      <link>https://junyubian.github.io/posts/2022-10-21-dev-null-related/</link>
       <pubDate>Fri, 21 Oct 2022 21:27:29 +0000</pubDate>
-      <guid>https://junyubian.github.io/posts/2022-10-21-dev-null-and-21/</guid>
-      <description>&lt;h1 id=&#34;1-notice&#34;&gt;1. Notice&lt;/h1&gt;
-&lt;p&gt;1.1 &lt;code&gt;/dev/null&lt;/code&gt; is the null file. Anything written to it is discarded.
-1.2 &lt;code&gt;2&amp;gt;&lt;/code&gt; means &amp;ldquo;redirect standard-error&amp;rdquo; to the given file.
-1.3 &lt;code&gt;2&amp;gt;/dev/null&lt;/code&gt; means &amp;ldquo;throw away any error messages&amp;rdquo;.
-1.4 &lt;code&gt;1&lt;/code&gt; is stdout. &lt;code&gt;2&lt;/code&gt; is stderr.
-1.5 &lt;code&gt;2&amp;gt;&amp;amp;1&lt;/code&gt; means redirecting stderr to stdout.&lt;/p&gt;</description>
+      <guid>https://junyubian.github.io/posts/2022-10-21-dev-null-related/</guid>
+      <description>&lt;h1 id=&#34;1-notice&#34;&gt;1. Notice&lt;/h1&gt;&#xA;&lt;p&gt;1.1 &lt;code&gt;/dev/null&lt;/code&gt; is the null file. Anything written to it is discarded.&#xA;1.2 &lt;code&gt;2&amp;gt;&lt;/code&gt; means &amp;ldquo;redirect standard-error&amp;rdquo; to the given file.&#xA;1.3 &lt;code&gt;2&amp;gt;/dev/null&lt;/code&gt; means &amp;ldquo;throw away any error messages&amp;rdquo;.&#xA;1.4 &lt;code&gt;1&lt;/code&gt; is stdout. &lt;code&gt;2&lt;/code&gt; is stderr.&#xA;1.5 &lt;code&gt;2&amp;gt;&amp;amp;1&lt;/code&gt; means redirecting stderr to stdout.&lt;/p&gt;</description>
     </item>
     <item>
       <title>getopts in Bash</title>
       <link>https://junyubian.github.io/posts/2022-10-21-getopts-in-bash/</link>
       <pubDate>Fri, 21 Oct 2022 14:17:29 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2022-10-21-getopts-in-bash/</guid>
-      <description>&lt;h1 id=&#34;1-notice&#34;&gt;1. Notice&lt;/h1&gt;
-&lt;p&gt;1.1 &lt;code&gt;getopts&lt;/code&gt; is different from &lt;code&gt;getopt&lt;/code&gt;.
-1.2 &lt;code&gt;getopts&lt;/code&gt; runs on any system running bash in POSIX mode (e.g., set -o posix), &lt;code&gt;getopt&lt;/code&gt; is a system tool varies in different systems.
-1.3 &lt;code&gt;getopts&lt;/code&gt; parses short options, which are a single dash (&amp;quot;-&amp;quot;) and a letter or digit.e.g. -2, -d, and -D. It can also parse short options in combination, for instance -2dD. But each option will be treated seperately, i.e. -2dD = -2 -d -D not equal -&amp;ldquo;2dD&amp;rdquo;, will need &lt;code&gt;getopt&lt;/code&gt; to cope with -&amp;ldquo;2dD&amp;rdquo;.&lt;/p&gt;</description>
+      <description>&lt;h1 id=&#34;1-notice&#34;&gt;1. Notice&lt;/h1&gt;&#xA;&lt;p&gt;1.1 &lt;code&gt;getopts&lt;/code&gt; is different from &lt;code&gt;getopt&lt;/code&gt;.&#xA;1.2 &lt;code&gt;getopts&lt;/code&gt; runs on any system running bash in POSIX mode (e.g., set -o posix), &lt;code&gt;getopt&lt;/code&gt; is a system tool varies in different systems.&#xA;1.3 &lt;code&gt;getopts&lt;/code&gt; parses short options, which are a single dash (&amp;quot;-&amp;quot;) and a letter or digit.e.g. -2, -d, and -D. It can also parse short options in combination, for instance -2dD. But each option will be treated seperately, i.e. -2dD = -2 -d -D not equal -&amp;ldquo;2dD&amp;rdquo;, will need &lt;code&gt;getopt&lt;/code&gt; to cope with -&amp;ldquo;2dD&amp;rdquo;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>K8s and docker Related Notes</title>
       <link>https://junyubian.github.io/posts/2021-06-05-k8s-and-docker-related-notes/</link>
       <pubDate>Sat, 05 Jun 2021 15:08:29 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2021-06-05-k8s-and-docker-related-notes/</guid>
-      <description>&lt;h4 id=&#34;1-management-tools-for-clusters-pods-deployments-etc-&#34;&gt;1. Management tools for clusters, pods, deployments, etc. :&lt;/h4&gt;
-&lt;p&gt;k9s&lt;/p&gt;
-&lt;h4 id=&#34;2-when-not-able-to-delete-resources-in-k8s&#34;&gt;2. When not able to delete resources in k8s:&lt;/h4&gt;
-&lt;p&gt;First edit resource:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;kubectl edit &amp;lt;resource name&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;then delete the &lt;code&gt;finalizer&lt;/code&gt; part and try again.&lt;/p&gt;
-&lt;h4 id=&#34;3-filtering-docker-images&#34;&gt;3. filtering docker images&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker image &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name*&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <description>&lt;h4 id=&#34;1-management-tools-for-clusters-pods-deployments-etc-&#34;&gt;1. Management tools for clusters, pods, deployments, etc. :&lt;/h4&gt;&#xA;&lt;p&gt;k9s&lt;/p&gt;&#xA;&lt;h4 id=&#34;2-when-not-able-to-delete-resources-in-k8s&#34;&gt;2. When not able to delete resources in k8s:&lt;/h4&gt;&#xA;&lt;p&gt;First edit resource:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;kubectl edit &amp;lt;resource name&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;then delete the &lt;code&gt;finalizer&lt;/code&gt; part and try again.&lt;/p&gt;&#xA;&lt;h4 id=&#34;3-filtering-docker-images&#34;&gt;3. filtering docker images&lt;/h4&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;docker image &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;name*&amp;#34;&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     <item>
       <title>VM Related Notes</title>
       <link>https://junyubian.github.io/posts/2021-06-05-vm-related-notes/</link>
       <pubDate>Sat, 05 Jun 2021 15:01:29 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2021-06-05-vm-related-notes/</guid>
-      <description>&lt;h4 id=&#34;1-list-all-vms&#34;&gt;1. List all VMs:&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;virsh list
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <description>&lt;h4 id=&#34;1-list-all-vms&#34;&gt;1. List all VMs:&lt;/h4&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;virsh list&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>Command Line Related Notes</title>
       <link>https://junyubian.github.io/posts/2021-06-05-command-line-related-notes/</link>
       <pubDate>Sat, 05 Jun 2021 00:31:29 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2021-06-05-command-line-related-notes/</guid>
-      <description>&lt;h4 id=&#34;1-switch-to-end-of-line-in-vi&#34;&gt;1. Switch to end of line in vi:&lt;/h4&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;shift+G
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;2-switch-to-end-of-line-in-normal-command-line&#34;&gt;2. Switch to end of line in normal command line:&lt;/h4&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ctrl+E
-&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;3-switch-to-specific-line-in-target-file&#34;&gt;3. Switch to specific line in target file:&lt;/h4&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;vi &amp;lt;file directory&amp;gt; +&amp;lt;n&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;</description>
+      <description>&lt;h4 id=&#34;1-switch-to-end-of-line-in-vi&#34;&gt;1. Switch to end of line in vi:&lt;/h4&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;shift+G&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;2-switch-to-end-of-line-in-normal-command-line&#34;&gt;2. Switch to end of line in normal command line:&lt;/h4&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;ctrl+E&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;3-switch-to-specific-line-in-target-file&#34;&gt;3. Switch to specific line in target file:&lt;/h4&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;vi &amp;lt;file directory&amp;gt; +&amp;lt;n&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     <item>
       <title>Diff Array</title>
       <link>https://junyubian.github.io/posts/2020-11-08-diff-array/</link>
       <pubDate>Sun, 08 Nov 2020 15:19:00 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2020-11-08-diff-array/</guid>
-      <description>&lt;p&gt;In this blog, we will talk about one trick can be used to solve problems to do with frequent addition and subtraction to a subsection of an array  - &lt;a href=&#34;https://labuladong.gitbook.io/algo/suan-fa-si-wei-xi-lie/3.3-yi-xiang-bu-dao-xi-lie/cha-fen-ji-qiao&#34;&gt;Diff Array&lt;/a&gt;.&lt;/p&gt;
-&lt;h1 id=&#34;functionality&#34;&gt;Functionality&lt;/h1&gt;
-&lt;p&gt;Todo with frequent addition and subtraction to a subsection of an array.&lt;/p&gt;
-&lt;p&gt;e.g. Given array &lt;code&gt;arr&lt;/code&gt;, add 1 for elements between  &lt;code&gt;arr[0]&lt;/code&gt; and &lt;code&gt;arr[3]&lt;/code&gt; inclusively, then, substract 3 for elements between  &lt;code&gt;arr[2]&lt;/code&gt; and &lt;code&gt;arr[5]&lt;/code&gt; inclusively, what will be the final &lt;code&gt;arr&lt;/code&gt;.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In this blog, we will talk about one trick can be used to solve problems to do with frequent addition and subtraction to a subsection of an array  - &lt;a href=&#34;https://labuladong.gitbook.io/algo/suan-fa-si-wei-xi-lie/3.3-yi-xiang-bu-dao-xi-lie/cha-fen-ji-qiao&#34;&gt;Diff Array&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h1 id=&#34;functionality&#34;&gt;Functionality&lt;/h1&gt;&#xA;&lt;p&gt;Todo with frequent addition and subtraction to a subsection of an array.&lt;/p&gt;&#xA;&lt;p&gt;e.g. Given array &lt;code&gt;arr&lt;/code&gt;, add 1 for elements between  &lt;code&gt;arr[0]&lt;/code&gt; and &lt;code&gt;arr[3]&lt;/code&gt; inclusively, then, substract 3 for elements between  &lt;code&gt;arr[2]&lt;/code&gt; and &lt;code&gt;arr[5]&lt;/code&gt; inclusively, what will be the final &lt;code&gt;arr&lt;/code&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>SWAP Function</title>
       <link>https://junyubian.github.io/posts/2020-05-17-swap-function/</link>
       <pubDate>Sun, 17 May 2020 19:28:00 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2020-05-17-swap-function/</guid>
-      <description>&lt;p&gt;In this blog, we will look into several ways of implementing swap in different ways.&lt;/p&gt;
-&lt;h1 id=&#34;intermedia-variable&#34;&gt;Intermedia Variable&lt;/h1&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; b &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; tem &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; a;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;a &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; b;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;b &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; temp;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      <description>&lt;p&gt;In this blog, we will look into several ways of implementing swap in different ways.&lt;/p&gt;&#xA;&lt;h1 id=&#34;intermedia-variable&#34;&gt;Intermedia Variable&lt;/h1&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c++&#34; data-lang=&#34;c++&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; a &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; b &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; tem &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; a;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;a &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; b;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;b &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; temp;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
     </item>
     <item>
       <title>Insurance Management System - Overview</title>
       <link>https://junyubian.github.io/posts/2020-04-28-insurance-management-system---overview/</link>
       <pubDate>Tue, 28 Apr 2020 22:59:02 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2020-04-28-insurance-management-system---overview/</guid>
-      <description>&lt;p&gt;In this series of blogs, we will talk about how to build a Insurance Management web application together with database system.&lt;/p&gt;
-&lt;h1 id=&#34;background&#34;&gt;Background&lt;/h1&gt;
-&lt;p&gt;Tom&amp;rsquo;s dad works in an insurance company. His work is to drop down who bought what kind of insurance, on which day does the customer receives an invoice, and on which day does the customer makes a payment.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In this series of blogs, we will talk about how to build a Insurance Management web application together with database system.&lt;/p&gt;&#xA;&lt;h1 id=&#34;background&#34;&gt;Background&lt;/h1&gt;&#xA;&lt;p&gt;Tom&amp;rsquo;s dad works in an insurance company. His work is to drop down who bought what kind of insurance, on which day does the customer receives an invoice, and on which day does the customer makes a payment.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Sorting Algorithms - Quick Sort</title>
       <link>https://junyubian.github.io/posts/2020-04-23-sorting-algorithms---quick-sort/</link>
       <pubDate>Thu, 23 Apr 2020 13:42:56 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2020-04-23-sorting-algorithms---quick-sort/</guid>
-      <description>&lt;p&gt;In this series of blogs, we will talk about different sorting algorithms.&lt;/p&gt;
-&lt;p&gt;All the algorithms in the table below will be covered.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Algorithm&lt;/th&gt;
-&lt;th&gt;Time Complexity (Average Case)&lt;/th&gt;
-&lt;th&gt;Time Complexity (Worst Case)&lt;/th&gt;
-&lt;th&gt;Time Complexity (Best Case)&lt;/th&gt;
-&lt;th&gt;Merg&lt;/th&gt;
-&lt;th&gt;Stability&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Bubble Sort&lt;/td&gt;
-&lt;td&gt;O(N^2)&lt;/td&gt;
-&lt;td&gt;O(N^2)&lt;/td&gt;
-&lt;td&gt;O(N^2)&lt;/td&gt;
-&lt;td&gt;O(1)&lt;/td&gt;
-&lt;td&gt;Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Quick Sort&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(N^2)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(logN)&lt;/td&gt;
-&lt;td&gt;Not Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Quick Sort (with Random Selection)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(logN)&lt;/td&gt;
-&lt;td&gt;Not Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Insertion Sort&lt;/td&gt;
-&lt;td&gt;O(N^2)&lt;/td&gt;
-&lt;td&gt;O(N^2)&lt;/td&gt;
-&lt;td&gt;O(N)&lt;/td&gt;
-&lt;td&gt;O(1)&lt;/td&gt;
-&lt;td&gt;Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Selection Sort&lt;/td&gt;
-&lt;td&gt;O(N^2)&lt;/td&gt;
-&lt;td&gt;O(N^2)&lt;/td&gt;
-&lt;td&gt;O(N^2)&lt;/td&gt;
-&lt;td&gt;O(1)&lt;/td&gt;
-&lt;td&gt;Not Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Heap Sort&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(1)&lt;/td&gt;
-&lt;td&gt;Not Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Merge Sort (with double divides)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(N)&lt;/td&gt;
-&lt;td&gt;Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Merge Sort (with multi divides)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(N)&lt;/td&gt;
-&lt;td&gt;Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Counting Sort&lt;/td&gt;
-&lt;td&gt;O(N+M)&lt;/td&gt;
-&lt;td&gt;O(N+M)&lt;/td&gt;
-&lt;td&gt;O(N+M)&lt;/td&gt;
-&lt;td&gt;O(N+M)&lt;/td&gt;
-&lt;td&gt;Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Bucket Sort&lt;/td&gt;
-&lt;td&gt;O(N+M)&lt;/td&gt;
-&lt;td&gt;O(N^2)&lt;/td&gt;
-&lt;td&gt;O(N+M)&lt;/td&gt;
-&lt;td&gt;O(N+M)&lt;/td&gt;
-&lt;td&gt;Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Radix Sort&lt;/td&gt;
-&lt;td&gt;O(N*M)&lt;/td&gt;
-&lt;td&gt;O(N*M)&lt;/td&gt;
-&lt;td&gt;O(N*M)&lt;/td&gt;
-&lt;td&gt;O(N+M)&lt;/td&gt;
-&lt;td&gt;Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h1 id=&#34;quick-sort&#34;&gt;Quick Sort&lt;/h1&gt;
-&lt;h2 id=&#34;how-to-do-it&#34;&gt;How to do it&amp;hellip;&lt;/h2&gt;
-&lt;p&gt;Divide and conquer.&lt;/p&gt;
-&lt;p&gt;In each division, seperate the data into two parts.&lt;/p&gt;
-&lt;p&gt;All elements in the first part should be all less than the elements in the second part.&lt;/p&gt;
-&lt;p&gt;Loop until the array is sorted.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In this series of blogs, we will talk about different sorting algorithms.&lt;/p&gt;&#xA;&lt;p&gt;All the algorithms in the table below will be covered.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&lt;thead&gt;&#xA;&lt;tr&gt;&#xA;&lt;th&gt;Algorithm&lt;/th&gt;&#xA;&lt;th&gt;Time Complexity (Average Case)&lt;/th&gt;&#xA;&lt;th&gt;Time Complexity (Worst Case)&lt;/th&gt;&#xA;&lt;th&gt;Time Complexity (Best Case)&lt;/th&gt;&#xA;&lt;th&gt;Merg&lt;/th&gt;&#xA;&lt;th&gt;Stability&lt;/th&gt;&#xA;&lt;/tr&gt;&#xA;&lt;/thead&gt;&#xA;&lt;tbody&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Bubble Sort&lt;/td&gt;&#xA;&lt;td&gt;O(N^2)&lt;/td&gt;&#xA;&lt;td&gt;O(N^2)&lt;/td&gt;&#xA;&lt;td&gt;O(N^2)&lt;/td&gt;&#xA;&lt;td&gt;O(1)&lt;/td&gt;&#xA;&lt;td&gt;Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Quick Sort&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(N^2)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(logN)&lt;/td&gt;&#xA;&lt;td&gt;Not Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Quick Sort (with Random Selection)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(logN)&lt;/td&gt;&#xA;&lt;td&gt;Not Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Insertion Sort&lt;/td&gt;&#xA;&lt;td&gt;O(N^2)&lt;/td&gt;&#xA;&lt;td&gt;O(N^2)&lt;/td&gt;&#xA;&lt;td&gt;O(N)&lt;/td&gt;&#xA;&lt;td&gt;O(1)&lt;/td&gt;&#xA;&lt;td&gt;Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Selection Sort&lt;/td&gt;&#xA;&lt;td&gt;O(N^2)&lt;/td&gt;&#xA;&lt;td&gt;O(N^2)&lt;/td&gt;&#xA;&lt;td&gt;O(N^2)&lt;/td&gt;&#xA;&lt;td&gt;O(1)&lt;/td&gt;&#xA;&lt;td&gt;Not Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Heap Sort&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(1)&lt;/td&gt;&#xA;&lt;td&gt;Not Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Merge Sort (with double divides)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(N)&lt;/td&gt;&#xA;&lt;td&gt;Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Merge Sort (with multi divides)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(N)&lt;/td&gt;&#xA;&lt;td&gt;Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Counting Sort&lt;/td&gt;&#xA;&lt;td&gt;O(N+M)&lt;/td&gt;&#xA;&lt;td&gt;O(N+M)&lt;/td&gt;&#xA;&lt;td&gt;O(N+M)&lt;/td&gt;&#xA;&lt;td&gt;O(N+M)&lt;/td&gt;&#xA;&lt;td&gt;Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Bucket Sort&lt;/td&gt;&#xA;&lt;td&gt;O(N+M)&lt;/td&gt;&#xA;&lt;td&gt;O(N^2)&lt;/td&gt;&#xA;&lt;td&gt;O(N+M)&lt;/td&gt;&#xA;&lt;td&gt;O(N+M)&lt;/td&gt;&#xA;&lt;td&gt;Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Radix Sort&lt;/td&gt;&#xA;&lt;td&gt;O(N*M)&lt;/td&gt;&#xA;&lt;td&gt;O(N*M)&lt;/td&gt;&#xA;&lt;td&gt;O(N*M)&lt;/td&gt;&#xA;&lt;td&gt;O(N+M)&lt;/td&gt;&#xA;&lt;td&gt;Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h1 id=&#34;quick-sort&#34;&gt;Quick Sort&lt;/h1&gt;&#xA;&lt;h2 id=&#34;how-to-do-it&#34;&gt;How to do it&amp;hellip;&lt;/h2&gt;&#xA;&lt;p&gt;Divide and conquer.&lt;/p&gt;&#xA;&lt;p&gt;In each division, seperate the data into two parts.&lt;/p&gt;&#xA;&lt;p&gt;All elements in the first part should be all less than the elements in the second part.&lt;/p&gt;&#xA;&lt;p&gt;Loop until the array is sorted.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Sorting Algorithms - Bubble Sort</title>
       <link>https://junyubian.github.io/posts/2020-04-22-sorting-algorithms---bubble-sort/</link>
       <pubDate>Wed, 22 Apr 2020 09:23:36 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2020-04-22-sorting-algorithms---bubble-sort/</guid>
-      <description>&lt;p&gt;In this series of blogs, we will talk about different sorting algorithms.&lt;/p&gt;
-&lt;p&gt;All the algorithms in the table below will be covered.&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Algorithm&lt;/th&gt;
-&lt;th&gt;Time Complexity (Average Case)&lt;/th&gt;
-&lt;th&gt;Time Complexity (Worst Case)&lt;/th&gt;
-&lt;th&gt;Time Complexity (Best Case)&lt;/th&gt;
-&lt;th&gt;Merg&lt;/th&gt;
-&lt;th&gt;Stability&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Bubble Sort&lt;/td&gt;
-&lt;td&gt;O(N^2)&lt;/td&gt;
-&lt;td&gt;O(N^2)&lt;/td&gt;
-&lt;td&gt;O(N^2)&lt;/td&gt;
-&lt;td&gt;O(1)&lt;/td&gt;
-&lt;td&gt;Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Quick Sort&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(N^2)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(logN)&lt;/td&gt;
-&lt;td&gt;Not Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Quick Sort (with Random Selection)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(logN)&lt;/td&gt;
-&lt;td&gt;Not Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Insertion Sort&lt;/td&gt;
-&lt;td&gt;O(N^2)&lt;/td&gt;
-&lt;td&gt;O(N^2)&lt;/td&gt;
-&lt;td&gt;O(N)&lt;/td&gt;
-&lt;td&gt;O(1)&lt;/td&gt;
-&lt;td&gt;Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Selection Sort&lt;/td&gt;
-&lt;td&gt;O(N^2)&lt;/td&gt;
-&lt;td&gt;O(N^2)&lt;/td&gt;
-&lt;td&gt;O(N^2)&lt;/td&gt;
-&lt;td&gt;O(1)&lt;/td&gt;
-&lt;td&gt;Not Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Heap Sort&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(1)&lt;/td&gt;
-&lt;td&gt;Not Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Merge Sort (with double divides)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(N)&lt;/td&gt;
-&lt;td&gt;Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Merge Sort (with multi divides)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(NlogN)&lt;/td&gt;
-&lt;td&gt;O(N)&lt;/td&gt;
-&lt;td&gt;Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Counting Sort&lt;/td&gt;
-&lt;td&gt;O(N+M)&lt;/td&gt;
-&lt;td&gt;O(N+M)&lt;/td&gt;
-&lt;td&gt;O(N+M)&lt;/td&gt;
-&lt;td&gt;O(N+M)&lt;/td&gt;
-&lt;td&gt;Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Bucket Sort&lt;/td&gt;
-&lt;td&gt;O(N+M)&lt;/td&gt;
-&lt;td&gt;O(N^2)&lt;/td&gt;
-&lt;td&gt;O(N+M)&lt;/td&gt;
-&lt;td&gt;O(N+M)&lt;/td&gt;
-&lt;td&gt;Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Radix Sort&lt;/td&gt;
-&lt;td&gt;O(N*M)&lt;/td&gt;
-&lt;td&gt;O(N*M)&lt;/td&gt;
-&lt;td&gt;O(N*M)&lt;/td&gt;
-&lt;td&gt;O(N+M)&lt;/td&gt;
-&lt;td&gt;Stable&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h1 id=&#34;bubble-sort&#34;&gt;Bubble Sort&lt;/h1&gt;
-&lt;h2 id=&#34;how-to-do-it&#34;&gt;How to do it&amp;hellip;&lt;/h2&gt;
-&lt;p&gt;Compare the adjacent elements.&lt;/p&gt;
-&lt;p&gt;If the first element is greater than the second element, swap them.&lt;/p&gt;
-&lt;p&gt;Loop until reaching the last pair of elements.&lt;/p&gt;
-&lt;p&gt;Repeat until all the array is sorted.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In this series of blogs, we will talk about different sorting algorithms.&lt;/p&gt;&#xA;&lt;p&gt;All the algorithms in the table below will be covered.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&lt;thead&gt;&#xA;&lt;tr&gt;&#xA;&lt;th&gt;Algorithm&lt;/th&gt;&#xA;&lt;th&gt;Time Complexity (Average Case)&lt;/th&gt;&#xA;&lt;th&gt;Time Complexity (Worst Case)&lt;/th&gt;&#xA;&lt;th&gt;Time Complexity (Best Case)&lt;/th&gt;&#xA;&lt;th&gt;Merg&lt;/th&gt;&#xA;&lt;th&gt;Stability&lt;/th&gt;&#xA;&lt;/tr&gt;&#xA;&lt;/thead&gt;&#xA;&lt;tbody&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Bubble Sort&lt;/td&gt;&#xA;&lt;td&gt;O(N^2)&lt;/td&gt;&#xA;&lt;td&gt;O(N^2)&lt;/td&gt;&#xA;&lt;td&gt;O(N^2)&lt;/td&gt;&#xA;&lt;td&gt;O(1)&lt;/td&gt;&#xA;&lt;td&gt;Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Quick Sort&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(N^2)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(logN)&lt;/td&gt;&#xA;&lt;td&gt;Not Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Quick Sort (with Random Selection)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(logN)&lt;/td&gt;&#xA;&lt;td&gt;Not Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Insertion Sort&lt;/td&gt;&#xA;&lt;td&gt;O(N^2)&lt;/td&gt;&#xA;&lt;td&gt;O(N^2)&lt;/td&gt;&#xA;&lt;td&gt;O(N)&lt;/td&gt;&#xA;&lt;td&gt;O(1)&lt;/td&gt;&#xA;&lt;td&gt;Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Selection Sort&lt;/td&gt;&#xA;&lt;td&gt;O(N^2)&lt;/td&gt;&#xA;&lt;td&gt;O(N^2)&lt;/td&gt;&#xA;&lt;td&gt;O(N^2)&lt;/td&gt;&#xA;&lt;td&gt;O(1)&lt;/td&gt;&#xA;&lt;td&gt;Not Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Heap Sort&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(1)&lt;/td&gt;&#xA;&lt;td&gt;Not Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Merge Sort (with double divides)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(N)&lt;/td&gt;&#xA;&lt;td&gt;Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Merge Sort (with multi divides)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(NlogN)&lt;/td&gt;&#xA;&lt;td&gt;O(N)&lt;/td&gt;&#xA;&lt;td&gt;Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Counting Sort&lt;/td&gt;&#xA;&lt;td&gt;O(N+M)&lt;/td&gt;&#xA;&lt;td&gt;O(N+M)&lt;/td&gt;&#xA;&lt;td&gt;O(N+M)&lt;/td&gt;&#xA;&lt;td&gt;O(N+M)&lt;/td&gt;&#xA;&lt;td&gt;Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Bucket Sort&lt;/td&gt;&#xA;&lt;td&gt;O(N+M)&lt;/td&gt;&#xA;&lt;td&gt;O(N^2)&lt;/td&gt;&#xA;&lt;td&gt;O(N+M)&lt;/td&gt;&#xA;&lt;td&gt;O(N+M)&lt;/td&gt;&#xA;&lt;td&gt;Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;tr&gt;&#xA;&lt;td&gt;Radix Sort&lt;/td&gt;&#xA;&lt;td&gt;O(N*M)&lt;/td&gt;&#xA;&lt;td&gt;O(N*M)&lt;/td&gt;&#xA;&lt;td&gt;O(N*M)&lt;/td&gt;&#xA;&lt;td&gt;O(N+M)&lt;/td&gt;&#xA;&lt;td&gt;Stable&lt;/td&gt;&#xA;&lt;/tr&gt;&#xA;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h1 id=&#34;bubble-sort&#34;&gt;Bubble Sort&lt;/h1&gt;&#xA;&lt;h2 id=&#34;how-to-do-it&#34;&gt;How to do it&amp;hellip;&lt;/h2&gt;&#xA;&lt;p&gt;Compare the adjacent elements.&lt;/p&gt;&#xA;&lt;p&gt;If the first element is greater than the second element, swap them.&lt;/p&gt;&#xA;&lt;p&gt;Loop until reaching the last pair of elements.&lt;/p&gt;&#xA;&lt;p&gt;Repeat until all the array is sorted.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Sorting Algorithms - Summary</title>
       <link>https://junyubian.github.io/posts/2020-04-21-sorting-algorithms---summary/</link>
       <pubDate>Tue, 21 Apr 2020 22:18:10 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2020-04-21-sorting-algorithms---summary/</guid>
-      <description>&lt;p&gt;In this series of blogs, we will talk about different sorting algorithms.&lt;/p&gt;
-&lt;p&gt;All the algorithms in the table below will be covered.&lt;/p&gt;</description>
+      <description>&lt;p&gt;In this series of blogs, we will talk about different sorting algorithms.&lt;/p&gt;&#xA;&lt;p&gt;All the algorithms in the table below will be covered.&lt;/p&gt;</description>
     </item>
     <item>
       <title>KMP Algorithm</title>
       <link>https://junyubian.github.io/posts/2020-04-17-kmp-algorithm/</link>
       <pubDate>Fri, 17 Apr 2020 00:31:29 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2020-04-17-kmp-algorithm/</guid>
-      <description>&lt;h1 id=&#34;background&#34;&gt;Background&amp;hellip;&lt;/h1&gt;
-&lt;p&gt;Once upon a time, Tom asked his father to find &lt;code&gt;abab&lt;/code&gt; inside &lt;code&gt;abcaabababaa&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Tom&amp;rsquo;s dad did this in a traditional way (brute force). He compared each character of the first string with each character of the second string. When he find one character not matching, for example, the third character in the second string in this case, he start again from the second character of the second string. It went on and on and on&amp;hellip;&lt;/p&gt;</description>
+      <description>&lt;h1 id=&#34;background&#34;&gt;Background&amp;hellip;&lt;/h1&gt;&#xA;&lt;p&gt;Once upon a time, Tom asked his father to find &lt;code&gt;abab&lt;/code&gt; inside &lt;code&gt;abcaabababaa&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Tom&amp;rsquo;s dad did this in a traditional way (brute force). He compared each character of the first string with each character of the second string. When he find one character not matching, for example, the third character in the second string in this case, he start again from the second character of the second string. It went on and on and on&amp;hellip;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -13,14 +13,7 @@
       <link>https://junyubian.github.io/posts/2020-04-15-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-1/</link>
       <pubDate>Wed, 15 Apr 2020 22:27:57 +0000</pubDate>
       <guid>https://junyubian.github.io/posts/2020-04-15-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-1/</guid>
-      <description>&lt;h3 id=&#34;1-c的内存管理分哪些区分别有什么作用&#34;&gt;1. C++的内存管理分哪些区，分别有什么作用&lt;/h3&gt;
-&lt;hr&gt;
-&lt;p&gt;C++的内存主要分为五大区：堆区、栈区、自由存储区、全局/静态存储区、常量存储区。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;堆区&lt;/strong&gt;：程序员分配释放，使用new分配内存块，使用delete归还内存空间。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;栈区&lt;/strong&gt;：编译器自动分配释放，用于存放局部变量、函数参数等。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;自由存储区&lt;/strong&gt;：程序员分配释放，使用malloc分配内存块，使用free归还内存空间。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;全局区/静态区&lt;/strong&gt;：全局变量和静态变量分配在同一块内存中。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;常量存储区&lt;/strong&gt;：存放不可修改的常量值。&lt;/p&gt;</description>
+      <description>&lt;h3 id=&#34;1-c的内存管理分哪些区分别有什么作用&#34;&gt;1. C++的内存管理分哪些区，分别有什么作用&lt;/h3&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;C++的内存主要分为五大区：堆区、栈区、自由存储区、全局/静态存储区、常量存储区。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;堆区&lt;/strong&gt;：程序员分配释放，使用new分配内存块，使用delete归还内存空间。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;栈区&lt;/strong&gt;：编译器自动分配释放，用于存放局部变量、函数参数等。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;自由存储区&lt;/strong&gt;：程序员分配释放，使用malloc分配内存块，使用free归还内存空间。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;全局区/静态区&lt;/strong&gt;：全局变量和静态变量分配在同一块内存中。&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;常量存储区&lt;/strong&gt;：存放不可修改的常量值。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

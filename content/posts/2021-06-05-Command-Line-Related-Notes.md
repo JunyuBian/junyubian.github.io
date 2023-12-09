@@ -11,7 +11,7 @@ tags:
 
 #### 1. Switch to end of line in vi:
 
-```shell
+```
 shift+G
 ```
 
@@ -73,9 +73,9 @@ double click D
 
 double click U
 
-#### 12. for loop for batch processing 
+#### 12. for loop for batch processing
 
-```shell
+```
 for i in `docker image ls`; do echo "$i"; done
 ```
 
