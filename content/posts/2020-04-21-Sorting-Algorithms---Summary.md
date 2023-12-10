@@ -1,15 +1,15 @@
 ---
 title: Sorting Algorithms - Summary
 date: 2020-04-21 22:18:10
-categories: 
+categories:
 - Notes
+- En
 tags:
 - Algorithm
 - C++
-- en
 ---
 
-In this series of blogs, we will talk about different sorting algorithms. 
+In this series of blogs, we will talk about different sorting algorithms.
 
 All the algorithms in the table below will be covered.
 
@@ -28,4 +28,3 @@ All the algorithms in the table below will be covered.
 | Counting Sort                      | O(N+M)                         | O(N+M)                       | O(N+M)                      | O(N+M)  | Stable     |
 | Bucket Sort                        | O(N+M)                         | O(N^2)                       | O(N+M)                      | O(N+M)  | Stable     |
 | Radix Sort                         | O(N*M)                         | O(N*M)                       | O(N*M)                      | O(N+M)  | Stable     |
-

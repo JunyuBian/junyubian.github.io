@@ -1,15 +1,15 @@
 ---
 title: K8s and docker Related Notes
 date: 2021-06-05 15:08:29
-categories: 
+categories:
 - Notes
+- En
 tags:
 - K8s
 - Docker
-- en
 ---
 
-#### 1. Management tools for clusters, pods, deployments, etc. : 
+#### 1. Management tools for clusters, pods, deployments, etc. :
 
 k9s
 
@@ -17,7 +17,7 @@ k9s
 
 First edit resource:
 
-```
+``` shell
 kubectl edit <resource name>
 ```
 
@@ -43,4 +43,3 @@ docker image load < smartcity_images
 ```
 kubectl get events
 ```
-

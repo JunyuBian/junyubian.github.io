@@ -46,8 +46,6 @@
         	       
 		           <a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
         	       
-		           <a href="/tags/en">en</a>
-        	       
 
 			<div>
 				<p>In this blog, we will look into several ways of implementing swap in different ways.</p>
@@ -70,7 +68,7 @@
 </span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> a<span style="color:#f92672">/</span>b;
 </span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> a<span style="color:#f92672">/</span>b;
 </span></span></code></pre></div><h1 id="xor">XOR</h1>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C++" data-lang="C++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> b <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
 </span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> a<span style="color:#f92672">^</span>b;
 </span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> b<span style="color:#f92672">^</span>a; <span style="color:#75715e">// b = b^(a^b) = b^a^b = b^b^a = 0^a = a

@@ -1,11 +1,12 @@
 ---
 title: getopts in Bash
 date: 2022-10-21 14:17:29
-categories: 
+categories:
 - Notes
+- En
 tags:
 - Bash
-- en
+
 ---
 
 # 1. Notice
@@ -16,6 +17,7 @@ tags:
 <!--more-->
 
 # 2. Syntax
+
 ``` bash
 getopts optstring optname [ arg ]
 ```
@@ -34,20 +36,20 @@ getopts optstring optname [ arg ]
 ```bash
 while getopts ":hi:" option; do
   case "$option" in
-    h) 
+    h)
       echo "help function"
       ;;
-    i) 
+    i)
       ilist=$OPTARG
       ;;
     \?) 
       echo $option
       echo "Invalid option"
       ;;
-    :) 
+    :)
       echo $option
       echo "no argument"
-      ;;  
+      ;;
   esac
 done
 ```
@@ -55,4 +57,4 @@ done
 2.7 The special option of two dashes ("--") is interpreted by getopts as the end of options.
 
 # 3. Reference(s)
-“Bash Getopts Builtin Command Help and Examples.” Help and Examples, 1 Feb. 2021, https://www.computerhope.com/unix/bash/getopts.htm. 
+“Bash Getopts Builtin Command Help and Examples.” Help and Examples, 1 Feb. 2021, https://www.computerhope.com/unix/bash/getopts.htm.

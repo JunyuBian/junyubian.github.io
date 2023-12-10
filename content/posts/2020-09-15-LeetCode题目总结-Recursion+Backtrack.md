@@ -1,17 +1,15 @@
 ---
 title: LeetCode题目总结-Recursion+Backtrack
 date: 2020-09-15 22:12:19
-categories: 
+categories:
 - LeetCode
+- Ch
 tags:
 - C++
 - 算法
-- ch
 ---
 
 ### 题目17:[电话号码的字母组合](https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/)
-
----
 
 描述：
 
@@ -77,4 +75,3 @@ public:
     }
 };
 ```
-

@@ -1,17 +1,15 @@
 ---
 title: LeetCode题目总结-Array
 date: 2020-09-06 21:09:19
-categories: 
+categories:
 - LeetCode
+- Ch
 tags:
 - C++
 - 算法
-- ch
 ---
 
 ### 题目31:[下一个排列](https://leetcode-cn.com/problems/next-permutation)
-
----
 
 **描述：**
 
@@ -30,7 +28,7 @@ tags:
 
 **[思路](https://leetcode-cn.com/problems/next-permutation/solution/c-4msti-jie-si-lu-jian-dan-4bu-jie-jue-by-jie-yi/)：**
 
-突破点：`下一个更大排列的特性是什么。` 
+突破点：`下一个更大排列的特性是什么。`
 
 步骤（以[5,6,11,9,7,5,3,1]举例）：
 
@@ -91,13 +89,12 @@ public:
                 nums[minIndex] = nums[i-1];
                 nums[i-1] = minEle;
                 swap(nums, i);
-                break;                
+                break;
             }
         }
         if(0 == i) {
           	sort(nums.begin(), nums.end());
         }
-            
     }
 };
 ```
@@ -105,8 +102,6 @@ public:
 ---
 
 ### 题目46:[全排列](https://leetcode-cn.com/problems/permutations)
-
----
 
 **描述：**
 
@@ -150,7 +145,7 @@ public:
             res.emplace_back(output);
             return;
         }
-      
+
         for (int i = first; i < len; ++i) {
             // 动态维护数组
             swap(output[i], output[first]);
@@ -198,7 +193,7 @@ class Solution {
 public:
     vector<vector<int> > permute(vector<int>& nums) {
 		vector<vector<int> > ans;
-      
+
 		if(1 == nums.size()) {
 			ans.push_back(nums);
 			return ans;
@@ -222,9 +217,9 @@ public:
         }
 				nums = ncp;
 			}
-			return ans; 
+			return ans;
     }
-  }    
+  }
 };
 
 
@@ -234,13 +229,11 @@ public:
 
 ### 题目79:[单词搜索](https://leetcode-cn.com/problems/word-search/)
 
----
-
 **描述：**
 
 给定一个二维网格和一个单词，找出该单词是否存在于网格中。
 
-单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。 
+单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。
 
 **示例:**
 
@@ -288,7 +281,7 @@ public:
     bool exist(vector<vector<char>>& board, string word) {
         if(0 == board.size()) {
           return false;
-        }  
+        }
         for (int i= 0; i < board.size(); i++) {
             for(int j = 0; j < board[0].size(); j++) {
                 if (dfs(board, word, i, j, 0)){
@@ -310,7 +303,7 @@ public:
         board[i][j] = '0';
         bool flag = dfs(board, word, i, j+1, length+1) || dfs(board, word, i, j-1, length+1) || dfs(board, word, i+1, j, length+1) || dfs(board, word, i-1, j, length+1);
       	// 标记过的点恢复原状，以便进行下一次搜索
-        board[i][j] = temp;  
+        board[i][j] = temp;
         return flag;
     }
 };
@@ -322,8 +315,6 @@ public:
 
 ### 题目212:[单词搜索II](https://leetcode-cn.com/problems/word-search-ii/)
 
----
-
 **描述：**
 
 给定一个二维网格 board 和一个字典中的单词列表 words，找出所有同时在二维网格和字典中出现的单词。
@@ -332,7 +323,7 @@ public:
 
 示例:
 
-输入: 
+输入:
 words = ["oath","pea","eat","rain"] and board =
 [
   ['o','a','a','n'],
@@ -378,11 +369,11 @@ public:
             if (p->words.find(c) == p->words.end()) {
                 Node* t = new Node();
                 p->words[c] = t;
-            } 
+            }
             p = p->words[c];
         }
       	// node对应的word，为了之后根据node来找到结果
-        p->str = word; 
+        p->str = word;
         p->word = true;
     }
     void search(vector<string>& res, vector<vector<char>>& board) {
@@ -395,14 +386,14 @@ public:
     void help(vector<string>&res, vector<vector<char>>& board, Node* p, int x, int y) {
         if (p->word) {
           	// 其他方向就不会再把答案放进去了
-            p->word = false; 
+            p->word = false;
             res.push_back(p->str);
             return;
-        } 
+        }
         if (x < 0 || x == board.size() || y < 0 || y == board[x].size()) return;
         if (p->words.find(board[x][y]) == p->words.end()) return;
       	// 此时的p是其他字符了
-        p = p->words[board[x][y]]; 
+        p = p->words[board[x][y]];
         char cur = board[x][y];
         board[x][y] = '0';
         help(res, board, p, x+1, y);
@@ -411,7 +402,7 @@ public:
         help(res, board, p, x, y-1);
         board[x][y] = cur;
     }
-    
+
 private:
     Node* root;
 };
@@ -433,8 +424,6 @@ public:
 ---
 
 ### 题目84:[柱状图中最大的矩形](https://leetcode-cn.com/problems/largest-rectangle-in-histogram)
-
----
 
 **描述：**
 
@@ -482,8 +471,6 @@ int largestRectangleArea(vector<int>& heights) {
 
 ### 题目85:[最大矩形](https://leetcode-cn.com/problems/maximal-rectangle/)
 
----
-
 **描述：**
 
 给定一个仅包含 0 和 1 的二维二进制矩阵，找出只包含 1 的最大矩形，并返回其面积。
@@ -516,16 +503,16 @@ public:
 	int maximalRectangle(vector<vector<char> >& matrix) {
 		int n = matrix.size();
 		int m = 0;
-		if (n > 0) { 
-      m = matrix[0].size(); 
+		if (n > 0) {
+      m = matrix[0].size();
     }
 		vector<vector<int> > heights(n+1, vector<int>(m+1, 0));
 		vector<vector<vector<int> > > dp(n+1, vector<vector<int> >(m+1, vector<int>(n+1, 0)));
 		int ans = 0;
 		for (int i = 1; i <= n; i++) {
 			for (int j = 1; j <= m; j++) {
-				if ('0' == matrix[i-1][j-1]) { 
-          continue; 
+				if ('0' == matrix[i-1][j-1]) {
+          continue;
         }
 				heights[i][j] = heights[i-1][j] + 1;
 				for (int k = 1; k <= heights[i][j]; k++) {
@@ -542,8 +529,6 @@ public:
 ---
 
 ### 题目153:[寻找旋转排序数组中的最小值](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/)
-
----
 
 **描述：**
 
@@ -574,9 +559,9 @@ public:
         int right = nums.size() - 1;
         while (left < right) {
             int mid = left + (right - left) / 2;
-            if (nums[mid] > nums[right]) {          
+            if (nums[mid] > nums[right]) {
                 left = mid + 1;
-            } else {                               
+            } else {
                 right = mid;
             }
         }
@@ -588,8 +573,6 @@ public:
 ---
 
 ### 题目154:[寻找旋转排序数组中的最小值 II](https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array-ii/)
-
----
 
 **描述：**
 
@@ -628,7 +611,7 @@ public:
         if(1 == nums.size()) return nums[0];
         int p1 = 0, p2 = nums.size() - 1;
       	// 假如旋转了数组的前面0个元素（也就是没有旋转），我们直接返回numbers[p1]
-        int mid = p1; 
+        int mid = p1;
         while(nums[p1] >= nums[p2]) {
             if(1 == p2 - p1) {
                 // 循环终止条件：当p2-p1=1时，p2所指元素为最小值
@@ -636,7 +619,7 @@ public:
                 break;
             }
           	// 二分法找中点
-            mid = (p2 + p1) / 2; 
+            mid = (p2 + p1) / 2;
             // 特殊情况：p1、mid、p2三处的元素的值一样，无法判断最小值在mid前面还是后面，就只能顺序查找了
             if(nums[p1] == nums[p2] && nums[p1] == nums[mid]) return findMin(nums, p1, p2);
             // 缩小范围，mid处值大于等于p1处值的话，说明最小值在mid处或mid后面，故将p1挪到mid处
@@ -657,4 +640,3 @@ public:
     }
 };
 ```
-

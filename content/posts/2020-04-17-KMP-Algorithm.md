@@ -1,14 +1,13 @@
 ---
 title: KMP Algorithm
 date: 2020-04-17 00:31:29
-categories: 
+categories:
 - Notes
+- En
 tags:
 - Algorithm
 - C++
-- 算法
 - Tom Show
-- en
 ---
 
 # Background...

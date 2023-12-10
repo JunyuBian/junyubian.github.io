@@ -46,12 +46,9 @@
         	       
 		           <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>
         	       
-		           <a href="/tags/ch">ch</a>
-        	       
 
 			<div>
 				<h3 id="题目20有效的括号httpsleetcode-cncomproblemsvalid-parentheses">题目20:<a href="https://leetcode-cn.com/problems/valid-parentheses/">有效的括号</a></h3>
-<hr>
 <p>描述：</p>
 <p>给定一个只包括 &lsquo;(&rsquo;，&rsquo;)&rsquo;，&rsquo;{&rsquo;，&rsquo;}&rsquo;，&rsquo;[&rsquo;，&rsquo;]&rsquo; 的字符串，判断字符串是否有效。</p>
 <p>有效字符串需满足：</p>
@@ -108,7 +105,6 @@
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><hr>
 <h3 id="题目42接雨水httpsleetcode-cncomproblemstrapping-rain-water">题目42:<a href="https://leetcode-cn.com/problems/trapping-rain-water/">接雨水</a></h3>
-<hr>
 <p>描述：</p>
 <p>给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。</p>
 <p>示例:</p>
@@ -166,7 +162,6 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><hr>
 <h3 id="题目71简化路径httpsleetcode-cncomproblemssimplify-path">题目71:<a href="https://leetcode-cn.com/problems/simplify-path/">简化路径</a></h3>
-<hr>
 <p>描述：</p>
 <p>以 Unix 风格给出一个文件的绝对路径，你需要简化它。或者换句话说，将其转换为规范路径。</p>
 <p>在 Unix 风格的文件系统中，一个点（.）表示当前目录本身；此外，两个点 （..） 表示将目录切换到上一级（指向父目录）；两者都可以是复杂相对路径的组成部分。更多信息请参阅：Linux / Unix中的绝对路径 vs 相对路径</p>
@@ -218,7 +213,7 @@
 </span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 切换上一集目录
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> (dir <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;..&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>st.empty()) {
 </span></span><span style="display:flex;"><span>                    st.pop();
-</span></span><span style="display:flex;"><span>                } 
+</span></span><span style="display:flex;"><span>                }
 </span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 上一个 &#39;/&#39; 到 下一个 &#39;/&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (dir <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;..&#34;</span> <span style="color:#f92672">&amp;&amp;</span> dir <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;.&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>dir.empty()) {
 </span></span><span style="display:flex;"><span>                    st.push(dir);
@@ -281,19 +276,19 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    string simplifyPath(string path) {
 </span></span><span style="display:flex;"><span>        string res;
-</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// some flag to kepp state.
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> state <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;  <span style="color:#75715e">// 0: last char is [char]
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                        <span style="color:#75715e">// 1: last char is &#39;/&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                        <span style="color:#75715e">// 2: last char is &#39;.&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                        <span style="color:#75715e">// 3: last char is &#34;..&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (path.size() <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> path[path.size()<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">!=</span><span style="color:#e6db74">&#39;/&#39;</span>) path.push_back(<span style="color:#e6db74">&#39;/&#39;</span>);
-</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> path.size();
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; i<span style="color:#f92672">++</span>) {
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">char</span> c <span style="color:#f92672">=</span> path[i];
-</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (state <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
 </span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (c <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;/&#39;</span>) { res.push_back(<span style="color:#e6db74">&#39;/&#39;</span>); state <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; }
 </span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (c <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;.&#39;</span>) state <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
@@ -322,7 +317,7 @@
 </span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (res.size() <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) res.push_back(<span style="color:#e6db74">&#39;/&#39;</span>);
 </span></span><span style="display:flex;"><span>                    state <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
 </span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>                    res.push_back(<span style="color:#e6db74">&#39;.&#39;</span>); 
+</span></span><span style="display:flex;"><span>                    res.push_back(<span style="color:#e6db74">&#39;.&#39;</span>);
 </span></span><span style="display:flex;"><span>                    res.push_back(<span style="color:#e6db74">&#39;.&#39;</span>);
 </span></span><span style="display:flex;"><span>                    res.push_back(c);
 </span></span><span style="display:flex;"><span>                    state <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
@@ -330,14 +325,13 @@
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">//cout &lt;&lt; state &lt;&lt; &#34; &#34; &lt;&lt; c &lt;&lt; &#34; &#34; &lt;&lt; res &lt;&lt;  endl;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
-</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> ((state <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> res.size() <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>)) res.pop_back();
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> res;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><hr>
 <h3 id="题目225-用队列实现栈httpsleetcode-cncomproblemsimplement-stack-using-queues">题目225:<a href="https://leetcode-cn.com/problems/implement-stack-using-queues/"> 用队列实现栈</a></h3>
-<hr>
 <p>描述：</p>
 <p>使用队列实现栈的下列操作：</p>
 <p>push(x) &ndash; 元素 x 入栈
@@ -360,7 +354,7 @@ empty() &ndash; 返回栈是否为空
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Initialize your data structure here. */</span>
 </span></span><span style="display:flex;"><span>    MyStack() <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Push element x onto stack. */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">push</span>(<span style="color:#66d9ef">int</span> x) {
 </span></span><span style="display:flex;"><span>        que.push(x);
@@ -370,19 +364,19 @@ empty() &ndash; 返回栈是否为空
 </span></span><span style="display:flex;"><span>            que.pop();
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Removes the element on top of the stack and returns that element. */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">pop</span>() {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> val <span style="color:#f92672">=</span> top();
 </span></span><span style="display:flex;"><span>        que.pop();
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> val;
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Get the top element. */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">top</span>() {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> que.front();
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Returns whether the stack is empty. */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">empty</span>() {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> que.empty();
@@ -418,18 +412,18 @@ empty() &ndash; 返回栈是否为空
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> size <span style="color:#f92672">=</span> que1.size();
 </span></span><span style="display:flex;"><span>        size<span style="color:#f92672">--</span>;
 </span></span><span style="display:flex;"><span>      	<span style="color:#75715e">// 将que1 导入que2，但要留下最后一个元素
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (size<span style="color:#f92672">--</span>) { 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (size<span style="color:#f92672">--</span>) {
 </span></span><span style="display:flex;"><span>            que2.push(que1.front());
 </span></span><span style="display:flex;"><span>            que1.pop();
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>      	<span style="color:#75715e">// 留下的最后一个元素就是我们要返回的值
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> que1.front(); 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> que1.front();
 </span></span><span style="display:flex;"><span>        que1.pop();
 </span></span><span style="display:flex;"><span>      	<span style="color:#75715e">// 再将que2赋值给que1
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        que1 <span style="color:#f92672">=</span> que2; 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        que1 <span style="color:#f92672">=</span> que2;
 </span></span><span style="display:flex;"><span>      	<span style="color:#75715e">// 清空que2
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span>(<span style="color:#f92672">!</span>que2.empty()) { 
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span>(<span style="color:#f92672">!</span>que2.empty()) {
 </span></span><span style="display:flex;"><span>            que2.pop();
 </span></span><span style="display:flex;"><span>        }
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result;
@@ -447,7 +441,6 @@ empty() &ndash; 返回栈是否为空
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><hr>
 <h3 id="题目232用栈实现队列httpsleetcode-cncomproblemsimplement-queue-using-stacks">题目232:<a href="https://leetcode-cn.com/problems/implement-queue-using-stacks/">用栈实现队列</a></h3>
-<hr>
 <p>描述：</p>
 <p>使用栈实现队列的下列操作：</p>
 <p>push(x) &ndash; 将一个元素放入队列的尾部。
@@ -457,7 +450,7 @@ empty() &ndash; 返回队列是否为空。</p>
 <p>示例:</p>
 <p>MyQueue queue = new MyQueue();</p>
 <p>queue.push(1);
-queue.push(2);<br>
+queue.push(2);
 queue.peek();  // 返回 1
 queue.pop();   // 返回 1
 queue.empty(); // 返回 false</p>
@@ -517,7 +510,6 @@ queue.empty(); // 返回 false</p>
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><hr>
 <h3 id="题目23合并k个升序链表httpsleetcode-cncomproblemsmerge-k-sorted-lists">题目23:<a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/">合并K个升序链表</a></h3>
-<hr>
 <p>描述：</p>
 <p>给你一个链表数组，每个链表都已经按升序排列。</p>
 <p>请你将所有链表合并到一个升序链表中，返回合并后的链表。</p>
@@ -549,7 +541,7 @@ queue.empty(); // 返回 false</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 小根堆的回调函数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">cmp</span>{  
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">cmp</span>{
 </span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">operator</span>()(ListNode <span style="color:#f92672">*</span>a,ListNode <span style="color:#f92672">*</span>b){
 </span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> a<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">&gt;</span> b<span style="color:#f92672">-&gt;</span>val;
 </span></span><span style="display:flex;"><span>       }
@@ -570,7 +562,7 @@ queue.empty(); // 返回 false</p>
 </span></span><span style="display:flex;"><span>            p<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> top; p <span style="color:#f92672">=</span> top;
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(top<span style="color:#f92672">-&gt;</span>next) pri_queue.push(top<span style="color:#f92672">-&gt;</span>next);
 </span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> dummy.next;  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> dummy.next;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/c-you-xian-dui-lie-liang-liang-he-bing-fen-zhi-he-/">思路二</a>：</p>
@@ -601,7 +593,7 @@ queue.empty(); // 返回 false</p>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i<span style="color:#f92672">&lt;</span>lists.size(); <span style="color:#f92672">++</span>i){
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(lists[i]) head <span style="color:#f92672">=</span> merge(head, lists[i]);
 </span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> head;  
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> head;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/c-you-xian-dui-lie-liang-liang-he-bing-fen-zhi-he-/">思路三</a>：</p>
@@ -642,7 +634,6 @@ queue.empty(); // 返回 false</p>
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><hr>
 <h3 id="题目215数组中的第k个最大元素httpsleetcode-cncomproblemskth-largest-element-in-an-array">题目215:<a href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array/">数组中的第K个最大元素</a></h3>
-<hr>
 <p>描述：</p>
 <p>在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。</p>
 <p>示例 1:</p>

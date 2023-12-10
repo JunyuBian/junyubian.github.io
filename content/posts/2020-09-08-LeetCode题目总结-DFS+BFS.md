@@ -1,17 +1,15 @@
 ---
 title: LeetCode题目总结-DFS+BFS
 date: 2020-09-08 14:03:19
-categories: 
+categories:
 - LeetCode
+- Ch
 tags:
 - C++
 - 算法
-- ch
 ---
 
 ### 题目116:[填充每个节点的下一个右侧节点指针](https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/)
-
----
 
 描述：
 
@@ -35,7 +33,6 @@ struct Node {
 输入：{"$id":"1","left":{"$id":"2","left":{"$id":"3","left":null,"next":null,"right":null,"val":4},"next":null,"right":{"$id":"4","left":null,"next":null,"right":null,"val":5},"val":2},"next":null,"right":{"$id":"5","left":{"$id":"6","left":null,"next":null,"right":null,"val":6},"next":null,"right":{"$id":"7","left":null,"next":null,"right":null,"val":7},"val":3},"val":1}
 
 输出：{"$id":"1","left":{"$id":"2","left":{"$id":"3","left":null,"next":{"$id":"4","left":null,"next":{"$id":"5","left":null,"next":{"$id":"6","left":null,"next":null,"right":null,"val":7},"right":null,"val":6},"right":null,"val":5},"right":null,"val":4},"next":{"$id":"7","left":{"$ref":"5"},"next":null,"right":{"$ref":"6"},"val":3},"right":{"$ref":"4"},"val":2},"next":null,"right":{"$ref":"7"},"val":1}
-
 
 提示：
 
@@ -93,8 +90,6 @@ public:
 
 ### 题目117:[填充每个节点的下一个右侧节点指针 II](https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node-ii/)
 
----
-
 描述：
 
 给定一个二叉树
@@ -107,7 +102,7 @@ struct Node {
 }
 填充它的每个 next 指针，让这个指针指向其下一个右侧节点。如果找不到下一个右侧节点，则将 next 指针设置为 NULL。
 
-初始状态下，所有 next 指针都被设置为 NULL。 
+初始状态下，所有 next 指针都被设置为 NULL。
 
 进阶：
 
@@ -170,8 +165,6 @@ public:
 ---
 
 ### 题目200:[岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)
-
----
 
 描述：
 
@@ -310,8 +303,6 @@ public:
 
 ### 题目207:[课程表](https://leetcode-cn.com/problems/course-schedule/)
 
----
-
 描述：
 
 你这个学期必须选修 numCourse 门课程，记为 0 到 numCourse-1 。
@@ -322,7 +313,7 @@ public:
 
 示例 1:
 
-输入: 2, [[1,0]] 
+输入: 2, [[1,0]]
 输出: true
 解释: 总共有 2 门课程。学习课程 1 之前，你需要完成课程 0。所以这是可能的。
 示例 2:
@@ -450,8 +441,6 @@ public:
 
 ### 题目210:[课程表 II](https://leetcode-cn.com/problems/course-schedule-ii/)
 
----
-
 描述：
 
 现在你总共有 n 门课需要选，记为 0 到 n-1。
@@ -464,7 +453,7 @@ public:
 
 示例 1:
 
-输入: 2, [[1,0]] 
+输入: 2, [[1,0]]
 输出: [0,1]
 解释: 总共有 2 门课程。要学习课程 1，你需要先完成课程 0。因此，正确的课程顺序为 [0,1] 。
 示例 2:
@@ -563,8 +552,6 @@ public:
 
 ### 题目279:[完全平方数](https://leetcode-cn.com/problems/perfect-squares/)
 
----
-
 描述：
 
 给定正整数 n，找到若干个完全平方数（比如 1, 4, 9, 16, ...）使得它们的和等于 n。你需要让组成和的完全平方数的个数最少。
@@ -572,7 +559,7 @@ public:
 示例 1:
 
 输入: n = 12
-输出: 3 
+输出: 3
 解释: 12 = 4 + 4 + 4.
 示例 2:
 
@@ -602,7 +589,7 @@ public:
         }
         return res;
     }
-  
+
     int numSquares(int n) {
         vector<int> squares = getSquares(n);
         vector<bool> visited(n+1);    //记录已访问过的节点
@@ -614,7 +601,7 @@ public:
         while(!q.empty()) {
             int size = q.size();
             res++;
-          
+
             while(size--) {
                 int curr = q.front();
                 q.pop();
@@ -687,8 +674,6 @@ public:
 
 ### 题目301:[删除无效的括号](https://leetcode-cn.com/problems/remove-invalid-parentheses/)
 
----
-
 描述：
 
 删除最小数量的无效括号，使得输入的字符串有效，返回所有可能的结果。
@@ -743,13 +728,13 @@ public:
             }
             return;
         }
-      
+
         for (int i = st; i < s.size(); i++) {
             if (i != st && s[i] == s[i-1]) continue;
             if (s[i] == '(' && l > 0) {
               	// 删除操作，substr(a, b):从a开始个字符组成的字符串
                 dfs(s.substr(0, i) + s.substr(i+1, s.size()-1-i), i, l - 1, r, ans);
-            } 
+            }
             if (s[i] == ')' && r > 0) {
               	// 删除操作，substr(a, b):从a开始个字符组成的字符串
                 dfs(s.substr(0, i) + s.substr(i+1, s.size()-1-i), i, l, r - 1, ans);
@@ -766,7 +751,7 @@ public:
             if (c == '(') {
                 left++;
             } else if (c == ')') {
-                if (left > 0) { 
+                if (left > 0) {
                     left--;
                 } else {
                     right++;
@@ -779,4 +764,3 @@ public:
     }
 };
 ```
-

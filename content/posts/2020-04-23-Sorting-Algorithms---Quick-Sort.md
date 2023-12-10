@@ -1,15 +1,15 @@
 ---
 title: Sorting Algorithms - Quick Sort
 date: 2020-04-23 13:42:56
-categories: 
+categories:
 - Notes
+- En
 tags:
 - Algorithm
 - C++
-- en
 ---
 
-In this series of blogs, we will talk about different sorting algorithms. 
+In this series of blogs, we will talk about different sorting algorithms.
 
 All the algorithms in the table below will be covered.
 
@@ -33,7 +33,7 @@ All the algorithms in the table below will be covered.
 
 Divide and conquer.
 
-In each division, seperate the data into two parts. 
+In each division, seperate the data into two parts.
 
 All elements in the first part should be all less than the elements in the second part.
 
@@ -50,7 +50,7 @@ int partition(int array[], int left, int right) {
     int low = left;
     int high = right;
     int key = array[left];
-    
+
     while (low < high) {
       while (array[high] >= ket && low < high) {
 				high--;
@@ -65,7 +65,7 @@ int partition(int array[], int left, int right) {
     array[pivot] = key;
   }
   return pivot;
-} 
+}
 ```
 
 ```c++

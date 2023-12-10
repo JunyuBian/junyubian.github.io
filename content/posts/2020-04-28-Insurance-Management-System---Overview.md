@@ -1,21 +1,21 @@
 ---
 title: Insurance Management System - Overview
 date: 2020-04-28 22:59:02
-categories: 
+categories:
 - Projects
+- En
 tags:
 - Web
 - Django
 - Database
 - Tom Show
-- en
 ---
 
 In this series of blogs, we will talk about how to build a Insurance Management web application together with database system.
 
 # Background
 
-Tom's dad works in an insurance company. His work is to drop down who bought what kind of insurance, on which day does the customer receives an invoice, and on which day does the customer makes a payment. 
+Tom's dad works in an insurance company. His work is to drop down who bought what kind of insurance, on which day does the customer receives an invoice, and on which day does the customer makes a payment.
 
 <!--more-->
 
@@ -27,7 +27,7 @@ Tom's dad talks to Tom about what information is needed. After discussion, Tom d
 
 # Summary of development environment
 
-Tom thinks it over and over, finally decides to apply the following development environment: 
+Tom thinks it over and over, finally decides to apply the following development environment:
 
 1. Programming language: Python3.5
 

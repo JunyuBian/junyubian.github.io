@@ -1,12 +1,12 @@
 ---
 title: Diff Array
 date: 2020-11-08 15:19:00
-categories: 
+categories:
 - Notes
+- En
 tags:
 - Algorithm
 - C++
-- en
 ---
 
 In this blog, we will talk about one trick can be used to solve problems to do with frequent addition and subtraction to a subsection of an array  - [Diff Array](https://labuladong.gitbook.io/algo/suan-fa-si-wei-xi-lie/3.3-yi-xiang-bu-dao-xi-lie/cha-fen-ji-qiao).
@@ -47,6 +47,6 @@ for (int i = 1; i < diffArr.size(); i++) {
 
 ## Opearting a diff array
 
-With method mentioned in previous section, to add or substract `amount` for elements between `arr[a]` and `arr[b]` inclusively, we just need `diffArr[a] += amount` and `diffArr[b+1] -= amount`. 
+With method mentioned in previous section, to add or substract `amount` for elements between `arr[a]` and `arr[b]` inclusively, we just need `diffArr[a] += amount` and `diffArr[b+1] -= amount`.
 
-Remember to check `b+1` if it excesses the boundary of array, 
+Remember to check `b+1` if it excesses the boundary of array.

@@ -1,17 +1,15 @@
 ---
 title: LeetCode题目总结-Heap+Stack
 date: 2020-09-09 12:32:19
-categories: 
+categories:
 - LeetCode
+- Ch
 tags:
 - C++
 - 算法
-- ch
 ---
 
 ### 题目20:[有效的括号](https://leetcode-cn.com/problems/valid-parentheses/)
-
----
 
 描述：
 
@@ -89,8 +87,6 @@ public:
 
 ### 题目42:[接雨水](https://leetcode-cn.com/problems/trapping-rain-water/)
 
----
-
 描述：
 
 给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。
@@ -166,8 +162,6 @@ int trap(vector<int>& height) {
 
 ### 题目71:[简化路径](https://leetcode-cn.com/problems/simplify-path/)
 
----
-
 描述：
 
 以 Unix 风格给出一个文件的绝对路径，你需要简化它。或者换句话说，将其转换为规范路径。
@@ -231,7 +225,7 @@ public:
                 // 切换上一集目录
                 if (dir == ".." && !st.empty()) {
                     st.pop();
-                } 
+                }
                 // 上一个 '/' 到 下一个 '/'
                 else if (dir != ".." && dir != "." && !dir.empty()) {
                     st.push(dir);
@@ -285,19 +279,19 @@ class Solution {
 public:
     string simplifyPath(string path) {
         string res;
-        
+
         // some flag to kepp state.
         int state = 0;  // 0: last char is [char]
                         // 1: last char is '/'
                         // 2: last char is '.'
                         // 3: last char is ".."
-        
+
         if (path.size() != 0 && path[path.size()-1]!='/') path.push_back('/');
-        
+
         int len = path.size();
         for(int i = 0; i < len; i++) {
             char c = path[i];
-            
+
             if (state == 0) {
                 if (c == '/') { res.push_back('/'); state = 1; }
                 else if (c == '.') state = 2;
@@ -326,7 +320,7 @@ public:
                     if (res.size() == 0) res.push_back('/');
                     state = 1;
                 } else {
-                    res.push_back('.'); 
+                    res.push_back('.');
                     res.push_back('.');
                     res.push_back(c);
                     state = 0;
@@ -334,7 +328,7 @@ public:
             }
             //cout << state << " " << c << " " << res <<  endl;
         }
-        
+
         if ((state == 1 && res.size() != 1)) res.pop_back();
         return res;
     }
@@ -344,8 +338,6 @@ public:
 ---
 
 ### 题目225:[ 用队列实现栈](https://leetcode-cn.com/problems/implement-stack-using-queues/)
-
----
 
 描述：
 
@@ -377,7 +369,7 @@ class MyStack {
 public:
     /** Initialize your data structure here. */
     MyStack() = default;
-    
+
     /** Push element x onto stack. */
     void push(int x) {
         que.push(x);
@@ -387,19 +379,19 @@ public:
             que.pop();
         }
     }
-    
+
     /** Removes the element on top of the stack and returns that element. */
     int pop() {
         int val = top();
         que.pop();
         return val;
     }
-    
+
     /** Get the top element. */
     int top() {
         return que.front();
     }
-    
+
     /** Returns whether the stack is empty. */
     bool empty() {
         return que.empty();
@@ -441,18 +433,18 @@ public:
         int size = que1.size();
         size--;
       	// 将que1 导入que2，但要留下最后一个元素
-        while (size--) { 
+        while (size--) {
             que2.push(que1.front());
             que1.pop();
         }
 
       	// 留下的最后一个元素就是我们要返回的值
-        int result = que1.front(); 
+        int result = que1.front();
         que1.pop();
       	// 再将que2赋值给que1
-        que1 = que2; 
+        que1 = que2;
       	// 清空que2
-        while(!que2.empty()) { 
+        while(!que2.empty()) {
             que2.pop();
         }
         return result;
@@ -474,8 +466,6 @@ public:
 
 ### 题目232:[用栈实现队列](https://leetcode-cn.com/problems/implement-queue-using-stacks/)
 
----
-
 描述：
 
 使用栈实现队列的下列操作：
@@ -491,11 +481,10 @@ empty() -- 返回队列是否为空。
 MyQueue queue = new MyQueue();
 
 queue.push(1);
-queue.push(2);  
+queue.push(2);
 queue.peek();  // 返回 1
 queue.pop();   // 返回 1
 queue.empty(); // 返回 false
-
 
 说明:
 
@@ -563,8 +552,6 @@ public:
 
 ### 题目23:[合并K个升序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/)
 
----
-
 描述：
 
 给你一个链表数组，每个链表都已经按升序排列。
@@ -607,7 +594,7 @@ public:
 class Solution {
 public:
     // 小根堆的回调函数
-    struct cmp{  
+    struct cmp{
        bool operator()(ListNode *a,ListNode *b){
           return a->val > b->val;
        }
@@ -628,7 +615,7 @@ public:
             p->next = top; p = top;
             if(top->next) pri_queue.push(top->next);
         }
-        return dummy.next;  
+        return dummy.next;
     }
 };
 ```
@@ -665,7 +652,7 @@ public:
         for(int i = 1; i<lists.size(); ++i){
             if(lists[i]) head = merge(head, lists[i]);
         }
-        return head;  
+        return head;
     }
 };
 ```
@@ -716,8 +703,6 @@ public:
 
 ### 题目215:[数组中的第K个最大元素](https://leetcode-cn.com/problems/kth-largest-element-in-an-array/)
 
----
-
 描述：
 
 在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
@@ -758,4 +743,3 @@ public:
         return pq.top();
     }
 ```
-

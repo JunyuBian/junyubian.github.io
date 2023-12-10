@@ -4,12 +4,12 @@ date: 2023-12-02 18:53:43
 slug: 2023-12-02-Hugo-Site-Auto-Deployment-with-Github-Action
 type: posts
 draft: false
-categories: 
+categories:
   - Notes
+  - En
 tags:
   - Hugo
   - Git
-  - en
 ---
 
 - [1-Background](#1-background)
@@ -19,7 +19,7 @@ tags:
 
 # 1-Background
 
-Trying to auto deploy Hugo blogs with Github Action. 
+Trying to auto deploy Hugo blogs with Github Action.
 
 <!--more-->
 

@@ -1,13 +1,13 @@
 ---
 title: Fluent Bit Client Notes
 date: 2023-11-07 21:53:43
-categories: 
+categories:
 - Notes
+- En
 tags:
 - Fluent-bit
 - Logging
 - Tom Show
-- en
 ---
 
 - [What is fluent bit](#what-is-fluent-bit)
@@ -36,7 +36,7 @@ Tom told his dad there're two different methods to config Fluent Bit:
 
 Fluent Bit could use config file to set Input sources, Filters, Output destinations, etc. Sample config file, which locates in `/etc/fluent-bit/fluent-bit.conf` by default:
 
-``` 
+```
 [INPUT]
     Name    forward
     Listen  0.0.0.0

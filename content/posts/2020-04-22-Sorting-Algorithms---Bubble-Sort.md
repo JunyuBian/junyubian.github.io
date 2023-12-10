@@ -1,15 +1,15 @@
 ---
 title: Sorting Algorithms - Bubble Sort
 date: 2020-04-22 09:23:36
-categories: 
+categories:
 - Notes
+- En
 tags:
 - Algorithm
 - C++
-- en
 ---
 
-In this series of blogs, we will talk about different sorting algorithms. 
+In this series of blogs, we will talk about different sorting algorithms.
 
 All the algorithms in the table below will be covered.
 

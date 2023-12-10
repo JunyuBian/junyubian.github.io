@@ -4,10 +4,11 @@ date: 2023-12-02 19:40:43
 slug: 2023-12-02-Criterions-for-Site
 type: posts
 draft: false
-categories: 
-  - Criterions
+categories:
+  - References
+  - En
 tags:
-  - en
+  - forThisSite
 ---
 
 - [1-Titles](#1-titles)

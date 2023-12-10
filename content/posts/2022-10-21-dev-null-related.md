@@ -1,11 +1,11 @@
 ---
 title: /dev/null and 2&>1
 date: 2022-10-21 21:27:29
-categories: 
+categories:
 - Notes
+- En
 tags:
 - Bash
-- en
 ---
 
 # 1. Notice
@@ -18,9 +18,10 @@ tags:
 <!--more-->
 
 # 2. Example(s)
+
 ``` bash
-wget -O /dev/null baidu.com 2>&1 
+wget -O /dev/null baidu.com 2>&1
 ```
 
 # 3. Reference(s)
-Sepehr SaminiSepehr Samini 95544 gold badges1111 silver badges1515 bronze badges, et al. “What Does "/Dev/Null’ Mean at the End of Shell Commands.” Stack Overflow, 1 Feb. 1960, https://stackoverflow.com/questions/13408619/what-does-dev-null-mean-at-the-end-of-shell-commands. 
+Sepehr SaminiSepehr Samini 95544 gold badges1111 silver badges1515 bronze badges, et al. “What Does "/Dev/Null’ Mean at the End of Shell Commands.” Stack Overflow, 1 Feb. 1960, https://stackoverflow.com/questions/13408619/what-does-dev-null-mean-at-the-end-of-shell-commands.
