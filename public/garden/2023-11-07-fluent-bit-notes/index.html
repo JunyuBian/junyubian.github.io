@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;800&family=Frank+Ruhl+Libre:wght@200;300;400;500;600&family=Encode+Sans+Semi+Condensed:wght@400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/all.min.css">
+    <link disabled id="dark-mode-theme" rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/my_style.css">
+    
+    
+    
+    <title>Junyu Bian | Fluent Bit Client Notes</title>
+    <meta name="description" content="
+What is fluent bit
+Structural sketch
+How to set it up
+
+Through config file
+Though command line parameters
+
+
+Other ootes
+
+What is fluent bit
+One day, the Insurance Management System Tom built crashed. Good news is the system recovered through rebooting, bad news is Tom did not know what had gone wrong. Tom&rsquo;s dad comes by and says to Tom &ldquo;Fluent Bit is a telemetry agent designed to collect and process telemetry data from constrained systems to cloud infrastructures. Why don&rsquo;t you give it a try?&rdquo;">
+</head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="https://junyubian.github.io/">
+            
+            <b style="font-weight: 800;">JB</b>
+            
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0"><li class='nav-item '>
+                    <a class="nav-link" href="/garden/"> Digital Garden</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/projects/"> Projects</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/library/"> Library</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/about/"> About</a>
+                </li>
+             
+            <li class="nav-item px-2 pt-1">
+                <a class="btn fas fa-moon" id="dark-mode-toggle"></a>
+            </li>
+            </ul>
+        </div>
+    </div>
+</nav><div id="content">
+
+<div class="container" style="max-width: 800px;">
+    <div class="py-4 rounded-3">
+        <div class="container-fluid py-2">
+            <h1 class="display-2 mb-4 text-center">Fluent Bit Client Notes</h1>
+        </div>
+        
+        <p class="text-center fs-4 fst-italic serif"><ul>
+<li><a href="#what-is-fluent-bit">What is fluent bit</a></li>
+<li><a href="#structural-sketch">Structural sketch</a></li>
+<li><a href="#how-to-set-it-up">How to set it up</a>
+<ul>
+<li><a href="#through-config-file">Through config file</a></li>
+<li><a href="#though-command-line-parameters">Though command line parameters</a></li>
+</ul>
+</li>
+<li><a href="#other-ootes">Other ootes</a></li>
+</ul>
+<h1 id="what-is-fluent-bit">What is fluent bit</h1>
+<p>One day, the Insurance Management System Tom built crashed. Good news is the system recovered through rebooting, bad news is Tom did not know what had gone wrong. Tom&rsquo;s dad comes by and says to Tom &ldquo;Fluent Bit is a telemetry agent designed to collect and process telemetry data from constrained systems to cloud infrastructures. Why don&rsquo;t you give it a try?&rdquo;</p></p>
+        
+        <div class="text-center pt-4">
+            
+        </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+        <div class="col-12">
+            <p class="card-date m-0">
+                
+                
+                    Created Nov 7, 2023 - 
+                
+                Last updated: Nov 7, 2023
+            </p>
+            <hr class="dropdown-divider">
+            <div class="row justify-content-between">
+                <div class="col-sm-4">
+                    
+                </div>
+                <div class="col-sm-8" style="text-align: right;">
+                    
+                    
+                    <span class="badge tag-badge">Fluent-bit</span>
+                    
+                    <span class="badge tag-badge">Logging</span>
+                    
+                    <span class="badge tag-badge">Tom Show</span>
+                    
+                    <span class="badge tag-badge">en</span>
+                    
+                
+                
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid py-2">
+        <div class="serif main-content">
+            <ul>
+<li><a href="#what-is-fluent-bit">What is fluent bit</a></li>
+<li><a href="#structural-sketch">Structural sketch</a></li>
+<li><a href="#how-to-set-it-up">How to set it up</a>
+<ul>
+<li><a href="#through-config-file">Through config file</a></li>
+<li><a href="#though-command-line-parameters">Though command line parameters</a></li>
+</ul>
+</li>
+<li><a href="#other-ootes">Other ootes</a></li>
+</ul>
+<h1 id="what-is-fluent-bit">What is fluent bit</h1>
+<p>One day, the Insurance Management System Tom built crashed. Good news is the system recovered through rebooting, bad news is Tom did not know what had gone wrong. Tom&rsquo;s dad comes by and says to Tom &ldquo;Fluent Bit is a telemetry agent designed to collect and process telemetry data from constrained systems to cloud infrastructures. Why don&rsquo;t you give it a try?&rdquo;</p>
+<h1 id="structural-sketch">Structural sketch</h1>
+<p>Tom is a good listener. He listened to his dad and checked the Fluent Bit website <a href="https://docs.fluentbit.io">https://docs.fluentbit.io</a>, and found one great picture shows the rough structure of Fluent Bit:
+<img src="https://github.com/JunyuBian/PicsForBlogs/blob/main/iShot_2023-11-08_22.24.51.png" alt="Structural Sketch"></p>
+<h1 id="how-to-set-it-up">How to set it up</h1>
+<p>Tom told his dad there&rsquo;re two different methods to config Fluent Bit:</p>
+<h2 id="through-config-file">Through config file</h2>
+<p>Fluent Bit could use config file to set Input sources, Filters, Output destinations, etc. Sample config file, which locates in <code>/etc/fluent-bit/fluent-bit.conf</code> by default:</p>
+<pre tabindex="0"><code>[INPUT]
+    Name    forward
+    Listen  0.0.0.0
+    Port    24224
+    Tag     sampleTag
+
+[FILTER]
+    Name    rewrite_tag
+    Match   sampleTag
+    Rule    $name ^\/.+[-_]([a-z\-]+)[-_][0-9]+$ esp-$1 false
+
+[OUTPUT]
+    Name    stdout
+    Match   *
+</code></pre><p>To use a specific config file instead of the default one, we could use this command: <code>bin/fluent-bit -c example.conf</code>, <code>-c</code> will indicate a new config file.</p>
+<h2 id="though-command-line-parameters">Though command line parameters</h2>
+<p>Instead of a config file, we could directly reveal INPUTs, FILTERs and OUTPUTs in command line, one example would be:</p>
+<pre tabindex="0"><code>bin/fluent-bit -i systemd \
+        -p systemd_filter=_SYSTEMD_UNIT=docker.service \
+        -p tag=&#39;sampletag&#39; \
+        -o forward://${fording_server}:24224
+</code></pre><h1 id="other-ootes">Other ootes</h1>
+<p>While using fluent-bit, Tom also found it has below characteristics:</p>
+<ol>
+<li>It could recive forwarded logs from other fluent-bit client, and together forward or output to other destinations.</li>
+<li>If we&rsquo;re going to install two deb packages including fluent-bit on one same machine, it may incur resource race. Since both fluent-bit will leverage <code>/etc/fluent-bit/fluent-bit.conf</code>. One way to resolve this is, ask one of the client to use different config file or passing config through command line, and while installing the other client, adding <code>--force-overwrite</code>.</li>
+</ol>
+<p>Tom is not complete happy, he thinks there should be more to discover for this topic.</p>
+        </div>
+    </div>
+</div>
+
+
+        </div><div class="container">
+    <div class="row justify-content-between">
+        <div class="col-sm-4">
+            <p class="footer">Junyu Ban© 2023 </p>
+        </div>
+        <div class="col-sm-6 d-flex flex-row-reverse">
+            
+            <a class="footer-social px-2"  href="https://twitter.com/junyu_bian" target="_blank"><i class="fab fa-twitter"></i></a>
+            
+            <a class="footer-social px-2"  href="https://github.com/junyubian" target="_blank"><i class="fab fa-github"></i></a>
+            
+            <a class="footer-social px-2"  href="https://www.facebook.com/profile.php?id=100010301021817" target="_blank"><i class="fab fa-facebook"></i></a>
+            
+        </div>
+    </div>
+</div>
+<script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script src="/js/isotope.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+<script src="/js/dark.js"></script>
+<script>
+
+
+var savedTheme = localStorage.getItem("dark-mode-storage") || "light" 
+setTheme(savedTheme);
+
+</script>
+<script src="/js/isotope.js"></script>
+<script src="/js/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, securityLevel: 'loose'});</script>
+</body>
+</html>

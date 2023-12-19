@@ -1,57 +1,69 @@
-baseURL = 'https://junyubian.github.io/'
-languageCode = 'en-us'
-title = 'Junyu Bian'
-theme = 'smol'
+baseURL = "https://junyubian.github.io/"
+languageCode = "en-us"
+title = "Junyu Bian"
+theme = "hugo-digital-garden-theme"
+# themesdir = "../../"
+copyright = "Junyu Ban©"
 
-# Parameters
 [params]
-    subtitle = "Welcome to my posts!"
-    dateFmt = "01/02/2006 15:04"
+  name = "Junyu Bian"
+  description = "Hi there, welcome!"
+  initials = "JB"
+  googleAnalytics = ""
 
-# Header
+  [[params.social]]
+    name = "Twitter"
+    link = "https://twitter.com/junyu_bian"
+    icon = "fab fa-twitter"
+
+  [[params.social]]
+    name = "Github"
+    link = "https://github.com/junyubian"
+    icon = "fab fa-github"
+
+  [[params.social]]
+    name = "Facebook" 
+    link = "https://www.facebook.com/profile.php?id=100010301021817"
+    icon = "fab fa-facebook"
+
+
 [menu]
   [[menu.main]]
-        identifier = "posts"
-        name = "Posts"
-        url = "/posts/"
-        weight = 1 
-
+    name = "Digital Garden"
+    url = "/garden/"
+    weight = 1
   [[menu.main]]
-        identifier = "categories"
-        name = "Categories"
-        url = "/categories/"
-        weight = 2 
-
+    name = "Projects"
+    url = "/projects/"
+    weight = 2
   [[menu.main]]
-        identifier = "tags"
-        name = "Tags"
-        url = "/tags/"
-        weight = 3
-
+    name = "Library"
+    url = "/library/"
+    weight = 3
   [[menu.main]]
-        identifier = "about"
-        name = "About"
-        url = "/about/"
-        weight = 4
+    name = "About"
+    url = "/about/"
+    weight = 4
 
-# Footer
-  [[menu.footer]]
-        name = "Github"
-        url = "https://github.com/junyubian"
-        weight = 1 
 
-    [[menu.footer]]
-        name = "Twitter(X)"
-        url = "https://twitter.com/junyu_bian"
-        weight = 2 
+[taxonomies]
+  garden_tags = 'garden_tags'
+  project_tags = 'project_tags'
+  library_tags = 'library_tags'
 
-    [[menu.footer]]
-        name = "Facebook"
-        url = "https://www.facebook.com/profile.php?id=100010301021817"
-        weight = 3 
 
-    [[menu.footer]]
-        name = "Mail"
-        url = "mailto:junyu.bian@qq.com"
-        weight = 3 
-
+[markup]
+  defaultMarkdownHandler = 'goldmark'
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.goldmark.extensions]
+    definitionList = true
+    footnote = true
+    linkify = true
+    strikethrough = true
+    table = true
+    taskList = true
+    typographer = true
+  [markup.highlight]
+    # Choose from https://xyproto.github.io/splash/docs/all.html
+    style = 'monokailight'

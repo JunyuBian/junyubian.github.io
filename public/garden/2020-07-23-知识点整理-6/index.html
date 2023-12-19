@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;800&family=Frank+Ruhl+Libre:wght@200;300;400;500;600&family=Encode+Sans+Semi+Condensed:wght@400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/all.min.css">
+    <link disabled id="dark-mode-theme" rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/my_style.css">
+    
+    
+    
+    <title>Junyu Bian | 知识点整理-6</title>
+    <meta name="description" content="1. Linux和端口号、进程、文件相关的命令
+
+静态进程查看: ps
+例：通过进程名查看进程号
+ps ax | fgrep [进程名]
+网络查看: netstat">
+</head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="https://junyubian.github.io/">
+            
+            <b style="font-weight: 800;">JB</b>
+            
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0"><li class='nav-item '>
+                    <a class="nav-link" href="/garden/"> Digital Garden</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/projects/"> Projects</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/library/"> Library</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/about/"> About</a>
+                </li>
+             
+            <li class="nav-item px-2 pt-1">
+                <a class="btn fas fa-moon" id="dark-mode-toggle"></a>
+            </li>
+            </ul>
+        </div>
+    </div>
+</nav><div id="content">
+
+<div class="container" style="max-width: 800px;">
+    <div class="py-4 rounded-3">
+        <div class="container-fluid py-2">
+            <h1 class="display-2 mb-4 text-center">知识点整理-6</h1>
+        </div>
+        
+        <p class="text-center fs-4 fst-italic serif"><h3 id="1-linux和端口号进程文件相关的命令">1. Linux和端口号、进程、文件相关的命令</h3>
+<hr>
+<p><strong>静态进程查看</strong>: ps</p>
+<p>例：通过进程名查看进程号</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ps ax <span style="color:#111">|</span> fgrep <span style="color:#f92672">[</span>进程名<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p><strong>网络查看</strong>: netstat</p></p>
+        
+        <div class="text-center pt-4">
+            
+        </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+        <div class="col-12">
+            <p class="card-date m-0">
+                
+                
+                    Created Jul 23, 2020 - 
+                
+                Last updated: Jul 23, 2020
+            </p>
+            <hr class="dropdown-divider">
+            <div class="row justify-content-between">
+                <div class="col-sm-4">
+                    
+                </div>
+                <div class="col-sm-8" style="text-align: right;">
+                    
+                    
+                    <span class="badge tag-badge">Linux</span>
+                    
+                    <span class="badge tag-badge">C&#43;&#43;</span>
+                    
+                    <span class="badge tag-badge">算法</span>
+                    
+                    <span class="badge tag-badge">测试</span>
+                    
+                    <span class="badge tag-badge">计算机网络</span>
+                    
+                    <span class="badge tag-badge">数据库</span>
+                    
+                    <span class="badge tag-badge">ch</span>
+                    
+                
+                
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid py-2">
+        <div class="serif main-content">
+            <h3 id="1-linux和端口号进程文件相关的命令">1. Linux和端口号、进程、文件相关的命令</h3>
+<hr>
+<p><strong>静态进程查看</strong>: ps</p>
+<p>例：通过进程名查看进程号</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ps ax <span style="color:#111">|</span> fgrep <span style="color:#f92672">[</span>进程名<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p><strong>网络查看</strong>: netstat</p>
+<p>例：通过进程号查看进程正在监听的端口</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>netstat -antp <span style="color:#111">|</span> fgrep <span style="color:#f92672">[</span>进程号<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>例：查看端口是否正在监听</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>netstat -antp <span style="color:#111">|</span> grep <span style="color:#f92672">[</span>端口号<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p><strong>搜索指定文件内容</strong>: grep (global regular expression print)</p>
+<p>例：搜索as在123.txt中的行号位置</p>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>grep -n as 123.txt
+</span></span></code></pre></div><hr>
+<h3 id="2-查找二叉树最大深度">2. 查找二叉树最大深度</h3>
+<hr>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">struct</span> <span style="color:#75af00">TreeNode</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00a8c8">int</span> <span style="color:#111">val</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#111">TreeNode</span> <span style="color:#f92672">*</span> <span style="color:#111">left</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#111">TreeNode</span> <span style="color:#f92672">*</span> <span style="color:#111">right</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#111">TreeNode</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#f92672">:</span> <span style="color:#111">val</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">),</span> <span style="color:#111">left</span><span style="color:#111">(</span><span style="color:#111">NULL</span><span style="color:#111">),</span> <span style="color:#111">right</span><span style="color:#111">(</span><span style="color:#111">NULL</span><span style="color:#111">){}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">int</span> <span style="color:#75af00">dfs</span> <span style="color:#111">(</span><span style="color:#111">TreeNode</span> <span style="color:#f92672">*</span> <span style="color:#111">root</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">result</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">root</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">return</span> <span style="color:#111">result</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00a8c8">int</span> <span style="color:#111">left_res</span> <span style="color:#f92672">=</span> <span style="color:#111">dfs</span><span style="color:#111">(</span><span style="color:#111">root</span><span style="color:#f92672">-&gt;</span><span style="color:#111">left</span><span style="color:#111">,</span> <span style="color:#111">result</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00a8c8">int</span> <span style="color:#111">right_res</span> <span style="color:#f92672">=</span> <span style="color:#111">dfs</span><span style="color:#111">(</span><span style="color:#111">root</span><span style="color:#f92672">-&gt;</span><span style="color:#111">right</span><span style="color:#111">,</span> <span style="color:#111">result</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00a8c8">return</span> <span style="color:#111">max</span><span style="color:#111">(</span><span style="color:#111">left_res</span><span style="color:#111">,</span> <span style="color:#111">right_res</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">int</span> <span style="color:#75af00">MaxDepth</span><span style="color:#111">(</span><span style="color:#111">TreeNode</span> <span style="color:#f92672">*</span> <span style="color:#111">root</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#00a8c8">int</span> <span style="color:#111">result</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00a8c8">return</span> <span style="color:#111">dfs</span><span style="color:#111">(</span><span style="color:#111">root</span><span style="color:#111">,</span> <span style="color:#111">result</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
+</span></span></code></pre></div><hr>
+<h3 id="3-判断ip地址是否合法">3. 判断IP地址是否合法</h3>
+<hr>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">using</span> <span style="color:#00a8c8">namespace</span> <span style="color:#111">boost</span><span style="color:#f92672">::</span><span style="color:#111">xpressive</span><span style="color:#111">;</span>  
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">bool</span> <span style="color:#75af00">CheckIP</span><span style="color:#111">(</span><span style="color:#00a8c8">char</span> <span style="color:#f92672">*</span><span style="color:#111">ip</span><span style="color:#111">)</span> <span style="color:#111">{</span>  
+</span></span><span style="display:flex;"><span>	<span style="color:#111">cregex</span> <span style="color:#111">expression</span> <span style="color:#f92672">=</span> <span style="color:#111">cregex</span><span style="color:#f92672">::</span><span style="color:#111">compile</span><span style="color:#111">(</span><span style="color:#d88200">&#34;(25[0-4]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[1-9])[.](25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])[.](25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])[.](25[0-4]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[1-9])&#34;</span><span style="color:#111">);</span>   
+</span></span><span style="display:flex;"><span>	<span style="color:#00a8c8">return</span> <span style="color:#111">regex_match</span><span style="color:#111">(</span><span style="color:#111">ip</span><span style="color:#111">,</span> <span style="color:#111">expression</span><span style="color:#111">);</span>  
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>  
+</span></span></code></pre></div><hr>
+<h3 id="4-udp如何实现可靠连接">4. udp如何实现可靠连接</h3>
+<hr>
+<p>在应用层参照TCP实现超时重传、有序接受、应答确认、滑动窗口、流量控制等功能。</p>
+<p>现已实现的程序有RUDP、RTP、UDT。</p>
+<hr>
+<h3 id="5mysql-查询以135开头的手机号">5.MySQL 查询以135开头的手机号</h3>
+<hr>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mysql" data-lang="mysql"><span style="display:flex;"><span><span style="color:#00a8c8">select</span> <span style="color:#f92672">*</span> <span style="color:#00a8c8">from</span> <span style="color:#111">test</span> <span style="color:#00a8c8">where</span> <span style="color:#111">shouji</span> <span style="color:#00a8c8">like</span> <span style="color:#d88200">&#39;135%&#39;</span><span style="color:#111">;</span>
+</span></span></code></pre></div>
+        </div>
+    </div>
+</div>
+
+
+        </div><div class="container">
+    <div class="row justify-content-between">
+        <div class="col-sm-4">
+            <p class="footer">Junyu Ban© 2023 </p>
+        </div>
+        <div class="col-sm-6 d-flex flex-row-reverse">
+            
+            <a class="footer-social px-2"  href="https://twitter.com/junyu_bian" target="_blank"><i class="fab fa-twitter"></i></a>
+            
+            <a class="footer-social px-2"  href="https://github.com/junyubian" target="_blank"><i class="fab fa-github"></i></a>
+            
+            <a class="footer-social px-2"  href="https://www.facebook.com/profile.php?id=100010301021817" target="_blank"><i class="fab fa-facebook"></i></a>
+            
+        </div>
+    </div>
+</div>
+<script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script src="/js/isotope.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+<script src="/js/dark.js"></script>
+<script>
+
+
+var savedTheme = localStorage.getItem("dark-mode-storage") || "light" 
+setTheme(savedTheme);
+
+</script>
+<script src="/js/isotope.js"></script>
+<script src="/js/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, securityLevel: 'loose'});</script>
+</body>
+</html>

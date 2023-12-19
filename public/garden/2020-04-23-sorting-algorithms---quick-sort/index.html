@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;800&family=Frank+Ruhl+Libre:wght@200;300;400;500;600&family=Encode+Sans+Semi+Condensed:wght@400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/all.min.css">
+    <link disabled id="dark-mode-theme" rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/my_style.css">
+    
+    
+    
+    <title>Junyu Bian | Sorting Algorithms - Quick Sort</title>
+    <meta name="description" content="In this series of blogs, we will talk about different sorting algorithms.
+All the algorithms in the table below will be covered.
+
+
+
+Algorithm
+Time Complexity (Average Case)
+Time Complexity (Worst Case)
+Time Complexity (Best Case)
+Merg
+Stability
+
+
+
+
+Bubble Sort
+O(N^2)
+O(N^2)
+O(N^2)
+O(1)
+Stable
+
+
+Quick Sort
+O(NlogN)
+O(N^2)
+O(NlogN)
+O(logN)
+Not Stable
+
+
+Quick Sort (with Random Selection)
+O(NlogN)
+O(NlogN)
+O(NlogN)
+O(logN)
+Not Stable
+
+
+Insertion Sort
+O(N^2)
+O(N^2)
+O(N)
+O(1)
+Stable
+
+
+Selection Sort
+O(N^2)
+O(N^2)
+O(N^2)
+O(1)
+Not Stable
+
+
+Heap Sort
+O(NlogN)
+O(NlogN)
+O(NlogN)
+O(1)
+Not Stable
+
+
+Merge Sort (with double divides)
+O(NlogN)
+O(NlogN)
+O(NlogN)
+O(N)
+Stable
+
+
+Merge Sort (with multi divides)
+O(NlogN)
+O(NlogN)
+O(NlogN)
+O(N)
+Stable
+
+
+Counting Sort
+O(N&#43;M)
+O(N&#43;M)
+O(N&#43;M)
+O(N&#43;M)
+Stable
+
+
+Bucket Sort
+O(N&#43;M)
+O(N^2)
+O(N&#43;M)
+O(N&#43;M)
+Stable
+
+
+Radix Sort
+O(N*M)
+O(N*M)
+O(N*M)
+O(N&#43;M)
+Stable
+
+
+
+Quick Sort
+How to do it&hellip;
+Divide and conquer.
+In each division, seperate the data into two parts.
+All elements in the first part should be all less than the elements in the second part.
+Loop until the array is sorted.">
+</head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="https://junyubian.github.io/">
+            
+            <b style="font-weight: 800;">JB</b>
+            
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0"><li class='nav-item '>
+                    <a class="nav-link" href="/garden/"> Digital Garden</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/projects/"> Projects</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/library/"> Library</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/about/"> About</a>
+                </li>
+             
+            <li class="nav-item px-2 pt-1">
+                <a class="btn fas fa-moon" id="dark-mode-toggle"></a>
+            </li>
+            </ul>
+        </div>
+    </div>
+</nav><div id="content">
+
+<div class="container" style="max-width: 800px;">
+    <div class="py-4 rounded-3">
+        <div class="container-fluid py-2">
+            <h1 class="display-2 mb-4 text-center">Sorting Algorithms - Quick Sort</h1>
+        </div>
+        
+        <p class="text-center fs-4 fst-italic serif"><p>In this series of blogs, we will talk about different sorting algorithms.</p>
+<p>All the algorithms in the table below will be covered.</p>
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Time Complexity (Average Case)</th>
+<th>Time Complexity (Worst Case)</th>
+<th>Time Complexity (Best Case)</th>
+<th>Merg</th>
+<th>Stability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bubble Sort</td>
+<td>O(N^2)</td>
+<td>O(N^2)</td>
+<td>O(N^2)</td>
+<td>O(1)</td>
+<td>Stable</td>
+</tr>
+<tr>
+<td>Quick Sort</td>
+<td>O(NlogN)</td>
+<td>O(N^2)</td>
+<td>O(NlogN)</td>
+<td>O(logN)</td>
+<td>Not Stable</td>
+</tr>
+<tr>
+<td>Quick Sort (with Random Selection)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(logN)</td>
+<td>Not Stable</td>
+</tr>
+<tr>
+<td>Insertion Sort</td>
+<td>O(N^2)</td>
+<td>O(N^2)</td>
+<td>O(N)</td>
+<td>O(1)</td>
+<td>Stable</td>
+</tr>
+<tr>
+<td>Selection Sort</td>
+<td>O(N^2)</td>
+<td>O(N^2)</td>
+<td>O(N^2)</td>
+<td>O(1)</td>
+<td>Not Stable</td>
+</tr>
+<tr>
+<td>Heap Sort</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(1)</td>
+<td>Not Stable</td>
+</tr>
+<tr>
+<td>Merge Sort (with double divides)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(N)</td>
+<td>Stable</td>
+</tr>
+<tr>
+<td>Merge Sort (with multi divides)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(N)</td>
+<td>Stable</td>
+</tr>
+<tr>
+<td>Counting Sort</td>
+<td>O(N+M)</td>
+<td>O(N+M)</td>
+<td>O(N+M)</td>
+<td>O(N+M)</td>
+<td>Stable</td>
+</tr>
+<tr>
+<td>Bucket Sort</td>
+<td>O(N+M)</td>
+<td>O(N^2)</td>
+<td>O(N+M)</td>
+<td>O(N+M)</td>
+<td>Stable</td>
+</tr>
+<tr>
+<td>Radix Sort</td>
+<td>O(N*M)</td>
+<td>O(N*M)</td>
+<td>O(N*M)</td>
+<td>O(N+M)</td>
+<td>Stable</td>
+</tr>
+</tbody>
+</table>
+<h1 id="quick-sort">Quick Sort</h1>
+<h2 id="how-to-do-it">How to do it&hellip;</h2>
+<p>Divide and conquer.</p>
+<p>In each division, seperate the data into two parts.</p>
+<p>All elements in the first part should be all less than the elements in the second part.</p>
+<p>Loop until the array is sorted.</p></p>
+        
+        <div class="text-center pt-4">
+            
+        </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+        <div class="col-12">
+            <p class="card-date m-0">
+                
+                
+                    Created Apr 23, 2020 - 
+                
+                Last updated: Apr 23, 2020
+            </p>
+            <hr class="dropdown-divider">
+            <div class="row justify-content-between">
+                <div class="col-sm-4">
+                    
+                </div>
+                <div class="col-sm-8" style="text-align: right;">
+                    
+                    
+                    <span class="badge tag-badge">Algorithm</span>
+                    
+                    <span class="badge tag-badge">C&#43;&#43;</span>
+                    
+                    <span class="badge tag-badge">en</span>
+                    
+                
+                
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid py-2">
+        <div class="serif main-content">
+            <p>In this series of blogs, we will talk about different sorting algorithms.</p>
+<p>All the algorithms in the table below will be covered.</p>
+<table>
+<thead>
+<tr>
+<th>Algorithm</th>
+<th>Time Complexity (Average Case)</th>
+<th>Time Complexity (Worst Case)</th>
+<th>Time Complexity (Best Case)</th>
+<th>Merg</th>
+<th>Stability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bubble Sort</td>
+<td>O(N^2)</td>
+<td>O(N^2)</td>
+<td>O(N^2)</td>
+<td>O(1)</td>
+<td>Stable</td>
+</tr>
+<tr>
+<td>Quick Sort</td>
+<td>O(NlogN)</td>
+<td>O(N^2)</td>
+<td>O(NlogN)</td>
+<td>O(logN)</td>
+<td>Not Stable</td>
+</tr>
+<tr>
+<td>Quick Sort (with Random Selection)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(logN)</td>
+<td>Not Stable</td>
+</tr>
+<tr>
+<td>Insertion Sort</td>
+<td>O(N^2)</td>
+<td>O(N^2)</td>
+<td>O(N)</td>
+<td>O(1)</td>
+<td>Stable</td>
+</tr>
+<tr>
+<td>Selection Sort</td>
+<td>O(N^2)</td>
+<td>O(N^2)</td>
+<td>O(N^2)</td>
+<td>O(1)</td>
+<td>Not Stable</td>
+</tr>
+<tr>
+<td>Heap Sort</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(1)</td>
+<td>Not Stable</td>
+</tr>
+<tr>
+<td>Merge Sort (with double divides)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(N)</td>
+<td>Stable</td>
+</tr>
+<tr>
+<td>Merge Sort (with multi divides)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(NlogN)</td>
+<td>O(N)</td>
+<td>Stable</td>
+</tr>
+<tr>
+<td>Counting Sort</td>
+<td>O(N+M)</td>
+<td>O(N+M)</td>
+<td>O(N+M)</td>
+<td>O(N+M)</td>
+<td>Stable</td>
+</tr>
+<tr>
+<td>Bucket Sort</td>
+<td>O(N+M)</td>
+<td>O(N^2)</td>
+<td>O(N+M)</td>
+<td>O(N+M)</td>
+<td>Stable</td>
+</tr>
+<tr>
+<td>Radix Sort</td>
+<td>O(N*M)</td>
+<td>O(N*M)</td>
+<td>O(N*M)</td>
+<td>O(N+M)</td>
+<td>Stable</td>
+</tr>
+</tbody>
+</table>
+<h1 id="quick-sort">Quick Sort</h1>
+<h2 id="how-to-do-it">How to do it&hellip;</h2>
+<p>Divide and conquer.</p>
+<p>In each division, seperate the data into two parts.</p>
+<p>All elements in the first part should be all less than the elements in the second part.</p>
+<p>Loop until the array is sorted.</p>
+<h2 id="how-to-code-it">How to code it&hellip;</h2>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">int</span> <span style="color:#75af00">partition</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">array</span><span style="color:#111">[],</span> <span style="color:#00a8c8">int</span> <span style="color:#111">left</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">right</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00a8c8">int</span> <span style="color:#111">pivot</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">left</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">right</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#111">low</span> <span style="color:#f92672">=</span> <span style="color:#111">left</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#111">high</span> <span style="color:#f92672">=</span> <span style="color:#111">right</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#111">key</span> <span style="color:#f92672">=</span> <span style="color:#111">array</span><span style="color:#111">[</span><span style="color:#111">left</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#111">low</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">high</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#111">array</span><span style="color:#111">[</span><span style="color:#111">high</span><span style="color:#111">]</span> <span style="color:#f92672">&gt;=</span> <span style="color:#111">ket</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">low</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">high</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#111">high</span><span style="color:#f92672">--</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#111">array</span><span style="color:#111">[</span><span style="color:#111">low</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#111">array</span><span style="color:#111">[</span><span style="color:#111">high</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#111">array</span><span style="color:#111">[</span><span style="color:#111">low</span><span style="color:#111">]</span> <span style="color:#f92672">&lt;=</span> <span style="color:#111">array</span><span style="color:#111">[</span><span style="color:#111">high</span><span style="color:#111">]</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">low</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">high</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">low</span><span style="color:#f92672">++</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#111">array</span><span style="color:#111">[</span><span style="color:#111">high</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#111">array</span><span style="color:#111">[</span><span style="color:#111">low</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">pivot</span> <span style="color:#f92672">=</span> <span style="color:#111">low</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">array</span><span style="color:#111">[</span><span style="color:#111">pivot</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#111">key</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00a8c8">return</span> <span style="color:#111">pivot</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span> 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">void</span> <span style="color:#75af00">QuickSort</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">array</span><span style="color:#111">[],</span> <span style="color:#00a8c8">int</span> <span style="color:#111">left</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">right</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">left</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">right</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#111">pivot</span> <span style="color:#f92672">=</span> <span style="color:#111">partition</span><span style="color:#111">(</span><span style="color:#111">array</span><span style="color:#111">,</span> <span style="color:#111">left</span><span style="color:#111">,</span> <span style="color:#111">right</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">QuickSort</span><span style="color:#111">(</span><span style="color:#111">array</span><span style="color:#111">,</span> <span style="color:#111">left</span><span style="color:#111">,</span> <span style="color:#111">pivot</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">QuickSort</span><span style="color:#111">(</span><span style="color:#111">array</span><span style="color:#111">,</span> <span style="color:#111">pivot</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">right</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
+</span></span></code></pre></div><h2 id="how-to-improve-it">How to improve it&hellip;</h2>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">void</span> <span style="color:#75af00">QuickSortRandom</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">array</span><span style="color:#111">[],</span> <span style="color:#00a8c8">int</span> <span style="color:#111">left</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">right</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">left</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">right</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">srand</span><span style="color:#111">(</span><span style="color:#00a8c8">unsigned</span><span style="color:#111">(</span><span style="color:#111">time</span><span style="color:#111">(</span><span style="color:#111">NULL</span><span style="color:#111">)));</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#111">Tem</span> <span style="color:#f92672">=</span> <span style="color:#111">rand</span><span style="color:#111">()</span><span style="color:#f92672">%</span><span style="color:#111">(</span><span style="color:#111">right</span> <span style="color:#f92672">-</span> <span style="color:#111">left</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#111">)</span> <span style="color:#f92672">+</span> <span style="color:#111">left</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">swap</span><span style="color:#111">(</span><span style="color:#111">array</span><span style="color:#111">[</span><span style="color:#111">left</span><span style="color:#111">],</span> <span style="color:#111">array</span><span style="color:#111">[</span><span style="color:#111">Tem</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#111">pivot</span> <span style="color:#f92672">=</span> <span style="color:#111">partition</span><span style="color:#111">(</span><span style="color:#111">array</span><span style="color:#111">,</span> <span style="color:#111">left</span><span style="color:#111">,</span> <span style="color:#111">right</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">QuickSortRandom</span><span style="color:#111">(</span><span style="color:#111">array</span><span style="color:#111">,</span> <span style="color:#111">left</span><span style="color:#111">,</span> <span style="color:#111">pivot</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">QuickSortRandom</span><span style="color:#111">(</span><span style="color:#111">array</span><span style="color:#111">,</span> <span style="color:#111">pivot</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">right</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
+</span></span></code></pre></div>
+        </div>
+    </div>
+</div>
+
+
+        </div><div class="container">
+    <div class="row justify-content-between">
+        <div class="col-sm-4">
+            <p class="footer">Junyu Ban© 2023 </p>
+        </div>
+        <div class="col-sm-6 d-flex flex-row-reverse">
+            
+            <a class="footer-social px-2"  href="https://twitter.com/junyu_bian" target="_blank"><i class="fab fa-twitter"></i></a>
+            
+            <a class="footer-social px-2"  href="https://github.com/junyubian" target="_blank"><i class="fab fa-github"></i></a>
+            
+            <a class="footer-social px-2"  href="https://www.facebook.com/profile.php?id=100010301021817" target="_blank"><i class="fab fa-facebook"></i></a>
+            
+        </div>
+    </div>
+</div>
+<script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script src="/js/isotope.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+<script src="/js/dark.js"></script>
+<script>
+
+
+var savedTheme = localStorage.getItem("dark-mode-storage") || "light" 
+setTheme(savedTheme);
+
+</script>
+<script src="/js/isotope.js"></script>
+<script src="/js/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, securityLevel: 'loose'});</script>
+</body>
+</html>

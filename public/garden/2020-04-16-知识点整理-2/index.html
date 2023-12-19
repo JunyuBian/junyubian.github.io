@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;800&family=Frank+Ruhl+Libre:wght@200;300;400;500;600&family=Encode+Sans+Semi+Condensed:wght@400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/all.min.css">
+    <link disabled id="dark-mode-theme" rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/my_style.css">
+    
+    
+    
+    <title>Junyu Bian | 知识点整理-2</title>
+    <meta name="description" content="1. 两个有序链表合并成一个(leetcode 21)
+
+struct ListNode {
+   int val;
+   ListNode *next;
+   ListNode(int x) : val(x), next(NULL) {}
+};
+
+ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+   if(l1 == NULL){
+      return l2;
+   }
+   if (l2 == NULL){
+      return l1;
+   }
+   if (l1-&gt;val &lt; l2-&gt;val){
+      l1-&gt;next = mergeTwoLists(l1-&gt;next, l2);
+      return l1;
+   }
+   else {
+      l2-&gt;next = mergeTwoLists(l1, l2-&gt;next);
+      return l2;
+   }
+}
+">
+</head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="https://junyubian.github.io/">
+            
+            <b style="font-weight: 800;">JB</b>
+            
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0"><li class='nav-item '>
+                    <a class="nav-link" href="/garden/"> Digital Garden</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/projects/"> Projects</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/library/"> Library</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/about/"> About</a>
+                </li>
+             
+            <li class="nav-item px-2 pt-1">
+                <a class="btn fas fa-moon" id="dark-mode-toggle"></a>
+            </li>
+            </ul>
+        </div>
+    </div>
+</nav><div id="content">
+
+<div class="container" style="max-width: 800px;">
+    <div class="py-4 rounded-3">
+        <div class="container-fluid py-2">
+            <h1 class="display-2 mb-4 text-center">知识点整理-2</h1>
+        </div>
+        
+        <p class="text-center fs-4 fst-italic serif"><h3 id="1-两个有序链表合并成一个leetcode-21">1. 两个有序链表合并成一个(leetcode 21)</h3>
+<hr>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">struct</span> <span style="color:#75af00">ListNode</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#00a8c8">int</span> <span style="color:#111">val</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#111">ListNode</span> <span style="color:#f92672">*</span><span style="color:#111">next</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#111">ListNode</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#f92672">:</span> <span style="color:#111">val</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">),</span> <span style="color:#111">next</span><span style="color:#111">(</span><span style="color:#111">NULL</span><span style="color:#111">)</span> <span style="color:#111">{}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#75af00">mergeTwoLists</span><span style="color:#111">(</span><span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">l1</span><span style="color:#111">,</span> <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">l2</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">l1</span> <span style="color:#f92672">==</span> <span style="color:#111">NULL</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#00a8c8">return</span> <span style="color:#111">l2</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">l2</span> <span style="color:#f92672">==</span> <span style="color:#111">NULL</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#00a8c8">return</span> <span style="color:#111">l1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">l1</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">l2</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#111">l1</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">mergeTwoLists</span><span style="color:#111">(</span><span style="color:#111">l1</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">,</span> <span style="color:#111">l2</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#00a8c8">return</span> <span style="color:#111">l1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#00a8c8">else</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#111">l2</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">mergeTwoLists</span><span style="color:#111">(</span><span style="color:#111">l1</span><span style="color:#111">,</span> <span style="color:#111">l2</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#00a8c8">return</span> <span style="color:#111">l2</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
+</span></span></code></pre></div><hr></p>
+        
+        <div class="text-center pt-4">
+            
+        </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+        <div class="col-12">
+            <p class="card-date m-0">
+                
+                
+                    Created Apr 16, 2020 - 
+                
+                Last updated: Apr 16, 2020
+            </p>
+            <hr class="dropdown-divider">
+            <div class="row justify-content-between">
+                <div class="col-sm-4">
+                    
+                </div>
+                <div class="col-sm-8" style="text-align: right;">
+                    
+                    
+                    <span class="badge tag-badge">C&#43;&#43;</span>
+                    
+                    <span class="badge tag-badge">Linux</span>
+                    
+                    <span class="badge tag-badge">算法</span>
+                    
+                    <span class="badge tag-badge">计算机网络</span>
+                    
+                    <span class="badge tag-badge">ch</span>
+                    
+                
+                
+                
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid py-2">
+        <div class="serif main-content">
+            <h3 id="1-两个有序链表合并成一个leetcode-21">1. 两个有序链表合并成一个(leetcode 21)</h3>
+<hr>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">struct</span> <span style="color:#75af00">ListNode</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#00a8c8">int</span> <span style="color:#111">val</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#111">ListNode</span> <span style="color:#f92672">*</span><span style="color:#111">next</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#111">ListNode</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#f92672">:</span> <span style="color:#111">val</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">),</span> <span style="color:#111">next</span><span style="color:#111">(</span><span style="color:#111">NULL</span><span style="color:#111">)</span> <span style="color:#111">{}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#75af00">mergeTwoLists</span><span style="color:#111">(</span><span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">l1</span><span style="color:#111">,</span> <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">l2</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">l1</span> <span style="color:#f92672">==</span> <span style="color:#111">NULL</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#00a8c8">return</span> <span style="color:#111">l2</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">l2</span> <span style="color:#f92672">==</span> <span style="color:#111">NULL</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#00a8c8">return</span> <span style="color:#111">l1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">l1</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">l2</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#111">l1</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">mergeTwoLists</span><span style="color:#111">(</span><span style="color:#111">l1</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">,</span> <span style="color:#111">l2</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#00a8c8">return</span> <span style="color:#111">l1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#00a8c8">else</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#111">l2</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">mergeTwoLists</span><span style="color:#111">(</span><span style="color:#111">l1</span><span style="color:#111">,</span> <span style="color:#111">l2</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#00a8c8">return</span> <span style="color:#111">l2</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
+</span></span></code></pre></div><hr>
+<h3 id="2-get和post的区别">2. GET和POST的区别</h3>
+<hr>
+<p>GET所发送的数据是URL的一部分，POST数据不会显示在URL中。</p>
+<p>GET和POST方法没有本质区别，只是报文格式不同，两者都使用HTTP，都是不安全的，想要安全传输需要使用HTTPS。</p>
+<hr>
+<h3 id="3-https的实现原理">3. HTTPS的实现原理</h3>
+<hr>
+<p>HTTPS原理：在传输层（TCP）和应用层（HTTP）之间加了一层SSL/TLS。</p>
+<p>具体加密过程：1. 服务器端发送公钥证书；2. 客户端检验证书是否有效，是，则生成一个随机密钥，并用服务端的公钥进行加密后发送；3. 服务器端用自己私钥加密，取出客户端的随机密钥，将需要发送的内容用该密钥加密并发送。</p>
+<hr>
+<h3 id="4-linux查看最近的日志用什么指令">4. Linux查看最近的日志用什么指令</h3>
+<hr>
+<p><strong>tail</strong>：</p>
+<blockquote>
+<p>tail -f test.log</p>
+</blockquote>
+<p><strong>head</strong>：</p>
+<blockquote>
+<p>cat test.log | tail -n +3000 | head -n 1000</p>
+</blockquote>
+<p><strong>cat</strong>：</p>
+<blockquote>
+<p>cat filename</p>
+</blockquote>
+<p><strong>tac</strong>：把cat的内容反写过来</p>
+<blockquote>
+<p>tac filename</p>
+</blockquote>
+<p><strong>echo</strong>：</p>
+<blockquote>
+<p>echo &ldquo;the echo command test!&rdquo;</p>
+</blockquote>
+<hr>
+<h3 id="5-hash冲突解决">5. hash冲突解决</h3>
+<hr>
+<p><strong>开放地址法</strong>：再散列函数：</p>
+<blockquote>
+<p>Hi = (H(key) + di) % m, i = 1, 2, &hellip;, n</p>
+</blockquote>
+<p>不同di值对应不同散列方法。</p>
+<p><strong>再哈希法</strong>：同时构造多个不同的哈希函数，某一个发生冲突时计算下一个，直到冲突不再产生。</p>
+<p><strong>链地址法</strong>：将所有哈希地址为i的元素构成一个单链表。</p>
+<p><strong>建立公共溢出区</strong>：将哈希表分为基本表和溢出表，和基本表发生冲突的元素填入溢出表。</p>
+<hr>
+<h3 id="6-快排的时间复杂度和空间复杂度">6. 快排的时间复杂度和空间复杂度</h3>
+<hr>
+<p>平均情况下快速排序的时间复杂度是O(nlgn)，最坏情况是n的平方，可通过随机算法避免最坏情况，或者可先求序列的中值，然后选取中值作为主元素。</p>
+<p>由于递归调用，快排的空间复杂度是O(lgn)。</p>
+<hr>
+<h3 id="7-堆排序的时间复杂度和空间复杂度">7. 堆排序的时间复杂度和空间复杂度</h3>
+<hr>
+<p>第一次建堆时间复杂度：O(n)。</p>
+<p>更改元素时建堆时间复杂度：O(nlgn)。</p>
+<p>堆排序平均时间复杂度：O(nlgn)。</p>
+<p>空间复杂度：O(1)。</p>
+<hr>
+<h3 id="8-b树和b树的定义">8. B树和B+树的定义</h3>
+<hr>
+<p>B树中每个节点的关键字都有data域。</p>
+<p>B+树除了叶子节点，其他节点只有索引。</p>
+<hr>
+<h3 id="9-c-vector里size和capacity的区别">9. C++ vector里size和capacity的区别</h3>
+<hr>
+<p>size是当前vector容器的真实占用大小。</p>
+<p>capacity是当前允许的最大元素数。</p>
+        </div>
+    </div>
+</div>
+
+
+        </div><div class="container">
+    <div class="row justify-content-between">
+        <div class="col-sm-4">
+            <p class="footer">Junyu Ban© 2023 </p>
+        </div>
+        <div class="col-sm-6 d-flex flex-row-reverse">
+            
+            <a class="footer-social px-2"  href="https://twitter.com/junyu_bian" target="_blank"><i class="fab fa-twitter"></i></a>
+            
+            <a class="footer-social px-2"  href="https://github.com/junyubian" target="_blank"><i class="fab fa-github"></i></a>
+            
+            <a class="footer-social px-2"  href="https://www.facebook.com/profile.php?id=100010301021817" target="_blank"><i class="fab fa-facebook"></i></a>
+            
+        </div>
+    </div>
+</div>
+<script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script src="/js/isotope.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+<script src="/js/dark.js"></script>
+<script>
+
+
+var savedTheme = localStorage.getItem("dark-mode-storage") || "light" 
+setTheme(savedTheme);
+
+</script>
+<script src="/js/isotope.js"></script>
+<script src="/js/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, securityLevel: 'loose'});</script>
+</body>
+</html>
