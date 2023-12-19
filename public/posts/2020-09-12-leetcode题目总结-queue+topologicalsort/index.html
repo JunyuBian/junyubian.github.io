@@ -46,12 +46,9 @@
         	       
 		           <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>
         	       
-		           <a href="/tags/ch">ch</a>
-        	       
 
 			<div>
 				<h3 id="题目621任务调度器httpsleetcode-cncomproblemstask-scheduler">题目621:<a href="https://leetcode-cn.com/problems/task-scheduler/">任务调度器</a></h3>
-<hr>
 <p>描述：</p>
 <p>给定一个用字符数组表示的 CPU 需要执行的任务列表。其中包含使用大写的 A - Z 字母表示的26 种不同种类的任务。任务可以以任意顺序执行，并且每个任务都可以在 1 个单位时间内执行完。CPU 在任何一个单位时间内都可以执行一个任务，或者在待命状态。</p>
 <p>然而，两个相同种类的任务之间必须有长度为 n 的冷却时间，因此至少有连续 n 个单位时间内 CPU 在执行不同的任务，或者在待命状态。</p>
@@ -77,17 +74,16 @@ n 的取值范围为 [0, 100]。</p>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> len<span style="color:#f92672">=</span>tasks.size();
 </span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> vec(<span style="color:#ae81ff">26</span>);
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">char</span> c:tasks) <span style="color:#f92672">++</span>vec[c<span style="color:#f92672">-</span><span style="color:#e6db74">&#39;A&#39;</span>];
-</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        sort(vec.begin(),vec.end(),[](<span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span> x,<span style="color:#66d9ef">int</span><span style="color:#f92672">&amp;</span>y){<span style="color:#66d9ef">return</span> x<span style="color:#f92672">&gt;</span>y;});
-</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> cnt<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span>(cnt<span style="color:#f92672">&lt;</span>vec.size()<span style="color:#f92672">&amp;&amp;</span>vec[cnt]<span style="color:#f92672">==</span>vec[<span style="color:#ae81ff">0</span>]) cnt<span style="color:#f92672">++</span>;
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> max(len,cnt<span style="color:#f92672">+</span>(n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">*</span>(vec[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) );
 </span></span><span style="display:flex;"><span>    }
 </span></span></code></pre></div><hr>
 <h3 id="题目641设计循环双端队列httpsleetcode-cncomproblemsdesign-circular-deque">题目641:<a href="https://leetcode-cn.com/problems/design-circular-deque/">设计循环双端队列</a></h3>
-<hr>
 <p>描述：</p>
 <p>设计实现双端队列。
 你的实现需要支持以下操作：</p>
@@ -140,7 +136,7 @@ circularDeque.getFront();				// 返回 4</p>
 </span></span><span style="display:flex;"><span>        head<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> tail;
 </span></span><span style="display:flex;"><span>        tail<span style="color:#f92672">-&gt;</span>prev <span style="color:#f92672">=</span> head;
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Adds an item at the front of Deque. Return true if the operation is successful. */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">insertFront</span>(<span style="color:#66d9ef">int</span> value) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isFull()) <span style="color:#66d9ef">return</span> false;
@@ -152,7 +148,7 @@ circularDeque.getFront();				// 返回 4</p>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">++</span>size;
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Adds an item at the rear of Deque. Return true if the operation is successful. */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">insertLast</span>(<span style="color:#66d9ef">int</span> value) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isFull()) <span style="color:#66d9ef">return</span> false;
@@ -164,7 +160,7 @@ circularDeque.getFront();				// 返回 4</p>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">++</span>size;
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Deletes an item from the front of Deque. Return true if the operation is successful. */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">deleteFront</span>() {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isEmpty()) <span style="color:#66d9ef">return</span> false;
@@ -176,7 +172,7 @@ circularDeque.getFront();				// 返回 4</p>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">--</span>size;
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Deletes an item from the rear of Deque. Return true if the operation is successful. */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">deleteLast</span>() {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (isEmpty()) <span style="color:#66d9ef">return</span> false;
@@ -188,22 +184,22 @@ circularDeque.getFront();				// 返回 4</p>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">--</span>size;
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Get the front item from the deque. */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getFront</span>() {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> head<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>val;
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Get the last item from the deque. */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">getRear</span>() {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> tail<span style="color:#f92672">-&gt;</span>prev<span style="color:#f92672">-&gt;</span>val;
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Checks whether the circular deque is empty or not. */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isEmpty</span>() {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> size <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Checks whether the circular deque is full or not. */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isFull</span>() {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> size <span style="color:#f92672">==</span> capacity;
@@ -211,7 +207,6 @@ circularDeque.getFront();				// 返回 4</p>
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><hr>
 <h3 id="题目622设计循环队列httpsleetcode-cncomproblemsdesign-circular-queue">题目622:<a href="https://leetcode-cn.com/problems/design-circular-queue/">设计循环队列</a></h3>
-<hr>
 <p>描述：</p>
 <p>设计你的循环队列实现。 循环队列是一种线性数据结构，其操作表现基于 FIFO（先进先出）原则并且队尾被连接在队首之后以形成一个循环。它也被称为“环形缓冲器”。</p>
 <p>循环队列的一个好处是我们可以利用这个队列之前用过的空间。在一个普通队列里，一旦一个队列满了，我们就不能插入下一个元素，即使在队列前面仍有空间。但是使用循环队列，我们能使用这些空间去存储新的值。</p>
@@ -247,7 +242,7 @@ circularQueue.Rear();  // 返回 4</p>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> end;
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> count;
 </span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> nums;
-</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Initialize your data structure here. Set the size of the queue to be k. */</span>
 </span></span><span style="display:flex;"><span>    MyCircularQueue(<span style="color:#66d9ef">int</span> k)<span style="color:#f92672">:</span>
@@ -257,7 +252,7 @@ circularQueue.Rear();  // 返回 4</p>
 </span></span><span style="display:flex;"><span>    {
 </span></span><span style="display:flex;"><span>        nums.resize(k);
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Insert an element into the circular queue. Return true if the operation is successful. */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">enQueue</span>(<span style="color:#66d9ef">int</span> value) {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (count <span style="color:#f92672">==</span> nums.size())
@@ -267,7 +262,7 @@ circularQueue.Rear();  // 返回 4</p>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">++</span>count;
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Delete an element from the circular queue. Return true if the operation is successful. */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">deQueue</span>() {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (count <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
@@ -277,26 +272,26 @@ circularQueue.Rear();  // 返回 4</p>
 </span></span><span style="display:flex;"><span>        <span style="color:#f92672">--</span>count;
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Get the front item from the queue. */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Front</span>() {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (count <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> nums[end];
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Get the last item from the queue. */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">Rear</span>() {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (count <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
 </span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> nums[(start <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> nums.size()) <span style="color:#f92672">%</span> nums.size()];
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Checks whether the circular queue is empty or not. */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isEmpty</span>() {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> count <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Checks whether the circular queue is full or not. */</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">isFull</span>() {
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> nums.size() <span style="color:#f92672">==</span> count;
@@ -304,7 +299,6 @@ circularQueue.Rear();  // 返回 4</p>
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><hr>
 <h3 id="题目329矩阵中的最长递增路径httpsleetcode-cncomproblemslongest-increasing-path-in-a-matrix">题目329:<a href="https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/">矩阵中的最长递增路径</a></h3>
-<hr>
 <p>描述：</p>
 <p>给定一个整数矩阵，找出最长递增路径的长度。</p>
 <p>对于每个单元格，你可以往上，下，左，右四个方向移动。 你不能在对角线方向上移动或移动到边界外（即不允许环绕）。</p>
@@ -434,7 +428,6 @@ circularQueue.Rear();  // 返回 4</p>
 </span></span><span style="display:flex;"><span>};
 </span></span></code></pre></div><hr>
 <h3 id="题目1203项目管理httpsleetcode-cncomproblemssort-items-by-groups-respecting-dependencies">题目1203:<a href="https://leetcode-cn.com/problems/sort-items-by-groups-respecting-dependencies/">项目管理</a></h3>
-<hr>
 <p>描述：</p>
 <p>公司共有 n 个项目和  m 个小组，每个项目要不没有归属，要不就由其中的一个小组负责。</p>
 <p>我们用 group[i] 代表第 i 个项目所属的小组，如果这个项目目前无人接手，那么 group[i] 就等于 -1。（项目和小组都是从零开始编号的）</p>
@@ -483,7 +476,7 @@ i != beforeItems[i][j]</p>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">//组内的在完成该节点之前需要完成的任务数
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> igdeg <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
 </span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>tpnod nos[<span style="color:#ae81ff">30001</span>];
 </span></span><span style="display:flex;"><span><span style="color:#75715e">//小组的数组，每个单元都是一个小组，可能不只m个，因为新创建了一些小组，但一定不会超过30000；
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>tpnod itogroup[<span style="color:#ae81ff">30001</span>];
@@ -516,7 +509,7 @@ i != beforeItems[i][j]</p>
 </span></span><span style="display:flex;"><span>				itogroup[group[beforeItems[i][j]]].next1.push_back(group[i]);
 </span></span><span style="display:flex;"><span>		}
 </span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//确定不同小组组内项目优先级顺序     
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">//确定不同小组组内项目优先级顺序
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> numOfG; i<span style="color:#f92672">++</span>) {
 </span></span><span style="display:flex;"><span>		queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>q;
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; j <span style="color:#f92672">&lt;</span> grouptoi[i].size(); j<span style="color:#f92672">++</span>) {
@@ -536,7 +529,7 @@ i != beforeItems[i][j]</p>
 </span></span><span style="display:flex;"><span>					q.push(nos[tp2].next1[j]);
 </span></span><span style="display:flex;"><span>			}
 </span></span><span style="display:flex;"><span>		}
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//判断是否矛盾 
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">//判断是否矛盾
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#66d9ef">if</span> (cnt2 <span style="color:#f92672">!=</span> grouptoi[i].size()) {
 </span></span><span style="display:flex;"><span>			<span style="color:#75715e">//res此时为空
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#66d9ef">return</span> res;
@@ -593,7 +586,7 @@ i != beforeItems[i][j]</p>
 				
 				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
 				
-				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
+				<li><a href="/posts/2022-10-21-dev-null-related/">/dev/null and 2&amp;&gt;1</a></li>
 				
 			</ul>
 		</div>

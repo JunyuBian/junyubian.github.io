@@ -4,12 +4,21 @@ date: 2023-12-02 18:53:43
 slug: 2023-12-02-Hugo-Site-Auto-Deployment-with-Github-Action
 type: posts
 draft: false
+<<<<<<< HEAD
 categories: 
   - Notes
 tags:
   - Hugo
   - Git
   - en
+=======
+categories:
+  - Notes
+  - En
+tags:
+  - Hugo
+  - Git
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 ---
 
 - [1-Background](#1-background)
@@ -19,7 +28,11 @@ tags:
 
 # 1-Background
 
+<<<<<<< HEAD
 Trying to auto deploy Hugo blogs with Github Action. 
+=======
+Trying to auto deploy Hugo blogs with Github Action.
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 
 <!--more-->
 
@@ -37,4 +50,8 @@ If site deployment is automatically triggered by Github Action, need to notice t
 
 1-https://gohugo.io/hosting-and-deployment/hosting-on-github/
 
+<<<<<<< HEAD
 2-https://lucumt.info/post/hugo/using-github-action-to-auto-build-deploy/
+=======
+2-https://lucumt.info/post/hugo/using-github-action-to-auto-build-deploy/
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59

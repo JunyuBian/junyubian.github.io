@@ -1,18 +1,30 @@
 ---
 title: LeetCode题目总结-Queue+TopologicalSort
 date: 2020-09-12 21:32:19
+<<<<<<< HEAD
 categories: 
 - LeetCode
 tags:
 - C++
 - 算法
 - ch
+=======
+categories:
+- LeetCode
+- Ch
+tags:
+- C++
+- 算法
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 ---
 
 ### 题目621:[任务调度器](https://leetcode-cn.com/problems/task-scheduler/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给定一个用字符数组表示的 CPU 需要执行的任务列表。其中包含使用大写的 A - Z 字母表示的26 种不同种类的任务。任务可以以任意顺序执行，并且每个任务都可以在 1 个单位时间内执行完。CPU 在任何一个单位时间内都可以执行一个任务，或者在待命状态。
@@ -28,8 +40,12 @@ tags:
 输入：tasks = ["A","A","A","B","B","B"], n = 2
 输出：8
 解释：A -> B -> (待命) -> A -> B -> (待命) -> A -> B.
+<<<<<<< HEAD
 在本示例中，两个相同类型任务之间必须间隔长度为 n = 2 的冷却时间，而执行一个任务只需要一个单位时间，所以中间出现了（待命）状态。 
 
+=======
+在本示例中，两个相同类型任务之间必须间隔长度为 n = 2 的冷却时间，而执行一个任务只需要一个单位时间，所以中间出现了（待命）状态。
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 
 提示：
 
@@ -53,11 +69,19 @@ int leastInterval(vector<char>& tasks, int n) {
         int len=tasks.size();
         vector<int> vec(26);
         for(char c:tasks) ++vec[c-'A'];
+<<<<<<< HEAD
   
         sort(vec.begin(),vec.end(),[](int& x,int&y){return x>y;});
   
         int cnt=1;
   
+=======
+
+        sort(vec.begin(),vec.end(),[](int& x,int&y){return x>y;});
+
+        int cnt=1;
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
         while(cnt<vec.size()&&vec[cnt]==vec[0]) cnt++;
         return max(len,cnt+(n+1)*(vec[0]-1) );
     }
@@ -67,8 +91,11 @@ int leastInterval(vector<char>& tasks, int n) {
 
 ### 题目641:[设计循环双端队列](https://leetcode-cn.com/problems/design-circular-deque/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 设计实现双端队列。
@@ -131,7 +158,11 @@ public:
         head->next = tail;
         tail->prev = head;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
     /** Adds an item at the front of Deque. Return true if the operation is successful. */
     bool insertFront(int value) {
         if (isFull()) return false;
@@ -143,7 +174,11 @@ public:
         ++size;
         return true;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
     /** Adds an item at the rear of Deque. Return true if the operation is successful. */
     bool insertLast(int value) {
         if (isFull()) return false;
@@ -155,7 +190,11 @@ public:
         ++size;
         return true;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
     /** Deletes an item from the front of Deque. Return true if the operation is successful. */
     bool deleteFront() {
         if (isEmpty()) return false;
@@ -167,7 +206,11 @@ public:
         --size;
         return true;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
     /** Deletes an item from the rear of Deque. Return true if the operation is successful. */
     bool deleteLast() {
         if (isEmpty()) return false;
@@ -179,22 +222,38 @@ public:
         --size;
         return true;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
     /** Get the front item from the deque. */
     int getFront() {
         return head->next->val;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
     /** Get the last item from the deque. */
     int getRear() {
         return tail->prev->val;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
     /** Checks whether the circular deque is empty or not. */
     bool isEmpty() {
         return size == 0;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
     /** Checks whether the circular deque is full or not. */
     bool isFull() {
         return size == capacity;
@@ -206,8 +265,11 @@ public:
 
 ### 题目622:[设计循环队列](https://leetcode-cn.com/problems/design-circular-queue/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 设计你的循环队列实现。 循环队列是一种线性数据结构，其操作表现基于 FIFO（先进先出）原则并且队尾被连接在队首之后以形成一个循环。它也被称为“环形缓冲器”。
@@ -238,7 +300,10 @@ circularQueue.deQueue();  // 返回 true
 circularQueue.enQueue(4);  // 返回 true
 circularQueue.Rear();  // 返回 4
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 提示：
 
 所有的值都在 0 至 1000 的范围内；
@@ -258,7 +323,11 @@ private:
     int end;
     int count;
     vector<int> nums;
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 public:
     /** Initialize your data structure here. Set the size of the queue to be k. */
     MyCircularQueue(int k):
@@ -268,7 +337,11 @@ public:
     {
         nums.resize(k);
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
     /** Insert an element into the circular queue. Return true if the operation is successful. */
     bool enQueue(int value) {
         if (count == nums.size())
@@ -278,7 +351,11 @@ public:
         ++count;
         return true;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
     /** Delete an element from the circular queue. Return true if the operation is successful. */
     bool deQueue() {
         if (count == 0)
@@ -288,26 +365,42 @@ public:
         --count;
         return true;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
     /** Get the front item from the queue. */
     int Front() {
         if (count == 0)
             return -1;
         return nums[end];
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
     /** Get the last item from the queue. */
     int Rear() {
         if (count == 0)
             return -1;
         return nums[(start - 1 + nums.size()) % nums.size()];
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
     /** Checks whether the circular queue is empty or not. */
     bool isEmpty() {
         return count == 0;
     }
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
     /** Checks whether the circular queue is full or not. */
     bool isFull() {
         return nums.size() == count;
@@ -319,8 +412,11 @@ public:
 
 ### 题目329:[矩阵中的最长递增路径](https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给定一个整数矩阵，找出最长递增路径的长度。
@@ -329,23 +425,41 @@ public:
 
 示例 1:
 
+<<<<<<< HEAD
 输入: nums = 
+=======
+输入: nums =
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 [
   [9,9,4],
   [6,6,8],
   [2,1,1]
+<<<<<<< HEAD
 ] 
 输出: 4 
 解释: 最长递增路径为 [1, 2, 6, 9]。
 示例 2:
 
 输入: nums = 
+=======
+]
+输出: 4
+解释: 最长递增路径为 [1, 2, 6, 9]。
+示例 2:
+
+输入: nums =
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 [
   [3,4,5],
   [3,2,6],
   [2,2,1]
+<<<<<<< HEAD
 ] 
 输出: 4 
+=======
+]
+输出: 4
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 解释: 最长递增路径是 [3, 4, 5, 6]。注意不允许在对角线方向上移动。
 
 [思路一](https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/solution/ju-zhen-zhong-de-zui-chang-di-zeng-lu-jing-by-le-2/)：
@@ -470,8 +584,11 @@ public:
 
 ### 题目1203:[项目管理](https://leetcode-cn.com/problems/sort-items-by-groups-respecting-dependencies/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 公司共有 n 个项目和  m 个小组，每个项目要不没有归属，要不就由其中的一个小组负责。
@@ -537,7 +654,11 @@ struct tpnod {
   //组内的在完成该节点之前需要完成的任务数
 	int igdeg = 0;
 };
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 tpnod nos[30001];
 //小组的数组，每个单元都是一个小组，可能不只m个，因为新创建了一些小组，但一定不会超过30000；
 tpnod itogroup[30001];
@@ -570,7 +691,11 @@ vector<int>ingroup[30001];
 				itogroup[group[beforeItems[i][j]]].next1.push_back(group[i]);
 		}
 	}
+<<<<<<< HEAD
   //确定不同小组组内项目优先级顺序     
+=======
+  //确定不同小组组内项目优先级顺序
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 	for (int i = 0; i < numOfG; i++) {
 		queue<int>q;
 		for (int j = 0; j < grouptoi[i].size(); j++) {
@@ -590,7 +715,11 @@ vector<int>ingroup[30001];
 					q.push(nos[tp2].next1[j]);
 			}
 		}
+<<<<<<< HEAD
     //判断是否矛盾 
+=======
+    //判断是否矛盾
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 		if (cnt2 != grouptoi[i].size()) {
 			//res此时为空
       return res;
@@ -628,4 +757,7 @@ vector<int>ingroup[30001];
   }
 };
 ```
+<<<<<<< HEAD
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59

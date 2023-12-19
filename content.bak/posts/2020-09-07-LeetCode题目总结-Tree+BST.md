@@ -1,18 +1,30 @@
 ---
 title: LeetCode题目总结-Tree+BST
 date: 2020-09-07 21:13:19
+<<<<<<< HEAD
 categories: 
 - LeetCode
 tags:
 - C++
 - 算法
 - ch
+=======
+categories:
+- LeetCode
+- Ch
+tags:
+- C++
+- 算法
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 ---
 
 ### 题目94:[二叉树的中序遍历](https://leetcode-cn.com/problems/binary-tree-inorder-traversal/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给定一个二叉树，返回它的中序 遍历。
@@ -63,6 +75,7 @@ public:
             TreeNode* node = tempStack.top();
             if (nullptr != node) {
               	// 将该节点弹出，避免重复操作，下面再将右中左节点添加到栈中
+<<<<<<< HEAD
                 tempStack.pop(); 
               	// 添加右节点
                 if (node->right) tempStack.push(node->right); 
@@ -80,6 +93,25 @@ public:
                 tempStack.pop();
               	// 加入到数组中
                 result.push_back(node->val); 
+=======
+                tempStack.pop();
+              	// 添加右节点
+                if (node->right) tempStack.push(node->right);
+              	// 添加中节点
+                tempStack.push(node);
+              	// 中节点访问过，但是还没有处理，需要做一下标记。
+                tempStack.push(nullptr);
+								// 添加左节点
+                if (node->left) tempStack.push(node->left);
+            } else {
+              	// 将空节点弹出
+                tempStack.pop();
+              	// 重新取出栈中元素
+                node = tempStack.top();
+                tempStack.pop();
+              	// 加入到数组中
+                result.push_back(node->val);
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
             }
         }
         return result;
@@ -91,20 +123,31 @@ public:
 
 ### 题目144:[二叉树的前序遍历](https://leetcode-cn.com/problems/binary-tree-preorder-traversal/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给定一个二叉树，返回它的 前序 遍历。
 
 示例:
 
+<<<<<<< HEAD
 输入: [1,null,2,3]  
+=======
+输入: [1,null,2,3]
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
    1
     \
      2
     /
+<<<<<<< HEAD
    3 
+=======
+   3
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 
 输出: [1,2,3]
 进阶: 递归算法很简单，你可以通过迭代算法完成吗？
@@ -169,20 +212,31 @@ public:
 
 ### 题目145:[二叉树的后序遍历](https://leetcode-cn.com/problems/binary-tree-postorder-traversal/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给定一个二叉树，返回它的 后序 遍历。
 
 示例:
 
+<<<<<<< HEAD
 输入: [1,null,2,3]  
+=======
+输入: [1,null,2,3]
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
    1
     \
      2
     /
+<<<<<<< HEAD
    3 
+=======
+   3
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 
 输出: [3,2,1]
 进阶: 递归算法很简单，你可以通过迭代算法完成吗？
@@ -248,14 +302,21 @@ public:
 
 ### 题目112:[路径总和](https://leetcode-cn.com/problems/path-sum/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 给定一个二叉树和一个目标和，判断该树中是否存在根节点到叶子节点的路径，这条路径上所有节点值相加等于目标和。
 
 **说明:** 叶子节点是指没有子节点的节点。
 
+<<<<<<< HEAD
 **示例:** 
+=======
+**示例:**
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 给定如下二叉树，以及目标和 `sum = 22`，
 
 ```
@@ -347,8 +408,11 @@ public:
 
 ### 题目113:[路径总和 II](https://leetcode-cn.com/problems/path-sum-ii/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 给定一个二叉树和一个目标和，找到所有从根节点到叶子节点路径总和等于给定目标和的路径。
 
@@ -415,7 +479,11 @@ public:
     vector<vector<int> > pathSum(TreeNode* root, int sum) {
         if(root == NULL) return ans;
         dfs(root, sum, {});
+<<<<<<< HEAD
         return ans; 
+=======
+        return ans;
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
     }
 };
 ```
@@ -424,8 +492,11 @@ public:
 
 ### 题目235:[二叉搜索树的最近公共祖先](https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给定一个二叉搜索树, 找到该树中两个指定节点的最近公共祖先。
@@ -435,7 +506,11 @@ public:
 示例 1:
 
 输入: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
+<<<<<<< HEAD
 输出: 6 
+=======
+输出: 6
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 解释: 节点 2 和节点 8 的最近公共祖先是 6。
 示例 2:
 
@@ -474,7 +549,11 @@ TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         if(nullptr == leftNode)return rightNode;
         if(nullptr == rightNode)return leftNode;
 				//当前祖先左边有p，右边有q
+<<<<<<< HEAD
         return root;  
+=======
+        return root;
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 }
 ```
 
@@ -482,8 +561,11 @@ TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
 
 ### 题目1382:[将二叉搜索树变平衡](https://leetcode-cn.com/problems/balance-a-binary-search-tree/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给你一棵二叉搜索树，请你返回一棵 平衡后 的二叉搜索树，新生成的树应该与原来的树有着相同的节点值。
@@ -528,14 +610,23 @@ TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
  */
 class Solution {
     void dfs(TreeNode *root, vector<int> &vec) {
+<<<<<<< HEAD
         if(nullptr == root) { 
           return; 
+=======
+        if(nullptr == root) {
+          return;
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
         }
         dfs(root->left, vec);
         vec.push_back(root->val);
         dfs(root->right, vec);
     }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
     TreeNode* construct(const vector<int> &vec, int leftVal, int rightVal) {
         if(leftVal > rightVal) {
             return nullptr;
@@ -546,7 +637,11 @@ class Solution {
         ptr->left = construct(vec, leftVal, mid-1);
         return ptr;
     }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 public:
     TreeNode* balanceBST(TreeNode* root) {
         if(nullptr == root) {
@@ -558,4 +653,7 @@ public:
     }
 };
 ```
+<<<<<<< HEAD
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59

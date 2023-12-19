@@ -1,6 +1,7 @@
 ---
 title: KMP Algorithm
 date: 2020-04-17 00:31:29
+<<<<<<< HEAD
 categories: 
 - Notes
 tags:
@@ -9,6 +10,15 @@ tags:
 - 算法
 - Tom Show
 - en
+=======
+categories:
+- Notes
+- En
+tags:
+- Algorithm
+- C++
+- Tom Show
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 ---
 
 # Background...
@@ -76,4 +86,8 @@ int KMP (string first, string second) {
 }
 ```
 
+<<<<<<< HEAD
 Tom is happy now.
+=======
+Tom is happy now.
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59

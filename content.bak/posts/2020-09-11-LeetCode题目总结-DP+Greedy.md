@@ -1,18 +1,30 @@
 ---
 title: LeetCode题目总结-DP+Greedy
 date: 2020-09-11 11:52:19
+<<<<<<< HEAD
 categories: 
 - LeetCode
 tags:
 - C++
 - 算法
 - ch
+=======
+categories:
+- LeetCode
+- Ch
+tags:
+- C++
+- 算法
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 ---
 
 ### 题目5:[最长回文子串](https://leetcode-cn.com/problems/longest-palindromic-substring/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
@@ -99,7 +111,11 @@ public:
         int n = s.size();
         vector<vector<int> > dp(n, vector<int>(n));
         string ans;
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
         for (int l = 0; l < n; ++l) {
             for (int i = 0; i + l < n; ++i) {
                 int j = i + l;
@@ -124,8 +140,11 @@ public:
 
 ### 题目139:[ 单词拆分](https://leetcode-cn.com/problems/word-break/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给定一个非空字符串 s 和一个包含非空单词列表的字典 wordDict，判定 s 是否可以被空格拆分为一个或多个在字典中出现的单词。
@@ -191,8 +210,11 @@ public:
 
 ### 题目140:[单词拆分 II](https://leetcode-cn.com/problems/word-break-ii/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给定一个非空字符串 s 和一个包含非空单词列表的字典 wordDict，在字符串中增加空格来构建一个句子，使得句子中所有的单词都在词典中。返回所有这些可能的句子。
@@ -299,8 +321,11 @@ public:
 
 ### 题目62:[不同路径](https://leetcode-cn.com/problems/unique-paths/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。
@@ -323,7 +348,10 @@ public:
 输入: m = 7, n = 3
 输出: 28
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 提示：
 
 1 <= m, n <= 100
@@ -363,8 +391,11 @@ public:
 
 ### 题目63:[不同路径 II](https://leetcode-cn.com/problems/unique-paths-ii/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。
 
 机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为“Finish”）。
@@ -412,7 +443,11 @@ public:
         if (ob[0][0] == 1) return 0;
         int m = ob[0].size();
         vector<vector<int> > dp(n + 1, vector<int>(m + 1, 0));
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
         for (int i = 1; i <= n; i ++) {
             for (int j = 1; j <= m; j ++) {
                 if (i == 1 && j == 1) dp[i][j] = 1;
@@ -431,8 +466,11 @@ public:
 
 ### 题目121:[买卖股票的最佳时机](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
@@ -486,15 +524,22 @@ public:
 
 ### 题目122:[买卖股票的最佳时机 II](https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。
 
 设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。
 
+<<<<<<< HEAD
 注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。 
+=======
+注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 
 示例 1:
 
@@ -515,7 +560,10 @@ public:
 输出: 0
 解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 提示：
 
 1 <= prices.length <= 3 * 10 ^ 4
@@ -559,8 +607,11 @@ public:
 
 ### 题目55:[跳跃游戏](https://leetcode-cn.com/problems/jump-game/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给定一个非负整数数组，你最初位于数组的第一个位置。
@@ -607,8 +658,11 @@ bool canJump(vector<int>& nums) {
 
 ### 题目45:[跳跃游戏 II](https://leetcode-cn.com/problems/jump-game-ii/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 给定一个非负整数数组，你最初位于数组的第一个位置。
 
@@ -656,4 +710,7 @@ int jump(vector<int>& nums) {
     return ans;
 }
 ```
+<<<<<<< HEAD
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59

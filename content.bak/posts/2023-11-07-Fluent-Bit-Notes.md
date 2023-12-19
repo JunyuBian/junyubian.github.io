@@ -1,13 +1,22 @@
 ---
 title: Fluent Bit Client Notes
 date: 2023-11-07 21:53:43
+<<<<<<< HEAD
 categories: 
 - Notes
+=======
+categories:
+- Notes
+- En
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 tags:
 - Fluent-bit
 - Logging
 - Tom Show
+<<<<<<< HEAD
 - en
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 ---
 
 - [What is fluent bit](#what-is-fluent-bit)
@@ -36,7 +45,11 @@ Tom told his dad there're two different methods to config Fluent Bit:
 
 Fluent Bit could use config file to set Input sources, Filters, Output destinations, etc. Sample config file, which locates in `/etc/fluent-bit/fluent-bit.conf` by default:
 
+<<<<<<< HEAD
 ``` 
+=======
+```
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 [INPUT]
     Name    forward
     Listen  0.0.0.0
@@ -72,4 +85,8 @@ While using fluent-bit, Tom also found it has below characteristics:
 1. It could recive forwarded logs from other fluent-bit client, and together forward or output to other destinations.
 2. If we're going to install two deb packages including fluent-bit on one same machine, it may incur resource race. Since both fluent-bit will leverage `/etc/fluent-bit/fluent-bit.conf`. One way to resolve this is, ask one of the client to use different config file or passing config through command line, and while installing the other client, adding `--force-overwrite`.
 
+<<<<<<< HEAD
 Tom is not complete happy, he thinks there should be more to discover for this topic.
+=======
+Tom is not complete happy, he thinks there should be more to discover for this topic.
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59

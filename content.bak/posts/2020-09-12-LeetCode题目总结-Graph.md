@@ -1,18 +1,30 @@
 ---
 title: LeetCode题目总结-Graph
 date: 2020-09-12 21:32:19
+<<<<<<< HEAD
 categories: 
 - LeetCode
 tags:
 - C++
 - 算法
 - ch
+=======
+categories:
+- LeetCode
+- Ch
+tags:
+- C++
+- 算法
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 ---
 
 ### 题目133:[克隆图](https://leetcode-cn.com/problems/clone-graph/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给你无向连通图中一个节点的引用，请你返回该图的 深拷贝（克隆）。
@@ -168,8 +180,11 @@ public:
 
 ### 题目310:[最小高度树](https://leetcode-cn.com/problems/minimum-height-trees/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 对于一个具有树特征的无向图，我们可选择任何一个节点作为根。图因此可以成为树，在所有可能的树中，具有最小高度的树被称为最小高度树。给出这样的一个图，写出一个函数找到所有的最小高度树并返回他们的根节点。
@@ -188,7 +203,11 @@ public:
         |
         1
        / \
+<<<<<<< HEAD
       2   3 
+=======
+      2   3
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 
 输出: [1]
 示例 2:
@@ -201,7 +220,11 @@ public:
         |
         4
         |
+<<<<<<< HEAD
         5 
+=======
+        5
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 
 输出: [3, 4]
 说明:
@@ -228,7 +251,11 @@ vector<int> findMinHeightTrees(int n, vector<vector<int> >& edges) {
 		return { 0 };
 	else if (n == 2)
 		return{ 0,1 };
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 	//入度数组，并初始化
 	vector<int> indegree(n,0);
 	vector<int> v;
@@ -263,7 +290,11 @@ vector<int> findMinHeightTrees(int n, vector<vector<int> >& edges) {
 					if (indegree[graph[temp][i]] == 1)//放在这里做！只判断邻接点。
 						myqueue.push(graph[temp][i]);
 				}
+<<<<<<< HEAD
 				
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 			}
 		}
 		cnt = myqueue.size();
@@ -282,8 +313,11 @@ vector<int> findMinHeightTrees(int n, vector<vector<int> >& edges) {
 
 ### 题目332:[重新安排行程](https://leetcode-cn.com/problems/reconstruct-itinerary/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给定一个机票的字符串二维数组 [from, to]，子数组中的两个成员分别表示飞机出发和降落的机场地点，对该行程进行重新规划排序。所有这些机票都属于一个从 JFK（肯尼迪国际机场）出发的先生，所以该行程必须从 JFK 开始。
@@ -315,7 +349,11 @@ vector<int> findMinHeightTrees(int n, vector<vector<int> >& edges) {
 1. 从起点出发，进行深度优先搜索；
 2. 每次沿着某条边从某个顶点移动到另外一个顶点时，删除这条边；
 3. 如果没有可移动的路径，则将所在节点加入栈并返回；
+<<<<<<< HEAD
 4. 对于出入度差为1的节点，可能产生死胡同，最后入栈。 
+=======
+4. 对于出入度差为1的节点，可能产生死胡同，最后入栈。
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 
 代码：
 
@@ -395,8 +433,11 @@ public:
 
 ### 题目684:[冗余连接](https://leetcode-cn.com/problems/redundant-connection/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 在本问题中, 树指的是一个连通且无环的无向图。
@@ -458,12 +499,20 @@ private:
         }
         parent[root_x] = root_y;
         return true;
+<<<<<<< HEAD
     }    
+=======
+    }
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 public:
     vector<int> findRedundantConnection(vector<vector<int>>& edges) {
         for (int i = 1; i <= 1000; i++) {
             parent[i] = i;
+<<<<<<< HEAD
         }        
+=======
+        }
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
         for (auto edge : edges) {
             if (!union_root(edge[0], edge[1])) {
                 return edge;
@@ -478,8 +527,11 @@ public:
 
 ### 题目685:[冗余连接 II](https://leetcode-cn.com/problems/redundant-connection-ii/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 在本问题中，有根树指满足以下条件的有向图。该树只有一个根节点，所有其他节点都是该根节点的后继。每一个节点只有一个父节点，除了根节点没有父节点。
@@ -565,4 +617,7 @@ public:
     }
 };
 ```
+<<<<<<< HEAD
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59

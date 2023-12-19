@@ -1,12 +1,21 @@
 ---
 title: EMPLACE_BACK in C++
 date: 2020-05-16 09:39:00
+<<<<<<< HEAD
 categories: 
 - Notes
 tags:
 - Algorithm
 - C++
 - ch
+=======
+categories:
+- Notes
+- Ch
+tags:
+- Algorithm
+- C++
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 ---
 
 There are different type of containers in C++ STL. To add a new element into the back of a container, we normally use `push_back()`. In this blog, we will look into a new way of performing push back - `emplace_back()`.
@@ -19,9 +28,13 @@ Rvalue References: with aim of increasing the efficiency of C++, rvalues are inc
 
 To claim an Rvalue:
 
+<<<<<<< HEAD
 ```C++
 T && T_reference = t;
 ```
+=======
+> T && T_reference = t;
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 
 # For emplace_back( )...
 
@@ -32,6 +45,7 @@ template <typename T>
 	void emplace_back (T && t);
 ```
 
+<<<<<<< HEAD
 An example for `emplace_back()` from [this blog](https://blog.csdn.net/xiaolewennofollow/article/details/52559364): 
 
 ```C++
@@ -83,6 +97,53 @@ int main()
             << president.country << " in " << president.year << ".\n";  
     }
  
+=======
+An example for `emplace_back()` from [this blog](https://blog.csdn.net/xiaolewennofollow/article/details/52559364):
+
+```C++
+#include <vector>
+#include <string>
+#include <iostream>
+
+struct President {
+    std::string name;
+    std::string country;
+    int year;
+
+    President(std::string p_name, std::string p_country, int p_year)
+        : name(std::move(p_name)), country(std::move(p_country)), year(p_year) {
+        std::cout << "I am being constructed.\n";
+    }
+    President(const President& other)
+        : name(std::move(other.name)), country(std::move(other.country)), year(other.year) {
+        std::cout << "I am being copy constructed.\n";
+    }
+    President(President&& other)
+        : name(std::move(other.name)), country(std::move(other.country)), year(other.year) {
+        std::cout << "I am being moved.\n";
+    }
+    President& operator=(const President& other);
+};
+
+int main() {
+    std::vector<President> elections;
+    std::cout << "emplace_back:\n";
+    elections.emplace_back("Nelson Mandela", "South Africa", 1994); //没有类的创建
+
+    std::vector<President> reElections;
+    std::cout << "\npush_back:\n";
+    reElections.push_back(President("Franklin Delano Roosevelt", "the USA", 1936));
+
+    std::cout << "\nContents:\n";  
+    for (President const& president: elections) {
+       std::cout << president.name << " was elected president of "
+            << president.country << " in " << president.year << ".\n";
+    }
+    for (President const& president: reElections) {
+        std::cout << president.name << " was re-elected president of "
+            << president.country << " in " << president.year << ".\n";
+    }
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 }
 ```
 
@@ -91,11 +152,19 @@ The output from the above code would be:
 ```
 emplace_back:
 I am being constructed.
+<<<<<<< HEAD
  
 push_back:
 I am being constructed.
 I am being moved.
  
+=======
+
+push_back:
+I am being constructed.
+I am being moved.
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 Contents:
 Nelson Mandela was elected president of South Africa in 1994.
 ```
@@ -108,6 +177,7 @@ Nelson Mandela was elected president of South Africa in 1994.
 
 声明为：
 
+<<<<<<< HEAD
 ```c++
 className(className &&)
 ```
@@ -116,6 +186,12 @@ className(className &&)
 
 ---
 
+=======
+> className(className &&)
+
+### emplace_back()
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 C++11新特性，声明为
 
 ```c++
@@ -129,7 +205,11 @@ void emplace_back(Arg&& ... args);
 
 ### std::move
 
+<<<<<<< HEAD
 ---
 
 用于将左值转化为右值引用类型。
 
+=======
+用于将左值转化为右值引用类型。
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59

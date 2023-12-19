@@ -1,18 +1,30 @@
 ---
 title: LeetCode题目总结-DFS+BFS
 date: 2020-09-08 14:03:19
+<<<<<<< HEAD
 categories: 
 - LeetCode
 tags:
 - C++
 - 算法
 - ch
+=======
+categories:
+- LeetCode
+- Ch
+tags:
+- C++
+- 算法
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 ---
 
 ### 题目116:[填充每个节点的下一个右侧节点指针](https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给定一个完美二叉树，其所有叶子节点都在同一层，每个父节点都有两个子节点。二叉树定义如下：
@@ -36,7 +48,10 @@ struct Node {
 
 输出：{"$id":"1","left":{"$id":"2","left":{"$id":"3","left":null,"next":{"$id":"4","left":null,"next":{"$id":"5","left":null,"next":{"$id":"6","left":null,"next":null,"right":null,"val":7},"right":null,"val":6},"right":null,"val":5},"right":null,"val":4},"next":{"$id":"7","left":{"$ref":"5"},"next":null,"right":{"$ref":"6"},"val":3},"right":{"$ref":"4"},"val":2},"next":null,"right":{"$ref":"7"},"val":1}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 提示：
 
 你只能使用常量级额外空间。
@@ -93,8 +108,11 @@ public:
 
 ### 题目117:[填充每个节点的下一个右侧节点指针 II](https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node-ii/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给定一个二叉树
@@ -107,7 +125,11 @@ struct Node {
 }
 填充它的每个 next 指针，让这个指针指向其下一个右侧节点。如果找不到下一个右侧节点，则将 next 指针设置为 NULL。
 
+<<<<<<< HEAD
 初始状态下，所有 next 指针都被设置为 NULL。 
+=======
+初始状态下，所有 next 指针都被设置为 NULL。
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 
 进阶：
 
@@ -171,8 +193,11 @@ public:
 
 ### 题目200:[岛屿数量](https://leetcode-cn.com/problems/number-of-islands/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给你一个由 '1'（陆地）和 '0'（水）组成的的二维网格，请你计算网格中岛屿的数量。
@@ -310,8 +335,11 @@ public:
 
 ### 题目207:[课程表](https://leetcode-cn.com/problems/course-schedule/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 你这个学期必须选修 numCourse 门课程，记为 0 到 numCourse-1 。
@@ -322,7 +350,11 @@ public:
 
 示例 1:
 
+<<<<<<< HEAD
 输入: 2, [[1,0]] 
+=======
+输入: 2, [[1,0]]
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 输出: true
 解释: 总共有 2 门课程。学习课程 1 之前，你需要完成课程 0。所以这是可能的。
 示例 2:
@@ -450,8 +482,11 @@ public:
 
 ### 题目210:[课程表 II](https://leetcode-cn.com/problems/course-schedule-ii/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 现在你总共有 n 门课需要选，记为 0 到 n-1。
@@ -464,7 +499,11 @@ public:
 
 示例 1:
 
+<<<<<<< HEAD
 输入: 2, [[1,0]] 
+=======
+输入: 2, [[1,0]]
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 输出: [0,1]
 解释: 总共有 2 门课程。要学习课程 1，你需要先完成课程 0。因此，正确的课程顺序为 [0,1] 。
 示例 2:
@@ -563,8 +602,11 @@ public:
 
 ### 题目279:[完全平方数](https://leetcode-cn.com/problems/perfect-squares/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给定正整数 n，找到若干个完全平方数（比如 1, 4, 9, 16, ...）使得它们的和等于 n。你需要让组成和的完全平方数的个数最少。
@@ -572,7 +614,11 @@ public:
 示例 1:
 
 输入: n = 12
+<<<<<<< HEAD
 输出: 3 
+=======
+输出: 3
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 解释: 12 = 4 + 4 + 4.
 示例 2:
 
@@ -602,7 +648,11 @@ public:
         }
         return res;
     }
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
     int numSquares(int n) {
         vector<int> squares = getSquares(n);
         vector<bool> visited(n+1);    //记录已访问过的节点
@@ -614,7 +664,11 @@ public:
         while(!q.empty()) {
             int size = q.size();
             res++;
+<<<<<<< HEAD
           
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
             while(size--) {
                 int curr = q.front();
                 q.pop();
@@ -687,8 +741,11 @@ public:
 
 ### 题目301:[删除无效的括号](https://leetcode-cn.com/problems/remove-invalid-parentheses/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 删除最小数量的无效括号，使得输入的字符串有效，返回所有可能的结果。
@@ -743,13 +800,21 @@ public:
             }
             return;
         }
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
         for (int i = st; i < s.size(); i++) {
             if (i != st && s[i] == s[i-1]) continue;
             if (s[i] == '(' && l > 0) {
               	// 删除操作，substr(a, b):从a开始个字符组成的字符串
                 dfs(s.substr(0, i) + s.substr(i+1, s.size()-1-i), i, l - 1, r, ans);
+<<<<<<< HEAD
             } 
+=======
+            }
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
             if (s[i] == ')' && r > 0) {
               	// 删除操作，substr(a, b):从a开始个字符组成的字符串
                 dfs(s.substr(0, i) + s.substr(i+1, s.size()-1-i), i, l, r - 1, ans);
@@ -766,7 +831,11 @@ public:
             if (c == '(') {
                 left++;
             } else if (c == ')') {
+<<<<<<< HEAD
                 if (left > 0) { 
+=======
+                if (left > 0) {
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
                     left--;
                 } else {
                     right++;
@@ -779,4 +848,7 @@ public:
     }
 };
 ```
+<<<<<<< HEAD
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59

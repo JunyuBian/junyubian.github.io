@@ -1,6 +1,7 @@
 ---
 title: Sorting Algorithms - Bubble Sort
 date: 2020-04-22 09:23:36
+<<<<<<< HEAD
 categories: 
 - Notes
 tags:
@@ -10,6 +11,17 @@ tags:
 ---
 
 In this series of blogs, we will talk about different sorting algorithms. 
+=======
+categories:
+- Notes
+- En
+tags:
+- Algorithm
+- C++
+---
+
+In this series of blogs, we will talk about different sorting algorithms.
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 
 All the algorithms in the table below will be covered.
 
@@ -76,4 +88,8 @@ void BubbleSortwithCheck(int array[]) {
   	}
 	}
 }
+<<<<<<< HEAD
 ```
+=======
+```
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59

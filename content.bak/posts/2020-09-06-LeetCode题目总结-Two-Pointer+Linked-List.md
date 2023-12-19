@@ -1,18 +1,30 @@
 ---
 title: LeetCode题目总结-Two Pointer+Linked List
 date: 2020-09-06 23:33:19
+<<<<<<< HEAD
 categories: 
 - LeetCode
 tags:
 - C++
 - 算法
 - ch
+=======
+categories:
+- LeetCode
+- Ch
+tags:
+- C++
+- 算法
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 ---
 
 ### 题目3:[无重复字符的最长子串](https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
@@ -20,7 +32,11 @@ tags:
 示例 1:
 
 输入: "abcabcbb"
+<<<<<<< HEAD
 输出: 3 
+=======
+输出: 3
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
 
 <!--more-->
@@ -95,9 +111,15 @@ public:
         //s[start,end) 前面包含 后面不包含
         int start(0), end(0), length(0), result(0);
         int sSize = int(s.size());
+<<<<<<< HEAD
       
         unordered_map<char, int> hash;
       
+=======
+
+        unordered_map<char, int> hash;
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
         while (end < sSize) {
             char tmpChar = s[end];
             //仅当s[start,end) 中存在s[end]时更新start
@@ -120,8 +142,11 @@ public:
 
 ### 题目75:[颜色分类](https://leetcode-cn.com/problems/sort-colors/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。
@@ -185,8 +210,11 @@ class Solution {
 
 ### 题目88:[合并两个有序数组](https://leetcode-cn.com/problems/merge-sorted-array/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。
@@ -234,8 +262,11 @@ void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
 
 ### 题目125:[验证回文串](https://leetcode-cn.com/problems/valid-palindrome/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。
 
@@ -285,8 +316,11 @@ public:
 
 ### 题目76:[最小覆盖子串](https://leetcode-cn.com/problems/minimum-window-substring/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给你一个字符串 S、一个字符串 T 。请你设计一种算法，可以在 O(n) 的时间复杂度内，从字符串 S 里面找出：包含 T 所有字符的最小子串。
@@ -367,8 +401,11 @@ public:
 
 ### 题目206:[反转链表](https://leetcode-cn.com/problems/reverse-linked-list/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 反转一个单链表。
@@ -440,11 +477,17 @@ public:
 
 ### 题目21:[合并两个有序链表](https://leetcode-cn.com/problems/merge-two-sorted-lists/)
 
+<<<<<<< HEAD
 ---
 
 描述：
 
 将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
+=======
+描述：
+
+将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 
 示例：
 
@@ -486,8 +529,11 @@ public:
 
 ### 题目23:[合并K个升序链表](https://leetcode-cn.com/problems/merge-k-sorted-lists/)
 
+<<<<<<< HEAD
 ---
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 描述：
 
 给你一个链表数组，每个链表都已经按升序排列。
@@ -544,10 +590,17 @@ public:
         ListNode head, *tail = &head, *aPtr = a, *bPtr = b;
         while (aPtr && bPtr) {
             if (aPtr->val < bPtr->val) {
+<<<<<<< HEAD
                 tail->next = aPtr; 
               	aPtr = aPtr->next;
             } else {
                 tail->next = bPtr; 
+=======
+                tail->next = aPtr;
+              	aPtr = aPtr->next;
+            } else {
+                tail->next = bPtr;
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
               	bPtr = bPtr->next;
             }
             tail = tail->next;
@@ -601,7 +654,11 @@ public:
         ListNode head, *tail = &head;
         while (!q.empty()) {
             auto f = q.top(); q.pop();
+<<<<<<< HEAD
             tail->next = f.ptr; 
+=======
+            tail->next = f.ptr;
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
             tail = tail->next;
             if (f.ptr->next) q.push({f.ptr->next->val, f.ptr->next});
         }
@@ -609,4 +666,7 @@ public:
     }
 };
 ```
+<<<<<<< HEAD
 
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59

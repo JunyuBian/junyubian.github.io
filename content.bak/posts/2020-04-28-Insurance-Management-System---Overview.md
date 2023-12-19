@@ -1,21 +1,34 @@
 ---
 title: Insurance Management System - Overview
 date: 2020-04-28 22:59:02
+<<<<<<< HEAD
 categories: 
 - Projects
+=======
+categories:
+- Projects
+- En
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 tags:
 - Web
 - Django
 - Database
 - Tom Show
+<<<<<<< HEAD
 - en
+=======
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 ---
 
 In this series of blogs, we will talk about how to build a Insurance Management web application together with database system.
 
 # Background
 
+<<<<<<< HEAD
 Tom's dad works in an insurance company. His work is to drop down who bought what kind of insurance, on which day does the customer receives an invoice, and on which day does the customer makes a payment. 
+=======
+Tom's dad works in an insurance company. His work is to drop down who bought what kind of insurance, on which day does the customer receives an invoice, and on which day does the customer makes a payment.
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 
 <!--more-->
 
@@ -27,7 +40,11 @@ Tom's dad talks to Tom about what information is needed. After discussion, Tom d
 
 # Summary of development environment
 
+<<<<<<< HEAD
 Tom thinks it over and over, finally decides to apply the following development environment: 
+=======
+Tom thinks it over and over, finally decides to apply the following development environment:
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 
 1. Programming language: Python3.5
 
@@ -95,4 +112,8 @@ For database, Tom used the simple but powerful SQLite to perform its duty. Toget
 
 The connection between database and web application is established by the ORM character of django, Tom can use OOP procedure to create and manage different records. But Tom also need to be clear about the foreign key relationship between different tables, each time Tom create or delete a record, Tom need to guarantee its foreign key (if any) is assigned. This gives us a good taste of how database is used in reality.
 
+<<<<<<< HEAD
 Tom is happy now.
+=======
+Tom is happy now.
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59

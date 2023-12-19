@@ -50,14 +50,9 @@
         	       
 		           <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>
         	       
-		           <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F">操作系统</a>
-        	       
-		           <a href="/tags/ch">ch</a>
-        	       
 
 			<div>
 				<h3 id="1-计算机网络分层模型">1. 计算机网络分层模型</h3>
-<hr>
 <blockquote>
 <p><strong>7层</strong> (osi国际标准组织定制)：</p>
 </blockquote>
@@ -77,7 +72,6 @@
 <p><strong>数据链路层</strong>：ARP、DataLink、RARP</p>
 <hr>
 <h3 id="2-http请求包含哪几个部分">2. HTTP请求包含哪几个部分</h3>
-<hr>
 <blockquote>
 <p><strong>请求行</strong>：</p>
 </blockquote>
@@ -94,7 +88,6 @@
 <p>将一个页面表单中的组件值通过param1=value &amp; param2=value2的键值对形式编码成一个格式化串，承载多个请求参数的数据。</p>
 <hr>
 <h3 id="3-tcp拥塞控制">3. TCP拥塞控制</h3>
-<hr>
 <p>主要为四个算法：</p>
 <p><strong>慢开始</strong>：在TCP链接刚建立时，一点一点地增大拥塞窗口cwnd，慢慢变为指数增长，试探网络的承受能力，直到cwnd大于等于ssthresh（slow start threshold）则进入<strong>拥塞避免</strong>。</p>
 <p><strong>拥塞避免</strong>：收到一个ACK，即每经过一个往返时间RTT，就把发送方的cwnd加1，使其按线性规律缓慢增长。</p>
@@ -103,7 +96,6 @@
 <p><strong>快速恢复</strong>【TCP Reno】：设置cwnd=cwnd+3*MSS（因为收到3个重复的ACK，所以加三个MSS），重传DACKs指定的数据包，如果再收到DACKs，则cwnd增加1，若收到新的ACK，表明重传包成功，退出快速恢复，将cwnd设置为ssthresh，进入<strong>拥塞避免</strong>算法。</p>
 <hr>
 <h3 id="4-死锁与死锁的处理">4. 死锁与死锁的处理</h3>
-<hr>
 <blockquote>
 <p>形成死锁的四个必要条件：</p>
 </blockquote>
@@ -125,17 +117,14 @@
 <p><strong>银行家算法</strong>：当新进程进入系统，系统对其所需资源的最大数量进行统计，若超过当前资源综合，则该进程必须等待直到其他进程释放资源。</p>
 <hr>
 <h3 id="5-什么是关系型数据库">5. 什么是关系型数据库</h3>
-<hr>
 <p>关系型数据库建立在关系型数据模型的基础上，借助于集合、代数等数学概念和方法来处理数据的数据库。</p>
 <hr>
 <h3 id="6-kv存储">6. KV存储</h3>
-<hr>
 <p>举例：Redis、MongoDB</p>
 <p>不经常更新的、重要的数据一般使用关系数据库存储。</p>
 <p>数据结构简单、有分布式数据存储的需求使用KV数据库。</p>
 <hr>
 <h3 id="7-非递归前中后序遍历二叉树">7. 非递归前中后序遍历二叉树</h3>
-<hr>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">TreeNode</span> {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> val;
 </span></span><span style="display:flex;"><span>  TreeNode <span style="color:#f92672">*</span> left;
@@ -145,7 +134,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">PreOrder</span> (TreeNode <span style="color:#f92672">*</span> root) {
 </span></span><span style="display:flex;"><span>  stack<span style="color:#f92672">&lt;</span>TreeNode <span style="color:#f92672">*&gt;</span>s;
 </span></span><span style="display:flex;"><span>  TreeNode <span style="color:#f92672">*</span> ptr <span style="color:#f92672">=</span> root;
-</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (ptr <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">||</span> <span style="color:#f92672">!</span>s.empty()) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ptr <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>) {
 </span></span><span style="display:flex;"><span>      cout <span style="color:#f92672">&lt;&lt;</span> ptr<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">&lt;&lt;</span> endl;
@@ -163,7 +152,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">InOrder</span> (TreeNode <span style="color:#f92672">*</span> root) {
 </span></span><span style="display:flex;"><span>  stack<span style="color:#f92672">&lt;</span>TreeNode <span style="color:#f92672">*&gt;</span> s;
 </span></span><span style="display:flex;"><span>  TreeNode <span style="color:#f92672">*</span> ptr <span style="color:#f92672">=</span> root;
-</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (ptr <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">||</span> <span style="color:#f92672">!</span>s.empty()) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ptr <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>) {
 </span></span><span style="display:flex;"><span>      s.push(ptr);
@@ -182,7 +171,7 @@
 </span></span><span style="display:flex;"><span>  stack<span style="color:#f92672">&lt;</span>TreeNode <span style="color:#f92672">*&gt;</span> s;
 </span></span><span style="display:flex;"><span>  TreeNode <span style="color:#f92672">*</span> ptr <span style="color:#f92672">=</span> root;
 </span></span><span style="display:flex;"><span>  TreeNode <span style="color:#f92672">*</span> TemNode <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
-</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">while</span> (ptr <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">||</span> <span style="color:#f92672">!</span>s.empty()) {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ptr <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span> {
 </span></span><span style="display:flex;"><span>      s.push(ptr);
@@ -199,17 +188,16 @@
 </span></span><span style="display:flex;"><span>        TemNode <span style="color:#f92672">=</span> ptr;
 </span></span><span style="display:flex;"><span>        ptr <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
 </span></span><span style="display:flex;"><span>      }
-</span></span><span style="display:flex;"><span>    }   
+</span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><hr>
 <h3 id="8-如何实现一个栈">8. 如何实现一个栈</h3>
-<hr>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QueueStack</span> {
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>  queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> first;
 </span></span><span style="display:flex;"><span>  queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> second;
-</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">bool</span> empty() {
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (first.empty() <span style="color:#f92672">&amp;&amp;</span> second.empty()){
@@ -219,7 +207,7 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> false;
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">top</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (first.empty()){
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> second.front();
@@ -228,7 +216,7 @@
 </span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> first.front();
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pop</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (first.empty()) {
 </span></span><span style="display:flex;"><span>      second.pop();
@@ -237,7 +225,7 @@
 </span></span><span style="display:flex;"><span>      first.pop();
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">push</span> (<span style="color:#66d9ef">int</span> x){
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (frist.empty()){
 </span></span><span style="display:flex;"><span>      first.push(x);
@@ -257,61 +245,60 @@
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><hr>
 <h3 id="9-http状态码">9. HTTP状态码</h3>
-<hr>
 <blockquote>
 <p>1xx：收到请求，需要请求者继续操作。</p>
 </blockquote>
-<p><strong>100</strong>：继续。</p>
-<p><strong>101</strong>：切换协议。</p>
+<p><strong>100</strong>：继续</p>
+<p><strong>101</strong>：切换协议</p>
 <blockquote>
 <p>2xx：操作被成功接收并处理。</p>
 </blockquote>
-<p><strong>200</strong>：请求成功。</p>
-<p><strong>201</strong>：已创建。</p>
-<p><strong>202</strong>：已接受。</p>
-<p><strong>203</strong>：非授权信息。请求成功。</p>
-<p><strong>204</strong>：无内容。</p>
-<p><strong>205</strong>：重置内容。</p>
-<p><strong>206</strong>：部分内容。</p>
+<p><strong>200</strong>：请求成功</p>
+<p><strong>201</strong>：已创建</p>
+<p><strong>202</strong>：已接受</p>
+<p><strong>203</strong>：非授权信息。请求成功</p>
+<p><strong>204</strong>：无内容</p>
+<p><strong>205</strong>：重置内容</p>
+<p><strong>206</strong>：部分内容</p>
 <blockquote>
 <p>3xx：重定向，需要进一步操作以完成请求。</p>
 </blockquote>
-<p><strong>300</strong>：多种选择。</p>
-<p><strong>301</strong>：永久移动。</p>
-<p><strong>302</strong>：临时移动。</p>
-<p><strong>303</strong>：查看其他地址。</p>
-<p><strong>304</strong>：未修改。</p>
-<p><strong>305</strong>：使用代理。</p>
-<p><strong>307</strong>：临时重定向。</p>
+<p><strong>300</strong>：多种选择</p>
+<p><strong>301</strong>：永久移动</p>
+<p><strong>302</strong>：临时移动</p>
+<p><strong>303</strong>：查看其他地址</p>
+<p><strong>304</strong>：未修改</p>
+<p><strong>305</strong>：使用代理</p>
+<p><strong>307</strong>：临时重定向</p>
 <blockquote>
 <p>4xx：客户端错误，请求包含语法错误或无法完成请求。</p>
 </blockquote>
-<p><strong>400</strong>：Bad Request。</p>
-<p><strong>401</strong>：Unauthorized。</p>
-<p><strong>403</strong>：服务器理解客户端的请求，但是拒绝执行。</p>
-<p><strong>404</strong>：无法根据请求找到资源。</p>
-<p><strong>405</strong>：客户端请求中的方法被禁止。</p>
-<p><strong>406</strong>：Not Acceptable。</p>
-<p><strong>407</strong>：Proxy Authentication Required。</p>
-<p><strong>408</strong>：Request Timeout。</p>
-<p><strong>409</strong>：服务器处理请求时发生了冲突。</p>
-<p><strong>410</strong>：客户端请求的资源已经不存在。</p>
-<p><strong>411</strong>：Length Required。</p>
-<p><strong>412</strong>：Precondition Failed。</p>
-<p><strong>413</strong>：Request Entity Too Large。</p>
-<p><strong>414</strong>：Request URI Too Large。</p>
-<p><strong>415</strong>：Unsupported Media Type。</p>
-<p><strong>416</strong>：客户端请求的范围无效。</p>
-<p><strong>417</strong>：Expectation Failed。</p>
+<p><strong>400</strong>：Bad Request</p>
+<p><strong>401</strong>：Unauthorized</p>
+<p><strong>403</strong>：服务器理解客户端的请求，但是拒绝执行</p>
+<p><strong>404</strong>：无法根据请求找到资源</p>
+<p><strong>405</strong>：客户端请求中的方法被禁止</p>
+<p><strong>406</strong>：Not Acceptable</p>
+<p><strong>407</strong>：Proxy Authentication Required</p>
+<p><strong>408</strong>：Request Timeout</p>
+<p><strong>409</strong>：服务器处理请求时发生了冲突</p>
+<p><strong>410</strong>：客户端请求的资源已经不存在</p>
+<p><strong>411</strong>：Length Required</p>
+<p><strong>412</strong>：Precondition Failed</p>
+<p><strong>413</strong>：Request Entity Too Large</p>
+<p><strong>414</strong>：Request URI Too Large</p>
+<p><strong>415</strong>：Unsupported Media Type</p>
+<p><strong>416</strong>：客户端请求的范围无效</p>
+<p><strong>417</strong>：Expectation Failed</p>
 <blockquote>
 <p>5xx：服务器错误，服务器在处理请求的过程中发生了错误。</p>
 </blockquote>
-<p><strong>500</strong>：服务器内部错误，无法完成请求。</p>
-<p><strong>501</strong>：服务器不支持请求的功能。</p>
-<p><strong>502</strong>：Bad Gateway。</p>
-<p><strong>503</strong>：Service Unavailable。</p>
-<p><strong>504</strong>：Gateway Timeout。</p>
-<p><strong>505</strong>：HTTP version not supported。</p>
+<p><strong>500</strong>：服务器内部错误，无法完成请求</p>
+<p><strong>501</strong>：服务器不支持请求的功能</p>
+<p><strong>502</strong>：Bad Gateway</p>
+<p><strong>503</strong>：Service Unavailable</p>
+<p><strong>504</strong>：Gateway Timeout</p>
+<p><strong>505</strong>：HTTP version not supported</p>
 			</div>
 		</article>
 	</main>
@@ -331,7 +318,7 @@
 				
 				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
 				
-				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
+				<li><a href="/posts/2022-10-21-dev-null-related/">/dev/null and 2&amp;&gt;1</a></li>
 				
 			</ul>
 		</div>

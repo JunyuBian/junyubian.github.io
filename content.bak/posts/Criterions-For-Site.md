@@ -4,10 +4,18 @@ date: 2023-12-02 19:40:43
 slug: 2023-12-02-Criterions-for-Site
 type: posts
 draft: false
+<<<<<<< HEAD
 categories: 
   - Criterions
 tags:
   - en
+=======
+categories:
+  - References
+  - En
+tags:
+  - forThisSite
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 ---
 
 - [1-Titles](#1-titles)
@@ -36,4 +44,8 @@ Need specifiy language (EN/CH), best to have bi-lingular version for each post.
 Need to have toc section for each post, follow below steps:
 1. cmd+Shift+P in VSCode
 2. type "toc"
+<<<<<<< HEAD
 3. select "Markdown All in One: Create Table of Contents
+=======
+3. select "Markdown All in One: Create Table of Contents
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59

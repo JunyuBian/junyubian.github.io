@@ -44,12 +44,9 @@
 		       
 		           <a href="/tags/linux">Linux</a>
         	       
-		           <a href="/tags/ch">ch</a>
-        	       
 
 			<div>
 				<h3 id="1-find命令">1. find命令</h3>
-<hr>
 <ol>
 <li>查找指定文件名文件（不区分大小写）：</li>
 </ol>
@@ -68,7 +65,6 @@
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find /home -type f -size +3072k
 </span></span></code></pre></div><hr>
 <h3 id="2-static和const关键字">2. static和const关键字</h3>
-<hr>
 <p>static：存储在静态存储区，未初始化时自动初始化为0：</p>
 <ol>
 <li>局部变量：
@@ -112,7 +108,6 @@
 </ol>
 <hr>
 <h3 id="3-c的内存分区">3. C++的内存分区</h3>
-<hr>
 <ol>
 <li>栈区（stack）：主要存放函数参数以及局部变量，由系统自动分配释放；</li>
 <li>堆区（heap）：用户通过malloc/new手动申请释放，分配类似链表；</li>
@@ -122,7 +117,6 @@
 </ol>
 <hr>
 <h3 id="4-stl容器">4. STL容器</h3>
-<hr>
 <p>底层数据结构：</p>
 <ol>
 <li>vector：数组；</li>
@@ -131,7 +125,6 @@
 </ol>
 <hr>
 <h3 id="5-内存泄漏">5. 内存泄漏</h3>
-<hr>
 <ol>
 <li>一般为堆内存泄漏，即程序在运行中动态申请的内存空间不使用后，未及时释放；</li>
 <li>解决：
@@ -144,7 +137,6 @@
 </ol>
 <hr>
 <h3 id="6-32位64位系统中常用内置数据类型所占字节数">6. 32位、64位系统中，常用内置数据类型所占字节数</h3>
-<hr>
 <ol>
 <li>32位：
 <ol>
@@ -177,14 +169,12 @@
 </ol>
 <hr>
 <h3 id="7-inlinevolatile关键字">7. inline、volatile关键字</h3>
-<hr>
 <ol>
 <li>inline：解决频繁调用小函数大量消耗栈空间的问题；</li>
 <li>volatile：表明类型变量可悲更改，不再优化，需要从如内存中重新读取。</li>
 </ol>
 <hr>
 <h3 id="8-深拷贝与浅拷贝">8. 深拷贝与浅拷贝</h3>
-<hr>
 <p>拷贝函数使用场景：</p>
 <ol>
 <li>一个对象以值的方式传入函数体；</li>
@@ -198,14 +188,12 @@
 </ol>
 <hr>
 <h3 id="9-派生类构造析构函数调用顺序">9. 派生类构造/析构函数调用顺序</h3>
-<hr>
 <ol>
 <li>构造函数：先基后派；</li>
 <li>析构函数：先派后基。</li>
 </ol>
 <hr>
 <h3 id="10-数据成员初始化顺序">10. 数据成员初始化顺序</h3>
-<hr>
 <p>顺序：</p>
 <ol>
 <li>基类的静态变量或全局变量；</li>
@@ -215,7 +203,6 @@
 </ol>
 <hr>
 <h3 id="11-static_cast-dynamic_cast-const_cast-reinpreter_cast区别">11. static_cast, dynamic_cast, const_cast, reinpreter_cast区别</h3>
-<hr>
 <p>static_cast与dynamic_cast：</p>
 <ol>
 <li>发生时间不同，一个是static编译时，一个是runtime运行时；</li>
@@ -230,14 +217,12 @@
 </ol>
 <hr>
 <h3 id="12-定义一个空类-编译器会做什么">12. 定义一个空类 编译器会做什么</h3>
-<hr>
 <ol>
 <li>当用到相关函数时，编译器会去自动生成：默认构造函数、默认拷贝构造函数、默认拷贝赋值操作符、默认析构函数；</li>
 <li>所有自动生成的函数都是inline和public的。</li>
 </ol>
 <hr>
 <h3 id="13-哪些函数不能成为虚函数">13. 哪些函数不能成为虚函数</h3>
-<hr>
 <ol>
 <li>构造函数：假如子类继承基类构造函数，则子类对象将使用基类构造函数构造，而积累的构造函数并不知道自类的成员，不符合语义，且，多态是通过基类指针指向子类对象实现多态的，在对象构造之前，并没有对象产生，因此无法使用多态特性，是矛盾的；</li>
 <li>内联成员函数：内联函数在编译时展开，而虚函数是在运行时绑定的，两者相违背；</li>
@@ -245,14 +230,12 @@
 </ol>
 <hr>
 <h3 id="14-内联函数与宏定义的区别">14. 内联函数与宏定义的区别</h3>
-<hr>
 <ol>
 <li>宏定义在于处理时把所有宏名用宏体替换，内联函数在编译时进行代码插入、展开、省去调用的开销；</li>
 <li>宏定义没有类型检查，内联函数满足函数的性质，如有返回值、参数列表等。</li>
 </ol>
 <hr>
 <h3 id="15-左值引用和右值引用">15. 左值引用和右值引用</h3>
-<hr>
 <ol>
 <li>
 <p>左值引用要求右边的值必须能够取地址，如果不能取地址，可以使用常引用；</p>
@@ -283,7 +266,6 @@
 </ol>
 <hr>
 <h3 id="16-substr用法">16. substr用法</h3>
-<hr>
 <ol>
 <li>
 <p>目的：构建一个string；</p>
@@ -320,7 +302,7 @@
 				
 				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
 				
-				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
+				<li><a href="/posts/2022-10-21-dev-null-related/">/dev/null and 2&amp;&gt;1</a></li>
 				
 			</ul>
 		</div>

@@ -44,12 +44,9 @@
 		       
 		           <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C">计算机网络</a>
         	       
-		           <a href="/tags/ch">ch</a>
-        	       
 
 			<div>
 				<h3 id="1-https加密过程">1. Https加密过程</h3>
-<hr>
 <ol>
 <li>客户端发起握手请求；</li>
 <li>服务端返回已有的<code>证书公钥</code>（服务端通过CA认证后，拥有<code>证书公钥</code>和<code>证书私钥</code>）；</li>
@@ -63,18 +60,15 @@
 </ol>
 <hr>
 <h3 id="2-对称加密与非对称加密">2. 对称加密与非对称加密</h3>
-<hr>
 <p>对称加密：加密和解密使用同一个密钥；</p>
 <p>非对称加密：使用公钥和私钥进行加解密。</p>
 <hr>
 <h3 id="3-close_wait和time_wait">3. CLOSE_WAIT和TIME_WAIT</h3>
-<hr>
 <p>在四次挥手中，</p>
 <p>CLOSE_WAIT：服务端收到FIN后，发送ACK给客户端，之后进入CLOSE_WAIT状态；</p>
 <p>TIME_WAIT：客户端收到FIN后，发送ACK给服务端，之后进入TIME_WAIT状态。</p>
 <hr>
 <h3 id="4-tcp如何保证传输可靠性">4. TCP如何保证传输可靠性</h3>
-<hr>
 <ol>
 <li>数据包校验；</li>
 <li>重排序：TCP将失序数据进行重新排序后才交给应用层；</li>
@@ -84,7 +78,6 @@
 </ol>
 <hr>
 <h3 id="5如何预防tcp的ddos攻击">5.如何预防TCP的DDos攻击</h3>
-<hr>
 <ol>
 <li>
 <p>限制同时打开SYN半链接的数目；</p>
@@ -102,7 +95,6 @@
 </ol>
 <hr>
 <h3 id="6-tcp如何实现拥塞控制">6. TCP如何实现拥塞控制</h3>
-<hr>
 <ol>
 <li>慢启动：以指数方式，由小到大逐渐增加拥塞窗口(cwnd)的大小，慢启动达到ssthresh阈值则进入拥塞避免；</li>
 <li>拥塞避免：每经过一个往返时间RTT就把发送方拥塞窗口增加1，按照线性增长，发生拥塞，cwnd降为1，重新慢启动；</li>
@@ -111,7 +103,6 @@
 </ol>
 <hr>
 <h3 id="7-从输入网址到获得页面的过程">7. 从输入网址到获得页面的过程</h3>
-<hr>
 <ol>
 <li>浏览器通过DNS查询对应IP地址：
 <ol>
@@ -133,7 +124,6 @@
 </ol>
 <hr>
 <h3 id="8-session-与-cookie">8. Session 与 Cookie</h3>
-<hr>
 <p><strong>Session</strong>：</p>
 <ol>
 <li>
@@ -169,7 +159,6 @@
 </ol>
 <hr>
 <h3 id="9-七层网络体系结构">9. 七层网络体系结构</h3>
-<hr>
 <ol>
 <li>物理层：实现相邻计算机节点之间比特流透明传送；</li>
 <li>数据链路层：接手物理层的位流行驶数据，封装成帧，传送到上一层，同样，也将上一层的数据帧，拆装成位流转发到物理层；</li>
@@ -214,14 +203,12 @@
 </ol>
 <hr>
 <h3 id="11-arp">11. ARP</h3>
-<hr>
 <ol>
 <li>将IP地址转换为MAC地址；</li>
 <li>网络通过帧进行传输，帧里面需要目标主机的MAC地址。</li>
 </ol>
 <hr>
 <h3 id="12-常见状态码">12. 常见状态码</h3>
-<hr>
 <p>1XX：请求已被接受，正在处理；</p>
 <p>2XX：请求成功被处理；</p>
 <p>3XX：重定向：</p>
@@ -254,7 +241,7 @@
 				
 				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
 				
-				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
+				<li><a href="/posts/2022-10-21-dev-null-related/">/dev/null and 2&amp;&gt;1</a></li>
 				
 			</ul>
 		</div>

@@ -46,16 +46,14 @@
         	       
 		           <a href="/tags/docker">Docker</a>
         	       
-		           <a href="/tags/en">en</a>
-        	       
 
 			<div>
 				<h4 id="1-management-tools-for-clusters-pods-deployments-etc-">1. Management tools for clusters, pods, deployments, etc. :</h4>
 <p>k9s</p>
 <h4 id="2-when-not-able-to-delete-resources-in-k8s">2. When not able to delete resources in k8s:</h4>
 <p>First edit resource:</p>
-<pre tabindex="0"><code>kubectl edit &lt;resource name&gt;
-</code></pre><p>then delete the <code>finalizer</code> part and try again.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>kubectl edit &lt;resource name&gt;
+</span></span></code></pre></div><p>then delete the <code>finalizer</code> part and try again.</p>
 <h4 id="3-filtering-docker-images">3. filtering docker images</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker image <span style="color:#e6db74">&#34;name*&#34;</span>
 </span></span></code></pre></div><h4 id="4-save-and-load-docker-images">4. save and load docker images</h4>
@@ -83,7 +81,7 @@
 				
 				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
 				
-				<li><a href="/posts/2022-10-21-dev-null-and-21/">/dev/null and 2&amp;&gt;1</a></li>
+				<li><a href="/posts/2022-10-21-dev-null-related/">/dev/null and 2&amp;&gt;1</a></li>
 				
 			</ul>
 		</div>

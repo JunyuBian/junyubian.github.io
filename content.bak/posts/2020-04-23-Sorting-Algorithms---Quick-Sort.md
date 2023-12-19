@@ -1,6 +1,7 @@
 ---
 title: Sorting Algorithms - Quick Sort
 date: 2020-04-23 13:42:56
+<<<<<<< HEAD
 categories: 
 - Notes
 tags:
@@ -10,6 +11,17 @@ tags:
 ---
 
 In this series of blogs, we will talk about different sorting algorithms. 
+=======
+categories:
+- Notes
+- En
+tags:
+- Algorithm
+- C++
+---
+
+In this series of blogs, we will talk about different sorting algorithms.
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 
 All the algorithms in the table below will be covered.
 
@@ -33,7 +45,11 @@ All the algorithms in the table below will be covered.
 
 Divide and conquer.
 
+<<<<<<< HEAD
 In each division, seperate the data into two parts. 
+=======
+In each division, seperate the data into two parts.
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 
 All elements in the first part should be all less than the elements in the second part.
 
@@ -50,7 +66,11 @@ int partition(int array[], int left, int right) {
     int low = left;
     int high = right;
     int key = array[left];
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
     while (low < high) {
       while (array[high] >= ket && low < high) {
 				high--;
@@ -65,7 +85,11 @@ int partition(int array[], int left, int right) {
     array[pivot] = key;
   }
   return pivot;
+<<<<<<< HEAD
 } 
+=======
+}
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
 ```
 
 ```c++
@@ -91,4 +115,8 @@ void QuickSortRandom(int array[], int left, int right) {
     QuickSortRandom(array, pivot + 1, right);
   }
 }
+<<<<<<< HEAD
 ```
+=======
+```
+>>>>>>> 38ebd639019f105c786e6269d9bf8a3491ecdd59
