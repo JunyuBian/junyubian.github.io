@@ -1,30 +1,36 @@
-baseURL = "https://junyubian.github.io/"
+baseURL = "https://www.example.com"
 languageCode = "en-us"
-title = "Junyu Bian"
+title = "My Digital Garden"
 theme = "hugo-digital-garden-theme"
-# themesdir = "../../"
-copyright = "Junyu Ban©"
+themesdir = "../../"
+copyright = "Nigalya Ponya ©"
+
 
 [params]
-  name = "Junyu Bian"
-  description = "Hi there, welcome!"
-  initials = "JB"
+  name = "Nigalya Ponya"
+  description = "Red panda living in the eastern Himalayas."
+  initials = "NP"
   googleAnalytics = ""
 
   [[params.social]]
     name = "Twitter"
-    link = "https://twitter.com/junyu_bian"
+    link = "#"
     icon = "fab fa-twitter"
 
   [[params.social]]
     name = "Github"
-    link = "https://github.com/junyubian"
+    link = "#"
     icon = "fab fa-github"
 
   [[params.social]]
-    name = "Facebook" 
-    link = "https://www.facebook.com/profile.php?id=100010301021817"
-    icon = "fab fa-facebook"
+    name = "Medium" 
+    link = "#"
+    icon = "fab fa-medium-m"
+
+  [[params.social]]
+    name = "LinkedIn"
+    link = "#"
+    icon = "fab fa-linkedin-in"
 
 
 [menu]
