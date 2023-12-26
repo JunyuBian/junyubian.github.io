@@ -142,12 +142,9 @@
     <item>
       <title>Linux知识点总结</title>
       <link>https://junyubian.github.io/garden/2020-09-28-linux%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</link>
-      <pubDate>Mon, 28 Sep 2020 22:43:19 +0000</pubDate>
+      <pubDate>Mon, 28 Sep 2020 00:00:00 +0000</pubDate>
       <guid>https://junyubian.github.io/garden/2020-09-28-linux%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</guid>
-      <description>1. find命令 查找指定文件名文件（不区分大小写）： find -iname &amp;#34;ProgramToFind.java&amp;#34; 对找到的文件执行某命令 find -iname &amp;#34;ProgramToOperate.java&amp;#34; -exec md5sum {} \; 查找home目录下所有空文件 find ~ -empty 在/home下找到大小超过3MB的文件 find /home -type f -size +3072k 2. static和const关键字 static：存储在静态存储区，未初始化时自动初始化为0：
-局部变量： 变为静态局部变量； 作用域仍为局部作用域； 离开作用域仍驻留在内存中，但不可访问； 全局变量： 变为全局静态变量； 在声明的文件之外不可见； 成员变量： 变为类的全局变量，被类的对象共享，包括派生类的对象； 必须在类外进行初始化，如int base::var = 10;，但可以用const修饰static数据成员，从而在类内初始化； 成员函数： 使得成员函数为所有对象共享，不含this指针； 可以独立访问，不需要创建实例，如base::func(3, 5); 不可直接引用类的非静态成员，但是可以引用静态成员； 不可同时用const和static修饰成员函数（const含this指针，static不含，冲突）； const：
-表明变量不可修改； 限定成员函数不可修改任何数据成员； const与指针： const char *p：指向的内容不能改变； char * const p：将p声明为常指针，地址不能变，但是内容可变。 3. C++的内存分区 栈区（stack）：主要存放函数参数以及局部变量，由系统自动分配释放； 堆区（heap）：用户通过malloc/new手动申请释放，分配类似链表； 全局/静态区：存放全局变量、静态变量； 字符串常量区：字符串常量； 代码区：程序的二进制代码。 4. STL容器 底层数据结构：
-vector：数组； map、multimap：红黑树； unordered_map、unordered_nultimap：哈希表。 5.</description>
+      <description></description>
     </item>
     <item>
       <title>LeetCode题目总结-Recursion&#43;Backtrack</title>

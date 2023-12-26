@@ -18,10 +18,7 @@
     
     
     <title>Junyu Bian | Linux知识点总结</title>
-    <meta name="description" content="1. find命令 查找指定文件名文件（不区分大小写）： find -iname &#34;ProgramToFind.java&#34; 对找到的文件执行某命令 find -iname &#34;ProgramToOperate.java&#34; -exec md5sum {} \; 查找home目录下所有空文件 find ~ -empty 在/home下找到大小超过3MB的文件 find /home -type f -size &#43;3072k 2. static和const关键字 static：存储在静态存储区，未初始化时自动初始化为0：
-局部变量： 变为静态局部变量； 作用域仍为局部作用域； 离开作用域仍驻留在内存中，但不可访问； 全局变量： 变为全局静态变量； 在声明的文件之外不可见； 成员变量： 变为类的全局变量，被类的对象共享，包括派生类的对象； 必须在类外进行初始化，如int base::var = 10;，但可以用const修饰static数据成员，从而在类内初始化； 成员函数： 使得成员函数为所有对象共享，不含this指针； 可以独立访问，不需要创建实例，如base::func(3, 5); 不可直接引用类的非静态成员，但是可以引用静态成员； 不可同时用const和static修饰成员函数（const含this指针，static不含，冲突）； const：
-表明变量不可修改； 限定成员函数不可修改任何数据成员； const与指针： const char *p：指向的内容不能改变； char * const p：将p声明为常指针，地址不能变，但是内容可变。 3. C&#43;&#43;的内存分区 栈区（stack）：主要存放函数参数以及局部变量，由系统自动分配释放； 堆区（heap）：用户通过malloc/new手动申请释放，分配类似链表； 全局/静态区：存放全局变量、静态变量； 字符串常量区：字符串常量； 代码区：程序的二进制代码。 4. STL容器 底层数据结构：
-vector：数组； map、multimap：红黑树； unordered_map、unordered_nultimap：哈希表。 5.">
+    <meta name="description" content="">
 </head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="https://junyubian.github.io/">
@@ -60,11 +57,6 @@ vector：数组； map、multimap：红黑树； unordered_map、unordered_nulti
             <h1 class="display-2 mb-4 text-center">Linux知识点总结</h1>
         </div>
         
-        <p class="text-center fs-4 fst-italic serif">1. find命令 查找指定文件名文件（不区分大小写）： find -iname &#34;ProgramToFind.java&#34; 对找到的文件执行某命令 find -iname &#34;ProgramToOperate.java&#34; -exec md5sum {} \; 查找home目录下所有空文件 find ~ -empty 在/home下找到大小超过3MB的文件 find /home -type f -size +3072k 2. static和const关键字 static：存储在静态存储区，未初始化时自动初始化为0：
-局部变量： 变为静态局部变量； 作用域仍为局部作用域； 离开作用域仍驻留在内存中，但不可访问； 全局变量： 变为全局静态变量； 在声明的文件之外不可见； 成员变量： 变为类的全局变量，被类的对象共享，包括派生类的对象； 必须在类外进行初始化，如int base::var = 10;，但可以用const修饰static数据成员，从而在类内初始化； 成员函数： 使得成员函数为所有对象共享，不含this指针； 可以独立访问，不需要创建实例，如base::func(3, 5); 不可直接引用类的非静态成员，但是可以引用静态成员； 不可同时用const和static修饰成员函数（const含this指针，static不含，冲突）； const：
-表明变量不可修改； 限定成员函数不可修改任何数据成员； const与指针： const char *p：指向的内容不能改变； char * const p：将p声明为常指针，地址不能变，但是内容可变。 3. C++的内存分区 栈区（stack）：主要存放函数参数以及局部变量，由系统自动分配释放； 堆区（heap）：用户通过malloc/new手动申请释放，分配类似链表； 全局/静态区：存放全局变量、静态变量； 字符串常量区：字符串常量； 代码区：程序的二进制代码。 4. STL容器 底层数据结构：
-vector：数组； map、multimap：红黑树； unordered_map、unordered_nultimap：哈希表。 5.</p>
-        
         <div class="text-center pt-4">
             
         </div>
@@ -82,15 +74,21 @@ vector：数组； map、multimap：红黑树； unordered_map、unordered_nulti
             <div class="row justify-content-between">
                 <div class="col-sm-4">
                     
+    
+    <span class="status">Growing 🌿</span>
+    
+
                 </div>
                 <div class="col-sm-8" style="text-align: right;">
                     
-                    
-                    <span class="badge tag-badge">Linux</span>
-                    
-                    <span class="badge tag-badge">ch</span>
-                    
                 
+                    
+                    <span class="badge tag-badge">en</span>
+                    
+                    <span class="badge tag-badge">notes</span>
+                    
+                    <span class="badge tag-badge">linux</span>
+                    
                 
                 
                 </div>
@@ -100,8 +98,7 @@ vector：数组； map、multimap：红黑树； unordered_map、unordered_nulti
 
     <div class="container-fluid py-2">
         <div class="serif main-content">
-            <h3 id="1-find命令">1. find命令</h3>
-<hr>
+            <h1 id="1-find命令">1. find命令</h1>
 <ol>
 <li>查找指定文件名文件（不区分大小写）：</li>
 </ol>
@@ -118,9 +115,7 @@ vector：数组； map、multimap：红黑树； unordered_map、unordered_nulti
 <li>在/home下找到大小超过3MB的文件</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find /home -type f -size +3072k
-</span></span></code></pre></div><hr>
-<h3 id="2-static和const关键字">2. static和const关键字</h3>
-<hr>
+</span></span></code></pre></div><h1 id="2-static和const关键字">2. static和const关键字</h1>
 <p>static：存储在静态存储区，未初始化时自动初始化为0：</p>
 <ol>
 <li>局部变量：
@@ -162,9 +157,7 @@ vector：数组； map、multimap：红黑树； unordered_map、unordered_nulti
 </ol>
 </li>
 </ol>
-<hr>
-<h3 id="3-c的内存分区">3. C++的内存分区</h3>
-<hr>
+<h1 id="3-c的内存分区">3. C++的内存分区</h1>
 <ol>
 <li>栈区（stack）：主要存放函数参数以及局部变量，由系统自动分配释放；</li>
 <li>堆区（heap）：用户通过malloc/new手动申请释放，分配类似链表；</li>
@@ -172,18 +165,14 @@ vector：数组； map、multimap：红黑树； unordered_map、unordered_nulti
 <li>字符串常量区：字符串常量；</li>
 <li>代码区：程序的二进制代码。</li>
 </ol>
-<hr>
-<h3 id="4-stl容器">4. STL容器</h3>
-<hr>
+<h1 id="4-stl容器">4. STL容器</h1>
 <p>底层数据结构：</p>
 <ol>
 <li>vector：数组；</li>
 <li>map、multimap：红黑树；</li>
 <li>unordered_map、unordered_nultimap：哈希表。</li>
 </ol>
-<hr>
-<h3 id="5-内存泄漏">5. 内存泄漏</h3>
-<hr>
+<h1 id="5-内存泄漏">5. 内存泄漏</h1>
 <ol>
 <li>一般为堆内存泄漏，即程序在运行中动态申请的内存空间不使用后，未及时释放；</li>
 <li>解决：
@@ -194,9 +183,7 @@ vector：数组； map、multimap：红黑树； unordered_map、unordered_nulti
 </ol>
 </li>
 </ol>
-<hr>
-<h3 id="6-32位64位系统中常用内置数据类型所占字节数">6. 32位、64位系统中，常用内置数据类型所占字节数</h3>
-<hr>
+<h1 id="6-32位64位系统中常用内置数据类型所占字节数">6. 32位、64位系统中，常用内置数据类型所占字节数</h1>
 <ol>
 <li>32位：
 <ol>
@@ -227,16 +214,12 @@ vector：数组； map、multimap：红黑树； unordered_map、unordered_nulti
 </ol>
 </li>
 </ol>
-<hr>
-<h3 id="7-inlinevolatile关键字">7. inline、volatile关键字</h3>
-<hr>
+<h1 id="7-inlinevolatile关键字">7. inline、volatile关键字</h1>
 <ol>
 <li>inline：解决频繁调用小函数大量消耗栈空间的问题；</li>
 <li>volatile：表明类型变量可悲更改，不再优化，需要从如内存中重新读取。</li>
 </ol>
-<hr>
-<h3 id="8-深拷贝与浅拷贝">8. 深拷贝与浅拷贝</h3>
-<hr>
+<h1 id="8-深拷贝与浅拷贝">8. 深拷贝与浅拷贝</h1>
 <p>拷贝函数使用场景：</p>
 <ol>
 <li>一个对象以值的方式传入函数体；</li>
@@ -248,16 +231,12 @@ vector：数组； map、multimap：红黑树； unordered_map、unordered_nulti
 <li>浅拷贝：只是增加一个指针指向已存在的内存地址；</li>
 <li>深拷贝：增加一个指针，并且申请一个新的内存用于存放复制的对象。</li>
 </ol>
-<hr>
-<h3 id="9-派生类构造析构函数调用顺序">9. 派生类构造/析构函数调用顺序</h3>
-<hr>
+<h1 id="9-派生类构造析构函数调用顺序">9. 派生类构造/析构函数调用顺序</h1>
 <ol>
 <li>构造函数：先基后派；</li>
 <li>析构函数：先派后基。</li>
 </ol>
-<hr>
-<h3 id="10-数据成员初始化顺序">10. 数据成员初始化顺序</h3>
-<hr>
+<h1 id="10-数据成员初始化顺序">10. 数据成员初始化顺序</h1>
 <p>顺序：</p>
 <ol>
 <li>基类的静态变量或全局变量；</li>
@@ -265,9 +244,7 @@ vector：数组； map、multimap：红黑树； unordered_map、unordered_nulti
 <li>基类的成员变量；</li>
 <li>派生类的成员变量。</li>
 </ol>
-<hr>
-<h3 id="11-static_cast-dynamic_cast-const_cast-reinpreter_cast区别">11. static_cast, dynamic_cast, const_cast, reinpreter_cast区别</h3>
-<hr>
+<h1 id="11-static_cast-dynamic_cast-const_cast-reinpreter_cast区别">11. static_cast, dynamic_cast, const_cast, reinpreter_cast区别</h1>
 <p>static_cast与dynamic_cast：</p>
 <ol>
 <li>发生时间不同，一个是static编译时，一个是runtime运行时；</li>
@@ -280,31 +257,23 @@ vector：数组； map、multimap：红黑树； unordered_map、unordered_nulti
 </li>
 <li>上行转换时，static_cast和dynamic_cast效果相同，下行转换时，dynamic_cast具有类型检查，更安全。</li>
 </ol>
-<hr>
-<h3 id="12-定义一个空类-编译器会做什么">12. 定义一个空类 编译器会做什么</h3>
-<hr>
+<h1 id="12-定义一个空类-编译器会做什么">12. 定义一个空类 编译器会做什么</h1>
 <ol>
 <li>当用到相关函数时，编译器会去自动生成：默认构造函数、默认拷贝构造函数、默认拷贝赋值操作符、默认析构函数；</li>
 <li>所有自动生成的函数都是inline和public的。</li>
 </ol>
-<hr>
-<h3 id="13-哪些函数不能成为虚函数">13. 哪些函数不能成为虚函数</h3>
-<hr>
+<h1 id="13-哪些函数不能成为虚函数">13. 哪些函数不能成为虚函数</h1>
 <ol>
 <li>构造函数：假如子类继承基类构造函数，则子类对象将使用基类构造函数构造，而积累的构造函数并不知道自类的成员，不符合语义，且，多态是通过基类指针指向子类对象实现多态的，在对象构造之前，并没有对象产生，因此无法使用多态特性，是矛盾的；</li>
 <li>内联成员函数：内联函数在编译时展开，而虚函数是在运行时绑定的，两者相违背；</li>
 <li>静态成员函数：在编译时确定，无法动态绑定，不支持多态。</li>
 </ol>
-<hr>
-<h3 id="14-内联函数与宏定义的区别">14. 内联函数与宏定义的区别</h3>
-<hr>
+<h1 id="14-内联函数与宏定义的区别">14. 内联函数与宏定义的区别</h1>
 <ol>
 <li>宏定义在于处理时把所有宏名用宏体替换，内联函数在编译时进行代码插入、展开、省去调用的开销；</li>
 <li>宏定义没有类型检查，内联函数满足函数的性质，如有返回值、参数列表等。</li>
 </ol>
-<hr>
-<h3 id="15-左值引用和右值引用">15. 左值引用和右值引用</h3>
-<hr>
+<h1 id="15-左值引用和右值引用">15. 左值引用和右值引用</h1>
 <ol>
 <li>
 <p>左值引用要求右边的值必须能够取地址，如果不能取地址，可以使用常引用；</p>
@@ -333,9 +302,7 @@ vector：数组； map、multimap：红黑树； unordered_map、unordered_nulti
 </ol>
 </li>
 </ol>
-<hr>
-<h3 id="16-substr用法">16. substr用法</h3>
-<hr>
+<h1 id="16-substr用法">16. substr用法</h1>
 <ol>
 <li>
 <p>目的：构建一个string；</p>
