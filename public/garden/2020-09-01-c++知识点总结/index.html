@@ -18,13 +18,10 @@
     
     
     <title>Junyu Bian | C&#43;&#43;知识点总结</title>
-    <meta name="description" content="1. 虚函数和纯虚函数
-
-
-虚函数：为了动态绑定，允许被子类重新定义的成员函数， virtual returnType func(parameter);
-纯虚函数：为了派生接口，virtual returnType func(parameter) = 0;
-基类需要虚析构函数的原因：防止内存泄漏，假如没有虚析构函数，释放一个由基类指向派生类的对象是，不触发动态绑定，则只会调用基类析构函数，而不会调用派生类的，从而导致派生类内存空间的不到释放。
-">
+    <meta name="description" content="1. 虚函数和纯虚函数 虚函数：为了动态绑定，允许被子类重新定义的成员函数， virtual returnType func(parameter); 纯虚函数：为了派生接口，virtual returnType func(parameter) = 0; 基类需要虚析构函数的原因：防止内存泄漏，假如没有虚析构函数，释放一个由基类指向派生类的对象是，不触发动态绑定，则只会调用基类析构函数，而不会调用派生类的，从而导致派生类内存空间的不到释放。 2. static和const关键字 static：存储在静态存储区，未初始化时自动初始化为0：
+局部变量： 变为静态局部变量； 作用域仍为局部作用域； 离开作用域仍驻留在内存中，但不可访问； 全局变量： 变为全局静态变量； 在声明的文件之外不可见； 成员变量： 变为类的全局变量，被类的对象共享，包括派生类的对象； 必须在类外进行初始化，如int base::var = 10;，但可以用const修饰static数据成员，从而在类内初始化； 成员函数： 使得成员函数为所有对象共享，不含this指针； 可以独立访问，不需要创建实例，如base::func(3, 5); 不可直接引用类的非静态成员，但是可以引用静态成员； 不可同时用const和static修饰成员函数（const含this指针，static不含，冲突）； const：
+表明变量不可修改； 限定成员函数不可修改任何数据成员； const与指针： const char *p：指向的内容不能改变； char * const p：将p声明为常指针，地址不能变，但是内容可变。 3. C&#43;&#43;的内存分区 栈区（stack）：主要存放函数参数以及局部变量，由系统自动分配释放； 堆区（heap）：用户通过malloc/new手动申请释放，分配类似链表； 全局/静态区：存放全局变量、静态变量； 字符串常量区：字符串常量； 代码区：程序的二进制代码。 4. STL容器 底层数据结构：
+vector：数组； map、multimap：红黑树； unordered_map、unordered_nultimap：哈希表。 5. 内存泄漏 一般为堆内存泄漏，即程序在运行中动态申请的内存空间不使用后，未及时释放； 解决： 良好编程习惯； 重载new和delete，以链表形式自动管理分配的内存； 使用智能指针。 6. 32位、64位系统中，常用内置数据类型所占字节数 32位： char：1字节； 指针变量：4字节； short int：2字节； int：4字节； unsigned int：4字节； float：4字节； double：8字节； long：4字节； unsigned long：4字节； long long：8字节； 64位： char：1字节； 指针变量：8字节； short int：2字节； int：4字节； unsigned int：4字节； float：4字节； double：8字节； long：8字节； unsigned long：8字节； long long：8字节。 7.">
 </head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="https://junyubian.github.io/">
@@ -63,13 +60,10 @@
             <h1 class="display-2 mb-4 text-center">C&#43;&#43;知识点总结</h1>
         </div>
         
-        <p class="text-center fs-4 fst-italic serif"><h3 id="1-虚函数和纯虚函数">1. 虚函数和纯虚函数</h3>
-<hr>
-<ol>
-<li>虚函数：为了动态绑定，允许被子类重新定义的成员函数， virtual returnType func(parameter);</li>
-<li>纯虚函数：为了派生接口，virtual returnType func(parameter) = 0;</li>
-<li>基类需要虚析构函数的原因：防止内存泄漏，假如没有虚析构函数，释放一个由基类指向派生类的对象是，不触发动态绑定，则只会调用基类析构函数，而不会调用派生类的，从而导致派生类内存空间的不到释放。</li>
-</ol></p>
+        <p class="text-center fs-4 fst-italic serif">1. 虚函数和纯虚函数 虚函数：为了动态绑定，允许被子类重新定义的成员函数， virtual returnType func(parameter); 纯虚函数：为了派生接口，virtual returnType func(parameter) = 0; 基类需要虚析构函数的原因：防止内存泄漏，假如没有虚析构函数，释放一个由基类指向派生类的对象是，不触发动态绑定，则只会调用基类析构函数，而不会调用派生类的，从而导致派生类内存空间的不到释放。 2. static和const关键字 static：存储在静态存储区，未初始化时自动初始化为0：
+局部变量： 变为静态局部变量； 作用域仍为局部作用域； 离开作用域仍驻留在内存中，但不可访问； 全局变量： 变为全局静态变量； 在声明的文件之外不可见； 成员变量： 变为类的全局变量，被类的对象共享，包括派生类的对象； 必须在类外进行初始化，如int base::var = 10;，但可以用const修饰static数据成员，从而在类内初始化； 成员函数： 使得成员函数为所有对象共享，不含this指针； 可以独立访问，不需要创建实例，如base::func(3, 5); 不可直接引用类的非静态成员，但是可以引用静态成员； 不可同时用const和static修饰成员函数（const含this指针，static不含，冲突）； const：
+表明变量不可修改； 限定成员函数不可修改任何数据成员； const与指针： const char *p：指向的内容不能改变； char * const p：将p声明为常指针，地址不能变，但是内容可变。 3. C++的内存分区 栈区（stack）：主要存放函数参数以及局部变量，由系统自动分配释放； 堆区（heap）：用户通过malloc/new手动申请释放，分配类似链表； 全局/静态区：存放全局变量、静态变量； 字符串常量区：字符串常量； 代码区：程序的二进制代码。 4. STL容器 底层数据结构：
+vector：数组； map、multimap：红黑树； unordered_map、unordered_nultimap：哈希表。 5. 内存泄漏 一般为堆内存泄漏，即程序在运行中动态申请的内存空间不使用后，未及时释放； 解决： 良好编程习惯； 重载new和delete，以链表形式自动管理分配的内存； 使用智能指针。 6. 32位、64位系统中，常用内置数据类型所占字节数 32位： char：1字节； 指针变量：4字节； short int：2字节； int：4字节； unsigned int：4字节； float：4字节； double：8字节； long：4字节； unsigned long：4字节； long long：8字节； 64位： char：1字节； 指针变量：8字节； short int：2字节； int：4字节； unsigned int：4字节； float：4字节； double：8字节； long：8字节； unsigned long：8字节； long long：8字节。 7.</p>
         
         <div class="text-center pt-4">
             
@@ -348,6 +342,7 @@
 <p>注意：返回一个从pos开始，包含pos的n个字符，pos默认值为0，n默认值为s.size()-pos。</p>
 </li>
 </ol>
+
         </div>
     </div>
 </div>
@@ -356,7 +351,7 @@
         </div><div class="container">
     <div class="row justify-content-between">
         <div class="col-sm-4">
-            <p class="footer">Junyu Ban© 2023 </p>
+            <p class="footer">Junyu Bian© 2023 </p>
         </div>
         <div class="col-sm-6 d-flex flex-row-reverse">
             

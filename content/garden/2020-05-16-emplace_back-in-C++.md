@@ -15,8 +15,6 @@ There are different type of containers in C++ STL. To add a new element into the
 
 Rvalue References: with aim of increasing the efficiency of C++, rvalues are included. It doesn't  need to copy the value, the rvalue reference is bound to the value itself.
 
-<!--more-->
-
 To claim an Rvalue:
 
 ```C++

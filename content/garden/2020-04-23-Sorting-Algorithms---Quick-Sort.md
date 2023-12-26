@@ -39,8 +39,6 @@ All elements in the first part should be all less than the elements in the secon
 
 Loop until the array is sorted.
 
-<!--more-->
-
 ## How to code it...
 
 ```c++

@@ -1,13 +1,16 @@
 ---
 title: Diff Array
-date: 2020-11-08 15:19:00
-categories: 
-- Notes
-tags:
-- Algorithm
-- C++
-- en
+date: 2020-11-08
+draft: false
+garden_tags: ["en", "notes", "algorithm", "c++"]
+summary: " "
+status: "growing"
 ---
+
+- [Functionality](#functionality)
+- [Trick](#trick)
+  - [Recovering original array](#recovering-original-array)
+  - [Opearting a diff array](#opearting-a-diff-array)
 
 In this blog, we will talk about one trick can be used to solve problems to do with frequent addition and subtraction to a subsection of an array  - [Diff Array](https://labuladong.gitbook.io/algo/suan-fa-si-wei-xi-lie/3.3-yi-xiang-bu-dao-xi-lie/cha-fen-ji-qiao).
 
@@ -16,8 +19,6 @@ In this blog, we will talk about one trick can be used to solve problems to do w
 Todo with frequent addition and subtraction to a subsection of an array.
 
 e.g. Given array `arr`, add 1 for elements between  `arr[0]` and `arr[3]` inclusively, then, substract 3 for elements between  `arr[2]` and `arr[5]` inclusively, what will be the final `arr`.
-
-<!--more-->
 
 # Trick
 

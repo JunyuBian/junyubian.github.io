@@ -17,8 +17,6 @@ Once upon a time, Tom asked his father to find `abab` inside `abcaabababaa`.
 
 Tom's dad did this in a traditional way (brute force). He compared each character of the first string with each character of the second string. When he find one character not matching, for example, the third character in the second string in this case, he start again from the second character of the second string. It went on and on and on...
 
-<!--more-->
-
 # Moving on...
 
 Unfortunately, Tom had a bad temper about waiting. He wanted to make some change. Tom noticed that, if the n-th character in the first string happened to be not match, even if he start again, he will make a compare with that character again in the future. Therefore, Tom decided not to start from the begining each time a not match is found.

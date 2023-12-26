@@ -18,15 +18,7 @@
     
     
     <title>Junyu Bian | K8s and docker Related Notes</title>
-    <meta name="description" content="1. Management tools for clusters, pods, deployments, etc. :
-k9s
-2. When not able to delete resources in k8s:
-First edit resource:
-kubectl edit &lt;resource name&gt;
-then delete the finalizer part and try again.
-3. filtering docker images
-docker image &#34;name*&#34;
-">
+    <meta name="description" content="">
 </head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="https://junyubian.github.io/">
@@ -65,16 +57,6 @@ docker image &#34;name*&#34;
             <h1 class="display-2 mb-4 text-center">K8s and docker Related Notes</h1>
         </div>
         
-        <p class="text-center fs-4 fst-italic serif"><h4 id="1-management-tools-for-clusters-pods-deployments-etc-">1. Management tools for clusters, pods, deployments, etc. :</h4>
-<p>k9s</p>
-<h4 id="2-when-not-able-to-delete-resources-in-k8s">2. When not able to delete resources in k8s:</h4>
-<p>First edit resource:</p>
-<pre tabindex="0"><code>kubectl edit &lt;resource name&gt;
-</code></pre><p>then delete the <code>finalizer</code> part and try again.</p>
-<h4 id="3-filtering-docker-images">3. filtering docker images</h4>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker image <span style="color:#d88200">&#34;name*&#34;</span>
-</span></span></code></pre></div></p>
-        
         <div class="text-center pt-4">
             
         </div>
@@ -92,17 +74,23 @@ docker image &#34;name*&#34;
             <div class="row justify-content-between">
                 <div class="col-sm-4">
                     
+    
+    <span class="status">Growing 🌿</span>
+    
+
                 </div>
                 <div class="col-sm-8" style="text-align: right;">
                     
-                    
-                    <span class="badge tag-badge">K8s</span>
-                    
-                    <span class="badge tag-badge">Docker</span>
+                
                     
                     <span class="badge tag-badge">en</span>
                     
-                
+                    <span class="badge tag-badge">notes</span>
+                    
+                    <span class="badge tag-badge">k8s</span>
+                    
+                    <span class="badge tag-badge">docker</span>
+                    
                 
                 
                 </div>
@@ -112,18 +100,25 @@ docker image &#34;name*&#34;
 
     <div class="container-fluid py-2">
         <div class="serif main-content">
-            <h4 id="1-management-tools-for-clusters-pods-deployments-etc-">1. Management tools for clusters, pods, deployments, etc. :</h4>
+            <ul>
+<li><a href="#1-management-tools-for-clusters-pods-deployments-etc-">1. Management tools for clusters, pods, deployments, etc. :</a></li>
+<li><a href="#2-when-not-able-to-delete-resources-in-k8s">2. When not able to delete resources in k8s:</a></li>
+<li><a href="#3-filtering-docker-images">3. filtering docker images</a></li>
+<li><a href="#4-save-and-load-docker-images">4. save and load docker images</a></li>
+<li><a href="#5-getting-k8s-events">5. getting k8s events</a></li>
+</ul>
+<h1 id="1-management-tools-for-clusters-pods-deployments-etc-">1. Management tools for clusters, pods, deployments, etc. :</h1>
 <p>k9s</p>
-<h4 id="2-when-not-able-to-delete-resources-in-k8s">2. When not able to delete resources in k8s:</h4>
+<h1 id="2-when-not-able-to-delete-resources-in-k8s">2. When not able to delete resources in k8s:</h1>
 <p>First edit resource:</p>
 <pre tabindex="0"><code>kubectl edit &lt;resource name&gt;
 </code></pre><p>then delete the <code>finalizer</code> part and try again.</p>
-<h4 id="3-filtering-docker-images">3. filtering docker images</h4>
+<h1 id="3-filtering-docker-images">3. filtering docker images</h1>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker image <span style="color:#d88200">&#34;name*&#34;</span>
-</span></span></code></pre></div><h4 id="4-save-and-load-docker-images">4. save and load docker images</h4>
+</span></span></code></pre></div><h1 id="4-save-and-load-docker-images">4. save and load docker images</h1>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker image save &gt; smartcity_images
 </span></span><span style="display:flex;"><span>docker image load &lt; smartcity_images
-</span></span></code></pre></div><h4 id="5-getting-k8s-events">5. getting k8s events</h4>
+</span></span></code></pre></div><h1 id="5-getting-k8s-events">5. getting k8s events</h1>
 <pre tabindex="0"><code>kubectl get events
 </code></pre>
         </div>
@@ -134,7 +129,7 @@ docker image &#34;name*&#34;
         </div><div class="container">
     <div class="row justify-content-between">
         <div class="col-sm-4">
-            <p class="footer">Junyu Ban© 2023 </p>
+            <p class="footer">Junyu Bian© 2023 </p>
         </div>
         <div class="col-sm-6 d-flex flex-row-reverse">
             

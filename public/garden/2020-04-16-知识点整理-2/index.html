@@ -18,31 +18,11 @@
     
     
     <title>Junyu Bian | 知识点整理-2</title>
-    <meta name="description" content="1. 两个有序链表合并成一个(leetcode 21)
-
-struct ListNode {
-   int val;
-   ListNode *next;
-   ListNode(int x) : val(x), next(NULL) {}
-};
-
-ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
-   if(l1 == NULL){
-      return l2;
-   }
-   if (l2 == NULL){
-      return l1;
-   }
-   if (l1-&gt;val &lt; l2-&gt;val){
-      l1-&gt;next = mergeTwoLists(l1-&gt;next, l2);
-      return l1;
-   }
-   else {
-      l2-&gt;next = mergeTwoLists(l1, l2-&gt;next);
-      return l2;
-   }
-}
-">
+    <meta name="description" content="1. 两个有序链表合并成一个(leetcode 21) struct ListNode { int val; ListNode *next; ListNode(int x) : val(x), next(NULL) {} }; ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) { if(l1 == NULL){ return l2; } if (l2 == NULL){ return l1; } if (l1-&gt;val &lt; l2-&gt;val){ l1-&gt;next = mergeTwoLists(l1-&gt;next, l2); return l1; } else { l2-&gt;next = mergeTwoLists(l1, l2-&gt;next); return l2; } } 2. GET和POST的区别 GET所发送的数据是URL的一部分，POST数据不会显示在URL中。
+GET和POST方法没有本质区别，只是报文格式不同，两者都使用HTTP，都是不安全的，想要安全传输需要使用HTTPS。
+3. HTTPS的实现原理 HTTPS原理：在传输层（TCP）和应用层（HTTP）之间加了一层SSL/TLS。
+具体加密过程：1. 服务器端发送公钥证书；2. 客户端检验证书是否有效，是，则生成一个随机密钥，并用服务端的公钥进行加密后发送；3. 服务器端用自己私钥加密，取出客户端的随机密钥，将需要发送的内容用该密钥加密并发送。
+4. Linux查看最近的日志用什么指令 tail：">
 </head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="https://junyubian.github.io/">
@@ -81,31 +61,11 @@ ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
             <h1 class="display-2 mb-4 text-center">知识点整理-2</h1>
         </div>
         
-        <p class="text-center fs-4 fst-italic serif"><h3 id="1-两个有序链表合并成一个leetcode-21">1. 两个有序链表合并成一个(leetcode 21)</h3>
-<hr>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">struct</span> <span style="color:#75af00">ListNode</span> <span style="color:#111">{</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#00a8c8">int</span> <span style="color:#111">val</span><span style="color:#111">;</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#111">ListNode</span> <span style="color:#f92672">*</span><span style="color:#111">next</span><span style="color:#111">;</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#111">ListNode</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#f92672">:</span> <span style="color:#111">val</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">),</span> <span style="color:#111">next</span><span style="color:#111">(</span><span style="color:#111">NULL</span><span style="color:#111">)</span> <span style="color:#111">{}</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#75af00">mergeTwoLists</span><span style="color:#111">(</span><span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">l1</span><span style="color:#111">,</span> <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">l2</span><span style="color:#111">)</span> <span style="color:#111">{</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">l1</span> <span style="color:#f92672">==</span> <span style="color:#111">NULL</span><span style="color:#111">){</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#00a8c8">return</span> <span style="color:#111">l2</span><span style="color:#111">;</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#111">}</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">l2</span> <span style="color:#f92672">==</span> <span style="color:#111">NULL</span><span style="color:#111">){</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#00a8c8">return</span> <span style="color:#111">l1</span><span style="color:#111">;</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#111">}</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">l1</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">l2</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span><span style="color:#111">){</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#111">l1</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">mergeTwoLists</span><span style="color:#111">(</span><span style="color:#111">l1</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">,</span> <span style="color:#111">l2</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#00a8c8">return</span> <span style="color:#111">l1</span><span style="color:#111">;</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#111">}</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#00a8c8">else</span> <span style="color:#111">{</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#111">l2</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">mergeTwoLists</span><span style="color:#111">(</span><span style="color:#111">l1</span><span style="color:#111">,</span> <span style="color:#111">l2</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">);</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#00a8c8">return</span> <span style="color:#111">l2</span><span style="color:#111">;</span>
-</span></span><span style="display:flex;"><span>   <span style="color:#111">}</span>
-</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
-</span></span></code></pre></div><hr></p>
+        <p class="text-center fs-4 fst-italic serif">1. 两个有序链表合并成一个(leetcode 21) struct ListNode { int val; ListNode *next; ListNode(int x) : val(x), next(NULL) {} }; ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) { if(l1 == NULL){ return l2; } if (l2 == NULL){ return l1; } if (l1-&gt;val &lt; l2-&gt;val){ l1-&gt;next = mergeTwoLists(l1-&gt;next, l2); return l1; } else { l2-&gt;next = mergeTwoLists(l1, l2-&gt;next); return l2; } } 2. GET和POST的区别 GET所发送的数据是URL的一部分，POST数据不会显示在URL中。
+GET和POST方法没有本质区别，只是报文格式不同，两者都使用HTTP，都是不安全的，想要安全传输需要使用HTTPS。
+3. HTTPS的实现原理 HTTPS原理：在传输层（TCP）和应用层（HTTP）之间加了一层SSL/TLS。
+具体加密过程：1. 服务器端发送公钥证书；2. 客户端检验证书是否有效，是，则生成一个随机密钥，并用服务端的公钥进行加密后发送；3. 服务器端用自己私钥加密，取出客户端的随机密钥，将需要发送的内容用该密钥加密并发送。
+4. Linux查看最近的日志用什么指令 tail：</p>
         
         <div class="text-center pt-4">
             
@@ -238,6 +198,7 @@ ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
 <hr>
 <p>size是当前vector容器的真实占用大小。</p>
 <p>capacity是当前允许的最大元素数。</p>
+
         </div>
     </div>
 </div>
@@ -246,7 +207,7 @@ ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
         </div><div class="container">
     <div class="row justify-content-between">
         <div class="col-sm-4">
-            <p class="footer">Junyu Ban© 2023 </p>
+            <p class="footer">Junyu Bian© 2023 </p>
         </div>
         <div class="col-sm-6 d-flex flex-row-reverse">
             

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hugo on Junyu Bian</title>
+    <link>https://junyubian.github.io/garden_tags/hugo/</link>
+    <description>Recent content in hugo on Junyu Bian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Junyu Bian©</copyright>
+    <lastBuildDate>Sat, 02 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://junyubian.github.io/garden_tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo Site Auto Deployment with Github Action</title>
+      <link>https://junyubian.github.io/garden/2023-12-03-hugo&#43;github-action-auto-deploy/</link>
+      <pubDate>Sat, 02 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/garden/2023-12-03-hugo&#43;github-action-auto-deploy/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

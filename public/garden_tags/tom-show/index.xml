@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tom-show on Junyu Bian</title>
+    <link>https://junyubian.github.io/garden_tags/tom-show/</link>
+    <description>Recent content in tom-show on Junyu Bian</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Junyu Bian©</copyright>
+    <lastBuildDate>Tue, 07 Nov 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://junyubian.github.io/garden_tags/tom-show/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fluent Bit Client Notes</title>
+      <link>https://junyubian.github.io/garden/2023-11-07-fluent-bit-notes/</link>
+      <pubDate>Tue, 07 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/garden/2023-11-07-fluent-bit-notes/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

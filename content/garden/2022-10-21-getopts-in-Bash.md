@@ -1,19 +1,20 @@
 ---
 title: getopts in Bash
-date: 2022-10-21 14:17:29
-categories: 
-- Notes
-tags:
-- Bash
-- en
+date: 2022-10-21
+draft: false
+garden_tags: ["en", "notes", "bash"]
+summary: " "
+status: "growing"
 ---
+
+- [1. Notice](#1-notice)
+- [2. Syntax](#2-syntax)
+- [3. Reference(s)](#3-references)
 
 # 1. Notice
 1.1 `getopts` is different from `getopt`.
 1.2 `getopts` runs on any system running bash in POSIX mode (e.g., set -o posix), `getopt` is a system tool varies in different systems.
 1.3 `getopts` parses short options, which are a single dash ("-") and a letter or digit.e.g. -2, -d, and -D. It can also parse short options in combination, for instance -2dD. But each option will be treated seperately, i.e. -2dD = -2 -d -D not equal -"2dD", will need `getopt` to cope with -"2dD".
-
-<!--more-->
 
 # 2. Syntax
 ``` bash

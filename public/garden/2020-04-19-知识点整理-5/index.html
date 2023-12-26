@@ -18,10 +18,7 @@
     
     
     <title>Junyu Bian | 知识点整理-5</title>
-    <meta name="description" content="1. MySQL查询10-20条的数据
-
-select * from table limit 10, 20
-">
+    <meta name="description" content="1. MySQL查询10-20条的数据 select * from table limit 10, 20 2. 查找二叉树最大深度 struct TreeNode { int val; TreeNode * left; TreeNode * right; TreeNode(int x) : val(x), left(NULL), right(NULL){} }; int dfs (TreeNode * root, int result) { if (!root) { return result; } int left_res = dfs(root-&gt;left, result &#43; 1); int right_res = dfs(root-&gt;right, result &#43; 1); return max(left_res, right_res); } int MaxDepth(TreeNode * root) { int result = 0; return dfs(root, result); } 3.">
 </head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="https://junyubian.github.io/">
@@ -60,10 +57,7 @@ select * from table limit 10, 20
             <h1 class="display-2 mb-4 text-center">知识点整理-5</h1>
         </div>
         
-        <p class="text-center fs-4 fst-italic serif"><h3 id="1-mysql查询10-20条的数据">1. MySQL查询10-20条的数据</h3>
-<hr>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mysql" data-lang="mysql"><span style="display:flex;"><span><span style="color:#00a8c8">select</span> <span style="color:#f92672">*</span> <span style="color:#00a8c8">from</span> <span style="color:#00a8c8">table</span> <span style="color:#00a8c8">limit</span> <span style="color:#ae81ff">10</span><span style="color:#111">,</span> <span style="color:#ae81ff">20</span>
-</span></span></code></pre></div><hr></p>
+        <p class="text-center fs-4 fst-italic serif">1. MySQL查询10-20条的数据 select * from table limit 10, 20 2. 查找二叉树最大深度 struct TreeNode { int val; TreeNode * left; TreeNode * right; TreeNode(int x) : val(x), left(NULL), right(NULL){} }; int dfs (TreeNode * root, int result) { if (!root) { return result; } int left_res = dfs(root-&gt;left, result + 1); int right_res = dfs(root-&gt;right, result + 1); return max(left_res, right_res); } int MaxDepth(TreeNode * root) { int result = 0; return dfs(root, result); } 3.</p>
         
         <div class="text-center pt-4">
             
@@ -160,7 +154,7 @@ select * from table limit 10, 20
         </div><div class="container">
     <div class="row justify-content-between">
         <div class="col-sm-4">
-            <p class="footer">Junyu Ban© 2023 </p>
+            <p class="footer">Junyu Bian© 2023 </p>
         </div>
         <div class="col-sm-6 d-flex flex-row-reverse">
             

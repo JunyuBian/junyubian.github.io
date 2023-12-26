@@ -15,8 +15,6 @@ tags:
 1.4 `1` is stdout. `2` is stderr.
 1.5 `2>&1` means redirecting stderr to stdout.
 
-<!--more-->
-
 # 2. Example(s)
 
 ``` bash

@@ -18,14 +18,18 @@
     
     
     <title>Junyu Bian | LeetCode题目总结-Two Pointer&#43;Linked List</title>
-    <meta name="description" content="题目3:无重复字符的最长子串
-
-描述：
+    <meta name="description" content="题目3:无重复字符的最长子串 描述：
 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
 示例 1:
-输入: &ldquo;abcabcbb&rdquo;
-输出: 3
-解释: 因为无重复字符的最长子串是 &ldquo;abc&rdquo;，所以其长度为 3。">
+输入: &ldquo;abcabcbb&rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &ldquo;abc&rdquo;，所以其长度为 3。
+示例 2:
+输入: &ldquo;bbbbb&rdquo; 输出: 1 解释: 因为无重复字符的最长子串是 &ldquo;b&rdquo;，所以其长度为 1。 示例 3:
+输入: &ldquo;pwwkew&rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &ldquo;wke&rdquo;，所以其长度为 3。 请注意，你的答案必须是 子串 的长度，&ldquo;pwke&rdquo; 是一个子序列，不是子串。
+思路一：
+突破点：滑动窗口。
+步骤：
+设立指针a和指针b； b指针向右伸缩，对于每个A[b]判断是否之前出现过； 若出现，则a指向出现过的未知的下一位置，更新右指针和最大长度。 代码：
+class Solution { public: int lengthOfLongestSubstring(string s) { //s[start,end) 前面包含 后面不包含 int start(0), end(0), length(0), result(0); int stringSize = int(s.size()); while (end &lt; stringSize) { char tmpChar = s[end]; for (int index = start; index &lt; end; index&#43;&#43;) { if (tmpChar == s[index]) { start = index &#43; 1; length = end - start; break; } } end&#43;&#43;; length&#43;&#43;; result = max(result, length); } return result; } }; 思路二：">
 </head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="https://junyubian.github.io/">
@@ -64,14 +68,18 @@
             <h1 class="display-2 mb-4 text-center">LeetCode题目总结-Two Pointer&#43;Linked List</h1>
         </div>
         
-        <p class="text-center fs-4 fst-italic serif"><h3 id="题目3无重复字符的最长子串httpsleetcode-cncomproblemslongest-substring-without-repeating-characters">题目3:<a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/">无重复字符的最长子串</a></h3>
-<hr>
-<p>描述：</p>
-<p>给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。</p>
-<p>示例 1:</p>
-<p>输入: &ldquo;abcabcbb&rdquo;
-输出: 3
-解释: 因为无重复字符的最长子串是 &ldquo;abc&rdquo;，所以其长度为 3。</p></p>
+        <p class="text-center fs-4 fst-italic serif">题目3:无重复字符的最长子串 描述：
+给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+示例 1:
+输入: &ldquo;abcabcbb&rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &ldquo;abc&rdquo;，所以其长度为 3。
+示例 2:
+输入: &ldquo;bbbbb&rdquo; 输出: 1 解释: 因为无重复字符的最长子串是 &ldquo;b&rdquo;，所以其长度为 1。 示例 3:
+输入: &ldquo;pwwkew&rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &ldquo;wke&rdquo;，所以其长度为 3。 请注意，你的答案必须是 子串 的长度，&ldquo;pwke&rdquo; 是一个子序列，不是子串。
+思路一：
+突破点：滑动窗口。
+步骤：
+设立指针a和指针b； b指针向右伸缩，对于每个A[b]判断是否之前出现过； 若出现，则a指向出现过的未知的下一位置，更新右指针和最大长度。 代码：
+class Solution { public: int lengthOfLongestSubstring(string s) { //s[start,end) 前面包含 后面不包含 int start(0), end(0), length(0), result(0); int stringSize = int(s.size()); while (end &lt; stringSize) { char tmpChar = s[end]; for (int index = start; index &lt; end; index++) { if (tmpChar == s[index]) { start = index + 1; length = end - start; break; } } end++; length++; result = max(result, length); } return result; } }; 思路二：</p>
         
         <div class="text-center pt-4">
             
@@ -572,7 +580,7 @@ lists[i].length 的总和不超过 10^4</p>
         </div><div class="container">
     <div class="row justify-content-between">
         <div class="col-sm-4">
-            <p class="footer">Junyu Ban© 2023 </p>
+            <p class="footer">Junyu Bian© 2023 </p>
         </div>
         <div class="col-sm-6 d-flex flex-row-reverse">
             

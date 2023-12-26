@@ -21,8 +21,6 @@ a = b;
 b = temp;
 ```
 
-<!--more-->
-
 # Addition and Subtraction
 
 ```C++

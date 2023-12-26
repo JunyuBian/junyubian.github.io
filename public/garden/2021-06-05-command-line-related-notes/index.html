@@ -18,13 +18,7 @@
     
     
     <title>Junyu Bian | Command Line Related Notes</title>
-    <meta name="description" content="1. Switch to end of line in vi:
-shift&#43;G
-2. Switch to end of line in normal command line:
-ctrl&#43;E
-3. Switch to specific line in target file:
-vi &lt;file directory&gt; &#43;&lt;n&gt;
-">
+    <meta name="description" content="">
 </head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="https://junyubian.github.io/">
@@ -63,14 +57,6 @@ vi &lt;file directory&gt; &#43;&lt;n&gt;
             <h1 class="display-2 mb-4 text-center">Command Line Related Notes</h1>
         </div>
         
-        <p class="text-center fs-4 fst-italic serif"><h4 id="1-switch-to-end-of-line-in-vi">1. Switch to end of line in vi:</h4>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>shift+G
-</span></span></code></pre></div><h4 id="2-switch-to-end-of-line-in-normal-command-line">2. Switch to end of line in normal command line:</h4>
-<pre tabindex="0"><code>ctrl+E
-</code></pre><h4 id="3-switch-to-specific-line-in-target-file">3. Switch to specific line in target file:</h4>
-<pre tabindex="0"><code>vi &lt;file directory&gt; +&lt;n&gt;
-</code></pre></p>
-        
         <div class="text-center pt-4">
             
         </div>
@@ -88,17 +74,23 @@ vi &lt;file directory&gt; &#43;&lt;n&gt;
             <div class="row justify-content-between">
                 <div class="col-sm-4">
                     
+    
+    <span class="status">Growing 🌿</span>
+    
+
                 </div>
                 <div class="col-sm-8" style="text-align: right;">
                     
-                    
-                    <span class="badge tag-badge">Cent OS</span>
-                    
-                    <span class="badge tag-badge">Command Line</span>
+                
                     
                     <span class="badge tag-badge">en</span>
                     
-                
+                    <span class="badge tag-badge">notes</span>
+                    
+                    <span class="badge tag-badge">command-line</span>
+                    
+                    <span class="badge tag-badge">cent-os</span>
+                    
                 
                 
                 </div>
@@ -108,29 +100,43 @@ vi &lt;file directory&gt; &#43;&lt;n&gt;
 
     <div class="container-fluid py-2">
         <div class="serif main-content">
-            <h4 id="1-switch-to-end-of-line-in-vi">1. Switch to end of line in vi:</h4>
+            <ul>
+<li><a href="#1-switch-to-end-of-line-in-vi">1. Switch to end of line in vi:</a></li>
+<li><a href="#2-switch-to-end-of-line-in-normal-command-line">2. Switch to end of line in normal command line:</a></li>
+<li><a href="#3-switch-to-specific-line-in-target-file">3. Switch to specific line in target file:</a></li>
+<li><a href="#4-look-up-for-filesystems-of-disk">4. Look up for filesystems of disk:</a></li>
+<li><a href="#5-look-up-for-files-in-disk">5. Look up for files in disk:</a></li>
+<li><a href="#6-look-up-with-letter-case-ignored">6. Look up with letter case ignored:</a></li>
+<li><a href="#7-look-up-for-cpu-info">7. Look up for CPU info:</a></li>
+<li><a href="#8-switch-to-start-of-line-in-normal-command-line">8. Switch to start of line in normal command line:</a></li>
+<li><a href="#9-delete-one-fragment-in-normal-command-line">9. Delete one fragment in normal command line:</a></li>
+<li><a href="#10-delete-one-line-in-vi">10. Delete one line in vi:</a></li>
+<li><a href="#11-redo-in-vi">11. Redo in vi:</a></li>
+<li><a href="#12-for-loop-for-batch-processing">12. for loop for batch processing</a></li>
+</ul>
+<h1 id="1-switch-to-end-of-line-in-vi">1. Switch to end of line in vi:</h1>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>shift+G
-</span></span></code></pre></div><h4 id="2-switch-to-end-of-line-in-normal-command-line">2. Switch to end of line in normal command line:</h4>
+</span></span></code></pre></div><h1 id="2-switch-to-end-of-line-in-normal-command-line">2. Switch to end of line in normal command line:</h1>
 <pre tabindex="0"><code>ctrl+E
-</code></pre><h4 id="3-switch-to-specific-line-in-target-file">3. Switch to specific line in target file:</h4>
+</code></pre><h1 id="3-switch-to-specific-line-in-target-file">3. Switch to specific line in target file:</h1>
 <pre tabindex="0"><code>vi &lt;file directory&gt; +&lt;n&gt;
-</code></pre><h4 id="4-look-up-for-filesystems-of-disk">4. Look up for filesystems of disk:</h4>
+</code></pre><h1 id="4-look-up-for-filesystems-of-disk">4. Look up for filesystems of disk:</h1>
 <pre tabindex="0"><code>df -h
-</code></pre><h4 id="5-look-up-for-files-in-disk">5. Look up for files in disk:</h4>
+</code></pre><h1 id="5-look-up-for-files-in-disk">5. Look up for files in disk:</h1>
 <pre tabindex="0"><code>du
-</code></pre><h4 id="6-look-up-with-letter-case-ignored">6. Look up with letter case ignored:</h4>
+</code></pre><h1 id="6-look-up-with-letter-case-ignored">6. Look up with letter case ignored:</h1>
 <pre tabindex="0"><code>grep -i
-</code></pre><h4 id="7-look-up-for-cpu-info">7. Look up for CPU info:</h4>
+</code></pre><h1 id="7-look-up-for-cpu-info">7. Look up for CPU info:</h1>
 <pre tabindex="0"><code>htop
-</code></pre><h4 id="8-switch-to-start-of-line-in-normal-command-line">8. Switch to start of line in normal command line:</h4>
+</code></pre><h1 id="8-switch-to-start-of-line-in-normal-command-line">8. Switch to start of line in normal command line:</h1>
 <pre tabindex="0"><code>ctrl+A
-</code></pre><h4 id="9-delete-one-fragment-in-normal-command-line">9. Delete one fragment in normal command line:</h4>
+</code></pre><h1 id="9-delete-one-fragment-in-normal-command-line">9. Delete one fragment in normal command line:</h1>
 <pre tabindex="0"><code>ctrl+W
-</code></pre><h4 id="10-delete-one-line-in-vi">10. Delete one line in vi:</h4>
+</code></pre><h1 id="10-delete-one-line-in-vi">10. Delete one line in vi:</h1>
 <p>double click D</p>
-<h4 id="11-redo-in-vi">11. Redo in vi:</h4>
+<h1 id="11-redo-in-vi">11. Redo in vi:</h1>
 <p>double click U</p>
-<h4 id="12-for-loop-for-batch-processing">12. for loop for batch processing</h4>
+<h1 id="12-for-loop-for-batch-processing">12. for loop for batch processing</h1>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#00a8c8">for</span> i in <span style="color:#d88200">`</span>docker image ls<span style="color:#d88200">`</span><span style="color:#111">;</span> <span style="color:#00a8c8">do</span> <span style="color:#111">echo</span> <span style="color:#d88200">&#34;</span><span style="color:#111">$i</span><span style="color:#d88200">&#34;</span><span style="color:#111">;</span> <span style="color:#00a8c8">done</span>
 </span></span></code></pre></div>
         </div>
@@ -141,7 +147,7 @@ vi &lt;file directory&gt; &#43;&lt;n&gt;
         </div><div class="container">
     <div class="row justify-content-between">
         <div class="col-sm-4">
-            <p class="footer">Junyu Ban© 2023 </p>
+            <p class="footer">Junyu Bian© 2023 </p>
         </div>
         <div class="col-sm-6 d-flex flex-row-reverse">
             

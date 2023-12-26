@@ -18,21 +18,10 @@
     
     
     <title>Junyu Bian | Linux知识点总结</title>
-    <meta name="description" content="1. find命令
-
-
-查找指定文件名文件（不区分大小写）：
-
-find -iname &#34;ProgramToFind.java&#34;
-
-对找到的文件执行某命令
-
-find -iname &#34;ProgramToOperate.java&#34; -exec md5sum {} \;
-
-查找home目录下所有空文件
-
-find ~ -empty
-">
+    <meta name="description" content="1. find命令 查找指定文件名文件（不区分大小写）： find -iname &#34;ProgramToFind.java&#34; 对找到的文件执行某命令 find -iname &#34;ProgramToOperate.java&#34; -exec md5sum {} \; 查找home目录下所有空文件 find ~ -empty 在/home下找到大小超过3MB的文件 find /home -type f -size &#43;3072k 2. static和const关键字 static：存储在静态存储区，未初始化时自动初始化为0：
+局部变量： 变为静态局部变量； 作用域仍为局部作用域； 离开作用域仍驻留在内存中，但不可访问； 全局变量： 变为全局静态变量； 在声明的文件之外不可见； 成员变量： 变为类的全局变量，被类的对象共享，包括派生类的对象； 必须在类外进行初始化，如int base::var = 10;，但可以用const修饰static数据成员，从而在类内初始化； 成员函数： 使得成员函数为所有对象共享，不含this指针； 可以独立访问，不需要创建实例，如base::func(3, 5); 不可直接引用类的非静态成员，但是可以引用静态成员； 不可同时用const和static修饰成员函数（const含this指针，static不含，冲突）； const：
+表明变量不可修改； 限定成员函数不可修改任何数据成员； const与指针： const char *p：指向的内容不能改变； char * const p：将p声明为常指针，地址不能变，但是内容可变。 3. C&#43;&#43;的内存分区 栈区（stack）：主要存放函数参数以及局部变量，由系统自动分配释放； 堆区（heap）：用户通过malloc/new手动申请释放，分配类似链表； 全局/静态区：存放全局变量、静态变量； 字符串常量区：字符串常量； 代码区：程序的二进制代码。 4. STL容器 底层数据结构：
+vector：数组； map、multimap：红黑树； unordered_map、unordered_nultimap：哈希表。 5.">
 </head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="https://junyubian.github.io/">
@@ -71,21 +60,10 @@ find ~ -empty
             <h1 class="display-2 mb-4 text-center">Linux知识点总结</h1>
         </div>
         
-        <p class="text-center fs-4 fst-italic serif"><h3 id="1-find命令">1. find命令</h3>
-<hr>
-<ol>
-<li>查找指定文件名文件（不区分大小写）：</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find -iname <span style="color:#d88200">&#34;ProgramToFind.java&#34;</span>
-</span></span></code></pre></div><ol start="2">
-<li>对找到的文件执行某命令</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find -iname <span style="color:#d88200">&#34;ProgramToOperate.java&#34;</span> -exec md5sum <span style="color:#f92672">{}</span> <span style="color:#8045ff">\;</span>
-</span></span></code></pre></div><ol start="3">
-<li>查找home目录下所有空文件</li>
-</ol>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find ~ -empty
-</span></span></code></pre></div></p>
+        <p class="text-center fs-4 fst-italic serif">1. find命令 查找指定文件名文件（不区分大小写）： find -iname &#34;ProgramToFind.java&#34; 对找到的文件执行某命令 find -iname &#34;ProgramToOperate.java&#34; -exec md5sum {} \; 查找home目录下所有空文件 find ~ -empty 在/home下找到大小超过3MB的文件 find /home -type f -size +3072k 2. static和const关键字 static：存储在静态存储区，未初始化时自动初始化为0：
+局部变量： 变为静态局部变量； 作用域仍为局部作用域； 离开作用域仍驻留在内存中，但不可访问； 全局变量： 变为全局静态变量； 在声明的文件之外不可见； 成员变量： 变为类的全局变量，被类的对象共享，包括派生类的对象； 必须在类外进行初始化，如int base::var = 10;，但可以用const修饰static数据成员，从而在类内初始化； 成员函数： 使得成员函数为所有对象共享，不含this指针； 可以独立访问，不需要创建实例，如base::func(3, 5); 不可直接引用类的非静态成员，但是可以引用静态成员； 不可同时用const和static修饰成员函数（const含this指针，static不含，冲突）； const：
+表明变量不可修改； 限定成员函数不可修改任何数据成员； const与指针： const char *p：指向的内容不能改变； char * const p：将p声明为常指针，地址不能变，但是内容可变。 3. C++的内存分区 栈区（stack）：主要存放函数参数以及局部变量，由系统自动分配释放； 堆区（heap）：用户通过malloc/new手动申请释放，分配类似链表； 全局/静态区：存放全局变量、静态变量； 字符串常量区：字符串常量； 代码区：程序的二进制代码。 4. STL容器 底层数据结构：
+vector：数组； map、multimap：红黑树； unordered_map、unordered_nultimap：哈希表。 5.</p>
         
         <div class="text-center pt-4">
             
@@ -375,6 +353,7 @@ find ~ -empty
 <p>注意：返回一个从pos开始，包含pos的n个字符，pos默认值为0，n默认值为s.size()-pos。</p>
 </li>
 </ol>
+
         </div>
     </div>
 </div>
@@ -383,7 +362,7 @@ find ~ -empty
         </div><div class="container">
     <div class="row justify-content-between">
         <div class="col-sm-4">
-            <p class="footer">Junyu Ban© 2023 </p>
+            <p class="footer">Junyu Bian© 2023 </p>
         </div>
         <div class="col-sm-6 d-flex flex-row-reverse">
             

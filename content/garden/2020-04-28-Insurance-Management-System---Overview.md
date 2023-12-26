@@ -17,8 +17,6 @@ In this series of blogs, we will talk about how to build a Insurance Management 
 
 Tom's dad works in an insurance company. His work is to drop down who bought what kind of insurance, on which day does the customer receives an invoice, and on which day does the customer makes a payment. 
 
-<!--more-->
-
 Oneday, Tom's dad talks to Tom: "Oh Tom, you see see you, one day day, only eat, do nothing, build a management system for me." Tom becomes not happy.
 
 # Rlational Model

@@ -13,8 +13,6 @@ In this series of blogs, we will talk about different sorting algorithms.
 
 All the algorithms in the table below will be covered.
 
-<!--more-->
-
 | Algorithm                          | Time Complexity (Average Case) | Time Complexity (Worst Case) | Time Complexity (Best Case) | Merg    | Stability  |
 | ---------------------------------- | ------------------------------ | ---------------------------- | --------------------------- | ------- | ---------- |
 | Bubble Sort                        | O(N^2)                         | O(N^2)                       | O(N^2)                      | O(1)    | Stable     |

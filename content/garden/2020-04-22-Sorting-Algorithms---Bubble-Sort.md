@@ -39,8 +39,6 @@ Loop until reaching the last pair of elements.
 
 Repeat until all the array is sorted.
 
-<!--more-->
-
 ## How to code it...
 
 ```c++

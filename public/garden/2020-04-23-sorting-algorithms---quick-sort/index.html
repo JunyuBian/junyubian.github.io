@@ -20,114 +20,7 @@
     <title>Junyu Bian | Sorting Algorithms - Quick Sort</title>
     <meta name="description" content="In this series of blogs, we will talk about different sorting algorithms.
 All the algorithms in the table below will be covered.
-
-
-
-Algorithm
-Time Complexity (Average Case)
-Time Complexity (Worst Case)
-Time Complexity (Best Case)
-Merg
-Stability
-
-
-
-
-Bubble Sort
-O(N^2)
-O(N^2)
-O(N^2)
-O(1)
-Stable
-
-
-Quick Sort
-O(NlogN)
-O(N^2)
-O(NlogN)
-O(logN)
-Not Stable
-
-
-Quick Sort (with Random Selection)
-O(NlogN)
-O(NlogN)
-O(NlogN)
-O(logN)
-Not Stable
-
-
-Insertion Sort
-O(N^2)
-O(N^2)
-O(N)
-O(1)
-Stable
-
-
-Selection Sort
-O(N^2)
-O(N^2)
-O(N^2)
-O(1)
-Not Stable
-
-
-Heap Sort
-O(NlogN)
-O(NlogN)
-O(NlogN)
-O(1)
-Not Stable
-
-
-Merge Sort (with double divides)
-O(NlogN)
-O(NlogN)
-O(NlogN)
-O(N)
-Stable
-
-
-Merge Sort (with multi divides)
-O(NlogN)
-O(NlogN)
-O(NlogN)
-O(N)
-Stable
-
-
-Counting Sort
-O(N&#43;M)
-O(N&#43;M)
-O(N&#43;M)
-O(N&#43;M)
-Stable
-
-
-Bucket Sort
-O(N&#43;M)
-O(N^2)
-O(N&#43;M)
-O(N&#43;M)
-Stable
-
-
-Radix Sort
-O(N*M)
-O(N*M)
-O(N*M)
-O(N&#43;M)
-Stable
-
-
-
-Quick Sort
-How to do it&hellip;
-Divide and conquer.
-In each division, seperate the data into two parts.
-All elements in the first part should be all less than the elements in the second part.
-Loop until the array is sorted.">
+Algorithm Time Complexity (Average Case) Time Complexity (Worst Case) Time Complexity (Best Case) Merg Stability Bubble Sort O(N^2) O(N^2) O(N^2) O(1) Stable Quick Sort O(NlogN) O(N^2) O(NlogN) O(logN) Not Stable Quick Sort (with Random Selection) O(NlogN) O(NlogN) O(NlogN) O(logN) Not Stable Insertion Sort O(N^2) O(N^2) O(N) O(1) Stable Selection Sort O(N^2) O(N^2) O(N^2) O(1) Not Stable Heap Sort O(NlogN) O(NlogN) O(NlogN) O(1) Not Stable Merge Sort (with double divides) O(NlogN) O(NlogN) O(NlogN) O(N) Stable Merge Sort (with multi divides) O(NlogN) O(NlogN) O(NlogN) O(N) Stable Counting Sort O(N&#43;M) O(N&#43;M) O(N&#43;M) O(N&#43;M) Stable Bucket Sort O(N&#43;M) O(N^2) O(N&#43;M) O(N&#43;M) Stable Radix Sort O(N*M) O(N*M) O(N*M) O(N&#43;M) Stable Quick Sort How to do it&hellip; Divide and conquer.">
 </head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="https://junyubian.github.io/">
@@ -166,116 +59,9 @@ Loop until the array is sorted.">
             <h1 class="display-2 mb-4 text-center">Sorting Algorithms - Quick Sort</h1>
         </div>
         
-        <p class="text-center fs-4 fst-italic serif"><p>In this series of blogs, we will talk about different sorting algorithms.</p>
-<p>All the algorithms in the table below will be covered.</p>
-<table>
-<thead>
-<tr>
-<th>Algorithm</th>
-<th>Time Complexity (Average Case)</th>
-<th>Time Complexity (Worst Case)</th>
-<th>Time Complexity (Best Case)</th>
-<th>Merg</th>
-<th>Stability</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Bubble Sort</td>
-<td>O(N^2)</td>
-<td>O(N^2)</td>
-<td>O(N^2)</td>
-<td>O(1)</td>
-<td>Stable</td>
-</tr>
-<tr>
-<td>Quick Sort</td>
-<td>O(NlogN)</td>
-<td>O(N^2)</td>
-<td>O(NlogN)</td>
-<td>O(logN)</td>
-<td>Not Stable</td>
-</tr>
-<tr>
-<td>Quick Sort (with Random Selection)</td>
-<td>O(NlogN)</td>
-<td>O(NlogN)</td>
-<td>O(NlogN)</td>
-<td>O(logN)</td>
-<td>Not Stable</td>
-</tr>
-<tr>
-<td>Insertion Sort</td>
-<td>O(N^2)</td>
-<td>O(N^2)</td>
-<td>O(N)</td>
-<td>O(1)</td>
-<td>Stable</td>
-</tr>
-<tr>
-<td>Selection Sort</td>
-<td>O(N^2)</td>
-<td>O(N^2)</td>
-<td>O(N^2)</td>
-<td>O(1)</td>
-<td>Not Stable</td>
-</tr>
-<tr>
-<td>Heap Sort</td>
-<td>O(NlogN)</td>
-<td>O(NlogN)</td>
-<td>O(NlogN)</td>
-<td>O(1)</td>
-<td>Not Stable</td>
-</tr>
-<tr>
-<td>Merge Sort (with double divides)</td>
-<td>O(NlogN)</td>
-<td>O(NlogN)</td>
-<td>O(NlogN)</td>
-<td>O(N)</td>
-<td>Stable</td>
-</tr>
-<tr>
-<td>Merge Sort (with multi divides)</td>
-<td>O(NlogN)</td>
-<td>O(NlogN)</td>
-<td>O(NlogN)</td>
-<td>O(N)</td>
-<td>Stable</td>
-</tr>
-<tr>
-<td>Counting Sort</td>
-<td>O(N+M)</td>
-<td>O(N+M)</td>
-<td>O(N+M)</td>
-<td>O(N+M)</td>
-<td>Stable</td>
-</tr>
-<tr>
-<td>Bucket Sort</td>
-<td>O(N+M)</td>
-<td>O(N^2)</td>
-<td>O(N+M)</td>
-<td>O(N+M)</td>
-<td>Stable</td>
-</tr>
-<tr>
-<td>Radix Sort</td>
-<td>O(N*M)</td>
-<td>O(N*M)</td>
-<td>O(N*M)</td>
-<td>O(N+M)</td>
-<td>Stable</td>
-</tr>
-</tbody>
-</table>
-<h1 id="quick-sort">Quick Sort</h1>
-<h2 id="how-to-do-it">How to do it&hellip;</h2>
-<p>Divide and conquer.</p>
-<p>In each division, seperate the data into two parts.</p>
-<p>All elements in the first part should be all less than the elements in the second part.</p>
-<p>Loop until the array is sorted.</p></p>
+        <p class="text-center fs-4 fst-italic serif">In this series of blogs, we will talk about different sorting algorithms.
+All the algorithms in the table below will be covered.
+Algorithm Time Complexity (Average Case) Time Complexity (Worst Case) Time Complexity (Best Case) Merg Stability Bubble Sort O(N^2) O(N^2) O(N^2) O(1) Stable Quick Sort O(NlogN) O(N^2) O(NlogN) O(logN) Not Stable Quick Sort (with Random Selection) O(NlogN) O(NlogN) O(NlogN) O(logN) Not Stable Insertion Sort O(N^2) O(N^2) O(N) O(1) Stable Selection Sort O(N^2) O(N^2) O(N^2) O(1) Not Stable Heap Sort O(NlogN) O(NlogN) O(NlogN) O(1) Not Stable Merge Sort (with double divides) O(NlogN) O(NlogN) O(NlogN) O(N) Stable Merge Sort (with multi divides) O(NlogN) O(NlogN) O(NlogN) O(N) Stable Counting Sort O(N+M) O(N+M) O(N+M) O(N+M) Stable Bucket Sort O(N+M) O(N^2) O(N+M) O(N+M) Stable Radix Sort O(N*M) O(N*M) O(N*M) O(N+M) Stable Quick Sort How to do it&hellip; Divide and conquer.</p>
         
         <div class="text-center pt-4">
             
@@ -474,7 +260,7 @@ Loop until the array is sorted.">
         </div><div class="container">
     <div class="row justify-content-between">
         <div class="col-sm-4">
-            <p class="footer">Junyu Ban© 2023 </p>
+            <p class="footer">Junyu Bian© 2023 </p>
         </div>
         <div class="col-sm-6 d-flex flex-row-reverse">
             

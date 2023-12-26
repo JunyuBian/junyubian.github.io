@@ -18,12 +18,14 @@
     
     
     <title>Junyu Bian | 知识点整理-6</title>
-    <meta name="description" content="1. Linux和端口号、进程、文件相关的命令
-
-静态进程查看: ps
+    <meta name="description" content="1. Linux和端口号、进程、文件相关的命令 静态进程查看: ps
 例：通过进程名查看进程号
-ps ax | fgrep [进程名]
-网络查看: netstat">
+ps ax | fgrep [进程名] 网络查看: netstat
+例：通过进程号查看进程正在监听的端口
+netstat -antp | fgrep [进程号] 例：查看端口是否正在监听
+netstat -antp | grep [端口号] 搜索指定文件内容: grep (global regular expression print)
+例：搜索as在123.txt中的行号位置
+grep -n as 123.txt 2. 查找二叉树最大深度 struct TreeNode { int val; TreeNode * left; TreeNode * right; TreeNode(int x) : val(x), left(NULL), right(NULL){} }; int dfs (TreeNode * root, int result) { if (!root) { return result; } int left_res = dfs(root-&gt;left, result &#43; 1); int right_res = dfs(root-&gt;right, result &#43; 1); return max(left_res, right_res); } int MaxDepth(TreeNode * root) { int result = 0; return dfs(root, result); } 3.">
 </head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="https://junyubian.github.io/">
@@ -62,12 +64,14 @@ ps ax | fgrep [进程名]
             <h1 class="display-2 mb-4 text-center">知识点整理-6</h1>
         </div>
         
-        <p class="text-center fs-4 fst-italic serif"><h3 id="1-linux和端口号进程文件相关的命令">1. Linux和端口号、进程、文件相关的命令</h3>
-<hr>
-<p><strong>静态进程查看</strong>: ps</p>
-<p>例：通过进程名查看进程号</p>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ps ax <span style="color:#111">|</span> fgrep <span style="color:#f92672">[</span>进程名<span style="color:#f92672">]</span>
-</span></span></code></pre></div><p><strong>网络查看</strong>: netstat</p></p>
+        <p class="text-center fs-4 fst-italic serif">1. Linux和端口号、进程、文件相关的命令 静态进程查看: ps
+例：通过进程名查看进程号
+ps ax | fgrep [进程名] 网络查看: netstat
+例：通过进程号查看进程正在监听的端口
+netstat -antp | fgrep [进程号] 例：查看端口是否正在监听
+netstat -antp | grep [端口号] 搜索指定文件内容: grep (global regular expression print)
+例：搜索as在123.txt中的行号位置
+grep -n as 123.txt 2. 查找二叉树最大深度 struct TreeNode { int val; TreeNode * left; TreeNode * right; TreeNode(int x) : val(x), left(NULL), right(NULL){} }; int dfs (TreeNode * root, int result) { if (!root) { return result; } int left_res = dfs(root-&gt;left, result + 1); int right_res = dfs(root-&gt;right, result + 1); return max(left_res, right_res); } int MaxDepth(TreeNode * root) { int result = 0; return dfs(root, result); } 3.</p>
         
         <div class="text-center pt-4">
             
@@ -176,7 +180,7 @@ ps ax | fgrep [进程名]
         </div><div class="container">
     <div class="row justify-content-between">
         <div class="col-sm-4">
-            <p class="footer">Junyu Ban© 2023 </p>
+            <p class="footer">Junyu Bian© 2023 </p>
         </div>
         <div class="col-sm-6 d-flex flex-row-reverse">
             

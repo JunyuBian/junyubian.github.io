@@ -18,19 +18,18 @@
     
     
     <title>Junyu Bian | LeetCode题目总结-Tree&#43;BST</title>
-    <meta name="description" content="题目94:二叉树的中序遍历
-
-描述：
+    <meta name="description" content="题目94:二叉树的中序遍历 描述：
 给定一个二叉树，返回它的中序 遍历。
 示例:
-输入: [1,null,2,3]
-1
-
-2
-/
-3
-输出: [1,3,2]
-进阶: 递归算法很简单，你可以通过迭代算法完成吗？">
+输入: [1,null,2,3] 1 2 / 3
+输出: [1,3,2] 进阶: 递归算法很简单，你可以通过迭代算法完成吗？
+思路一：
+突破点：递归。
+代码：
+void traversal(TreeNode* cur, vector&lt;int&gt;&amp; vec) { if (nullptr == cur) return; traversal(cur-&gt;left, vec); // 左 vec.push_back(cur-&gt;val); // 中 traversal(cur-&gt;right, vec); // 右 } 思路二：
+突破点：迭代。
+代码：
+class Solution { public: vector&lt;int&gt; inorderTraversal(TreeNode* root) { vector&lt;int&gt; result; stack&lt;TreeNode*&gt; tempStack; if (nullptr != root) tempStack.push(root); while (!tempStack.empty()) { TreeNode* node = tempStack.top(); if (nullptr !">
 </head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="https://junyubian.github.io/">
@@ -69,19 +68,18 @@
             <h1 class="display-2 mb-4 text-center">LeetCode题目总结-Tree&#43;BST</h1>
         </div>
         
-        <p class="text-center fs-4 fst-italic serif"><h3 id="题目94二叉树的中序遍历httpsleetcode-cncomproblemsbinary-tree-inorder-traversal">题目94:<a href="https://leetcode-cn.com/problems/binary-tree-inorder-traversal/">二叉树的中序遍历</a></h3>
-<hr>
-<p>描述：</p>
-<p>给定一个二叉树，返回它的中序 遍历。</p>
-<p>示例:</p>
-<p>输入: [1,null,2,3]
-1
-<br>
-2
-/
-3</p>
-<p>输出: [1,3,2]
-进阶: 递归算法很简单，你可以通过迭代算法完成吗？</p></p>
+        <p class="text-center fs-4 fst-italic serif">题目94:二叉树的中序遍历 描述：
+给定一个二叉树，返回它的中序 遍历。
+示例:
+输入: [1,null,2,3] 1 2 / 3
+输出: [1,3,2] 进阶: 递归算法很简单，你可以通过迭代算法完成吗？
+思路一：
+突破点：递归。
+代码：
+void traversal(TreeNode* cur, vector&lt;int&gt;&amp; vec) { if (nullptr == cur) return; traversal(cur-&gt;left, vec); // 左 vec.push_back(cur-&gt;val); // 中 traversal(cur-&gt;right, vec); // 右 } 思路二：
+突破点：迭代。
+代码：
+class Solution { public: vector&lt;int&gt; inorderTraversal(TreeNode* root) { vector&lt;int&gt; result; stack&lt;TreeNode*&gt; tempStack; if (nullptr != root) tempStack.push(root); while (!tempStack.empty()) { TreeNode* node = tempStack.top(); if (nullptr !</p>
         
         <div class="text-center pt-4">
             
@@ -541,7 +539,7 @@ p、q 为不同节点且均存在于给定的二叉搜索树中。</p>
         </div><div class="container">
     <div class="row justify-content-between">
         <div class="col-sm-4">
-            <p class="footer">Junyu Ban© 2023 </p>
+            <p class="footer">Junyu Bian© 2023 </p>
         </div>
         <div class="col-sm-6 d-flex flex-row-reverse">
             

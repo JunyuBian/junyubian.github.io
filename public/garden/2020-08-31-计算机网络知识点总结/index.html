@@ -18,19 +18,22 @@
     
     
     <title>Junyu Bian | 计算机网络知识点总结</title>
-    <meta name="description" content="1. Https加密过程
-
-
-客户端发起握手请求；
-服务端返回已有的证书公钥（服务端通过CA认证后，拥有证书公钥和证书私钥）；
-客户端验证证书是否有效；
-若证书有效，则生成一个随机数；
-用证书公钥加密生成的随机数；
-将加密后的密钥发送给服务端；
-服务端用证书私钥解密密钥；
-服务端使用解密出的密钥加密要发送的内容并发送给客户端；
-客户端使用秘钥解密信息。
-">
+    <meta name="description" content="1. Https加密过程 客户端发起握手请求； 服务端返回已有的证书公钥（服务端通过CA认证后，拥有证书公钥和证书私钥）； 客户端验证证书是否有效； 若证书有效，则生成一个随机数； 用证书公钥加密生成的随机数； 将加密后的密钥发送给服务端； 服务端用证书私钥解密密钥； 服务端使用解密出的密钥加密要发送的内容并发送给客户端； 客户端使用秘钥解密信息。 2. 对称加密与非对称加密 对称加密：加密和解密使用同一个密钥；
+非对称加密：使用公钥和私钥进行加解密。
+3. CLOSE_WAIT和TIME_WAIT 在四次挥手中，
+CLOSE_WAIT：服务端收到FIN后，发送ACK给客户端，之后进入CLOSE_WAIT状态；
+TIME_WAIT：客户端收到FIN后，发送ACK给服务端，之后进入TIME_WAIT状态。
+4. TCP如何保证传输可靠性 数据包校验； 重排序：TCP将失序数据进行重新排序后才交给应用层； 应答机制：回复ACK； 超时重传； 流量控制：TCP连接的每一方都有固定大小缓冲空间，通过可变大小的滑窗协议完成。 5.如何预防TCP的DDos攻击 限制同时打开SYN半链接的数目；
+方法：在注册表中对TCPMaxHalfOpen相关参数进行调整；
+TCPMaxHalfOpen相关参数：
+SynAttackProtect：决定了系统受到SYN攻击时采取的保护措施，包括减少系统SYN&#43;ACK的重试次数等； TcpMaxHalfOpen：系统允许同时打开的半链接值； TcpMaxHalfOpenRetried：决定在什么情况下系统打开SYN攻击保护； 缩短SYN半链接的Time out时间。
+6. TCP如何实现拥塞控制 慢启动：以指数方式，由小到大逐渐增加拥塞窗口(cwnd)的大小，慢启动达到ssthresh阈值则进入拥塞避免； 拥塞避免：每经过一个往返时间RTT就把发送方拥塞窗口增加1，按照线性增长，发生拥塞，cwnd降为1，重新慢启动； 快重传：接收方收到失序报文后，立即发出重复确认，发送方收到三个连续重复确认则立即重传； 快恢复：发送方收到重复确认后，执行乘法减小 ，把ssthresh减半，但不执行慢开始，因为如果发生阻塞，不会收到多个重复确认，而是将cwnd设置为ssthresh大小进行拥塞避免。 7. 从输入网址到获得页面的过程 浏览器通过DNS查询对应IP地址： 浏览器搜索自身DNS缓存； 搜索操作系统DNS缓存； 向本地DNS服务器进行查询； 若不在本地域名服务器，则递归或迭代查询： 递归查询：服务器作为DNS客户向根服务器查询； 迭代查询：根服务器告知服务器需要查询的IP，服务器自己进行查询； 获取IP地址后，浏览器向服务器请求建立连接，发起三次握手； TCP连接建立后，浏览器向服务器发送HTTP请求； 浏览器对请求进行处理，并将处理结果返回给浏览器； 浏览器进行渲染，呈现页面给用户。 8. Session 与 Cookie Session：
+用户访问服务器时，服务器首先检查请求中是否包含sessionId，若包含，说明session已创建，若不包含，则为用户建立一个session并分配sessionId（依赖Cookie）；
+用户提交表单时，浏览器将用户的SessionId附在HTTP头信息中，服务器处理完表单将结果返回sessionId对应的用户；
+若Cookie被禁用：
+URL重写：直接将sessionId附在URL后； 2. 表单隐藏字段：修改表单，添加一个隐藏字段，以便提交时能够回传sessionId session共享：修改cookie的域名为父域名；
+使用场景：购物车；
+Cookie：">
 </head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="https://junyubian.github.io/">
@@ -69,19 +72,22 @@
             <h1 class="display-2 mb-4 text-center">计算机网络知识点总结</h1>
         </div>
         
-        <p class="text-center fs-4 fst-italic serif"><h3 id="1-https加密过程">1. Https加密过程</h3>
-<hr>
-<ol>
-<li>客户端发起握手请求；</li>
-<li>服务端返回已有的<code>证书公钥</code>（服务端通过CA认证后，拥有<code>证书公钥</code>和<code>证书私钥</code>）；</li>
-<li>客户端验证证书是否有效；</li>
-<li>若证书有效，则生成一个<code>随机数</code>；</li>
-<li>用<code>证书公钥</code>加密生成的随机数；</li>
-<li>将加密后的<code>密钥</code>发送给服务端；</li>
-<li>服务端用<code>证书私钥</code>解密密钥；</li>
-<li>服务端使用解密出的密钥加密要发送的内容并发送给客户端；</li>
-<li>客户端使用秘钥解密信息。</li>
-</ol></p>
+        <p class="text-center fs-4 fst-italic serif">1. Https加密过程 客户端发起握手请求； 服务端返回已有的证书公钥（服务端通过CA认证后，拥有证书公钥和证书私钥）； 客户端验证证书是否有效； 若证书有效，则生成一个随机数； 用证书公钥加密生成的随机数； 将加密后的密钥发送给服务端； 服务端用证书私钥解密密钥； 服务端使用解密出的密钥加密要发送的内容并发送给客户端； 客户端使用秘钥解密信息。 2. 对称加密与非对称加密 对称加密：加密和解密使用同一个密钥；
+非对称加密：使用公钥和私钥进行加解密。
+3. CLOSE_WAIT和TIME_WAIT 在四次挥手中，
+CLOSE_WAIT：服务端收到FIN后，发送ACK给客户端，之后进入CLOSE_WAIT状态；
+TIME_WAIT：客户端收到FIN后，发送ACK给服务端，之后进入TIME_WAIT状态。
+4. TCP如何保证传输可靠性 数据包校验； 重排序：TCP将失序数据进行重新排序后才交给应用层； 应答机制：回复ACK； 超时重传； 流量控制：TCP连接的每一方都有固定大小缓冲空间，通过可变大小的滑窗协议完成。 5.如何预防TCP的DDos攻击 限制同时打开SYN半链接的数目；
+方法：在注册表中对TCPMaxHalfOpen相关参数进行调整；
+TCPMaxHalfOpen相关参数：
+SynAttackProtect：决定了系统受到SYN攻击时采取的保护措施，包括减少系统SYN+ACK的重试次数等； TcpMaxHalfOpen：系统允许同时打开的半链接值； TcpMaxHalfOpenRetried：决定在什么情况下系统打开SYN攻击保护； 缩短SYN半链接的Time out时间。
+6. TCP如何实现拥塞控制 慢启动：以指数方式，由小到大逐渐增加拥塞窗口(cwnd)的大小，慢启动达到ssthresh阈值则进入拥塞避免； 拥塞避免：每经过一个往返时间RTT就把发送方拥塞窗口增加1，按照线性增长，发生拥塞，cwnd降为1，重新慢启动； 快重传：接收方收到失序报文后，立即发出重复确认，发送方收到三个连续重复确认则立即重传； 快恢复：发送方收到重复确认后，执行乘法减小 ，把ssthresh减半，但不执行慢开始，因为如果发生阻塞，不会收到多个重复确认，而是将cwnd设置为ssthresh大小进行拥塞避免。 7. 从输入网址到获得页面的过程 浏览器通过DNS查询对应IP地址： 浏览器搜索自身DNS缓存； 搜索操作系统DNS缓存； 向本地DNS服务器进行查询； 若不在本地域名服务器，则递归或迭代查询： 递归查询：服务器作为DNS客户向根服务器查询； 迭代查询：根服务器告知服务器需要查询的IP，服务器自己进行查询； 获取IP地址后，浏览器向服务器请求建立连接，发起三次握手； TCP连接建立后，浏览器向服务器发送HTTP请求； 浏览器对请求进行处理，并将处理结果返回给浏览器； 浏览器进行渲染，呈现页面给用户。 8. Session 与 Cookie Session：
+用户访问服务器时，服务器首先检查请求中是否包含sessionId，若包含，说明session已创建，若不包含，则为用户建立一个session并分配sessionId（依赖Cookie）；
+用户提交表单时，浏览器将用户的SessionId附在HTTP头信息中，服务器处理完表单将结果返回sessionId对应的用户；
+若Cookie被禁用：
+URL重写：直接将sessionId附在URL后； 2. 表单隐藏字段：修改表单，添加一个隐藏字段，以便提交时能够回传sessionId session共享：修改cookie的域名为父域名；
+使用场景：购物车；
+Cookie：</p>
         
         <div class="text-center pt-4">
             
@@ -305,6 +311,7 @@
 <p>5XX：服务器不能处理合法请求：</p>
 <p>​	500：服务器内部错误；</p>
 <p>​	503：服务暂时不可用。</p>
+
         </div>
     </div>
 </div>
@@ -313,7 +320,7 @@
         </div><div class="container">
     <div class="row justify-content-between">
         <div class="col-sm-4">
-            <p class="footer">Junyu Ban© 2023 </p>
+            <p class="footer">Junyu Bian© 2023 </p>
         </div>
         <div class="col-sm-6 d-flex flex-row-reverse">
             

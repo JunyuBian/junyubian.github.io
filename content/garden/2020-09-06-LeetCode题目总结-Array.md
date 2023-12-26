@@ -26,8 +26,6 @@ tags:
 3,2,1 → 1,2,3
 1,1,5 → 1,5,1
 
-<!--more-->
-
 **[思路](https://leetcode-cn.com/problems/next-permutation/solution/c-4msti-jie-si-lu-jian-dan-4bu-jie-jue-by-jie-yi/)：**
 
 突破点：`下一个更大排列的特性是什么。` 

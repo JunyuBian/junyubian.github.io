@@ -18,14 +18,17 @@
     
     
     <title>Junyu Bian | LeetCode题目总结-DP&#43;Greedy</title>
-    <meta name="description" content="题目5:最长回文子串
-
-描述：
+    <meta name="description" content="题目5:最长回文子串 描述：
 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
 示例 1：
-输入: &ldquo;babad&rdquo;
-输出: &ldquo;bab&rdquo;
-注意: &ldquo;aba&rdquo; 也是一个有效答案。">
+输入: &ldquo;babad&rdquo; 输出: &ldquo;bab&rdquo; 注意: &ldquo;aba&rdquo; 也是一个有效答案。
+示例 2：
+输入: &ldquo;cbbd&rdquo; 输出: &ldquo;bb&rdquo;
+思路一：（时间超限）
+突破点：反转字符串的公共子串。
+步骤：
+将输入的字符串反转； 求两者的公共子串； 判断该子串是否为所需的最长回文子串。 代码：
+class Solution { public: string longestPalindrome(string s) { //大小为1的字符串必为回文串 if(s.length() == 1) return s; string rev = s; string res; std::reverse(rev.begin(),rev.end()); if(rev == s) return s; //存放回文子串的长度 int len = 0; //查找s与rev的最长公共子串 for(int i=0; i&lt;s.length(); i&#43;&#43;) { //存放待验证子串 string temp; for(int j=i; j&lt;s.">
 </head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="https://junyubian.github.io/">
@@ -64,14 +67,17 @@
             <h1 class="display-2 mb-4 text-center">LeetCode题目总结-DP&#43;Greedy</h1>
         </div>
         
-        <p class="text-center fs-4 fst-italic serif"><h3 id="题目5最长回文子串httpsleetcode-cncomproblemslongest-palindromic-substring">题目5:<a href="https://leetcode-cn.com/problems/longest-palindromic-substring/">最长回文子串</a></h3>
-<hr>
-<p>描述：</p>
-<p>给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。</p>
-<p>示例 1：</p>
-<p>输入: &ldquo;babad&rdquo;
-输出: &ldquo;bab&rdquo;
-注意: &ldquo;aba&rdquo; 也是一个有效答案。</p></p>
+        <p class="text-center fs-4 fst-italic serif">题目5:最长回文子串 描述：
+给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+示例 1：
+输入: &ldquo;babad&rdquo; 输出: &ldquo;bab&rdquo; 注意: &ldquo;aba&rdquo; 也是一个有效答案。
+示例 2：
+输入: &ldquo;cbbd&rdquo; 输出: &ldquo;bb&rdquo;
+思路一：（时间超限）
+突破点：反转字符串的公共子串。
+步骤：
+将输入的字符串反转； 求两者的公共子串； 判断该子串是否为所需的最长回文子串。 代码：
+class Solution { public: string longestPalindrome(string s) { //大小为1的字符串必为回文串 if(s.length() == 1) return s; string rev = s; string res; std::reverse(rev.begin(),rev.end()); if(rev == s) return s; //存放回文子串的长度 int len = 0; //查找s与rev的最长公共子串 for(int i=0; i&lt;s.length(); i++) { //存放待验证子串 string temp; for(int j=i; j&lt;s.</p>
         
         <div class="text-center pt-4">
             
@@ -615,7 +621,7 @@ wordDict = [&ldquo;cats&rdquo;, &ldquo;dog&rdquo;, &ldquo;sand&rdquo;, &ldquo;an
         </div><div class="container">
     <div class="row justify-content-between">
         <div class="col-sm-4">
-            <p class="footer">Junyu Ban© 2023 </p>
+            <p class="footer">Junyu Bian© 2023 </p>
         </div>
         <div class="col-sm-6 d-flex flex-row-reverse">
             

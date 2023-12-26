@@ -18,14 +18,21 @@
     
     
     <title>Junyu Bian | LeetCode题目总结-Heap&#43;Stack</title>
-    <meta name="description" content="题目20:有效的括号
-
-描述：
+    <meta name="description" content="题目20:有效的括号 描述：
 给定一个只包括 &lsquo;(&rsquo;，&rsquo;)&rsquo;，&rsquo;{&rsquo;，&rsquo;}&rsquo;，&rsquo;[&rsquo;，&rsquo;]&rsquo; 的字符串，判断字符串是否有效。
 有效字符串需满足：
-左括号必须用相同类型的右括号闭合。
-左括号必须以正确的顺序闭合。
-注意空字符串可被认为是有效字符串。">
+左括号必须用相同类型的右括号闭合。 左括号必须以正确的顺序闭合。 注意空字符串可被认为是有效字符串。
+示例 1:
+输入: &ldquo;()&rdquo; 输出: true 示例 2:
+输入: &ldquo;()[]{}&rdquo; 输出: true 示例 3:
+输入: &ldquo;(]&rdquo; 输出: false 示例 4:
+输入: &ldquo;([)]&rdquo; 输出: false 示例 5:
+输入: &ldquo;{[]}&rdquo; 输出: true
+思路：
+突破点：使用栈模拟删除过程。
+步骤：
+使用栈进行存储； 当匹配到最小的括号对时，将这一对从栈中删除； 如果最后栈为空，则为有效。 代码：
+class Solution { public: bool isValid(string s) { unordered_map&lt;char,int&gt; m{{&#39;(&#39;,1},{&#39;[&#39;,2},{&#39;{&#39;,3}, {&#39;)&#39;,4},{&#39;]&#39;,5},{&#39;}&#39;,6}}; stack&lt;char&gt; st; bool isTrue = true; for(char c:s){ int flag = m[c]; if(flag&gt;=1 &amp;&amp; flag&lt;=3) { st.">
 </head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="https://junyubian.github.io/">
@@ -64,14 +71,21 @@
             <h1 class="display-2 mb-4 text-center">LeetCode题目总结-Heap&#43;Stack</h1>
         </div>
         
-        <p class="text-center fs-4 fst-italic serif"><h3 id="题目20有效的括号httpsleetcode-cncomproblemsvalid-parentheses">题目20:<a href="https://leetcode-cn.com/problems/valid-parentheses/">有效的括号</a></h3>
-<hr>
-<p>描述：</p>
-<p>给定一个只包括 &lsquo;(&rsquo;，&rsquo;)&rsquo;，&rsquo;{&rsquo;，&rsquo;}&rsquo;，&rsquo;[&rsquo;，&rsquo;]&rsquo; 的字符串，判断字符串是否有效。</p>
-<p>有效字符串需满足：</p>
-<p>左括号必须用相同类型的右括号闭合。
-左括号必须以正确的顺序闭合。
-注意空字符串可被认为是有效字符串。</p></p>
+        <p class="text-center fs-4 fst-italic serif">题目20:有效的括号 描述：
+给定一个只包括 &lsquo;(&rsquo;，&rsquo;)&rsquo;，&rsquo;{&rsquo;，&rsquo;}&rsquo;，&rsquo;[&rsquo;，&rsquo;]&rsquo; 的字符串，判断字符串是否有效。
+有效字符串需满足：
+左括号必须用相同类型的右括号闭合。 左括号必须以正确的顺序闭合。 注意空字符串可被认为是有效字符串。
+示例 1:
+输入: &ldquo;()&rdquo; 输出: true 示例 2:
+输入: &ldquo;()[]{}&rdquo; 输出: true 示例 3:
+输入: &ldquo;(]&rdquo; 输出: false 示例 4:
+输入: &ldquo;([)]&rdquo; 输出: false 示例 5:
+输入: &ldquo;{[]}&rdquo; 输出: true
+思路：
+突破点：使用栈模拟删除过程。
+步骤：
+使用栈进行存储； 当匹配到最小的括号对时，将这一对从栈中删除； 如果最后栈为空，则为有效。 代码：
+class Solution { public: bool isValid(string s) { unordered_map&lt;char,int&gt; m{{&#39;(&#39;,1},{&#39;[&#39;,2},{&#39;{&#39;,3}, {&#39;)&#39;,4},{&#39;]&#39;,5},{&#39;}&#39;,6}}; stack&lt;char&gt; st; bool isTrue = true; for(char c:s){ int flag = m[c]; if(flag&gt;=1 &amp;&amp; flag&lt;=3) { st.</p>
         
         <div class="text-center pt-4">
             
@@ -741,7 +755,7 @@ queue.empty(); // 返回 false</p>
         </div><div class="container">
     <div class="row justify-content-between">
         <div class="col-sm-4">
-            <p class="footer">Junyu Ban© 2023 </p>
+            <p class="footer">Junyu Bian© 2023 </p>
         </div>
         <div class="col-sm-6 d-flex flex-row-reverse">
             

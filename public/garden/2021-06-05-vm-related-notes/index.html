@@ -18,9 +18,7 @@
     
     
     <title>Junyu Bian | VM Related Notes</title>
-    <meta name="description" content="1. List all VMs:
-virsh list
-">
+    <meta name="description" content="">
 </head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="https://junyubian.github.io/">
@@ -59,10 +57,6 @@ virsh list
             <h1 class="display-2 mb-4 text-center">VM Related Notes</h1>
         </div>
         
-        <p class="text-center fs-4 fst-italic serif"><h4 id="1-list-all-vms">1. List all VMs:</h4>
-<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>virsh list
-</span></span></code></pre></div></p>
-        
         <div class="text-center pt-4">
             
         </div>
@@ -80,15 +74,21 @@ virsh list
             <div class="row justify-content-between">
                 <div class="col-sm-4">
                     
+    
+    <span class="status">Growing 🌿</span>
+    
+
                 </div>
                 <div class="col-sm-8" style="text-align: right;">
                     
-                    
-                    <span class="badge tag-badge">VM</span>
+                
                     
                     <span class="badge tag-badge">en</span>
                     
-                
+                    <span class="badge tag-badge">notes</span>
+                    
+                    <span class="badge tag-badge">vm</span>
+                    
                 
                 
                 </div>
@@ -98,11 +98,16 @@ virsh list
 
     <div class="container-fluid py-2">
         <div class="serif main-content">
-            <h4 id="1-list-all-vms">1. List all VMs:</h4>
+            <ul>
+<li><a href="#1-list-all-vms">1. List all VMs:</a></li>
+<li><a href="#2-list-network-setting-xml">2. List network setting xml:</a></li>
+<li><a href="#3-list-and-revert-vm-from-snapshots">3. list and revert vm from snapshots:</a></li>
+</ul>
+<h1 id="1-list-all-vms">1. List all VMs:</h1>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>virsh list
-</span></span></code></pre></div><h4 id="2-list-network-setting-xml">2. List network setting xml:</h4>
+</span></span></code></pre></div><h1 id="2-list-network-setting-xml">2. List network setting xml:</h1>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>virsh net-dumpxml &lt;network&gt;
-</span></span></code></pre></div><h4 id="3-list-and-revert-vm-from-snapshots">3. list and revert vm from snapshots:</h4>
+</span></span></code></pre></div><h1 id="3-list-and-revert-vm-from-snapshots">3. list and revert vm from snapshots:</h1>
 <div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>virsh snapshot-list <span style="color:#ae81ff">476</span>
 </span></span><span style="display:flex;"><span>virsh snapshot-revert --domain freebsd --snapshotname 5Sep2016_S1 --running
 </span></span></code></pre></div>
@@ -114,7 +119,7 @@ virsh list
         </div><div class="container">
     <div class="row justify-content-between">
         <div class="col-sm-4">
-            <p class="footer">Junyu Ban© 2023 </p>
+            <p class="footer">Junyu Bian© 2023 </p>
         </div>
         <div class="col-sm-6 d-flex flex-row-reverse">
             

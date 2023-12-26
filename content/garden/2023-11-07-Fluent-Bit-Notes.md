@@ -1,13 +1,10 @@
 ---
 title: Fluent Bit Client Notes
-date: 2023-11-07 21:53:43
-categories: 
-- Notes
-tags:
-- Fluent-bit
-- Logging
-- Tom Show
-- en
+date: 2023-11-07
+draft: false
+garden_tags: ["en", "notes", "fluent-bit", "logging", "tom-show"]
+summary: " "
+status: "growing"
 ---
 
 - [What is fluent bit](#what-is-fluent-bit)
@@ -20,8 +17,6 @@ tags:
 # What is fluent bit
 
 One day, the Insurance Management System Tom built crashed. Good news is the system recovered through rebooting, bad news is Tom did not know what had gone wrong. Tom's dad comes by and says to Tom "Fluent Bit is a telemetry agent designed to collect and process telemetry data from constrained systems to cloud infrastructures. Why don't you give it a try?"
-
-<!--more-->
 
 # Structural sketch
 
