@@ -2,7 +2,7 @@
 title: Criterions for Site
 date: 2023-12-02
 draft: false
-garden_tags: ["en", "Criterions"]
+garden_tags: ["en", "criterions"]
 summary: " "
 status: "growing"
 ---
