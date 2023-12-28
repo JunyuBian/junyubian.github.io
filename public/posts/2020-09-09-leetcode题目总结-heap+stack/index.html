@@ -1,54 +1,131 @@
 <!DOCTYPE html>
-<html lang="en-us">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<style type=text/css>body{font-family:monospace;}</style>
-	<title>LeetCode题目总结-Heap&#43;Stack</title>
-	
-	
-	<link rel="stylesheet" href="/css/style.css">
-	
-	
-</head>
-<body>
-	<header>
-	================<br>
-	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
-	================
-	<div style="float: right;">Welcome to my posts!</div><br>
-	<p>
-	<nav>
-			<a href="/"><b>Start</b></a>.
-			
-			
-			<a href="/posts/"><b>Posts</b></a>.
-			
-			<a href="/categories/"><b>Categories</b></a>.
-			
-			<a href="/tags/"><b>Tags</b></a>.
-			
-			<a href="/about/"><b>About</b></a>.
-			
-	</nav>
-	</p>
-	
-</header>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;800&family=Frank+Ruhl+Libre:wght@200;300;400;500;600&family=Encode+Sans+Semi+Condensed:wght@400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/all.min.css">
+    <link disabled id="dark-mode-theme" rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/my_style.css">
+    
+    
+    
+    <title>Junyu Bian | LeetCode题目总结-Heap&#43;Stack</title>
+    <meta name="description" content="题目20:有效的括号 描述：
+给定一个只包括 &lsquo;(&rsquo;，&rsquo;)&rsquo;，&rsquo;{&rsquo;，&rsquo;}&rsquo;，&rsquo;[&rsquo;，&rsquo;]&rsquo; 的字符串，判断字符串是否有效。
+有效字符串需满足：
+左括号必须用相同类型的右括号闭合。 左括号必须以正确的顺序闭合。 注意空字符串可被认为是有效字符串。
+示例 1:
+输入: &ldquo;()&rdquo; 输出: true 示例 2:
+输入: &ldquo;()[]{}&rdquo; 输出: true 示例 3:
+输入: &ldquo;(]&rdquo; 输出: false 示例 4:
+输入: &ldquo;([)]&rdquo; 输出: false 示例 5:
+输入: &ldquo;{[]}&rdquo; 输出: true
+思路：
+突破点：使用栈模拟删除过程。
+步骤：
+使用栈进行存储； 当匹配到最小的括号对时，将这一对从栈中删除； 如果最后栈为空，则为有效。 代码：
+class Solution { public: bool isValid(string s) { unordered_map&lt;char,int&gt; m{{&#39;(&#39;,1},{&#39;[&#39;,2},{&#39;{&#39;,3}, {&#39;)&#39;,4},{&#39;]&#39;,5},{&#39;}&#39;,6}}; stack&lt;char&gt; st; bool isTrue = true; for(char c:s){ int flag = m[c]; if(flag&gt;=1 &amp;&amp; flag&lt;=3) { st.">
+</head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="https://junyubian.github.io/">
+            
+            <b style="font-weight: 800;">JB</b>
+            
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0"><li class='nav-item '>
+                    <a class="nav-link" href="/garden/"> Digital Garden</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/projects/"> Projects</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/library/"> Library</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/about/"> About</a>
+                </li>
+             
+            <li class="nav-item px-2 pt-1">
+                <a class="btn fas fa-moon" id="dark-mode-toggle"></a>
+            </li>
+            </ul>
+        </div>
+    </div>
+</nav><div id="content">
 
-	
-	<main>
-		<article>
-			<h1>LeetCode题目总结-Heap&#43;Stack</h1>
-			<b><time>09/09/2020 12:32</time></b>
-		       
-		           <a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
-        	       
-		           <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>
-        	       
+<div class="container" style="max-width: 800px;">
+    <div class="py-4 rounded-3">
+        <div class="container-fluid py-2">
+            <h1 class="display-2 mb-4 text-center">LeetCode题目总结-Heap&#43;Stack</h1>
+        </div>
+        
+        <p class="text-center fs-4 fst-italic serif">题目20:有效的括号 描述：
+给定一个只包括 &lsquo;(&rsquo;，&rsquo;)&rsquo;，&rsquo;{&rsquo;，&rsquo;}&rsquo;，&rsquo;[&rsquo;，&rsquo;]&rsquo; 的字符串，判断字符串是否有效。
+有效字符串需满足：
+左括号必须用相同类型的右括号闭合。 左括号必须以正确的顺序闭合。 注意空字符串可被认为是有效字符串。
+示例 1:
+输入: &ldquo;()&rdquo; 输出: true 示例 2:
+输入: &ldquo;()[]{}&rdquo; 输出: true 示例 3:
+输入: &ldquo;(]&rdquo; 输出: false 示例 4:
+输入: &ldquo;([)]&rdquo; 输出: false 示例 5:
+输入: &ldquo;{[]}&rdquo; 输出: true
+思路：
+突破点：使用栈模拟删除过程。
+步骤：
+使用栈进行存储； 当匹配到最小的括号对时，将这一对从栈中删除； 如果最后栈为空，则为有效。 代码：
+class Solution { public: bool isValid(string s) { unordered_map&lt;char,int&gt; m{{&#39;(&#39;,1},{&#39;[&#39;,2},{&#39;{&#39;,3}, {&#39;)&#39;,4},{&#39;]&#39;,5},{&#39;}&#39;,6}}; stack&lt;char&gt; st; bool isTrue = true; for(char c:s){ int flag = m[c]; if(flag&gt;=1 &amp;&amp; flag&lt;=3) { st.</p>
+        
+        <div class="text-center pt-4">
+            
+        </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+        <div class="col-12">
+            <p class="card-date m-0">
+                
+                
+                    Created Sep 9, 2020 - 
+                
+                Last updated: Sep 9, 2020
+            </p>
+            <hr class="dropdown-divider">
+            <div class="row justify-content-between">
+                <div class="col-sm-4">
+                    
+                </div>
+                <div class="col-sm-8" style="text-align: right;">
+                    
+                    
+                    <span class="badge tag-badge">C&#43;&#43;</span>
+                    
+                    <span class="badge tag-badge">算法</span>
+                    
+                    <span class="badge tag-badge">ch</span>
+                    
+                
+                
+                
+                </div>
+            </div>
+        </div>
+    </div>
 
-			<div>
-				<h3 id="题目20有效的括号httpsleetcode-cncomproblemsvalid-parentheses">题目20:<a href="https://leetcode-cn.com/problems/valid-parentheses/">有效的括号</a></h3>
+    <div class="container-fluid py-2">
+        <div class="serif main-content">
+            <h3 id="题目20有效的括号httpsleetcode-cncomproblemsvalid-parentheses">题目20:<a href="https://leetcode-cn.com/problems/valid-parentheses/">有效的括号</a></h3>
+<hr>
 <p>描述：</p>
 <p>给定一个只包括 &lsquo;(&rsquo;，&rsquo;)&rsquo;，&rsquo;{&rsquo;，&rsquo;}&rsquo;，&rsquo;[&rsquo;，&rsquo;]&rsquo; 的字符串，判断字符串是否有效。</p>
 <p>有效字符串需满足：</p>
@@ -79,32 +156,33 @@
 <li>如果最后栈为空，则为有效。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> isValid(string s) {
-</span></span><span style="display:flex;"><span>        unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span>,<span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> m{{<span style="color:#e6db74">&#39;(&#39;</span>,<span style="color:#ae81ff">1</span>},{<span style="color:#e6db74">&#39;[&#39;</span>,<span style="color:#ae81ff">2</span>},{<span style="color:#e6db74">&#39;{&#39;</span>,<span style="color:#ae81ff">3</span>},
-</span></span><span style="display:flex;"><span>                                {<span style="color:#e6db74">&#39;)&#39;</span>,<span style="color:#ae81ff">4</span>},{<span style="color:#e6db74">&#39;]&#39;</span>,<span style="color:#ae81ff">5</span>},{<span style="color:#e6db74">&#39;}&#39;</span>,<span style="color:#ae81ff">6</span>}};
-</span></span><span style="display:flex;"><span>        stack<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;</span> st;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">bool</span> isTrue <span style="color:#f92672">=</span> true;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">char</span> c:s){
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> flag <span style="color:#f92672">=</span> m[c];
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(flag<span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> flag<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">3</span>) {
-</span></span><span style="display:flex;"><span>              st.push(c);
-</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span>(<span style="color:#f92672">!</span>st.empty() <span style="color:#f92672">&amp;&amp;</span> m[st.top()]<span style="color:#f92672">==</span>flag<span style="color:#f92672">-</span><span style="color:#ae81ff">3</span>) {
-</span></span><span style="display:flex;"><span>              st.pop();
-</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>              isTrue <span style="color:#f92672">=</span> false;
-</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">break</span>;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>st.empty()) {
-</span></span><span style="display:flex;"><span>          isTrue <span style="color:#f92672">=</span> false;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> isTrue;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">bool</span> <span style="color:#111">isValid</span><span style="color:#111">(</span><span style="color:#111">string</span> <span style="color:#111">s</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">unordered_map</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">char</span><span style="color:#111">,</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">m</span><span style="color:#111">{{</span><span style="color:#d88200">&#39;(&#39;</span><span style="color:#111">,</span><span style="color:#ae81ff">1</span><span style="color:#111">},{</span><span style="color:#d88200">&#39;[&#39;</span><span style="color:#111">,</span><span style="color:#ae81ff">2</span><span style="color:#111">},{</span><span style="color:#d88200">&#39;{&#39;</span><span style="color:#111">,</span><span style="color:#ae81ff">3</span><span style="color:#111">},</span>
+</span></span><span style="display:flex;"><span>                                <span style="color:#111">{</span><span style="color:#d88200">&#39;)&#39;</span><span style="color:#111">,</span><span style="color:#ae81ff">4</span><span style="color:#111">},{</span><span style="color:#d88200">&#39;]&#39;</span><span style="color:#111">,</span><span style="color:#ae81ff">5</span><span style="color:#111">},{</span><span style="color:#d88200">&#39;}&#39;</span><span style="color:#111">,</span><span style="color:#ae81ff">6</span><span style="color:#111">}};</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">stack</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">char</span><span style="color:#f92672">&gt;</span> <span style="color:#111">st</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">bool</span> <span style="color:#111">isTrue</span> <span style="color:#f92672">=</span> <span style="color:#111">true</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span><span style="color:#111">(</span><span style="color:#00a8c8">char</span> <span style="color:#111">c</span><span style="color:#111">:</span><span style="color:#111">s</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">int</span> <span style="color:#111">flag</span> <span style="color:#f92672">=</span> <span style="color:#111">m</span><span style="color:#111">[</span><span style="color:#111">c</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">flag</span><span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">flag</span><span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">3</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#111">st</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">c</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#75af00">if</span><span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">st</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">()</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">m</span><span style="color:#111">[</span><span style="color:#111">st</span><span style="color:#111">.</span><span style="color:#111">top</span><span style="color:#111">()]</span><span style="color:#f92672">==</span><span style="color:#111">flag</span><span style="color:#f92672">-</span><span style="color:#ae81ff">3</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#111">st</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#111">isTrue</span> <span style="color:#f92672">=</span> <span style="color:#111">false</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>              <span style="color:#00a8c8">break</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">st</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">())</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#111">isTrue</span> <span style="color:#f92672">=</span> <span style="color:#111">false</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">isTrue</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目42接雨水httpsleetcode-cncomproblemstrapping-rain-water">题目42:<a href="https://leetcode-cn.com/problems/trapping-rain-water/">接雨水</a></h3>
+<hr>
 <p>描述：</p>
 <p>给定 n 个非负整数表示每个宽度为 1 的柱子的高度图，计算按此排列的柱子，下雨之后能接多少雨水。</p>
 <p>示例:</p>
@@ -119,23 +197,23 @@
 <li>如果当前条形块大于栈顶条形块，则暗处栈顶元素，并累加到结果中。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">trap</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> height) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> ans <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, current <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>    stack<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> st;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (current <span style="color:#f92672">&lt;</span> height.size()) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>st.empty() <span style="color:#f92672">&amp;&amp;</span> height[current] <span style="color:#f92672">&gt;</span> height[st.top()]) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> top <span style="color:#f92672">=</span> st.top();
-</span></span><span style="display:flex;"><span>            st.pop();
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (st.empty())
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> distance <span style="color:#f92672">=</span> current <span style="color:#f92672">-</span> st.top() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> bounded_height <span style="color:#f92672">=</span> min(height[current], height[st.top()]) <span style="color:#f92672">-</span> height[top];
-</span></span><span style="display:flex;"><span>            ans <span style="color:#f92672">+=</span> distance <span style="color:#f92672">*</span> bounded_height;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        st.push(current<span style="color:#f92672">++</span>);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ans;
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">int</span> <span style="color:#75af00">trap</span><span style="color:#111">(</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;&amp;</span> <span style="color:#111">height</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#111">ans</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#111">current</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">stack</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">st</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#111">current</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">height</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">())</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">st</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">()</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">height</span><span style="color:#111">[</span><span style="color:#111">current</span><span style="color:#111">]</span> <span style="color:#f92672">&gt;</span> <span style="color:#111">height</span><span style="color:#111">[</span><span style="color:#111">st</span><span style="color:#111">.</span><span style="color:#111">top</span><span style="color:#111">()])</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">int</span> <span style="color:#111">top</span> <span style="color:#f92672">=</span> <span style="color:#111">st</span><span style="color:#111">.</span><span style="color:#111">top</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">st</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">st</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">())</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">break</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">int</span> <span style="color:#111">distance</span> <span style="color:#f92672">=</span> <span style="color:#111">current</span> <span style="color:#f92672">-</span> <span style="color:#111">st</span><span style="color:#111">.</span><span style="color:#111">top</span><span style="color:#111">()</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">int</span> <span style="color:#111">bounded_height</span> <span style="color:#f92672">=</span> <span style="color:#111">min</span><span style="color:#111">(</span><span style="color:#111">height</span><span style="color:#111">[</span><span style="color:#111">current</span><span style="color:#111">],</span> <span style="color:#111">height</span><span style="color:#111">[</span><span style="color:#111">st</span><span style="color:#111">.</span><span style="color:#111">top</span><span style="color:#111">()])</span> <span style="color:#f92672">-</span> <span style="color:#111">height</span><span style="color:#111">[</span><span style="color:#111">top</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">ans</span> <span style="color:#f92672">+=</span> <span style="color:#111">distance</span> <span style="color:#f92672">*</span> <span style="color:#111">bounded_height</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">st</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">current</span><span style="color:#f92672">++</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">return</span> <span style="color:#111">ans</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
 </span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/trapping-rain-water/solution/jie-yu-shui-by-leetcode/">思路二</a>：</p>
 <p>突破点：<code>使用双指针。</code></p>
 <p>步骤：</p>
@@ -145,23 +223,24 @@
 <li>当发现有小值出现，则累加差值到结果中。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">trap</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> height) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> left <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, right <span style="color:#f92672">=</span> height.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> ans <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> left_max <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, right_max <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (left <span style="color:#f92672">&lt;</span> right) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (height[left] <span style="color:#f92672">&lt;</span> height[right]) {
-</span></span><span style="display:flex;"><span>            height[left] <span style="color:#f92672">&gt;=</span> left_max <span style="color:#f92672">?</span> (left_max <span style="color:#f92672">=</span> height[left]) <span style="color:#f92672">:</span> ans <span style="color:#f92672">+=</span> (left_max <span style="color:#f92672">-</span> height[left]);
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">++</span>left;
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>            height[right] <span style="color:#f92672">&gt;=</span> right_max <span style="color:#f92672">?</span> (right_max <span style="color:#f92672">=</span> height[right]) <span style="color:#f92672">:</span> ans <span style="color:#f92672">+=</span> (right_max <span style="color:#f92672">-</span> height[right]);
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">--</span>right;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> ans;
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">int</span> <span style="color:#75af00">trap</span><span style="color:#111">(</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;&amp;</span> <span style="color:#111">height</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#111">left</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#111">right</span> <span style="color:#f92672">=</span> <span style="color:#111">height</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">()</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#111">ans</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#111">left_max</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#111">right_max</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#111">left</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">right</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">height</span><span style="color:#111">[</span><span style="color:#111">left</span><span style="color:#111">]</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">height</span><span style="color:#111">[</span><span style="color:#111">right</span><span style="color:#111">])</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">height</span><span style="color:#111">[</span><span style="color:#111">left</span><span style="color:#111">]</span> <span style="color:#f92672">&gt;=</span> <span style="color:#111">left_max</span> <span style="color:#f92672">?</span> <span style="color:#111">(</span><span style="color:#111">left_max</span> <span style="color:#f92672">=</span> <span style="color:#111">height</span><span style="color:#111">[</span><span style="color:#111">left</span><span style="color:#111">])</span> <span style="color:#f92672">:</span> <span style="color:#111">ans</span> <span style="color:#f92672">+=</span> <span style="color:#111">(</span><span style="color:#111">left_max</span> <span style="color:#f92672">-</span> <span style="color:#111">height</span><span style="color:#111">[</span><span style="color:#111">left</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">++</span><span style="color:#111">left</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">height</span><span style="color:#111">[</span><span style="color:#111">right</span><span style="color:#111">]</span> <span style="color:#f92672">&gt;=</span> <span style="color:#111">right_max</span> <span style="color:#f92672">?</span> <span style="color:#111">(</span><span style="color:#111">right_max</span> <span style="color:#f92672">=</span> <span style="color:#111">height</span><span style="color:#111">[</span><span style="color:#111">right</span><span style="color:#111">])</span> <span style="color:#f92672">:</span> <span style="color:#111">ans</span> <span style="color:#f92672">+=</span> <span style="color:#111">(</span><span style="color:#111">right_max</span> <span style="color:#f92672">-</span> <span style="color:#111">height</span><span style="color:#111">[</span><span style="color:#111">right</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">--</span><span style="color:#111">right</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">return</span> <span style="color:#111">ans</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目71简化路径httpsleetcode-cncomproblemssimplify-path">题目71:<a href="https://leetcode-cn.com/problems/simplify-path/">简化路径</a></h3>
+<hr>
 <p>描述：</p>
 <p>以 Unix 风格给出一个文件的绝对路径，你需要简化它。或者换句话说，将其转换为规范路径。</p>
 <p>在 Unix 风格的文件系统中，一个点（.）表示当前目录本身；此外，两个点 （..） 表示将目录切换到上一级（指向父目录）；两者都可以是复杂相对路径的组成部分。更多信息请参阅：Linux / Unix中的绝对路径 vs 相对路径</p>
@@ -201,40 +280,40 @@
 <li>使用栈进行存储和遍历处理。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    string simplifyPath(string path) {
-</span></span><span style="display:flex;"><span>        path <span style="color:#f92672">+=</span> <span style="color:#e6db74">&#34;/&#34;</span>;
-</span></span><span style="display:flex;"><span>        stack<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> st;
-</span></span><span style="display:flex;"><span>        string dir;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> c : path) {
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">string</span> <span style="color:#111">simplifyPath</span><span style="color:#111">(</span><span style="color:#111">string</span> <span style="color:#111">path</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">path</span> <span style="color:#f92672">+=</span> <span style="color:#d88200">&#34;/&#34;</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">stack</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#f92672">&gt;</span> <span style="color:#111">st</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">string</span> <span style="color:#111">dir</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">auto</span> <span style="color:#111">c</span> <span style="color:#111">:</span> <span style="color:#111">path</span><span style="color:#111">)</span> <span style="color:#111">{</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 以 / 为分隔符
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (c <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;/&#39;</span>) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">c</span> <span style="color:#f92672">==</span> <span style="color:#d88200">&#39;/&#39;</span><span style="color:#111">)</span> <span style="color:#111">{</span>
 </span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 切换上一集目录
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">if</span> (dir <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;..&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>st.empty()) {
-</span></span><span style="display:flex;"><span>                    st.pop();
-</span></span><span style="display:flex;"><span>                }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">dir</span> <span style="color:#f92672">==</span> <span style="color:#d88200">&#34;..&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#111">st</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">())</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">st</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span> 
 </span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 上一个 &#39;/&#39; 到 下一个 &#39;/&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (dir <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;..&#34;</span> <span style="color:#f92672">&amp;&amp;</span> dir <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;.&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>dir.empty()) {
-</span></span><span style="display:flex;"><span>                    st.push(dir);
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>                dir.clear();
-</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>                dir <span style="color:#f92672">+=</span> c;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#00a8c8">else</span> <span style="color:#75af00">if</span> <span style="color:#111">(</span><span style="color:#111">dir</span> <span style="color:#f92672">!=</span> <span style="color:#d88200">&#34;..&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">dir</span> <span style="color:#f92672">!=</span> <span style="color:#d88200">&#34;.&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#111">dir</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">())</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">st</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">dir</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">dir</span><span style="color:#111">.</span><span style="color:#111">clear</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">dir</span> <span style="color:#f92672">+=</span> <span style="color:#111">c</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 遍历栈
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        string result;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>st.empty()) {
-</span></span><span style="display:flex;"><span>            string s <span style="color:#f92672">=</span> st.top();
-</span></span><span style="display:flex;"><span>            st.pop();
-</span></span><span style="display:flex;"><span>            result <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#f92672">+</span> s <span style="color:#f92672">+</span> result;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(result.empty()) result <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/&#34;</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#111">string</span> <span style="color:#111">result</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">st</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">())</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">string</span> <span style="color:#111">s</span> <span style="color:#f92672">=</span> <span style="color:#111">st</span><span style="color:#111">.</span><span style="color:#111">top</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">st</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">result</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;/&#34;</span> <span style="color:#f92672">+</span> <span style="color:#111">s</span> <span style="color:#f92672">+</span> <span style="color:#111">result</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">result</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">())</span> <span style="color:#111">result</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#34;/&#34;</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">result</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/simplify-path/solution/yong-you-xian-zhuang-tai-ji-de-si-xiang-lai-jie-zh/">思路二</a>：</p>
 <p>突破点：<code>状态机。</code></p>
 <p>步骤：</p>
@@ -272,66 +351,67 @@
 </li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    string simplifyPath(string path) {
-</span></span><span style="display:flex;"><span>        string res;
-</span></span><span style="display:flex;"><span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">string</span> <span style="color:#111">simplifyPath</span><span style="color:#111">(</span><span style="color:#111">string</span> <span style="color:#111">path</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">string</span> <span style="color:#111">res</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// some flag to kepp state.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> state <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;  <span style="color:#75715e">// 0: last char is [char]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">int</span> <span style="color:#111">state</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>  <span style="color:#75715e">// 0: last char is [char]
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                        <span style="color:#75715e">// 1: last char is &#39;/&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                        <span style="color:#75715e">// 2: last char is &#39;.&#39;
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                        <span style="color:#75715e">// 3: last char is &#34;..&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (path.size() <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> path[path.size()<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">!=</span><span style="color:#e6db74">&#39;/&#39;</span>) path.push_back(<span style="color:#e6db74">&#39;/&#39;</span>);
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> path.size();
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> len; i<span style="color:#f92672">++</span>) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">char</span> c <span style="color:#f92672">=</span> path[i];
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (state <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (c <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;/&#39;</span>) { res.push_back(<span style="color:#e6db74">&#39;/&#39;</span>); state <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; }
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (c <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;.&#39;</span>) state <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> res.push_back(c);
-</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (state <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (c <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;/&#39;</span>) {}
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (c <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;.&#39;</span>) { state <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>; }
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>                    res.push_back(c); state <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (state <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (c <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;/&#39;</span>) state <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (c <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;.&#39;</span>) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">path</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">()</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">path</span><span style="color:#111">[</span><span style="color:#111">path</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">()</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#111">]</span><span style="color:#f92672">!=</span><span style="color:#d88200">&#39;/&#39;</span><span style="color:#111">)</span> <span style="color:#111">path</span><span style="color:#111">.</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#d88200">&#39;/&#39;</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">len</span> <span style="color:#f92672">=</span> <span style="color:#111">path</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">len</span><span style="color:#111">;</span> <span style="color:#111">i</span><span style="color:#f92672">++</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">char</span> <span style="color:#111">c</span> <span style="color:#f92672">=</span> <span style="color:#111">path</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">state</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">c</span> <span style="color:#f92672">==</span> <span style="color:#d88200">&#39;/&#39;</span><span style="color:#111">)</span> <span style="color:#111">{</span> <span style="color:#111">res</span><span style="color:#111">.</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#d88200">&#39;/&#39;</span><span style="color:#111">);</span> <span style="color:#111">state</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span> <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">else</span> <span style="color:#75af00">if</span> <span style="color:#111">(</span><span style="color:#111">c</span> <span style="color:#f92672">==</span> <span style="color:#d88200">&#39;.&#39;</span><span style="color:#111">)</span> <span style="color:#111">state</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">else</span> <span style="color:#111">res</span><span style="color:#111">.</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#111">c</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#75af00">if</span> <span style="color:#111">(</span><span style="color:#111">state</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">c</span> <span style="color:#f92672">==</span> <span style="color:#d88200">&#39;/&#39;</span><span style="color:#111">)</span> <span style="color:#111">{}</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">else</span> <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">c</span> <span style="color:#f92672">==</span> <span style="color:#d88200">&#39;.&#39;</span><span style="color:#111">)</span> <span style="color:#111">{</span> <span style="color:#111">state</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#111">;</span> <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">else</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">res</span><span style="color:#111">.</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#111">c</span><span style="color:#111">);</span> <span style="color:#111">state</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#75af00">if</span> <span style="color:#111">(</span><span style="color:#111">state</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">c</span> <span style="color:#f92672">==</span> <span style="color:#d88200">&#39;/&#39;</span><span style="color:#111">)</span> <span style="color:#111">state</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">else</span> <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">c</span> <span style="color:#f92672">==</span> <span style="color:#d88200">&#39;.&#39;</span><span style="color:#111">)</span> <span style="color:#111">{</span>
 </span></span><span style="display:flex;"><span>                    <span style="color:#75715e">// &#39;..&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    state <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>;
-</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>                    res.push_back(<span style="color:#e6db74">&#39;.&#39;</span>); res.push_back(c); state <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (state <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span>) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (c <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;/&#39;</span>) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    <span style="color:#111">state</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">res</span><span style="color:#111">.</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#d88200">&#39;.&#39;</span><span style="color:#111">);</span> <span style="color:#111">res</span><span style="color:#111">.</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#111">c</span><span style="color:#111">);</span> <span style="color:#111">state</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#75af00">if</span> <span style="color:#111">(</span><span style="color:#111">state</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">c</span> <span style="color:#f92672">==</span> <span style="color:#d88200">&#39;/&#39;</span><span style="color:#111">)</span> <span style="color:#111">{</span>
 </span></span><span style="display:flex;"><span>                    <span style="color:#75715e">// go back
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    res.pop_back(); <span style="color:#75715e">// pop &#39;/&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    <span style="color:#66d9ef">while</span>(res.size() <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">*</span>res.rbegin() <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;/&#39;</span>) {
-</span></span><span style="display:flex;"><span>                        res.pop_back(); <span style="color:#75715e">// pop anthing until &#39;/&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    }
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (res.size() <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) res.push_back(<span style="color:#e6db74">&#39;/&#39;</span>);
-</span></span><span style="display:flex;"><span>                    state <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>                    res.push_back(<span style="color:#e6db74">&#39;.&#39;</span>);
-</span></span><span style="display:flex;"><span>                    res.push_back(<span style="color:#e6db74">&#39;.&#39;</span>);
-</span></span><span style="display:flex;"><span>                    res.push_back(c);
-</span></span><span style="display:flex;"><span>                    state <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>            }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    <span style="color:#111">res</span><span style="color:#111">.</span><span style="color:#111">pop_back</span><span style="color:#111">();</span> <span style="color:#75715e">// pop &#39;/&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    <span style="color:#00a8c8">while</span><span style="color:#111">(</span><span style="color:#111">res</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">()</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">*</span><span style="color:#111">res</span><span style="color:#111">.</span><span style="color:#111">rbegin</span><span style="color:#111">()</span> <span style="color:#f92672">!=</span> <span style="color:#d88200">&#39;/&#39;</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#111">res</span><span style="color:#111">.</span><span style="color:#111">pop_back</span><span style="color:#111">();</span> <span style="color:#75715e">// pop anthing until &#39;/&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">res</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">()</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span><span style="color:#111">)</span> <span style="color:#111">res</span><span style="color:#111">.</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#d88200">&#39;/&#39;</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">state</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">res</span><span style="color:#111">.</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#d88200">&#39;.&#39;</span><span style="color:#111">);</span> 
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">res</span><span style="color:#111">.</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#d88200">&#39;.&#39;</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">res</span><span style="color:#111">.</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#111">c</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">state</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">//cout &lt;&lt; state &lt;&lt; &#34; &#34; &lt;&lt; c &lt;&lt; &#34; &#34; &lt;&lt; res &lt;&lt;  endl;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> ((state <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> res.size() <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>)) res.pop_back();
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> res;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">((</span><span style="color:#111">state</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">res</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">()</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span><span style="color:#111">))</span> <span style="color:#111">res</span><span style="color:#111">.</span><span style="color:#111">pop_back</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">res</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目225-用队列实现栈httpsleetcode-cncomproblemsimplement-stack-using-queues">题目225:<a href="https://leetcode-cn.com/problems/implement-stack-using-queues/"> 用队列实现栈</a></h3>
+<hr>
 <p>描述：</p>
 <p>使用队列实现栈的下列操作：</p>
 <p>push(x) &ndash; 元素 x 入栈
@@ -350,41 +430,41 @@ empty() &ndash; 返回栈是否为空
 <li>在每次在队尾加入元素后，将原本的队列中的元素从头部取出，放入队尾，保证1的性质。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyStack</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">MyStack</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Initialize your data structure here. */</span>
-</span></span><span style="display:flex;"><span>    MyStack() <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
-</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">MyStack</span><span style="color:#111">()</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">default</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Push element x onto stack. */</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">push</span>(<span style="color:#66d9ef">int</span> x) {
-</span></span><span style="display:flex;"><span>        que.push(x);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> que.size();
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> n; i<span style="color:#f92672">++</span>) {
-</span></span><span style="display:flex;"><span>            que.push(que.front());
-</span></span><span style="display:flex;"><span>            que.pop();
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">void</span> <span style="color:#75af00">push</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">que</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">n</span> <span style="color:#f92672">=</span> <span style="color:#111">que</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span> <span style="color:#111">i</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">n</span><span style="color:#111">;</span> <span style="color:#111">i</span><span style="color:#f92672">++</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">que</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">que</span><span style="color:#111">.</span><span style="color:#111">front</span><span style="color:#111">());</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">que</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Removes the element on top of the stack and returns that element. */</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">pop</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> val <span style="color:#f92672">=</span> top();
-</span></span><span style="display:flex;"><span>        que.pop();
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> val;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#75af00">pop</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">val</span> <span style="color:#f92672">=</span> <span style="color:#111">top</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">que</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">val</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Get the top element. */</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">top</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> que.front();
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#75af00">top</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">que</span><span style="color:#111">.</span><span style="color:#111">front</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Returns whether the stack is empty. */</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">empty</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> que.empty();
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">bool</span> <span style="color:#75af00">empty</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">que</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> que;
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">queue</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">que</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/implement-stack-using-queues/solution/225-yong-dui-lie-shi-xian-zhan-liang-ge-dui-lie-sh/">思路二</a>：</p>
 <p>突破点：<code>双队列。</code></p>
 <p>步骤：</p>
@@ -393,54 +473,55 @@ empty() &ndash; 返回栈是否为空
 <li>第一个队列为主要的取值队列，第二个队列在pop操作时，作为拷贝辅助。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyStack</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> que1;
-</span></span><span style="display:flex;"><span>    queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> que2; <span style="color:#75715e">// 辅助队列
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">MyStack</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">queue</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">que1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">queue</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">que2</span><span style="color:#111">;</span> <span style="color:#75715e">// 辅助队列
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">/** Initialize your data structure here. */</span>
-</span></span><span style="display:flex;"><span>    MyStack() {
+</span></span><span style="display:flex;"><span>    <span style="color:#111">MyStack</span><span style="color:#111">()</span> <span style="color:#111">{</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Push element x onto stack. */</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">push</span>(<span style="color:#66d9ef">int</span> x) {
-</span></span><span style="display:flex;"><span>        que1.push(x);
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">void</span> <span style="color:#75af00">push</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">que1</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Removes the element on top of the stack and returns that element. */</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">pop</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> size <span style="color:#f92672">=</span> que1.size();
-</span></span><span style="display:flex;"><span>        size<span style="color:#f92672">--</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#75af00">pop</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">size</span> <span style="color:#f92672">=</span> <span style="color:#111">que1</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">size</span><span style="color:#f92672">--</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>      	<span style="color:#75715e">// 将que1 导入que2，但要留下最后一个元素
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (size<span style="color:#f92672">--</span>) {
-</span></span><span style="display:flex;"><span>            que2.push(que1.front());
-</span></span><span style="display:flex;"><span>            que1.pop();
-</span></span><span style="display:flex;"><span>        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#111">size</span><span style="color:#f92672">--</span><span style="color:#111">)</span> <span style="color:#111">{</span> 
+</span></span><span style="display:flex;"><span>            <span style="color:#111">que2</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">que1</span><span style="color:#111">.</span><span style="color:#111">front</span><span style="color:#111">());</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">que1</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>      	<span style="color:#75715e">// 留下的最后一个元素就是我们要返回的值
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> que1.front();
-</span></span><span style="display:flex;"><span>        que1.pop();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">int</span> <span style="color:#111">result</span> <span style="color:#f92672">=</span> <span style="color:#111">que1</span><span style="color:#111">.</span><span style="color:#111">front</span><span style="color:#111">();</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#111">que1</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
 </span></span><span style="display:flex;"><span>      	<span style="color:#75715e">// 再将que2赋值给que1
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        que1 <span style="color:#f92672">=</span> que2;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#111">que1</span> <span style="color:#f92672">=</span> <span style="color:#111">que2</span><span style="color:#111">;</span> 
 </span></span><span style="display:flex;"><span>      	<span style="color:#75715e">// 清空que2
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span>(<span style="color:#f92672">!</span>que2.empty()) {
-</span></span><span style="display:flex;"><span>            que2.pop();
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result;
-</span></span><span style="display:flex;"><span>    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">while</span><span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">que2</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">())</span> <span style="color:#111">{</span> 
+</span></span><span style="display:flex;"><span>            <span style="color:#111">que2</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">result</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Get the top element. */</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">top</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> que1.back();
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#75af00">top</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">que1</span><span style="color:#111">.</span><span style="color:#111">back</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Returns whether the stack is empty. */</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">empty</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> que1.empty();
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">bool</span> <span style="color:#75af00">empty</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">que1</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目232用栈实现队列httpsleetcode-cncomproblemsimplement-queue-using-stacks">题目232:<a href="https://leetcode-cn.com/problems/implement-queue-using-stacks/">用栈实现队列</a></h3>
+<hr>
 <p>描述：</p>
 <p>使用栈实现队列的下列操作：</p>
 <p>push(x) &ndash; 将一个元素放入队列的尾部。
@@ -450,7 +531,7 @@ empty() &ndash; 返回队列是否为空。</p>
 <p>示例:</p>
 <p>MyQueue queue = new MyQueue();</p>
 <p>queue.push(1);
-queue.push(2);
+queue.push(2);<br>
 queue.peek();  // 返回 1
 queue.pop();   // 返回 1
 queue.empty(); // 返回 false</p>
@@ -468,48 +549,49 @@ queue.empty(); // 返回 false</p>
 <li>若不为空，直接pop（因为在peek查看元素之后，会push进输出栈）。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyQueue</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    stack<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> stIn;
-</span></span><span style="display:flex;"><span>    stack<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> stOut;
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">MyQueue</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">stack</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">stIn</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">stack</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">stOut</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Initialize your data structure here. */</span>
-</span></span><span style="display:flex;"><span>    MyQueue() {
+</span></span><span style="display:flex;"><span>    <span style="color:#111">MyQueue</span><span style="color:#111">()</span> <span style="color:#111">{</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Push element x to the back of queue. */</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">push</span>(<span style="color:#66d9ef">int</span> x) {
-</span></span><span style="display:flex;"><span>        stIn.push(x);
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">void</span> <span style="color:#75af00">push</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">stIn</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Removes the element from in front of queue and returns that element. */</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">pop</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#75af00">pop</span><span style="color:#111">()</span> <span style="color:#111">{</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">//只有当stOut为空的时候，再从stIn里导入数据（导入stIn全部数据）
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (stOut.empty()) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">stOut</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">())</span> <span style="color:#111">{</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 从stIn导入数据直到stIn为空
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">while</span>(<span style="color:#f92672">!</span>stIn.empty()) {
-</span></span><span style="display:flex;"><span>                stOut.push(stIn.top());
-</span></span><span style="display:flex;"><span>                stIn.pop();
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> stOut.top();
-</span></span><span style="display:flex;"><span>        stOut.pop();
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result;
-</span></span><span style="display:flex;"><span>    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#00a8c8">while</span><span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">stIn</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">())</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">stOut</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">stIn</span><span style="color:#111">.</span><span style="color:#111">top</span><span style="color:#111">());</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">stIn</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">result</span> <span style="color:#f92672">=</span> <span style="color:#111">stOut</span><span style="color:#111">.</span><span style="color:#111">top</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">stOut</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">result</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Get the front element. */</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">peek</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> res <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">-&gt;</span>pop(); <span style="color:#75715e">// 直接使用已有的pop函数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        stOut.push(res); <span style="color:#75715e">// 因为pop函数弹出了元素res，所以再添加回去
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">return</span> res;
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#75af00">peek</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">res</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">this</span><span style="color:#f92672">-&gt;</span><span style="color:#111">pop</span><span style="color:#111">();</span> <span style="color:#75715e">// 直接使用已有的pop函数
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#111">stOut</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">res</span><span style="color:#111">);</span> <span style="color:#75715e">// 因为pop函数弹出了元素res，所以再添加回去
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">return</span> <span style="color:#111">res</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/** Returns whether the queue is empty. */</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">empty</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> stIn.empty() <span style="color:#f92672">&amp;&amp;</span> stOut.empty();
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">bool</span> <span style="color:#75af00">empty</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">stIn</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">()</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">stOut</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目23合并k个升序链表httpsleetcode-cncomproblemsmerge-k-sorted-lists">题目23:<a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/">合并K个升序链表</a></h3>
+<hr>
 <p>描述：</p>
 <p>给你一个链表数组，每个链表都已经按升序排列。</p>
 <p>请你将所有链表合并到一个升序链表中，返回合并后的链表。</p>
@@ -538,33 +620,33 @@ queue.empty(); // 返回 false</p>
 <li>弹出后，将链表下一个元素入队。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 小根堆的回调函数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">cmp</span>{
-</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">operator</span>()(ListNode <span style="color:#f92672">*</span>a,ListNode <span style="color:#f92672">*</span>b){
-</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> a<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">&gt;</span> b<span style="color:#f92672">-&gt;</span>val;
-</span></span><span style="display:flex;"><span>       }
-</span></span><span style="display:flex;"><span>    };
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#00a8c8">struct</span> <span style="color:#75af00">cmp</span><span style="color:#111">{</span>  
+</span></span><span style="display:flex;"><span>       <span style="color:#00a8c8">bool</span> <span style="color:#75af00">operator</span><span style="color:#111">()(</span><span style="color:#111">ListNode</span> <span style="color:#f92672">*</span><span style="color:#111">a</span><span style="color:#111">,</span><span style="color:#111">ListNode</span> <span style="color:#f92672">*</span><span style="color:#111">b</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#00a8c8">return</span> <span style="color:#111">a</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span> <span style="color:#f92672">&gt;</span> <span style="color:#111">b</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">};</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> <span style="color:#a6e22e">mergeKLists</span>(vector<span style="color:#f92672">&lt;</span>ListNode<span style="color:#f92672">*&gt;&amp;</span> lists) {
-</span></span><span style="display:flex;"><span>        priority_queue<span style="color:#f92672">&lt;</span>ListNode<span style="color:#f92672">*</span>, vector<span style="color:#f92672">&lt;</span>ListNode<span style="color:#f92672">*&gt;</span>, cmp<span style="color:#f92672">&gt;</span> pri_queue;
+</span></span><span style="display:flex;"><span>    <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#75af00">mergeKLists</span><span style="color:#111">(</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">ListNode</span><span style="color:#f92672">*&gt;&amp;</span> <span style="color:#111">lists</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">priority_queue</span><span style="color:#f92672">&lt;</span><span style="color:#111">ListNode</span><span style="color:#f92672">*</span><span style="color:#111">,</span> <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">ListNode</span><span style="color:#f92672">*&gt;</span><span style="color:#111">,</span> <span style="color:#111">cmp</span><span style="color:#f92672">&gt;</span> <span style="color:#111">pri_queue</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 建立大小为k的小根堆
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">auto</span> elem : lists){
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(elem) pri_queue.push(elem);
-</span></span><span style="display:flex;"><span>        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">for</span><span style="color:#111">(</span><span style="color:#00a8c8">auto</span> <span style="color:#111">elem</span> <span style="color:#111">:</span> <span style="color:#111">lists</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">elem</span><span style="color:#111">)</span> <span style="color:#111">pri_queue</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">elem</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 可以使用哑节点/哨兵节点
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        ListNode dummy(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
-</span></span><span style="display:flex;"><span>        ListNode<span style="color:#f92672">*</span> p <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>dummy;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#111">ListNode</span> <span style="color:#111">dummy</span><span style="color:#111">(</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">p</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#111">dummy</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 开始出队
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span>(<span style="color:#f92672">!</span>pri_queue.empty()){
-</span></span><span style="display:flex;"><span>            ListNode<span style="color:#f92672">*</span> top <span style="color:#f92672">=</span> pri_queue.top(); pri_queue.pop();
-</span></span><span style="display:flex;"><span>            p<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> top; p <span style="color:#f92672">=</span> top;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(top<span style="color:#f92672">-&gt;</span>next) pri_queue.push(top<span style="color:#f92672">-&gt;</span>next);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> dummy.next;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">while</span><span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">pri_queue</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">()){</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">top</span> <span style="color:#f92672">=</span> <span style="color:#111">pri_queue</span><span style="color:#111">.</span><span style="color:#111">top</span><span style="color:#111">();</span> <span style="color:#111">pri_queue</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">p</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">top</span><span style="color:#111">;</span> <span style="color:#111">p</span> <span style="color:#f92672">=</span> <span style="color:#111">top</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">top</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">)</span> <span style="color:#111">pri_queue</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">top</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">dummy</span><span style="color:#111">.</span><span style="color:#111">next</span><span style="color:#111">;</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/c-you-xian-dui-lie-liang-liang-he-bing-fen-zhi-he-/">思路二</a>：</p>
 <p>突破点：<code>两两合并。</code></p>
 <p>步骤：</p>
@@ -572,30 +654,30 @@ queue.empty(); // 返回 false</p>
 <li>从头开始，两两合并链表。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 合并两个有序链表
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ListNode<span style="color:#f92672">*</span> merge(ListNode<span style="color:#f92672">*</span> p1, ListNode<span style="color:#f92672">*</span> p2){
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>p1) <span style="color:#66d9ef">return</span> p2;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>p2) <span style="color:#66d9ef">return</span> p1;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(p1<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">&lt;=</span> p2<span style="color:#f92672">-&gt;</span>val){
-</span></span><span style="display:flex;"><span>            p1<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> merge(p1<span style="color:#f92672">-&gt;</span>next, p2);
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> p1;
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>            p2<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> merge(p1, p2<span style="color:#f92672">-&gt;</span>next);
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> p2;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">merge</span><span style="color:#111">(</span><span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">p1</span><span style="color:#111">,</span> <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">p2</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">p1</span><span style="color:#111">)</span> <span style="color:#00a8c8">return</span> <span style="color:#111">p2</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">p2</span><span style="color:#111">)</span> <span style="color:#00a8c8">return</span> <span style="color:#111">p1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">p1</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span> <span style="color:#f92672">&lt;=</span> <span style="color:#111">p2</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">p1</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">merge</span><span style="color:#111">(</span><span style="color:#111">p1</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">,</span> <span style="color:#111">p2</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">return</span> <span style="color:#111">p1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">p2</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">merge</span><span style="color:#111">(</span><span style="color:#111">p1</span><span style="color:#111">,</span> <span style="color:#111">p2</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">return</span> <span style="color:#111">p2</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>     ListNode<span style="color:#f92672">*</span> <span style="color:#a6e22e">mergeKLists</span>(vector<span style="color:#f92672">&lt;</span>ListNode<span style="color:#f92672">*&gt;&amp;</span> lists) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(lists.size() <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nullptr</span>;
-</span></span><span style="display:flex;"><span>        ListNode<span style="color:#f92672">*</span> head <span style="color:#f92672">=</span> lists[<span style="color:#ae81ff">0</span>];
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i<span style="color:#f92672">&lt;</span>lists.size(); <span style="color:#f92672">++</span>i){
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(lists[i]) head <span style="color:#f92672">=</span> merge(head, lists[i]);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> head;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>     <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#75af00">mergeKLists</span><span style="color:#111">(</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">ListNode</span><span style="color:#f92672">*&gt;&amp;</span> <span style="color:#111">lists</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">lists</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">()</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span><span style="color:#111">)</span> <span style="color:#00a8c8">return</span> <span style="color:#00a8c8">nullptr</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">head</span> <span style="color:#f92672">=</span> <span style="color:#111">lists</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span> <span style="color:#111">i</span><span style="color:#f92672">&lt;</span><span style="color:#111">lists</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">();</span> <span style="color:#f92672">++</span><span style="color:#111">i</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">lists</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">])</span> <span style="color:#111">head</span> <span style="color:#f92672">=</span> <span style="color:#111">merge</span><span style="color:#111">(</span><span style="color:#111">head</span><span style="color:#111">,</span> <span style="color:#111">lists</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">head</span><span style="color:#111">;</span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/c-you-xian-dui-lie-liang-liang-he-bing-fen-zhi-he-/">思路三</a>：</p>
 <p>突破点：<code>分治合并。</code></p>
 <p>步骤：</p>
@@ -604,36 +686,37 @@ queue.empty(); // 返回 false</p>
 <li>最后合并剩余的两个链表。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 合并两个有序链表
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    ListNode<span style="color:#f92672">*</span> merge(ListNode<span style="color:#f92672">*</span> p1, ListNode<span style="color:#f92672">*</span> p2){
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>p1) <span style="color:#66d9ef">return</span> p2;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>p2) <span style="color:#66d9ef">return</span> p1;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(p1<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">&lt;=</span> p2<span style="color:#f92672">-&gt;</span>val){
-</span></span><span style="display:flex;"><span>            p1<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> merge(p1<span style="color:#f92672">-&gt;</span>next, p2);
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> p1;
-</span></span><span style="display:flex;"><span>        }<span style="color:#66d9ef">else</span>{
-</span></span><span style="display:flex;"><span>            p2<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> merge(p1, p2<span style="color:#f92672">-&gt;</span>next);
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> p2;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">merge</span><span style="color:#111">(</span><span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">p1</span><span style="color:#111">,</span> <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">p2</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">p1</span><span style="color:#111">)</span> <span style="color:#00a8c8">return</span> <span style="color:#111">p2</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">p2</span><span style="color:#111">)</span> <span style="color:#00a8c8">return</span> <span style="color:#111">p1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">p1</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span> <span style="color:#f92672">&lt;=</span> <span style="color:#111">p2</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">p1</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">merge</span><span style="color:#111">(</span><span style="color:#111">p1</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">,</span> <span style="color:#111">p2</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">return</span> <span style="color:#111">p1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span><span style="color:#00a8c8">else</span><span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">p2</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">merge</span><span style="color:#111">(</span><span style="color:#111">p1</span><span style="color:#111">,</span> <span style="color:#111">p2</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">return</span> <span style="color:#111">p2</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> <span style="color:#a6e22e">merge</span>(vector<span style="color:#f92672">&lt;</span>ListNode<span style="color:#f92672">*&gt;&amp;</span> lists, <span style="color:#66d9ef">int</span> start, <span style="color:#66d9ef">int</span> end){
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(start <span style="color:#f92672">==</span> end) <span style="color:#66d9ef">return</span> lists[start];
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> (start <span style="color:#f92672">+</span> end) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>;
-</span></span><span style="display:flex;"><span>        ListNode<span style="color:#f92672">*</span> l1 <span style="color:#f92672">=</span> merge(lists, start, mid);
-</span></span><span style="display:flex;"><span>        ListNode<span style="color:#f92672">*</span> l2 <span style="color:#f92672">=</span> merge(lists, mid<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, end);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> merge(l1, l2);
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#75af00">merge</span><span style="color:#111">(</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">ListNode</span><span style="color:#f92672">*&gt;&amp;</span> <span style="color:#111">lists</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">start</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">end</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">start</span> <span style="color:#f92672">==</span> <span style="color:#111">end</span><span style="color:#111">)</span> <span style="color:#00a8c8">return</span> <span style="color:#111">lists</span><span style="color:#111">[</span><span style="color:#111">start</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">mid</span> <span style="color:#f92672">=</span> <span style="color:#111">(</span><span style="color:#111">start</span> <span style="color:#f92672">+</span> <span style="color:#111">end</span><span style="color:#111">)</span> <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">l1</span> <span style="color:#f92672">=</span> <span style="color:#111">merge</span><span style="color:#111">(</span><span style="color:#111">lists</span><span style="color:#111">,</span> <span style="color:#111">start</span><span style="color:#111">,</span> <span style="color:#111">mid</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">l2</span> <span style="color:#f92672">=</span> <span style="color:#111">merge</span><span style="color:#111">(</span><span style="color:#111">lists</span><span style="color:#111">,</span> <span style="color:#111">mid</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">end</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">merge</span><span style="color:#111">(</span><span style="color:#111">l1</span><span style="color:#111">,</span> <span style="color:#111">l2</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> <span style="color:#a6e22e">mergeKLists</span>(vector<span style="color:#f92672">&lt;</span>ListNode<span style="color:#f92672">*&gt;&amp;</span> lists) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(lists.size() <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nullptr</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> merge(lists, <span style="color:#ae81ff">0</span>, lists.size()<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>    <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#75af00">mergeKLists</span><span style="color:#111">(</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">ListNode</span><span style="color:#f92672">*&gt;&amp;</span> <span style="color:#111">lists</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">lists</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">()</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span><span style="color:#111">)</span> <span style="color:#00a8c8">return</span> <span style="color:#00a8c8">nullptr</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">merge</span><span style="color:#111">(</span><span style="color:#111">lists</span><span style="color:#111">,</span> <span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#111">lists</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">()</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目215数组中的第k个最大元素httpsleetcode-cncomproblemskth-largest-element-in-an-array">题目215:<a href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array/">数组中的第K个最大元素</a></h3>
+<hr>
 <p>描述：</p>
 <p>在未排序的数组中找到第 k 个最大的元素。请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。</p>
 <p>示例 1:</p>
@@ -652,53 +735,53 @@ queue.empty(); // 返回 false</p>
 <li>每次直接与堆顶元素进行判断，是否加入堆中。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">findKthLargest</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums, <span style="color:#66d9ef">int</span> k) {
-</span></span><span style="display:flex;"><span>        priority_queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>, greater<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;</span> pq;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> n : nums) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (pq.size() <span style="color:#f92672">==</span> k <span style="color:#f92672">&amp;&amp;</span> pq.top() <span style="color:#f92672">&gt;=</span> n) <span style="color:#66d9ef">continue</span>;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (pq.size() <span style="color:#f92672">==</span> k) {
-</span></span><span style="display:flex;"><span>                pq.pop();
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            pq.push(n);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> pq.top();
-</span></span><span style="display:flex;"><span>    }
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#75af00">findKthLargest</span><span style="color:#111">(</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;&amp;</span> <span style="color:#111">nums</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">k</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">priority_queue</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#111">,</span> <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span><span style="color:#111">,</span> <span style="color:#111">greater</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;&gt;</span> <span style="color:#111">pq</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">auto</span> <span style="color:#111">n</span> <span style="color:#111">:</span> <span style="color:#111">nums</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">pq</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">()</span> <span style="color:#f92672">==</span> <span style="color:#111">k</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">pq</span><span style="color:#111">.</span><span style="color:#111">top</span><span style="color:#111">()</span> <span style="color:#f92672">&gt;=</span> <span style="color:#111">n</span><span style="color:#111">)</span> <span style="color:#00a8c8">continue</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">pq</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">()</span> <span style="color:#f92672">==</span> <span style="color:#111">k</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">pq</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">pq</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">n</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">pq</span><span style="color:#111">.</span><span style="color:#111">top</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span></code></pre></div>
-			</div>
-		</article>
-	</main>
-<aside>
-	<div>
-		<div>
-			<h3>LATEST POSTS</h3>
-		</div>
-		<div>
-			<ul>
-				
-				<li><a href="/posts/2023-12-02-criterions-for-site/">Criterions for Site</a></li>
-				
-				<li><a href="/posts/2023-12-02-hugo-site-auto-deployment-with-github-action/">Hugo Site Auto Deployment with Github Action</a></li>
-				
-				<li><a href="/posts/2023-12-02-hello-world/">Hello World</a></li>
-				
-				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
-				
-				<li><a href="/posts/2022-10-21-dev-null-related/">/dev/null and 2&amp;&gt;1</a></li>
-				
-			</ul>
-		</div>
-	</div>
-</aside>
+        </div>
+    </div>
+</div>
 
 
-	<footer>
-	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
-	<a href="https://github.com/junyubian"><b>Github</b></a>.
-	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
-	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
-	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
-	</p>
-</footer>
+        </div><div class="container">
+    <div class="row justify-content-between">
+        <div class="col-sm-4">
+            <p class="footer">Junyu Bian© 2023 </p>
+        </div>
+        <div class="col-sm-6 d-flex flex-row-reverse">
+            
+            <a class="footer-social px-2"  href="https://twitter.com/junyu_bian" target="_blank"><i class="fab fa-twitter"></i></a>
+            
+            <a class="footer-social px-2"  href="https://github.com/junyubian" target="_blank"><i class="fab fa-github"></i></a>
+            
+            <a class="footer-social px-2"  href="https://www.facebook.com/profile.php?id=100010301021817" target="_blank"><i class="fab fa-facebook"></i></a>
+            
+        </div>
+    </div>
+</div>
+<script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script src="/js/isotope.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+<script src="/js/dark.js"></script>
+<script>
 
+
+var savedTheme = localStorage.getItem("dark-mode-storage") || "light" 
+setTheme(savedTheme);
+
+</script>
+<script src="/js/isotope.js"></script>
+<script src="/js/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, securityLevel: 'loose'});</script>
 </body>
 </html>

@@ -1,12 +1,11 @@
 ---
 title: EMPLACE_BACK in C++
-date: 2020-05-16 09:39:00
-categories: 
-- Notes
-tags:
-- Algorithm
-- C++
-- ch
+date: 2020-05-16
+lastmod: 2020-05-16
+draft: false
+garden_tags: ["ch", "notes", "algorithm", "c++"]
+summary: " "
+status: "evergreen"
 ---
 
 There are different type of containers in C++ STL. To add a new element into the back of a container, we normally use `push_back()`. In this blog, we will look into a new way of performing push back - `emplace_back()`.

@@ -1,6 +1,7 @@
 ---
 title: Criterions for Site
 date: 2023-12-02
+lastmod: 2023-12-27
 draft: false
 garden_tags: ["en", "criterions"]
 summary: " "

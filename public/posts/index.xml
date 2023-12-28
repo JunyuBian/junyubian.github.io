@@ -34,5 +34,160 @@
 1.2 &lt;code&gt;getopts&lt;/code&gt; runs on any system running bash in POSIX mode (e.g., set -o posix), &lt;code&gt;getopt&lt;/code&gt; is a system tool varies in different systems.
 1.3 &lt;code&gt;getopts&lt;/code&gt; parses short options, which are a single dash (&amp;quot;-&amp;quot;) and a letter or digit.e.g. -2, -d, and -D. It can also parse short options in combination, for instance -2dD. But each option will be treated seperately, i.e. -2dD = -2 -d -D not equal -&amp;ldquo;2dD&amp;rdquo;, will need &lt;code&gt;getopt&lt;/code&gt; to cope with -&amp;ldquo;2dD&amp;rdquo;.&lt;/p&gt;</description>
     </item>
+    <item>
+      <title>LeetCode题目总结-Recursion&#43;Backtrack</title>
+      <link>https://junyubian.github.io/posts/2020-09-15-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-recursion&#43;backtrack/</link>
+      <pubDate>Tue, 15 Sep 2020 22:12:19 +0000</pubDate>
+      <guid>https://junyubian.github.io/posts/2020-09-15-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-recursion&#43;backtrack/</guid>
+      <description>题目17:电话号码的字母组合 描述：
+给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。
+给出数字到字母的映射与电话按键相同。注意 1 不对应任何字母。
+示例:
+输入：&amp;ldquo;23&amp;rdquo; 输出：[&amp;ldquo;ad&amp;rdquo;, &amp;ldquo;ae&amp;rdquo;, &amp;ldquo;af&amp;rdquo;, &amp;ldquo;bd&amp;rdquo;, &amp;ldquo;be&amp;rdquo;, &amp;ldquo;bf&amp;rdquo;, &amp;ldquo;cd&amp;rdquo;, &amp;ldquo;ce&amp;rdquo;, &amp;ldquo;cf&amp;rdquo;].
+思路：
+突破点：回溯。
+步骤：
+维护一个字符串，表示已有的字母排列； 每次取一个数字，从哈希表中获取可能字母； 将一个字母插入到已有排列后面； 处理下一个数字，直到得到完整排列。 代码：
+class Solution { public: vector&amp;lt;string&amp;gt; letterCombinations(string digits) { vector&amp;lt;string&amp;gt; combinations; if (digits.empty()) { return combinations; } unordered_map&amp;lt;char, string&amp;gt; phoneMap{ {&amp;#39;2&amp;#39;, &amp;#34;abc&amp;#34;}, {&amp;#39;3&amp;#39;, &amp;#34;def&amp;#34;}, {&amp;#39;4&amp;#39;, &amp;#34;ghi&amp;#34;}, {&amp;#39;5&amp;#39;, &amp;#34;jkl&amp;#34;}, {&amp;#39;6&amp;#39;, &amp;#34;mno&amp;#34;}, {&amp;#39;7&amp;#39;, &amp;#34;pqrs&amp;#34;}, {&amp;#39;8&amp;#39;, &amp;#34;tuv&amp;#34;}, {&amp;#39;9&amp;#39;, &amp;#34;wxyz&amp;#34;} }; string combination; backtrack(combinations, phoneMap, digits, 0, combination); return combinations; } void backtrack(vector&amp;lt;string&amp;gt;&amp;amp; combinations, const unordered_map&amp;lt;char, string&amp;gt;&amp;amp; phoneMap, const string&amp;amp; digits, int index, string&amp;amp; combination) { if (index == digits.</description>
+    </item>
+    <item>
+      <title>LeetCode题目总结-Graph</title>
+      <link>https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-graph/</link>
+      <pubDate>Sat, 12 Sep 2020 21:32:19 +0000</pubDate>
+      <guid>https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-graph/</guid>
+      <description>题目133:克隆图 描述：
+给你无向连通图中一个节点的引用，请你返回该图的 深拷贝（克隆）。
+图中的每个节点都包含它的值 val（int） 和其邻居的列表（list[Node]）。
+class Node { public int val; public List neighbors; }
+测试用例格式：
+简单起见，每个节点的值都和它的索引相同。例如，第一个节点值为 1（val = 1），第二个节点值为 2（val = 2），以此类推。该图在测试用例中使用邻接列表表示。
+邻接列表 是用于表示有限图的无序列表的集合。每个列表都描述了图中节点的邻居集。
+给定节点将始终是图中的第一个节点（值为 1）。你必须将给定节点的拷贝作为对克隆图的引用返回。
+示例 1：
+输入：adjList = [[2,4],[1,3],[2,4],[1,3]] 输出：[[2,4],[1,3],[2,4],[1,3]] 解释： 图中有 4 个节点。 节点 1 的值是 1，它有两个邻居：节点 2 和 4 。 节点 2 的值是 2，它有两个邻居：节点 1 和 3 。 节点 3 的值是 3，它有两个邻居：节点 2 和 4 。 节点 4 的值是 4，它有两个邻居：节点 1 和 3 。 示例 2：</description>
+    </item>
+    <item>
+      <title>LeetCode题目总结-Queue&#43;TopologicalSort</title>
+      <link>https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-queue&#43;topologicalsort/</link>
+      <pubDate>Sat, 12 Sep 2020 21:32:19 +0000</pubDate>
+      <guid>https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-queue&#43;topologicalsort/</guid>
+      <description>题目621:任务调度器 描述：
+给定一个用字符数组表示的 CPU 需要执行的任务列表。其中包含使用大写的 A - Z 字母表示的26 种不同种类的任务。任务可以以任意顺序执行，并且每个任务都可以在 1 个单位时间内执行完。CPU 在任何一个单位时间内都可以执行一个任务，或者在待命状态。
+然而，两个相同种类的任务之间必须有长度为 n 的冷却时间，因此至少有连续 n 个单位时间内 CPU 在执行不同的任务，或者在待命状态。
+你需要计算完成所有任务所需要的最短时间。
+示例 ：
+输入：tasks = [&amp;ldquo;A&amp;rdquo;,&amp;ldquo;A&amp;rdquo;,&amp;ldquo;A&amp;rdquo;,&amp;ldquo;B&amp;rdquo;,&amp;ldquo;B&amp;rdquo;,&amp;ldquo;B&amp;rdquo;], n = 2 输出：8 解释：A -&amp;gt; B -&amp;gt; (待命) -&amp;gt; A -&amp;gt; B -&amp;gt; (待命) -&amp;gt; A -&amp;gt; B. 在本示例中，两个相同类型任务之间必须间隔长度为 n = 2 的冷却时间，而执行一个任务只需要一个单位时间，所以中间出现了（待命）状态。
+提示：
+任务的总个数为 [1, 10000]。 n 的取值范围为 [0, 100]。
+思路：
+突破点：桶思想。
+步骤：
+建立大小为n+1的桶，个数为数量最多的任务； 每个桶视为一轮任务； 总排队时间=(桶个数-1)*(n+1)+最后一个桶的任务数； 代码：
+int leastInterval(vector&amp;lt;char&amp;gt;&amp;amp; tasks, int n) { int len=tasks.</description>
+    </item>
+    <item>
+      <title>LeetCode题目总结-DP&#43;Greedy</title>
+      <link>https://junyubian.github.io/posts/2020-09-11-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dp&#43;greedy/</link>
+      <pubDate>Fri, 11 Sep 2020 11:52:19 +0000</pubDate>
+      <guid>https://junyubian.github.io/posts/2020-09-11-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dp&#43;greedy/</guid>
+      <description>题目5:最长回文子串 描述：
+给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
+示例 1：
+输入: &amp;ldquo;babad&amp;rdquo; 输出: &amp;ldquo;bab&amp;rdquo; 注意: &amp;ldquo;aba&amp;rdquo; 也是一个有效答案。
+示例 2：
+输入: &amp;ldquo;cbbd&amp;rdquo; 输出: &amp;ldquo;bb&amp;rdquo;
+思路一：（时间超限）
+突破点：反转字符串的公共子串。
+步骤：
+将输入的字符串反转； 求两者的公共子串； 判断该子串是否为所需的最长回文子串。 代码：
+class Solution { public: string longestPalindrome(string s) { //大小为1的字符串必为回文串 if(s.length() == 1) return s; string rev = s; string res; std::reverse(rev.begin(),rev.end()); if(rev == s) return s; //存放回文子串的长度 int len = 0; //查找s与rev的最长公共子串 for(int i=0; i&amp;lt;s.length(); i++) { //存放待验证子串 string temp; for(int j=i; j&amp;lt;s.</description>
+    </item>
+    <item>
+      <title>LeetCode题目总结-Heap&#43;Stack</title>
+      <link>https://junyubian.github.io/posts/2020-09-09-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-heap&#43;stack/</link>
+      <pubDate>Wed, 09 Sep 2020 12:32:19 +0000</pubDate>
+      <guid>https://junyubian.github.io/posts/2020-09-09-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-heap&#43;stack/</guid>
+      <description>题目20:有效的括号 描述：
+给定一个只包括 &amp;lsquo;(&amp;rsquo;，&amp;rsquo;)&amp;rsquo;，&amp;rsquo;{&amp;rsquo;，&amp;rsquo;}&amp;rsquo;，&amp;rsquo;[&amp;rsquo;，&amp;rsquo;]&amp;rsquo; 的字符串，判断字符串是否有效。
+有效字符串需满足：
+左括号必须用相同类型的右括号闭合。 左括号必须以正确的顺序闭合。 注意空字符串可被认为是有效字符串。
+示例 1:
+输入: &amp;ldquo;()&amp;rdquo; 输出: true 示例 2:
+输入: &amp;ldquo;()[]{}&amp;rdquo; 输出: true 示例 3:
+输入: &amp;ldquo;(]&amp;rdquo; 输出: false 示例 4:
+输入: &amp;ldquo;([)]&amp;rdquo; 输出: false 示例 5:
+输入: &amp;ldquo;{[]}&amp;rdquo; 输出: true
+思路：
+突破点：使用栈模拟删除过程。
+步骤：
+使用栈进行存储； 当匹配到最小的括号对时，将这一对从栈中删除； 如果最后栈为空，则为有效。 代码：
+class Solution { public: bool isValid(string s) { unordered_map&amp;lt;char,int&amp;gt; m{{&amp;#39;(&amp;#39;,1},{&amp;#39;[&amp;#39;,2},{&amp;#39;{&amp;#39;,3}, {&amp;#39;)&amp;#39;,4},{&amp;#39;]&amp;#39;,5},{&amp;#39;}&amp;#39;,6}}; stack&amp;lt;char&amp;gt; st; bool isTrue = true; for(char c:s){ int flag = m[c]; if(flag&amp;gt;=1 &amp;amp;&amp;amp; flag&amp;lt;=3) { st.</description>
+    </item>
+    <item>
+      <title>LeetCode题目总结-DFS&#43;BFS</title>
+      <link>https://junyubian.github.io/posts/2020-09-08-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dfs&#43;bfs/</link>
+      <pubDate>Tue, 08 Sep 2020 14:03:19 +0000</pubDate>
+      <guid>https://junyubian.github.io/posts/2020-09-08-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dfs&#43;bfs/</guid>
+      <description>题目116:填充每个节点的下一个右侧节点指针 描述：
+给定一个完美二叉树，其所有叶子节点都在同一层，每个父节点都有两个子节点。二叉树定义如下：
+struct Node { int val; Node *left; Node *right; Node *next; }
+填充它的每个 next 指针，让这个指针指向其下一个右侧节点。如果找不到下一个右侧节点，则将 next 指针设置为 NULL。
+初始状态下，所有 next 指针都被设置为 NULL。
+示例：
+输入：{&amp;quot;$id&amp;quot;:&amp;ldquo;1&amp;rdquo;,&amp;ldquo;left&amp;rdquo;:{&amp;quot;$id&amp;quot;:&amp;ldquo;2&amp;rdquo;,&amp;ldquo;left&amp;rdquo;:{&amp;quot;$id&amp;quot;:&amp;ldquo;3&amp;rdquo;,&amp;ldquo;left&amp;rdquo;:null,&amp;ldquo;next&amp;rdquo;:null,&amp;ldquo;right&amp;rdquo;:null,&amp;ldquo;val&amp;rdquo;:4},&amp;ldquo;next&amp;rdquo;:null,&amp;ldquo;right&amp;rdquo;:{&amp;quot;$id&amp;quot;:&amp;ldquo;4&amp;rdquo;,&amp;ldquo;left&amp;rdquo;:null,&amp;ldquo;next&amp;rdquo;:null,&amp;ldquo;right&amp;rdquo;:null,&amp;ldquo;val&amp;rdquo;:5},&amp;ldquo;val&amp;rdquo;:2},&amp;ldquo;next&amp;rdquo;:null,&amp;ldquo;right&amp;rdquo;:{&amp;quot;$id&amp;quot;:&amp;ldquo;5&amp;rdquo;,&amp;ldquo;left&amp;rdquo;:{&amp;quot;$id&amp;quot;:&amp;ldquo;6&amp;rdquo;,&amp;ldquo;left&amp;rdquo;:null,&amp;ldquo;next&amp;rdquo;:null,&amp;ldquo;right&amp;rdquo;:null,&amp;ldquo;val&amp;rdquo;:6},&amp;ldquo;next&amp;rdquo;:null,&amp;ldquo;right&amp;rdquo;:{&amp;quot;$id&amp;quot;:&amp;ldquo;7&amp;rdquo;,&amp;ldquo;left&amp;rdquo;:null,&amp;ldquo;next&amp;rdquo;:null,&amp;ldquo;right&amp;rdquo;:null,&amp;ldquo;val&amp;rdquo;:7},&amp;ldquo;val&amp;rdquo;:3},&amp;ldquo;val&amp;rdquo;:1}
+输出：{&amp;quot;$id&amp;quot;:&amp;ldquo;1&amp;rdquo;,&amp;ldquo;left&amp;rdquo;:{&amp;quot;$id&amp;quot;:&amp;ldquo;2&amp;rdquo;,&amp;ldquo;left&amp;rdquo;:{&amp;quot;$id&amp;quot;:&amp;ldquo;3&amp;rdquo;,&amp;ldquo;left&amp;rdquo;:null,&amp;ldquo;next&amp;rdquo;:{&amp;quot;$id&amp;quot;:&amp;ldquo;4&amp;rdquo;,&amp;ldquo;left&amp;rdquo;:null,&amp;ldquo;next&amp;rdquo;:{&amp;quot;$id&amp;quot;:&amp;ldquo;5&amp;rdquo;,&amp;ldquo;left&amp;rdquo;:null,&amp;ldquo;next&amp;rdquo;:{&amp;quot;$id&amp;quot;:&amp;ldquo;6&amp;rdquo;,&amp;ldquo;left&amp;rdquo;:null,&amp;ldquo;next&amp;rdquo;:null,&amp;ldquo;right&amp;rdquo;:null,&amp;ldquo;val&amp;rdquo;:7},&amp;ldquo;right&amp;rdquo;:null,&amp;ldquo;val&amp;rdquo;:6},&amp;ldquo;right&amp;rdquo;:null,&amp;ldquo;val&amp;rdquo;:5},&amp;ldquo;right&amp;rdquo;:null,&amp;ldquo;val&amp;rdquo;:4},&amp;ldquo;next&amp;rdquo;:{&amp;quot;$id&amp;quot;:&amp;ldquo;7&amp;rdquo;,&amp;ldquo;left&amp;rdquo;:{&amp;quot;$ref&amp;quot;:&amp;ldquo;5&amp;rdquo;},&amp;ldquo;next&amp;rdquo;:null,&amp;ldquo;right&amp;rdquo;:{&amp;quot;$ref&amp;quot;:&amp;ldquo;6&amp;rdquo;},&amp;ldquo;val&amp;rdquo;:3},&amp;ldquo;right&amp;rdquo;:{&amp;quot;$ref&amp;quot;:&amp;ldquo;4&amp;rdquo;},&amp;ldquo;val&amp;rdquo;:2},&amp;ldquo;next&amp;rdquo;:null,&amp;ldquo;right&amp;rdquo;:{&amp;quot;$ref&amp;quot;:&amp;ldquo;7&amp;rdquo;},&amp;ldquo;val&amp;rdquo;:1}
+提示：
+你只能使用常量级额外空间。 使用递归解题也符合要求，本题中递归程序占用的栈空间不算做额外的空间复杂度。
+思路：
+突破点：广度优先搜索。
+步骤：
+使用队列进行广度优先遍历； 在接点出队列后，next指向队列首个元素，广度遍历完直接return。 代码：
+class Solution { public: Node* connect(Node* root) { if(!root) return root; queue&amp;lt;Node*&amp;gt; work; work.push(root); work.push(nullptr); Node* cur = nullptr; while(1) { // 如果队列首部是结点 if(work.front()) { cur = work.front(); work.pop(); // 如果是非叶子结点 if(cur-&amp;gt;left) { work.</description>
+    </item>
+    <item>
+      <title>LeetCode题目总结-Two Pointer&#43;Linked List</title>
+      <link>https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-two-pointer&#43;linked-list/</link>
+      <pubDate>Sun, 06 Sep 2020 23:33:19 +0000</pubDate>
+      <guid>https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-two-pointer&#43;linked-list/</guid>
+      <description>题目3:无重复字符的最长子串 描述：
+给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+示例 1:
+输入: &amp;ldquo;abcabcbb&amp;rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &amp;ldquo;abc&amp;rdquo;，所以其长度为 3。
+示例 2:
+输入: &amp;ldquo;bbbbb&amp;rdquo; 输出: 1 解释: 因为无重复字符的最长子串是 &amp;ldquo;b&amp;rdquo;，所以其长度为 1。 示例 3:
+输入: &amp;ldquo;pwwkew&amp;rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &amp;ldquo;wke&amp;rdquo;，所以其长度为 3。 请注意，你的答案必须是 子串 的长度，&amp;ldquo;pwke&amp;rdquo; 是一个子序列，不是子串。
+思路一：
+突破点：滑动窗口。
+步骤：
+设立指针a和指针b； b指针向右伸缩，对于每个A[b]判断是否之前出现过； 若出现，则a指向出现过的未知的下一位置，更新右指针和最大长度。 代码：
+class Solution { public: int lengthOfLongestSubstring(string s) { //s[start,end) 前面包含 后面不包含 int start(0), end(0), length(0), result(0); int stringSize = int(s.size()); while (end &amp;lt; stringSize) { char tmpChar = s[end]; for (int index = start; index &amp;lt; end; index++) { if (tmpChar == s[index]) { start = index + 1; length = end - start; break; } } end++; length++; result = max(result, length); } return result; } }; 思路二：</description>
+    </item>
+    <item>
+      <title>LeetCode题目总结-Array</title>
+      <link>https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-array/</link>
+      <pubDate>Sun, 06 Sep 2020 21:09:19 +0000</pubDate>
+      <guid>https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-array/</guid>
+      <description>题目31:下一个排列 描述：
+实现获取下一个排列的函数，算法需要将给定数字序列重新排列成字典序中下一个更大的排列。
+如果不存在下一个更大的排列，则将数字重新排列成最小的排列（即升序排列）。
+必须原地修改，只允许使用额外常数空间。
+以下是一些例子，输入位于左侧列，其相应输出位于右侧列。 1,2,3 → 1,3,2 3,2,1 → 1,2,3 1,1,5 → 1,5,1
+思路：
+突破点：下一个更大排列的特性是什么。
+步骤（以[5,6,11,9,7,5,3,1]举例）：
+从尾部查找，直到找到当前元素大于前一元素，记录所在位置； 例：[5,6,11,9,7,5,3,1]，找到11大于6，记录位置2；
+从1.中的位置到数组尾部的子序列中，找到一个比前一位置的大且相差最小的数； 例：[5,6,11,9,7,5,3,1]，在[11,9,7,5,3,1]找到7，7是比6大且最接近6的，从尾部开始遍历，遍历到大于6的索引即可；
+交换2.中找到的数以及1.中确定的前一位置的数； 例：[5,6,11,9,7,5,3,1]，交换后变为[5,7,11,9,6,5,3,1]；
+将该位置到数组尾部的子序列进行升序排列，因为已经为降序（1.中确定的位置为首次部位降序的位置），所以首尾两两交换即可； 例：[5,7,11,9,6,5,3,1],交换后为[5,7,1,3,5,6,9,11]；
+另外，对于最大的排列，从小到大排列即可。 代码：
+// 步骤2函数 int findMin(vector&amp;lt;int&amp;gt; nums, int i) { int pivotEle = nums[i-1]; for (i = nums.size() - 1; i &amp;gt; -1; i--) { if (nums[i] &amp;gt; pivotEle) { break; } } return i; } // 步骤4函数，也可以用 reverse(nums.begin()+i, nums.end());实现 void swap(vector&amp;lt;int&amp;gt; &amp;amp;nums, int i) { int end = nums.</description>
+    </item>
+    <item>
+      <title>LeetCode题目总结</title>
+      <link>https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Sun, 06 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

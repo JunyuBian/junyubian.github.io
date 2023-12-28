@@ -1,10 +1,11 @@
 ---
 title: getopts in Bash
 date: 2022-10-21
+lastmod: 2022-10-21
 draft: false
 garden_tags: ["en", "notes", "bash"]
 summary: " "
-status: "growing"
+status: "evergreen"
 ---
 
 - [1. Notice](#1-notice)

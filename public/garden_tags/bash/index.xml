@@ -10,13 +10,6 @@
     <lastBuildDate>Fri, 21 Oct 2022 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://junyubian.github.io/garden_tags/bash/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>/dev/null and 2&amp;&gt;1</title>
-      <link>https://junyubian.github.io/garden/2022-10-21-dev-null-and-21/</link>
-      <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2022-10-21-dev-null-and-21/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>getopts in Bash</title>
       <link>https://junyubian.github.io/garden/2022-10-21-getopts-in-bash/</link>
       <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>

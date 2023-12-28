@@ -10,7 +10,7 @@
     <lastBuildDate>Sat, 02 Dec 2023 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://junyubian.github.io/garden_tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Criterions</title>
+      <title>criterions</title>
       <link>https://junyubian.github.io/garden_tags/criterions/</link>
       <pubDate>Sat, 02 Dec 2023 00:00:00 +0000</pubDate>
       <guid>https://junyubian.github.io/garden_tags/criterions/</guid>
@@ -52,13 +52,6 @@
       <description></description>
     </item>
     <item>
-      <title>logging</title>
-      <link>https://junyubian.github.io/garden_tags/logging/</link>
-      <pubDate>Tue, 07 Nov 2023 00:00:00 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden_tags/logging/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>tom-show</title>
       <link>https://junyubian.github.io/garden_tags/tom-show/</link>
       <pubDate>Tue, 07 Nov 2023 00:00:00 +0000</pubDate>
@@ -70,41 +63,6 @@
       <link>https://junyubian.github.io/garden_tags/bash/</link>
       <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
       <guid>https://junyubian.github.io/garden_tags/bash/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>cent-os</title>
-      <link>https://junyubian.github.io/garden_tags/cent-os/</link>
-      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden_tags/cent-os/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>command-line</title>
-      <link>https://junyubian.github.io/garden_tags/command-line/</link>
-      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden_tags/command-line/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>docker</title>
-      <link>https://junyubian.github.io/garden_tags/docker/</link>
-      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden_tags/docker/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>k8s</title>
-      <link>https://junyubian.github.io/garden_tags/k8s/</link>
-      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden_tags/k8s/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>vm</title>
-      <link>https://junyubian.github.io/garden_tags/vm/</link>
-      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden_tags/vm/</guid>
       <description></description>
     </item>
     <item>
@@ -136,10 +94,17 @@
       <description></description>
     </item>
     <item>
-      <title>linux</title>
-      <link>https://junyubian.github.io/garden_tags/linux/</link>
-      <pubDate>Mon, 28 Sep 2020 00:00:00 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden_tags/linux/</guid>
+      <title>projects</title>
+      <link>https://junyubian.github.io/garden_tags/projects/</link>
+      <pubDate>Tue, 28 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/garden_tags/projects/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>web</title>
+      <link>https://junyubian.github.io/garden_tags/web/</link>
+      <pubDate>Tue, 28 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/garden_tags/web/</guid>
       <description></description>
     </item>
     <item>

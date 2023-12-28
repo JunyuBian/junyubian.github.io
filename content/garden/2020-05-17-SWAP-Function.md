@@ -1,12 +1,11 @@
 ---
 title: SWAP Function
-date: 2020-05-17 19:28:00
-categories: 
-- Notes
-tags:
-- Algorithm
-- C++
-- en
+date: 2020-05-17
+lastmod: 2020-05-17
+draft: false
+garden_tags: ["en", "notes", "algorithm", "c++"]
+summary: " "
+status: "evergreen"
 ---
 
 In this blog, we will look into several ways of implementing swap in different ways.

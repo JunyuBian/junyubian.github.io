@@ -1,54 +1,131 @@
 <!DOCTYPE html>
-<html lang="en-us">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<style type=text/css>body{font-family:monospace;}</style>
-	<title>LeetCode题目总结-DFS&#43;BFS</title>
-	
-	
-	<link rel="stylesheet" href="/css/style.css">
-	
-	
-</head>
-<body>
-	<header>
-	================<br>
-	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
-	================
-	<div style="float: right;">Welcome to my posts!</div><br>
-	<p>
-	<nav>
-			<a href="/"><b>Start</b></a>.
-			
-			
-			<a href="/posts/"><b>Posts</b></a>.
-			
-			<a href="/categories/"><b>Categories</b></a>.
-			
-			<a href="/tags/"><b>Tags</b></a>.
-			
-			<a href="/about/"><b>About</b></a>.
-			
-	</nav>
-	</p>
-	
-</header>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;800&family=Frank+Ruhl+Libre:wght@200;300;400;500;600&family=Encode+Sans+Semi+Condensed:wght@400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/all.min.css">
+    <link disabled id="dark-mode-theme" rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/my_style.css">
+    
+    
+    
+    <title>Junyu Bian | LeetCode题目总结-DFS&#43;BFS</title>
+    <meta name="description" content="题目116:填充每个节点的下一个右侧节点指针 描述：
+给定一个完美二叉树，其所有叶子节点都在同一层，每个父节点都有两个子节点。二叉树定义如下：
+struct Node { int val; Node *left; Node *right; Node *next; }
+填充它的每个 next 指针，让这个指针指向其下一个右侧节点。如果找不到下一个右侧节点，则将 next 指针设置为 NULL。
+初始状态下，所有 next 指针都被设置为 NULL。
+示例：
+输入：{&quot;$id&quot;:&ldquo;1&rdquo;,&ldquo;left&rdquo;:{&quot;$id&quot;:&ldquo;2&rdquo;,&ldquo;left&rdquo;:{&quot;$id&quot;:&ldquo;3&rdquo;,&ldquo;left&rdquo;:null,&ldquo;next&rdquo;:null,&ldquo;right&rdquo;:null,&ldquo;val&rdquo;:4},&ldquo;next&rdquo;:null,&ldquo;right&rdquo;:{&quot;$id&quot;:&ldquo;4&rdquo;,&ldquo;left&rdquo;:null,&ldquo;next&rdquo;:null,&ldquo;right&rdquo;:null,&ldquo;val&rdquo;:5},&ldquo;val&rdquo;:2},&ldquo;next&rdquo;:null,&ldquo;right&rdquo;:{&quot;$id&quot;:&ldquo;5&rdquo;,&ldquo;left&rdquo;:{&quot;$id&quot;:&ldquo;6&rdquo;,&ldquo;left&rdquo;:null,&ldquo;next&rdquo;:null,&ldquo;right&rdquo;:null,&ldquo;val&rdquo;:6},&ldquo;next&rdquo;:null,&ldquo;right&rdquo;:{&quot;$id&quot;:&ldquo;7&rdquo;,&ldquo;left&rdquo;:null,&ldquo;next&rdquo;:null,&ldquo;right&rdquo;:null,&ldquo;val&rdquo;:7},&ldquo;val&rdquo;:3},&ldquo;val&rdquo;:1}
+输出：{&quot;$id&quot;:&ldquo;1&rdquo;,&ldquo;left&rdquo;:{&quot;$id&quot;:&ldquo;2&rdquo;,&ldquo;left&rdquo;:{&quot;$id&quot;:&ldquo;3&rdquo;,&ldquo;left&rdquo;:null,&ldquo;next&rdquo;:{&quot;$id&quot;:&ldquo;4&rdquo;,&ldquo;left&rdquo;:null,&ldquo;next&rdquo;:{&quot;$id&quot;:&ldquo;5&rdquo;,&ldquo;left&rdquo;:null,&ldquo;next&rdquo;:{&quot;$id&quot;:&ldquo;6&rdquo;,&ldquo;left&rdquo;:null,&ldquo;next&rdquo;:null,&ldquo;right&rdquo;:null,&ldquo;val&rdquo;:7},&ldquo;right&rdquo;:null,&ldquo;val&rdquo;:6},&ldquo;right&rdquo;:null,&ldquo;val&rdquo;:5},&ldquo;right&rdquo;:null,&ldquo;val&rdquo;:4},&ldquo;next&rdquo;:{&quot;$id&quot;:&ldquo;7&rdquo;,&ldquo;left&rdquo;:{&quot;$ref&quot;:&ldquo;5&rdquo;},&ldquo;next&rdquo;:null,&ldquo;right&rdquo;:{&quot;$ref&quot;:&ldquo;6&rdquo;},&ldquo;val&rdquo;:3},&ldquo;right&rdquo;:{&quot;$ref&quot;:&ldquo;4&rdquo;},&ldquo;val&rdquo;:2},&ldquo;next&rdquo;:null,&ldquo;right&rdquo;:{&quot;$ref&quot;:&ldquo;7&rdquo;},&ldquo;val&rdquo;:1}
+提示：
+你只能使用常量级额外空间。 使用递归解题也符合要求，本题中递归程序占用的栈空间不算做额外的空间复杂度。
+思路：
+突破点：广度优先搜索。
+步骤：
+使用队列进行广度优先遍历； 在接点出队列后，next指向队列首个元素，广度遍历完直接return。 代码：
+class Solution { public: Node* connect(Node* root) { if(!root) return root; queue&lt;Node*&gt; work; work.push(root); work.push(nullptr); Node* cur = nullptr; while(1) { // 如果队列首部是结点 if(work.front()) { cur = work.front(); work.pop(); // 如果是非叶子结点 if(cur-&gt;left) { work.">
+</head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="https://junyubian.github.io/">
+            
+            <b style="font-weight: 800;">JB</b>
+            
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0"><li class='nav-item '>
+                    <a class="nav-link" href="/garden/"> Digital Garden</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/projects/"> Projects</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/library/"> Library</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/about/"> About</a>
+                </li>
+             
+            <li class="nav-item px-2 pt-1">
+                <a class="btn fas fa-moon" id="dark-mode-toggle"></a>
+            </li>
+            </ul>
+        </div>
+    </div>
+</nav><div id="content">
 
-	
-	<main>
-		<article>
-			<h1>LeetCode题目总结-DFS&#43;BFS</h1>
-			<b><time>09/08/2020 14:03</time></b>
-		       
-		           <a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
-        	       
-		           <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>
-        	       
+<div class="container" style="max-width: 800px;">
+    <div class="py-4 rounded-3">
+        <div class="container-fluid py-2">
+            <h1 class="display-2 mb-4 text-center">LeetCode题目总结-DFS&#43;BFS</h1>
+        </div>
+        
+        <p class="text-center fs-4 fst-italic serif">题目116:填充每个节点的下一个右侧节点指针 描述：
+给定一个完美二叉树，其所有叶子节点都在同一层，每个父节点都有两个子节点。二叉树定义如下：
+struct Node { int val; Node *left; Node *right; Node *next; }
+填充它的每个 next 指针，让这个指针指向其下一个右侧节点。如果找不到下一个右侧节点，则将 next 指针设置为 NULL。
+初始状态下，所有 next 指针都被设置为 NULL。
+示例：
+输入：{&quot;$id&quot;:&ldquo;1&rdquo;,&ldquo;left&rdquo;:{&quot;$id&quot;:&ldquo;2&rdquo;,&ldquo;left&rdquo;:{&quot;$id&quot;:&ldquo;3&rdquo;,&ldquo;left&rdquo;:null,&ldquo;next&rdquo;:null,&ldquo;right&rdquo;:null,&ldquo;val&rdquo;:4},&ldquo;next&rdquo;:null,&ldquo;right&rdquo;:{&quot;$id&quot;:&ldquo;4&rdquo;,&ldquo;left&rdquo;:null,&ldquo;next&rdquo;:null,&ldquo;right&rdquo;:null,&ldquo;val&rdquo;:5},&ldquo;val&rdquo;:2},&ldquo;next&rdquo;:null,&ldquo;right&rdquo;:{&quot;$id&quot;:&ldquo;5&rdquo;,&ldquo;left&rdquo;:{&quot;$id&quot;:&ldquo;6&rdquo;,&ldquo;left&rdquo;:null,&ldquo;next&rdquo;:null,&ldquo;right&rdquo;:null,&ldquo;val&rdquo;:6},&ldquo;next&rdquo;:null,&ldquo;right&rdquo;:{&quot;$id&quot;:&ldquo;7&rdquo;,&ldquo;left&rdquo;:null,&ldquo;next&rdquo;:null,&ldquo;right&rdquo;:null,&ldquo;val&rdquo;:7},&ldquo;val&rdquo;:3},&ldquo;val&rdquo;:1}
+输出：{&quot;$id&quot;:&ldquo;1&rdquo;,&ldquo;left&rdquo;:{&quot;$id&quot;:&ldquo;2&rdquo;,&ldquo;left&rdquo;:{&quot;$id&quot;:&ldquo;3&rdquo;,&ldquo;left&rdquo;:null,&ldquo;next&rdquo;:{&quot;$id&quot;:&ldquo;4&rdquo;,&ldquo;left&rdquo;:null,&ldquo;next&rdquo;:{&quot;$id&quot;:&ldquo;5&rdquo;,&ldquo;left&rdquo;:null,&ldquo;next&rdquo;:{&quot;$id&quot;:&ldquo;6&rdquo;,&ldquo;left&rdquo;:null,&ldquo;next&rdquo;:null,&ldquo;right&rdquo;:null,&ldquo;val&rdquo;:7},&ldquo;right&rdquo;:null,&ldquo;val&rdquo;:6},&ldquo;right&rdquo;:null,&ldquo;val&rdquo;:5},&ldquo;right&rdquo;:null,&ldquo;val&rdquo;:4},&ldquo;next&rdquo;:{&quot;$id&quot;:&ldquo;7&rdquo;,&ldquo;left&rdquo;:{&quot;$ref&quot;:&ldquo;5&rdquo;},&ldquo;next&rdquo;:null,&ldquo;right&rdquo;:{&quot;$ref&quot;:&ldquo;6&rdquo;},&ldquo;val&rdquo;:3},&ldquo;right&rdquo;:{&quot;$ref&quot;:&ldquo;4&rdquo;},&ldquo;val&rdquo;:2},&ldquo;next&rdquo;:null,&ldquo;right&rdquo;:{&quot;$ref&quot;:&ldquo;7&rdquo;},&ldquo;val&rdquo;:1}
+提示：
+你只能使用常量级额外空间。 使用递归解题也符合要求，本题中递归程序占用的栈空间不算做额外的空间复杂度。
+思路：
+突破点：广度优先搜索。
+步骤：
+使用队列进行广度优先遍历； 在接点出队列后，next指向队列首个元素，广度遍历完直接return。 代码：
+class Solution { public: Node* connect(Node* root) { if(!root) return root; queue&lt;Node*&gt; work; work.push(root); work.push(nullptr); Node* cur = nullptr; while(1) { // 如果队列首部是结点 if(work.front()) { cur = work.front(); work.pop(); // 如果是非叶子结点 if(cur-&gt;left) { work.</p>
+        
+        <div class="text-center pt-4">
+            
+        </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+        <div class="col-12">
+            <p class="card-date m-0">
+                
+                
+                    Created Sep 8, 2020 - 
+                
+                Last updated: Sep 8, 2020
+            </p>
+            <hr class="dropdown-divider">
+            <div class="row justify-content-between">
+                <div class="col-sm-4">
+                    
+                </div>
+                <div class="col-sm-8" style="text-align: right;">
+                    
+                    
+                    <span class="badge tag-badge">C&#43;&#43;</span>
+                    
+                    <span class="badge tag-badge">算法</span>
+                    
+                    <span class="badge tag-badge">ch</span>
+                    
+                
+                
+                
+                </div>
+            </div>
+        </div>
+    </div>
 
-			<div>
-				<h3 id="题目116填充每个节点的下一个右侧节点指针httpsleetcode-cncomproblemspopulating-next-right-pointers-in-each-node">题目116:<a href="https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/">填充每个节点的下一个右侧节点指针</a></h3>
+    <div class="container-fluid py-2">
+        <div class="serif main-content">
+            <h3 id="题目116填充每个节点的下一个右侧节点指针httpsleetcode-cncomproblemspopulating-next-right-pointers-in-each-node">题目116:<a href="https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/">填充每个节点的下一个右侧节点指针</a></h3>
+<hr>
 <p>描述：</p>
 <p>给定一个完美二叉树，其所有叶子节点都在同一层，每个父节点都有两个子节点。二叉树定义如下：</p>
 <p>struct Node {
@@ -73,41 +150,42 @@ Node *next;
 <li>在接点出队列后，next指向队列首个元素，广度遍历完直接return。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    Node<span style="color:#f92672">*</span> connect(Node<span style="color:#f92672">*</span> root) {
-</span></span><span style="display:flex;"><span>    	<span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>root) <span style="color:#66d9ef">return</span> root;
-</span></span><span style="display:flex;"><span>    	queue<span style="color:#f92672">&lt;</span>Node<span style="color:#f92672">*&gt;</span> work;
-</span></span><span style="display:flex;"><span>      work.push(root);
-</span></span><span style="display:flex;"><span>    	work.push(<span style="color:#66d9ef">nullptr</span>);
-</span></span><span style="display:flex;"><span>    	Node<span style="color:#f92672">*</span> cur <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
-</span></span><span style="display:flex;"><span>    	<span style="color:#66d9ef">while</span>(<span style="color:#ae81ff">1</span>) {
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">Node</span><span style="color:#f92672">*</span> <span style="color:#111">connect</span><span style="color:#111">(</span><span style="color:#111">Node</span><span style="color:#f92672">*</span> <span style="color:#111">root</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    	<span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">root</span><span style="color:#111">)</span> <span style="color:#00a8c8">return</span> <span style="color:#111">root</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    	<span style="color:#111">queue</span><span style="color:#f92672">&lt;</span><span style="color:#111">Node</span><span style="color:#f92672">*&gt;</span> <span style="color:#111">work</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#111">work</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">root</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    	<span style="color:#111">work</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#00a8c8">nullptr</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    	<span style="color:#111">Node</span><span style="color:#f92672">*</span> <span style="color:#111">cur</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">nullptr</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    	<span style="color:#00a8c8">while</span><span style="color:#111">(</span><span style="color:#ae81ff">1</span><span style="color:#111">)</span> <span style="color:#111">{</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 如果队列首部是结点
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span>(work.front()) {
-</span></span><span style="display:flex;"><span>        	cur <span style="color:#f92672">=</span> work.front();
-</span></span><span style="display:flex;"><span>    			work.pop();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">work</span><span style="color:#111">.</span><span style="color:#111">front</span><span style="color:#111">())</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        	<span style="color:#111">cur</span> <span style="color:#f92672">=</span> <span style="color:#111">work</span><span style="color:#111">.</span><span style="color:#111">front</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>    			<span style="color:#111">work</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
 </span></span><span style="display:flex;"><span>          <span style="color:#75715e">// 如果是非叶子结点
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          <span style="color:#66d9ef">if</span>(cur<span style="color:#f92672">-&gt;</span>left) {
-</span></span><span style="display:flex;"><span>          	work.push(cur<span style="color:#f92672">-&gt;</span>left);
-</span></span><span style="display:flex;"><span>    				work.push(cur<span style="color:#f92672">-&gt;</span>right);
-</span></span><span style="display:flex;"><span>          }
-</span></span><span style="display:flex;"><span>    			cur<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> work.front();
-</span></span><span style="display:flex;"><span>        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>          <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">cur</span><span style="color:#f92672">-&gt;</span><span style="color:#111">left</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>          	<span style="color:#111">work</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">cur</span><span style="color:#f92672">-&gt;</span><span style="color:#111">left</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    				<span style="color:#111">work</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">cur</span><span style="color:#f92672">-&gt;</span><span style="color:#111">right</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    			<span style="color:#111">cur</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">work</span><span style="color:#111">.</span><span style="color:#111">front</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 如果只剩下一个nullptr结点
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    		<span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">==</span> work.size()) {
-</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> root;
-</span></span><span style="display:flex;"><span>        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    		<span style="color:#00a8c8">else</span> <span style="color:#75af00">if</span> <span style="color:#111">(</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">==</span> <span style="color:#111">work</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">())</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#00a8c8">return</span> <span style="color:#111">root</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 如果遇到nullptr结点，这是一层的分割点
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    		<span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>    			work.pop();
-</span></span><span style="display:flex;"><span>    			work.push(<span style="color:#66d9ef">nullptr</span>);
-</span></span><span style="display:flex;"><span>    		}
-</span></span><span style="display:flex;"><span>    	}
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> root;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    		<span style="color:#00a8c8">else</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    			<span style="color:#111">work</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>    			<span style="color:#111">work</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#00a8c8">nullptr</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    		<span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    	<span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#00a8c8">return</span> <span style="color:#111">root</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目117填充每个节点的下一个右侧节点指针-iihttpsleetcode-cncomproblemspopulating-next-right-pointers-in-each-node-ii">题目117:<a href="https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node-ii/">填充每个节点的下一个右侧节点指针 II</a></h3>
+<hr>
 <p>描述：</p>
 <p>给定一个二叉树</p>
 <p>struct Node {
@@ -135,35 +213,36 @@ Node *next;
 <li>每循环一层将这一层清空，录入孩子节点。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    Node<span style="color:#f92672">*</span> connect(Node<span style="color:#f92672">*</span> root) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>root) {
-</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> root;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        queue<span style="color:#f92672">&lt;</span>Node<span style="color:#f92672">*&gt;</span> q{{root}};
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span>(<span style="color:#f92672">!</span>q.empty()) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> q.size();
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n; i<span style="color:#f92672">++</span>){
-</span></span><span style="display:flex;"><span>                Node<span style="color:#f92672">*</span> t <span style="color:#f92672">=</span> q.front();
-</span></span><span style="display:flex;"><span>                q.pop();
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span>(n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">!=</span> i){
-</span></span><span style="display:flex;"><span>                    Node<span style="color:#f92672">*</span> tNext <span style="color:#f92672">=</span> q.front();
-</span></span><span style="display:flex;"><span>                    t<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> tNext;
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span>(t<span style="color:#f92672">-&gt;</span>left) {
-</span></span><span style="display:flex;"><span>                  q.push(t<span style="color:#f92672">-&gt;</span>left);
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span>(t<span style="color:#f92672">-&gt;</span>right) {
-</span></span><span style="display:flex;"><span>                  q.push(t<span style="color:#f92672">-&gt;</span>right);
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> root;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">Node</span><span style="color:#f92672">*</span> <span style="color:#111">connect</span><span style="color:#111">(</span><span style="color:#111">Node</span><span style="color:#f92672">*</span> <span style="color:#111">root</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">root</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#00a8c8">return</span> <span style="color:#111">root</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">queue</span><span style="color:#f92672">&lt;</span><span style="color:#111">Node</span><span style="color:#f92672">*&gt;</span> <span style="color:#111">q</span><span style="color:#111">{{</span><span style="color:#111">root</span><span style="color:#111">}};</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">while</span><span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">())</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">int</span> <span style="color:#111">n</span> <span style="color:#f92672">=</span> <span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">for</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">n</span><span style="color:#111">;</span> <span style="color:#111">i</span><span style="color:#f92672">++</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">Node</span><span style="color:#f92672">*</span> <span style="color:#111">t</span> <span style="color:#f92672">=</span> <span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">front</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">n</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">!=</span> <span style="color:#111">i</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">Node</span><span style="color:#f92672">*</span> <span style="color:#111">tNext</span> <span style="color:#f92672">=</span> <span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">front</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">t</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">tNext</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">t</span><span style="color:#f92672">-&gt;</span><span style="color:#111">left</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">t</span><span style="color:#f92672">-&gt;</span><span style="color:#111">left</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">t</span><span style="color:#f92672">-&gt;</span><span style="color:#111">right</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">t</span><span style="color:#f92672">-&gt;</span><span style="color:#111">right</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">root</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目200岛屿数量httpsleetcode-cncomproblemsnumber-of-islands">题目200:<a href="https://leetcode-cn.com/problems/number-of-islands/">岛屿数量</a></h3>
+<hr>
 <p>描述：</p>
 <p>给你一个由 &lsquo;1&rsquo;（陆地）和 &lsquo;0&rsquo;（水）组成的的二维网格，请你计算网格中岛屿的数量。</p>
 <p>岛屿总是被水包围，并且每座岛屿只能由水平方向或竖直方向上相邻的陆地连接形成。</p>
@@ -196,37 +275,37 @@ Node *next;
 <li>最终深度优先搜索次数即为岛屿数量。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> dfs(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;&amp;</span> grid, <span style="color:#66d9ef">int</span> r, <span style="color:#66d9ef">int</span> c) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> nr <span style="color:#f92672">=</span> grid.size();
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> nc <span style="color:#f92672">=</span> grid[<span style="color:#ae81ff">0</span>].size();
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">void</span> <span style="color:#111">dfs</span><span style="color:#111">(</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">char</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;&amp;</span> <span style="color:#111">grid</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">r</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">c</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">nr</span> <span style="color:#f92672">=</span> <span style="color:#111">grid</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">nc</span> <span style="color:#f92672">=</span> <span style="color:#111">grid</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">].</span><span style="color:#111">size</span><span style="color:#111">();</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        grid[r][c] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#e6db74">&#39;1&#39;</span> <span style="color:#f92672">==</span> r <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> grid[r<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][c]) dfs(grid, r <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, c);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#e6db74">&#39;1&#39;</span> <span style="color:#f92672">==</span> r <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> nr <span style="color:#f92672">&amp;&amp;</span> grid[r<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>][c]) dfs(grid, r <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, c);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#e6db74">&#39;1&#39;</span> <span style="color:#f92672">==</span> c <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> grid[r][c<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]) dfs(grid, r, c <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#e6db74">&#39;1&#39;</span> <span style="color:#f92672">==</span> c <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> nc <span style="color:#f92672">&amp;&amp;</span> grid[r][c<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]) dfs(grid, r, c <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>        <span style="color:#111">grid</span><span style="color:#111">[</span><span style="color:#111">r</span><span style="color:#111">][</span><span style="color:#111">c</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;0&#39;</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;1&#39;</span> <span style="color:#f92672">==</span> <span style="color:#111">r</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">grid</span><span style="color:#111">[</span><span style="color:#111">r</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#111">][</span><span style="color:#111">c</span><span style="color:#111">])</span> <span style="color:#111">dfs</span><span style="color:#111">(</span><span style="color:#111">grid</span><span style="color:#111">,</span> <span style="color:#111">r</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">c</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;1&#39;</span> <span style="color:#f92672">==</span> <span style="color:#111">r</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">nr</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">grid</span><span style="color:#111">[</span><span style="color:#111">r</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#111">][</span><span style="color:#111">c</span><span style="color:#111">])</span> <span style="color:#111">dfs</span><span style="color:#111">(</span><span style="color:#111">grid</span><span style="color:#111">,</span> <span style="color:#111">r</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">c</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;1&#39;</span> <span style="color:#f92672">==</span> <span style="color:#111">c</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">grid</span><span style="color:#111">[</span><span style="color:#111">r</span><span style="color:#111">][</span><span style="color:#111">c</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#111">])</span> <span style="color:#111">dfs</span><span style="color:#111">(</span><span style="color:#111">grid</span><span style="color:#111">,</span> <span style="color:#111">r</span><span style="color:#111">,</span> <span style="color:#111">c</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;1&#39;</span> <span style="color:#f92672">==</span> <span style="color:#111">c</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">nc</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">grid</span><span style="color:#111">[</span><span style="color:#111">r</span><span style="color:#111">][</span><span style="color:#111">c</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#111">])</span> <span style="color:#111">dfs</span><span style="color:#111">(</span><span style="color:#111">grid</span><span style="color:#111">,</span> <span style="color:#111">r</span><span style="color:#111">,</span> <span style="color:#111">c</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> numIslands(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;&amp;</span> grid) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> nr <span style="color:#f92672">=</span> grid.size();
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>nr) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> nc <span style="color:#f92672">=</span> grid[<span style="color:#ae81ff">0</span>].size();
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#111">numIslands</span><span style="color:#111">(</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">char</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;&amp;</span> <span style="color:#111">grid</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">nr</span> <span style="color:#f92672">=</span> <span style="color:#111">grid</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">nr</span><span style="color:#111">)</span> <span style="color:#00a8c8">return</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">nc</span> <span style="color:#f92672">=</span> <span style="color:#111">grid</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">].</span><span style="color:#111">size</span><span style="color:#111">();</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> num_islands <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> r <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; r <span style="color:#f92672">&lt;</span> nr; <span style="color:#f92672">++</span>r) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> c <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; c <span style="color:#f92672">&lt;</span> nc; <span style="color:#f92672">++</span>c) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (<span style="color:#e6db74">&#39;1&#39;</span> <span style="color:#f92672">==</span> grid[r][c]) {
-</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">++</span>num_islands;
-</span></span><span style="display:flex;"><span>                    dfs(grid, r, c);
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> num_islands;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">num_islands</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">r</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span> <span style="color:#111">r</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">nr</span><span style="color:#111">;</span> <span style="color:#f92672">++</span><span style="color:#111">r</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">c</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span> <span style="color:#111">c</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">nc</span><span style="color:#111">;</span> <span style="color:#f92672">++</span><span style="color:#111">c</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#d88200">&#39;1&#39;</span> <span style="color:#f92672">==</span> <span style="color:#111">grid</span><span style="color:#111">[</span><span style="color:#111">r</span><span style="color:#111">][</span><span style="color:#111">c</span><span style="color:#111">])</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">++</span><span style="color:#111">num_islands</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">dfs</span><span style="color:#111">(</span><span style="color:#111">grid</span><span style="color:#111">,</span> <span style="color:#111">r</span><span style="color:#111">,</span> <span style="color:#111">c</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">num_islands</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/number-of-islands/solution/dao-yu-shu-liang-by-leetcode/">思路二</a>：</p>
 <p>突破点：<code>广度优先搜索。</code></p>
 <p>步骤：</p>
@@ -236,50 +315,51 @@ Node *next;
 <li>最终广度优先搜索次数即为岛屿数量。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> numIslands(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;&amp;</span> grid) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> nr <span style="color:#f92672">=</span> grid.size();
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>nr) <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> nc <span style="color:#f92672">=</span> grid[<span style="color:#ae81ff">0</span>].size();
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#111">numIslands</span><span style="color:#111">(</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">char</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;&amp;</span> <span style="color:#111">grid</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">nr</span> <span style="color:#f92672">=</span> <span style="color:#111">grid</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">nr</span><span style="color:#111">)</span> <span style="color:#00a8c8">return</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">nc</span> <span style="color:#f92672">=</span> <span style="color:#111">grid</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">].</span><span style="color:#111">size</span><span style="color:#111">();</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> num_islands <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> r <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; r <span style="color:#f92672">&lt;</span> nr; <span style="color:#f92672">++</span>r) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> c <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; c <span style="color:#f92672">&lt;</span> nc; <span style="color:#f92672">++</span>c) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (grid[r][c] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;1&#39;</span>) {
-</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">++</span>num_islands;
-</span></span><span style="display:flex;"><span>                  grid[r][c] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>;
-</span></span><span style="display:flex;"><span>                  queue<span style="color:#f92672">&lt;</span>pair<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> neighbors;
-</span></span><span style="display:flex;"><span>                  neighbors.push({r, c});
-</span></span><span style="display:flex;"><span>                  <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>neighbors.front()) {
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">auto</span> rc <span style="color:#f92672">=</span> neighbors.front();
-</span></span><span style="display:flex;"><span>                    neighbors.pop();
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">int</span> row <span style="color:#f92672">=</span> rc.first, col <span style="color:#f92672">=</span> rc.second;
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (<span style="color:#ae81ff">0</span> <span style="color:#f92672">&lt;=</span> row <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#e6db74">&#39;1&#39;</span> <span style="color:#f92672">==</span> grid[row<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][col]) {
-</span></span><span style="display:flex;"><span>                      neighbors.push({row<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, col});
-</span></span><span style="display:flex;"><span>                      grid[row<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][col] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>;
-</span></span><span style="display:flex;"><span>                    }
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (row <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> nr <span style="color:#f92672">&amp;&amp;</span> grid[row<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>][col] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;1&#39;</span>) {
-</span></span><span style="display:flex;"><span>                      neighbors.push({row<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, col});
-</span></span><span style="display:flex;"><span>                      grid[row<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>][col] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>;
-</span></span><span style="display:flex;"><span>                    }
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (col <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> grid[row][col<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;1&#39;</span>) {
-</span></span><span style="display:flex;"><span>                      neighbors.push({row, col<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>});
-</span></span><span style="display:flex;"><span>                      grid[row][col<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>;
-</span></span><span style="display:flex;"><span>                    }
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (col <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> nc <span style="color:#f92672">&amp;&amp;</span> grid[row][col<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;1&#39;</span>) {
-</span></span><span style="display:flex;"><span>                      neighbors.push({row, col<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>});
-</span></span><span style="display:flex;"><span>                      grid[row][col<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;0&#39;</span>;
-</span></span><span style="display:flex;"><span>                    }
-</span></span><span style="display:flex;"><span>                  }
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> num_islands;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">num_islands</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">r</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span> <span style="color:#111">r</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">nr</span><span style="color:#111">;</span> <span style="color:#f92672">++</span><span style="color:#111">r</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">c</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span> <span style="color:#111">c</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">nc</span><span style="color:#111">;</span> <span style="color:#f92672">++</span><span style="color:#111">c</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">grid</span><span style="color:#111">[</span><span style="color:#111">r</span><span style="color:#111">][</span><span style="color:#111">c</span><span style="color:#111">]</span> <span style="color:#f92672">==</span> <span style="color:#d88200">&#39;1&#39;</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#f92672">++</span><span style="color:#111">num_islands</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#111">grid</span><span style="color:#111">[</span><span style="color:#111">r</span><span style="color:#111">][</span><span style="color:#111">c</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;0&#39;</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#111">queue</span><span style="color:#f92672">&lt;</span><span style="color:#111">pair</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> <span style="color:#111">neighbors</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#111">neighbors</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">({</span><span style="color:#111">r</span><span style="color:#111">,</span> <span style="color:#111">c</span><span style="color:#111">});</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">neighbors</span><span style="color:#111">.</span><span style="color:#111">front</span><span style="color:#111">())</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#00a8c8">auto</span> <span style="color:#111">rc</span> <span style="color:#f92672">=</span> <span style="color:#111">neighbors</span><span style="color:#111">.</span><span style="color:#111">front</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">neighbors</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#00a8c8">int</span> <span style="color:#111">row</span> <span style="color:#f92672">=</span> <span style="color:#111">rc</span><span style="color:#111">.</span><span style="color:#111">first</span><span style="color:#111">,</span> <span style="color:#111">col</span> <span style="color:#f92672">=</span> <span style="color:#111">rc</span><span style="color:#111">.</span><span style="color:#111">second</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">&lt;=</span> <span style="color:#111">row</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#d88200">&#39;1&#39;</span> <span style="color:#f92672">==</span> <span style="color:#111">grid</span><span style="color:#111">[</span><span style="color:#111">row</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#111">][</span><span style="color:#111">col</span><span style="color:#111">])</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#111">neighbors</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">({</span><span style="color:#111">row</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">col</span><span style="color:#111">});</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#111">grid</span><span style="color:#111">[</span><span style="color:#111">row</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#111">][</span><span style="color:#111">col</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;0&#39;</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">row</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">nr</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">grid</span><span style="color:#111">[</span><span style="color:#111">row</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#111">][</span><span style="color:#111">col</span><span style="color:#111">]</span> <span style="color:#f92672">==</span> <span style="color:#d88200">&#39;1&#39;</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#111">neighbors</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">({</span><span style="color:#111">row</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">col</span><span style="color:#111">});</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#111">grid</span><span style="color:#111">[</span><span style="color:#111">row</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#111">][</span><span style="color:#111">col</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;0&#39;</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">col</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">grid</span><span style="color:#111">[</span><span style="color:#111">row</span><span style="color:#111">][</span><span style="color:#111">col</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#111">]</span> <span style="color:#f92672">==</span> <span style="color:#d88200">&#39;1&#39;</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#111">neighbors</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">({</span><span style="color:#111">row</span><span style="color:#111">,</span> <span style="color:#111">col</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#111">});</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#111">grid</span><span style="color:#111">[</span><span style="color:#111">row</span><span style="color:#111">][</span><span style="color:#111">col</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;0&#39;</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">col</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">nc</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">grid</span><span style="color:#111">[</span><span style="color:#111">row</span><span style="color:#111">][</span><span style="color:#111">col</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#111">]</span> <span style="color:#f92672">==</span> <span style="color:#d88200">&#39;1&#39;</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#111">neighbors</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">({</span><span style="color:#111">row</span><span style="color:#111">,</span> <span style="color:#111">col</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#111">});</span>
+</span></span><span style="display:flex;"><span>                      <span style="color:#111">grid</span><span style="color:#111">[</span><span style="color:#111">row</span><span style="color:#111">][</span><span style="color:#111">col</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#d88200">&#39;0&#39;</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>                  <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">num_islands</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目207课程表httpsleetcode-cncomproblemscourse-schedule">题目207:<a href="https://leetcode-cn.com/problems/course-schedule/">课程表</a></h3>
+<hr>
 <p>描述：</p>
 <p>你这个学期必须选修 numCourse 门课程，记为 0 到 numCourse-1 。</p>
 <p>在选修某些课程之前需要一些先修课程。 例如，想要学习课程 0 ，你需要先完成课程 1 ，我们用一个匹配来表示他们：[0,1]</p>
@@ -305,43 +385,43 @@ Node *next;
 <li>如果存在，说明无环，如果不存在，说明有环。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> edges;
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> visited;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> valid <span style="color:#f92672">=</span> true;
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> <span style="color:#111">edges</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">visited</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">bool</span> <span style="color:#111">valid</span> <span style="color:#f92672">=</span> <span style="color:#111">true</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> dfs(<span style="color:#66d9ef">int</span> u) {
-</span></span><span style="display:flex;"><span>        visited[u] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> v: edges[u]) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#ae81ff">0</span> <span style="color:#f92672">==</span> visited[v]) {
-</span></span><span style="display:flex;"><span>                dfs(v);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>valid) {
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">return</span>;
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">==</span> visited[v]) {
-</span></span><span style="display:flex;"><span>                valid <span style="color:#f92672">=</span> false;
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span>;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        visited[u] <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">void</span> <span style="color:#111">dfs</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">u</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">visited</span><span style="color:#111">[</span><span style="color:#111">u</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">v</span><span style="color:#111">:</span> <span style="color:#111">edges</span><span style="color:#111">[</span><span style="color:#111">u</span><span style="color:#111">])</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">==</span> <span style="color:#111">visited</span><span style="color:#111">[</span><span style="color:#111">v</span><span style="color:#111">])</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">dfs</span><span style="color:#111">(</span><span style="color:#111">v</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">valid</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#00a8c8">return</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#75af00">if</span> <span style="color:#111">(</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">==</span> <span style="color:#111">visited</span><span style="color:#111">[</span><span style="color:#111">v</span><span style="color:#111">])</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">valid</span> <span style="color:#f92672">=</span> <span style="color:#111">false</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">return</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">visited</span><span style="color:#111">[</span><span style="color:#111">u</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">canFinish</span>(<span style="color:#66d9ef">int</span> numCourses, vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;&amp;</span> prerequisites) {
-</span></span><span style="display:flex;"><span>        edges.resize(numCourses);
-</span></span><span style="display:flex;"><span>        visited.resize(numCourses);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> info: prerequisites) {
-</span></span><span style="display:flex;"><span>            edges[info[<span style="color:#ae81ff">1</span>]].push_back(info[<span style="color:#ae81ff">0</span>]);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> numCourses <span style="color:#f92672">&amp;&amp;</span> valid; <span style="color:#f92672">++</span>i) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>visited[i]) {
-</span></span><span style="display:flex;"><span>                dfs(i);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> valid;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">bool</span> <span style="color:#75af00">canFinish</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">numCourses</span><span style="color:#111">,</span> <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;&amp;</span> <span style="color:#111">prerequisites</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">edges</span><span style="color:#111">.</span><span style="color:#111">resize</span><span style="color:#111">(</span><span style="color:#111">numCourses</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">visited</span><span style="color:#111">.</span><span style="color:#111">resize</span><span style="color:#111">(</span><span style="color:#111">numCourses</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">const</span> <span style="color:#00a8c8">auto</span><span style="color:#f92672">&amp;</span> <span style="color:#111">info</span><span style="color:#111">:</span> <span style="color:#111">prerequisites</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">edges</span><span style="color:#111">[</span><span style="color:#111">info</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">]].</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#111">info</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">numCourses</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">valid</span><span style="color:#111">;</span> <span style="color:#f92672">++</span><span style="color:#111">i</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">visited</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">])</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">dfs</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">valid</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/course-schedule/solution/ke-cheng-biao-by-leetcode-solution/">思路二</a>：</p>
 <p>突破点：<code>广度优先搜索。</code></p>
 <p>步骤：</p>
@@ -356,44 +436,45 @@ Node *next;
 <li>否则，说明存在环。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> edges;
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> indeg;
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> <span style="color:#111">edges</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">indeg</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> canFinish(<span style="color:#66d9ef">int</span> numCourses, vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;&amp;</span> prerequisites) {
-</span></span><span style="display:flex;"><span>        edges.resize(numCourses);
-</span></span><span style="display:flex;"><span>        indeg.resize(numCourses);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> info: prerequisites) {
-</span></span><span style="display:flex;"><span>            edges[info[<span style="color:#ae81ff">1</span>]].push_back(info[<span style="color:#ae81ff">0</span>]);
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">++</span>indeg[info[<span style="color:#ae81ff">0</span>]];
-</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">bool</span> <span style="color:#111">canFinish</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">numCourses</span><span style="color:#111">,</span> <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;&amp;</span> <span style="color:#111">prerequisites</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">edges</span><span style="color:#111">.</span><span style="color:#111">resize</span><span style="color:#111">(</span><span style="color:#111">numCourses</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">indeg</span><span style="color:#111">.</span><span style="color:#111">resize</span><span style="color:#111">(</span><span style="color:#111">numCourses</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">const</span> <span style="color:#00a8c8">auto</span><span style="color:#f92672">&amp;</span> <span style="color:#111">info</span><span style="color:#111">:</span> <span style="color:#111">prerequisites</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">edges</span><span style="color:#111">[</span><span style="color:#111">info</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">]].</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#111">info</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">++</span><span style="color:#111">indeg</span><span style="color:#111">[</span><span style="color:#111">info</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">]];</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> q;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> numCourses; <span style="color:#f92672">++</span>i) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#ae81ff">0</span> <span style="color:#f92672">==</span> indeg[i]) {
-</span></span><span style="display:flex;"><span>                q.push(i);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#111">queue</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">q</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">numCourses</span><span style="color:#111">;</span> <span style="color:#f92672">++</span><span style="color:#111">i</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">==</span> <span style="color:#111">indeg</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">])</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> visited <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>q.empty()) {
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">++</span>visited;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> u <span style="color:#f92672">=</span> q.front();
-</span></span><span style="display:flex;"><span>            q.pop();
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> v: edges[u]) {
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">--</span>indeg[v];
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (<span style="color:#ae81ff">0</span> <span style="color:#f92672">==</span> indeg[v]) {
-</span></span><span style="display:flex;"><span>                    q.push(v);
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> visited <span style="color:#f92672">==</span> numCourses;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">visited</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">())</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">++</span><span style="color:#111">visited</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">int</span> <span style="color:#111">u</span> <span style="color:#f92672">=</span> <span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">front</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">v</span><span style="color:#111">:</span> <span style="color:#111">edges</span><span style="color:#111">[</span><span style="color:#111">u</span><span style="color:#111">])</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">--</span><span style="color:#111">indeg</span><span style="color:#111">[</span><span style="color:#111">v</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">==</span> <span style="color:#111">indeg</span><span style="color:#111">[</span><span style="color:#111">v</span><span style="color:#111">])</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">v</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">visited</span> <span style="color:#f92672">==</span> <span style="color:#111">numCourses</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目210课程表-iihttpsleetcode-cncomproblemscourse-schedule-ii">题目210:<a href="https://leetcode-cn.com/problems/course-schedule-ii/">课程表 II</a></h3>
+<hr>
 <p>描述：</p>
 <p>现在你总共有 n 门课需要选，记为 0 到 n-1。</p>
 <p>在选修某些课程之前需要一些先修课程。 例如，想要学习课程 0 ，你需要先完成课程 1 ，我们用一个匹配来表示他们: [0,1]</p>
@@ -427,66 +508,67 @@ Node *next;
 <li>u所有相邻节点都为”已完成“后，将u入栈，并标记为已完成。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">private</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 存储有向图
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> edges;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> <span style="color:#111">edges</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 标记每个节点的状态：0=未搜索，1=搜索中，2=已完成
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> visited;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">visited</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 用数组来模拟栈，下标 0 为栈底，n-1 为栈顶
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> result;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">result</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 判断有向图中是否有环
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">bool</span> valid <span style="color:#f92672">=</span> true;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#00a8c8">bool</span> <span style="color:#111">valid</span> <span style="color:#f92672">=</span> <span style="color:#111">true</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> dfs(<span style="color:#66d9ef">int</span> u) {
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">void</span> <span style="color:#111">dfs</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">u</span><span style="color:#111">)</span> <span style="color:#111">{</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 将节点标记为「搜索中」
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        visited[u] <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#111">visited</span><span style="color:#111">[</span><span style="color:#111">u</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 搜索其相邻节点
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// 只要发现有环，立刻停止搜索
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> v: edges[u]) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">v</span><span style="color:#111">:</span> <span style="color:#111">edges</span><span style="color:#111">[</span><span style="color:#111">u</span><span style="color:#111">])</span> <span style="color:#111">{</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 如果「未搜索」那么搜索相邻节点
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (visited[v] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
-</span></span><span style="display:flex;"><span>                dfs(v);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>valid) {
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">return</span>;
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>            }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">visited</span><span style="color:#111">[</span><span style="color:#111">v</span><span style="color:#111">]</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">dfs</span><span style="color:#111">(</span><span style="color:#111">v</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">valid</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#00a8c8">return</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 如果「搜索中」说明找到了环
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (visited[v] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>) {
-</span></span><span style="display:flex;"><span>                valid <span style="color:#f92672">=</span> false;
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span>;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#00a8c8">else</span> <span style="color:#75af00">if</span> <span style="color:#111">(</span><span style="color:#111">visited</span><span style="color:#111">[</span><span style="color:#111">v</span><span style="color:#111">]</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">valid</span> <span style="color:#f92672">=</span> <span style="color:#111">false</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">return</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 将节点标记为「已完成」
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        visited[u] <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#111">visited</span><span style="color:#111">[</span><span style="color:#111">u</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 将节点入栈
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        result.push_back(u);
-</span></span><span style="display:flex;"><span>    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#111">result</span><span style="color:#111">.</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#111">u</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> findOrder(<span style="color:#66d9ef">int</span> numCourses, vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;&amp;</span> prerequisites) {
-</span></span><span style="display:flex;"><span>        edges.resize(numCourses);
-</span></span><span style="display:flex;"><span>        visited.resize(numCourses);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> info: prerequisites) {
-</span></span><span style="display:flex;"><span>            edges[info[<span style="color:#ae81ff">1</span>]].push_back(info[<span style="color:#ae81ff">0</span>]);
-</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">findOrder</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">numCourses</span><span style="color:#111">,</span> <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;&gt;&amp;</span> <span style="color:#111">prerequisites</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">edges</span><span style="color:#111">.</span><span style="color:#111">resize</span><span style="color:#111">(</span><span style="color:#111">numCourses</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">visited</span><span style="color:#111">.</span><span style="color:#111">resize</span><span style="color:#111">(</span><span style="color:#111">numCourses</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">const</span> <span style="color:#00a8c8">auto</span><span style="color:#f92672">&amp;</span> <span style="color:#111">info</span><span style="color:#111">:</span> <span style="color:#111">prerequisites</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">edges</span><span style="color:#111">[</span><span style="color:#111">info</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">]].</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#111">info</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 每次挑选一个「未搜索」的节点，开始进行深度优先搜索
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> numCourses <span style="color:#f92672">&amp;&amp;</span> valid; <span style="color:#f92672">++</span>i) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>visited[i]) {
-</span></span><span style="display:flex;"><span>                dfs(i);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>valid) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> {};
-</span></span><span style="display:flex;"><span>        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">numCourses</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">valid</span><span style="color:#111">;</span> <span style="color:#f92672">++</span><span style="color:#111">i</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">visited</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">])</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">dfs</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">valid</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">return</span> <span style="color:#111">{};</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 如果没有环，那么就有拓扑排序
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// 注意下标 0 为栈底，因此需要将数组反序输出
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        reverse(result.begin(), result.end());
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#111">reverse</span><span style="color:#111">(</span><span style="color:#111">result</span><span style="color:#111">.</span><span style="color:#111">begin</span><span style="color:#111">(),</span> <span style="color:#111">result</span><span style="color:#111">.</span><span style="color:#111">end</span><span style="color:#111">());</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">result</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目279完全平方数httpsleetcode-cncomproblemsperfect-squares">题目279:<a href="https://leetcode-cn.com/problems/perfect-squares/">完全平方数</a></h3>
+<hr>
 <p>描述：</p>
 <p>给定正整数 n，找到若干个完全平方数（比如 1, 4, 9, 16, &hellip;）使得它们的和等于 n。你需要让组成和的完全平方数的个数最少。</p>
 <p>示例 1:</p>
@@ -505,49 +587,49 @@ Node *next;
 <li>使用BFS解决。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*返回小于n的平方序列: 1, 4, 9...*/</span>
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> getSquares(<span style="color:#66d9ef">int</span> n) {
-</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> res;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i<span style="color:#f92672">*</span>i <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>i) {
-</span></span><span style="display:flex;"><span>            res.push_back(i<span style="color:#f92672">*</span>i);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> res;
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">getSquares</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">n</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">res</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span> <span style="color:#111">i</span><span style="color:#f92672">*</span><span style="color:#111">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#111">n</span><span style="color:#111">;</span> <span style="color:#f92672">++</span><span style="color:#111">i</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">res</span><span style="color:#111">.</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#f92672">*</span><span style="color:#111">i</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">res</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#75af00">numSquares</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">n</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">squares</span> <span style="color:#f92672">=</span> <span style="color:#111">getSquares</span><span style="color:#111">(</span><span style="color:#111">n</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">bool</span><span style="color:#f92672">&gt;</span> <span style="color:#111">visited</span><span style="color:#111">(</span><span style="color:#111">n</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#111">);</span>    <span style="color:#75715e">//记录已访问过的节点
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#111">queue</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">q</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">numSquares</span>(<span style="color:#66d9ef">int</span> n) {
-</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> squares <span style="color:#f92672">=</span> getSquares(n);
-</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">bool</span><span style="color:#f92672">&gt;</span> visited(n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>);    <span style="color:#75715e">//记录已访问过的节点
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> q;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        q.push(n);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> res <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>        visited[n] <span style="color:#f92672">=</span> true;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span>(<span style="color:#f92672">!</span>q.empty()) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">int</span> size <span style="color:#f92672">=</span> q.size();
-</span></span><span style="display:flex;"><span>            res<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span>(size<span style="color:#f92672">--</span>) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> curr <span style="color:#f92672">=</span> q.front();
-</span></span><span style="display:flex;"><span>                q.pop();
+</span></span><span style="display:flex;"><span>        <span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">n</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">res</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">visited</span><span style="color:#111">[</span><span style="color:#111">n</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#111">true</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">while</span><span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">())</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">int</span> <span style="color:#111">size</span> <span style="color:#f92672">=</span> <span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">res</span><span style="color:#f92672">++</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>          
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">while</span><span style="color:#111">(</span><span style="color:#111">size</span><span style="color:#f92672">--</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">int</span> <span style="color:#111">curr</span> <span style="color:#f92672">=</span> <span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">front</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
 </span></span><span style="display:flex;"><span>                <span style="color:#75715e">/*每次跨越的间隔为平方数*/</span>
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> num: squares) {
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">int</span> next <span style="color:#f92672">=</span> curr <span style="color:#f92672">-</span> num;
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span>(<span style="color:#ae81ff">0</span> <span style="color:#f92672">&gt;</span> next) {
-</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">break</span>;
-</span></span><span style="display:flex;"><span>                    }
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span>(<span style="color:#ae81ff">0</span> <span style="color:#f92672">==</span> next) {
-</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">return</span> res;
-</span></span><span style="display:flex;"><span>                    }
-</span></span><span style="display:flex;"><span>                    visited[next] <span style="color:#f92672">=</span> true;
-</span></span><span style="display:flex;"><span>                    q.push(next);
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> n;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">for</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">num</span><span style="color:#111">:</span> <span style="color:#111">squares</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#00a8c8">int</span> <span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">curr</span> <span style="color:#f92672">-</span> <span style="color:#111">num</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">&gt;</span> <span style="color:#111">next</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#00a8c8">break</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span> <span style="color:#f92672">==</span> <span style="color:#111">next</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                        <span style="color:#00a8c8">return</span> <span style="color:#111">res</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">visited</span><span style="color:#111">[</span><span style="color:#111">next</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#111">true</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">next</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">n</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/perfect-squares/solution/yi-ge-wan-quan-bei-bao-wen-ti-by-wtffqbpl/">思路二</a>：</p>
 <p>突破点：<code>动态规划。</code></p>
 <p>步骤：</p>
@@ -558,38 +640,39 @@ Node *next;
 <li>求解组成数组所需要的完全平方数数量最少即为背包的价值最低。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> numSquares(<span style="color:#66d9ef">int</span> n) {
-</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> choices;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> res <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#111">numSquares</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">n</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">choices</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">res</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 构造物品，即所有小于给定数字的完全平方数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (n <span style="color:#f92672">/</span> res <span style="color:#f92672">&gt;=</span> res) {
-</span></span><span style="display:flex;"><span>            choices.push_back(res <span style="color:#f92672">*</span> res);
-</span></span><span style="display:flex;"><span>            res<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#111">n</span> <span style="color:#f92672">/</span> <span style="color:#111">res</span> <span style="color:#f92672">&gt;=</span> <span style="color:#111">res</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">choices</span><span style="color:#111">.</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#111">res</span> <span style="color:#f92672">*</span> <span style="color:#111">res</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">res</span><span style="color:#f92672">++</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> size <span style="color:#f92672">=</span> choices.size();
-</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> dp(n <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">const</span> <span style="color:#00a8c8">int</span> <span style="color:#111">size</span> <span style="color:#f92672">=</span> <span style="color:#111">choices</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">dp</span><span style="color:#111">(</span><span style="color:#111">n</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#ae81ff">0</span><span style="color:#111">);</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// init
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>i) {
-</span></span><span style="display:flex;"><span>            dp[i] <span style="color:#f92672">=</span> i;
-</span></span><span style="display:flex;"><span>        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#111">n</span><span style="color:#111">;</span> <span style="color:#f92672">++</span><span style="color:#111">i</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">dp</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#111">i</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 完全背包模板
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> size; <span style="color:#f92672">++</span>i) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> j <span style="color:#f92672">=</span> choices[i]; j <span style="color:#f92672">&lt;=</span> n; <span style="color:#f92672">++</span>j) {
-</span></span><span style="display:flex;"><span>                dp[j] <span style="color:#f92672">=</span> min(dp[j], dp[j <span style="color:#f92672">-</span> choices[i]] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">size</span><span style="color:#111">;</span> <span style="color:#f92672">++</span><span style="color:#111">i</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">j</span> <span style="color:#f92672">=</span> <span style="color:#111">choices</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">];</span> <span style="color:#111">j</span> <span style="color:#f92672">&lt;=</span> <span style="color:#111">n</span><span style="color:#111">;</span> <span style="color:#f92672">++</span><span style="color:#111">j</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">dp</span><span style="color:#111">[</span><span style="color:#111">j</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#111">min</span><span style="color:#111">(</span><span style="color:#111">dp</span><span style="color:#111">[</span><span style="color:#111">j</span><span style="color:#111">],</span> <span style="color:#111">dp</span><span style="color:#111">[</span><span style="color:#111">j</span> <span style="color:#f92672">-</span> <span style="color:#111">choices</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">]]</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> dp[n];
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">dp</span><span style="color:#111">[</span><span style="color:#111">n</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目301删除无效的括号httpsleetcode-cncomproblemsremove-invalid-parentheses">题目301:<a href="https://leetcode-cn.com/problems/remove-invalid-parentheses/">删除无效的括号</a></h3>
+<hr>
 <p>描述：</p>
 <p>删除最小数量的无效括号，使得输入的字符串有效，返回所有可能的结果。</p>
 <p>说明: 输入可能包含了除 ( 和 ) 以外的字符。</p>
@@ -611,99 +694,99 @@ Node *next;
 <li>当1.中计数都为0时，检查输入字符串是否有效。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> isvalid(string s) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> cnt <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> c : s) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (c <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;(&#39;</span>) {
-</span></span><span style="display:flex;"><span>                cnt<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (c <span style="color:#f92672">==</span> <span style="color:#960050;background-color:#1e0010">&#39;</span>)<span style="color:#960050;background-color:#1e0010">&#39;</span>) {
-</span></span><span style="display:flex;"><span>                cnt<span style="color:#f92672">--</span>;
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (cnt <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>) <span style="color:#66d9ef">return</span> false;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> cnt <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>    }
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">bool</span> <span style="color:#111">isvalid</span><span style="color:#111">(</span><span style="color:#111">string</span> <span style="color:#111">s</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">cnt</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">auto</span> <span style="color:#111">c</span> <span style="color:#111">:</span> <span style="color:#111">s</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">c</span> <span style="color:#f92672">==</span> <span style="color:#d88200">&#39;(&#39;</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">cnt</span><span style="color:#f92672">++</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#75af00">if</span> <span style="color:#111">(</span><span style="color:#111">c</span> <span style="color:#f92672">==</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#111">)</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">cnt</span><span style="color:#f92672">--</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">cnt</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span><span style="color:#111">)</span> <span style="color:#00a8c8">return</span> <span style="color:#111">false</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">cnt</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">dfs</span>(string s, <span style="color:#66d9ef">int</span> st, <span style="color:#66d9ef">int</span> l, <span style="color:#66d9ef">int</span> r, vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;&amp;</span> ans) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (l <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> r <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (isvalid(s)) {
-</span></span><span style="display:flex;"><span>                ans.push_back(s);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> st; i <span style="color:#f92672">&lt;</span> s.size(); i<span style="color:#f92672">++</span>) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (i <span style="color:#f92672">!=</span> st <span style="color:#f92672">&amp;&amp;</span> s[i] <span style="color:#f92672">==</span> s[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]) <span style="color:#66d9ef">continue</span>;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (s[i] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;(&#39;</span> <span style="color:#f92672">&amp;&amp;</span> l <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">void</span> <span style="color:#75af00">dfs</span><span style="color:#111">(</span><span style="color:#111">string</span> <span style="color:#111">s</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">st</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">l</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">r</span><span style="color:#111">,</span> <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#f92672">&gt;&amp;</span> <span style="color:#111">ans</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">l</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">r</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">isvalid</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">))</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">ans</span><span style="color:#111">.</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">return</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#111">st</span><span style="color:#111">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">s</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">();</span> <span style="color:#111">i</span><span style="color:#f92672">++</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">i</span> <span style="color:#f92672">!=</span> <span style="color:#111">st</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">]</span> <span style="color:#f92672">==</span> <span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#111">])</span> <span style="color:#00a8c8">continue</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">]</span> <span style="color:#f92672">==</span> <span style="color:#d88200">&#39;(&#39;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">l</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span><span style="color:#111">)</span> <span style="color:#111">{</span>
 </span></span><span style="display:flex;"><span>              	<span style="color:#75715e">// 删除操作，substr(a, b):从a开始个字符组成的字符串
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                dfs(s.substr(<span style="color:#ae81ff">0</span>, i) <span style="color:#f92672">+</span> s.substr(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, s.size()<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>i), i, l <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, r, ans);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (s[i] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;)&#39;</span> <span style="color:#f92672">&amp;&amp;</span> r <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#111">dfs</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">.</span><span style="color:#111">substr</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#111">i</span><span style="color:#111">)</span> <span style="color:#f92672">+</span> <span style="color:#111">s</span><span style="color:#111">.</span><span style="color:#111">substr</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">s</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">()</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#111">i</span><span style="color:#111">),</span> <span style="color:#111">i</span><span style="color:#111">,</span> <span style="color:#111">l</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">r</span><span style="color:#111">,</span> <span style="color:#111">ans</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span> 
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">]</span> <span style="color:#f92672">==</span> <span style="color:#d88200">&#39;)&#39;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">r</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span><span style="color:#111">)</span> <span style="color:#111">{</span>
 </span></span><span style="display:flex;"><span>              	<span style="color:#75715e">// 删除操作，substr(a, b):从a开始个字符组成的字符串
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                dfs(s.substr(<span style="color:#ae81ff">0</span>, i) <span style="color:#f92672">+</span> s.substr(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>, s.size()<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">-</span>i), i, l, r <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>, ans);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#111">dfs</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">.</span><span style="color:#111">substr</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#111">i</span><span style="color:#111">)</span> <span style="color:#f92672">+</span> <span style="color:#111">s</span><span style="color:#111">.</span><span style="color:#111">substr</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">s</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">()</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">-</span><span style="color:#111">i</span><span style="color:#111">),</span> <span style="color:#111">i</span><span style="color:#111">,</span> <span style="color:#111">l</span><span style="color:#111">,</span> <span style="color:#111">r</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">ans</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> removeInvalidParentheses(string s) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> left <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> right <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> ans;
+</span></span><span style="display:flex;"><span>    <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#f92672">&gt;</span> <span style="color:#111">removeInvalidParentheses</span><span style="color:#111">(</span><span style="color:#111">string</span> <span style="color:#111">s</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">left</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">right</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#f92672">&gt;</span> <span style="color:#111">ans</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> c : s) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (c <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;(&#39;</span>) {
-</span></span><span style="display:flex;"><span>                left<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (c <span style="color:#f92672">==</span> <span style="color:#960050;background-color:#1e0010">&#39;</span>)<span style="color:#960050;background-color:#1e0010">&#39;</span>) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (left <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
-</span></span><span style="display:flex;"><span>                    left<span style="color:#f92672">--</span>;
-</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>                    right<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">auto</span> <span style="color:#111">c</span> <span style="color:#111">:</span> <span style="color:#111">s</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">c</span> <span style="color:#f92672">==</span> <span style="color:#d88200">&#39;(&#39;</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">left</span><span style="color:#f92672">++</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#75af00">if</span> <span style="color:#111">(</span><span style="color:#111">c</span> <span style="color:#f92672">==</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#111">)</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">left</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span><span style="color:#111">)</span> <span style="color:#111">{</span> 
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">left</span><span style="color:#f92672">--</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">right</span><span style="color:#f92672">++</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// left和right表示左右括号要删除的个数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        dfs(s, <span style="color:#ae81ff">0</span>, left, right, ans);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ans;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#111">dfs</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">,</span> <span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#111">left</span><span style="color:#111">,</span> <span style="color:#111">right</span><span style="color:#111">,</span> <span style="color:#111">ans</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">ans</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div>
-			</div>
-		</article>
-	</main>
-<aside>
-	<div>
-		<div>
-			<h3>LATEST POSTS</h3>
-		</div>
-		<div>
-			<ul>
-				
-				<li><a href="/posts/2023-12-02-criterions-for-site/">Criterions for Site</a></li>
-				
-				<li><a href="/posts/2023-12-02-hugo-site-auto-deployment-with-github-action/">Hugo Site Auto Deployment with Github Action</a></li>
-				
-				<li><a href="/posts/2023-12-02-hello-world/">Hello World</a></li>
-				
-				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
-				
-				<li><a href="/posts/2022-10-21-dev-null-related/">/dev/null and 2&amp;&gt;1</a></li>
-				
-			</ul>
-		</div>
-	</div>
-</aside>
+        </div>
+    </div>
+</div>
 
 
-	<footer>
-	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
-	<a href="https://github.com/junyubian"><b>Github</b></a>.
-	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
-	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
-	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
-	</p>
-</footer>
+        </div><div class="container">
+    <div class="row justify-content-between">
+        <div class="col-sm-4">
+            <p class="footer">Junyu Bian© 2023 </p>
+        </div>
+        <div class="col-sm-6 d-flex flex-row-reverse">
+            
+            <a class="footer-social px-2"  href="https://twitter.com/junyu_bian" target="_blank"><i class="fab fa-twitter"></i></a>
+            
+            <a class="footer-social px-2"  href="https://github.com/junyubian" target="_blank"><i class="fab fa-github"></i></a>
+            
+            <a class="footer-social px-2"  href="https://www.facebook.com/profile.php?id=100010301021817" target="_blank"><i class="fab fa-facebook"></i></a>
+            
+        </div>
+    </div>
+</div>
+<script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script src="/js/isotope.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+<script src="/js/dark.js"></script>
+<script>
 
+
+var savedTheme = localStorage.getItem("dark-mode-storage") || "light" 
+setTheme(savedTheme);
+
+</script>
+<script src="/js/isotope.js"></script>
+<script src="/js/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, securityLevel: 'loose'});</script>
 </body>
 </html>

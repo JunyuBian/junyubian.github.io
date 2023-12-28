@@ -1,6 +1,7 @@
 ---
 title: Hugo Site Auto Deployment with Github Action
 date: 2023-12-02
+lastmod: 2023-12-02
 draft: false
 garden_tags: ["en", "notes", "hugo", "git"]
 summary: " "

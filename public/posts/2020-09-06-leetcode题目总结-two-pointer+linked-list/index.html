@@ -1,54 +1,125 @@
 <!DOCTYPE html>
-<html lang="en-us">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<style type=text/css>body{font-family:monospace;}</style>
-	<title>LeetCode题目总结-Two Pointer&#43;Linked List</title>
-	
-	
-	<link rel="stylesheet" href="/css/style.css">
-	
-	
-</head>
-<body>
-	<header>
-	================<br>
-	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
-	================
-	<div style="float: right;">Welcome to my posts!</div><br>
-	<p>
-	<nav>
-			<a href="/"><b>Start</b></a>.
-			
-			
-			<a href="/posts/"><b>Posts</b></a>.
-			
-			<a href="/categories/"><b>Categories</b></a>.
-			
-			<a href="/tags/"><b>Tags</b></a>.
-			
-			<a href="/about/"><b>About</b></a>.
-			
-	</nav>
-	</p>
-	
-</header>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;800&family=Frank+Ruhl+Libre:wght@200;300;400;500;600&family=Encode+Sans+Semi+Condensed:wght@400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/all.min.css">
+    <link disabled id="dark-mode-theme" rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/my_style.css">
+    
+    
+    
+    <title>Junyu Bian | LeetCode题目总结-Two Pointer&#43;Linked List</title>
+    <meta name="description" content="题目3:无重复字符的最长子串 描述：
+给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+示例 1:
+输入: &ldquo;abcabcbb&rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &ldquo;abc&rdquo;，所以其长度为 3。
+示例 2:
+输入: &ldquo;bbbbb&rdquo; 输出: 1 解释: 因为无重复字符的最长子串是 &ldquo;b&rdquo;，所以其长度为 1。 示例 3:
+输入: &ldquo;pwwkew&rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &ldquo;wke&rdquo;，所以其长度为 3。 请注意，你的答案必须是 子串 的长度，&ldquo;pwke&rdquo; 是一个子序列，不是子串。
+思路一：
+突破点：滑动窗口。
+步骤：
+设立指针a和指针b； b指针向右伸缩，对于每个A[b]判断是否之前出现过； 若出现，则a指向出现过的未知的下一位置，更新右指针和最大长度。 代码：
+class Solution { public: int lengthOfLongestSubstring(string s) { //s[start,end) 前面包含 后面不包含 int start(0), end(0), length(0), result(0); int stringSize = int(s.size()); while (end &lt; stringSize) { char tmpChar = s[end]; for (int index = start; index &lt; end; index&#43;&#43;) { if (tmpChar == s[index]) { start = index &#43; 1; length = end - start; break; } } end&#43;&#43;; length&#43;&#43;; result = max(result, length); } return result; } }; 思路二：">
+</head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="https://junyubian.github.io/">
+            
+            <b style="font-weight: 800;">JB</b>
+            
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0"><li class='nav-item '>
+                    <a class="nav-link" href="/garden/"> Digital Garden</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/projects/"> Projects</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/library/"> Library</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/about/"> About</a>
+                </li>
+             
+            <li class="nav-item px-2 pt-1">
+                <a class="btn fas fa-moon" id="dark-mode-toggle"></a>
+            </li>
+            </ul>
+        </div>
+    </div>
+</nav><div id="content">
 
-	
-	<main>
-		<article>
-			<h1>LeetCode题目总结-Two Pointer&#43;Linked List</h1>
-			<b><time>09/06/2020 23:33</time></b>
-		       
-		           <a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
-        	       
-		           <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>
-        	       
+<div class="container" style="max-width: 800px;">
+    <div class="py-4 rounded-3">
+        <div class="container-fluid py-2">
+            <h1 class="display-2 mb-4 text-center">LeetCode题目总结-Two Pointer&#43;Linked List</h1>
+        </div>
+        
+        <p class="text-center fs-4 fst-italic serif">题目3:无重复字符的最长子串 描述：
+给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
+示例 1:
+输入: &ldquo;abcabcbb&rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &ldquo;abc&rdquo;，所以其长度为 3。
+示例 2:
+输入: &ldquo;bbbbb&rdquo; 输出: 1 解释: 因为无重复字符的最长子串是 &ldquo;b&rdquo;，所以其长度为 1。 示例 3:
+输入: &ldquo;pwwkew&rdquo; 输出: 3 解释: 因为无重复字符的最长子串是 &ldquo;wke&rdquo;，所以其长度为 3。 请注意，你的答案必须是 子串 的长度，&ldquo;pwke&rdquo; 是一个子序列，不是子串。
+思路一：
+突破点：滑动窗口。
+步骤：
+设立指针a和指针b； b指针向右伸缩，对于每个A[b]判断是否之前出现过； 若出现，则a指向出现过的未知的下一位置，更新右指针和最大长度。 代码：
+class Solution { public: int lengthOfLongestSubstring(string s) { //s[start,end) 前面包含 后面不包含 int start(0), end(0), length(0), result(0); int stringSize = int(s.size()); while (end &lt; stringSize) { char tmpChar = s[end]; for (int index = start; index &lt; end; index++) { if (tmpChar == s[index]) { start = index + 1; length = end - start; break; } } end++; length++; result = max(result, length); } return result; } }; 思路二：</p>
+        
+        <div class="text-center pt-4">
+            
+        </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+        <div class="col-12">
+            <p class="card-date m-0">
+                
+                
+                    Created Sep 6, 2020 - 
+                
+                Last updated: Sep 6, 2020
+            </p>
+            <hr class="dropdown-divider">
+            <div class="row justify-content-between">
+                <div class="col-sm-4">
+                    
+                </div>
+                <div class="col-sm-8" style="text-align: right;">
+                    
+                    
+                    <span class="badge tag-badge">C&#43;&#43;</span>
+                    
+                    <span class="badge tag-badge">算法</span>
+                    
+                    <span class="badge tag-badge">ch</span>
+                    
+                
+                
+                
+                </div>
+            </div>
+        </div>
+    </div>
 
-			<div>
-				<h3 id="题目3无重复字符的最长子串httpsleetcode-cncomproblemslongest-substring-without-repeating-characters">题目3:<a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/">无重复字符的最长子串</a></h3>
+    <div class="container-fluid py-2">
+        <div class="serif main-content">
+            <h3 id="题目3无重复字符的最长子串httpsleetcode-cncomproblemslongest-substring-without-repeating-characters">题目3:<a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/">无重复字符的最长子串</a></h3>
+<hr>
 <p>描述：</p>
 <p>给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。</p>
 <p>示例 1:</p>
@@ -73,29 +144,29 @@
 <li>若出现，则a指向出现过的未知的下一位置，更新右指针和最大长度。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> lengthOfLongestSubstring(string s) {
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#111">lengthOfLongestSubstring</span><span style="color:#111">(</span><span style="color:#111">string</span> <span style="color:#111">s</span><span style="color:#111">)</span> <span style="color:#111">{</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">//s[start,end) 前面包含 后面不包含
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">start</span>(<span style="color:#ae81ff">0</span>), end(<span style="color:#ae81ff">0</span>), length(<span style="color:#ae81ff">0</span>), result(<span style="color:#ae81ff">0</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> stringSize <span style="color:#f92672">=</span> <span style="color:#66d9ef">int</span>(s.size());
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (end <span style="color:#f92672">&lt;</span> stringSize) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">char</span> tmpChar <span style="color:#f92672">=</span> s[end];
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> start; index <span style="color:#f92672">&lt;</span> end; index<span style="color:#f92672">++</span>) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (tmpChar <span style="color:#f92672">==</span> s[index]) {
-</span></span><span style="display:flex;"><span>                    start <span style="color:#f92672">=</span> index <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>                    length <span style="color:#f92672">=</span> end <span style="color:#f92672">-</span> start;
-</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">break</span>;
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>            }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">int</span> <span style="color:#75af00">start</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">),</span> <span style="color:#111">end</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">),</span> <span style="color:#111">length</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">),</span> <span style="color:#111">result</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">stringSize</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">int</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">());</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#111">end</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">stringSize</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">char</span> <span style="color:#111">tmpChar</span> <span style="color:#f92672">=</span> <span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#111">end</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">index</span> <span style="color:#f92672">=</span> <span style="color:#111">start</span><span style="color:#111">;</span> <span style="color:#111">index</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">end</span><span style="color:#111">;</span> <span style="color:#111">index</span><span style="color:#f92672">++</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">tmpChar</span> <span style="color:#f92672">==</span> <span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#111">index</span><span style="color:#111">])</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">start</span> <span style="color:#f92672">=</span> <span style="color:#111">index</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">length</span> <span style="color:#f92672">=</span> <span style="color:#111">end</span> <span style="color:#f92672">-</span> <span style="color:#111">start</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#00a8c8">break</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            end<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>            length<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>            result <span style="color:#f92672">=</span> max(result, length);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>            <span style="color:#111">end</span><span style="color:#f92672">++</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">length</span><span style="color:#f92672">++</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">result</span> <span style="color:#f92672">=</span> <span style="color:#111">max</span><span style="color:#111">(</span><span style="color:#111">result</span><span style="color:#111">,</span> <span style="color:#111">length</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">result</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/solution/wu-zhong-fu-zi-fu-de-zui-chang-zi-chuan-cshi-xian-/">思路二</a>：</p>
 <p>突破点：<code>hashMap。</code></p>
 <p>步骤：</p>
@@ -106,33 +177,34 @@
 <li>若出现，则a指向出现过的未知的下一位置，更新右指针和最大长度。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> lengthOfLongestSubstring(string s) {
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#111">lengthOfLongestSubstring</span><span style="color:#111">(</span><span style="color:#111">string</span> <span style="color:#111">s</span><span style="color:#111">)</span> <span style="color:#111">{</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">//s[start,end) 前面包含 后面不包含
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">start</span>(<span style="color:#ae81ff">0</span>), end(<span style="color:#ae81ff">0</span>), length(<span style="color:#ae81ff">0</span>), result(<span style="color:#ae81ff">0</span>);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> sSize <span style="color:#f92672">=</span> <span style="color:#66d9ef">int</span>(s.size());
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> hash;
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (end <span style="color:#f92672">&lt;</span> sSize) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">char</span> tmpChar <span style="color:#f92672">=</span> s[end];
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">int</span> <span style="color:#75af00">start</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">),</span> <span style="color:#111">end</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">),</span> <span style="color:#111">length</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">),</span> <span style="color:#111">result</span><span style="color:#111">(</span><span style="color:#ae81ff">0</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">sSize</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">int</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">());</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>        <span style="color:#111">unordered_map</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">char</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">hash</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#111">end</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">sSize</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">char</span> <span style="color:#111">tmpChar</span> <span style="color:#f92672">=</span> <span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#111">end</span><span style="color:#111">];</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">//仅当s[start,end) 中存在s[end]时更新start
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">if</span> (hash.find(tmpChar) <span style="color:#f92672">!=</span> hash.end() <span style="color:#f92672">&amp;&amp;</span> hash[tmpChar] <span style="color:#f92672">&gt;=</span> start) {
-</span></span><span style="display:flex;"><span>                start <span style="color:#f92672">=</span> hash[tmpChar] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>                length <span style="color:#f92672">=</span> end <span style="color:#f92672">-</span> start;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            hash[tmpChar] <span style="color:#f92672">=</span> end;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">hash</span><span style="color:#111">.</span><span style="color:#111">find</span><span style="color:#111">(</span><span style="color:#111">tmpChar</span><span style="color:#111">)</span> <span style="color:#f92672">!=</span> <span style="color:#111">hash</span><span style="color:#111">.</span><span style="color:#111">end</span><span style="color:#111">()</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">hash</span><span style="color:#111">[</span><span style="color:#111">tmpChar</span><span style="color:#111">]</span> <span style="color:#f92672">&gt;=</span> <span style="color:#111">start</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">start</span> <span style="color:#f92672">=</span> <span style="color:#111">hash</span><span style="color:#111">[</span><span style="color:#111">tmpChar</span><span style="color:#111">]</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">length</span> <span style="color:#f92672">=</span> <span style="color:#111">end</span> <span style="color:#f92672">-</span> <span style="color:#111">start</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">hash</span><span style="color:#111">[</span><span style="color:#111">tmpChar</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#111">end</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>            end<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>            length<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>            result <span style="color:#f92672">=</span> max(result, length);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>            <span style="color:#111">end</span><span style="color:#f92672">++</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">length</span><span style="color:#f92672">++</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">result</span> <span style="color:#f92672">=</span> <span style="color:#111">max</span><span style="color:#111">(</span><span style="color:#111">result</span><span style="color:#111">,</span> <span style="color:#111">length</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">result</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目75颜色分类httpsleetcode-cncomproblemssort-colors">题目75:<a href="https://leetcode-cn.com/problems/sort-colors/">颜色分类</a></h3>
+<hr>
 <p>描述：</p>
 <p>给定一个包含红色、白色和蓝色，一共 n 个元素的数组，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。</p>
 <p>此题中，我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。</p>
@@ -156,31 +228,32 @@
 <li>如果nums[curr] = 1，则curr右移。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">  荷兰三色旗问题解
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">void</span> sortColors(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums) {
+</span></span><span style="display:flex;"><span>  <span style="color:#00a8c8">void</span> <span style="color:#111">sortColors</span><span style="color:#111">(</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;&amp;</span> <span style="color:#111">nums</span><span style="color:#111">)</span> <span style="color:#111">{</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 对于所有 idx &lt; p0 : nums[idx &lt; p0] = 0
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#75715e">// curr 是当前考虑元素的下标
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> p0 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, curr <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#00a8c8">int</span> <span style="color:#111">p0</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#111">curr</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 对于所有 idx &gt; p2 : nums[idx &gt; p2] = 2
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">int</span> p2 <span style="color:#f92672">=</span> nums.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#00a8c8">int</span> <span style="color:#111">p2</span> <span style="color:#f92672">=</span> <span style="color:#111">nums</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">()</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (curr <span style="color:#f92672">&lt;=</span> p2) {
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (nums[curr] <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
-</span></span><span style="display:flex;"><span>        swap(nums[curr<span style="color:#f92672">++</span>], nums[p0<span style="color:#f92672">++</span>]);
-</span></span><span style="display:flex;"><span>      }
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (nums[curr] <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>) {
-</span></span><span style="display:flex;"><span>        swap(nums[curr], nums[p2<span style="color:#f92672">--</span>]);
-</span></span><span style="display:flex;"><span>      }
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">else</span> curr<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#111">curr</span> <span style="color:#f92672">&lt;=</span> <span style="color:#111">p2</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">nums</span><span style="color:#111">[</span><span style="color:#111">curr</span><span style="color:#111">]</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">swap</span><span style="color:#111">(</span><span style="color:#111">nums</span><span style="color:#111">[</span><span style="color:#111">curr</span><span style="color:#f92672">++</span><span style="color:#111">],</span> <span style="color:#111">nums</span><span style="color:#111">[</span><span style="color:#111">p0</span><span style="color:#f92672">++</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#00a8c8">else</span> <span style="color:#75af00">if</span> <span style="color:#111">(</span><span style="color:#111">nums</span><span style="color:#111">[</span><span style="color:#111">curr</span><span style="color:#111">]</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">swap</span><span style="color:#111">(</span><span style="color:#111">nums</span><span style="color:#111">[</span><span style="color:#111">curr</span><span style="color:#111">],</span> <span style="color:#111">nums</span><span style="color:#111">[</span><span style="color:#111">p2</span><span style="color:#f92672">--</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#00a8c8">else</span> <span style="color:#111">curr</span><span style="color:#f92672">++</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目88合并两个有序数组httpsleetcode-cncomproblemsmerge-sorted-array">题目88:<a href="https://leetcode-cn.com/problems/merge-sorted-array/">合并两个有序数组</a></h3>
+<hr>
 <p>描述：</p>
 <p>给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。</p>
 <p>说明:</p>
@@ -199,19 +272,20 @@ nums2 = [2,5,6],       n = 3</p>
 <li>从两数组尾部开始，交换较大值和nums1尾部位置。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">merge</span>(vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums1, <span style="color:#66d9ef">int</span> m, vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> nums2, <span style="color:#66d9ef">int</span> n) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> nums1.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>    m<span style="color:#f92672">--</span>;
-</span></span><span style="display:flex;"><span>    n<span style="color:#f92672">--</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (n <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (m <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> nums1[m] <span style="color:#f92672">&gt;</span> nums2[n]) {
-</span></span><span style="display:flex;"><span>            swap(nums1[i<span style="color:#f92672">--</span>], nums1[m<span style="color:#f92672">--</span>]);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        swap(nums1[i<span style="color:#f92672">--</span>], nums2[n<span style="color:#f92672">--</span>]);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">void</span> <span style="color:#75af00">merge</span><span style="color:#111">(</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;&amp;</span> <span style="color:#111">nums1</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">m</span><span style="color:#111">,</span> <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;&amp;</span> <span style="color:#111">nums2</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">n</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#111">nums1</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">()</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">m</span><span style="color:#f92672">--</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">n</span><span style="color:#f92672">--</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#111">n</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#111">m</span> <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">nums1</span><span style="color:#111">[</span><span style="color:#111">m</span><span style="color:#111">]</span> <span style="color:#f92672">&gt;</span> <span style="color:#111">nums2</span><span style="color:#111">[</span><span style="color:#111">n</span><span style="color:#111">])</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">swap</span><span style="color:#111">(</span><span style="color:#111">nums1</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#f92672">--</span><span style="color:#111">],</span> <span style="color:#111">nums1</span><span style="color:#111">[</span><span style="color:#111">m</span><span style="color:#f92672">--</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">swap</span><span style="color:#111">(</span><span style="color:#111">nums1</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#f92672">--</span><span style="color:#111">],</span> <span style="color:#111">nums2</span><span style="color:#111">[</span><span style="color:#111">n</span><span style="color:#f92672">--</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目125验证回文串httpsleetcode-cncomproblemsvalid-palindrome">题目125:<a href="https://leetcode-cn.com/problems/valid-palindrome/">验证回文串</a></h3>
+<hr>
 <p>描述：
 给定一个字符串，验证它是否是回文串，只考虑字母和数字字符，可以忽略字母的大小写。</p>
 <p>**说明：**本题中，我们将空字符串定义为有效的回文串。</p>
@@ -230,19 +304,20 @@ nums2 = [2,5,6],       n = 3</p>
 <li>如果有不同，则返回false。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> isPalindrome(string s) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, j <span style="color:#f92672">=</span> s.length() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;</span> j; i <span style="color:#f92672">++</span>, j <span style="color:#f92672">--</span>) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span>(i <span style="color:#f92672">&lt;</span> j <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>isalnum(s[i])) i <span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">while</span>(i <span style="color:#f92672">&lt;</span> j <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>isalnum(s[j])) j <span style="color:#f92672">--</span>;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(tolower(s[i]) <span style="color:#f92672">!=</span> tolower(s[j])) <span style="color:#66d9ef">return</span> false;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">bool</span> <span style="color:#111">isPalindrome</span><span style="color:#111">(</span><span style="color:#111">string</span> <span style="color:#111">s</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#111">j</span> <span style="color:#f92672">=</span> <span style="color:#111">s</span><span style="color:#111">.</span><span style="color:#111">length</span><span style="color:#111">()</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">j</span><span style="color:#111">;</span> <span style="color:#111">i</span> <span style="color:#f92672">++</span><span style="color:#111">,</span> <span style="color:#111">j</span> <span style="color:#f92672">--</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">while</span><span style="color:#111">(</span><span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">j</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#111">isalnum</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">]))</span> <span style="color:#111">i</span> <span style="color:#f92672">++</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">while</span><span style="color:#111">(</span><span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">j</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span><span style="color:#111">isalnum</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#111">j</span><span style="color:#111">]))</span> <span style="color:#111">j</span> <span style="color:#f92672">--</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">tolower</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">])</span> <span style="color:#f92672">!=</span> <span style="color:#111">tolower</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#111">j</span><span style="color:#111">]))</span> <span style="color:#00a8c8">return</span> <span style="color:#111">false</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">true</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目76最小覆盖子串httpsleetcode-cncomproblemsminimum-window-substring">题目76:<a href="https://leetcode-cn.com/problems/minimum-window-substring/">最小覆盖子串</a></h3>
+<hr>
 <p>描述：</p>
 <p>给你一个字符串 S、一个字符串 T 。请你设计一种算法，可以在 O(n) 的时间复杂度内，从字符串 S 里面找出：包含 T 所有字符的最小子串。</p>
 <p>示例：</p>
@@ -261,53 +336,54 @@ nums2 = [2,5,6],       n = 3</p>
 <li>使用哈希表动态维护窗口中字符数以及t中字符数。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    unordered_map <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span>, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> ori, cnt;
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">unordered_map</span> <span style="color:#f92672">&lt;</span><span style="color:#00a8c8">char</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">ori</span><span style="color:#111">,</span> <span style="color:#111">cnt</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  	<span style="color:#75715e">// 步骤4
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">check</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span> <span style="color:#f92672">&amp;</span>p: ori) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (cnt[p.first] <span style="color:#f92672">&lt;</span> p.second) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> false;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
-</span></span><span style="display:flex;"><span>    }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#00a8c8">bool</span> <span style="color:#75af00">check</span><span style="color:#111">()</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">const</span> <span style="color:#00a8c8">auto</span> <span style="color:#f92672">&amp;</span><span style="color:#111">p</span><span style="color:#111">:</span> <span style="color:#111">ori</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">cnt</span><span style="color:#111">[</span><span style="color:#111">p</span><span style="color:#111">.</span><span style="color:#111">first</span><span style="color:#111">]</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">p</span><span style="color:#111">.</span><span style="color:#111">second</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">return</span> <span style="color:#111">false</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">true</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>  	<span style="color:#75715e">// 滑窗
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    string <span style="color:#a6e22e">minWindow</span>(string s, string t) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">auto</span> <span style="color:#f92672">&amp;</span>c: t) {
-</span></span><span style="display:flex;"><span>            <span style="color:#f92672">++</span>ori[c];
-</span></span><span style="display:flex;"><span>        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#111">string</span> <span style="color:#75af00">minWindow</span><span style="color:#111">(</span><span style="color:#111">string</span> <span style="color:#111">s</span><span style="color:#111">,</span> <span style="color:#111">string</span> <span style="color:#111">t</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">const</span> <span style="color:#00a8c8">auto</span> <span style="color:#f92672">&amp;</span><span style="color:#111">c</span><span style="color:#111">:</span> <span style="color:#111">t</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">++</span><span style="color:#111">ori</span><span style="color:#111">[</span><span style="color:#111">c</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>      	<span style="color:#75715e">// 步骤1
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">int</span> l <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, r <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> len <span style="color:#f92672">=</span> INT_MAX, ansL <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, ansR <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">int</span> <span style="color:#111">l</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#111">r</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">len</span> <span style="color:#f92672">=</span> <span style="color:#111">INT_MAX</span><span style="color:#111">,</span> <span style="color:#111">ansL</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">ansR</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>      	<span style="color:#75715e">// 步骤2
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (r <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">int</span>(s.size())) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (ori.find(s[<span style="color:#f92672">++</span>r]) <span style="color:#f92672">!=</span> ori.end()) {
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">++</span>cnt[s[r]];
-</span></span><span style="display:flex;"><span>            }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#111">r</span> <span style="color:#f92672">&lt;</span> <span style="color:#00a8c8">int</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">()))</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">ori</span><span style="color:#111">.</span><span style="color:#111">find</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#f92672">++</span><span style="color:#111">r</span><span style="color:#111">])</span> <span style="color:#f92672">!=</span> <span style="color:#111">ori</span><span style="color:#111">.</span><span style="color:#111">end</span><span style="color:#111">())</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">++</span><span style="color:#111">cnt</span><span style="color:#111">[</span><span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#111">r</span><span style="color:#111">]];</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>          	<span style="color:#75715e">// 步骤3
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">while</span> (check() <span style="color:#f92672">&amp;&amp;</span> l <span style="color:#f92672">&lt;=</span> r) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (r <span style="color:#f92672">-</span> l <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> len) {
-</span></span><span style="display:flex;"><span>                    len <span style="color:#f92672">=</span> r <span style="color:#f92672">-</span> l <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>                    ansL <span style="color:#f92672">=</span> l;
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (ori.find(s[l]) <span style="color:#f92672">!=</span> ori.end()) {
-</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">--</span>cnt[s[l]];
-</span></span><span style="display:flex;"><span>                }
-</span></span><span style="display:flex;"><span>                <span style="color:#f92672">++</span>l;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#111">check</span><span style="color:#111">()</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">l</span> <span style="color:#f92672">&lt;=</span> <span style="color:#111">r</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">r</span> <span style="color:#f92672">-</span> <span style="color:#111">l</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">len</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">len</span> <span style="color:#f92672">=</span> <span style="color:#111">r</span> <span style="color:#f92672">-</span> <span style="color:#111">l</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#111">ansL</span> <span style="color:#f92672">=</span> <span style="color:#111">l</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">ori</span><span style="color:#111">.</span><span style="color:#111">find</span><span style="color:#111">(</span><span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#111">l</span><span style="color:#111">])</span> <span style="color:#f92672">!=</span> <span style="color:#111">ori</span><span style="color:#111">.</span><span style="color:#111">end</span><span style="color:#111">())</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#f92672">--</span><span style="color:#111">cnt</span><span style="color:#111">[</span><span style="color:#111">s</span><span style="color:#111">[</span><span style="color:#111">l</span><span style="color:#111">]];</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">++</span><span style="color:#111">l</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> ansL <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">?</span> string() <span style="color:#f92672">:</span> s.substr(ansL, len);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">ansL</span> <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">?</span> <span style="color:#111">string</span><span style="color:#111">()</span> <span style="color:#f92672">:</span> <span style="color:#111">s</span><span style="color:#111">.</span><span style="color:#111">substr</span><span style="color:#111">(</span><span style="color:#111">ansL</span><span style="color:#111">,</span> <span style="color:#111">len</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目206反转链表httpsleetcode-cncomproblemsreverse-linked-list">题目206:<a href="https://leetcode-cn.com/problems/reverse-linked-list/">反转链表</a></h3>
+<hr>
 <p>描述：</p>
 <p>反转一个单链表。</p>
 <p>示例:</p>
@@ -324,19 +400,19 @@ nums2 = [2,5,6],       n = 3</p>
 <li>局部反转后，两个指针同时前移一位，直到pre到达链表结尾。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> reverseList(ListNode<span style="color:#f92672">*</span> head) {
-</span></span><span style="display:flex;"><span>        ListNode<span style="color:#f92672">*</span> cur <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>, <span style="color:#f92672">*</span>pre <span style="color:#f92672">=</span> head;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">!=</span> pre) {
-</span></span><span style="display:flex;"><span>            ListNode<span style="color:#f92672">*</span> t <span style="color:#f92672">=</span> pre<span style="color:#f92672">-&gt;</span>next;
-</span></span><span style="display:flex;"><span>            pre<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> cur;
-</span></span><span style="display:flex;"><span>            cur <span style="color:#f92672">=</span> pre;
-</span></span><span style="display:flex;"><span>            pre <span style="color:#f92672">=</span> t;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> cur;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">reverseList</span><span style="color:#111">(</span><span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">head</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">cur</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">nullptr</span><span style="color:#111">,</span> <span style="color:#f92672">*</span><span style="color:#111">pre</span> <span style="color:#f92672">=</span> <span style="color:#111">head</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#00a8c8">nullptr</span> <span style="color:#f92672">!=</span> <span style="color:#111">pre</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">t</span> <span style="color:#f92672">=</span> <span style="color:#111">pre</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">pre</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">cur</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">cur</span> <span style="color:#f92672">=</span> <span style="color:#111">pre</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">pre</span> <span style="color:#f92672">=</span> <span style="color:#111">t</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">cur</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/reverse-linked-list/solution/fan-zhuan-lian-biao-shuang-zhi-zhen-di-gui-yao-mo-/">思路二</a>：</p>
 <p>突破点：<code>递归。</code></p>
 <p>步骤：</p>
@@ -347,20 +423,21 @@ nums2 = [2,5,6],       n = 3</p>
 <li>递归函数全部出栈后，反转完成。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> reverseList(ListNode<span style="color:#f92672">*</span> head) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> head <span style="color:#f92672">||</span> <span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> head<span style="color:#f92672">-&gt;</span>next) {
-</span></span><span style="display:flex;"><span>          <span style="color:#66d9ef">return</span> head;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>      	ListNode<span style="color:#f92672">*</span> ret <span style="color:#f92672">=</span> reverseList(head<span style="color:#f92672">-&gt;</span>next);
-</span></span><span style="display:flex;"><span>      	head<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> head;
-</span></span><span style="display:flex;"><span>     	 	head<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
-</span></span><span style="display:flex;"><span>      	<span style="color:#66d9ef">return</span> ret;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">reverseList</span><span style="color:#111">(</span><span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">head</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#00a8c8">nullptr</span> <span style="color:#f92672">==</span> <span style="color:#111">head</span> <span style="color:#f92672">||</span> <span style="color:#00a8c8">nullptr</span> <span style="color:#f92672">==</span> <span style="color:#111">head</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#00a8c8">return</span> <span style="color:#111">head</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>      	<span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">ret</span> <span style="color:#f92672">=</span> <span style="color:#111">reverseList</span><span style="color:#111">(</span><span style="color:#111">head</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>      	<span style="color:#111">head</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">head</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>     	 	<span style="color:#111">head</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">nullptr</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>      	<span style="color:#00a8c8">return</span> <span style="color:#111">ret</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目21合并两个有序链表httpsleetcode-cncomproblemsmerge-two-sorted-lists">题目21:<a href="https://leetcode-cn.com/problems/merge-two-sorted-lists/">合并两个有序链表</a></h3>
+<hr>
 <p>描述：</p>
 <p>将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。</p>
 <p>示例：</p>
@@ -375,24 +452,25 @@ nums2 = [2,5,6],       n = 3</p>
 <li>若list1大于list2的头节点，则尾部添加list2后继续递归。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> mergeTwoLists(ListNode<span style="color:#f92672">*</span> l1, ListNode<span style="color:#f92672">*</span> l2) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> l1) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> l2;
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (<span style="color:#66d9ef">nullptr</span> <span style="color:#f92672">==</span> l2) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> l1;
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (l1<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">&lt;</span> l2<span style="color:#f92672">-&gt;</span>val) {
-</span></span><span style="display:flex;"><span>            l1<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> mergeTwoLists(l1<span style="color:#f92672">-&gt;</span>next, l2);
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> l1;
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>            l2<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> mergeTwoLists(l1, l2<span style="color:#f92672">-&gt;</span>next);
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> l2;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">mergeTwoLists</span><span style="color:#111">(</span><span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">l1</span><span style="color:#111">,</span> <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">l2</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#00a8c8">nullptr</span> <span style="color:#f92672">==</span> <span style="color:#111">l1</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">return</span> <span style="color:#111">l2</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#75af00">if</span> <span style="color:#111">(</span><span style="color:#00a8c8">nullptr</span> <span style="color:#f92672">==</span> <span style="color:#111">l2</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">return</span> <span style="color:#111">l1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#75af00">if</span> <span style="color:#111">(</span><span style="color:#111">l1</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">l2</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">l1</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">mergeTwoLists</span><span style="color:#111">(</span><span style="color:#111">l1</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">,</span> <span style="color:#111">l2</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">return</span> <span style="color:#111">l1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">l2</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">mergeTwoLists</span><span style="color:#111">(</span><span style="color:#111">l1</span><span style="color:#111">,</span> <span style="color:#111">l2</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">return</span> <span style="color:#111">l2</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目23合并k个升序链表httpsleetcode-cncomproblemsmerge-k-sorted-lists">题目23:<a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/">合并K个升序链表</a></h3>
+<hr>
 <p>描述：</p>
 <p>给你一个链表数组，每个链表都已经按升序排列。</p>
 <p>请你将所有链表合并到一个升序链表中，返回合并后的链表。</p>
@@ -428,36 +506,36 @@ lists[i].length 的总和不超过 10^4</p>
 <li>重复1.中过程，直到得到最终链表。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> mergeTwoLists(ListNode <span style="color:#f92672">*</span>a, ListNode <span style="color:#f92672">*</span>b) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> ((<span style="color:#f92672">!</span>a) <span style="color:#f92672">||</span> (<span style="color:#f92672">!</span>b)) <span style="color:#66d9ef">return</span> a <span style="color:#f92672">?</span> a : b;
-</span></span><span style="display:flex;"><span>        ListNode head, <span style="color:#f92672">*</span>tail <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>head, <span style="color:#f92672">*</span>aPtr <span style="color:#f92672">=</span> a, <span style="color:#f92672">*</span>bPtr <span style="color:#f92672">=</span> b;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (aPtr <span style="color:#f92672">&amp;&amp;</span> bPtr) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (aPtr<span style="color:#f92672">-&gt;</span>val <span style="color:#f92672">&lt;</span> bPtr<span style="color:#f92672">-&gt;</span>val) {
-</span></span><span style="display:flex;"><span>                tail<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> aPtr;
-</span></span><span style="display:flex;"><span>              	aPtr <span style="color:#f92672">=</span> aPtr<span style="color:#f92672">-&gt;</span>next;
-</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>                tail<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> bPtr;
-</span></span><span style="display:flex;"><span>              	bPtr <span style="color:#f92672">=</span> bPtr<span style="color:#f92672">-&gt;</span>next;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            tail <span style="color:#f92672">=</span> tail<span style="color:#f92672">-&gt;</span>next;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        tail<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> (aPtr <span style="color:#f92672">?</span> aPtr : bPtr);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> head.next;
-</span></span><span style="display:flex;"><span>    }
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#111">mergeTwoLists</span><span style="color:#111">(</span><span style="color:#111">ListNode</span> <span style="color:#f92672">*</span><span style="color:#111">a</span><span style="color:#111">,</span> <span style="color:#111">ListNode</span> <span style="color:#f92672">*</span><span style="color:#111">b</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">((</span><span style="color:#f92672">!</span><span style="color:#111">a</span><span style="color:#111">)</span> <span style="color:#f92672">||</span> <span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">b</span><span style="color:#111">))</span> <span style="color:#00a8c8">return</span> <span style="color:#111">a</span> <span style="color:#f92672">?</span> <span style="color:#111">a</span> <span style="color:#111">:</span> <span style="color:#111">b</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">ListNode</span> <span style="color:#111">head</span><span style="color:#111">,</span> <span style="color:#f92672">*</span><span style="color:#111">tail</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#111">head</span><span style="color:#111">,</span> <span style="color:#f92672">*</span><span style="color:#111">aPtr</span> <span style="color:#f92672">=</span> <span style="color:#111">a</span><span style="color:#111">,</span> <span style="color:#f92672">*</span><span style="color:#111">bPtr</span> <span style="color:#f92672">=</span> <span style="color:#111">b</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#111">aPtr</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">bPtr</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">aPtr</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">bPtr</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">tail</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">aPtr</span><span style="color:#111">;</span> 
+</span></span><span style="display:flex;"><span>              	<span style="color:#111">aPtr</span> <span style="color:#f92672">=</span> <span style="color:#111">aPtr</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">tail</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">bPtr</span><span style="color:#111">;</span> 
+</span></span><span style="display:flex;"><span>              	<span style="color:#111">bPtr</span> <span style="color:#f92672">=</span> <span style="color:#111">bPtr</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">tail</span> <span style="color:#f92672">=</span> <span style="color:#111">tail</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">tail</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">(</span><span style="color:#111">aPtr</span> <span style="color:#f92672">?</span> <span style="color:#111">aPtr</span> <span style="color:#111">:</span> <span style="color:#111">bPtr</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">head</span><span style="color:#111">.</span><span style="color:#111">next</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> <span style="color:#a6e22e">merge</span>(vector <span style="color:#f92672">&lt;</span>ListNode<span style="color:#f92672">*&gt;</span> <span style="color:#f92672">&amp;</span>lists, <span style="color:#66d9ef">int</span> l, <span style="color:#66d9ef">int</span> r) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (l <span style="color:#f92672">==</span> r) <span style="color:#66d9ef">return</span> lists[l];
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (l <span style="color:#f92672">&gt;</span> r) <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nullptr</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> mid <span style="color:#f92672">=</span> (l <span style="color:#f92672">+</span> r) <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> mergeTwoLists(merge(lists, l, mid), merge(lists, mid <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, r));
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#75af00">merge</span><span style="color:#111">(</span><span style="color:#111">vector</span> <span style="color:#f92672">&lt;</span><span style="color:#111">ListNode</span><span style="color:#f92672">*&gt;</span> <span style="color:#f92672">&amp;</span><span style="color:#111">lists</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">l</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">r</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">l</span> <span style="color:#f92672">==</span> <span style="color:#111">r</span><span style="color:#111">)</span> <span style="color:#00a8c8">return</span> <span style="color:#111">lists</span><span style="color:#111">[</span><span style="color:#111">l</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">l</span> <span style="color:#f92672">&gt;</span> <span style="color:#111">r</span><span style="color:#111">)</span> <span style="color:#00a8c8">return</span> <span style="color:#00a8c8">nullptr</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">mid</span> <span style="color:#f92672">=</span> <span style="color:#111">(</span><span style="color:#111">l</span> <span style="color:#f92672">+</span> <span style="color:#111">r</span><span style="color:#111">)</span> <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">mergeTwoLists</span><span style="color:#111">(</span><span style="color:#111">merge</span><span style="color:#111">(</span><span style="color:#111">lists</span><span style="color:#111">,</span> <span style="color:#111">l</span><span style="color:#111">,</span> <span style="color:#111">mid</span><span style="color:#111">),</span> <span style="color:#111">merge</span><span style="color:#111">(</span><span style="color:#111">lists</span><span style="color:#111">,</span> <span style="color:#111">mid</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">r</span><span style="color:#111">));</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> <span style="color:#a6e22e">mergeKLists</span>(vector<span style="color:#f92672">&lt;</span>ListNode<span style="color:#f92672">*&gt;&amp;</span> lists) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> merge(lists, <span style="color:#ae81ff">0</span>, lists.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>    <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#75af00">mergeKLists</span><span style="color:#111">(</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">ListNode</span><span style="color:#f92672">*&gt;&amp;</span> <span style="color:#111">lists</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">merge</span><span style="color:#111">(</span><span style="color:#111">lists</span><span style="color:#111">,</span> <span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#111">lists</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">()</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/he-bing-kge-pai-xu-lian-biao-by-leetcode-solutio-2/">思路二</a>：</p>
 <p>突破点：<code>优先队列。</code></p>
 <p>步骤：</p>
@@ -467,68 +545,68 @@ lists[i].length 的总和不超过 10^4</p>
 <li>使用优先队列进行优化。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Status</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> val;
-</span></span><span style="display:flex;"><span>        ListNode <span style="color:#f92672">*</span>ptr;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">bool</span> <span style="color:#66d9ef">operator</span> <span style="color:#f92672">&lt;</span> (<span style="color:#66d9ef">const</span> Status <span style="color:#f92672">&amp;</span>rhs) <span style="color:#66d9ef">const</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> val <span style="color:#f92672">&gt;</span> rhs.val;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    };
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">struct</span> <span style="color:#75af00">Status</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">val</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">ListNode</span> <span style="color:#f92672">*</span><span style="color:#111">ptr</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">bool</span> <span style="color:#00a8c8">operator</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">(</span><span style="color:#00a8c8">const</span> <span style="color:#111">Status</span> <span style="color:#f92672">&amp;</span><span style="color:#111">rhs</span><span style="color:#111">)</span> <span style="color:#00a8c8">const</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">return</span> <span style="color:#111">val</span> <span style="color:#f92672">&gt;</span> <span style="color:#111">rhs</span><span style="color:#111">.</span><span style="color:#111">val</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">};</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    priority_queue <span style="color:#f92672">&lt;</span>Status<span style="color:#f92672">&gt;</span> q;
+</span></span><span style="display:flex;"><span>    <span style="color:#111">priority_queue</span> <span style="color:#f92672">&lt;</span><span style="color:#111">Status</span><span style="color:#f92672">&gt;</span> <span style="color:#111">q</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    ListNode<span style="color:#f92672">*</span> <span style="color:#a6e22e">mergeKLists</span>(vector<span style="color:#f92672">&lt;</span>ListNode<span style="color:#f92672">*&gt;&amp;</span> lists) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> node: lists) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (node) q.push({node<span style="color:#f92672">-&gt;</span>val, node});
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        ListNode head, <span style="color:#f92672">*</span>tail <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>head;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>q.empty()) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">auto</span> f <span style="color:#f92672">=</span> q.top(); q.pop();
-</span></span><span style="display:flex;"><span>            tail<span style="color:#f92672">-&gt;</span>next <span style="color:#f92672">=</span> f.ptr;
-</span></span><span style="display:flex;"><span>            tail <span style="color:#f92672">=</span> tail<span style="color:#f92672">-&gt;</span>next;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (f.ptr<span style="color:#f92672">-&gt;</span>next) q.push({f.ptr<span style="color:#f92672">-&gt;</span>next<span style="color:#f92672">-&gt;</span>val, f.ptr<span style="color:#f92672">-&gt;</span>next});
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> head.next;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>    <span style="color:#111">ListNode</span><span style="color:#f92672">*</span> <span style="color:#75af00">mergeKLists</span><span style="color:#111">(</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">ListNode</span><span style="color:#f92672">*&gt;&amp;</span> <span style="color:#111">lists</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">auto</span> <span style="color:#111">node</span><span style="color:#111">:</span> <span style="color:#111">lists</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">node</span><span style="color:#111">)</span> <span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">({</span><span style="color:#111">node</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span><span style="color:#111">,</span> <span style="color:#111">node</span><span style="color:#111">});</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">ListNode</span> <span style="color:#111">head</span><span style="color:#111">,</span> <span style="color:#f92672">*</span><span style="color:#111">tail</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span><span style="color:#111">head</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">())</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">auto</span> <span style="color:#111">f</span> <span style="color:#f92672">=</span> <span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">top</span><span style="color:#111">();</span> <span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">tail</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span> <span style="color:#f92672">=</span> <span style="color:#111">f</span><span style="color:#111">.</span><span style="color:#111">ptr</span><span style="color:#111">;</span> 
+</span></span><span style="display:flex;"><span>            <span style="color:#111">tail</span> <span style="color:#f92672">=</span> <span style="color:#111">tail</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">f</span><span style="color:#111">.</span><span style="color:#111">ptr</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">)</span> <span style="color:#111">q</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">({</span><span style="color:#111">f</span><span style="color:#111">.</span><span style="color:#111">ptr</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span><span style="color:#111">,</span> <span style="color:#111">f</span><span style="color:#111">.</span><span style="color:#111">ptr</span><span style="color:#f92672">-&gt;</span><span style="color:#111">next</span><span style="color:#111">});</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">head</span><span style="color:#111">.</span><span style="color:#111">next</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div>
-			</div>
-		</article>
-	</main>
-<aside>
-	<div>
-		<div>
-			<h3>LATEST POSTS</h3>
-		</div>
-		<div>
-			<ul>
-				
-				<li><a href="/posts/2023-12-02-criterions-for-site/">Criterions for Site</a></li>
-				
-				<li><a href="/posts/2023-12-02-hugo-site-auto-deployment-with-github-action/">Hugo Site Auto Deployment with Github Action</a></li>
-				
-				<li><a href="/posts/2023-12-02-hello-world/">Hello World</a></li>
-				
-				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
-				
-				<li><a href="/posts/2022-10-21-dev-null-related/">/dev/null and 2&amp;&gt;1</a></li>
-				
-			</ul>
-		</div>
-	</div>
-</aside>
+        </div>
+    </div>
+</div>
 
 
-	<footer>
-	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
-	<a href="https://github.com/junyubian"><b>Github</b></a>.
-	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
-	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
-	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
-	</p>
-</footer>
+        </div><div class="container">
+    <div class="row justify-content-between">
+        <div class="col-sm-4">
+            <p class="footer">Junyu Bian© 2023 </p>
+        </div>
+        <div class="col-sm-6 d-flex flex-row-reverse">
+            
+            <a class="footer-social px-2"  href="https://twitter.com/junyu_bian" target="_blank"><i class="fab fa-twitter"></i></a>
+            
+            <a class="footer-social px-2"  href="https://github.com/junyubian" target="_blank"><i class="fab fa-github"></i></a>
+            
+            <a class="footer-social px-2"  href="https://www.facebook.com/profile.php?id=100010301021817" target="_blank"><i class="fab fa-facebook"></i></a>
+            
+        </div>
+    </div>
+</div>
+<script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script src="/js/isotope.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+<script src="/js/dark.js"></script>
+<script>
 
+
+var savedTheme = localStorage.getItem("dark-mode-storage") || "light" 
+setTheme(savedTheme);
+
+</script>
+<script src="/js/isotope.js"></script>
+<script src="/js/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, securityLevel: 'loose'});</script>
 </body>
 </html>

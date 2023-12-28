@@ -24,38 +24,10 @@
       <description></description>
     </item>
     <item>
-      <title>/dev/null and 2&amp;&gt;1</title>
-      <link>https://junyubian.github.io/garden/2022-10-21-dev-null-and-21/</link>
-      <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2022-10-21-dev-null-and-21/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>getopts in Bash</title>
       <link>https://junyubian.github.io/garden/2022-10-21-getopts-in-bash/</link>
       <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
       <guid>https://junyubian.github.io/garden/2022-10-21-getopts-in-bash/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Command Line Related Notes</title>
-      <link>https://junyubian.github.io/garden/2021-06-05-command-line-related-notes/</link>
-      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2021-06-05-command-line-related-notes/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>K8s and docker Related Notes</title>
-      <link>https://junyubian.github.io/garden/2021-06-05-k8s-and-docker-related-notes/</link>
-      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2021-06-05-k8s-and-docker-related-notes/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>VM Related Notes</title>
-      <link>https://junyubian.github.io/garden/2021-06-05-vm-related-notes/</link>
-      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2021-06-05-vm-related-notes/</guid>
       <description></description>
     </item>
     <item>
@@ -73,10 +45,31 @@
       <description></description>
     </item>
     <item>
-      <title>Linux知识点总结</title>
-      <link>https://junyubian.github.io/garden/2020-09-28-linux%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</link>
-      <pubDate>Mon, 28 Sep 2020 00:00:00 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-09-28-linux%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</guid>
+      <title>SWAP Function</title>
+      <link>https://junyubian.github.io/garden/2020-05-17-swap-function/</link>
+      <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/garden/2020-05-17-swap-function/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>EMPLACE_BACK in C&#43;&#43;</title>
+      <link>https://junyubian.github.io/garden/2020-05-16-emplace_back-in-c&#43;&#43;/</link>
+      <pubDate>Sat, 16 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/garden/2020-05-16-emplace_back-in-c&#43;&#43;/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>KMP Algorithm</title>
+      <link>https://junyubian.github.io/garden/2020-04-17-kmp-algorithm/</link>
+      <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/garden/2020-04-17-kmp-algorithm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>知识点整理</title>
+      <link>https://junyubian.github.io/garden/2020-04-15-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/</link>
+      <pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/garden/2020-04-15-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/</guid>
       <description></description>
     </item>
   </channel>

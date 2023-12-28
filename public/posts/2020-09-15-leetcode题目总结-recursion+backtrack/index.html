@@ -1,54 +1,121 @@
 <!DOCTYPE html>
-<html lang="en-us">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<style type=text/css>body{font-family:monospace;}</style>
-	<title>LeetCode题目总结-Recursion&#43;Backtrack</title>
-	
-	
-	<link rel="stylesheet" href="/css/style.css">
-	
-	
-</head>
-<body>
-	<header>
-	================<br>
-	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
-	================
-	<div style="float: right;">Welcome to my posts!</div><br>
-	<p>
-	<nav>
-			<a href="/"><b>Start</b></a>.
-			
-			
-			<a href="/posts/"><b>Posts</b></a>.
-			
-			<a href="/categories/"><b>Categories</b></a>.
-			
-			<a href="/tags/"><b>Tags</b></a>.
-			
-			<a href="/about/"><b>About</b></a>.
-			
-	</nav>
-	</p>
-	
-</header>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;800&family=Frank+Ruhl+Libre:wght@200;300;400;500;600&family=Encode+Sans+Semi+Condensed:wght@400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/all.min.css">
+    <link disabled id="dark-mode-theme" rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/my_style.css">
+    
+    
+    
+    <title>Junyu Bian | LeetCode题目总结-Recursion&#43;Backtrack</title>
+    <meta name="description" content="题目17:电话号码的字母组合 描述：
+给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。
+给出数字到字母的映射与电话按键相同。注意 1 不对应任何字母。
+示例:
+输入：&ldquo;23&rdquo; 输出：[&ldquo;ad&rdquo;, &ldquo;ae&rdquo;, &ldquo;af&rdquo;, &ldquo;bd&rdquo;, &ldquo;be&rdquo;, &ldquo;bf&rdquo;, &ldquo;cd&rdquo;, &ldquo;ce&rdquo;, &ldquo;cf&rdquo;].
+思路：
+突破点：回溯。
+步骤：
+维护一个字符串，表示已有的字母排列； 每次取一个数字，从哈希表中获取可能字母； 将一个字母插入到已有排列后面； 处理下一个数字，直到得到完整排列。 代码：
+class Solution { public: vector&lt;string&gt; letterCombinations(string digits) { vector&lt;string&gt; combinations; if (digits.empty()) { return combinations; } unordered_map&lt;char, string&gt; phoneMap{ {&#39;2&#39;, &#34;abc&#34;}, {&#39;3&#39;, &#34;def&#34;}, {&#39;4&#39;, &#34;ghi&#34;}, {&#39;5&#39;, &#34;jkl&#34;}, {&#39;6&#39;, &#34;mno&#34;}, {&#39;7&#39;, &#34;pqrs&#34;}, {&#39;8&#39;, &#34;tuv&#34;}, {&#39;9&#39;, &#34;wxyz&#34;} }; string combination; backtrack(combinations, phoneMap, digits, 0, combination); return combinations; } void backtrack(vector&lt;string&gt;&amp; combinations, const unordered_map&lt;char, string&gt;&amp; phoneMap, const string&amp; digits, int index, string&amp; combination) { if (index == digits.">
+</head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="https://junyubian.github.io/">
+            
+            <b style="font-weight: 800;">JB</b>
+            
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0"><li class='nav-item '>
+                    <a class="nav-link" href="/garden/"> Digital Garden</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/projects/"> Projects</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/library/"> Library</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/about/"> About</a>
+                </li>
+             
+            <li class="nav-item px-2 pt-1">
+                <a class="btn fas fa-moon" id="dark-mode-toggle"></a>
+            </li>
+            </ul>
+        </div>
+    </div>
+</nav><div id="content">
 
-	
-	<main>
-		<article>
-			<h1>LeetCode题目总结-Recursion&#43;Backtrack</h1>
-			<b><time>09/15/2020 22:12</time></b>
-		       
-		           <a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
-        	       
-		           <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>
-        	       
+<div class="container" style="max-width: 800px;">
+    <div class="py-4 rounded-3">
+        <div class="container-fluid py-2">
+            <h1 class="display-2 mb-4 text-center">LeetCode题目总结-Recursion&#43;Backtrack</h1>
+        </div>
+        
+        <p class="text-center fs-4 fst-italic serif">题目17:电话号码的字母组合 描述：
+给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。
+给出数字到字母的映射与电话按键相同。注意 1 不对应任何字母。
+示例:
+输入：&ldquo;23&rdquo; 输出：[&ldquo;ad&rdquo;, &ldquo;ae&rdquo;, &ldquo;af&rdquo;, &ldquo;bd&rdquo;, &ldquo;be&rdquo;, &ldquo;bf&rdquo;, &ldquo;cd&rdquo;, &ldquo;ce&rdquo;, &ldquo;cf&rdquo;].
+思路：
+突破点：回溯。
+步骤：
+维护一个字符串，表示已有的字母排列； 每次取一个数字，从哈希表中获取可能字母； 将一个字母插入到已有排列后面； 处理下一个数字，直到得到完整排列。 代码：
+class Solution { public: vector&lt;string&gt; letterCombinations(string digits) { vector&lt;string&gt; combinations; if (digits.empty()) { return combinations; } unordered_map&lt;char, string&gt; phoneMap{ {&#39;2&#39;, &#34;abc&#34;}, {&#39;3&#39;, &#34;def&#34;}, {&#39;4&#39;, &#34;ghi&#34;}, {&#39;5&#39;, &#34;jkl&#34;}, {&#39;6&#39;, &#34;mno&#34;}, {&#39;7&#39;, &#34;pqrs&#34;}, {&#39;8&#39;, &#34;tuv&#34;}, {&#39;9&#39;, &#34;wxyz&#34;} }; string combination; backtrack(combinations, phoneMap, digits, 0, combination); return combinations; } void backtrack(vector&lt;string&gt;&amp; combinations, const unordered_map&lt;char, string&gt;&amp; phoneMap, const string&amp; digits, int index, string&amp; combination) { if (index == digits.</p>
+        
+        <div class="text-center pt-4">
+            
+        </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+        <div class="col-12">
+            <p class="card-date m-0">
+                
+                
+                    Created Sep 15, 2020 - 
+                
+                Last updated: Sep 15, 2020
+            </p>
+            <hr class="dropdown-divider">
+            <div class="row justify-content-between">
+                <div class="col-sm-4">
+                    
+                </div>
+                <div class="col-sm-8" style="text-align: right;">
+                    
+                    
+                    <span class="badge tag-badge">C&#43;&#43;</span>
+                    
+                    <span class="badge tag-badge">算法</span>
+                    
+                    <span class="badge tag-badge">ch</span>
+                    
+                
+                
+                
+                </div>
+            </div>
+        </div>
+    </div>
 
-			<div>
-				<h3 id="题目17电话号码的字母组合httpsleetcode-cncomproblemsletter-combinations-of-a-phone-number">题目17:<a href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/">电话号码的字母组合</a></h3>
+    <div class="container-fluid py-2">
+        <div class="serif main-content">
+            <h3 id="题目17电话号码的字母组合httpsleetcode-cncomproblemsletter-combinations-of-a-phone-number">题目17:<a href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/">电话号码的字母组合</a></h3>
+<hr>
 <p>描述：</p>
 <p>给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。</p>
 <p>给出数字到字母的映射与电话按键相同。注意 1 不对应任何字母。</p>
@@ -65,78 +132,78 @@
 <li>处理下一个数字，直到得到完整排列。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> letterCombinations(string digits) {
-</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> combinations;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (digits.empty()) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> combinations;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span>, string<span style="color:#f92672">&gt;</span> phoneMap{
-</span></span><span style="display:flex;"><span>            {<span style="color:#e6db74">&#39;2&#39;</span>, <span style="color:#e6db74">&#34;abc&#34;</span>},
-</span></span><span style="display:flex;"><span>            {<span style="color:#e6db74">&#39;3&#39;</span>, <span style="color:#e6db74">&#34;def&#34;</span>},
-</span></span><span style="display:flex;"><span>            {<span style="color:#e6db74">&#39;4&#39;</span>, <span style="color:#e6db74">&#34;ghi&#34;</span>},
-</span></span><span style="display:flex;"><span>            {<span style="color:#e6db74">&#39;5&#39;</span>, <span style="color:#e6db74">&#34;jkl&#34;</span>},
-</span></span><span style="display:flex;"><span>            {<span style="color:#e6db74">&#39;6&#39;</span>, <span style="color:#e6db74">&#34;mno&#34;</span>},
-</span></span><span style="display:flex;"><span>            {<span style="color:#e6db74">&#39;7&#39;</span>, <span style="color:#e6db74">&#34;pqrs&#34;</span>},
-</span></span><span style="display:flex;"><span>            {<span style="color:#e6db74">&#39;8&#39;</span>, <span style="color:#e6db74">&#34;tuv&#34;</span>},
-</span></span><span style="display:flex;"><span>            {<span style="color:#e6db74">&#39;9&#39;</span>, <span style="color:#e6db74">&#34;wxyz&#34;</span>}
-</span></span><span style="display:flex;"><span>        };
-</span></span><span style="display:flex;"><span>        string combination;
-</span></span><span style="display:flex;"><span>        backtrack(combinations, phoneMap, digits, <span style="color:#ae81ff">0</span>, combination);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> combinations;
-</span></span><span style="display:flex;"><span>    }
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#f92672">&gt;</span> <span style="color:#111">letterCombinations</span><span style="color:#111">(</span><span style="color:#111">string</span> <span style="color:#111">digits</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#f92672">&gt;</span> <span style="color:#111">combinations</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">digits</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">())</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">return</span> <span style="color:#111">combinations</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">unordered_map</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">char</span><span style="color:#111">,</span> <span style="color:#111">string</span><span style="color:#f92672">&gt;</span> <span style="color:#111">phoneMap</span><span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">{</span><span style="color:#d88200">&#39;2&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;abc&#34;</span><span style="color:#111">},</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">{</span><span style="color:#d88200">&#39;3&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;def&#34;</span><span style="color:#111">},</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">{</span><span style="color:#d88200">&#39;4&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;ghi&#34;</span><span style="color:#111">},</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">{</span><span style="color:#d88200">&#39;5&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;jkl&#34;</span><span style="color:#111">},</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">{</span><span style="color:#d88200">&#39;6&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;mno&#34;</span><span style="color:#111">},</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">{</span><span style="color:#d88200">&#39;7&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;pqrs&#34;</span><span style="color:#111">},</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">{</span><span style="color:#d88200">&#39;8&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;tuv&#34;</span><span style="color:#111">},</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">{</span><span style="color:#d88200">&#39;9&#39;</span><span style="color:#111">,</span> <span style="color:#d88200">&#34;wxyz&#34;</span><span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">};</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">string</span> <span style="color:#111">combination</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">backtrack</span><span style="color:#111">(</span><span style="color:#111">combinations</span><span style="color:#111">,</span> <span style="color:#111">phoneMap</span><span style="color:#111">,</span> <span style="color:#111">digits</span><span style="color:#111">,</span> <span style="color:#ae81ff">0</span><span style="color:#111">,</span> <span style="color:#111">combination</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">combinations</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">backtrack</span>(vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;&amp;</span> combinations, <span style="color:#66d9ef">const</span> unordered_map<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">char</span>, string<span style="color:#f92672">&gt;&amp;</span> phoneMap, <span style="color:#66d9ef">const</span> string<span style="color:#f92672">&amp;</span> digits, <span style="color:#66d9ef">int</span> index, string<span style="color:#f92672">&amp;</span> combination) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (index <span style="color:#f92672">==</span> digits.length()) {
-</span></span><span style="display:flex;"><span>            combinations.push_back(combination);
-</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">char</span> digit <span style="color:#f92672">=</span> digits[index];
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> string<span style="color:#f92672">&amp;</span> letters <span style="color:#f92672">=</span> phoneMap.at(digit);
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span><span style="color:#f92672">&amp;</span> letter: letters) {
-</span></span><span style="display:flex;"><span>                combination.push_back(letter);
-</span></span><span style="display:flex;"><span>                backtrack(combinations, phoneMap, digits, index <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, combination);
-</span></span><span style="display:flex;"><span>                combination.pop_back();
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">void</span> <span style="color:#75af00">backtrack</span><span style="color:#111">(</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#f92672">&gt;&amp;</span> <span style="color:#111">combinations</span><span style="color:#111">,</span> <span style="color:#00a8c8">const</span> <span style="color:#111">unordered_map</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">char</span><span style="color:#111">,</span> <span style="color:#111">string</span><span style="color:#f92672">&gt;&amp;</span> <span style="color:#111">phoneMap</span><span style="color:#111">,</span> <span style="color:#00a8c8">const</span> <span style="color:#111">string</span><span style="color:#f92672">&amp;</span> <span style="color:#111">digits</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">index</span><span style="color:#111">,</span> <span style="color:#111">string</span><span style="color:#f92672">&amp;</span> <span style="color:#111">combination</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">index</span> <span style="color:#f92672">==</span> <span style="color:#111">digits</span><span style="color:#111">.</span><span style="color:#111">length</span><span style="color:#111">())</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">combinations</span><span style="color:#111">.</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#111">combination</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span> <span style="color:#00a8c8">else</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">char</span> <span style="color:#111">digit</span> <span style="color:#f92672">=</span> <span style="color:#111">digits</span><span style="color:#111">[</span><span style="color:#111">index</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">const</span> <span style="color:#111">string</span><span style="color:#f92672">&amp;</span> <span style="color:#111">letters</span> <span style="color:#f92672">=</span> <span style="color:#111">phoneMap</span><span style="color:#111">.</span><span style="color:#111">at</span><span style="color:#111">(</span><span style="color:#111">digit</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">const</span> <span style="color:#00a8c8">char</span><span style="color:#f92672">&amp;</span> <span style="color:#111">letter</span><span style="color:#111">:</span> <span style="color:#111">letters</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">combination</span><span style="color:#111">.</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#111">letter</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">backtrack</span><span style="color:#111">(</span><span style="color:#111">combinations</span><span style="color:#111">,</span> <span style="color:#111">phoneMap</span><span style="color:#111">,</span> <span style="color:#111">digits</span><span style="color:#111">,</span> <span style="color:#111">index</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#111">,</span> <span style="color:#111">combination</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">combination</span><span style="color:#111">.</span><span style="color:#111">pop_back</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div>
-			</div>
-		</article>
-	</main>
-<aside>
-	<div>
-		<div>
-			<h3>LATEST POSTS</h3>
-		</div>
-		<div>
-			<ul>
-				
-				<li><a href="/posts/2023-12-02-criterions-for-site/">Criterions for Site</a></li>
-				
-				<li><a href="/posts/2023-12-02-hugo-site-auto-deployment-with-github-action/">Hugo Site Auto Deployment with Github Action</a></li>
-				
-				<li><a href="/posts/2023-12-02-hello-world/">Hello World</a></li>
-				
-				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
-				
-				<li><a href="/posts/2022-10-21-dev-null-related/">/dev/null and 2&amp;&gt;1</a></li>
-				
-			</ul>
-		</div>
-	</div>
-</aside>
+        </div>
+    </div>
+</div>
 
 
-	<footer>
-	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
-	<a href="https://github.com/junyubian"><b>Github</b></a>.
-	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
-	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
-	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
-	</p>
-</footer>
+        </div><div class="container">
+    <div class="row justify-content-between">
+        <div class="col-sm-4">
+            <p class="footer">Junyu Bian© 2023 </p>
+        </div>
+        <div class="col-sm-6 d-flex flex-row-reverse">
+            
+            <a class="footer-social px-2"  href="https://twitter.com/junyu_bian" target="_blank"><i class="fab fa-twitter"></i></a>
+            
+            <a class="footer-social px-2"  href="https://github.com/junyubian" target="_blank"><i class="fab fa-github"></i></a>
+            
+            <a class="footer-social px-2"  href="https://www.facebook.com/profile.php?id=100010301021817" target="_blank"><i class="fab fa-facebook"></i></a>
+            
+        </div>
+    </div>
+</div>
+<script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script src="/js/isotope.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+<script src="/js/dark.js"></script>
+<script>
 
+
+var savedTheme = localStorage.getItem("dark-mode-storage") || "light" 
+setTheme(savedTheme);
+
+</script>
+<script src="/js/isotope.js"></script>
+<script src="/js/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, securityLevel: 'loose'});</script>
 </body>
 </html>

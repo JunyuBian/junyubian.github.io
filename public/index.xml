@@ -77,13 +77,6 @@
 1.3 &lt;code&gt;getopts&lt;/code&gt; parses short options, which are a single dash (&amp;quot;-&amp;quot;) and a letter or digit.e.g. -2, -d, and -D. It can also parse short options in combination, for instance -2dD. But each option will be treated seperately, i.e. -2dD = -2 -d -D not equal -&amp;ldquo;2dD&amp;rdquo;, will need &lt;code&gt;getopt&lt;/code&gt; to cope with -&amp;ldquo;2dD&amp;rdquo;.&lt;/p&gt;</description>
     </item>
     <item>
-      <title>/dev/null and 2&amp;&gt;1</title>
-      <link>https://junyubian.github.io/garden/2022-10-21-dev-null-and-21/</link>
-      <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2022-10-21-dev-null-and-21/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>getopts in Bash</title>
       <link>https://junyubian.github.io/garden/2022-10-21-getopts-in-bash/</link>
       <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
@@ -96,27 +89,6 @@
       <pubDate>Sat, 10 Jul 2021 00:00:00 +0000</pubDate>
       <guid>https://junyubian.github.io/library/book1/</guid>
       <description>Biology and Conservation of the First Panda</description>
-    </item>
-    <item>
-      <title>Command Line Related Notes</title>
-      <link>https://junyubian.github.io/garden/2021-06-05-command-line-related-notes/</link>
-      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2021-06-05-command-line-related-notes/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>K8s and docker Related Notes</title>
-      <link>https://junyubian.github.io/garden/2021-06-05-k8s-and-docker-related-notes/</link>
-      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2021-06-05-k8s-and-docker-related-notes/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>VM Related Notes</title>
-      <link>https://junyubian.github.io/garden/2021-06-05-vm-related-notes/</link>
-      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2021-06-05-vm-related-notes/</guid>
-      <description></description>
     </item>
     <item>
       <title>FD.io简介</title>
@@ -140,17 +112,10 @@
       <description></description>
     </item>
     <item>
-      <title>Linux知识点总结</title>
-      <link>https://junyubian.github.io/garden/2020-09-28-linux%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</link>
-      <pubDate>Mon, 28 Sep 2020 00:00:00 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-09-28-linux%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>LeetCode题目总结-Recursion&#43;Backtrack</title>
-      <link>https://junyubian.github.io/garden/2020-09-15-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-recursion&#43;backtrack/</link>
+      <link>https://junyubian.github.io/posts/2020-09-15-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-recursion&#43;backtrack/</link>
       <pubDate>Tue, 15 Sep 2020 22:12:19 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-09-15-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-recursion&#43;backtrack/</guid>
+      <guid>https://junyubian.github.io/posts/2020-09-15-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-recursion&#43;backtrack/</guid>
       <description>题目17:电话号码的字母组合 描述：
 给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。
 给出数字到字母的映射与电话按键相同。注意 1 不对应任何字母。
@@ -164,9 +129,9 @@ class Solution { public: vector&amp;lt;string&amp;gt; letterCombinations(string 
     </item>
     <item>
       <title>LeetCode题目总结-Graph</title>
-      <link>https://junyubian.github.io/garden/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-graph/</link>
+      <link>https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-graph/</link>
       <pubDate>Sat, 12 Sep 2020 21:32:19 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-graph/</guid>
+      <guid>https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-graph/</guid>
       <description>题目133:克隆图 描述：
 给你无向连通图中一个节点的引用，请你返回该图的 深拷贝（克隆）。
 图中的每个节点都包含它的值 val（int） 和其邻居的列表（list[Node]）。
@@ -180,9 +145,9 @@ class Node { public int val; public List neighbors; }
     </item>
     <item>
       <title>LeetCode题目总结-Queue&#43;TopologicalSort</title>
-      <link>https://junyubian.github.io/garden/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-queue&#43;topologicalsort/</link>
+      <link>https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-queue&#43;topologicalsort/</link>
       <pubDate>Sat, 12 Sep 2020 21:32:19 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-queue&#43;topologicalsort/</guid>
+      <guid>https://junyubian.github.io/posts/2020-09-12-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-queue&#43;topologicalsort/</guid>
       <description>题目621:任务调度器 描述：
 给定一个用字符数组表示的 CPU 需要执行的任务列表。其中包含使用大写的 A - Z 字母表示的26 种不同种类的任务。任务可以以任意顺序执行，并且每个任务都可以在 1 个单位时间内执行完。CPU 在任何一个单位时间内都可以执行一个任务，或者在待命状态。
 然而，两个相同种类的任务之间必须有长度为 n 的冷却时间，因此至少有连续 n 个单位时间内 CPU 在执行不同的任务，或者在待命状态。
@@ -199,9 +164,9 @@ int leastInterval(vector&amp;lt;char&amp;gt;&amp;amp; tasks, int n) { int len=ta
     </item>
     <item>
       <title>LeetCode题目总结-DP&#43;Greedy</title>
-      <link>https://junyubian.github.io/garden/2020-09-11-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dp&#43;greedy/</link>
+      <link>https://junyubian.github.io/posts/2020-09-11-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dp&#43;greedy/</link>
       <pubDate>Fri, 11 Sep 2020 11:52:19 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-09-11-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dp&#43;greedy/</guid>
+      <guid>https://junyubian.github.io/posts/2020-09-11-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dp&#43;greedy/</guid>
       <description>题目5:最长回文子串 描述：
 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。
 示例 1：
@@ -216,9 +181,9 @@ class Solution { public: string longestPalindrome(string s) { //大小为1的字
     </item>
     <item>
       <title>LeetCode题目总结-Heap&#43;Stack</title>
-      <link>https://junyubian.github.io/garden/2020-09-09-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-heap&#43;stack/</link>
+      <link>https://junyubian.github.io/posts/2020-09-09-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-heap&#43;stack/</link>
       <pubDate>Wed, 09 Sep 2020 12:32:19 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-09-09-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-heap&#43;stack/</guid>
+      <guid>https://junyubian.github.io/posts/2020-09-09-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-heap&#43;stack/</guid>
       <description>题目20:有效的括号 描述：
 给定一个只包括 &amp;lsquo;(&amp;rsquo;，&amp;rsquo;)&amp;rsquo;，&amp;rsquo;{&amp;rsquo;，&amp;rsquo;}&amp;rsquo;，&amp;rsquo;[&amp;rsquo;，&amp;rsquo;]&amp;rsquo; 的字符串，判断字符串是否有效。
 有效字符串需满足：
@@ -237,9 +202,9 @@ class Solution { public: bool isValid(string s) { unordered_map&amp;lt;char,int&
     </item>
     <item>
       <title>LeetCode题目总结-DFS&#43;BFS</title>
-      <link>https://junyubian.github.io/garden/2020-09-08-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dfs&#43;bfs/</link>
+      <link>https://junyubian.github.io/posts/2020-09-08-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dfs&#43;bfs/</link>
       <pubDate>Tue, 08 Sep 2020 14:03:19 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-09-08-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dfs&#43;bfs/</guid>
+      <guid>https://junyubian.github.io/posts/2020-09-08-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-dfs&#43;bfs/</guid>
       <description>题目116:填充每个节点的下一个右侧节点指针 描述：
 给定一个完美二叉树，其所有叶子节点都在同一层，每个父节点都有两个子节点。二叉树定义如下：
 struct Node { int val; Node *left; Node *right; Node *next; }
@@ -257,28 +222,10 @@ struct Node { int val; Node *left; Node *right; Node *next; }
 class Solution { public: Node* connect(Node* root) { if(!root) return root; queue&amp;lt;Node*&amp;gt; work; work.push(root); work.push(nullptr); Node* cur = nullptr; while(1) { // 如果队列首部是结点 if(work.front()) { cur = work.front(); work.pop(); // 如果是非叶子结点 if(cur-&amp;gt;left) { work.</description>
     </item>
     <item>
-      <title>LeetCode题目总结-Tree&#43;BST</title>
-      <link>https://junyubian.github.io/garden/2020-09-07-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-tree&#43;bst/</link>
-      <pubDate>Mon, 07 Sep 2020 21:13:19 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-09-07-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-tree&#43;bst/</guid>
-      <description>题目94:二叉树的中序遍历 描述：
-给定一个二叉树，返回它的中序 遍历。
-示例:
-输入: [1,null,2,3] 1 2 / 3
-输出: [1,3,2] 进阶: 递归算法很简单，你可以通过迭代算法完成吗？
-思路一：
-突破点：递归。
-代码：
-void traversal(TreeNode* cur, vector&amp;lt;int&amp;gt;&amp;amp; vec) { if (nullptr == cur) return; traversal(cur-&amp;gt;left, vec); // 左 vec.push_back(cur-&amp;gt;val); // 中 traversal(cur-&amp;gt;right, vec); // 右 } 思路二：
-突破点：迭代。
-代码：
-class Solution { public: vector&amp;lt;int&amp;gt; inorderTraversal(TreeNode* root) { vector&amp;lt;int&amp;gt; result; stack&amp;lt;TreeNode*&amp;gt; tempStack; if (nullptr != root) tempStack.push(root); while (!tempStack.empty()) { TreeNode* node = tempStack.top(); if (nullptr !</description>
-    </item>
-    <item>
       <title>LeetCode题目总结-Two Pointer&#43;Linked List</title>
-      <link>https://junyubian.github.io/garden/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-two-pointer&#43;linked-list/</link>
+      <link>https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-two-pointer&#43;linked-list/</link>
       <pubDate>Sun, 06 Sep 2020 23:33:19 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-two-pointer&#43;linked-list/</guid>
+      <guid>https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-two-pointer&#43;linked-list/</guid>
       <description>题目3:无重复字符的最长子串 描述：
 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
 示例 1:
@@ -294,9 +241,9 @@ class Solution { public: int lengthOfLongestSubstring(string s) { //s[start,end)
     </item>
     <item>
       <title>LeetCode题目总结-Array</title>
-      <link>https://junyubian.github.io/garden/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-array/</link>
+      <link>https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-array/</link>
       <pubDate>Sun, 06 Sep 2020 21:09:19 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-array/</guid>
+      <guid>https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93-array/</guid>
       <description>题目31:下一个排列 描述：
 实现获取下一个排列的函数，算法需要将给定数字序列重新排列成字典序中下一个更大的排列。
 如果不存在下一个更大的排列，则将数字重新排列成最小的排列（即升序排列）。
@@ -313,294 +260,46 @@ class Solution { public: int lengthOfLongestSubstring(string s) { //s[start,end)
 // 步骤2函数 int findMin(vector&amp;lt;int&amp;gt; nums, int i) { int pivotEle = nums[i-1]; for (i = nums.size() - 1; i &amp;gt; -1; i--) { if (nums[i] &amp;gt; pivotEle) { break; } } return i; } // 步骤4函数，也可以用 reverse(nums.begin()+i, nums.end());实现 void swap(vector&amp;lt;int&amp;gt; &amp;amp;nums, int i) { int end = nums.</description>
     </item>
     <item>
-      <title>C&#43;&#43;知识点总结</title>
-      <link>https://junyubian.github.io/garden/2020-09-01-c&#43;&#43;%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</link>
-      <pubDate>Tue, 01 Sep 2020 21:33:19 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-09-01-c&#43;&#43;%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</guid>
-      <description>1. 虚函数和纯虚函数 虚函数：为了动态绑定，允许被子类重新定义的成员函数， virtual returnType func(parameter); 纯虚函数：为了派生接口，virtual returnType func(parameter) = 0; 基类需要虚析构函数的原因：防止内存泄漏，假如没有虚析构函数，释放一个由基类指向派生类的对象是，不触发动态绑定，则只会调用基类析构函数，而不会调用派生类的，从而导致派生类内存空间的不到释放。 2. static和const关键字 static：存储在静态存储区，未初始化时自动初始化为0：
-局部变量： 变为静态局部变量； 作用域仍为局部作用域； 离开作用域仍驻留在内存中，但不可访问； 全局变量： 变为全局静态变量； 在声明的文件之外不可见； 成员变量： 变为类的全局变量，被类的对象共享，包括派生类的对象； 必须在类外进行初始化，如int base::var = 10;，但可以用const修饰static数据成员，从而在类内初始化； 成员函数： 使得成员函数为所有对象共享，不含this指针； 可以独立访问，不需要创建实例，如base::func(3, 5); 不可直接引用类的非静态成员，但是可以引用静态成员； 不可同时用const和static修饰成员函数（const含this指针，static不含，冲突）； const：
-表明变量不可修改； 限定成员函数不可修改任何数据成员； const与指针： const char *p：指向的内容不能改变； char * const p：将p声明为常指针，地址不能变，但是内容可变。 3. C++的内存分区 栈区（stack）：主要存放函数参数以及局部变量，由系统自动分配释放； 堆区（heap）：用户通过malloc/new手动申请释放，分配类似链表； 全局/静态区：存放全局变量、静态变量； 字符串常量区：字符串常量； 代码区：程序的二进制代码。 4. STL容器 底层数据结构：
-vector：数组； map、multimap：红黑树； unordered_map、unordered_nultimap：哈希表。 5. 内存泄漏 一般为堆内存泄漏，即程序在运行中动态申请的内存空间不使用后，未及时释放； 解决： 良好编程习惯； 重载new和delete，以链表形式自动管理分配的内存； 使用智能指针。 6. 32位、64位系统中，常用内置数据类型所占字节数 32位： char：1字节； 指针变量：4字节； short int：2字节； int：4字节； unsigned int：4字节； float：4字节； double：8字节； long：4字节； unsigned long：4字节； long long：8字节； 64位： char：1字节； 指针变量：8字节； short int：2字节； int：4字节； unsigned int：4字节； float：4字节； double：8字节； long：8字节； unsigned long：8字节； long long：8字节。 7.</description>
-    </item>
-    <item>
-      <title>数据库知识点总结</title>
-      <link>https://junyubian.github.io/garden/2020-09-01-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</link>
-      <pubDate>Tue, 01 Sep 2020 17:22:16 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-09-01-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</guid>
-      <description>1. 数据库范式 第一范式：列不可分；
-第二范式：有主键，保证完全依赖于主键；
-第三范式：无传递依赖。
-2. 索引 索引：对数据库表中一个或多个列的值进行排序的数据结构，从而达到快速查询、更新数据库表数据的目的；
-实现：通常使用B树或B+树，如用B树可以实现O(logn)的时间复杂度检索：
-B树特点（m叉树）： 树中每个节点最多有m个子节点； 所有叶子节点都在同一层； B+树特点（InnoDB的索引实现）： 所有叶子节点中包含了所有关键码信息，及指向关键码记录的指针； 叶子节点本身根据关键码大小自小而大顺序链接； 含有两个指针，一个指向根节点，一个指向关键字最小的叶子节点； B+树更适合文件和数据库索引的原因： B+树内部节点相对B树更小，磁盘读写代价更低； 每次查找都需要从根节点到叶子节点，查询效率更稳定； 索引的优点：
-加快数据检索速度； 加快表与表之间的连接； 减少分组和排序语句的时间； 通过创建唯一性索引，保证数据库中每一行数据的唯一性； 设置了索引但是无法使用的情况：
-模糊查询，以“%”开头的Like语句； OR语句前后没有同时使用索引； 数据类型出现隐式转化，如varchar不加单引号自动转为int； 对于多列索引，必须满足最左匹配原则： 如对于索引(a, b, c)，生效情况为a、(a, b)、(a, b, c)； 因为针对联合索引构建的B+树优先保证最左元素有序； 什么字段适合创建索引：
-经常作为查询选择的字段； 经常作为表连接的字段； 经常出现在order by、group by、distinct后面的字段； 创建索引时需要注意：
-非空字段：需要使用0或特殊值代替NULL，否则会使索引运算更加复杂； 索引字段越小越好：数据库存储以页为单位，一页存储的数据越多，一次IO获取数据的效率越高； 索引缺点：
-时间：创建、维护索引需要耗费时间，对表中数据进行增加、删除、修改时，索引也要动态修改，降低了数据的维护速度； 空间：索引需要额外的存储空间； 索引的分类：
-普通索引和唯一性索引：索引列值的唯一性； 单个索引和复合索引：索引列包含的列数； 聚簇索引和非聚簇索引： 聚簇索引：按照每张表的主键构建一个B+树，InnoDB中表数据文件本身就是按照B+树组织的索引结构； 非聚簇索引：按照value进行检索，最后获得想要数据的主键，再通过主索引进行检索； 唯一索引与主键索引：
-主键索引：为主键创建的唯一索引； 唯一索引：索引列的值必须唯一，但允许有空值。 3. 数据库事务 事务的特性：
-原子性（Atomicity）：事务所包含的一系列语句，要么全部成功执行，要么全部回滚； 一致性（Consistency）：事务的执行结果必须使数据库从一个一致性状态到领一个一致性状态； 隔离性（Isolation）：并发执行的并发之间不能相互影响； 持久性（Durability）：事务一旦提交，对数库中的数据改变是永久性的； 事务并发带来的问题：
-脏读：一个事务读取了另一个事务未提交的数据； 不可重复读：同样条件下，两次读取结果不同，即，被读取的数据可以被其他事务修改； 幻读：同样条件下，两次读出的记录数不一样，即，被读取的数据可以被其他事务新增或删除； 隔离级别：
-读未提交（Read Uncommitted）：允许一个事务读取另一个事务还没提交的数据，可能会提高性能，但是会导致脏读； 读已提交（Read Committed）：只允许读到其他事物已经提交的数据，不能避免不可重复读； 可重复读（Repeatable Read）：一个事务开启后，其他事务对于数据库的修改在本事务中不可见，直到本事务提交或回滚，但是，其他事物的删除新增可见，不能避免幻读的问题； 串行化（Serializable）：只允许事务串行执行； MySQL默认隔离级别是Repeatable Read。 4.</description>
-    </item>
-    <item>
-      <title>操作系统知识点总结</title>
-      <link>https://junyubian.github.io/garden/2020-08-31-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</link>
-      <pubDate>Mon, 31 Aug 2020 19:32:21 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-08-31-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</guid>
-      <description>1. 进程和线程 进程：系统进行资源分配的基本单位； 线程：CPU调度的基本单位： 共享进程的全部资源； 独有程序计数器、寄存器和栈。 2. 进程通信 低级通信：用信号量进行的进程间的互斥和同步；
-高级通信：利用操作系统所提供的一组通信命令传送大量数据的通信方式：
-共享存储器系统：例：剪贴板； 消息传递系统：例：邮槽； 管道通信系统； 通信方式：
-管道： 有名管道：单向通信，有固定的读端和写端，半双工通信方式，允许无亲缘关系进程间的通信； 无名管道：数据单向流动，只能在具有亲缘关系的进程间使用； 信号量：是一个计数器，控制多进程对共享资源的访问，作为一种锁机制； 消息队列：消息的链表； 信号； 共享内存：最快的IPC，常与信号量配合，实现进程间的同步和通信； 套接字。 3. 线程通信 互斥量； 信号量； 信号。 4. 死锁 概念：在多个并发进程中，某个进程持有某种资源而又等待别的进程释放他们保持的资源，在为改变状态之前不能向前推进，从而在这一组进程中产生了死锁，多个进程被无限期地阻塞、相互等待的状态；
-必要条件：
-互斥：一个资源每次只能被一个进程使用； 不可抢占：进程已获得的资源，在未使用完之前，不能前行剥夺； 占有并等待：一个进程因请求资源而阻塞时，对已获得的资源保持不放； 环形等待：若干进程之间形成一种首尾相接的循环等待资源关系； 死锁的解除与预防：
-破坏互斥： 允许系统资源都能共享； 缺点：有些资源不能同时访问，如打印机，且在某些场合应保护互斥性； 破坏占有并等待： 预先静态分配，在进程运行前一次申请完它所需要的全部资源，在它的资源未满足前，不投入运行，一旦投入运行资源全部归他所有； 缺点：系统资源浪费，个别资源长期被占用，导致一些进程不能运行； 破坏不可抢占： 当一个进程保持了某些资源，请求新资源而不能被满足时，必须释放所保持的资源，以后重新申请； 缺点：实现复杂，释放资源可能会造成前一阶段工作失效，常用于易于保存和回恢复的资源； 破坏循环等待： 给系统资源编号，规定进程必须按照编号递增的顺序请求资源； 缺点：实现复杂，编号不一定与实际使用顺序相同； 避免死锁的方式：
-判断系统状态：在分配前，先计算分配的安全性； 银行家算法： 申请的贷款额度不能超过银行西安有资金总额； 分批次向银行提款，但是贷款额度不能超过一开始最大需求量的总额； 暂时不能满足客户申请的资金额度时，在有限时间内给予贷款； 客户要在规定时间内还款。 5. 分段与分页内存管理的区别 分段：符合用户视角，将地址空间分为若干段：代码段、数据段、堆、栈； 分页：方便系统管理，将逻辑地址划分为固定大小的页，物理内存划分为同样大小的帧，方便程序加载。 6. 虚拟内存 让每个进程拥有独立的地址空间，且这些空间被分为大小相等的页，被映射到物理内存中，对进程而言，逻辑上有很大的内存空间，但其中一部分对应于物理内存，还有一些在硬盘上； 页面置换算法：FIFO、LRU、LFU、OPT； 优点： 物理内存可为多个进程共享； 通过共享页允许进程间共享内存 虚拟内存大小： 对于32位：0-2^32 ~= 0-4G； 对于64位：0-2^64； </description>
-    </item>
-    <item>
-      <title>计算机网络知识点总结</title>
-      <link>https://junyubian.github.io/garden/2020-08-31-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</link>
-      <pubDate>Mon, 31 Aug 2020 16:40:10 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-08-31-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</guid>
-      <description>1. Https加密过程 客户端发起握手请求； 服务端返回已有的证书公钥（服务端通过CA认证后，拥有证书公钥和证书私钥）； 客户端验证证书是否有效； 若证书有效，则生成一个随机数； 用证书公钥加密生成的随机数； 将加密后的密钥发送给服务端； 服务端用证书私钥解密密钥； 服务端使用解密出的密钥加密要发送的内容并发送给客户端； 客户端使用秘钥解密信息。 2. 对称加密与非对称加密 对称加密：加密和解密使用同一个密钥；
-非对称加密：使用公钥和私钥进行加解密。
-3. CLOSE_WAIT和TIME_WAIT 在四次挥手中，
-CLOSE_WAIT：服务端收到FIN后，发送ACK给客户端，之后进入CLOSE_WAIT状态；
-TIME_WAIT：客户端收到FIN后，发送ACK给服务端，之后进入TIME_WAIT状态。
-4. TCP如何保证传输可靠性 数据包校验； 重排序：TCP将失序数据进行重新排序后才交给应用层； 应答机制：回复ACK； 超时重传； 流量控制：TCP连接的每一方都有固定大小缓冲空间，通过可变大小的滑窗协议完成。 5.如何预防TCP的DDos攻击 限制同时打开SYN半链接的数目；
-方法：在注册表中对TCPMaxHalfOpen相关参数进行调整；
-TCPMaxHalfOpen相关参数：
-SynAttackProtect：决定了系统受到SYN攻击时采取的保护措施，包括减少系统SYN+ACK的重试次数等； TcpMaxHalfOpen：系统允许同时打开的半链接值； TcpMaxHalfOpenRetried：决定在什么情况下系统打开SYN攻击保护； 缩短SYN半链接的Time out时间。
-6. TCP如何实现拥塞控制 慢启动：以指数方式，由小到大逐渐增加拥塞窗口(cwnd)的大小，慢启动达到ssthresh阈值则进入拥塞避免； 拥塞避免：每经过一个往返时间RTT就把发送方拥塞窗口增加1，按照线性增长，发生拥塞，cwnd降为1，重新慢启动； 快重传：接收方收到失序报文后，立即发出重复确认，发送方收到三个连续重复确认则立即重传； 快恢复：发送方收到重复确认后，执行乘法减小 ，把ssthresh减半，但不执行慢开始，因为如果发生阻塞，不会收到多个重复确认，而是将cwnd设置为ssthresh大小进行拥塞避免。 7. 从输入网址到获得页面的过程 浏览器通过DNS查询对应IP地址： 浏览器搜索自身DNS缓存； 搜索操作系统DNS缓存； 向本地DNS服务器进行查询； 若不在本地域名服务器，则递归或迭代查询： 递归查询：服务器作为DNS客户向根服务器查询； 迭代查询：根服务器告知服务器需要查询的IP，服务器自己进行查询； 获取IP地址后，浏览器向服务器请求建立连接，发起三次握手； TCP连接建立后，浏览器向服务器发送HTTP请求； 浏览器对请求进行处理，并将处理结果返回给浏览器； 浏览器进行渲染，呈现页面给用户。 8. Session 与 Cookie Session：
-用户访问服务器时，服务器首先检查请求中是否包含sessionId，若包含，说明session已创建，若不包含，则为用户建立一个session并分配sessionId（依赖Cookie）；
-用户提交表单时，浏览器将用户的SessionId附在HTTP头信息中，服务器处理完表单将结果返回sessionId对应的用户；
-若Cookie被禁用：
-URL重写：直接将sessionId附在URL后； 2. 表单隐藏字段：修改表单，添加一个隐藏字段，以便提交时能够回传sessionId session共享：修改cookie的域名为父域名；
-使用场景：购物车；
-Cookie：</description>
-    </item>
-    <item>
-      <title>知识点整理-6</title>
-      <link>https://junyubian.github.io/garden/2020-07-23-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-6/</link>
-      <pubDate>Thu, 23 Jul 2020 22:54:16 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-07-23-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-6/</guid>
-      <description>1. Linux和端口号、进程、文件相关的命令 静态进程查看: ps
-例：通过进程名查看进程号
-ps ax | fgrep [进程名] 网络查看: netstat
-例：通过进程号查看进程正在监听的端口
-netstat -antp | fgrep [进程号] 例：查看端口是否正在监听
-netstat -antp | grep [端口号] 搜索指定文件内容: grep (global regular expression print)
-例：搜索as在123.txt中的行号位置
-grep -n as 123.txt 2. 查找二叉树最大深度 struct TreeNode { int val; TreeNode * left; TreeNode * right; TreeNode(int x) : val(x), left(NULL), right(NULL){} }; int dfs (TreeNode * root, int result) { if (!root) { return result; } int left_res = dfs(root-&amp;gt;left, result + 1); int right_res = dfs(root-&amp;gt;right, result + 1); return max(left_res, right_res); } int MaxDepth(TreeNode * root) { int result = 0; return dfs(root, result); } 3.</description>
+      <title>LeetCode题目总结</title>
+      <link>https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Sun, 06 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/posts/2020-09-06-leetcode%E9%A2%98%E7%9B%AE%E6%80%BB%E7%BB%93/</guid>
+      <description></description>
     </item>
     <item>
       <title>SWAP Function</title>
       <link>https://junyubian.github.io/garden/2020-05-17-swap-function/</link>
-      <pubDate>Sun, 17 May 2020 19:28:00 +0000</pubDate>
+      <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
       <guid>https://junyubian.github.io/garden/2020-05-17-swap-function/</guid>
-      <description>In this blog, we will look into several ways of implementing swap in different ways.
-Intermedia Variable int a = 1; int b = 2; int tem = a; a = b; b = temp; Addition and Subtraction int a = 1; int b = 2; a = a+b; b = a-b; a = a-b; Multiplication and Division int a = 1; int b = 2; a = a*b; b = a/b; a = a/b; XOR int a = 1; int b = 2; a = a^b; b = b^a; // b = b^(a^b) = b^a^b = b^b^a = 0^a = a a = a^b; // a = (a^b)^a = a^b^a = a^a^b = 0^b = b </description>
+      <description></description>
     </item>
     <item>
       <title>EMPLACE_BACK in C&#43;&#43;</title>
       <link>https://junyubian.github.io/garden/2020-05-16-emplace_back-in-c&#43;&#43;/</link>
-      <pubDate>Sat, 16 May 2020 09:39:00 +0000</pubDate>
+      <pubDate>Sat, 16 May 2020 00:00:00 +0000</pubDate>
       <guid>https://junyubian.github.io/garden/2020-05-16-emplace_back-in-c&#43;&#43;/</guid>
-      <description>There are different type of containers in C++ STL. To add a new element into the back of a container, we normally use push_back(). In this blog, we will look into a new way of performing push back - emplace_back().
-Background Knowledge Rvalue References: with aim of increasing the efficiency of C++, rvalues are included. It doesn&amp;rsquo;t need to copy the value, the rvalue reference is bound to the value itself.</description>
+      <description></description>
     </item>
     <item>
       <title>Insurance Management System - Overview</title>
       <link>https://junyubian.github.io/garden/2020-04-28-insurance-management-system---overview/</link>
-      <pubDate>Tue, 28 Apr 2020 22:59:02 +0000</pubDate>
+      <pubDate>Tue, 28 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://junyubian.github.io/garden/2020-04-28-insurance-management-system---overview/</guid>
-      <description>In this series of blogs, we will talk about how to build a Insurance Management web application together with database system.
-Background Tom&amp;rsquo;s dad works in an insurance company. His work is to drop down who bought what kind of insurance, on which day does the customer receives an invoice, and on which day does the customer makes a payment.
-Oneday, Tom&amp;rsquo;s dad talks to Tom: &amp;ldquo;Oh Tom, you see see you, one day day, only eat, do nothing, build a management system for me.</description>
-    </item>
-    <item>
-      <title>Sorting Algorithms - Quick Sort</title>
-      <link>https://junyubian.github.io/garden/2020-04-23-sorting-algorithms---quick-sort/</link>
-      <pubDate>Thu, 23 Apr 2020 13:42:56 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-04-23-sorting-algorithms---quick-sort/</guid>
-      <description>In this series of blogs, we will talk about different sorting algorithms.
-All the algorithms in the table below will be covered.
-Algorithm Time Complexity (Average Case) Time Complexity (Worst Case) Time Complexity (Best Case) Merg Stability Bubble Sort O(N^2) O(N^2) O(N^2) O(1) Stable Quick Sort O(NlogN) O(N^2) O(NlogN) O(logN) Not Stable Quick Sort (with Random Selection) O(NlogN) O(NlogN) O(NlogN) O(logN) Not Stable Insertion Sort O(N^2) O(N^2) O(N) O(1) Stable Selection Sort O(N^2) O(N^2) O(N^2) O(1) Not Stable Heap Sort O(NlogN) O(NlogN) O(NlogN) O(1) Not Stable Merge Sort (with double divides) O(NlogN) O(NlogN) O(NlogN) O(N) Stable Merge Sort (with multi divides) O(NlogN) O(NlogN) O(NlogN) O(N) Stable Counting Sort O(N+M) O(N+M) O(N+M) O(N+M) Stable Bucket Sort O(N+M) O(N^2) O(N+M) O(N+M) Stable Radix Sort O(N*M) O(N*M) O(N*M) O(N+M) Stable Quick Sort How to do it&amp;hellip; Divide and conquer.</description>
-    </item>
-    <item>
-      <title>Sorting Algorithms - Bubble Sort</title>
-      <link>https://junyubian.github.io/garden/2020-04-22-sorting-algorithms---bubble-sort/</link>
-      <pubDate>Wed, 22 Apr 2020 09:23:36 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-04-22-sorting-algorithms---bubble-sort/</guid>
-      <description>In this series of blogs, we will talk about different sorting algorithms.
-All the algorithms in the table below will be covered.
-Algorithm Time Complexity (Average Case) Time Complexity (Worst Case) Time Complexity (Best Case) Merg Stability Bubble Sort O(N^2) O(N^2) O(N^2) O(1) Stable Quick Sort O(NlogN) O(N^2) O(NlogN) O(logN) Not Stable Quick Sort (with Random Selection) O(NlogN) O(NlogN) O(NlogN) O(logN) Not Stable Insertion Sort O(N^2) O(N^2) O(N) O(1) Stable Selection Sort O(N^2) O(N^2) O(N^2) O(1) Not Stable Heap Sort O(NlogN) O(NlogN) O(NlogN) O(1) Not Stable Merge Sort (with double divides) O(NlogN) O(NlogN) O(NlogN) O(N) Stable Merge Sort (with multi divides) O(NlogN) O(NlogN) O(NlogN) O(N) Stable Counting Sort O(N+M) O(N+M) O(N+M) O(N+M) Stable Bucket Sort O(N+M) O(N^2) O(N+M) O(N+M) Stable Radix Sort O(N*M) O(N*M) O(N*M) O(N+M) Stable Bubble Sort How to do it&amp;hellip; Compare the adjacent elements.</description>
-    </item>
-    <item>
-      <title>Sorting Algorithms - Summary</title>
-      <link>https://junyubian.github.io/garden/2020-04-21-sorting-algorithms---summary/</link>
-      <pubDate>Tue, 21 Apr 2020 22:18:10 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-04-21-sorting-algorithms---summary/</guid>
-      <description>In this series of blogs, we will talk about different sorting algorithms.
-All the algorithms in the table below will be covered.
-Algorithm Time Complexity (Average Case) Time Complexity (Worst Case) Time Complexity (Best Case) Merg Stability Bubble Sort O(N^2) O(N^2) O(N^2) O(1) Stable Quick Sort O(NlogN) O(N^2) O(NlogN) O(logN) Not Stable Quick Sort (with Random Selection) O(NlogN) O(NlogN) O(NlogN) O(logN) Not Stable Insertion Sort O(N^2) O(N^2) O(N) O(1) Stable Selection Sort O(N^2) O(N^2) O(N^2) O(1) Not Stable Heap Sort O(NlogN) O(NlogN) O(NlogN) O(1) Not Stable Merge Sort (with double divides) O(NlogN) O(NlogN) O(NlogN) O(N) Stable Merge Sort (with multi divides) O(NlogN) O(NlogN) O(NlogN) O(N) Stable Counting Sort O(N+M) O(N+M) O(N+M) O(N+M) Stable Bucket Sort O(N+M) O(N^2) O(N+M) O(N+M) Stable Radix Sort O(N*M) O(N*M) O(N*M) O(N+M) Stable </description>
-    </item>
-    <item>
-      <title>知识点整理-5</title>
-      <link>https://junyubian.github.io/garden/2020-04-19-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-5/</link>
-      <pubDate>Mon, 20 Apr 2020 00:51:32 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-04-19-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-5/</guid>
-      <description>1. MySQL查询10-20条的数据 select * from table limit 10, 20 2. 查找二叉树最大深度 struct TreeNode { int val; TreeNode * left; TreeNode * right; TreeNode(int x) : val(x), left(NULL), right(NULL){} }; int dfs (TreeNode * root, int result) { if (!root) { return result; } int left_res = dfs(root-&amp;gt;left, result + 1); int right_res = dfs(root-&amp;gt;right, result + 1); return max(left_res, right_res); } int MaxDepth(TreeNode * root) { int result = 0; return dfs(root, result); } 3.</description>
-    </item>
-    <item>
-      <title>知识点整理-4</title>
-      <link>https://junyubian.github.io/garden/2020-04-19-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-4/</link>
-      <pubDate>Sun, 19 Apr 2020 21:07:23 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-04-19-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-4/</guid>
-      <description>1. 黑盒测试和白盒测试 黑盒测试：即功能性测试
-等价类划分：有效等价类即对于程序的规格来说是合理的、有意义的；无效等价类即对程序的规格来说是不合理的、每有意义的。
-边界值分析：对各种边界情况设计测试用例。
-因果图法：根据输入的各种组合来设计测试用例，用于检查程序输入条件的各种组合情况。
-场景法：通过对正常场景和中断操作的场景进行实验来完成测试。
-白盒测试：即结构测试或逻辑驱动测试
-静态测试：代码检查、结构分析、文档测试等。
-动态测试：功能确认、接口测试、性能分析等。
-2. 单元测试、集成测试和系统 单元测试：对函数、类的某一个方法等基本单元进行正确性检验的测试。
-集成测试：对组装好的模块进行功能性验证的测试。
-系统测试：对继承好的软件作为计算机系统的一部分与外围设备或支持性软件一起进行的实际测试。
-3. 如何设计测试用例 利用**1.**中方法进行分析设计，需要包含用例编号、用例标题、功能模块名称、前置条件、输入数据、操作步骤、预期结果、优先级、执行结果、编写人、执行人、其他补充。
-4. 如何测试微信的点赞功能 功能测试
-点赞朋友圈，是否成功。
-取消点赞，是否成功。
-多次点赞，有何结果。
-多人点赞，以何顺序呈现。
-接口测试
-被点赞人能否收到消息。
-点赞人能否收到后续消息。
-性能测试
-点赞后，结果显示时间是否符合规范。
-兼容测试
-在安卓、ios上点赞，结构是否有差异。
-可用性测试
-网络连接不稳定时，点赞的结果。</description>
-    </item>
-    <item>
-      <title>知识点整理-3</title>
-      <link>https://junyubian.github.io/garden/2020-04-17-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-3/</link>
-      <pubDate>Fri, 17 Apr 2020 14:22:01 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-04-17-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-3/</guid>
-      <description>1. 计算机网络分层模型 7层 (osi国际标准组织定制)：
-应用层：为程序提供网络服务。
-表示层：数据格式化，加密、解密。
-会话层：建立、维护、管理会话链接。
-传输层：建立、维护、管理端到端链接。
-网络层：IP寻址和路由选择。
-数据链路层：控制网络层与物理层之间的通信。
-物理层：比特流传输。
-四层 (TCP/IP)：
-应用层：ping、DNS、telnet
-传输层：UDP、TCP
-网络层：ICMP、IP
-数据链路层：ARP、DataLink、RARP
-2. HTTP请求包含哪几个部分 请求行：
-请求方法：HTTP最常见的请求方法为GET和POST。
-请求URL：请求对应的URL地址。
-HTTP协议及版本：协议名称及版本号。
-请求头：
-包含多个属性，格式为“属性名：属性值”，服务器根据请求头来获取客户端的信息。
-请求体：
-将一个页面表单中的组件值通过param1=value &amp;amp; param2=value2的键值对形式编码成一个格式化串，承载多个请求参数的数据。
-3. TCP拥塞控制 主要为四个算法：
-慢开始：在TCP链接刚建立时，一点一点地增大拥塞窗口cwnd，慢慢变为指数增长，试探网络的承受能力，直到cwnd大于等于ssthresh（slow start threshold）则进入拥塞避免。
-拥塞避免：收到一个ACK，即每经过一个往返时间RTT，就把发送方的cwnd加1，使其按线性规律缓慢增长。
-乘法减小【TCP Tahoe】：不论在慢开始阶段还是拥塞避免阶段，只要出现超时，即可能发生了阻塞，发生丢包，就把慢开始门限ssthresh的值减半，即设置为当前cwnd的一半，并开始执行慢开始算法。
-快速重传【TCP Reno】：发生丢包时，把cwnd设置为当前的一半，ssthresh设置为缩小后的cwnd大小，进入快速恢复算法。
-快速恢复【TCP Reno】：设置cwnd=cwnd+3*MSS（因为收到3个重复的ACK，所以加三个MSS），重传DACKs指定的数据包，如果再收到DACKs，则cwnd增加1，若收到新的ACK，表明重传包成功，退出快速恢复，将cwnd设置为ssthresh，进入拥塞避免算法。
-4. 死锁与死锁的处理 形成死锁的四个必要条件：
-互斥：在某段时间内某资源只由一个进程占用。
-持有并等待：某进程已经持有一个或多个资源，但是还需请求其他资源，而它请求的资源不能立即获得，需要等待。
-不可抢占：进程已经获取的资源在使用过程中不能被其他进程抢占，只能在使用完后，由该进程自己释放。
-环路等待：形成进程和请求资源之间的环路。
-死锁的预防：
-互斥：不易预防
-占有并等待：方法一：不持有并等待，如果一个进程一次请求获取不了所有资源，那么它不可占用任何资源，即释放掉它已经占有的资源；方法二：持有不等待，保证资源充足，只要请求资源，就分配给资源。
-不可抢占：如果一个进程所请求的资源被另一进程占有，使它可以抢占另一进程占有的资源。
-环路等待：对资源进行排序，每个进程按照固定的顺序访问资源。
-死锁的避免：
-资源请求图算法：利用资源分配图，引入需求边表示进程可能在将来某个时候申请资源，只有申请边变为分配边而不会导致资源分配图形成环时，才允许申请。
-银行家算法：当新进程进入系统，系统对其所需资源的最大数量进行统计，若超过当前资源综合，则该进程必须等待直到其他进程释放资源。
-5. 什么是关系型数据库 关系型数据库建立在关系型数据模型的基础上，借助于集合、代数等数学概念和方法来处理数据的数据库。
-6. KV存储 举例：Redis、MongoDB
-不经常更新的、重要的数据一般使用关系数据库存储。
-数据结构简单、有分布式数据存储的需求使用KV数据库。
-7. 非递归前中后序遍历二叉树 struct TreeNode { int val; TreeNode * left; TreeNode * right; }; void PreOrder (TreeNode * root) { stack&amp;lt;TreeNode *&amp;gt;s; TreeNode * ptr = root; while (ptr !</description>
+      <description>TODO: move to project</description>
     </item>
     <item>
       <title>KMP Algorithm</title>
       <link>https://junyubian.github.io/garden/2020-04-17-kmp-algorithm/</link>
-      <pubDate>Fri, 17 Apr 2020 00:31:29 +0000</pubDate>
+      <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://junyubian.github.io/garden/2020-04-17-kmp-algorithm/</guid>
-      <description>Background&amp;hellip; Once upon a time, Tom asked his father to find abab inside abcaabababaa.
-Tom&amp;rsquo;s dad did this in a traditional way (brute force). He compared each character of the first string with each character of the second string. When he find one character not matching, for example, the third character in the second string in this case, he start again from the second character of the second string. It went on and on and on&amp;hellip;</description>
+      <description></description>
     </item>
     <item>
-      <title>知识点整理-2</title>
-      <link>https://junyubian.github.io/garden/2020-04-16-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-2/</link>
-      <pubDate>Thu, 16 Apr 2020 21:29:34 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-04-16-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-2/</guid>
-      <description>1. 两个有序链表合并成一个(leetcode 21) struct ListNode { int val; ListNode *next; ListNode(int x) : val(x), next(NULL) {} }; ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) { if(l1 == NULL){ return l2; } if (l2 == NULL){ return l1; } if (l1-&amp;gt;val &amp;lt; l2-&amp;gt;val){ l1-&amp;gt;next = mergeTwoLists(l1-&amp;gt;next, l2); return l1; } else { l2-&amp;gt;next = mergeTwoLists(l1, l2-&amp;gt;next); return l2; } } 2. GET和POST的区别 GET所发送的数据是URL的一部分，POST数据不会显示在URL中。
-GET和POST方法没有本质区别，只是报文格式不同，两者都使用HTTP，都是不安全的，想要安全传输需要使用HTTPS。
-3. HTTPS的实现原理 HTTPS原理：在传输层（TCP）和应用层（HTTP）之间加了一层SSL/TLS。
-具体加密过程：1. 服务器端发送公钥证书；2. 客户端检验证书是否有效，是，则生成一个随机密钥，并用服务端的公钥进行加密后发送；3. 服务器端用自己私钥加密，取出客户端的随机密钥，将需要发送的内容用该密钥加密并发送。
-4. Linux查看最近的日志用什么指令 tail：</description>
-    </item>
-    <item>
-      <title>知识点整理-1</title>
-      <link>https://junyubian.github.io/garden/2020-04-15-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-1/</link>
-      <pubDate>Wed, 15 Apr 2020 22:27:57 +0000</pubDate>
-      <guid>https://junyubian.github.io/garden/2020-04-15-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86-1/</guid>
-      <description>1. C++的内存管理分哪些区，分别有什么作用 C++的内存主要分为五大区：堆区、栈区、自由存储区、全局/静态存储区、常量存储区。
-堆区：程序员分配释放，使用new分配内存块，使用delete归还内存空间。
-栈区：编译器自动分配释放，用于存放局部变量、函数参数等。
-自由存储区：程序员分配释放，使用malloc分配内存块，使用free归还内存空间。
-全局区/静态区：全局变量和静态变量分配在同一块内存中。
-常量存储区：存放不可修改的常量值。
-2. C++源文本到可执行文件需要经历哪些阶段 预处理：将源代码和相关头文件处理成一个.i文件。
-编译：将预处理的文件进行词法分析、语义分析，优化后产生相应的汇编代码。
-汇编：将汇编语言代码翻译成目标机器码。
-链接：把每个机器码文件按照要求连接起来，解决代码间的相互依赖问题。
-3. 析构函数为什么必须是虚函数 为了保证整个派生类的对象完全被释放。
-当析构函数不为虚函数时，在删除基类指针时，只会调用基类析构函数，而不调用派生类的析构函数，这样会导致基类指针指向的派生类对象析构不完全。
-当析构函数为虚函数时，在删除基类指针时，会调用该指针指向派生类的析构函数，同时派生类的析构函数自动调用基类析构函数，保证对象被完全释放。
-4. 虚函数和纯虚函数有什么区别 虚函数：在基类中存在定义，可以直接使用，也可以被派生类重写后使用。
-纯虚函数：在基类中不存在定义，只有声明，必须在子类中定义后才能使用。
-5. 虚函数的实现机制 编译器自动为存在虚函数的类生成一个虚函数表，当声明该类的对象时，放入一个隐式指针变量，指向虚函数表。
-在调用方法时，系统根据不同对象的指针，寻找到对应的虚函数表，进而找到所需的函数地址进行调用。
-6.野指针怎么出现的 指针变量未初始化。
-指针释放后未置空。
-返回指向栈内存的指针。
-7. 类和结构体有什么区别 class中默认成员访问权限为private，而struct中为public。
-class可以用于表示模板类型，sruct不行。
-class是引用类型，struct是值类型。
-class多用来存储数据量大、逻辑复杂的对象，struct多用来存储轻量级对象。
-class多用于表现抽象和多级别的对象层次。
-8. 什么情况会导致内存泄漏 程序循环new创建出来的对象没有及时delete掉。
-delete掉一个void*类型的指针，导致没有调用到对象的析构函数。
-new创建了一组对象，回收时未调用delete[]，而调用了delete，导致只有对象数组的第一个对象的析构函数得到执行并回收了内存。
-9. 五种IO模型 阻塞IO：进程发起IO系统调用后，进程被阻塞，转到内核空间处理，处理完毕后返回进程。
-非阻塞IO：进程发起IO系统调用后，如果内核缓冲区没有数据，返回给进程一个错误，而不会阻塞进程，如果缓冲区有数据，则将数据返回给进程。【发起IO后，内核便开始处理，一直有返回值，但是直到内核处理完才有数据。】
-IO复用：多个进程的IO注册到一个复用器（select）上，select监听所有进来的IO。【同时负责很多水龙头，哪个水龙头要来水了，就打开哪一个。】
-信号驱动IO：进程发起IO系统调用后，向内核注册信号处理函数，然后进程返回不阻塞，当内核数据就绪则通知进程发起IO调用读取数据。【首先用信号通知内核空间，等到数据就绪再发起IO。】
-异步IO：进程发起IO系统调用后，进程返回不阻塞，等内核将IO处理完，通知进程数据结果。
-10. TCP如何保证传输的可靠性 校验和：接收方和发送方均进行校验和的计算，并进行对比。
-序列号：TCP传输时将每个字节的数据都进行编号。
-确认应答：TCP传输过程中，每次接收方收到数据后，均对传输方进行确认应答（ACK）。
-超时重传：发送方在发送完数据后进行等待，一段时间后没有收到ACK，则对刚才的数据进行重新发送。
-连接管理：三次握手与四次挥手。
-流量控制：在回复ACK时，接收端介绍自己接受数据的缓冲区剩余大小。
-拥塞控制：慢开始、拥塞避免等操作。
-11. TCP快速重传的实现 举例：发送方发出1、2、3、4、5五份数据，1送到了，则回复ACK2，但是2没送到，3送到了，于是继续回复ACK2，后面4和5都送到了，继续回复ACK2，直到发送端收到三次ACK2，则重新发送2，然后接收端收到2，因为3、4、5都已经收到，所以回复ACK6。</description>
+      <title>知识点整理</title>
+      <link>https://junyubian.github.io/garden/2020-04-15-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/</link>
+      <pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/garden/2020-04-15-%E7%9F%A5%E8%AF%86%E7%82%B9%E6%95%B4%E7%90%86/</guid>
+      <description></description>
     </item>
     <item>
       <title>On the nutrition benefits of bamboo shoots</title>

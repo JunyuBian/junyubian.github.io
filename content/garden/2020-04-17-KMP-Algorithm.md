@@ -1,14 +1,11 @@
 ---
 title: KMP Algorithm
-date: 2020-04-17 00:31:29
-categories: 
-- Notes
-tags:
-- Algorithm
-- C++
-- 算法
-- Tom Show
-- en
+date: 2020-04-17
+lastmod: 2020-04-17
+draft: false
+garden_tags: ["en", "notes", "algorithm", "tom-show"]
+summary: " "
+status: "evergreen"
 ---
 
 # Background...

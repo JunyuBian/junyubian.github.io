@@ -1,8 +1,9 @@
 ---
 title: Fluent Bit Client Notes
 date: 2023-11-07
+lastmod: 2023-11-07
 draft: false
-garden_tags: ["en", "notes", "fluent-bit", "logging", "tom-show"]
+garden_tags: ["en", "notes", "fluent-bit", "tom-show"]
 summary: " "
 status: "growing"
 ---

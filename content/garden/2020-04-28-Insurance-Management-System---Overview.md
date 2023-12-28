@@ -1,14 +1,11 @@
 ---
 title: Insurance Management System - Overview
-date: 2020-04-28 22:59:02
-categories: 
-- Projects
-tags:
-- Web
-- Django
-- Database
-- Tom Show
-- en
+date: 2020-04-28
+lastmod: 2020-04-28
+draft: false
+garden_tags: ["en", "projects", "web", "tom-show"]
+summary: "TODO: move to project"
+status: "evergreen"
 ---
 
 In this series of blogs, we will talk about how to build a Insurance Management web application together with database system.

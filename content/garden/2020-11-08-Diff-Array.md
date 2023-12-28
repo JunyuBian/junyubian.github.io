@@ -1,10 +1,11 @@
 ---
 title: Diff Array
 date: 2020-11-08
+lastmod: 2020-11-08
 draft: false
 garden_tags: ["en", "notes", "algorithm", "c++"]
 summary: " "
-status: "growing"
+status: "evergreen"
 ---
 
 - [Functionality](#functionality)

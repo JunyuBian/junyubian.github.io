@@ -1,60 +1,127 @@
 <!DOCTYPE html>
-<html lang="en-us">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<style type=text/css>body{font-family:monospace;}</style>
-	<title>LeetCode题目总结-Graph</title>
-	
-	
-	<link rel="stylesheet" href="/css/style.css">
-	
-	
-</head>
-<body>
-	<header>
-	================<br>
-	== <a href="https://junyubian.github.io/">Junyu Bian</a> ==<br>
-	================
-	<div style="float: right;">Welcome to my posts!</div><br>
-	<p>
-	<nav>
-			<a href="/"><b>Start</b></a>.
-			
-			
-			<a href="/posts/"><b>Posts</b></a>.
-			
-			<a href="/categories/"><b>Categories</b></a>.
-			
-			<a href="/tags/"><b>Tags</b></a>.
-			
-			<a href="/about/"><b>About</b></a>.
-			
-	</nav>
-	</p>
-	
-</header>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;600;700;800&family=Frank+Ruhl+Libre:wght@200;300;400;500;600&family=Encode+Sans+Semi+Condensed:wght@400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/all.min.css">
+    <link disabled id="dark-mode-theme" rel="stylesheet" href="/css/dark.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/css/my_style.css">
+    
+    
+    
+    <title>Junyu Bian | LeetCode题目总结-Graph</title>
+    <meta name="description" content="题目133:克隆图 描述：
+给你无向连通图中一个节点的引用，请你返回该图的 深拷贝（克隆）。
+图中的每个节点都包含它的值 val（int） 和其邻居的列表（list[Node]）。
+class Node { public int val; public List neighbors; }
+测试用例格式：
+简单起见，每个节点的值都和它的索引相同。例如，第一个节点值为 1（val = 1），第二个节点值为 2（val = 2），以此类推。该图在测试用例中使用邻接列表表示。
+邻接列表 是用于表示有限图的无序列表的集合。每个列表都描述了图中节点的邻居集。
+给定节点将始终是图中的第一个节点（值为 1）。你必须将给定节点的拷贝作为对克隆图的引用返回。
+示例 1：
+输入：adjList = [[2,4],[1,3],[2,4],[1,3]] 输出：[[2,4],[1,3],[2,4],[1,3]] 解释： 图中有 4 个节点。 节点 1 的值是 1，它有两个邻居：节点 2 和 4 。 节点 2 的值是 2，它有两个邻居：节点 1 和 3 。 节点 3 的值是 3，它有两个邻居：节点 2 和 4 。 节点 4 的值是 4，它有两个邻居：节点 1 和 3 。 示例 2：">
+</head><body><nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="https://junyubian.github.io/">
+            
+            <b style="font-weight: 800;">JB</b>
+            
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto mt-2 mt-lg-0"><li class='nav-item '>
+                    <a class="nav-link" href="/garden/"> Digital Garden</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/projects/"> Projects</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/library/"> Library</a>
+                </li>
+            <li class='nav-item '>
+                    <a class="nav-link" href="/about/"> About</a>
+                </li>
+             
+            <li class="nav-item px-2 pt-1">
+                <a class="btn fas fa-moon" id="dark-mode-toggle"></a>
+            </li>
+            </ul>
+        </div>
+    </div>
+</nav><div id="content">
 
-	
-	<main>
-		<article>
-			<h1>LeetCode题目总结-Graph</h1>
-			<b><time>09/12/2020 21:32</time></b>
-		       
-		           <a href="/tags/c&#43;&#43;">C&#43;&#43;</a>
-        	       
-		           <a href="/tags/%E7%AE%97%E6%B3%95">算法</a>
-        	       
+<div class="container" style="max-width: 800px;">
+    <div class="py-4 rounded-3">
+        <div class="container-fluid py-2">
+            <h1 class="display-2 mb-4 text-center">LeetCode题目总结-Graph</h1>
+        </div>
+        
+        <p class="text-center fs-4 fst-italic serif">题目133:克隆图 描述：
+给你无向连通图中一个节点的引用，请你返回该图的 深拷贝（克隆）。
+图中的每个节点都包含它的值 val（int） 和其邻居的列表（list[Node]）。
+class Node { public int val; public List neighbors; }
+测试用例格式：
+简单起见，每个节点的值都和它的索引相同。例如，第一个节点值为 1（val = 1），第二个节点值为 2（val = 2），以此类推。该图在测试用例中使用邻接列表表示。
+邻接列表 是用于表示有限图的无序列表的集合。每个列表都描述了图中节点的邻居集。
+给定节点将始终是图中的第一个节点（值为 1）。你必须将给定节点的拷贝作为对克隆图的引用返回。
+示例 1：
+输入：adjList = [[2,4],[1,3],[2,4],[1,3]] 输出：[[2,4],[1,3],[2,4],[1,3]] 解释： 图中有 4 个节点。 节点 1 的值是 1，它有两个邻居：节点 2 和 4 。 节点 2 的值是 2，它有两个邻居：节点 1 和 3 。 节点 3 的值是 3，它有两个邻居：节点 2 和 4 。 节点 4 的值是 4，它有两个邻居：节点 1 和 3 。 示例 2：</p>
+        
+        <div class="text-center pt-4">
+            
+        </div>
+    </div>
+    <div class="row justify-content-center mb-5">
+        <div class="col-12">
+            <p class="card-date m-0">
+                
+                
+                    Created Sep 12, 2020 - 
+                
+                Last updated: Sep 12, 2020
+            </p>
+            <hr class="dropdown-divider">
+            <div class="row justify-content-between">
+                <div class="col-sm-4">
+                    
+                </div>
+                <div class="col-sm-8" style="text-align: right;">
+                    
+                    
+                    <span class="badge tag-badge">C&#43;&#43;</span>
+                    
+                    <span class="badge tag-badge">算法</span>
+                    
+                    <span class="badge tag-badge">ch</span>
+                    
+                
+                
+                
+                </div>
+            </div>
+        </div>
+    </div>
 
-			<div>
-				<h3 id="题目133克隆图httpsleetcode-cncomproblemsclone-graph">题目133:<a href="https://leetcode-cn.com/problems/clone-graph/">克隆图</a></h3>
+    <div class="container-fluid py-2">
+        <div class="serif main-content">
+            <h3 id="题目133克隆图httpsleetcode-cncomproblemsclone-graph">题目133:<a href="https://leetcode-cn.com/problems/clone-graph/">克隆图</a></h3>
+<hr>
 <p>描述：</p>
 <p>给你无向连通图中一个节点的引用，请你返回该图的 深拷贝（克隆）。</p>
 <p>图中的每个节点都包含它的值 val（int） 和其邻居的列表（list[Node]）。</p>
 <p>class Node {
 public int val;
-public List<!-- raw HTML omitted --> neighbors;
+public List<Node> neighbors;
 }</p>
 <p>测试用例格式：</p>
 <p>简单起见，每个节点的值都和它的索引相同。例如，第一个节点值为 1（val = 1），第二个节点值为 2（val = 2），以此类推。该图在测试用例中使用邻接列表表示。</p>
@@ -96,31 +163,31 @@ public List<!-- raw HTML omitted --> neighbors;
 <li>递归调用每个节点的邻接点。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    unordered_map<span style="color:#f92672">&lt;</span>Node<span style="color:#f92672">*</span>, Node<span style="color:#f92672">*&gt;</span> visited;
-</span></span><span style="display:flex;"><span>    Node<span style="color:#f92672">*</span> <span style="color:#a6e22e">cloneGraph</span>(Node<span style="color:#f92672">*</span> node) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (node <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> node;
-</span></span><span style="display:flex;"><span>        }
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">unordered_map</span><span style="color:#f92672">&lt;</span><span style="color:#111">Node</span><span style="color:#f92672">*</span><span style="color:#111">,</span> <span style="color:#111">Node</span><span style="color:#f92672">*&gt;</span> <span style="color:#111">visited</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">Node</span><span style="color:#f92672">*</span> <span style="color:#75af00">cloneGraph</span><span style="color:#111">(</span><span style="color:#111">Node</span><span style="color:#f92672">*</span> <span style="color:#111">node</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">node</span> <span style="color:#f92672">==</span> <span style="color:#00a8c8">nullptr</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">return</span> <span style="color:#111">node</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 如果该节点已经被访问过了，则直接从哈希表中取出对应的克隆节点返回
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (visited.find(node) <span style="color:#f92672">!=</span> visited.end()) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> visited[node];
-</span></span><span style="display:flex;"><span>        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">visited</span><span style="color:#111">.</span><span style="color:#111">find</span><span style="color:#111">(</span><span style="color:#111">node</span><span style="color:#111">)</span> <span style="color:#f92672">!=</span> <span style="color:#111">visited</span><span style="color:#111">.</span><span style="color:#111">end</span><span style="color:#111">())</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">return</span> <span style="color:#111">visited</span><span style="color:#111">[</span><span style="color:#111">node</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 克隆节点，注意到为了深拷贝我们不会克隆它的邻居的列表
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        Node<span style="color:#f92672">*</span> cloneNode <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Node(node<span style="color:#f92672">-&gt;</span>val);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#111">Node</span><span style="color:#f92672">*</span> <span style="color:#111">cloneNode</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">Node</span><span style="color:#111">(</span><span style="color:#111">node</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span><span style="color:#111">);</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 哈希表存储
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        visited[node] <span style="color:#f92672">=</span> cloneNode;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#111">visited</span><span style="color:#111">[</span><span style="color:#111">node</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#111">cloneNode</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 遍历该节点的邻居并更新克隆节点的邻居列表
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> neighbor: node<span style="color:#f92672">-&gt;</span>neighbors) {
-</span></span><span style="display:flex;"><span>            cloneNode<span style="color:#f92672">-&gt;</span>neighbors.emplace_back(cloneGraph(neighbor));
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> cloneNode;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">auto</span><span style="color:#f92672">&amp;</span> <span style="color:#111">neighbor</span><span style="color:#111">:</span> <span style="color:#111">node</span><span style="color:#f92672">-&gt;</span><span style="color:#111">neighbors</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">cloneNode</span><span style="color:#f92672">-&gt;</span><span style="color:#111">neighbors</span><span style="color:#111">.</span><span style="color:#111">emplace_back</span><span style="color:#111">(</span><span style="color:#111">cloneGraph</span><span style="color:#111">(</span><span style="color:#111">neighbor</span><span style="color:#111">));</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">cloneNode</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/clone-graph/solution/ke-long-tu-by-leetcode-solution/">思路二</a>：</p>
 <p>突破点：<code>广度优先遍历。</code></p>
 <p>步骤：</p>
@@ -133,44 +200,45 @@ public List<!-- raw HTML omitted --> neighbors;
 <li>重复操作直到队列为空。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    Node<span style="color:#f92672">*</span> cloneGraph(Node<span style="color:#f92672">*</span> node) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (node <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> node;
-</span></span><span style="display:flex;"><span>        }
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">Node</span><span style="color:#f92672">*</span> <span style="color:#111">cloneGraph</span><span style="color:#111">(</span><span style="color:#111">Node</span><span style="color:#f92672">*</span> <span style="color:#111">node</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">node</span> <span style="color:#f92672">==</span> <span style="color:#00a8c8">nullptr</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">return</span> <span style="color:#111">node</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        unordered_map<span style="color:#f92672">&lt;</span>Node<span style="color:#f92672">*</span>, Node<span style="color:#f92672">*&gt;</span> visited;
+</span></span><span style="display:flex;"><span>        <span style="color:#111">unordered_map</span><span style="color:#f92672">&lt;</span><span style="color:#111">Node</span><span style="color:#f92672">*</span><span style="color:#111">,</span> <span style="color:#111">Node</span><span style="color:#f92672">*&gt;</span> <span style="color:#111">visited</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 将题目给定的节点添加到队列
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        queue<span style="color:#f92672">&lt;</span>Node<span style="color:#f92672">*&gt;</span> Q;
-</span></span><span style="display:flex;"><span>        Q.push(node);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#111">queue</span><span style="color:#f92672">&lt;</span><span style="color:#111">Node</span><span style="color:#f92672">*&gt;</span> <span style="color:#111">Q</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">Q</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">node</span><span style="color:#111">);</span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 克隆第一个节点并存储到哈希表中
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        visited[node] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Node(node<span style="color:#f92672">-&gt;</span>val);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#111">visited</span><span style="color:#111">[</span><span style="color:#111">node</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">Node</span><span style="color:#111">(</span><span style="color:#111">node</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span><span style="color:#111">);</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 广度优先搜索
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>Q.empty()) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">Q</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">())</span> <span style="color:#111">{</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 取出队列的头节点
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">auto</span> n <span style="color:#f92672">=</span> Q.front();
-</span></span><span style="display:flex;"><span>            Q.pop();
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#00a8c8">auto</span> <span style="color:#111">n</span> <span style="color:#f92672">=</span> <span style="color:#111">Q</span><span style="color:#111">.</span><span style="color:#111">front</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">Q</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
 </span></span><span style="display:flex;"><span>            <span style="color:#75715e">// 遍历该节点的邻居
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> neighbor: n<span style="color:#f92672">-&gt;</span>neighbors) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (visited.find(neighbor) <span style="color:#f92672">==</span> visited.end()) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">auto</span><span style="color:#f92672">&amp;</span> <span style="color:#111">neighbor</span><span style="color:#111">:</span> <span style="color:#111">n</span><span style="color:#f92672">-&gt;</span><span style="color:#111">neighbors</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">visited</span><span style="color:#111">.</span><span style="color:#111">find</span><span style="color:#111">(</span><span style="color:#111">neighbor</span><span style="color:#111">)</span> <span style="color:#f92672">==</span> <span style="color:#111">visited</span><span style="color:#111">.</span><span style="color:#111">end</span><span style="color:#111">())</span> <span style="color:#111">{</span>
 </span></span><span style="display:flex;"><span>                    <span style="color:#75715e">// 如果没有被访问过，就克隆并存储在哈希表中
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    visited[neighbor] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Node(neighbor<span style="color:#f92672">-&gt;</span>val);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    <span style="color:#111">visited</span><span style="color:#111">[</span><span style="color:#111">neighbor</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#00a8c8">new</span> <span style="color:#111">Node</span><span style="color:#111">(</span><span style="color:#111">neighbor</span><span style="color:#f92672">-&gt;</span><span style="color:#111">val</span><span style="color:#111">);</span>
 </span></span><span style="display:flex;"><span>                    <span style="color:#75715e">// 将邻居节点加入队列中
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    Q.push(neighbor);
-</span></span><span style="display:flex;"><span>                }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                    <span style="color:#111">Q</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">neighbor</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>                <span style="color:#75715e">// 更新当前节点的邻居列表
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                visited[n]<span style="color:#f92672">-&gt;</span>neighbors.emplace_back(visited[neighbor]);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>                <span style="color:#111">visited</span><span style="color:#111">[</span><span style="color:#111">n</span><span style="color:#111">]</span><span style="color:#f92672">-&gt;</span><span style="color:#111">neighbors</span><span style="color:#111">.</span><span style="color:#111">emplace_back</span><span style="color:#111">(</span><span style="color:#111">visited</span><span style="color:#111">[</span><span style="color:#111">neighbor</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> visited[node];
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">visited</span><span style="color:#111">[</span><span style="color:#111">node</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目310最小高度树httpsleetcode-cncomproblemsminimum-height-trees">题目310:<a href="https://leetcode-cn.com/problems/minimum-height-trees/">最小高度树</a></h3>
+<hr>
 <p>描述：</p>
 <p>对于一个具有树特征的无向图，我们可选择任何一个节点作为根。图因此可以成为树，在所有可能的树中，具有最小高度的树被称为最小高度树。给出这样的一个图，写出一个函数找到所有的最小高度树并返回他们的根节点。</p>
 <p>格式</p>
@@ -182,7 +250,7 @@ public List<!-- raw HTML omitted --> neighbors;
     |
     1
    / \
-  2   3
+  2   3 
 </code></pre>
 <p>输出: [1]
 示例 2:</p>
@@ -193,7 +261,7 @@ public List<!-- raw HTML omitted --> neighbors;
     |
     4
     |
-    5
+    5 
 </code></pre>
 <p>输出: [3, 4]
 说明:</p>
@@ -207,63 +275,64 @@ public List<!-- raw HTML omitted --> neighbors;
 <li>在一个循环中，删除无向图中入度为1的点。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> findMinHeightTrees(<span style="color:#66d9ef">int</span> n, vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;&amp;</span> edges) {
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> (n <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> { <span style="color:#ae81ff">0</span> };
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (n <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>)
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>{ <span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span> };
-</span></span><span style="display:flex;"><span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">findMinHeightTrees</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">n</span><span style="color:#111">,</span> <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;&amp;</span> <span style="color:#111">edges</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">n</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span><span style="color:#111">)</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#00a8c8">return</span> <span style="color:#111">{</span> <span style="color:#ae81ff">0</span> <span style="color:#111">};</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#00a8c8">else</span> <span style="color:#75af00">if</span> <span style="color:#111">(</span><span style="color:#111">n</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span><span style="color:#111">)</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#00a8c8">return</span><span style="color:#111">{</span> <span style="color:#ae81ff">0</span><span style="color:#111">,</span><span style="color:#ae81ff">1</span> <span style="color:#111">};</span>
+</span></span><span style="display:flex;"><span>  
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">//入度数组，并初始化
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> indegree(n,<span style="color:#ae81ff">0</span>);
-</span></span><span style="display:flex;"><span>	vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> v;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">indegree</span><span style="color:#111">(</span><span style="color:#111">n</span><span style="color:#111">,</span><span style="color:#ae81ff">0</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">v</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">//图形表示，并初始化
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> graph(n,v);
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> <span style="color:#111">graph</span><span style="color:#111">(</span><span style="color:#111">n</span><span style="color:#111">,</span><span style="color:#111">v</span><span style="color:#111">);</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">//构造图与入度数组：无向图，两个点都要处理
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> edges.size(); i<span style="color:#f92672">++</span>) {
-</span></span><span style="display:flex;"><span>		graph[edges[i][<span style="color:#ae81ff">0</span>]].push_back(edges[i][<span style="color:#ae81ff">1</span>]);
-</span></span><span style="display:flex;"><span>		graph[edges[i][<span style="color:#ae81ff">1</span>]].push_back(edges[i][<span style="color:#ae81ff">0</span>]);
-</span></span><span style="display:flex;"><span>		indegree[edges[i][<span style="color:#ae81ff">0</span>]]<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>		indegree[edges[i][<span style="color:#ae81ff">1</span>]]<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>	}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">edges</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">();</span> <span style="color:#111">i</span><span style="color:#f92672">++</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#111">graph</span><span style="color:#111">[</span><span style="color:#111">edges</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">][</span><span style="color:#ae81ff">0</span><span style="color:#111">]].</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#111">edges</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">][</span><span style="color:#ae81ff">1</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#111">graph</span><span style="color:#111">[</span><span style="color:#111">edges</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">][</span><span style="color:#ae81ff">1</span><span style="color:#111">]].</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#111">edges</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">][</span><span style="color:#ae81ff">0</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#111">indegree</span><span style="color:#111">[</span><span style="color:#111">edges</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">][</span><span style="color:#ae81ff">0</span><span style="color:#111">]]</span><span style="color:#f92672">++</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#111">indegree</span><span style="color:#111">[</span><span style="color:#111">edges</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">][</span><span style="color:#ae81ff">1</span><span style="color:#111">]]</span><span style="color:#f92672">++</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">//装载入度为1的queue
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	queue<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> myqueue;
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> n; i<span style="color:#f92672">++</span>) {
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (indegree[i] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>			myqueue.push(i);
-</span></span><span style="display:flex;"><span>	}
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#111">queue</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">myqueue</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">n</span><span style="color:#111">;</span> <span style="color:#111">i</span><span style="color:#f92672">++</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">indegree</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">]</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span><span style="color:#111">)</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#111">myqueue</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#75715e">//！！令cnt等于myqueue.size()，一次性将入度为1的点全部删去。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">int</span> cnt <span style="color:#f92672">=</span> myqueue.size();
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (n<span style="color:#f92672">&gt;</span><span style="color:#ae81ff">2</span>) {
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#00a8c8">int</span> <span style="color:#111">cnt</span> <span style="color:#f92672">=</span> <span style="color:#111">myqueue</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#111">n</span><span style="color:#f92672">&gt;</span><span style="color:#ae81ff">2</span><span style="color:#111">)</span> <span style="color:#111">{</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">//一次性将入度为一的点全部删去！！不能一个一个删！
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		n <span style="color:#f92672">-=</span> cnt;
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">while</span> (cnt<span style="color:#f92672">--</span>) {
-</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">int</span> temp <span style="color:#f92672">=</span> myqueue.front();
-</span></span><span style="display:flex;"><span>			myqueue.pop();
-</span></span><span style="display:flex;"><span>			indegree[temp] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>		<span style="color:#111">n</span> <span style="color:#f92672">-=</span> <span style="color:#111">cnt</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#111">cnt</span><span style="color:#f92672">--</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#00a8c8">int</span> <span style="color:#111">temp</span> <span style="color:#f92672">=</span> <span style="color:#111">myqueue</span><span style="color:#111">.</span><span style="color:#111">front</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#111">myqueue</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#111">indegree</span><span style="color:#111">[</span><span style="color:#111">temp</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>			<span style="color:#75715e">//更新temp的邻接点：若temp临接点的入度为1，则将其放入queue中。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> graph[temp].size(); i<span style="color:#f92672">++</span>) {
-</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> (indegree[graph[temp][i]] <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>) {
-</span></span><span style="display:flex;"><span>					indegree[graph[temp][i]]<span style="color:#f92672">--</span>;
-</span></span><span style="display:flex;"><span>					<span style="color:#66d9ef">if</span> (indegree[graph[temp][i]] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>)<span style="color:#75715e">//放在这里做！只判断邻接点。
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>						myqueue.push(graph[temp][i]);
-</span></span><span style="display:flex;"><span>				}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>			}
-</span></span><span style="display:flex;"><span>		}
-</span></span><span style="display:flex;"><span>		cnt <span style="color:#f92672">=</span> myqueue.size();
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> result;
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (<span style="color:#f92672">!</span>myqueue.empty()){
-</span></span><span style="display:flex;"><span>		result.push_back(myqueue.front());
-</span></span><span style="display:flex;"><span>		myqueue.pop();
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> result;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span>};
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>			<span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span><span style="color:#111">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;</span> <span style="color:#111">graph</span><span style="color:#111">[</span><span style="color:#111">temp</span><span style="color:#111">].</span><span style="color:#111">size</span><span style="color:#111">();</span> <span style="color:#111">i</span><span style="color:#f92672">++</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">indegree</span><span style="color:#111">[</span><span style="color:#111">graph</span><span style="color:#111">[</span><span style="color:#111">temp</span><span style="color:#111">][</span><span style="color:#111">i</span><span style="color:#111">]]</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#111">indegree</span><span style="color:#111">[</span><span style="color:#111">graph</span><span style="color:#111">[</span><span style="color:#111">temp</span><span style="color:#111">][</span><span style="color:#111">i</span><span style="color:#111">]]</span><span style="color:#f92672">--</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">indegree</span><span style="color:#111">[</span><span style="color:#111">graph</span><span style="color:#111">[</span><span style="color:#111">temp</span><span style="color:#111">][</span><span style="color:#111">i</span><span style="color:#111">]]</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span><span style="color:#111">)</span><span style="color:#75715e">//放在这里做！只判断邻接点。
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>						<span style="color:#111">myqueue</span><span style="color:#111">.</span><span style="color:#111">push</span><span style="color:#111">(</span><span style="color:#111">graph</span><span style="color:#111">[</span><span style="color:#111">temp</span><span style="color:#111">][</span><span style="color:#111">i</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span>				<span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>				
+</span></span><span style="display:flex;"><span>			<span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#111">cnt</span> <span style="color:#f92672">=</span> <span style="color:#111">myqueue</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">result</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">myqueue</span><span style="color:#111">.</span><span style="color:#111">empty</span><span style="color:#111">()){</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#111">result</span><span style="color:#111">.</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#111">myqueue</span><span style="color:#111">.</span><span style="color:#111">front</span><span style="color:#111">());</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#111">myqueue</span><span style="color:#111">.</span><span style="color:#111">pop</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#00a8c8">return</span> <span style="color:#111">result</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目332重新安排行程httpsleetcode-cncomproblemsreconstruct-itinerary">题目332:<a href="https://leetcode-cn.com/problems/reconstruct-itinerary/">重新安排行程</a></h3>
+<hr>
 <p>描述：</p>
 <p>给定一个机票的字符串二维数组 [from, to]，子数组中的两个成员分别表示飞机出发和降落的机场地点，对该行程进行重新规划排序。所有这些机票都属于一个从 JFK（肯尼迪国际机场）出发的先生，所以该行程必须从 JFK 开始。</p>
 <p>提示：</p>
@@ -288,31 +357,31 @@ public List<!-- raw HTML omitted --> neighbors;
 <li>对于出入度差为1的节点，可能产生死胡同，最后入栈。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    unordered_map<span style="color:#f92672">&lt;</span>string, priority_queue<span style="color:#f92672">&lt;</span>string, vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span>, std<span style="color:#f92672">::</span>greater<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> vec;
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">unordered_map</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#111">,</span> <span style="color:#111">priority_queue</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#111">,</span> <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#f92672">&gt;</span><span style="color:#111">,</span> <span style="color:#111">std</span><span style="color:#f92672">::</span><span style="color:#111">greater</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> <span style="color:#111">vec</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> stk;
+</span></span><span style="display:flex;"><span>    <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#f92672">&gt;</span> <span style="color:#111">stk</span><span style="color:#111">;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">dfs</span>(<span style="color:#66d9ef">const</span> string<span style="color:#f92672">&amp;</span> curr) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (vec.count(curr) <span style="color:#f92672">&amp;&amp;</span> vec[curr].size() <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
-</span></span><span style="display:flex;"><span>            string tmp <span style="color:#f92672">=</span> vec[curr].top();
-</span></span><span style="display:flex;"><span>            vec[curr].pop();
-</span></span><span style="display:flex;"><span>            dfs(move(tmp));
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        stk.emplace_back(curr);
-</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">void</span> <span style="color:#75af00">dfs</span><span style="color:#111">(</span><span style="color:#00a8c8">const</span> <span style="color:#111">string</span><span style="color:#f92672">&amp;</span> <span style="color:#111">curr</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#111">vec</span><span style="color:#111">.</span><span style="color:#111">count</span><span style="color:#111">(</span><span style="color:#111">curr</span><span style="color:#111">)</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#111">vec</span><span style="color:#111">[</span><span style="color:#111">curr</span><span style="color:#111">].</span><span style="color:#111">size</span><span style="color:#111">()</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">string</span> <span style="color:#111">tmp</span> <span style="color:#f92672">=</span> <span style="color:#111">vec</span><span style="color:#111">[</span><span style="color:#111">curr</span><span style="color:#111">].</span><span style="color:#111">top</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">vec</span><span style="color:#111">[</span><span style="color:#111">curr</span><span style="color:#111">].</span><span style="color:#111">pop</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">dfs</span><span style="color:#111">(</span><span style="color:#111">move</span><span style="color:#111">(</span><span style="color:#111">tmp</span><span style="color:#111">));</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">stk</span><span style="color:#111">.</span><span style="color:#111">emplace_back</span><span style="color:#111">(</span><span style="color:#111">curr</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> findItinerary(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;&amp;</span> tickets) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span><span style="color:#f92672">&amp;</span> it : tickets) {
-</span></span><span style="display:flex;"><span>            vec[it[<span style="color:#ae81ff">0</span>]].emplace(it[<span style="color:#ae81ff">1</span>]);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        dfs(<span style="color:#e6db74">&#34;JFK&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#f92672">&gt;</span> <span style="color:#111">findItinerary</span><span style="color:#111">(</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;&amp;</span> <span style="color:#111">tickets</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">auto</span><span style="color:#f92672">&amp;</span> <span style="color:#111">it</span> <span style="color:#111">:</span> <span style="color:#111">tickets</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">vec</span><span style="color:#111">[</span><span style="color:#111">it</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">]].</span><span style="color:#111">emplace</span><span style="color:#111">(</span><span style="color:#111">it</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">dfs</span><span style="color:#111">(</span><span style="color:#d88200">&#34;JFK&#34;</span><span style="color:#111">);</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        reverse(stk.begin(), stk.end());
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> stk;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>        <span style="color:#111">reverse</span><span style="color:#111">(</span><span style="color:#111">stk</span><span style="color:#111">.</span><span style="color:#111">begin</span><span style="color:#111">(),</span> <span style="color:#111">stk</span><span style="color:#111">.</span><span style="color:#111">end</span><span style="color:#111">());</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">stk</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><p><a href="https://leetcode-cn.com/problems/reconstruct-itinerary/solution/332-zhong-xin-an-pai-xing-cheng-hui-su-fa-shen-sou/">思路二</a>：</p>
 <p>突破点：<code>回溯。</code></p>
 <p>步骤：</p>
@@ -321,38 +390,39 @@ public List<!-- raw HTML omitted --> neighbors;
 <li>回溯遍历时，遇到的机场个数达到航班数量+1，则终止回溯。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">private</span><span style="color:#f92672">:</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// unordered_map&lt;出发城市, map&lt;到达城市, 航班次数&gt;&gt; targets
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>unordered_map<span style="color:#f92672">&lt;</span>string, map<span style="color:#f92672">&lt;</span>string, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> targets;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">backtracking</span>(<span style="color:#66d9ef">int</span> ticketNum, vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;&amp;</span> result) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (result.size() <span style="color:#f92672">==</span> ticketNum <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (pair<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">const</span> string, <span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&amp;</span> target : targets[result[result.size() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>]]) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (target.second <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> ) { <span style="color:#75715e">// 使用int字段来记录到达城市是否使用过了
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            result.push_back(target.first);
-</span></span><span style="display:flex;"><span>            target.second<span style="color:#f92672">--</span>;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (backtracking(ticketNum, result)) <span style="color:#66d9ef">return</span> true;
-</span></span><span style="display:flex;"><span>            result.pop_back();
-</span></span><span style="display:flex;"><span>            target.second<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> false;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> findItinerary(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;&gt;&amp;</span> tickets) {
-</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;</span> result;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> vector<span style="color:#f92672">&lt;</span>string<span style="color:#f92672">&gt;&amp;</span> vec : tickets) {
-</span></span><span style="display:flex;"><span>            targets[vec[<span style="color:#ae81ff">0</span>]][vec[<span style="color:#ae81ff">1</span>]]<span style="color:#f92672">++</span>; <span style="color:#75715e">// 记录映射关系
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        }
-</span></span><span style="display:flex;"><span>        result.push_back(<span style="color:#e6db74">&#34;JFK&#34;</span>);
-</span></span><span style="display:flex;"><span>        backtracking(tickets.size(), result);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> result;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#111">unordered_map</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#111">,</span> <span style="color:#111">map</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&gt;</span> <span style="color:#111">targets</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">bool</span> <span style="color:#75af00">backtracking</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">ticketNum</span><span style="color:#111">,</span> <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#f92672">&gt;&amp;</span> <span style="color:#111">result</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">result</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">()</span> <span style="color:#f92672">==</span> <span style="color:#111">ticketNum</span> <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">true</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#111">pair</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">const</span> <span style="color:#111">string</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;&amp;</span> <span style="color:#111">target</span> <span style="color:#111">:</span> <span style="color:#111">targets</span><span style="color:#111">[</span><span style="color:#111">result</span><span style="color:#111">[</span><span style="color:#111">result</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">()</span> <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span><span style="color:#111">]])</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">target</span><span style="color:#111">.</span><span style="color:#111">second</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span> <span style="color:#111">)</span> <span style="color:#111">{</span> <span style="color:#75715e">// 使用int字段来记录到达城市是否使用过了
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#111">result</span><span style="color:#111">.</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#111">target</span><span style="color:#111">.</span><span style="color:#111">first</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">target</span><span style="color:#111">.</span><span style="color:#111">second</span><span style="color:#f92672">--</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">backtracking</span><span style="color:#111">(</span><span style="color:#111">ticketNum</span><span style="color:#111">,</span> <span style="color:#111">result</span><span style="color:#111">))</span> <span style="color:#00a8c8">return</span> <span style="color:#111">true</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">result</span><span style="color:#111">.</span><span style="color:#111">pop_back</span><span style="color:#111">();</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">target</span><span style="color:#111">.</span><span style="color:#111">second</span><span style="color:#f92672">++</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">return</span> <span style="color:#111">false</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#f92672">&gt;</span> <span style="color:#111">findItinerary</span><span style="color:#111">(</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#f92672">&gt;&gt;&amp;</span> <span style="color:#111">tickets</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#f92672">&gt;</span> <span style="color:#111">result</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">const</span> <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">string</span><span style="color:#f92672">&gt;&amp;</span> <span style="color:#111">vec</span> <span style="color:#111">:</span> <span style="color:#111">tickets</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">targets</span><span style="color:#111">[</span><span style="color:#111">vec</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">]][</span><span style="color:#111">vec</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">]]</span><span style="color:#f92672">++</span><span style="color:#111">;</span> <span style="color:#75715e">// 记录映射关系
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">result</span><span style="color:#111">.</span><span style="color:#111">push_back</span><span style="color:#111">(</span><span style="color:#d88200">&#34;JFK&#34;</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">backtracking</span><span style="color:#111">(</span><span style="color:#111">tickets</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">(),</span> <span style="color:#111">result</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">result</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目684冗余连接httpsleetcode-cncomproblemsredundant-connection">题目684:<a href="https://leetcode-cn.com/problems/redundant-connection/">冗余连接</a></h3>
+<hr>
 <p>描述：</p>
 <p>在本问题中, 树指的是一个连通且无环的无向图。</p>
 <p>输入一个图，该图由一个有着N个节点 (节点值不重复1, 2, &hellip;, N) 的树及一条附加的边构成。附加的边的两个顶点包含在1到N中间，这条附加的边不属于树中已存在的边。</p>
@@ -383,40 +453,41 @@ public List<!-- raw HTML omitted --> neighbors;
 <li>遍历过程中，如果某一边的两个节点已经属于同一连通分量，则为冗余边。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> parent[<span style="color:#ae81ff">1001</span>];
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">find_root</span>(<span style="color:#66d9ef">int</span> x) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> (parent[x] <span style="color:#f92672">!=</span> x) {
-</span></span><span style="display:flex;"><span>            parent[x] <span style="color:#f92672">=</span> parent[parent[x]];
-</span></span><span style="display:flex;"><span>            x <span style="color:#f92672">=</span> parent[x];
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> x;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">union_root</span>(<span style="color:#66d9ef">int</span> x, <span style="color:#66d9ef">int</span> y) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> root_x <span style="color:#f92672">=</span> find_root(x);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> root_y <span style="color:#f92672">=</span> find_root(y);
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (root_x <span style="color:#f92672">==</span> root_y) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> false;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        parent[root_x] <span style="color:#f92672">=</span> root_y;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> true;
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> findRedundantConnection(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;&amp;</span> edges) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>; i <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1000</span>; i<span style="color:#f92672">++</span>) {
-</span></span><span style="display:flex;"><span>            parent[i] <span style="color:#f92672">=</span> i;
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">auto</span> edge : edges) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>union_root(edge[<span style="color:#ae81ff">0</span>], edge[<span style="color:#ae81ff">1</span>])) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> edge;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> {};
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">private</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#111">parent</span><span style="color:#111">[</span><span style="color:#ae81ff">1001</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#75af00">find_root</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">while</span> <span style="color:#111">(</span><span style="color:#111">parent</span><span style="color:#111">[</span><span style="color:#111">x</span><span style="color:#111">]</span> <span style="color:#f92672">!=</span> <span style="color:#111">x</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">parent</span><span style="color:#111">[</span><span style="color:#111">x</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#111">parent</span><span style="color:#111">[</span><span style="color:#111">parent</span><span style="color:#111">[</span><span style="color:#111">x</span><span style="color:#111">]];</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">x</span> <span style="color:#f92672">=</span> <span style="color:#111">parent</span><span style="color:#111">[</span><span style="color:#111">x</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">x</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">bool</span> <span style="color:#75af00">union_root</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">x</span><span style="color:#111">,</span> <span style="color:#00a8c8">int</span> <span style="color:#111">y</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">root_x</span> <span style="color:#f92672">=</span> <span style="color:#111">find_root</span><span style="color:#111">(</span><span style="color:#111">x</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">root_y</span> <span style="color:#f92672">=</span> <span style="color:#111">find_root</span><span style="color:#111">(</span><span style="color:#111">y</span><span style="color:#111">);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#111">root_x</span> <span style="color:#f92672">==</span> <span style="color:#111">root_y</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">return</span> <span style="color:#111">false</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">parent</span><span style="color:#111">[</span><span style="color:#111">root_x</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#111">root_y</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">true</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>    
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">findRedundantConnection</span><span style="color:#111">(</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;&gt;&amp;</span> <span style="color:#111">edges</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#111">;</span> <span style="color:#111">i</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">1000</span><span style="color:#111">;</span> <span style="color:#111">i</span><span style="color:#f92672">++</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">parent</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#111">i</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span> <span style="color:#111">(</span><span style="color:#00a8c8">auto</span> <span style="color:#111">edge</span> <span style="color:#111">:</span> <span style="color:#111">edges</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span> <span style="color:#111">(</span><span style="color:#f92672">!</span><span style="color:#111">union_root</span><span style="color:#111">(</span><span style="color:#111">edge</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">],</span> <span style="color:#111">edge</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">]))</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">return</span> <span style="color:#111">edge</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">{};</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div><hr>
 <h3 id="题目685冗余连接-iihttpsleetcode-cncomproblemsredundant-connection-ii">题目685:<a href="https://leetcode-cn.com/problems/redundant-connection-ii/">冗余连接 II</a></h3>
+<hr>
 <p>描述：</p>
 <p>在本问题中，有根树指满足以下条件的有向图。该树只有一个根节点，所有其他节点都是该根节点的后继。每一个节点只有一个父节点，除了根节点没有父节点。</p>
 <p>输入一个有向图，该图由一个有着N个节点 (节点值不重复1, 2, &hellip;, N) 的树及一条附加的边构成。附加的边的两个顶点包含在1到N中间，这条附加的边不属于树中已存在的边。</p>
@@ -453,77 +524,77 @@ v   v
 <li>当入度全为1， 返回环中最后出现的边即可。</li>
 </ol>
 <p>代码：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> pre[<span style="color:#ae81ff">1005</span>],ind[<span style="color:#ae81ff">1005</span>];
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">find</span>(<span style="color:#66d9ef">int</span> x){
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> pre[x]<span style="color:#f92672">==</span>x<span style="color:#f92672">?</span>x:pre[x]<span style="color:#f92672">=</span>find(pre[x]);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> findRedundantDirectedConnection(vector<span style="color:#f92672">&lt;</span>vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;&gt;&amp;</span> edges) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span> n<span style="color:#f92672">=</span>edges.size(),root<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>        vector<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span> v;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">int</span> i<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>;i<span style="color:#f92672">&lt;=</span>n;<span style="color:#f92672">++</span>i) pre[i]<span style="color:#f92672">=</span>i;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">auto</span> i:edges){
-</span></span><span style="display:flex;"><span>            ind[i[<span style="color:#ae81ff">1</span>]]<span style="color:#f92672">++</span>;
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(ind[i[<span style="color:#ae81ff">1</span>]]<span style="color:#f92672">==</span><span style="color:#ae81ff">2</span>)
-</span></span><span style="display:flex;"><span>                root<span style="color:#f92672">=</span>i[<span style="color:#ae81ff">1</span>];
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(root <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>) {
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">auto</span> i : edges) {
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">int</span> a <span style="color:#f92672">=</span> find(i[<span style="color:#ae81ff">0</span>]), b <span style="color:#f92672">=</span> find(i[<span style="color:#ae81ff">1</span>]);
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span>(a <span style="color:#f92672">!=</span> b) pre[b] <span style="color:#f92672">=</span> a;
-</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">return</span> i;
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">auto</span> i:edges){
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(i[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">!=</span>root){
-</span></span><span style="display:flex;"><span>                pre[find(i[<span style="color:#ae81ff">1</span>])]<span style="color:#f92672">=</span>find(i[<span style="color:#ae81ff">0</span>]);
-</span></span><span style="display:flex;"><span>            }
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>
-</span></span><span style="display:flex;"><span>                v.emplace_back(i[<span style="color:#ae81ff">0</span>]);
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(find(root)<span style="color:#f92672">!=</span>find(v[<span style="color:#ae81ff">0</span>]))
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> {v[<span style="color:#ae81ff">1</span>],root};
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> {v[<span style="color:#ae81ff">0</span>],root};
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>};
+<div class="highlight"><pre tabindex="0" style="color:#272822;background-color:#fafafa;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#00a8c8">class</span> <span style="color:#75af00">Solution</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span><span style="color:#00a8c8">public</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#111">pre</span><span style="color:#111">[</span><span style="color:#ae81ff">1005</span><span style="color:#111">],</span><span style="color:#111">ind</span><span style="color:#111">[</span><span style="color:#ae81ff">1005</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#00a8c8">int</span> <span style="color:#75af00">find</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">x</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">return</span> <span style="color:#111">pre</span><span style="color:#111">[</span><span style="color:#111">x</span><span style="color:#111">]</span><span style="color:#f92672">==</span><span style="color:#111">x</span><span style="color:#f92672">?</span><span style="color:#111">x</span><span style="color:#111">:</span><span style="color:#111">pre</span><span style="color:#111">[</span><span style="color:#111">x</span><span style="color:#111">]</span><span style="color:#f92672">=</span><span style="color:#111">find</span><span style="color:#111">(</span><span style="color:#111">pre</span><span style="color:#111">[</span><span style="color:#111">x</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">findRedundantDirectedConnection</span><span style="color:#111">(</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;&gt;&amp;</span> <span style="color:#111">edges</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">int</span> <span style="color:#111">n</span><span style="color:#f92672">=</span><span style="color:#111">edges</span><span style="color:#111">.</span><span style="color:#111">size</span><span style="color:#111">(),</span><span style="color:#111">root</span><span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">vector</span><span style="color:#f92672">&lt;</span><span style="color:#00a8c8">int</span><span style="color:#f92672">&gt;</span> <span style="color:#111">v</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span><span style="color:#111">(</span><span style="color:#00a8c8">int</span> <span style="color:#111">i</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#111">;</span><span style="color:#111">i</span><span style="color:#f92672">&lt;=</span><span style="color:#111">n</span><span style="color:#111">;</span><span style="color:#f92672">++</span><span style="color:#111">i</span><span style="color:#111">)</span> <span style="color:#111">pre</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">]</span><span style="color:#f92672">=</span><span style="color:#111">i</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span><span style="color:#111">(</span><span style="color:#00a8c8">auto</span> <span style="color:#111">i</span><span style="color:#111">:</span><span style="color:#111">edges</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">ind</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">]]</span><span style="color:#f92672">++</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">ind</span><span style="color:#111">[</span><span style="color:#111">i</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">]]</span><span style="color:#f92672">==</span><span style="color:#ae81ff">2</span><span style="color:#111">)</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">root</span><span style="color:#f92672">=</span><span style="color:#111">i</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">];</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">root</span> <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">for</span><span style="color:#111">(</span><span style="color:#00a8c8">auto</span> <span style="color:#111">i</span> <span style="color:#111">:</span> <span style="color:#111">edges</span><span style="color:#111">)</span> <span style="color:#111">{</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">int</span> <span style="color:#111">a</span> <span style="color:#f92672">=</span> <span style="color:#111">find</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">]),</span> <span style="color:#111">b</span> <span style="color:#f92672">=</span> <span style="color:#111">find</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">a</span> <span style="color:#f92672">!=</span> <span style="color:#111">b</span><span style="color:#111">)</span> <span style="color:#111">pre</span><span style="color:#111">[</span><span style="color:#111">b</span><span style="color:#111">]</span> <span style="color:#f92672">=</span> <span style="color:#111">a</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#00a8c8">else</span> <span style="color:#00a8c8">return</span> <span style="color:#111">i</span><span style="color:#111">;</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">for</span><span style="color:#111">(</span><span style="color:#00a8c8">auto</span> <span style="color:#111">i</span><span style="color:#111">:</span><span style="color:#111">edges</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">]</span><span style="color:#f92672">!=</span><span style="color:#111">root</span><span style="color:#111">){</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">pre</span><span style="color:#111">[</span><span style="color:#111">find</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">])]</span><span style="color:#f92672">=</span><span style="color:#111">find</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">else</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#111">v</span><span style="color:#111">.</span><span style="color:#111">emplace_back</span><span style="color:#111">(</span><span style="color:#111">i</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">]);</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">if</span><span style="color:#111">(</span><span style="color:#111">find</span><span style="color:#111">(</span><span style="color:#111">root</span><span style="color:#111">)</span><span style="color:#f92672">!=</span><span style="color:#111">find</span><span style="color:#111">(</span><span style="color:#111">v</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">]))</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">return</span> <span style="color:#111">{</span><span style="color:#111">v</span><span style="color:#111">[</span><span style="color:#ae81ff">1</span><span style="color:#111">],</span><span style="color:#111">root</span><span style="color:#111">};</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#00a8c8">else</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#00a8c8">return</span> <span style="color:#111">{</span><span style="color:#111">v</span><span style="color:#111">[</span><span style="color:#ae81ff">0</span><span style="color:#111">],</span><span style="color:#111">root</span><span style="color:#111">};</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#111">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#111">};</span>
 </span></span></code></pre></div>
-			</div>
-		</article>
-	</main>
-<aside>
-	<div>
-		<div>
-			<h3>LATEST POSTS</h3>
-		</div>
-		<div>
-			<ul>
-				
-				<li><a href="/posts/2023-12-02-criterions-for-site/">Criterions for Site</a></li>
-				
-				<li><a href="/posts/2023-12-02-hugo-site-auto-deployment-with-github-action/">Hugo Site Auto Deployment with Github Action</a></li>
-				
-				<li><a href="/posts/2023-12-02-hello-world/">Hello World</a></li>
-				
-				<li><a href="/posts/2023-11-07-fluent-bit-notes/">Fluent Bit Client Notes</a></li>
-				
-				<li><a href="/posts/2022-10-21-dev-null-related/">/dev/null and 2&amp;&gt;1</a></li>
-				
-			</ul>
-		</div>
-	</div>
-</aside>
+        </div>
+    </div>
+</div>
 
 
-	<footer>
-	<p>&copy; 2023 <a href="https://junyubian.github.io/"><b>Junyu Bian</b></a>.
-	<a href="https://github.com/junyubian"><b>Github</b></a>.
-	<a href="https://twitter.com/junyu_bian"><b>Twitter(X)</b></a>.
-	<a href="https://www.facebook.com/profile.php?id=100010301021817"><b>Facebook</b></a>.
-	<a href="mailto:junyu.bian@qq.com"><b>Mail</b></a>.
-	</p>
-</footer>
+        </div><div class="container">
+    <div class="row justify-content-between">
+        <div class="col-sm-4">
+            <p class="footer">Junyu Bian© 2023 </p>
+        </div>
+        <div class="col-sm-6 d-flex flex-row-reverse">
+            
+            <a class="footer-social px-2"  href="https://twitter.com/junyu_bian" target="_blank"><i class="fab fa-twitter"></i></a>
+            
+            <a class="footer-social px-2"  href="https://github.com/junyubian" target="_blank"><i class="fab fa-github"></i></a>
+            
+            <a class="footer-social px-2"  href="https://www.facebook.com/profile.php?id=100010301021817" target="_blank"><i class="fab fa-facebook"></i></a>
+            
+        </div>
+    </div>
+</div>
+<script src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script src="/js/isotope.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+<script src="/js/dark.js"></script>
+<script>
 
+
+var savedTheme = localStorage.getItem("dark-mode-storage") || "light" 
+setTheme(savedTheme);
+
+</script>
+<script src="/js/isotope.js"></script>
+<script src="/js/mermaid.min.js"></script>
+<script>mermaid.initialize({ startOnLoad: true, securityLevel: 'loose'});</script>
 </body>
 </html>
