@@ -99,7 +99,7 @@ nav:
   #   - 友链: about/link.md
   - About:
     - Myself: about/geren.md
-    - Test: about/test.md
+    # - Test: about/test.md
 
 copyright: Copyright &copy; 2022-2024 JunyuBian/All Rights Reserved. # 左下角的版权声明
 
