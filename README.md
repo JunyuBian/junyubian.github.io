@@ -1,63 +1,23 @@
-# Mkdocs-Wcowin主题
+# TonyCrane's Notebook<br/>鹤翔万里的笔记本
 
-**- 基于Material for MkDocs美化**  
-**- 简洁美观，功能多元化**  
-**- 可自定义样式，中文教程详细**  
-**- 简单易上手，小白配置**  
-**- 𝕙𝕒𝕧𝕖 𝕒 𝕘𝕠𝕠𝕕 𝕥𝕚𝕞𝕖 !**
+<a href="https://note.tonycrane.cc/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/github/github-dark.png">
+    <img alt="Banner" src="docs/assets/github/github-light.png">
+  </picture>
+</a>
 
+用 mkdocs 搭的一个比较粗糙的在线公开笔记本  
+归档一些计算机、CTF 的知识笔记还有一些比赛的 writeup 以及一些杂乱的内容
 
-## 展示
-<center>
+来逛逛o(〃'▽'〃)o：https://note.tonycrane.cc/
 
-**主页**
-![](https://s1.imagehub.cc/images/2024/02/02/357ba91e8e68c554ce015fd0c95a08d8.png)   
+我使用的 mkdocs 工具链：[TonyCrane/mkdocs-toolchain](https://github.com/TonyCrane/mkdocs-toolchain)，个人插件：
 
-**文章页**
-![](https://s1.imagehub.cc/images/2024/02/02/c15305494c69f311a721c0878b648b22.png)  
+- [TonyCrane/mkdocs-changelog-plugin](https://github.com/TonyCrane/mkdocs-changelog-plugin)
+- [TonyCrane/mkdocs-heti-plugin](https://github.com/TonyCrane/mkdocs-heti-plugin)
+- [TonyCrane/mkdocs-statistics-plugin](https://github.com/TonyCrane/mkdocs-statistics-plugin)
 
-**博客页**
-![](https://s1.imagehub.cc/images/2024/02/02/cee8d935a920668b738593850c7eb7f8.png)   
+## Acknowledgement
 
-**标签页**
-![img](https://s1.imagehub.cc/images/2024/02/02/d20f0562838a8396724f18bfd09e19e8.png)  
-
-**简洁的友链页面**
-![](https://s1.imagehub.cc/images/2024/02/02/068cf12de3d9c44dbbd00f4f121e908e.png)
-
-**页面底部**
-![](https://s1.imagehub.cc/images/2024/02/02/f1ad87eba264c26344b24dc48336b538.png)
-</center>
-
-## 如何快速使用
-打开终端安装mkdocs: `pip install mkdocs-material`，在你本地的文件夹下(我的就是Wcowin.github.io这个文件夹)的终端执行`git clone git@github.com:Wcowin/Mkdocs-Wcowin.git`克隆本模版到本地
-
-把Mkdocs-Wcowin文件里的东西全部复制出来到Wcowin.github.io文件里，随后在Wcowin.github.io文件目录终端里`mkdocs serve`即可
-
-详细的初步教程见：[利用Mkdocs部署静态网页至GitHubpages](TECH.md)
-
-## Connect with me
-
-<center>
-
-**MuseLink**
-
-<p>
-  <a href="https://muselink.cc/Wcowin" target="_blank">
-    <img src="https://s1.imagehub.cc/images/2024/02/02/3d5a68d9ca0da9137d927bda1a0b41e7.jpeg" alt="个人名片">
-  </a>
-</p>
-
-</center>
-
-
-
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=Wcowin/Mkdocs-Wcowin&type=Date)](https://star-history.com/#Wcowin/Mkdocs-Wcowin&Date)
-
-
-## 感谢各位朋友
-
-![](https://cn.mcecy.com/image/20231014/e07e117eece8d2afbda2702a27166e26.png)
+- [simeydotme/pokemon-cards-css](https://github.com/simeydotme/pokemon-cards-css/)：首页展示卡片，修改内容同协议开源到 [TonyCrane/note-homepage-cards](https://github.com/TonyCrane/note-homepage-cards/)
