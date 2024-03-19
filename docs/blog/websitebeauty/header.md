@@ -41,15 +41,15 @@ $ tree -a
     <link rel="stylesheet" href="{{ 'assets/stylesheets/custom.00c04c01.min.css' | url }}">
   {% endblock %}
   {% block announce %}
-     Follow <strong>@Wcowin</strong> on
-    <a rel="me" href="https://space.bilibili.com/1407028951?spm_id_from=333.1007.0.0">
-      <span class="twemoji bilibili">
-        {% include ".icons/fontawesome/brands/bilibili.svg" %}
+     Follow <strong>@Junyu</strong> on
+    <a rel="me" href="https://github.com/JunyuBian/">
+      <span class="twemoji github">
+        {% include ".icons/fontawesome/brands/github.svg" %}
       </span>
-      <strong>Bilibili</strong>
+      <strong>Github</strong>
     </a>
     and
-    <a href="https://twitter.com/Wcowin_">
+    <a href="https://twitter.com/junyu_bian">
       <span class="twemoji twitter">
         {% include ".icons/fontawesome/brands/twitter.svg" %}
       </span>

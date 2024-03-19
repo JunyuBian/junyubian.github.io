@@ -53,14 +53,13 @@ theme:
     - content.action.edit
     - content.action.view
     - content.code.annotate 
-  language: zh # 一些提示性的文字会变成中文
-  
+  language: en # 一些提示性的文字会变成中文
 
   icon: 
     repo: fontawesome/brands/github #右上角图标
 edit_uri: edit/main/docs # 编辑按钮跳转的链接 
-repo_url: https://github.com/Wcowin/Mkdocs-Wcowin # 右上角点击跳转的链接
-repo_name: Mkdocs-Wcowin # 右上角的名字
+repo_url: https://github.com/JunyuBian/junyubian.github.io # 右上角点击跳转的链接
+repo_name: JunyuBian # 右上角的名字
 
 # [Navigtion]
 nav:
@@ -92,60 +91,54 @@ nav:
         - 唐·诺曼—情感设计的三个层次: develop/designbeauty/db1.md
         - 我对设计的一些观点: develop/designbeauty/my-to-desihn.md        
 
-  - 标签: tag.md
-  - 留言板: liuyanban.md
-  - Blogger:
+  - Tags: tag.md
+  # - 留言板: liuyanban.md
+  - Blogs:
     - index: blog/index.md
-  - 友链: 
-    - 友链: about/link.md
-  - 关于:
-    - 作者个人简介: about/geren.md
-    - 功能测试: about/test.md
+  # - 友链: 
+  #   - 友链: about/link.md
+  - About:
+    - Myself: about/geren.md
+    - Test: about/test.md
 
-  
-  
-copyright: Copyright &copy; 2022~2023 Wcowin/All Rights Reserved. # 左下角的版权声明
-  
+copyright: Copyright &copy; 2022-2024 JunyuBian/All Rights Reserved. # 左下角的版权声明
 
 extra:
   generator: true  #是否删除页脚显示“使用 MkDocs 材料制造”
   social:
     - icon: fontawesome/brands/x-twitter #联系方式图标 : https://fontawesome.com/ 去这里找图标
-      link: https://twitter.com/wcowin_
+      link: https://twitter.com/junyu_bian
     - icon: fontawesome/brands/github
-      link: https://github.com/Wcowin
-    
+      link: https://github.com/JunyuBian
     - icon: fontawesome/regular/envelope #联系方式图标
-      link: mailto:<wangkewen821@gmail.com> #邮件联系方式
-    - icon: fontawesome/brands/bilibili
-      link: https://space.bilibili.com/1407028951?spm_id_from=333.1007.0.0
+      link: mailto:<junyubian@gmail.com> #邮件联系方式
+    # - icon: fontawesome/brands/bilibili
+    #   link: https://space.bilibili.com/1407028951?spm_id_from=333.1007.0.0
   analytics: 
     provider: google  #谷歌分析
     property:  
 
     # 网页底部反馈
     feedback:
-      title: 此页面有帮助吗？
+      title: Is this helpful?
       ratings:
         - icon: material/thumb-up-outline   #图标可自定义 
           name: This page was helpful
           data: 1
           note: >-
-            谢谢你的反馈！   
+            Thanks for letting me know!
         - icon: material/thumb-down-outline
           name: This page could be improved
           data: 0
           note: >- 
-            Thanks for your feedback! Help us improve this page by
-            using our <a href="https://marketingplatform.google.com/about/analytics/" target="_blank" rel="noopener">feedback form</a>.
+            Thanks for your feedback! Help me improve this page by
+            using <a href="https://marketingplatform.google.com/about/analytics/" target="_blank" rel="noopener">feedback form</a>.
   # cookies设置（可选）
   # consent:
   #   title: Cookie consent
   #   description: >- 
   #     我们也使用cookies来识别您的重复访问和偏好来衡量我们文档的有效性以及用户是否找到他们要找的东西。
   #     如果你同意,你可以帮助我们让我们的网站更好
-
-    
 
 plugins:
   - search   #搜索配置
@@ -173,8 +166,6 @@ plugins:
       authors_file: "{blog}/.authors.yml"  #作者信息
   - tags:
       tags_file: tag.md  #分类标签
-
-  
 
 markdown_extensions:   #详见https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/ 和 https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/
   - abbr
