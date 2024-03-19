@@ -40,9 +40,9 @@ function updateTime() {
     h = Math.floor(diff / (3600 * 1000) % 24);
     m = Math.floor(diff / (60 * 1000) % 60);
     if (y == 0) {
-        document.getElementById("web-time").innerHTML = d + "<span class=\"heti-spacing\"> </span>天<span class=\"heti-spacing\"> </span>" + h + "<span class=\"heti-spacing\"> </span>小时<span class=\"heti-spacing\"> </span>" + m + "<span class=\"heti-spacing\"> </span>分钟";
+        document.getElementById("web-time").innerHTML = d + "<span class=\"heti-spacing\"> </span>days<span class=\"heti-spacing\"> </span>" + h + "<span class=\"heti-spacing\"> </span>hrs<span class=\"heti-spacing\"> </span>" + m + "<span class=\"heti-spacing\"> </span>mins";
     } else {
-        document.getElementById("web-time").innerHTML = y + "<span class=\"heti-spacing\"> </span>年<span class=\"heti-spacing\"> </span>" + d + "<span class=\"heti-spacing\"> </span>天<span class=\"heti-spacing\"> </span>" + h + "<span class=\"heti-spacing\"> </span>小时<span class=\"heti-spacing\"> </span>" + m + "<span class=\"heti-spacing\"> </span>分钟";
+        document.getElementById("web-time").innerHTML = y + "<span class=\"heti-spacing\"> </span>yrs<span class=\"heti-spacing\"> </span>" + d + "<span class=\"heti-spacing\"> </span>days<span class=\"heti-spacing\"> </span>" + h + "<span class=\"heti-spacing\"> </span>hrs<span class=\"heti-spacing\"> </span>" + m + "<span class=\"heti-spacing\"> </span>mins";
     }
     setTimeout(updateTime, 1000 * 60);
 }
