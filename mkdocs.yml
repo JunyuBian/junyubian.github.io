@@ -122,26 +122,26 @@ plugins:
   - toc
   - heti
   # - tikzautomata
-  - linkbackward:
-      wait_time: 0
-      redirections:
-        - /ctf/steg/ -> /ctf/misc/steg/
-        - /ctf/steg/image/ -> /ctf/misc/steg/image/
-        - /ctf/steg/audio/ -> /ctf/misc/steg/audio/
-        - /ctf/escapes/ -> /ctf/misc/escapes/
-        - /ctf/escapes/pysandbox/ -> /ctf/misc/escapes/pysandbox/
-        - /ctf/forensics/ -> /ctf/misc/forensics/
-        - /ctf/forensics/mem/ -> /ctf/misc/forensics/mem/
-        - /ctf/coding/ -> /ctf/misc/coding/
-        - /ctf/qrcode/ -> /ctf/misc/qrcode/
-        - /ctf/esolang/ -> /ctf/misc/esolang/
-        - /cs/pl/c_cpp/ -> /cs/pl/c_cpp/c/
-        - /hpc/ -> /cs/hpc/hpc101/
-        - /hpc/hpc101/vectorized/ -> /cs/hpc/hpc101/vectorized/
-        - /hpc/hpc101/gpu/ -> /cs/hpc/hpc101/gpu/
-        - /hpc/hpc101/openmp/ -> /cs/hpc/hpc101/openmp/
-        - /hpc/hpc101/mpi/ -> /cs/hpc/hpc101/mpi/
-        - /hpc/hpc101/ml/ -> /cs/hpc/hpc101/ml/
+  # - linkbackward:
+  #     wait_time: 0
+  #     redirections:
+  #       - /ctf/steg/ -> /ctf/misc/steg/
+  #       - /ctf/steg/image/ -> /ctf/misc/steg/image/
+  #       - /ctf/steg/audio/ -> /ctf/misc/steg/audio/
+  #       - /ctf/escapes/ -> /ctf/misc/escapes/
+  #       - /ctf/escapes/pysandbox/ -> /ctf/misc/escapes/pysandbox/
+  #       - /ctf/forensics/ -> /ctf/misc/forensics/
+  #       - /ctf/forensics/mem/ -> /ctf/misc/forensics/mem/
+  #       - /ctf/coding/ -> /ctf/misc/coding/
+  #       - /ctf/qrcode/ -> /ctf/misc/qrcode/
+  #       - /ctf/esolang/ -> /ctf/misc/esolang/
+  #       - /cs/pl/c_cpp/ -> /cs/pl/c_cpp/c/
+  #       - /hpc/ -> /cs/hpc/hpc101/
+  #       - /hpc/hpc101/vectorized/ -> /cs/hpc/hpc101/vectorized/
+  #       - /hpc/hpc101/gpu/ -> /cs/hpc/hpc101/gpu/
+  #       - /hpc/hpc101/openmp/ -> /cs/hpc/hpc101/openmp/
+  #       - /hpc/hpc101/mpi/ -> /cs/hpc/hpc101/mpi/
+  #       - /hpc/hpc101/ml/ -> /cs/hpc/hpc101/ml/
 
 not_in_nav: todo.md
 
