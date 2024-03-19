@@ -1,0 +1,5 @@
+site_name: Junyu Bian
+site_url: https://junyubian.github.io/
+site_author: Junyu Bian
+theme:
+  name: material 
