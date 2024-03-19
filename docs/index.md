@@ -6,21 +6,23 @@ template: home.html
 statistics: true
 ---
 
-# o(〃'▽'〃)o Hi!
+# Hi there!
 
-这里是鹤翔万里（TonyCrane）的个人笔记本哦！  
+This is my site. 
+
+Theme credits to TonyCrane, thanks Tony!
 
 <!-- [:octicons-info-16: 关于我](about/) /  -->
-[:material-clock-time-two-outline: 最近更新](changelog/) / 
-[:octicons-link-16: 朋友们!](links/) / 
-[:material-chart-line: 站点统计](javascript:toggle_statistics();)
+[:material-clock-time-two-outline: ChangeLog](changelog/) / 
+[:material-chart-line: Statistics](javascript:toggle_statistics();)
+<!-- [:octicons-link-16: 朋友们!](links/) /  -->
 
 <div id="statistics" markdown="1" class="card" style="width: 27em; border-color: transparent; opacity: 0; font-size: 75%">
 <div style="padding-left: 1em;" markdown="1">
-页面总数：{{pages}}  
-总字数：{{words}}  
-代码块行数：{{codes}}  
-网站运行时间：<span id="web-time"></span>
+Pages: {{pages}}  
+Words: {{words}}  
+Code Blocks: {{codes}}  
+Up Time: <span id="web-time"></span>
 </div>
 </div>
 

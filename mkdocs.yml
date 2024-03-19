@@ -1,14 +1,14 @@
-site_name: 鹤翔万里的笔记本
+site_name: Junyu Bian
 site_url: https://junyubian.github.io/
 repo_name: junyubian/junyubian.github.io
 repo_url: https://github.com/JunyuBian/junyubian.github.io
 edit_uri: tree/master/docs
-site_description: 鹤翔万里（TonyCrane）的笔记本
-copyright: Copyright &copy; 2022-2024 <a href="https://github.com/TonyCrane" target="_blank" rel="noopener">TonyCrane</a>
+site_description: Junyu Bian
+copyright: Copyright &copy; 2022-2024 <a href="https://github.com/JunyuBian" target="_blank" rel="noopener">Junyu Bian</a>
 
 theme: 
   name: 'material'
-  language: 'zh'
+  language: 'en'
   icon: 
     logo: material/notebook-outline
   custom_dir: overrides
@@ -66,11 +66,11 @@ validation:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/TonyCrane/
-    - icon: fontawesome/solid/rss
-      link: https://blog.tonycrane.cc/
+      link: https://github.com/JunyuBian/
+    # - icon: fontawesome/solid/rss
+    #   link: https://blog.tonycrane.cc/
     - icon: fontawesome/solid/house
-      link: https://tonycrane.cc/
+      link: https://junyubian.github.io/
   analytics:
     provider: custom
     property: G-DYETCPM289
@@ -105,7 +105,7 @@ plugins:
       title_prefix: "🔒 "
       remember_password: True 
       default_expire_dalay: 48
-      decryption_failure_message: '密码错误'
+      decryption_failure_message: 'Try Again'
       encrypted_something:
         mkdocs-encrypted-toc: [nav, class]
   - git-revision-date-localized:
@@ -148,8 +148,8 @@ not_in_nav: todo.md
 nav:
   - Home:
     - index.md
-    - 更新记录: changelog.md
-    - 友链: links.md
+    - ChangeLog: changelog.md
+    # - 友链: links.md
   - Computer Science:
     - cs/index.md
     - 编程语言 & ISA:
