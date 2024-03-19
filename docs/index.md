@@ -45,10 +45,6 @@ comments: false
   - [网站添加Mkdocs博客](blog/Mkdocs/mkdocsblog.md)
   - [Blogger](blog/index.md) -->
 
-
-[^Knowing-that-loving-you-has-no-ending]:"Salvation lies within."
-[^see-how-much-I-love-you]:All problems in computer science can be solved by another level of indirection
-
    <body>
         <font color="#B9B9B9">
         <p style="text-align: center; ">
