@@ -1,85 +1,58 @@
 ---
 hide:
-  #- navigation # 显示右
-  #- toc #显示左
-  - footer
-  - feedback
-comments: false
+    - date
+home: true
+template: home.html
+statistics: true
 ---
-
-<!-- 
-<center><font  color= #518FC1 size=6 class="ml3">Mkdocs-Wcowin博客主题</font></center>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-
-<center>
-<font  color= #608DBD size=3>
-<span id="jinrishici-sentence">正在加载今日诗词....</span>
-<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-</font>
-</center>
-
-<!-- 可选一言 -->
-<!-- <center>
-<font  color= #608DBD size=3>
-<p id="hitokoto">
-  <a href="#" id="hitokoto_text" target="_blank"></a>
-</p>
-<script>
-  fetch('https://v1.hitokoto.cn')
-    .then(response => response.json())
-    .then(data => {
-      const hitokoto = document.querySelector('#hitokoto_text')
-      hitokoto.href = `https://hitokoto.cn/?uuid=${data.uuid}`
-      hitokoto.innerText = data.hitokoto
-    })
-    .catch(console.error)
-</script>
-</font>
-</center> -->
 
 # Hi there!
 
-This is my site.
+This is my site. 
 
-[:octicons-info-16: About](about/myself) / 
-[:material-clock-time-two-outline: ChangeLog](about/changelog) 
+Theme credits to TonyCrane, thanks Tony!
 
-<strong>Randoms:material-book:</strong>
+<!-- [:octicons-info-16: 关于我](about/) /  -->
+[:material-clock-time-two-outline: ChangeLog](changelog/) / 
+[:material-chart-line: Statistics](javascript:toggle_statistics();)
+<!-- [:octicons-link-16: 朋友们!](links/) /  -->
 
-  <!-- - [利用Mkdocs部署静态网页至GitHub pages](blog/Mkdocs/mkdocs1.md)
-  - [Mkdocs部署配置说明(mkdocs.yml)](blog/Mkdocs/mkdocs2.md)
-  - [如何给MKdocs添加友链](blog/websitebeauty/linktech.md)
-  - [网站添加Mkdocs博客](blog/Mkdocs/mkdocsblog.md)
-  - [Blogger](blog/index.md) -->
+<div id="statistics" markdown="1" class="card" style="width: 27em; border-color: transparent; opacity: 0; font-size: 75%">
+<div style="padding-left: 1em;" markdown="1">
+Pages: {{pages}}  
+Words: {{words}}  
+Code Blocks: {{codes}}  
+Up Time: <span id="web-time"></span>
+</div>
+</div>
 
-   <body>
-        <font color="#B9B9B9">
-        <p style="text-align: center; ">
-                <span>Already up: </span>
-                <span id='box1'></span>
-    </p>
-      <div id="box1"></div>
-      <script>
-        function timingTime(){
-          let start = '2023-10-14 00:00:00'
-          let startTime = new Date(start).getTime()
-          let currentTime = new Date().getTime()
-          let difference = currentTime - startTime
-          let m =  Math.floor(difference / (1000))
-          let mm = m % 60  // 秒
-          let f = Math.floor(m / 60)
-          let ff = f % 60 // 分钟
-          let s = Math.floor(f/ 60) // 小时
-          let ss = s % 24
-          let day = Math.floor(s  / 24 ) // 天数
-          return day + " days " + ss + " hrs " + ff + " mins " + mm +' secs'
-        }
-        setInterval(()=>{
-          document.getElementById('box1').innerHTML = timingTime()
-        },1000)
-      </script>
-      </font>
-    </body>
-
-
-<script src="//code.tidio.co/6jmawe9m5wy4ahvlhub2riyrnujz7xxi.js" async></script>
+<script>
+function updateTime() {
+    var date = new Date();
+    var now = date.getTime();
+    var startDate = new Date("2022/01/03 09:10:00");
+    var start = startDate.getTime();
+    var diff = now - start;
+    var y, d, h, m;
+    y = Math.floor(diff / (365 * 24 * 3600 * 1000));
+    diff -= y * 365 * 24 * 3600 * 1000;
+    d = Math.floor(diff / (24 * 3600 * 1000));
+    h = Math.floor(diff / (3600 * 1000) % 24);
+    m = Math.floor(diff / (60 * 1000) % 60);
+    if (y == 0) {
+        document.getElementById("web-time").innerHTML = d + "<span class=\"heti-spacing\"> </span>days<span class=\"heti-spacing\"> </span>" + h + "<span class=\"heti-spacing\"> </span>hrs<span class=\"heti-spacing\"> </span>" + m + "<span class=\"heti-spacing\"> </span>mins";
+    } else {
+        document.getElementById("web-time").innerHTML = y + "<span class=\"heti-spacing\"> </span>yrs<span class=\"heti-spacing\"> </span>" + d + "<span class=\"heti-spacing\"> </span>days<span class=\"heti-spacing\"> </span>" + h + "<span class=\"heti-spacing\"> </span>hrs<span class=\"heti-spacing\"> </span>" + m + "<span class=\"heti-spacing\"> </span>mins";
+    }
+    setTimeout(updateTime, 1000 * 60);
+}
+updateTime();
+function toggle_statistics() {
+    var statistics = document.getElementById("statistics");
+    if (statistics.style.opacity == 0) {
+        statistics.style.opacity = 1;
+    } else {
+        statistics.style.opacity = 0;
+    }
+}
+</script>
