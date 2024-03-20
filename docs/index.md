@@ -37,6 +37,13 @@ comments: false
 </font>
 </center> -->
 
+# Hi there!
+
+This is my site.
+
+[:octicons-info-16: About](about/myself) / 
+[:material-clock-time-two-outline: ChangeLog](about/changelog) 
+
 <strong>Randoms:material-book:</strong>
 
   <!-- - [利用Mkdocs部署静态网页至GitHub pages](blog/Mkdocs/mkdocs1.md)
