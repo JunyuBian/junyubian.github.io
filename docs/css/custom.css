@@ -258,7 +258,7 @@ input#mkdocs-content-password {
 }
 
 .toc-tag-classnotes::before {
-  content: "Lecture Notes"
+  content: "课程笔记"
 }
 
 .toc-tag-reports {
@@ -266,5 +266,5 @@ input#mkdocs-content-password {
 }
 
 .toc-tag-reports::before {
-  content: "Lab Reports"
+  content: "实验报告"
 }
