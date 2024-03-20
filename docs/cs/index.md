@@ -1,16 +1,17 @@
 # Computer Science
 
-!!! abstract 
-    这里是计算机科学相关内容的笔记
-
-    有的是自学的笔记，有的是课程笔记
+!!! abstract
+    Some tell a whole story, some just speak for themselves.
 
 ## Table of Contents
 
 {{ BEGIN_TOC }}
-- 编程语言 & ISA:
-    - index: pl/
-    - C/C++[note]: pl/c_cpp/c/
+- Algorithms:
+    - index: algorithms/
+    - KMP: algorithms/kmp/
+- Programming Languages:
+    - index: languages/
+    - C++: languages/c++
     - Python: pl/python/
     - Rust: pl/rust
     - Haskell: pl/haskell

@@ -12,10 +12,9 @@ This is my site.
 
 Theme credits to TonyCrane, thanks Tony!
 
-<!-- [:octicons-info-16: 关于我](about/) /  -->
+[:octicons-info-16: About](about/) / 
 [:material-clock-time-two-outline: ChangeLog](changelog/) / 
 [:material-chart-line: Statistics](javascript:toggle_statistics();)
-<!-- [:octicons-link-16: 朋友们!](links/) /  -->
 
 <div id="statistics" markdown="1" class="card" style="width: 27em; border-color: transparent; opacity: 0; font-size: 75%">
 <div style="padding-left: 1em;" markdown="1">

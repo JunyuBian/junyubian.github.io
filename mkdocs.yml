@@ -155,11 +155,14 @@ nav:
     # - 友链: links.md
   - Computer Science:
     - cs/index.md
-    - 编程语言 & ISA:
-      - cs/pl/index.md
-      - C/C++:
-        - C 语言杂项: cs/pl/c_cpp/c.md
-        - C++ 面向对象: cs/pl/c_cpp/oop.md
+    - Algorithms:
+      - cs/algorithms/index.md
+      - KMP:
+        - KMP Algorithm: cs/algorithms/kmp/kmpalgorithm.md
+    - Programming languages:
+      - cs/languages/index.md
+      - C++:
+        - Emplace Back: cs/languages/c++/emplaceback.md
       - Python:
         - cs/pl/python/index.md
         - Python 基础语法: cs/pl/python/basic.md
