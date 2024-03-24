@@ -8,7 +8,7 @@ statistics: true
 
 # Hi there!
 
-This is my site. 
+This is my site. Some parts under constructions, coming soon...
 
 Theme credits to TonyCrane, thanks Tony!
 
