@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Junyu Blog</title>
+    <link>https://junyubian.github.io/</link>
+    <description>Recent content on Junyu Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://junyubian.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Criterions for Site</title>
+      <link>https://junyubian.github.io/criterions-for-site/</link>
+      <pubDate>Sat, 02 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/criterions-for-site/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugo Site Auto Deployment with Github Action</title>
+      <link>https://junyubian.github.io/2023/12/02/Hugo&#43;Github-Action-Auto-Deploy/</link>
+      <pubDate>Sat, 02 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/2023/12/02/Hugo&#43;Github-Action-Auto-Deploy/</guid>
+      <description>1-Background 2-Steps 3-Good to know Reference 1-Background Trying to auto deploy Hugo blogs with Github Action.
+2-Steps Most steps and tips have been covered by reference#1 and reference#2.
+3-Good to know Action will build from base url, could use this feature to create different sub domain under github.io. e.g. create a repo called projects to display different projects, this will be added to github.io/prjects
+If site deployment is automatically triggered by Github Action, need to notice the time difference between Github server and local time zone.</description>
+    </item>
+    <item>
+      <title>Fluent Bit Client Notes</title>
+      <link>https://junyubian.github.io/2023/11/07/Fluent-Bit-Notes/</link>
+      <pubDate>Tue, 07 Nov 2023 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/2023/11/07/Fluent-Bit-Notes/</guid>
+      <description>What is fluent bit Structural sketch How to set it up Through config file Though command line parameters Other ootes What is fluent bit One day, the Insurance Management System Tom built crashed. Good news is the system recovered through rebooting, bad news is Tom did not know what had gone wrong. Tom&amp;rsquo;s dad comes by and says to Tom &amp;ldquo;Fluent Bit is a telemetry agent designed to collect and process telemetry data from constrained systems to cloud infrastructures.</description>
+    </item>
+    <item>
+      <title>getopts in Bash</title>
+      <link>https://junyubian.github.io/2022/10/21/getopts-in-Bash/</link>
+      <pubDate>Fri, 21 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/2022/10/21/getopts-in-Bash/</guid>
+      <description>1. Notice 2. Syntax 3. Reference(s) 1. Notice 1.1 getopts is different from getopt. 1.2 getopts runs on any system running bash in POSIX mode (e.g., set -o posix), getopt is a system tool varies in different systems. 1.3 getopts parses short options, which are a single dash (&amp;quot;-&amp;quot;) and a letter or digit.e.g. -2, -d, and -D. It can also parse short options in combination, for instance -2dD. But each option will be treated seperately, i.</description>
+    </item>
+    <item>
+      <title>FD.io简介</title>
+      <link>https://junyubian.github.io/2021/04/26/FDio-intro/</link>
+      <pubDate>Mon, 26 Apr 2021 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/2021/04/26/FDio-intro/</guid>
+      <description>关于datapath的创新 FD.io解决的问题 现有dataplane的缺陷 FD.io的简单介绍 与DPDK的关系 关于VPP 总结自fd.io Youtube 关</description>
+    </item>
+    <item>
+      <title>Diff Array</title>
+      <link>https://junyubian.github.io/2020/11/08/Diff-Array/</link>
+      <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/2020/11/08/Diff-Array/</guid>
+      <description>Functionality Trick Recovering original array Opearting a diff array In this blog, we will talk about one trick can be used to solve problems to do with frequent addition and subtraction to a subsection of an array - Diff Array.
+Functionality Todo with frequent addition and subtraction to a subsection of an array.
+e.g. Given array arr, add 1 for elements between arr[0] and arr[3] inclusively, then, substract 3 for elements between arr[2] and arr[5] inclusively, what will be the final arr.</description>
+    </item>
+    <item>
+      <title>SWAP Function</title>
+      <link>https://junyubian.github.io/2020/05/17/SWAP-Function/</link>
+      <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/2020/05/17/SWAP-Function/</guid>
+      <description>In this blog, we will look into several ways of implementing swap in different ways.
+Intermedia Variable int a = 1; int b = 2; int tem = a; a = b; b = temp; Addition and Subtraction int a = 1; int b = 2; a = a+b; b = a-b; a = a-b; Multiplication and Division int a = 1; int b = 2; a = a*b; b = a/b; a = a/b; XOR int a = 1; int b = 2; a = a^b; b = b^a; // b = b^(a^b) = b^a^b = b^b^a = 0^a = a a = a^b; // a = (a^b)^a = a^b^a = a^a^b = 0^b = b </description>
+    </item>
+    <item>
+      <title>EMPLACE_BACK in C&#43;&#43;</title>
+      <link>https://junyubian.github.io/2020/05/16/emplace_back-in-C&#43;&#43;/</link>
+      <pubDate>Sat, 16 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/2020/05/16/emplace_back-in-C&#43;&#43;/</guid>
+      <description>There are different type of containers in C++ STL. To add a new element into the back of a container, we normally use push_back(). In this blog, we will look into a new way of performing push back - emplace_back(). Background Knowledge Rvalue References: with aim of increasing the efficiency of C++, rvalues are included. It doesn&amp;rsquo;t need to copy the value, the rvalue reference is bound to the value</description>
+    </item>
+    <item>
+      <title>Insurance Management System - Overview</title>
+      <link>https://junyubian.github.io/2020/04/28/Insurance-Management-System---Overview/</link>
+      <pubDate>Tue, 28 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/2020/04/28/Insurance-Management-System---Overview/</guid>
+      <description>In this series of blogs, we will talk about how to build a Insurance Management web application together with database system. Background Tom&amp;rsquo;s dad works in an insurance company. His work is to drop down who bought what kind of insurance, on which day does the customer receives an invoice, and on which day does the customer makes a payment. Oneday, Tom&amp;rsquo;s dad talks to Tom: &amp;ldquo;Oh Tom, you see</description>
+    </item>
+    <item>
+      <title>KMP Algorithm</title>
+      <link>https://junyubian.github.io/2020/04/17/KMP-Algorithm/</link>
+      <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/2020/04/17/KMP-Algorithm/</guid>
+      <description>Background&amp;hellip; Once upon a time, Tom asked his father to find abab inside abcaabababaa.
+Tom&amp;rsquo;s dad did this in a traditional way (brute force). He compared each character of the first string with each character of the second string. When he find one character not matching, for example, the third character in the second string in this case, he start again from the second character of the second string. It went on and on and on&amp;hellip;</description>
+    </item>
+    <item>
+      <title>Clean White Theme for Hugo</title>
+      <link>https://junyubian.github.io/post/readme/</link>
+      <pubDate>Wed, 09 Jan 2019 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/post/readme/</guid>
+      <description>Clean White Theme for Hugo CleanWhite is a clean, elegant, but fully functional blog theme for Hugo. Here is a live demo site using this theme. It is based on huxblog Jekyll Theme and Clean Blog Jekyll Theme. These two upstream projects have done awesome jobs to create a blog theme, what I&amp;rsquo;m doing here is porting it to Hugo, of which I like the simplicity and the much faster</description>
+    </item>
+    <item>
+      <title>Istio及Bookinfo示例程序安装试用笔记</title>
+      <link>https://junyubian.github.io/2017/11/04/istio-install_and_example/</link>
+      <pubDate>Sat, 04 Nov 2017 12:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/2017/11/04/istio-install_and_example/</guid>
+      <description>&lt;h2 id=&#34;服务网格简介&#34;&gt;服务网格简介&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;服务网格&lt;/strong&gt;（Service Mesh）是为解决微服务的通信和治理而出现的一种&lt;strong&gt;架构模式&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;服务网格将服务间通讯以及与此相关的管理控制功能从业务程序中下移到一个基础设施层，从而彻底隔离了业务逻辑和服务通讯两个关注点。采用服务网格后，应用开发者只需要关注并实现应用业务逻辑。服务之间的通信，包括服务发现，通讯的可靠性，通讯的安全性，服务路由等由服务网格层进行处理，并对应用程序透明。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://junyubian.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/about/</guid>
+      <description>Hi there! Still underconstruction here&amp;hellip; - China -&amp;gt; Australia -&amp;gt; Sweden -&amp;gt; US -&amp;gt; China - Siemens -&amp;gt; Alibaba -&amp;gt; Tencent -&amp;gt; Intel - XR -&amp;gt; Backend -&amp;gt; Android -&amp;gt; Edge Computing mailto:junyubian@gmail.com</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://junyubian.github.io/leetcode/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/leetcode/</guid>
+      <description>coming soon&amp;hellip;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://junyubian.github.io/notes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/notes/</guid>
+      <description>1-Operating Systems 1.1-进程和线程 进程：系统进行资源分配的基本单位； 线程：CPU调度的基本单位： 共享进程的全部资源； 独有程序计数器、寄存器和栈。 1.2-</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://junyubian.github.io/publications/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/publications/</guid>
+      <description>coming soon&amp;hellip;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://junyubian.github.io/search/placeholder/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/search/placeholder/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Posts Archive</title>
+      <link>https://junyubian.github.io/archive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/archive/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

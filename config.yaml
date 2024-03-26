@@ -1,0 +1,13 @@
+---
+baseurl: "/"
+DefaultContentLanguage: "zh-cn"
+hasCJKLanguage: true
+languageCode: "zh-cn"
+title: "River's Site"
+theme: "beautifulhugo"
+metaDataFormat: "yaml"
+algolia:
+  index: "hugo_blog-blog"
+  key: "b30c477ad0bce73d6d4c713bab66202c"
+  appID: "VG865BZZLC"
+---

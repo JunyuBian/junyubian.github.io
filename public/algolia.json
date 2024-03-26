@@ -1,0 +1,256 @@
+[
+    {
+        "layout": "page",
+        "uri": "about",
+        "content": "Hi there  underconstruction here    China    Australia    Sweden    US    China Siemens    Alibaba    Tencent    Intel XR    Backend    Android    Edge Computing mailto",
+        "objectID": "about",
+        "multilingual": true
+    },
+    {
+        "title": "Posts Archive",
+        "uri": "archive",
+        "content": "",
+        "objectID": "archive",
+        "layout": "archive",
+        "type": "archive",
+        "description": "Archive of historical posts."
+    },
+    {
+        "title": "Criterions for Site",
+        "uri": "Criterions-For-Site",
+        "content": "1 Posts 1 1 Titles 1 1 1 All Cap first letter word post title  except preposition  1 1 2 Cap first letter first word inside post  1 1 3 Titles inside post need follow format Criterions  1 2 Tags 1 2 1 Need specifiy language  EN CH   best bi lingular version post  1 2 2 Tags need lower case  1 2 3 Tags need use     replace spaces      1 3 TOC criterions site  self reference only  1 Posts 1 1 Titles 1 1 1 All Cap first letter word post title  except preposition  1 1 2 Cap first letter first word inside post  1 1 3 Titles inside post need follow format Criterions  1 2 Tags 1 2 1 Need specifiy language  EN CH   best bi lingular version post  1 2 2 Tags need lower case  1 2 3 Tags need use     replace spaces      1 3 TOC Need toc section post  follow below steps  cmd Shift P VSCode type  toc  select  Markdown One  Create Table Contents",
+        "objectID": "Criterions-For-Site",
+        "date": "2023-12-02T00:00:00.000Z",
+        "lastmod": "2023-12-27T00:00:00.000Z",
+        "draft": false,
+        "garden_tags": [
+            "en",
+            "criterions"
+        ],
+        "summary": " ",
+        "status": "growing"
+    },
+    {
+        "layout": "page",
+        "uri": "leetcode",
+        "content": "coming soon",
+        "objectID": "leetcode"
+    },
+    {
+        "layout": "post",
+        "uri": "post/2017-11-04-istio-install_and_example",
+        "content": "Service Mesh                                                                                                                                                                                                                                                                                                                                                                                                                                                             sidecar                                 sidecar                                                                                sidecar                         Service Mesh                                                                                                                                               William Morgan WHAT S SERVICE MESH  WHY NEED ONE                      Istio Istio   Google IBM Lyft   Service Mesh            Google Kubernetes        Istio                  Linkerd nginmesh   Service Mesh       Red hat Pivotal Weaveworks Tigera Datawire                                  kubernetes              Istio                         Kubernetes Istio                                      Kubernetes             Istio                   kubernetes cloud foundry Mesos   Istio  Google         Kubernetes                 0 2         Kubernetes               Istio               Istio   Pilot                         Istio   Istio             kubernetes          Rancher   kubernetes                   kubernetes                                  Ubuntu 16 04 3 LTS             Rancher Server  10 12 25 60       10 12 25 116   Rancher  Kubernetes            server        docker   k8s         docker                docker http   rancher com docs rancher v1 6 en hosts      1 12    curl https   releases rancher com install docker 1 12 sh   sh       root    docker          root    docker      Rancher server sudo docker run  d   restart always  p 8080 8080 rancher server   Rancher       k8s   Rancher           8080                Default  gt Manage Environment  gt Add Environment    kubernetes           kubernetes        kubernetes template   create   Kubernetes           kubernetes Environment         Add host     host kubernetes             host            docker        Rancher       host       Rancher agent   host  ranch cluster         rancher server     host     ping      host  cluster Rancher  host pull kubernetes images   kubernetes                                        kubectl  Rancher    kubernetes        kubernetes     kubectl curl  LO https   storage googleapis com kubernetes release release v1 7 4 bin linux amd64 kubectl chmod  x   kubectl sudo mv   kubectl  usr local bin kubectl   Rancher        Environments  gt kubernetes  gt KUBERNETES  gt CLI create config          kube config      Kubectl kubernetes server         Istio Istio                       Istio             curl  L https   git io getLatestIstio   sh           Istio            PATH      export PATH   PATH  home ubuntu istio 0 2 10 bin   kubernetes     Istio      kubectl apply  f istio 0 2 10 install kubernetes istio yaml   Istio           Kubernetes     istio system namespace  Istio        namespace     Istio  Service      kubectl svc  n istio system NAME CLUSTER IP EXTERNAL IP PORT S  AGE istio egress 10 43 192 74 80 TCP 25s istio ingress 10 43 16 24 10 12 25 116     80 30984 TCP 443 30254 TCP 25s istio mixer 10 43 215 250 9091 TCP 9093 TCP 9094 TCP 9102 TCP 9125 UDP 42422 TCP 26s istio pilot 10 43 211 140 8080 TCP 443 TCP 25s   Istio  Pod      kubectl pods  n istio system NAME READY STATUS RESTARTS AGE istio ca 367485603 qvbfl 1 1 Running 0 2m istio egress 3571786535 gwbgk 1 1 Running 0 2m istio ingress 2270755287 phwvq 1 1 Running 0 2m istio mixer 1505455116 9hmcw 2 2 Running 0 2m istio pilot 2278433625 68l34 1 1 Running 0 2m                    Istio                                                      sidecar            Bookinfo                    Bookinfo         Istio    samples                       Bookinfo   kubectl apply  f 9080 TCP 6m kubernetes 10 43 0 1 443 TCP 5d productpage 10 43 19 154 9080 TCP 6m ratings 10 43 50 160 9080 TCP 6m reviews 10 43 219 248 9080 TCP 6m                  istio ingress External IP http   10 12 25 116 productpage   Istio Proxy            sprint cloud                                                    Istio                                  kubernetes            Bookinfo                 kubectl apply  f istio 0 2 10 samples bookinfo kube bookinfo yaml               kubectl apply          kubernetes yaml     istioctl kube inject  f istio 0 2 10 samples bookinfo kube bookinfo yaml                                                 istioctl kube inject                istioctl kube inject  f istio 0 2 10 samples bookinfo kube bookinfo yaml    bookinfowithsidecar yaml   bookinfo with sidecar yaml   bookinfo yaml         bookinfo yaml               pod       container  container      container                                  proxy container  15001           container        pod     init container  container    iptable    container        container      istio      image  docker io ",
+        "objectID": "post/2017-11-04-istio-install_and_example",
+        "title": "Istio及Bookinfo示例程序安装试用笔记",
+        "subtitle": "手把手教你从零搭建Istio及Bookinfo示例程序",
+        "description": "Istio是来自Google，IBM和Lyft的一个Service Mesh（服务网格）开源项目，是Google继Kubernetes之后的又一大作,本文将演示如何从裸机开始从零搭建Istio及Bookinfo示例程序。",
+        "excerpt": "Istio是来自Google，IBM和Lyft的一个Service Mesh（服务网格）开源项目，是Google继Kubernetes之后的又一大作,本文将演示如何从裸机开始从零搭建Istio及Bookinfo示例程序。",
+        "date": "2017-11-04T12:00:00.000Z",
+        "author": "赵化冰",
+        "image": "/img/istio-install_and_example/post-bg.jpg",
+        "tags": [
+            "Istio"
+        ],
+        "URL": "/2017/11/04/istio-install_and_example/",
+        "categories": [
+            "Tech"
+        ]
+    },
+    {
+        "layout": "post",
+        "uri": "post/2020-04-17-KMP-Algorithm",
+        "content": "Background    Once upon time  Tom asked father find abab inside abcaabababaa  Tom s dad traditional  brute force   compared character first string character second string  When find one character not matching  example  third character second string case  start again second character second string  went on    Moving on    Unfortunately  Tom bad temper waiting  wanted change  Tom noticed that  n th character first string happened not match  even start again  will compare character again future  Therefore  Tom decided not start begining time not match found  talked dad   when not match n th character  consider characters before  big match  so  actually use head abab try match tail abab  longest mathing substring will place us start again   example  abab  will 3 possible heads  a  ab  aba  will 3 possible tails  b  ab  bab  longest matching ab  so time there s not mathing  don t need start begin  instead start 3 rd character comparison  Coding work    Taking above thought real code  c    example  first need function generate longest matching substring string trying search  int   FindLongestMatching string first   int   tableOfFirst   new int first length     tableOfFirst 0     1  int   0  int j    1   i   p length     1     j     1    first i     first j     i    j    tableOfFirst i    j    else   j   tableOfFirst j       return tableOfFirst    function  linear time matching  int KMP  string first  string second    int   0  int j   0  int   tableOfFirst   FindLongestMatching first    i   second length      j   first length       j     1    second i     first j     i    j      else   j   tableOfFirst j        j    first length     return i j    return  1    Tom happy now",
+        "objectID": "post/2020-04-17-KMP-Algorithm",
+        "title": "KMP Algorithm",
+        "subtitle": "about KMP Algorithm",
+        "description": "In computer science, the Knuth–Morris–Pratt algorithm (or KMP algorithm) is a string-searching algorithm that searches for occurrences of a \"word\" W within ...",
+        "excerpt": "In computer science, the Knuth–Morris–Pratt algorithm (or KMP algorithm) is a string-searching algorithm that searches for occurrences of a \"word\" W within ...",
+        "date": "2020-04-17T00:00:00.000Z",
+        "author": "Junyu",
+        "tags": [
+            "algorithm",
+            "tom-show"
+        ],
+        "URL": "/2020/04/17/KMP-Algorithm/",
+        "categories": [
+            "Tech"
+        ]
+    },
+    {
+        "layout": "post",
+        "uri": "post/2020-04-28-Insurance-Management-System---Overview",
+        "content": "series blogs  will talk build Insurance Management web application together database system  Background Tom s dad works insurance company  work drop down bought kind insurance  day does customer receives invoice  day does customer makes payment  Oneday  Tom s dad talks Tom   Oh Tom  you  one day day  eat  nothing  build management system me   Tom becomes not happy  Rlational Model Tom s dad talks Tom information needed  discussion  Tom draws following relational model  Summary development environment Tom thinks over  finally decides apply following development environment  Programming language  Python3 5 Framework  Django2 1 1 Database  SQLite Code editor  Pycharm Application Features build application  Tom mainly used ORM model characteristic provided Django  ORM  so treat table CLASS python time insert data table  simply instantiate object  together Object Oriented Programming  queries  add items  change information delete object convenient way  features application not restricted to  Normal Users users new application  he she register themselves REGISTER page  shown below  REGISTER page access clicking REGISTER button right system bar  information filled not properly  application will generate warnings helper users  When information filled correct way  user will directed login page notice successful account creation  logging in  application will go welcome page  username user confirmed again sure user purchase insurance  long user logged in  username email will always displayed page  confirmation  user will guided insurance purchase page  first insurance Home insurance  user required enter information home insurance  When Home insurance purchase finished  user going Auto insurance purchase page  information vehicle insurance needs provided  finally driver information needed  Notice side bar  detailed instruction buy different kinds insurance  user want check detailed information insurances purchased  he she click PROFILE button  PROFILE window  user update email address needed  insurance listed  check detail information  just click insurance number will work  When finish browsing  user click LOGOUT logout account  Super User users administration power  go 127 0 0 1 8000 admin  access administrative page  logging in  Tom manage stored data  including add invoice payment information different users   Notice users pay bill sites  site just designed users choose insurance look records   Project Outcome project  Tom designed built web based database application  three fields Tom outcomes  web development database development connection web development database development web development  Tom chose use python programming language django web framework  combination guaranteed us good view Object Oriented Programming experience  users recorded created object CLASS Tom defined  Django MVT frame  therefore  during web development  important clear page Tom working on  html Tom want return template required django  database  Tom used simple powerful SQLite perform its duty  Together Pycharm  Tom clearly structure project database  addition manage admin page  Tom open SQLite database Navicat database management software easily manage SQL  connection database web application established ORM character django  Tom use OOP procedure create manage different records  Tom need clear foreign key relationship different tables  time Tom create delete record  Tom need guarantee its foreign key  if any  assigned  gives us good taste database used reality  Tom happy now",
+        "objectID": "post/2020-04-28-Insurance-Management-System---Overview",
+        "title": "Insurance Management System - Overview",
+        "subtitle": "Insurance Management System",
+        "description": "In this series of blogs, we will talk about how to build a Insurance Management web application together with database system.",
+        "excerpt": "In this series of blogs, we will talk about how to build a Insurance Management web application together with database system.",
+        "date": "2020-04-28T00:00:00.000Z",
+        "author": "Junyu",
+        "tags": [
+            "projects",
+            "web",
+            "tom-show"
+        ],
+        "URL": "/2020/04/28/Insurance-Management-System---Overview/",
+        "categories": [
+            "Proj"
+        ]
+    },
+    {
+        "layout": "post",
+        "uri": "post/2020-05-16-emplace_back-in-C++",
+        "content": "different type containers C   STL  add new element back container  normally use pushback    blog  will look new performing push back   emplaceback    Background Knowledge Rvalue References  aim increasing efficiency C    rvalues included  doesn t need copy value  rvalue reference bound value itself  claim Rvalue  T    T_reference   t  emplace_back       emplace_back   defined  template void emplace_back  T    t   example emplace_back   blog   include  include  include struct President   std  string name  std  string country  int year  President std  string pname  std  string pcountry  int p_year    name std  move pname    country std  move pcountry    year p_year    std  cout elections  std  cout reElections  std  cout void emplace_back Arg       args                                   push_back                         std  move",
+        "objectID": "post/2020-05-16-emplace_back-in-C++",
+        "title": "EMPLACE_BACK in C++",
+        "subtitle": "EMPLACE_BACK in C++",
+        "description": "There are different type of containers in C++ STL. To add a new element into the back of a container, we normally use `push_back()`. In this blog, we will look into a new way of performing push back - `emplace_back()`.",
+        "excerpt": "There are different type of containers in C++ STL. To add a new element into the back of a container, we normally use `push_back()`. In this blog, we will look into a new way of performing push back - `emplace_back()`.",
+        "date": "2020-05-16T00:00:00.000Z",
+        "author": "Junyu",
+        "tags": [
+            "algorithm",
+            "notes",
+            "c++"
+        ],
+        "URL": "/2020/05/16/emplace_back-in-C++/",
+        "categories": [
+            "Tech"
+        ]
+    },
+    {
+        "layout": "post",
+        "uri": "post/2020-05-17-SWAP-Function",
+        "content": "blog  will look several ways implementing swap different ways  Intermedia Variable int   1  int b   2  int tem   a    b  b   temp  Addition Subtraction int   1  int b   2    a b  b   a b    a b  Multiplication Division int   1  int b   2    a b  b   a b    a b  XOR int   1  int b   2    a b  b   b a     b   b  a b    b a b   b b a   0 a     a b        a b  a   a b a   a a b   0 b   b",
+        "objectID": "post/2020-05-17-SWAP-Function",
+        "title": "SWAP Function",
+        "subtitle": "SWAP Function",
+        "description": "In this blog, we will look into several ways of implementing swap in different ways.",
+        "excerpt": "In this blog, we will look into several ways of implementing swap in different ways.",
+        "date": "2020-05-17T00:00:00.000Z",
+        "author": "Junyu",
+        "tags": [
+            "algorithm",
+            "notes",
+            "c++"
+        ],
+        "URL": "/2020/05/17/SWAP-Function/",
+        "categories": [
+            "Tech"
+        ]
+    },
+    {
+        "layout": "post",
+        "uri": "post/2020-11-08-Diff-Array",
+        "content": "Functionality Trick Recovering original array Opearting diff array blog  will talk one trick used solve problems frequent addition subtraction subsection array   Diff Array  Functionality Todo frequent addition subtraction subsection array  e g  Given array arr  add 1 elements arr 0  arr 3  inclusively  then  substract 3 elements arr 2  arr 5  inclusively  will final arr  Trick   Constracting diff array Diff array array recording difference two adjacent elements arr  i e  diffArr i    arr i    arr i 1   vector diffArr arr size     diffArr 0    arr 0    int   0  result diffArr size     result 0    diffArr 0    int   1    diffArr size    i      result i    result i 1  diff i     Opearting diff array method mentioned previous section  add substract amount elements arr a  arr b  inclusively  just need diffArr a     amount diffArr b 1     amount  Remember check b 1 excesses boundary array",
+        "objectID": "post/2020-11-08-Diff-Array",
+        "title": "Diff Array",
+        "subtitle": "Diff Array",
+        "description": "In this blog, we will talk about one trick can be used to solve problems to do with frequent addition and subtraction to a subsection of an array",
+        "excerpt": "In this blog, we will talk about one trick can be used to solve problems to do with frequent addition and subtraction to a subsection of an array",
+        "date": "2020-11-08T00:00:00.000Z",
+        "author": "Junyu",
+        "tags": [
+            "algorithm",
+            "notes",
+            "c++"
+        ],
+        "URL": "/2020/11/08/Diff-Array/",
+        "categories": [
+            "Tech"
+        ]
+    },
+    {
+        "layout": "post",
+        "uri": "post/2021-04-26-FDio-intro",
+        "content": "datapath    FD io        dataplane    FD io       DPDK      VPP    fd io Youtube   datapath       Innovating sh   datapath  FD io              controlplane dataplane                          dataplane                                 dataplane   fd io    VPP        dataplane                   dataplane                                                                          dataplane   VM                 FD io       DPDK      IO        DPDK          DPDK                   DPDK          SDN         VPP VPP   Vector Packet Processor     Cisco   2002         300 000            FD io    L3   IPv4 IPv6  MPLS SR L2                                  VPP                                       VPP        VPP         vSwitch vRouter vFirewall   VPP                 FIB              OVSDPDK FIB",
+        "objectID": "post/2021-04-26-FDio-intro",
+        "title": "FD.io简介",
+        "subtitle": "FD.io简介",
+        "description": "就目前来看，相比controlplane，dataplane得到的发展更受局限，我们少有具有推动性的或特性丰富的dataplane，从而导致了数据中心相关创新的缺乏。我们亟需一个灵活的高性能可编程dataplane，所以fd.io，或者说VPP，出现了。",
+        "excerpt": "就目前来看，相比controlplane，dataplane得到的发展更受局限，我们少有具有推动性的或特性丰富的dataplane，从而导致了数据中心相关创新的缺乏。我们亟需一个灵活的高性能可编程dataplane，所以fd.io，或者说VPP，出现了。",
+        "date": "2021-04-26T00:00:00.000Z",
+        "author": "Junyu",
+        "tags": [
+            "fd-io",
+            "notes"
+        ],
+        "URL": "/2021/04/26/FDio-intro/",
+        "categories": [
+            "Tech"
+        ]
+    },
+    {
+        "layout": "post",
+        "uri": "post/2022-10-21-getopts-in-Bash",
+        "content": "1  Notice 2  Syntax 3  Reference s  1  Notice 1 1 getopts different getopt  1 2 getopts runs system running bash POSIX mode  e g   set  o posix   getopt system tool varies different systems  1 3 getopts parses short options  single dash       letter digit e g   2   d   D  parse short options combination  instance  2dD  option will treated seperately  i e   2dD    2  d  D not equal   2dD   will need getopt cope   2dD   2  Syntax getopts optstring optname   arg   2 1 Every time run getopts  looks one options defined optstring  finds one  places option letter variable named optname  option does not match defined optstring  getopts sets variable optname question mark        will need    switch     case  2 2 option expecting argument  getopts gets argument  places  OPTARG  expected argument not found  variable optname set colon          Getopts increments positional index   OPTIND  indicates next option processed  don t need    switch     case  2 3 However  put colon beginning optstring  getopts runs  silent error checking mode   will not report verbose errors options arguments  need perform error checking script  2 4 silent mode  option unexpected  getopts sets optname      OPTARG unknown option character  2 5 option OK expected argument not found  optname set colon          OPTARG set unknown option character  2 6    needs appear   switch     case error checking  e g  getopts   hi   option  case   option  h  echo  help function     i  ilist  OPTARG        echo  option echo  Invalid option        echo  option echo  no argument     esac done 2 7 special option two dashes        interpreted getopts end options  3  Reference s   Bash Getopts Builtin Command Help Examples   Help Examples  1 Feb  2021  https   www computerhope com unix bash getopts htm",
+        "objectID": "post/2022-10-21-getopts-in-Bash",
+        "title": "getopts in Bash",
+        "subtitle": "getopts in Bash",
+        "description": "getopts in Bash",
+        "excerpt": "getopts in Bash",
+        "date": "2022-10-21T00:00:00.000Z",
+        "author": "Junyu",
+        "tags": [
+            "bash",
+            "notes"
+        ],
+        "URL": "/2022/10/21/getopts-in-Bash/",
+        "categories": [
+            "Tech"
+        ]
+    },
+    {
+        "layout": "post",
+        "uri": "post/2023-11-07-Fluent-Bit-Notes",
+        "content": "fluent bit Structural sketch set config file Though command line parameters ootes fluent bit One day  Insurance Management System Tom built crashed  Good news system recovered rebooting  bad news Tom not know gone wrong  Tom s dad comes says Tom  Fluent Bit telemetry agent designed collect process telemetry data constrained systems cloud infrastructures  Why don t give try   Structural sketch Tom good listener  listened dad checked Fluent Bit website https   docs fluentbit io  found one great picture shows rough structure Fluent Bit  set Tom told dad there re two different methods config Fluent Bit  config file Fluent Bit use config file set Input sources  Filters  Output destinations  etc  Sample config file  locates  etc fluent bit fluent bit conf default   INPUT  Name forward Listen 0 0 0 0 Port 24224 Tag sampleTag  FILTER  Name rewrite_tag Match sampleTag Rule  name             esp  1 false  OUTPUT  Name stdout Match   use specific config file instead default one  use command  bin fluent bit  c example conf   c will indicate new config file  Though command line parameters Instead config file  directly reveal INPUTs  FILTERs OUTPUTs command line  one example be  bin fluent bit  i systemd    p systemdfilter SYSTEMD_UNIT docker service    p tag  sampletag     o forward     fording_server  24224 ootes using fluent bit  Tom found below characteristics  recive forwarded logs fluent bit client  together forward output destinations  we re going install two deb packages including fluent bit one machine  may incur resource race  fluent bit will leverage  etc fluent bit fluent bit conf  One resolve is  ask one client use different config file passing config command line  installing client  adding   force overwrite  Tom not complete happy  thinks discover topic",
+        "objectID": "post/2023-11-07-Fluent-Bit-Notes",
+        "title": "Fluent Bit Client Notes",
+        "subtitle": "Fluent Bit Client Notes",
+        "description": "Fluent Bit Client Notes",
+        "excerpt": "Fluent Bit Client Notesgetopts in Bash",
+        "date": "2023-11-07T00:00:00.000Z",
+        "author": "Junyu",
+        "tags": [
+            "fluent-bit",
+            "tom-show",
+            "notes"
+        ],
+        "URL": "/2023/11/07/Fluent-Bit-Notes/",
+        "categories": [
+            "Tech"
+        ]
+    },
+    {
+        "layout": "post",
+        "uri": "post/2023-12-03-Hugo+Github-Action-Auto-Deploy",
+        "content": "1 Background 2 Steps 3 Good know Reference 1 Background Trying auto deploy Hugo blogs Github Action  2 Steps steps tips covered reference 1 reference 2  3 Good know Action will build base url  use feature create different sub domain github io  e g  create repo called projects display different projects  will added github io prjects site deployment automatically triggered Github Action  need notice time difference Github server local time zone  Reference 1 https   gohugo io hosting and deployment hosting on github  2 https   lucumt info post hugo using github action to auto build deploy",
+        "objectID": "post/2023-12-03-Hugo+Github-Action-Auto-Deploy",
+        "title": "Hugo Site Auto Deployment with Github Action",
+        "subtitle": "Hugo Site Auto Deployment with Github Action",
+        "description": "Hugo Site Auto Deployment with Github Action",
+        "excerpt": "Hugo Site Auto Deployment with Github Action",
+        "date": "2023-12-02T00:00:00.000Z",
+        "author": "Junyu",
+        "tags": [
+            "hugo",
+            "git",
+            "notes"
+        ],
+        "URL": "/2023/12/02/Hugo+Github-Action-Auto-Deploy/",
+        "categories": [
+            "Tech"
+        ]
+    },
+    {
+        "layout": "post",
+        "uri": "post/readme",
+        "content": "Clean White Theme Hugo CleanWhite clean  elegant  fully functional blog theme Hugo  live demo site using theme  based huxblog Jekyll Theme Clean Blog Jekyll Theme  two upstream projects done awesome jobs create blog theme  I m doing porting Hugo  simplicity faster compiling speed  features think useful  site search algolia proxy Disqus access China  built CleanWhite theme  fancy features upstream projects not supported Hugo theme  I d simple possible focus blog purpose  least now  created theme  followed Hugo theme best practice tried every part template replaceable partial html  so easier customization based it  Screenshots Home Post Search Disqus Wechat Pay   Alipay Quick Start Go directory Hugo site run    mkdir themes   cd themes   git clone https   github com zhaohuabing hugo theme cleanwhite git site already git project  may want choose add cleanwhite theme submodule avoid messing existing git repository    mkdir themes   git submodule add https   github com zhaohuabing hugo theme cleanwhite git themes hugo theme cleanwhite Run Hugo Build in Server Locally   hugo serve  t hugo theme cleanwhite enter localhost 1313 address bar browser  start scratch  working Hugo site configured CleanWhite theme exampleSite directory  use starting point site  information read official setup guide Hugo Configuration First  let s look config toml  will useful learn customize site  Feel free play around settings  Comments optional comments system powered Disqus  want enable comments  create account Disqus write down shortname  disqusShortname    your disqus short name  disable comments system leaving disqusShortname empty  Disqus China Disqus inaccessible China  work  set proxy disqus php api host sets client browser Disqus server  idea Disqus reached guest network  blog page will show original Disqus comments UI  otherwise  will downgrade use proxy access Disqus  UI will little different  visitors write comments page  client side java script already integrated CleanWhite them  need set proxy server yourself  proxy written php  found here  https   github com zhaohuabing disqus php api tree master api need specify Disqus account information config php  define  PUBLIC_KEY        define  SECRET_KEY        define  DISQUS_USERNAME        define  DISQUS_EMAIL        define  DISQUS_PASSWORD        define  DISQUS_WEBSITE        define  DISQUS_SHORTNAME        Set proxy server address site config file Hugo project  disqus_proxy    http   yourdisqusproxy com  Site Search Algolia Follow tutorial create index Algolia  index just storage indexing data site cloud   search page CleanWhite theme will utilize indexing data search  Go directory Hugo site run following commands    npm init   npm install atomic algolia   save Next  open newly created package json  we ll add NPM script update index Algolia  Find  scripts   add following   algolia    atomic algolia  Algolia index output format already supported CleanWhite theme  so just build site  you ll find file called algolia json root  use update index Algolia  Generate index file    hugo Create new file root Hugo project called  env  add following contents  ALGOLIAAPPID    YOURAPPID    ALGOLIAADMINKEY    YOURADMINKEY    ALGOLIAINDEXNAME    YOURINDEXNAME    ALGOLIAINDEXFILE    PATH TO algolia json    push index Algolia simply running    npm run algolia Add following variables hugo site config so search page access algolia index data cloud  algolia_search   true algoliaappId      YOURAPP_ID    algoliaindexName      YOURINDEX_NAME    algoliaapiKey      YOURSEARCHONLYKEY    Open search page browser  http   localhost 1313 search Analytics optionally enable Google Baidu Analytics  Type tracking code googleAnalytics    G XXXXX  batrackid    XXXXXXXXXXXXXXXX  Leave googleAnalytics  batrackid   key empty disable it  Wechat Pay   Alipay Rewards enable Wechat Pay   Alipay allow readers send money  So articles  may even rewards writing  motivated write more  Enable Wechat Pay   Alipay site config reward   true Replace QR codes Wechat Pay   Alipay overriding photos folder  static img reward   otherwise money will sent accounts  Thank Thanks great jobs huxblog Jekyll Theme Clean Blog Jekyll Theme two upstream projects CleanWhite Hugo theme based on  Feedback find problems  please feel free raise issue create pull request fix it  it s helpful you  appreciate star repository  thanks",
+        "objectID": "post/readme",
+        "title": "Clean White Theme for Hugo",
+        "subtitle": "How to set up this theme",
+        "date": "2019-01-09T00:00:00.000Z",
+        "author": "赵化冰",
+        "image": "https://img.zhaohuabing.com/post-bg-2015.jpg"
+    }
+]
