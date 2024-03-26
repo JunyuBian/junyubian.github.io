@@ -1,6 +1,6 @@
-baseurl = "https://junyubian.github.io"
-title = "Junyu Blog"
-theme = "cleanwhite"
+baseurl = "https://zhaohuabing.com"
+title = "Huabing Blog"
+theme = "hugo-theme-cleanwhite"
 languageCode = "en-us"
 # Enable comments by entering your Disqus shortname
 disqusShortname = ""
@@ -13,11 +13,11 @@ hasCJKLanguage = true
 home = ["HTML", "RSS", "Algolia"]
 
 [params]
-  header_image = "img/home-bg.jpg"
-  SEOTitle = "边俊宇的博客 | Junyu Blog"
-  description = "边俊宇，程序员, 业余钢琴，摄影爱好者"
-  keyword = "边俊宇, Junyu, JunyuBian, , 边俊宇的网络日志, 边俊宇的博客, Junyu Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice"
-  slogan = "Salvation lies within."
+  header_image = "img/home-bg-jeep.jpg"
+  SEOTitle = "赵化冰的博客 | Zhaohuabing Blog"
+  description = "赵化冰，程序员, 开源爱好者，生活探险家 | 这里是 赵化冰 的博客，与你一起发现更大的世界。"
+  keyword = "赵化冰, zhaohuabing, Zhaohuabing, , 赵化冰的网络日志, 赵化冰的博客, Zhaohuabing Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice"
+  slogan = "路在脚下，心向远方"
   upstreamAttribution = true
 
   image_404 = "img/404-bg.jpg"
@@ -36,8 +36,9 @@ home = ["HTML", "RSS", "Algolia"]
   algolia_apiKey = ""
 
   # Sidebar settings
-  sidebar_about_description = "Software Developer, Amateur Pianist, Photographer"
-  sidebar_avatar = "img/junyu.png"      # use absolute URL, seeing it's used in both `/` and `/about/`
+  sidebar_about_description = "Software Developer, Open Source Enthusiast and Life Adventurer"
+  #sidebar_avatar = "img/avatar-zhaohuabing.jpg"      # use absolute URL, seeing it's used in both `/` and `/about/`
+  sidebar_avatar = "img/zhaohuabing.png"      # use absolute URL, seeing it's used in both `/` and `/about/`
 
   featured_tags = true 
   featured_condition_size = 1 
@@ -55,10 +56,10 @@ home = ["HTML", "RSS", "Algolia"]
   twikoo_env_id = ""
 
   #Enable wechat pay & alipay to allow readers send reward money if they like the articles 
-  reward = false 
+  reward = true 
   # reward_guide = "如果这篇文章对你有用,请随意打赏" 
 
-  friends = false
+  friends = true
   bookmarks = false
   about_me = true
 
@@ -68,15 +69,15 @@ home = ["HTML", "RSS", "Algolia"]
 
   [params.social]
   rss            = true 
-  email          = "junyubian@gmail.com"
-  facebook      = "https://www.facebook.com/profile.php?id=100010301021817"
+  email          = "youremail@gmail.com"
+  #facebook      = "full profile url in facebook"
   #googleplus    = "full profile url in googleplus"
-  twitter       = "https://twitter.com/junyu_bian"
-  linkedin       = "https://www.linkedin.com/in/junyu-bian-942336191/"
-  # stackoverflow  = "https://stackoverflow.com/users/yourstackoverflowid"
+  #twitter       = "full profile url in twitter"
+  linkedin       = "https://www.linkedin.com/in/yourlinkedinid"
+  stackoverflow  = "https://stackoverflow.com/users/yourstackoverflowid"
   #instagram     = "full profile url in instagram"
-  github         = "https://github.com/JunyuBian"
-  # wechat         = "your wechat qr code image"
+  github         = "https://github.com/yourgithub"
+  wechat         = "your wechat qr code image"
   #medium        = "full profile url in medium"
   #slack         = "full workspace url in slack"
   #pinterest     = "full profile url in pinterest"
@@ -105,17 +106,11 @@ home = ["HTML", "RSS", "Algolia"]
   href = "https://unsplash.com"
   
   [[params.addtional_menus]]
-  title =  "NOTES"
-  href =  "/notes/"
-  [[params.addtional_menus]]
   title =  "ARCHIVE"
   href =  "/archive/"
   [[params.addtional_menus]]
-  title =  "PUBLICATIONS"
-  href =  "/publications/"
-  [[params.addtional_menus]]
-  title =  "LEETCODE"
-  href =  "/leetcode/"
+  title =  "NOTES"
+  href =  "/notes/"
   [[params.addtional_menus]]
   title =  "ABOUT"
   href =  "/about/"
