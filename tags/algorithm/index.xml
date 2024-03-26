@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>algorithm on Junyu Blog</title>
+    <link>https://junyubian.github.io/tags/algorithm/</link>
+    <description>Recent content in algorithm on Junyu Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 08 Nov 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://junyubian.github.io/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Diff Array</title>
+      <link>https://junyubian.github.io/2020/11/08/Diff-Array/</link>
+      <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/2020/11/08/Diff-Array/</guid>
+      <description>Functionality Trick Recovering original array Opearting a diff array In this blog, we will talk about one trick can be used to solve problems to do with frequent addition and subtraction to a subsection of an array - Diff Array.
+Functionality Todo with frequent addition and subtraction to a subsection of an array.
+e.g. Given array arr, add 1 for elements between arr[0] and arr[3] inclusively, then, substract 3 for elements between arr[2] and arr[5] inclusively, what will be the final arr.</description>
+    </item>
+    <item>
+      <title>SWAP Function</title>
+      <link>https://junyubian.github.io/2020/05/17/SWAP-Function/</link>
+      <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/2020/05/17/SWAP-Function/</guid>
+      <description>In this blog, we will look into several ways of implementing swap in different ways.
+Intermedia Variable int a = 1; int b = 2; int tem = a; a = b; b = temp; Addition and Subtraction int a = 1; int b = 2; a = a+b; b = a-b; a = a-b; Multiplication and Division int a = 1; int b = 2; a = a*b; b = a/b; a = a/b; XOR int a = 1; int b = 2; a = a^b; b = b^a; // b = b^(a^b) = b^a^b = b^b^a = 0^a = a a = a^b; // a = (a^b)^a = a^b^a = a^a^b = 0^b = b </description>
+    </item>
+    <item>
+      <title>EMPLACE_BACK in C&#43;&#43;</title>
+      <link>https://junyubian.github.io/2020/05/16/emplace_back-in-C&#43;&#43;/</link>
+      <pubDate>Sat, 16 May 2020 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/2020/05/16/emplace_back-in-C&#43;&#43;/</guid>
+      <description>There are different type of containers in C++ STL. To add a new element into the back of a container, we normally use push_back(). In this blog, we will look into a new way of performing push back - emplace_back(). Background Knowledge Rvalue References: with aim of increasing the efficiency of C++, rvalues are included. It doesn&amp;rsquo;t need to copy the value, the rvalue reference is bound to the value</description>
+    </item>
+    <item>
+      <title>KMP Algorithm</title>
+      <link>https://junyubian.github.io/2020/04/17/KMP-Algorithm/</link>
+      <pubDate>Fri, 17 Apr 2020 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/2020/04/17/KMP-Algorithm/</guid>
+      <description>Background&amp;hellip; Once upon a time, Tom asked his father to find abab inside abcaabababaa.
+Tom&amp;rsquo;s dad did this in a traditional way (brute force). He compared each character of the first string with each character of the second string. When he find one character not matching, for example, the third character in the second string in this case, he start again from the second character of the second string. It went on and on and on&amp;hellip;</description>
+    </item>
+  </channel>
+</rss>
