@@ -68,6 +68,13 @@ jobs:
         with:
           path: ./public
 
+      - name: Install nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - run: npm i pagefind
+      - run: npx pagefind --source public --bundle-dir search
+
   # Deployment job
   deploy:
     environment:
