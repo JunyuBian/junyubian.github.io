@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hugo on Junyu Blog</title>
+    <link>https://junyubian.github.io/tags/hugo/</link>
+    <description>Recent content in hugo on Junyu Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Dec 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://junyubian.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo Site Auto Deployment with Github Action</title>
+      <link>https://junyubian.github.io/2023/12/02/Hugo&#43;Github-Action-Auto-Deploy/</link>
+      <pubDate>Sat, 02 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://junyubian.github.io/2023/12/02/Hugo&#43;Github-Action-Auto-Deploy/</guid>
+      <description>1-Background 2-Steps 3-Good to know Reference 1-Background Trying to auto deploy Hugo blogs with Github Action.
+2-Steps Most steps and tips have been covered by reference#1 and reference#2.
+3-Good to know Action will build from base url, could use this feature to create different sub domain under github.io. e.g. create a repo called projects to display different projects, this will be added to github.io/prjects
+If site deployment is automatically triggered by Github Action, need to notice the time difference between Github server and local time zone.</description>
+    </item>
+  </channel>
+</rss>

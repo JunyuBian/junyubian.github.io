@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <meta property="og:site_name" content="Junyu Blog">
+    <meta property="og:type" content="article">
+
+    
+    <meta property="og:image" content="https://junyubian.github.io/img/home-bg.jpg">
+    <meta property="twitter:image" content="https://junyubian.github.io/img/home-bg.jpg" />
+    
+
+    
+    <meta name="title" content="" />
+    <meta property="og:title" content="" />
+    <meta property="twitter:title" content="" />
+    
+
+    
+    <meta name="description" content="边俊宇，程序员, 业余钢琴，摄影爱好者">
+    <meta property="og:description" content="边俊宇，程序员, 业余钢琴，摄影爱好者" />
+    <meta property="twitter:description" content="边俊宇，程序员, 业余钢琴，摄影爱好者" />
+    
+
+    
+    <meta property="twitter:card" content="summary" />
+    
+    
+
+    <meta name="keyword"  content="边俊宇, Junyu, JunyuBian, , 边俊宇的网络日志, 边俊宇的博客, Junyu Blog, 博客, 个人网站, 互联网, Web, 云原生, PaaS, Istio, Kubernetes, 微服务, Microservice">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>边俊宇的博客 | Junyu Blog</title>
+
+    <link rel="canonical" href="/notes/">
+
+    
+    
+    
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    
+    <link rel="stylesheet" href="/css/hugo-theme-cleanwhite.min.css">
+
+    
+    <link rel="stylesheet" href="/css/zanshang.css">
+
+    
+    <link rel="stylesheet" href="/css/font-awesome.all.min.css">
+
+    
+    
+
+    
+    <script src="/js/jquery.min.js"></script>
+
+    
+    <script src="/js/bootstrap.min.js"></script>
+
+    
+    <script src="/js/hux-blog.min.js"></script>
+
+    
+    <script src="/js/lazysizes.min.js"></script>
+
+    
+    
+
+</head>
+
+
+
+
+
+
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+
+    <div class="container-fluid">
+        
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Junyu Blog</a>
+        </div>
+
+        
+        
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">All Posts</a>
+                    </li>
+                    
+                        
+                        <li>
+                            <a href="/categories/proj/">proj</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/categories/tech/">tech</a>
+                        </li>
+                        
+                    
+                    
+		    
+                        <li><a href="/notes//">NOTES</a></li>
+                    
+                        <li><a href="/archive//">ARCHIVE</a></li>
+                    
+                        <li><a href="/publications//">PUBLICATIONS</a></li>
+                    
+                        <li><a href="/leetcode//">LEETCODE</a></li>
+                    
+                        <li><a href="/about//">ABOUT</a></li>
+                    
+		            <li>
+                        <a href="/search"><i class="fa fa-search"></i></a>
+		           </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+    
+</nav>
+<script>
+    
+    
+    
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        
+            $navbar.className = " ";
+            
+            setTimeout(function(){
+                
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+
+
+<style type="text/css">
+    header.intro-header {
+        background-image: url('/img/home-bg.jpg')
+    }
+</style>
+
+<header class="intro-header" >
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                    </div>
+                    <h1></h1>
+                    <h2 class="subheading"></h2>
+                    <span class="meta">
+                        
+                            Posted by 
+                            
+                                    Junyu Blog
+                             
+                            on 
+                            Monday, January 1, 0001
+                            
+                            
+                            
+                            
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+
+
+<article>
+    <div class="container">
+        <div class="row">
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                
+                <h1 id="1-operating-systems">1-Operating Systems</h1>
+<h2 id="11-进程和线程">1.1-进程和线程</h2>
+<ol>
+<li>进程：系统进行资源分配的基本单位；</li>
+<li>线程：CPU调度的基本单位：
+<ol>
+<li>共享进程的全部资源；</li>
+<li>独有程序计数器、寄存器和栈。</li>
+</ol>
+</li>
+</ol>
+<h2 id="12-进程通信">1.2-进程通信</h2>
+<p>低级通信：用信号量进行的进程间的互斥和同步；</p>
+<p>高级通信：利用操作系统所提供的一组通信命令传送大量数据的通信方式：</p>
+<ol>
+<li>共享存储器系统：例：剪贴板；</li>
+<li>消息传递系统：例：邮槽；</li>
+<li>管道通信系统；</li>
+</ol>
+<p>通信方式：</p>
+<ol>
+<li>管道：
+<ol>
+<li>有名管道：单向通信，有固定的读端和写端，半双工通信方式，允许无亲缘关系进程间的通信；</li>
+<li>无名管道：数据单向流动，只能在具有亲缘关系的进程间使用；</li>
+</ol>
+</li>
+<li>信号量：是一个计数器，控制多进程对共享资源的访问，作为一种锁机制；</li>
+<li>消息队列：消息的链表；</li>
+<li>信号；</li>
+<li>共享内存：最快的IPC，常与信号量配合，实现进程间的同步和通信；</li>
+<li>套接字。</li>
+</ol>
+<h2 id="13-线程通信">1.3-线程通信</h2>
+<ol>
+<li>互斥量；</li>
+<li>信号量；</li>
+<li>信号。</li>
+</ol>
+<h2 id="14-死锁">1.4-死锁</h2>
+<p>概念：在多个并发进程中，某个进程持有某种资源而又等待别的进程释放他们保持的资源，在为改变状态之前不能向前推进，从而在这一组进程中产生了死锁，多个进程被无限期地阻塞、相互等待的状态；</p>
+<p>必要条件：</p>
+<ol>
+<li>互斥：一个资源每次只能被一个进程使用；</li>
+<li>不可抢占：进程已获得的资源，在未使用完之前，不能前行剥夺；</li>
+<li>占有并等待：一个进程因请求资源而阻塞时，对已获得的资源保持不放；</li>
+<li>环形等待：若干进程之间形成一种首尾相接的循环等待资源关系；</li>
+</ol>
+<p>死锁的解除与预防：</p>
+<ol>
+<li>破坏互斥：
+<ul>
+<li>允许系统资源都能共享；</li>
+<li>缺点：有些资源不能同时访问，如打印机，且在某些场合应保护互斥性；</li>
+</ul>
+</li>
+<li>破坏占有并等待：
+<ul>
+<li>预先静态分配，在进程运行前一次申请完它所需要的全部资源，在它的资源未满足前，不投入运行，一旦投入运行资源全部归他所有；</li>
+<li>缺点：系统资源浪费，个别资源长期被占用，导致一些进程不能运行；</li>
+</ul>
+</li>
+<li>破坏不可抢占：
+<ul>
+<li>当一个进程保持了某些资源，请求新资源而不能被满足时，必须释放所保持的资源，以后重新申请；</li>
+<li>缺点：实现复杂，释放资源可能会造成前一阶段工作失效，常用于易于保存和回恢复的资源；</li>
+</ul>
+</li>
+<li>破坏循环等待：
+<ul>
+<li>给系统资源编号，规定进程必须按照编号递增的顺序请求资源；</li>
+<li>缺点：实现复杂，编号不一定与实际使用顺序相同；</li>
+</ul>
+</li>
+</ol>
+<p>避免死锁的方式：</p>
+<ol>
+<li>判断系统状态：在分配前，先计算分配的安全性；</li>
+<li>银行家算法：
+<ol>
+<li>申请的贷款额度不能超过银行西安有资金总额；</li>
+<li>分批次向银行提款，但是贷款额度不能超过一开始最大需求量的总额；</li>
+<li>暂时不能满足客户申请的资金额度时，在有限时间内给予贷款；</li>
+<li>客户要在规定时间内还款。</li>
+</ol>
+</li>
+</ol>
+<h2 id="15-分段与分页内存管理的区别">1.5-分段与分页内存管理的区别</h2>
+<ol>
+<li>分段：符合用户视角，将地址空间分为若干段：代码段、数据段、堆、栈；</li>
+<li>分页：方便系统管理，将逻辑地址划分为固定大小的页，物理内存划分为同样大小的帧，方便程序加载。</li>
+</ol>
+<h2 id="16-虚拟内存">1.6-虚拟内存</h2>
+<ol>
+<li>让每个进程拥有独立的地址空间，且这些空间被分为大小相等的页，被映射到物理内存中，对进程而言，逻辑上有很大的内存空间，但其中一部分对应于物理内存，还有一些在硬盘上；</li>
+<li>页面置换算法：FIFO、LRU、LFU、OPT；</li>
+<li>优点：
+<ol>
+<li>物理内存可为多个进程共享；</li>
+<li>通过共享页允许进程间共享内存</li>
+</ol>
+</li>
+<li>虚拟内存大小：
+<ol>
+<li>对于32位：0-2^32 ~= 0-4G；</li>
+<li>对于64位：0-2^64；</li>
+</ol>
+</li>
+</ol>
+<h1 id="2-computer-network">2-Computer Network</h1>
+<h2 id="21-https加密过程">2.1-Https加密过程</h2>
+<ol>
+<li>客户端发起握手请求；</li>
+<li>服务端返回已有的<code>证书公钥</code>（服务端通过CA认证后，拥有<code>证书公钥</code>和<code>证书私钥</code>）；</li>
+<li>客户端验证证书是否有效；</li>
+<li>若证书有效，则生成一个<code>随机数</code>；</li>
+<li>用<code>证书公钥</code>加密生成的随机数；</li>
+<li>将加密后的<code>密钥</code>发送给服务端；</li>
+<li>服务端用<code>证书私钥</code>解密密钥；</li>
+<li>服务端使用解密出的密钥加密要发送的内容并发送给客户端；</li>
+<li>客户端使用秘钥解密信息。</li>
+</ol>
+<h2 id="22-对称加密与非对称加密">2.2-对称加密与非对称加密</h2>
+<p>对称加密：加密和解密使用同一个密钥；</p>
+<p>非对称加密：使用公钥和私钥进行加解密。</p>
+<h2 id="23-close_wait和time_wait">2.3-CLOSE_WAIT和TIME_WAIT</h2>
+<p>在四次挥手中，</p>
+<p>CLOSE_WAIT：服务端收到FIN后，发送ACK给客户端，之后进入CLOSE_WAIT状态；</p>
+<p>TIME_WAIT：客户端收到FIN后，发送ACK给服务端，之后进入TIME_WAIT状态。</p>
+<h2 id="24-tcp如何保证传输可靠性">2.4-TCP如何保证传输可靠性</h2>
+<ol>
+<li>数据包校验；</li>
+<li>重排序：TCP将失序数据进行重新排序后才交给应用层；</li>
+<li>应答机制：回复ACK；</li>
+<li>超时重传；</li>
+<li>流量控制：TCP连接的每一方都有固定大小缓冲空间，通过可变大小的滑窗协议完成。</li>
+</ol>
+<h2 id="25-如何预防tcp的ddos攻击">2.5-如何预防TCP的DDos攻击</h2>
+<ol>
+<li>
+<p>限制同时打开SYN半链接的数目；</p>
+<p>方法：在注册表中对TCPMaxHalfOpen相关参数进行调整；</p>
+<p>TCPMaxHalfOpen相关参数：</p>
+<ol>
+<li>SynAttackProtect：决定了系统受到SYN攻击时采取的保护措施，包括减少系统SYN+ACK的重试次数等；</li>
+<li>TcpMaxHalfOpen：系统允许同时打开的半链接值；</li>
+<li>TcpMaxHalfOpenRetried：决定在什么情况下系统打开SYN攻击保护；</li>
+</ol>
+</li>
+<li>
+<p>缩短SYN半链接的Time out时间。</p>
+</li>
+</ol>
+<h2 id="26-tcp如何实现拥塞控制">2.6-TCP如何实现拥塞控制</h2>
+<ol>
+<li>慢启动：以指数方式，由小到大逐渐增加拥塞窗口(cwnd)的大小，慢启动达到ssthresh阈值则进入拥塞避免；</li>
+<li>拥塞避免：每经过一个往返时间RTT就把发送方拥塞窗口增加1，按照线性增长，发生拥塞，cwnd降为1，重新慢启动；</li>
+<li>快重传：接收方收到失序报文后，立即发出重复确认，发送方收到三个连续重复确认则立即重传；</li>
+<li>快恢复：发送方收到重复确认后，执行<code>乘法减小</code> ，把ssthresh减半，但不执行慢开始，因为如果发生阻塞，不会收到多个重复确认，而是将cwnd设置为ssthresh大小进行拥塞避免。</li>
+</ol>
+<h2 id="27-从输入网址到获得页面的过程">2.7-从输入网址到获得页面的过程</h2>
+<ol>
+<li>浏览器通过DNS查询对应IP地址：
+<ol>
+<li>浏览器搜索自身DNS缓存；</li>
+<li>搜索操作系统DNS缓存；</li>
+<li>向本地DNS服务器进行查询；</li>
+<li>若不在本地域名服务器，则递归或迭代查询：
+<ol>
+<li>递归查询：服务器作为DNS客户向根服务器查询；</li>
+<li>迭代查询：根服务器告知服务器需要查询的IP，服务器自己进行查询；</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>获取IP地址后，浏览器向服务器请求建立连接，发起三次握手；</li>
+<li>TCP连接建立后，浏览器向服务器发送HTTP请求；</li>
+<li>浏览器对请求进行处理，并将处理结果返回给浏览器；</li>
+<li>浏览器进行渲染，呈现页面给用户。</li>
+</ol>
+<h2 id="28-session-与-cookie">2.8-Session 与 Cookie</h2>
+<p><strong>Session</strong>：</p>
+<ol>
+<li>
+<p>用户访问服务器时，服务器首先检查请求中是否包含sessionId，若包含，说明session已创建，若不包含，则为用户建立一个session并分配sessionId（依赖Cookie）；</p>
+</li>
+<li>
+<p>用户提交表单时，浏览器将用户的SessionId附在HTTP头信息中，服务器处理完表单将结果返回sessionId对应的用户；</p>
+</li>
+<li>
+<p>若Cookie被禁用：</p>
+<ol>
+<li>URL重写：直接将sessionId附在URL后；
+2. 表单隐藏字段：修改表单，添加一个隐藏字段，以便提交时能够回传sessionId</li>
+</ol>
+</li>
+<li>
+<p>session共享：修改cookie的域名为父域名；</p>
+</li>
+<li>
+<p>使用场景：购物车；</p>
+</li>
+</ol>
+<p><strong>Cookie</strong>：</p>
+<ol>
+<li>若服务器需要记录用户状态，则使用response向客户端颁发一个cookie，再次请求时，浏览器将请求网址连同cookie一起提交给服务器；</li>
+<li>会话Cookie和持久Cookie：
+<ol>
+<li>会话cookie：不设置过期时间，关闭浏览器窗口，cookie就消失，一般保存在内存里而不是硬盘上；</li>
+<li>持久cookie：设置了过期时间，cookie有效指导超过了设定的过期时间，一般存储在硬盘上；</li>
+</ol>
+</li>
+<li>使用场景：登录网站。</li>
+</ol>
+<h2 id="29-七层网络体系结构">2.9-七层网络体系结构</h2>
+<ol>
+<li>物理层：实现相邻计算机节点之间比特流透明传送；</li>
+<li>数据链路层：接手物理层的位流行驶数据，封装成帧，传送到上一层，同样，也将上一层的数据帧，拆装成位流转发到物理层；</li>
+<li>网络层：将网络地址翻译为对应的物理地址，并通过路由算法选择最佳路径；</li>
+<li>传输层：为不同主机上运行的进程提供逻辑通信；
+<ol>
+<li>区别于网络层：网络层完成主机间的逻辑通信，传输层完成应用进程间的逻辑通信；</li>
+</ol>
+</li>
+<li>会话层：应用程序与网络之间的接口，负责在网络中的两节点之间建立、维持和终止通信；</li>
+<li>表示层：对来自应用层的命令和数据进行解释；</li>
+<li>应用层：为用户的应用进程提供网络通信服务。</li>
+</ol>
+<h2 id="210-tcp和udp对应的常见应用层协议">2.10-TCP和UDP对应的常见应用层协议</h2>
+<ol>
+<li>TCP：
+<ol>
+<li>FTP：文件传输协议；</li>
+<li>Telnet：用于远程登录的端口：
+<ol>
+<li>和ssh的区别：
+<ol>
+<li>telnet为明文传送，ssh为加密传送；</li>
+<li>ssh使用公钥对服务器的用户进行身份验证，telnet没有使用公钥；</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>SMTP：邮件传送协议，用于发送邮件；</li>
+<li>POP3：用于接收邮件；</li>
+<li>HTTP；</li>
+</ol>
+</li>
+<li>UDP：
+<ol>
+<li>DNS：域名解析服务；</li>
+<li>SNMP：网络管理协议，用于管理网络设备；</li>
+<li>TFTP：简单文件传输协议。</li>
+</ol>
+</li>
+</ol>
+<h2 id="211-arp">2.11-ARP</h2>
+<ol>
+<li>将IP地址转换为MAC地址；</li>
+<li>网络通过帧进行传输，帧里面需要目标主机的MAC地址。</li>
+</ol>
+<h2 id="212-常见状态码">2.12-常见状态码</h2>
+<p>1XX：请求已被接受，正在处理；</p>
+<p>2XX：请求成功被处理；</p>
+<p>3XX：重定向：</p>
+<p>​	301：永久性转移；</p>
+<p>​	302：暂时性转移；</p>
+<p>​	304：已缓存；</p>
+<p>4XX：客户端请求不合法：</p>
+<p>​	400：请求语法有问题；</p>
+<p>​	403：拒绝请求；</p>
+<p>​	404：客户端所访问的页面不存在；</p>
+<p>5XX：服务器不能处理合法请求：</p>
+<p>​	500：服务器内部错误；</p>
+<p>​	503：服务暂时不可用。</p>
+<h1 id="3-c">3-C++</h1>
+<h2 id="31-虚函数和纯虚函数">3.1-虚函数和纯虚函数</h2>
+<ol>
+<li>虚函数：为了动态绑定，允许被子类重新定义的成员函数， virtual returnType func(parameter);</li>
+<li>纯虚函数：为了派生接口，virtual returnType func(parameter) = 0;</li>
+<li>基类需要虚析构函数的原因：防止内存泄漏，假如没有虚析构函数，释放一个由基类指向派生类的对象是，不触发动态绑定，则只会调用基类析构函数，而不会调用派生类的，从而导致派生类内存空间的不到释放。</li>
+</ol>
+<h2 id="32-static和const关键字">3.2-static和const关键字</h2>
+<p>static：存储在静态存储区，未初始化时自动初始化为0：</p>
+<ol>
+<li>局部变量：
+<ol>
+<li>变为静态局部变量；</li>
+<li>作用域仍为局部作用域；</li>
+<li>离开作用域仍驻留在内存中，但不可访问；</li>
+</ol>
+</li>
+<li>全局变量：
+<ol>
+<li>变为全局静态变量；</li>
+<li>在声明的文件之外不可见；</li>
+</ol>
+</li>
+<li>成员变量：
+<ol>
+<li>变为类的全局变量，被类的对象共享，包括派生类的对象；</li>
+<li>必须在类外进行初始化，如int base::var = 10;，但可以用const修饰static数据成员，从而在类内初始化；</li>
+</ol>
+</li>
+<li>成员函数：
+<ol>
+<li>使得成员函数为所有对象共享，不含this指针；</li>
+<li>可以独立访问，不需要创建实例，如base::func(3, 5);</li>
+<li>不可直接引用类的非静态成员，但是可以引用静态成员；</li>
+<li>不可同时用const和static修饰成员函数（const含this指针，static不含，冲突）；</li>
+</ol>
+</li>
+</ol>
+<p>const：</p>
+<ol>
+<li>表明变量不可修改；</li>
+<li>限定成员函数不可修改任何数据成员；</li>
+<li>const与指针：
+<ol>
+<li>const char *p：指向的内容不能改变；</li>
+<li>char * const p：将p声明为常指针，地址不能变，但是内容可变。</li>
+</ol>
+</li>
+</ol>
+<h2 id="33-c的内存分区">3.3-C++的内存分区</h2>
+<ol>
+<li>栈区（stack）：主要存放函数参数以及局部变量，由系统自动分配释放；</li>
+<li>堆区（heap）：用户通过malloc/new手动申请释放，分配类似链表；</li>
+<li>全局/静态区：存放全局变量、静态变量；</li>
+<li>字符串常量区：字符串常量；</li>
+<li>代码区：程序的二进制代码。</li>
+</ol>
+<h2 id="34-stl容器">3.4-STL容器</h2>
+<p>底层数据结构：</p>
+<ol>
+<li>vector：数组；</li>
+<li>map、multimap：红黑树；</li>
+<li>unordered_map、unordered_nultimap：哈希表。</li>
+</ol>
+<h2 id="35-内存泄漏">3.5-内存泄漏</h2>
+<ol>
+<li>一般为堆内存泄漏，即程序在运行中动态申请的内存空间不使用后，未及时释放；</li>
+<li>解决：
+<ol>
+<li>良好编程习惯；</li>
+<li>重载new和delete，以链表形式自动管理分配的内存；</li>
+<li>使用智能指针。</li>
+</ol>
+</li>
+</ol>
+<h2 id="36-32位64位系统中常用内置数据类型所占字节数">3.6-32位、64位系统中，常用内置数据类型所占字节数</h2>
+<ol>
+<li>32位：
+<ol>
+<li>char：1字节；</li>
+<li>指针变量：4字节；</li>
+<li>short int：2字节；</li>
+<li>int：4字节；</li>
+<li>unsigned int：4字节；</li>
+<li>float：4字节；</li>
+<li>double：8字节；</li>
+<li>long：4字节；</li>
+<li>unsigned long：4字节；</li>
+<li>long long：8字节；</li>
+</ol>
+</li>
+<li>64位：
+<ol>
+<li>char：1字节；</li>
+<li>指针变量：8字节；</li>
+<li>short int：2字节；</li>
+<li>int：4字节；</li>
+<li>unsigned int：4字节；</li>
+<li>float：4字节；</li>
+<li>double：8字节；</li>
+<li>long：8字节；</li>
+<li>unsigned long：8字节；</li>
+<li>long long：8字节。</li>
+</ol>
+</li>
+</ol>
+<h2 id="37-inlinevolatile关键字">3.7-inline、volatile关键字</h2>
+<ol>
+<li>inline：解决频繁调用小函数大量消耗栈空间的问题；</li>
+<li>volatile：表明类型变量可被更改，不再优化，需要从如内存中重新读取。</li>
+</ol>
+<h2 id="38-深拷贝与浅拷贝">3.8-深拷贝与浅拷贝</h2>
+<p>拷贝函数使用场景：</p>
+<ol>
+<li>一个对象以值的方式传入函数体；</li>
+<li>一个对象以值的方式从函数返回；</li>
+<li>一个对象需通过另一个对象进行初始化；</li>
+</ol>
+<p>区别：</p>
+<ol>
+<li>浅拷贝：只是增加一个指针指向已存在的内存地址；</li>
+<li>深拷贝：增加一个指针，并且申请一个新的内存用于存放复制的对象。</li>
+</ol>
+<h2 id="39-派生类构造析构函数调用顺序">3.9-派生类构造/析构函数调用顺序</h2>
+<ol>
+<li>构造函数：先基后派；</li>
+<li>析构函数：先派后基。</li>
+</ol>
+<h2 id="310-数据成员初始化顺序">3.10-数据成员初始化顺序</h2>
+<p>顺序：</p>
+<ol>
+<li>基类的静态变量或全局变量；</li>
+<li>派生类的静态变量或全局变量；</li>
+<li>基类的成员变量；</li>
+<li>派生类的成员变量。</li>
+</ol>
+<h2 id="311-static_cast-dynamic_cast-const_cast-reinpreter_cast区别">3.11-static_cast, dynamic_cast, const_cast, reinpreter_cast区别</h2>
+<p>static_cast与dynamic_cast：</p>
+<ol>
+<li>发生时间不同，一个是static编译时，一个是runtime运行时；</li>
+<li>static_cast为强制类型转换，不提供运行时的检查；</li>
+<li>dynamic_cast用于转换指针和引用，不可用于转换对象，主要用于类层次间的上行和下行转换：
+<ol>
+<li>上行转换：B继承自A，由B转换为A；</li>
+<li>下行转换：B继承自A，A转换为B；</li>
+</ol>
+</li>
+<li>上行转换时，static_cast和dynamic_cast效果相同，下行转换时，dynamic_cast具有类型检查，更安全。</li>
+</ol>
+<h2 id="312-定义一个空类-编译器会做什么">3.12-定义一个空类 编译器会做什么</h2>
+<ol>
+<li>当用到相关函数时，编译器会去自动生成：默认构造函数、默认拷贝构造函数、默认拷贝赋值操作符、默认析构函数；</li>
+<li>所有自动生成的函数都是inline和public的。</li>
+</ol>
+<h2 id="313-哪些函数不能成为虚函数">3.13-哪些函数不能成为虚函数</h2>
+<ol>
+<li>构造函数：假如子类继承基类构造函数，则子类对象将使用基类构造函数构造，而基类的构造函数并不知道自类的成员，不符合语义，且，多态是通过基类指针指向子类对象实现多态的，在对象构造之前，并没有对象产生，因此无法使用多态特性，是矛盾的；</li>
+<li>内联成员函数：内联函数在编译时展开，而虚函数是在运行时绑定的，两者相违背；</li>
+<li>静态成员函数：在编译时确定，无法动态绑定，不支持多态。</li>
+</ol>
+<h2 id="314-内联函数与宏定义的区别">3.14-内联函数与宏定义的区别</h2>
+<ol>
+<li>宏定义在于处理时把所有宏名用宏体替换，内联函数在编译时进行代码插入、展开、省去调用的开销；</li>
+<li>宏定义没有类型检查，内联函数满足函数的性质，如有返回值、参数列表等。</li>
+</ol>
+<h2 id="315-左值引用和右值引用">3.15-左值引用和右值引用</h2>
+<ol>
+<li>
+<p>左值引用要求右边的值必须能够取地址，如果不能取地址，可以使用常引用；</p>
+<ol>
+<li>
+<p>例：<code>const int &amp;var = 10;</code>等价于</p>
+<ol>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#ff79c6">const</span> <span style="color:#8be9fd">int</span> temp <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">10</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">const</span> <span style="color:#8be9fd">int</span> <span style="color:#ff79c6">&amp;</span>var <span style="color:#ff79c6">=</span> temp;
+</span></span></code></pre></div></li>
+</ol>
+</li>
+<li>
+<p>但常引用修饰后，不可以通过引用进行修改，只能进行读取；</p>
+</li>
+</ol>
+</li>
+<li>
+<p>右值引用用来绑定到右值；</p>
+<ol>
+<li>左值：可以取地址的，有名字的，非临时的值；</li>
+<li>右值：不能取地址的，没有名字的，临时的值；</li>
+<li>定义格式<code>类型 &amp;&amp; 引用名 = 右值表达式;</code></li>
+<li>例：<code>int &amp;&amp;var = 10;</code></li>
+</ol>
+</li>
+</ol>
+<h2 id="316-substr用法">3.16-substr用法</h2>
+<ol>
+<li>
+<p>目的：构建一个string；</p>
+</li>
+<li>
+<p>用法：s.substr(pos, n)：</p>
+<ol>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>string <span style="color:#50fa7b">s</span>(<span style="color:#f1fa8c">&#34;testString&#34;</span>);
+</span></span><span style="display:flex;"><span>string newStr <span style="color:#ff79c6">=</span> s.substr(<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">6</span>);
+</span></span></code></pre></div></li>
+</ol>
+</li>
+<li>
+<p>注意：返回一个从pos开始，包含pos的n个字符，pos默认值为0，n默认值为s.size()-pos。</p>
+</li>
+</ol>
+<h1 id="4-database">4-Database</h1>
+<h2 id="41-数据库范式">4.1-数据库范式</h2>
+<p>第一范式：列不可分；</p>
+<p>第二范式：有主键，保证完全依赖于主键；</p>
+<p>第三范式：无传递依赖。</p>
+<h2 id="42-索引">4.2-索引</h2>
+<p>索引：对数据库表中一个或多个列的值进行排序的数据结构，从而达到快速查询、更新数据库表数据的目的；</p>
+<p>实现：通常使用B树或B+树，如用B树可以实现O(logn)的时间复杂度检索：</p>
+<ol>
+<li>B树特点（m叉树）：
+<ol>
+<li>树中每个节点最多有m个子节点；</li>
+<li>所有叶子节点都在同一层；</li>
+</ol>
+</li>
+<li>B+树特点（InnoDB的索引实现）：
+<ol>
+<li>所有叶子节点中包含了所有关键码信息，及指向关键码记录的指针；</li>
+<li>叶子节点本身根据关键码大小自小而大顺序链接；</li>
+<li>含有两个指针，一个指向根节点，一个指向关键字最小的叶子节点；</li>
+</ol>
+</li>
+<li>B+树更适合文件和数据库索引的原因：
+<ol>
+<li>B+树内部节点相对B树更小，磁盘读写代价更低；</li>
+<li>每次查找都需要从根节点到叶子节点，查询效率更稳定；</li>
+</ol>
+</li>
+</ol>
+<p>索引的优点：</p>
+<ol>
+<li>加快数据检索速度；</li>
+<li>加快表与表之间的连接；</li>
+<li>减少分组和排序语句的时间；</li>
+<li>通过创建唯一性索引，保证数据库中每一行数据的唯一性；</li>
+</ol>
+<p>设置了索引但是无法使用的情况：</p>
+<ol>
+<li>模糊查询，以“%”开头的Like语句；</li>
+<li>OR语句前后没有同时使用索引；</li>
+<li>数据类型出现隐式转化，如varchar不加单引号自动转为int；</li>
+<li>对于多列索引，必须满足最左匹配原则：
+<ol>
+<li>如对于索引(a, b, c)，生效情况为a、(a, b)、(a, b, c)；</li>
+<li>因为针对联合索引构建的B+树优先保证最左元素有序；</li>
+</ol>
+</li>
+</ol>
+<p>什么字段适合创建索引：</p>
+<ol>
+<li>经常作为查询选择的字段；</li>
+<li>经常作为表连接的字段；</li>
+<li>经常出现在order by、group by、distinct后面的字段；</li>
+</ol>
+<p>创建索引时需要注意：</p>
+<ol>
+<li>非空字段：需要使用0或特殊值代替NULL，否则会使索引运算更加复杂；</li>
+<li>索引字段越小越好：数据库存储以页为单位，一页存储的数据越多，一次IO获取数据的效率越高；</li>
+</ol>
+<p>索引缺点：</p>
+<ol>
+<li>时间：创建、维护索引需要耗费时间，对表中数据进行增加、删除、修改时，索引也要动态修改，降低了数据的维护速度；</li>
+<li>空间：索引需要额外的存储空间；</li>
+</ol>
+<p>索引的分类：</p>
+<ol>
+<li>普通索引和唯一性索引：索引列值的唯一性；</li>
+<li>单个索引和复合索引：索引列包含的列数；</li>
+<li>聚簇索引和非聚簇索引：
+<ol>
+<li>聚簇索引：按照每张表的主键构建一个B+树，InnoDB中表数据文件本身就是按照B+树组织的索引结构；</li>
+<li>非聚簇索引：按照value进行检索，最后获得想要数据的主键，再通过主索引进行检索；</li>
+</ol>
+</li>
+</ol>
+<p>唯一索引与主键索引：</p>
+<ol>
+<li>主键索引：为主键创建的唯一索引；</li>
+<li>唯一索引：索引列的值必须唯一，但允许有空值。</li>
+</ol>
+<h2 id="43-数据库事务">4.3-数据库事务</h2>
+<p>事务的特性：</p>
+<ol>
+<li>原子性（Atomicity）：事务所包含的一系列语句，要么全部成功执行，要么全部回滚；</li>
+<li>一致性（Consistency）：事务的执行结果必须使数据库从一个一致性状态到领一个一致性状态；</li>
+<li>隔离性（Isolation）：并发执行的并发之间不能相互影响；</li>
+<li>持久性（Durability）：事务一旦提交，对数库中的数据改变是永久性的；</li>
+</ol>
+<p>事务并发带来的问题：</p>
+<ol>
+<li>脏读：一个事务读取了另一个事务未提交的数据；</li>
+<li>不可重复读：同样条件下，两次读取结果不同，即，被读取的数据可以被其他事务修改；</li>
+<li>幻读：同样条件下，两次读出的记录数不一样，即，被读取的数据可以被其他事务新增或删除；</li>
+</ol>
+<p>隔离级别：</p>
+<ol>
+<li>读未提交（Read Uncommitted）：允许一个事务读取另一个事务还没提交的数据，可能会提高性能，但是会导致脏读；</li>
+<li>读已提交（Read Committed）：只允许读到其他事物已经提交的数据，不能避免不可重复读；</li>
+<li>可重复读（Repeatable Read）：一个事务开启后，其他事务对于数据库的修改在本事务中不可见，直到本事务提交或回滚，但是，其他事物的删除新增可见，不能避免幻读的问题；</li>
+<li>串行化（Serializable）：只允许事务串行执行；</li>
+<li>MySQL默认隔离级别是Repeatable Read。</li>
+</ol>
+<h2 id="44-mysql的优化">4.4-MySQL的优化</h2>
+<p>SQL语句及索引的优化：</p>
+<ol>
+<li>SQL语句的优化：
+<ol>
+<li>通过慢查询日志，找出IO大的SQL、未命中索引的SQL，从而进行优化；</li>
+<li>通过explain了解MySQL对于语句的处理，若扩展列extra出现Using filesort和Using temporay表示SQL需要优化；</li>
+<li>其他tips：
+<ol>
+<li>优化insert语句：一次插入多值；</li>
+<li>避免在where子句中使用!=或&lt;&gt;，以及避免在where子句中对字段进行null值判断，否则引擎会放弃使用索引而进行全表扫描；</li>
+<li>优化嵌套查询：使用join代替子查询；</li>
+<li>考虑用exists代替in；</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>索引优化：
+<ol>
+<li>在经常做查询选择的字段、表连接的字段、经常出现在order by/group by/distincy后的字段中建立索引；</li>
+<li>避免索引失效；</li>
+</ol>
+</li>
+<li>表结构的优化：
+<ol>
+<li>选择合适的数据类型：
+<ol>
+<li>尽量选择较小的数据类型；</li>
+<li>尽量使用简单的数据类型，int比varchar容易处理；</li>
+<li>尽可能使用非空定义字段；</li>
+<li>尽量避免使用text类型，非用不可需考虑分表；</li>
+</ol>
+</li>
+<li>表的范式优化；</li>
+<li>垂直拆分和水平拆分：
+<ol>
+<li>垂直拆分：将表按照业务分类，分不到不同的数据库上，将数据压力分担到不同库上面；</li>
+<li>水平拆分：将同一张表中的数据拆分到不同数据库中进行存储，或者把一张表拆分成多张小表；</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="45-dropdelete和truncate区别">4.5-drop、delete和truncate区别</h2>
+<ol>
+<li>delete：
+<ol>
+<li>用来删除表的全部或一部分数据行；</li>
+<li>需要提交或回滚来执行或撤销删除操作；</li>
+</ol>
+</li>
+<li>truncate：
+<ol>
+<li>删除表中所有数据；</li>
+<li>不可回滚；</li>
+<li>比delete更快，占用空间更小；</li>
+</ol>
+</li>
+<li>drop：
+<ol>
+<li>删除表、所有数据行、索引等；</li>
+<li>不可回滚；</li>
+</ol>
+</li>
+<li>总结：不需要一张表的时候，用drop；想删除部分数据行时，用delete；保留表结构但删除所有数据时，用truncate。</li>
+</ol>
+<h2 id="46-悲观锁与乐观锁">4.6-悲观锁与乐观锁</h2>
+<ol>
+<li>悲观锁：
+<ol>
+<li>先获取锁在进行业务操作；</li>
+<li>通过select &hellip; for update来实现，在当前事务结束时自动释放；</li>
+<li>MySQL中使用2.时所有扫描过的行都会上锁，需要确认使用了索引而不是全表扫描；</li>
+</ol>
+</li>
+<li>乐观锁：
+<ol>
+<li>先进行业务操作，最后更新时检查是否被更新，若未被更新，则更新成功，否则失败重试；</li>
+<li>依靠逻辑实现；</li>
+<li>在业务操作前获取需要锁的数据的版本号，更新时进行对比；</li>
+</ol>
+</li>
+<li>应用场景：
+<ol>
+<li>读多写少适合乐观锁；</li>
+<li>读少写多适合悲观锁。</li>
+</ol>
+</li>
+</ol>
+<h2 id="47-mysql中myisam和innodb的差异">4.7-MySQL中MyISAM和InnoDB的差异</h2>
+<ol>
+<li>存储结构：
+<ol>
+<li>MyISAM存储为：.frm文件存储表定义、.MYD数据文件、.MYI索引文件；</li>
+<li>InnoDB都保存在同一个数据文件中；</li>
+</ol>
+</li>
+<li>存储空间：
+<ol>
+<li>MyISAM可被压缩，占据的存储空间较小；</li>
+<li>InnoDB需要更多内存和存储，会在主内存中建立专用的缓冲池，用于高速缓冲数据和索引；</li>
+</ol>
+</li>
+<li>事务支持：
+<ol>
+<li>MyISAM每次查询具有原子性，执行速度比InnoDB更快，但是不支持事务；</li>
+<li>InnoDB支持事务、外键，具有事务提交、回滚等能力；</li>
+</ol>
+</li>
+<li>表锁差异：
+<ol>
+<li>MyISAM只支持表级锁，CRUD时会自动给表加锁；</li>
+<li>InnoDB支持行级锁，在where主键时生效，非主键锁全表。</li>
+</ol>
+</li>
+</ol>
+<h1 id="5-linux">5-Linux</h1>
+<h2 id="51-find命令">5.1-find命令</h2>
+<ol>
+<li>查找指定文件名文件（不区分大小写）：</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find -iname <span style="color:#f1fa8c">&#34;ProgramToFind.java&#34;</span>
+</span></span></code></pre></div><ol start="2">
+<li>对找到的文件执行某命令</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find -iname <span style="color:#f1fa8c">&#34;ProgramToOperate.java&#34;</span> -exec md5sum <span style="color:#ff79c6">{}</span> <span style="color:#f1fa8c">\;</span>
+</span></span></code></pre></div><ol start="3">
+<li>查找home目录下所有空文件</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find ~ -empty
+</span></span></code></pre></div><ol start="4">
+<li>在/home下找到大小超过3MB的文件</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>find /home -type f -size +3072k
+</span></span></code></pre></div><h2 id="52-static和const关键字">5.2-static和const关键字</h2>
+<p>static：存储在静态存储区，未初始化时自动初始化为0：</p>
+<ol>
+<li>局部变量：
+<ol>
+<li>变为静态局部变量；</li>
+<li>作用域仍为局部作用域；</li>
+<li>离开作用域仍驻留在内存中，但不可访问；</li>
+</ol>
+</li>
+<li>全局变量：
+<ol>
+<li>变为全局静态变量；</li>
+<li>在声明的文件之外不可见；</li>
+</ol>
+</li>
+<li>成员变量：
+<ol>
+<li>变为类的全局变量，被类的对象共享，包括派生类的对象；</li>
+<li>必须在类外进行初始化，如int base::var = 10;，但可以用const修饰static数据成员，从而在类内初始化；</li>
+</ol>
+</li>
+<li>成员函数：
+<ol>
+<li>使得成员函数为所有对象共享，不含this指针；</li>
+<li>可以独立访问，不需要创建实例，如base::func(3, 5);</li>
+<li>不可直接引用类的非静态成员，但是可以引用静态成员；</li>
+<li>不可同时用const和static修饰成员函数（const含this指针，static不含，冲突）；</li>
+</ol>
+</li>
+</ol>
+<p>const：</p>
+<ol>
+<li>表明变量不可修改；</li>
+<li>限定成员函数不可修改任何数据成员；</li>
+<li>const与指针：
+<ol>
+<li>const char *p：指向的内容不能改变；</li>
+<li>char * const p：将p声明为常指针，地址不能变，但是内容可变。</li>
+</ol>
+</li>
+</ol>
+<h2 id="53-c的内存分区">5.3-C++的内存分区</h2>
+<ol>
+<li>栈区（stack）：主要存放函数参数以及局部变量，由系统自动分配释放；</li>
+<li>堆区（heap）：用户通过malloc/new手动申请释放，分配类似链表；</li>
+<li>全局/静态区：存放全局变量、静态变量；</li>
+<li>字符串常量区：字符串常量；</li>
+<li>代码区：程序的二进制代码。</li>
+</ol>
+<h2 id="54-stl容器">5.4-STL容器</h2>
+<p>底层数据结构：</p>
+<ol>
+<li>vector：数组；</li>
+<li>map、multimap：红黑树；</li>
+<li>unordered_map、unordered_nultimap：哈希表。</li>
+</ol>
+<h2 id="55-内存泄漏">5.5-内存泄漏</h2>
+<ol>
+<li>一般为堆内存泄漏，即程序在运行中动态申请的内存空间不使用后，未及时释放；</li>
+<li>解决：
+<ol>
+<li>良好编程习惯；</li>
+<li>重载new和delete，以链表形式自动管理分配的内存；</li>
+<li>使用智能指针。</li>
+</ol>
+</li>
+</ol>
+<h2 id="56-32位64位系统中常用内置数据类型所占字节数">5.6-32位、64位系统中，常用内置数据类型所占字节数</h2>
+<ol>
+<li>32位：
+<ol>
+<li>char：1字节；</li>
+<li>指针变量：4字节；</li>
+<li>short int：2字节；</li>
+<li>int：4字节；</li>
+<li>unsigned int：4字节；</li>
+<li>float：4字节；</li>
+<li>double：8字节；</li>
+<li>long：4字节；</li>
+<li>unsigned long：4字节；</li>
+<li>long long：8字节；</li>
+</ol>
+</li>
+<li>64位：
+<ol>
+<li>char：1字节；</li>
+<li>指针变量：8字节；</li>
+<li>short int：2字节；</li>
+<li>int：4字节；</li>
+<li>unsigned int：4字节；</li>
+<li>float：4字节；</li>
+<li>double：8字节；</li>
+<li>long：8字节；</li>
+<li>unsigned long：8字节；</li>
+<li>long long：8字节。</li>
+</ol>
+</li>
+</ol>
+<h2 id="57-inlinevolatile关键字">5.7-inline、volatile关键字</h2>
+<ol>
+<li>inline：解决频繁调用小函数大量消耗栈空间的问题；</li>
+<li>volatile：表明类型变量可悲更改，不再优化，需要从如内存中重新读取。</li>
+</ol>
+<h2 id="58-深拷贝与浅拷贝">5.8-深拷贝与浅拷贝</h2>
+<p>拷贝函数使用场景：</p>
+<ol>
+<li>一个对象以值的方式传入函数体；</li>
+<li>一个对象以值的方式从函数返回；</li>
+<li>一个对象需通过另一个对象进行初始化；</li>
+</ol>
+<p>区别：</p>
+<ol>
+<li>浅拷贝：只是增加一个指针指向已存在的内存地址；</li>
+<li>深拷贝：增加一个指针，并且申请一个新的内存用于存放复制的对象。</li>
+</ol>
+<h2 id="59-派生类构造析构函数调用顺序">5.9-派生类构造/析构函数调用顺序</h2>
+<ol>
+<li>构造函数：先基后派；</li>
+<li>析构函数：先派后基。</li>
+</ol>
+<h2 id="510-数据成员初始化顺序">5.10-数据成员初始化顺序</h2>
+<p>顺序：</p>
+<ol>
+<li>基类的静态变量或全局变量；</li>
+<li>派生类的静态变量或全局变量；</li>
+<li>基类的成员变量；</li>
+<li>派生类的成员变量。</li>
+</ol>
+<h2 id="511-static_cast-dynamic_cast-const_cast-reinpreter_cast区别">5.11-static_cast, dynamic_cast, const_cast, reinpreter_cast区别</h2>
+<p>static_cast与dynamic_cast：</p>
+<ol>
+<li>发生时间不同，一个是static编译时，一个是runtime运行时；</li>
+<li>static_cast为强制类型转换，不提供运行时的检查；</li>
+<li>dynamic_cast用于转换指针和引用，不可用于转换对象，主要用于类层次间的上行和下行转换：
+<ol>
+<li>上行转换：B继承自A，由B转换为A；</li>
+<li>下行转换：B继承自A，A转换为B；</li>
+</ol>
+</li>
+<li>上行转换时，static_cast和dynamic_cast效果相同，下行转换时，dynamic_cast具有类型检查，更安全。</li>
+</ol>
+<h2 id="512-定义一个空类-编译器会做什么">5.12-定义一个空类 编译器会做什么</h2>
+<ol>
+<li>当用到相关函数时，编译器会去自动生成：默认构造函数、默认拷贝构造函数、默认拷贝赋值操作符、默认析构函数；</li>
+<li>所有自动生成的函数都是inline和public的。</li>
+</ol>
+<h2 id="513-哪些函数不能成为虚函数">5.13-哪些函数不能成为虚函数</h2>
+<ol>
+<li>构造函数：假如子类继承基类构造函数，则子类对象将使用基类构造函数构造，而积累的构造函数并不知道自类的成员，不符合语义，且，多态是通过基类指针指向子类对象实现多态的，在对象构造之前，并没有对象产生，因此无法使用多态特性，是矛盾的；</li>
+<li>内联成员函数：内联函数在编译时展开，而虚函数是在运行时绑定的，两者相违背；</li>
+<li>静态成员函数：在编译时确定，无法动态绑定，不支持多态。</li>
+</ol>
+<h2 id="514-内联函数与宏定义的区别">5.14-内联函数与宏定义的区别</h2>
+<ol>
+<li>宏定义在于处理时把所有宏名用宏体替换，内联函数在编译时进行代码插入、展开、省去调用的开销；</li>
+<li>宏定义没有类型检查，内联函数满足函数的性质，如有返回值、参数列表等。</li>
+</ol>
+<h2 id="515-左值引用和右值引用">5.15-左值引用和右值引用</h2>
+<ol>
+<li>
+<p>左值引用要求右边的值必须能够取地址，如果不能取地址，可以使用常引用；</p>
+<ol>
+<li>
+<p>例：<code>const int &amp;var = 10;</code>等价于</p>
+<ol>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#ff79c6">const</span> <span style="color:#8be9fd">int</span> temp <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">10</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">const</span> <span style="color:#8be9fd">int</span> <span style="color:#ff79c6">&amp;</span>var <span style="color:#ff79c6">=</span> temp;
+</span></span></code></pre></div></li>
+</ol>
+</li>
+<li>
+<p>但常引用修饰后，不可以通过引用进行修改，只能进行读取；</p>
+</li>
+</ol>
+</li>
+<li>
+<p>右值引用用来绑定到右值；</p>
+<ol>
+<li>左值：可以取地址的，有名字的，非临时的值；</li>
+<li>右值：不能取地址的，没有名字的，临时的值；</li>
+<li>定义格式<code>类型 &amp;&amp; 引用名 = 右值表达式;</code></li>
+<li>例：<code>int &amp;&amp;var = 10;</code></li>
+</ol>
+</li>
+</ol>
+<h2 id="516-substr用法">5.16-substr用法</h2>
+<ol>
+<li>
+<p>目的：构建一个string；</p>
+</li>
+<li>
+<p>用法：s.substr(pos, n)：</p>
+<ol>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span>string <span style="color:#50fa7b">s</span>(<span style="color:#f1fa8c">&#34;testString&#34;</span>);
+</span></span><span style="display:flex;"><span>string newStr <span style="color:#ff79c6">=</span> s.substr(<span style="color:#bd93f9">0</span>, <span style="color:#bd93f9">6</span>);
+</span></span></code></pre></div></li>
+</ol>
+</li>
+<li>
+<p>注意：返回一个从pos开始，包含pos的n个字符，pos默认值为0，n默认值为s.size()-pos。</p>
+</li>
+</ol>
+<h2 id="517-switch-to-end-of-line-in-vi">5.17-Switch to end of line in vi:</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>shift+G
+</span></span></code></pre></div><h2 id="518-switch-to-end-of-line-in-normal-command-line">5.18-Switch to end of line in normal command line:</h2>
+<pre tabindex="0"><code>ctrl+E
+</code></pre><h2 id="519-switch-to-specific-line-in-target-file">5.19-Switch to specific line in target file:</h2>
+<pre tabindex="0"><code>vi &lt;file directory&gt; +&lt;n&gt;
+</code></pre><h2 id="520-look-up-for-filesystems-of-disk">5.20-Look up for filesystems of disk:</h2>
+<pre tabindex="0"><code>df -h
+</code></pre><h2 id="521-look-up-for-files-in-disk">5.21-Look up for files in disk:</h2>
+<pre tabindex="0"><code>du
+</code></pre><h2 id="522-look-up-with-letter-case-ignored">5.22-Look up with letter case ignored:</h2>
+<pre tabindex="0"><code>grep -i
+</code></pre><h2 id="523-look-up-for-cpu-info">5.23-Look up for CPU info:</h2>
+<pre tabindex="0"><code>htop
+</code></pre><h2 id="524-switch-to-start-of-line-in-normal-command-line">5.24-Switch to start of line in normal command line:</h2>
+<pre tabindex="0"><code>ctrl+A
+</code></pre><h2 id="525-delete-one-fragment-in-normal-command-line">5.25-Delete one fragment in normal command line:</h2>
+<pre tabindex="0"><code>ctrl+W
+</code></pre><h2 id="526-delete-one-line-in-vi">5.26-Delete one line in vi:</h2>
+<p>double click D</p>
+<h2 id="527-redo-in-vi">5.27-Redo in vi:</h2>
+<p>double click U</p>
+<h2 id="528-or-loop-for-batch-processing">5.28-or loop for batch processing</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#ff79c6">for</span> i in <span style="color:#f1fa8c">`</span>docker image ls<span style="color:#f1fa8c">`</span>; <span style="color:#ff79c6">do</span> <span style="color:#8be9fd;font-style:italic">echo</span> <span style="color:#f1fa8c">&#34;</span><span style="color:#8be9fd;font-style:italic">$i</span><span style="color:#f1fa8c">&#34;</span>; <span style="color:#ff79c6">done</span>
+</span></span></code></pre></div><h2 id="529-devnull-and-21">5.29-/dev/null and 2&amp;&gt;1</h2>
+<h3 id="5291-notice">5.29.1-Notice</h3>
+<p>1.1 <code>/dev/null</code> is the null file. Anything written to it is discarded.
+1.2 <code>2&gt;</code> means &ldquo;redirect standard-error&rdquo; to the given file.
+1.3 <code>2&gt;/dev/null</code> means &ldquo;throw away any error messages&rdquo;.
+1.4 <code>1</code> is stdout. <code>2</code> is stderr.
+1.5 <code>2&gt;&amp;1</code> means redirecting stderr to stdout.</p>
+<h3 id="5292-examples">5.29.2-Example(s)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>wget -O /dev/null baidu.com 2&gt;&amp;<span style="color:#bd93f9">1</span> 
+</span></span></code></pre></div><h3 id="5293-references">5.29.3-Reference(s)</h3>
+<p>Sepehr SaminiSepehr Samini 95544 gold badges1111 silver badges1515 bronze badges, et al. “What Does &ldquo;/Dev/Null’ Mean at the End of Shell Commands.” Stack Overflow, 1 Feb. 1960, <a href="https://stackoverflow.com/questions/13408619/what-does-dev-null-mean-at-the-end-of-shell-commands">https://stackoverflow.com/questions/13408619/what-does-dev-null-mean-at-the-end-of-shell-commands</a>.</p>
+<h1 id="6-algorithms">6-Algorithms</h1>
+<h2 id="61-sorting-algorithm">6.1-Sorting algorithm</h2>
+<h3 id="611-quick-sort">6.1.1-Quick Sort</h3>
+<h4 id="how-to-do-it">How to do it&hellip;</h4>
+<p>Divide and conquer.</p>
+<p>In each division, seperate the data into two parts.</p>
+<p>All elements in the first part should be all less than the elements in the second part.</p>
+<p>Loop until the array is sorted.</p>
+<h4 id="how-to-code-it">How to code it&hellip;</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">partition</span>(<span style="color:#8be9fd">int</span> array[], <span style="color:#8be9fd">int</span> left, <span style="color:#8be9fd">int</span> right) {
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd">int</span> pivot;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">if</span> (left <span style="color:#ff79c6">&lt;</span> right) {
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> low <span style="color:#ff79c6">=</span> left;
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> high <span style="color:#ff79c6">=</span> right;
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> key <span style="color:#ff79c6">=</span> array[left];
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">while</span> (low <span style="color:#ff79c6">&lt;</span> high) {
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">while</span> (array[high] <span style="color:#ff79c6">&gt;=</span> ket <span style="color:#ff79c6">&amp;&amp;</span> low <span style="color:#ff79c6">&lt;</span> high) {
+</span></span><span style="display:flex;"><span>				high<span style="color:#ff79c6">--</span>;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      array[low] <span style="color:#ff79c6">=</span> array[high];
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">while</span> (array[low] <span style="color:#ff79c6">&lt;=</span> array[high] <span style="color:#ff79c6">&amp;&amp;</span> low <span style="color:#ff79c6">&lt;</span> high) {
+</span></span><span style="display:flex;"><span>        low<span style="color:#ff79c6">++</span>;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      array[high] <span style="color:#ff79c6">=</span> array[low];
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    pivot <span style="color:#ff79c6">=</span> low;
+</span></span><span style="display:flex;"><span>    array[pivot] <span style="color:#ff79c6">=</span> key;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">return</span> pivot;
+</span></span><span style="display:flex;"><span>} 
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#8be9fd">void</span> <span style="color:#50fa7b">QuickSort</span>(<span style="color:#8be9fd">int</span> array[], <span style="color:#8be9fd">int</span> left, <span style="color:#8be9fd">int</span> right) {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">if</span> (left <span style="color:#ff79c6">&lt;</span> right) {
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> pivot <span style="color:#ff79c6">=</span> partition(array, left, right);
+</span></span><span style="display:flex;"><span>    QuickSort(array, left, pivot <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>);
+</span></span><span style="display:flex;"><span>    QuickSort(array, pivot <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">1</span>, right);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="how-to-improve-it">How to improve it&hellip;</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#8be9fd">void</span> <span style="color:#50fa7b">QuickSortRandom</span>(<span style="color:#8be9fd">int</span> array[], <span style="color:#8be9fd">int</span> left, <span style="color:#8be9fd">int</span> right) {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">if</span> (left <span style="color:#ff79c6">&lt;</span> right) {
+</span></span><span style="display:flex;"><span>    srand(<span style="color:#8be9fd">unsigned</span>(time(<span style="color:#8be9fd;font-style:italic">NULL</span>)));
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> Tem <span style="color:#ff79c6">=</span> rand()<span style="color:#ff79c6">%</span>(right <span style="color:#ff79c6">-</span> left <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">1</span>) <span style="color:#ff79c6">+</span> left;
+</span></span><span style="display:flex;"><span>    swap(array[left], array[Tem]);
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd">int</span> pivot <span style="color:#ff79c6">=</span> partition(array, left, right);
+</span></span><span style="display:flex;"><span>    QuickSortRandom(array, left, pivot <span style="color:#ff79c6">-</span> <span style="color:#bd93f9">1</span>);
+</span></span><span style="display:flex;"><span>    QuickSortRandom(array, pivot <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">1</span>, right);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="612-bubble-sort">6.1.2-Bubble sort</h3>
+<h4 id="how-to-do-it-1">How to do it&hellip;</h4>
+<p>Compare the adjacent elements.</p>
+<p>If the first element is greater than the second element, swap them.</p>
+<p>Loop until reaching the last pair of elements.</p>
+<p>Repeat until all the array is sorted.</p>
+<h4 id="how-to-code-it-1">How to code it&hellip;</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#8be9fd">void</span> <span style="color:#50fa7b">BubbleSort</span>(<span style="color:#8be9fd">int</span> array[]) {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> array.length(); i<span style="color:#ff79c6">++</span>) {
+</span></span><span style="display:flex;"><span>  	<span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> j <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> array.length() <span style="color:#ff79c6">-</span> i; j<span style="color:#ff79c6">++</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#ff79c6">if</span> (array[j] <span style="color:#ff79c6">&gt;</span> array[j<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>]) {
+</span></span><span style="display:flex;"><span>      	swap(array[j], array[j<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>]);
+</span></span><span style="display:flex;"><span>    	}
+</span></span><span style="display:flex;"><span>  	}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="how-to-improve-it-1">How to improve it&hellip;</h4>
+<p>We can make a judgement before we do the algorithm.</p>
+<p>Check whether the array is already sorted or not.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#8be9fd">void</span> <span style="color:#50fa7b">BubbleSortwithCheck</span>(<span style="color:#8be9fd">int</span> array[]) {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; i <span style="color:#ff79c6">&lt;</span> array.length(); i<span style="color:#ff79c6">++</span>) {
+</span></span><span style="display:flex;"><span>  	<span style="color:#8be9fd">bool</span> sorted <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">true</span>;
+</span></span><span style="display:flex;"><span>  	<span style="color:#ff79c6">for</span> (<span style="color:#8be9fd">int</span> j <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>; j <span style="color:#ff79c6">&lt;</span> length() <span style="color:#ff79c6">-</span> i; j<span style="color:#ff79c6">++</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#ff79c6">if</span> (array[j] <span style="color:#ff79c6">&gt;</span> array[j<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>]) {
+</span></span><span style="display:flex;"><span>      	swap(array[j], array[j<span style="color:#ff79c6">+</span><span style="color:#bd93f9">1</span>]);
+</span></span><span style="display:flex;"><span>      	sorted <span style="color:#ff79c6">=</span> <span style="color:#8be9fd;font-style:italic">false</span>;
+</span></span><span style="display:flex;"><span>    	}
+</span></span><span style="display:flex;"><span>  	}
+</span></span><span style="display:flex;"><span>  	<span style="color:#ff79c6">if</span> (sorted) {
+</span></span><span style="display:flex;"><span>			<span style="color:#ff79c6">break</span>;
+</span></span><span style="display:flex;"><span>  	}
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="7-k8s-and-docker">7-K8s and docker</h1>
+<h2 id="71-management-tools-for-clusters-pods-deployments-etc-">7.1-Management tools for clusters, pods, deployments, etc. :</h2>
+<p>k9s</p>
+<h2 id="72-when-not-able-to-delete-resources-in-k8s">7.2-When not able to delete resources in k8s:</h2>
+<p>First edit resource:</p>
+<pre tabindex="0"><code>kubectl edit &lt;resource name&gt;
+</code></pre><p>then delete the <code>finalizer</code> part and try again.</p>
+<h2 id="73-filtering-docker-images">7.3-filtering docker images</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker image <span style="color:#f1fa8c">&#34;name*&#34;</span>
+</span></span></code></pre></div><h2 id="74-save-and-load-docker-images">7.4-save and load docker images</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>docker image save &gt; smartcity_images
+</span></span><span style="display:flex;"><span>docker image load &lt; smartcity_images
+</span></span></code></pre></div><h2 id="75-getting-k8s-events">7.5-getting k8s events</h2>
+<pre tabindex="0"><code>kubectl get events
+</code></pre><h1 id="8-vm-related">8-VM related</h1>
+<h2 id="81-list-all-vms">8.1-List all VMs:</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>virsh list
+</span></span></code></pre></div><h2 id="82-list-network-setting-xml">8.2-List network setting xml:</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>virsh net-dumpxml &lt;network&gt;
+</span></span></code></pre></div><h2 id="83-list-and-revert-vm-from-snapshots">8.3-list and revert vm from snapshots:</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>virsh snapshot-list <span style="color:#bd93f9">476</span>
+</span></span><span style="display:flex;"><span>virsh snapshot-revert --domain freebsd --snapshotname 5Sep2016_S1 --running
+</span></span></code></pre></div><h1 id="1-c的内存管理分哪些区分别有什么作用">1. C++的内存管理分哪些区，分别有什么作用</h1>
+<p>C++的内存主要分为五大区：堆区、栈区、自由存储区、全局/静态存储区、常量存储区。</p>
+<p><strong>堆区</strong>：程序员分配释放，使用new分配内存块，使用delete归还内存空间。</p>
+<p><strong>栈区</strong>：编译器自动分配释放，用于存放局部变量、函数参数等。</p>
+<p><strong>自由存储区</strong>：程序员分配释放，使用malloc分配内存块，使用free归还内存空间。</p>
+<p><strong>全局区/静态区</strong>：全局变量和静态变量分配在同一块内存中。</p>
+<p><strong>常量存储区</strong>：存放不可修改的常量值。</p>
+<h1 id="2-c源文本到可执行文件需要经历哪些阶段">2. C++源文本到可执行文件需要经历哪些阶段</h1>
+<p><strong>预处理</strong>：将源代码和相关头文件处理成一个.i文件。</p>
+<p><strong>编译</strong>：将预处理的文件进行词法分析、语义分析，优化后产生相应的汇编代码。</p>
+<p><strong>汇编</strong>：将汇编语言代码翻译成目标机器码。</p>
+<p><strong>链接</strong>：把每个机器码文件按照要求连接起来，解决代码间的相互依赖问题。</p>
+<h1 id="3-析构函数为什么必须是虚函数">3. 析构函数为什么必须是虚函数</h1>
+<p>为了保证整个派生类的对象完全被释放。</p>
+<p>当析构函数不为虚函数时，在删除基类指针时，只会调用基类析构函数，而不调用派生类的析构函数，这样会导致基类指针指向的派生类对象析构不完全。</p>
+<p>当析构函数为虚函数时，在删除基类指针时，会调用该指针指向派生类的析构函数，同时派生类的析构函数自动调用基类析构函数，保证对象被完全释放。</p>
+<h1 id="4-虚函数和纯虚函数有什么区别">4. 虚函数和纯虚函数有什么区别</h1>
+<p><strong>虚函数</strong>：在基类中存在定义，可以直接使用，也可以被派生类重写后使用。</p>
+<p><strong>纯虚函数</strong>：在基类中不存在定义，只有声明，必须在子类中定义后才能使用。</p>
+<h1 id="5-虚函数的实现机制">5. 虚函数的实现机制</h1>
+<p>编译器自动为存在虚函数的类生成一个虚函数表，当声明该类的对象时，放入一个隐式指针变量，指向虚函数表。</p>
+<p>在调用方法时，系统根据不同对象的指针，寻找到对应的虚函数表，进而找到所需的函数地址进行调用。</p>
+<h1 id="6野指针怎么出现的">6.野指针怎么出现的</h1>
+<p>指针变量未初始化。</p>
+<p>指针释放后未置空。</p>
+<p>返回指向栈内存的指针。</p>
+<h1 id="7-类和结构体有什么区别">7. 类和结构体有什么区别</h1>
+<p>class中默认成员访问权限为private，而struct中为public。</p>
+<p>class可以用于表示模板类型，sruct不行。</p>
+<p>class是引用类型，struct是值类型。</p>
+<p>class多用来存储数据量大、逻辑复杂的对象，struct多用来存储轻量级对象。</p>
+<p>class多用于表现抽象和多级别的对象层次。</p>
+<h1 id="8-什么情况会导致内存泄漏">8. 什么情况会导致内存泄漏</h1>
+<p>程序循环new创建出来的对象没有及时delete掉。</p>
+<p>delete掉一个void*类型的指针，导致没有调用到对象的析构函数。</p>
+<p>new创建了一组对象，回收时未调用delete[]，而调用了delete，导致只有对象数组的第一个对象的析构函数得到执行并回收了内存。</p>
+<h1 id="9-五种io模型">9. 五种IO模型</h1>
+<p><strong>阻塞IO</strong>：进程发起IO系统调用后，进程被阻塞，转到内核空间处理，处理完毕后返回进程。</p>
+<p><strong>非阻塞IO</strong>：进程发起IO系统调用后，如果内核缓冲区没有数据，返回给进程一个错误，而不会阻塞进程，如果缓冲区有数据，则将数据返回给进程。【发起IO后，内核便开始处理，一直有返回值，但是直到内核处理完才有数据。】</p>
+<p><strong>IO复用</strong>：多个进程的IO注册到一个复用器（select）上，select监听所有进来的IO。【同时负责很多水龙头，哪个水龙头要来水了，就打开哪一个。】</p>
+<p><strong>信号驱动IO</strong>：进程发起IO系统调用后，向内核注册信号处理函数，然后进程返回不阻塞，当内核数据就绪则通知进程发起IO调用读取数据。【首先用信号通知内核空间，等到数据就绪再发起IO。】</p>
+<p><strong>异步IO</strong>：进程发起IO系统调用后，进程返回不阻塞，等内核将IO处理完，通知进程数据结果。</p>
+<h1 id="10-tcp如何保证传输的可靠性">10. TCP如何保证传输的可靠性</h1>
+<p><strong>校验和</strong>：接收方和发送方均进行校验和的计算，并进行对比。</p>
+<p><strong>序列号</strong>：TCP传输时将每个字节的数据都进行编号。</p>
+<p><strong>确认应答</strong>：TCP传输过程中，每次接收方收到数据后，均对传输方进行确认应答（ACK）。</p>
+<p><strong>超时重传</strong>：发送方在发送完数据后进行等待，一段时间后没有收到ACK，则对刚才的数据进行重新发送。</p>
+<p><strong>连接管理</strong>：三次握手与四次挥手。</p>
+<p><strong>流量控制</strong>：在回复ACK时，接收端介绍自己接受数据的缓冲区剩余大小。</p>
+<p><strong>拥塞控制</strong>：慢开始、拥塞避免等操作。</p>
+<h1 id="11-tcp快速重传的实现">11. TCP快速重传的实现</h1>
+<p>举例：发送方发出1、2、3、4、5五份数据，1送到了，则回复ACK2，但是2没送到，3送到了，于是继续回复ACK2，后面4和5都送到了，继续回复ACK2，直到发送端收到三次ACK2，则重新发送2，然后接收端收到2，因为3、4、5都已经收到，所以回复ACK6。</p>
+<h1 id="12-两个有序链表合并成一个leetcode-21">12. 两个有序链表合并成一个(leetcode 21)</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#ff79c6">struct</span> <span style="color:#50fa7b">ListNode</span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#8be9fd">int</span> val;
+</span></span><span style="display:flex;"><span>   ListNode <span style="color:#ff79c6">*</span>next;
+</span></span><span style="display:flex;"><span>   ListNode(<span style="color:#8be9fd">int</span> x) <span style="color:#ff79c6">:</span> val(x), next(<span style="color:#8be9fd;font-style:italic">NULL</span>) {}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ListNode<span style="color:#ff79c6">*</span> <span style="color:#50fa7b">mergeTwoLists</span>(ListNode<span style="color:#ff79c6">*</span> l1, ListNode<span style="color:#ff79c6">*</span> l2) {
+</span></span><span style="display:flex;"><span>   <span style="color:#ff79c6">if</span>(l1 <span style="color:#ff79c6">==</span> <span style="color:#8be9fd;font-style:italic">NULL</span>){
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">return</span> l2;
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>   <span style="color:#ff79c6">if</span> (l2 <span style="color:#ff79c6">==</span> <span style="color:#8be9fd;font-style:italic">NULL</span>){
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">return</span> l1;
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>   <span style="color:#ff79c6">if</span> (l1<span style="color:#ff79c6">-&gt;</span>val <span style="color:#ff79c6">&lt;</span> l2<span style="color:#ff79c6">-&gt;</span>val){
+</span></span><span style="display:flex;"><span>      l1<span style="color:#ff79c6">-&gt;</span>next <span style="color:#ff79c6">=</span> mergeTwoLists(l1<span style="color:#ff79c6">-&gt;</span>next, l2);
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">return</span> l1;
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>   <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>      l2<span style="color:#ff79c6">-&gt;</span>next <span style="color:#ff79c6">=</span> mergeTwoLists(l1, l2<span style="color:#ff79c6">-&gt;</span>next);
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">return</span> l2;
+</span></span><span style="display:flex;"><span>   }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="13-get和post的区别">13. GET和POST的区别</h1>
+<p>GET所发送的数据是URL的一部分，POST数据不会显示在URL中。</p>
+<p>GET和POST方法没有本质区别，只是报文格式不同，两者都使用HTTP，都是不安全的，想要安全传输需要使用HTTPS。</p>
+<h1 id="14-https的实现原理">14. HTTPS的实现原理</h1>
+<p>HTTPS原理：在传输层（TCP）和应用层（HTTP）之间加了一层SSL/TLS。</p>
+<p>具体加密过程：1. 服务器端发送公钥证书；2. 客户端检验证书是否有效，是，则生成一个随机密钥，并用服务端的公钥进行加密后发送；3. 服务器端用自己私钥加密，取出客户端的随机密钥，将需要发送的内容用该密钥加密并发送。</p>
+<h1 id="15-linux查看最近的日志用什么指令">15. Linux查看最近的日志用什么指令</h1>
+<p><strong>tail</strong>：</p>
+<blockquote>
+<p>tail -f test.log</p>
+</blockquote>
+<p><strong>head</strong>：</p>
+<blockquote>
+<p>cat test.log | tail -n +3000 | head -n 1000</p>
+</blockquote>
+<p><strong>cat</strong>：</p>
+<blockquote>
+<p>cat filename</p>
+</blockquote>
+<p><strong>tac</strong>：把cat的内容反写过来</p>
+<blockquote>
+<p>tac filename</p>
+</blockquote>
+<p><strong>echo</strong>：</p>
+<blockquote>
+<p>echo &ldquo;the echo command test!&rdquo;</p>
+</blockquote>
+<h1 id="16-hash冲突解决">16. hash冲突解决</h1>
+<p><strong>开放地址法</strong>：再散列函数：</p>
+<blockquote>
+<p>Hi = (H(key) + di) % m, i = 1, 2, &hellip;, n</p>
+</blockquote>
+<p>不同di值对应不同散列方法。</p>
+<p><strong>再哈希法</strong>：同时构造多个不同的哈希函数，某一个发生冲突时计算下一个，直到冲突不再产生。</p>
+<p><strong>链地址法</strong>：将所有哈希地址为i的元素构成一个单链表。</p>
+<p><strong>建立公共溢出区</strong>：将哈希表分为基本表和溢出表，和基本表发生冲突的元素填入溢出表。</p>
+<h1 id="17-快排的时间复杂度和空间复杂度">17. 快排的时间复杂度和空间复杂度</h1>
+<p>平均情况下快速排序的时间复杂度是O(nlgn)，最坏情况是n的平方，可通过随机算法避免最坏情况，或者可先求序列的中值，然后选取中值作为主元素。</p>
+<p>由于递归调用，快排的空间复杂度是O(lgn)。</p>
+<h1 id="18-堆排序的时间复杂度和空间复杂度">18. 堆排序的时间复杂度和空间复杂度</h1>
+<p>第一次建堆时间复杂度：O(n)。</p>
+<p>更改元素时建堆时间复杂度：O(nlgn)。</p>
+<p>堆排序平均时间复杂度：O(nlgn)。</p>
+<p>空间复杂度：O(1)。</p>
+<h1 id="19-b树和b树的定义">19. B树和B+树的定义</h1>
+<p>B树中每个节点的关键字都有data域。</p>
+<p>B+树除了叶子节点，其他节点只有索引。</p>
+<h1 id="20-c-vector里size和capacity的区别">20. C++ vector里size和capacity的区别</h1>
+<p>size是当前vector容器的真实占用大小。</p>
+<p>capacity是当前允许的最大元素数。</p>
+<h1 id="21-计算机网络分层模型">21. 计算机网络分层模型</h1>
+<blockquote>
+<p><strong>7层</strong> (osi国际标准组织定制)：</p>
+</blockquote>
+<p><strong>应用层</strong>：为程序提供网络服务。</p>
+<p><strong>表示层</strong>：数据格式化，加密、解密。</p>
+<p><strong>会话层</strong>：建立、维护、管理会话链接。</p>
+<p><strong>传输层</strong>：建立、维护、管理端到端链接。</p>
+<p><strong>网络层</strong>：IP寻址和路由选择。</p>
+<p><strong>数据链路层</strong>：控制网络层与物理层之间的通信。</p>
+<p><strong>物理层</strong>：比特流传输。</p>
+<blockquote>
+<p><strong>四层</strong> (TCP/IP)：</p>
+</blockquote>
+<p><strong>应用层</strong>：ping、DNS、telnet</p>
+<p><strong>传输层</strong>：UDP、TCP</p>
+<p><strong>网络层</strong>：ICMP、IP</p>
+<p><strong>数据链路层</strong>：ARP、DataLink、RARP</p>
+<h1 id="22-http请求包含哪几个部分">22. HTTP请求包含哪几个部分</h1>
+<blockquote>
+<p><strong>请求行</strong>：</p>
+</blockquote>
+<p><strong>请求方法</strong>：HTTP最常见的请求方法为GET和POST。</p>
+<p><strong>请求URL</strong>：请求对应的URL地址。</p>
+<p><strong>HTTP协议及版本</strong>：协议名称及版本号。</p>
+<blockquote>
+<p>请求头：</p>
+</blockquote>
+<p>包含多个属性，格式为“属性名：属性值”，服务器根据请求头来获取客户端的信息。</p>
+<blockquote>
+<p>请求体：</p>
+</blockquote>
+<p>将一个页面表单中的组件值通过param1=value &amp; param2=value2的键值对形式编码成一个格式化串，承载多个请求参数的数据。</p>
+<h1 id="23-tcp拥塞控制">23. TCP拥塞控制</h1>
+<p>主要为四个算法：</p>
+<p><strong>慢开始</strong>：在TCP链接刚建立时，一点一点地增大拥塞窗口cwnd，慢慢变为指数增长，试探网络的承受能力，直到cwnd大于等于ssthresh（slow start threshold）则进入<strong>拥塞避免</strong>。</p>
+<p><strong>拥塞避免</strong>：收到一个ACK，即每经过一个往返时间RTT，就把发送方的cwnd加1，使其按线性规律缓慢增长。</p>
+<p><strong>乘法减小</strong>【TCP Tahoe】：不论在慢开始阶段还是拥塞避免阶段，只要出现超时，即可能发生了阻塞，发生丢包，就把慢开始门限ssthresh的值减半，即设置为当前cwnd的一半，并开始执行<strong>慢开始</strong>算法。</p>
+<p><strong>快速重传</strong>【TCP Reno】：发生丢包时，把cwnd设置为当前的一半，ssthresh设置为缩小后的cwnd大小，进入<strong>快速恢复</strong>算法。</p>
+<p><strong>快速恢复</strong>【TCP Reno】：设置cwnd=cwnd+3*MSS（因为收到3个重复的ACK，所以加三个MSS），重传DACKs指定的数据包，如果再收到DACKs，则cwnd增加1，若收到新的ACK，表明重传包成功，退出快速恢复，将cwnd设置为ssthresh，进入<strong>拥塞避免</strong>算法。</p>
+<h1 id="24-死锁与死锁的处理">24. 死锁与死锁的处理</h1>
+<blockquote>
+<p>形成死锁的四个必要条件：</p>
+</blockquote>
+<p><strong>互斥</strong>：在某段时间内某资源只由一个进程占用。</p>
+<p><strong>持有并等待</strong>：某进程已经持有一个或多个资源，但是还需请求其他资源，而它请求的资源不能立即获得，需要等待。</p>
+<p><strong>不可抢占</strong>：进程已经获取的资源在使用过程中不能被其他进程抢占，只能在使用完后，由该进程自己释放。</p>
+<p><strong>环路等待</strong>：形成进程和请求资源之间的环路。</p>
+<blockquote>
+<p>死锁的预防：</p>
+</blockquote>
+<p><strong>互斥</strong>：不易预防</p>
+<p><strong>占有并等待</strong>：方法一：不持有并等待，如果一个进程一次请求获取不了所有资源，那么它不可占用任何资源，即释放掉它已经占有的资源；方法二：持有不等待，保证资源充足，只要请求资源，就分配给资源。</p>
+<p><strong>不可抢占</strong>：如果一个进程所请求的资源被另一进程占有，使它可以抢占另一进程占有的资源。</p>
+<p><strong>环路等待</strong>：对资源进行排序，每个进程按照固定的顺序访问资源。</p>
+<blockquote>
+<p>死锁的避免：</p>
+</blockquote>
+<p><strong>资源请求图算法</strong>：利用资源分配图，引入需求边表示进程可能在将来某个时候申请资源，只有申请边变为分配边而不会导致资源分配图形成环时，才允许申请。</p>
+<p><strong>银行家算法</strong>：当新进程进入系统，系统对其所需资源的最大数量进行统计，若超过当前资源综合，则该进程必须等待直到其他进程释放资源。</p>
+<h1 id="25-什么是关系型数据库">25. 什么是关系型数据库</h1>
+<p>关系型数据库建立在关系型数据模型的基础上，借助于集合、代数等数学概念和方法来处理数据的数据库。</p>
+<h1 id="26-kv存储">26. KV存储</h1>
+<p>举例：Redis、MongoDB</p>
+<p>不经常更新的、重要的数据一般使用关系数据库存储。</p>
+<p>数据结构简单、有分布式数据存储的需求使用KV数据库。</p>
+<h1 id="27-非递归前中后序遍历二叉树">27. 非递归前中后序遍历二叉树</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#ff79c6">struct</span> <span style="color:#50fa7b">TreeNode</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd">int</span> val;
+</span></span><span style="display:flex;"><span>  TreeNode <span style="color:#ff79c6">*</span> left;
+</span></span><span style="display:flex;"><span>  TreeNode <span style="color:#ff79c6">*</span> right;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">void</span> <span style="color:#50fa7b">PreOrder</span> (TreeNode <span style="color:#ff79c6">*</span> root) {
+</span></span><span style="display:flex;"><span>  stack<span style="color:#ff79c6">&lt;</span>TreeNode <span style="color:#ff79c6">*&gt;</span>s;
+</span></span><span style="display:flex;"><span>  TreeNode <span style="color:#ff79c6">*</span> ptr <span style="color:#ff79c6">=</span> root;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">while</span> (ptr <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">nullptr</span> <span style="color:#ff79c6">||</span> <span style="color:#ff79c6">!</span>s.empty()) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (ptr <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">nullptr</span>) {
+</span></span><span style="display:flex;"><span>      cout <span style="color:#ff79c6">&lt;&lt;</span> ptr<span style="color:#ff79c6">-&gt;</span>val <span style="color:#ff79c6">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>      s.push(ptr);
+</span></span><span style="display:flex;"><span>      ptr <span style="color:#ff79c6">=</span> ptr<span style="color:#ff79c6">-&gt;</span>left;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>      ptr <span style="color:#ff79c6">=</span> s.top();
+</span></span><span style="display:flex;"><span>      s.pop();
+</span></span><span style="display:flex;"><span>      ptr <span style="color:#ff79c6">=</span> ptr<span style="color:#ff79c6">-&gt;</span>right;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">void</span> <span style="color:#50fa7b">InOrder</span> (TreeNode <span style="color:#ff79c6">*</span> root) {
+</span></span><span style="display:flex;"><span>  stack<span style="color:#ff79c6">&lt;</span>TreeNode <span style="color:#ff79c6">*&gt;</span> s;
+</span></span><span style="display:flex;"><span>  TreeNode <span style="color:#ff79c6">*</span> ptr <span style="color:#ff79c6">=</span> root;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">while</span> (ptr <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">nullptr</span> <span style="color:#ff79c6">||</span> <span style="color:#ff79c6">!</span>s.empty()) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (ptr <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">nullptr</span>) {
+</span></span><span style="display:flex;"><span>      s.push(ptr);
+</span></span><span style="display:flex;"><span>      ptr <span style="color:#ff79c6">=</span> ptr<span style="color:#ff79c6">-&gt;</span>left;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>      ptr <span style="color:#ff79c6">=</span> s.top();
+</span></span><span style="display:flex;"><span>      cout <span style="color:#ff79c6">&lt;&lt;</span> ptr<span style="color:#ff79c6">-&gt;</span>val <span style="color:#ff79c6">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>      s.pop();
+</span></span><span style="display:flex;"><span>      ptr <span style="color:#ff79c6">=</span> ptr<span style="color:#ff79c6">-&gt;</span>right;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">void</span> <span style="color:#50fa7b">PostOrder</span> (TreeNode <span style="color:#ff79c6">*</span> root) {
+</span></span><span style="display:flex;"><span>  stack<span style="color:#ff79c6">&lt;</span>TreeNode <span style="color:#ff79c6">*&gt;</span> s;
+</span></span><span style="display:flex;"><span>  TreeNode <span style="color:#ff79c6">*</span> ptr <span style="color:#ff79c6">=</span> root;
+</span></span><span style="display:flex;"><span>  TreeNode <span style="color:#ff79c6">*</span> TemNode <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">nullptr</span>;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">while</span> (ptr <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">nullptr</span> <span style="color:#ff79c6">||</span> <span style="color:#ff79c6">!</span>s.empty()) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (ptr <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">nullptr</span> {
+</span></span><span style="display:flex;"><span>      s.push(ptr);
+</span></span><span style="display:flex;"><span>      ptr <span style="color:#ff79c6">=</span> ptr<span style="color:#ff79c6">-&gt;</span>left;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>      ptr <span style="color:#ff79c6">=</span> s.top();
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">if</span> (ptr<span style="color:#ff79c6">-&gt;</span>right <span style="color:#ff79c6">!=</span> <span style="color:#ff79c6">nullptr</span> <span style="color:#ff79c6">&amp;&amp;</span> ptr<span style="color:#ff79c6">-&gt;</span>right <span style="color:#ff79c6">!-</span> TemNode){
+</span></span><span style="display:flex;"><span>        ptr <span style="color:#ff79c6">=</span> ptr<span style="color:#ff79c6">-&gt;</span>right;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>        cout <span style="color:#ff79c6">&lt;&lt;</span> ptr<span style="color:#ff79c6">-&gt;</span>val <span style="color:#ff79c6">&lt;&lt;</span> endl;
+</span></span><span style="display:flex;"><span>        s.pop();
+</span></span><span style="display:flex;"><span>        TemNode <span style="color:#ff79c6">=</span> ptr;
+</span></span><span style="display:flex;"><span>        ptr <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">nullptr</span>;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }   
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="28-如何实现一个栈">28. 如何实现一个栈</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#ff79c6">class</span> <span style="color:#50fa7b">QueueStack</span> {
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">private</span><span style="color:#ff79c6">:</span>
+</span></span><span style="display:flex;"><span>  queue<span style="color:#ff79c6">&lt;</span><span style="color:#8be9fd">int</span><span style="color:#ff79c6">&gt;</span> first;
+</span></span><span style="display:flex;"><span>  queue<span style="color:#ff79c6">&lt;</span><span style="color:#8be9fd">int</span><span style="color:#ff79c6">&gt;</span> second;
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">public</span><span style="color:#ff79c6">:</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd">bool</span> empty() {
+</span></span><span style="display:flex;"><span>		<span style="color:#ff79c6">if</span> (first.empty() <span style="color:#ff79c6">&amp;&amp;</span> second.empty()){
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">return</span> <span style="color:#8be9fd;font-style:italic">true</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">return</span> <span style="color:#8be9fd;font-style:italic">false</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">top</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (first.empty()){
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">return</span> second.front();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">return</span> first.front();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">pop</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (first.empty()) {
+</span></span><span style="display:flex;"><span>      second.pop();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>      first.pop();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">push</span> (<span style="color:#8be9fd">int</span> x){
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span> (frist.empty()){
+</span></span><span style="display:flex;"><span>      first.push(x);
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">while</span> (<span style="color:#ff79c6">!</span>second.empty()) {
+</span></span><span style="display:flex;"><span>        first.push(second.front());
+</span></span><span style="display:flex;"><span>        second.pop();
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>      second.push(x);
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">while</span>(<span style="color:#ff79c6">!</span>first.empty()) {
+</span></span><span style="display:flex;"><span>        second.push(first.front());
+</span></span><span style="display:flex;"><span>        first.pop();
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="29-http状态码">29. HTTP状态码</h1>
+<blockquote>
+<p>1xx：收到请求，需要请求者继续操作。</p>
+</blockquote>
+<p><strong>100</strong>：继续。</p>
+<p><strong>101</strong>：切换协议。</p>
+<blockquote>
+<p>2xx：操作被成功接收并处理。</p>
+</blockquote>
+<p><strong>200</strong>：请求成功。</p>
+<p><strong>201</strong>：已创建。</p>
+<p><strong>202</strong>：已接受。</p>
+<p><strong>203</strong>：非授权信息。请求成功。</p>
+<p><strong>204</strong>：无内容。</p>
+<p><strong>205</strong>：重置内容。</p>
+<p><strong>206</strong>：部分内容。</p>
+<blockquote>
+<p>3xx：重定向，需要进一步操作以完成请求。</p>
+</blockquote>
+<p><strong>300</strong>：多种选择。</p>
+<p><strong>301</strong>：永久移动。</p>
+<p><strong>302</strong>：临时移动。</p>
+<p><strong>303</strong>：查看其他地址。</p>
+<p><strong>304</strong>：未修改。</p>
+<p><strong>305</strong>：使用代理。</p>
+<p><strong>307</strong>：临时重定向。</p>
+<blockquote>
+<p>4xx：客户端错误，请求包含语法错误或无法完成请求。</p>
+</blockquote>
+<p><strong>400</strong>：Bad Request。</p>
+<p><strong>401</strong>：Unauthorized。</p>
+<p><strong>403</strong>：服务器理解客户端的请求，但是拒绝执行。</p>
+<p><strong>404</strong>：无法根据请求找到资源。</p>
+<p><strong>405</strong>：客户端请求中的方法被禁止。</p>
+<p><strong>406</strong>：Not Acceptable。</p>
+<p><strong>407</strong>：Proxy Authentication Required。</p>
+<p><strong>408</strong>：Request Timeout。</p>
+<p><strong>409</strong>：服务器处理请求时发生了冲突。</p>
+<p><strong>410</strong>：客户端请求的资源已经不存在。</p>
+<p><strong>411</strong>：Length Required。</p>
+<p><strong>412</strong>：Precondition Failed。</p>
+<p><strong>413</strong>：Request Entity Too Large。</p>
+<p><strong>414</strong>：Request URI Too Large。</p>
+<p><strong>415</strong>：Unsupported Media Type。</p>
+<p><strong>416</strong>：客户端请求的范围无效。</p>
+<p><strong>417</strong>：Expectation Failed。</p>
+<blockquote>
+<p>5xx：服务器错误，服务器在处理请求的过程中发生了错误。</p>
+</blockquote>
+<p><strong>500</strong>：服务器内部错误，无法完成请求。</p>
+<p><strong>501</strong>：服务器不支持请求的功能。</p>
+<p><strong>502</strong>：Bad Gateway.</p>
+<p><strong>503</strong>：Service Unavailable.</p>
+<p><strong>504</strong>：Gateway Timeout.</p>
+<p><strong>505</strong>：HTTP version not supported.</p>
+<h1 id="31-黑盒测试和白盒测试">31. 黑盒测试和白盒测试</h1>
+<blockquote>
+<p>黑盒测试：即功能性测试</p>
+</blockquote>
+<p><strong>等价类划分</strong>：有效等价类即对于程序的规格来说是合理的、有意义的；无效等价类即对程序的规格来说是不合理的、每有意义的。</p>
+<p><strong>边界值分析</strong>：对各种边界情况设计测试用例。</p>
+<p><strong>因果图法</strong>：根据输入的各种组合来设计测试用例，用于检查程序输入条件的各种组合情况。</p>
+<p><strong>场景法</strong>：通过对正常场景和中断操作的场景进行实验来完成测试。</p>
+<blockquote>
+<p>白盒测试：即结构测试或逻辑驱动测试</p>
+</blockquote>
+<p><strong>静态测试</strong>：代码检查、结构分析、文档测试等。</p>
+<p><strong>动态测试</strong>：功能确认、接口测试、性能分析等。</p>
+<h1 id="31-单元测试集成测试和系统">31. 单元测试、集成测试和系统</h1>
+<p><strong>单元测试</strong>：对函数、类的某一个方法等基本单元进行正确性检验的测试。</p>
+<p><strong>集成测试</strong>：对组装好的模块进行功能性验证的测试。</p>
+<p><strong>系统测试</strong>：对继承好的软件作为计算机系统的一部分与外围设备或支持性软件一起进行的实际测试。</p>
+<h1 id="32-如何设计测试用例">32. 如何设计测试用例</h1>
+<p>利用**1.**中方法进行分析设计，需要包含用例编号、用例标题、功能模块名称、前置条件、输入数据、操作步骤、预期结果、优先级、执行结果、编写人、执行人、其他补充。</p>
+<h1 id="33-如何测试微信的点赞功能">33. 如何测试微信的点赞功能</h1>
+<blockquote>
+<p>功能测试</p>
+</blockquote>
+<p>点赞朋友圈，是否成功。</p>
+<p>取消点赞，是否成功。</p>
+<p>多次点赞，有何结果。</p>
+<p>多人点赞，以何顺序呈现。</p>
+<blockquote>
+<p>接口测试</p>
+</blockquote>
+<p>被点赞人能否收到消息。</p>
+<p>点赞人能否收到后续消息。</p>
+<blockquote>
+<p>性能测试</p>
+</blockquote>
+<p>点赞后，结果显示时间是否符合规范。</p>
+<blockquote>
+<p>兼容测试</p>
+</blockquote>
+<p>在安卓、ios上点赞，结构是否有差异。</p>
+<blockquote>
+<p>可用性测试</p>
+</blockquote>
+<p>网络连接不稳定时，点赞的结果。</p>
+<h1 id="34-mysql查询10-20条的数据">34. MySQL查询10-20条的数据</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mysql" data-lang="mysql"><span style="display:flex;"><span><span style="color:#ff79c6">select</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">from</span> <span style="color:#ff79c6">table</span> <span style="color:#ff79c6">limit</span> <span style="color:#bd93f9">10</span>, <span style="color:#bd93f9">20</span>
+</span></span></code></pre></div><h1 id="35-查找二叉树最大深度">35. 查找二叉树最大深度</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#ff79c6">struct</span> <span style="color:#50fa7b">TreeNode</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd">int</span> val;
+</span></span><span style="display:flex;"><span>  TreeNode <span style="color:#ff79c6">*</span> left;
+</span></span><span style="display:flex;"><span>  TreeNode <span style="color:#ff79c6">*</span> right;
+</span></span><span style="display:flex;"><span>  TreeNode(<span style="color:#8be9fd">int</span> x) <span style="color:#ff79c6">:</span> val(x), left(<span style="color:#8be9fd;font-style:italic">NULL</span>), right(<span style="color:#8be9fd;font-style:italic">NULL</span>){}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">dfs</span> (TreeNode <span style="color:#ff79c6">*</span> root, <span style="color:#8be9fd">int</span> result) {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">if</span> (<span style="color:#ff79c6">!</span>root) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> result;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd">int</span> left_res <span style="color:#ff79c6">=</span> dfs(root<span style="color:#ff79c6">-&gt;</span>left, result <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">1</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd">int</span> right_res <span style="color:#ff79c6">=</span> dfs(root<span style="color:#ff79c6">-&gt;</span>right, result <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">1</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">return</span> max(left_res, right_res);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">MaxDepth</span>(TreeNode <span style="color:#ff79c6">*</span> root) {
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd">int</span> result <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">return</span> dfs(root, result);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="36-判断ip地址是否合法">36. 判断IP地址是否合法</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#ff79c6">using</span> <span style="color:#ff79c6">namespace</span> boost<span style="color:#ff79c6">::</span>xpressive;  
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">bool</span> <span style="color:#50fa7b">CheckIP</span>(<span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>ip) {  
+</span></span><span style="display:flex;"><span>	cregex expression <span style="color:#ff79c6">=</span> cregex<span style="color:#ff79c6">::</span>compile(<span style="color:#f1fa8c">&#34;(25[0-4]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[1-9])[.](25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])[.](25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])[.](25[0-4]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[1-9])&#34;</span>);   
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">return</span> regex_match(ip, expression);  
+</span></span><span style="display:flex;"><span>}  
+</span></span></code></pre></div><h1 id="37-udp如何实现可靠连接">37. udp如何实现可靠连接</h1>
+<p>在应用层参照TCP实现超时重传、有序接受、应答确认、滑动窗口、流量控制等功能。</p>
+<p>现已实现的程序有RUDP、RTP、UDT。</p>
+<h1 id="38mysql-查询以135开头的手机号">38.MySQL 查询以135开头的手机号</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mysql" data-lang="mysql"><span style="display:flex;"><span><span style="color:#ff79c6">select</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">from</span> test <span style="color:#ff79c6">where</span> shouji <span style="color:#ff79c6">like</span> <span style="color:#f1fa8c">&#39;135%&#39;</span>;
+</span></span></code></pre></div><h1 id="39-linux和端口号进程文件相关的命令">39. Linux和端口号、进程、文件相关的命令</h1>
+<p><strong>静态进程查看</strong>: ps</p>
+<p>例：通过进程名查看进程号</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>ps ax | fgrep <span style="color:#ff79c6">[</span>进程名<span style="color:#ff79c6">]</span>
+</span></span></code></pre></div><p><strong>网络查看</strong>: netstat</p>
+<p>例：通过进程号查看进程正在监听的端口</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>netstat -antp | fgrep <span style="color:#ff79c6">[</span>进程号<span style="color:#ff79c6">]</span>
+</span></span></code></pre></div><p>例：查看端口是否正在监听</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>netstat -antp | grep <span style="color:#ff79c6">[</span>端口号<span style="color:#ff79c6">]</span>
+</span></span></code></pre></div><p><strong>搜索指定文件内容</strong>: grep (global regular expression print)</p>
+<p>例：搜索as在123.txt中的行号位置</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>grep -n as 123.txt
+</span></span></code></pre></div><h1 id="40-查找二叉树最大深度">40. 查找二叉树最大深度</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#ff79c6">struct</span> <span style="color:#50fa7b">TreeNode</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd">int</span> val;
+</span></span><span style="display:flex;"><span>  TreeNode <span style="color:#ff79c6">*</span> left;
+</span></span><span style="display:flex;"><span>  TreeNode <span style="color:#ff79c6">*</span> right;
+</span></span><span style="display:flex;"><span>  TreeNode(<span style="color:#8be9fd">int</span> x) <span style="color:#ff79c6">:</span> val(x), left(<span style="color:#8be9fd;font-style:italic">NULL</span>), right(<span style="color:#8be9fd;font-style:italic">NULL</span>){}
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">dfs</span> (TreeNode <span style="color:#ff79c6">*</span> root, <span style="color:#8be9fd">int</span> result) {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">if</span> (<span style="color:#ff79c6">!</span>root) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> result;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd">int</span> left_res <span style="color:#ff79c6">=</span> dfs(root<span style="color:#ff79c6">-&gt;</span>left, result <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">1</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd">int</span> right_res <span style="color:#ff79c6">=</span> dfs(root<span style="color:#ff79c6">-&gt;</span>right, result <span style="color:#ff79c6">+</span> <span style="color:#bd93f9">1</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">return</span> max(left_res, right_res);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">int</span> <span style="color:#50fa7b">MaxDepth</span>(TreeNode <span style="color:#ff79c6">*</span> root) {
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd">int</span> result <span style="color:#ff79c6">=</span> <span style="color:#bd93f9">0</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">return</span> dfs(root, result);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h1 id="41-判断ip地址是否合法">41. 判断IP地址是否合法</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c++" data-lang="c++"><span style="display:flex;"><span><span style="color:#ff79c6">using</span> <span style="color:#ff79c6">namespace</span> boost<span style="color:#ff79c6">::</span>xpressive;  
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd">bool</span> <span style="color:#50fa7b">CheckIP</span>(<span style="color:#8be9fd">char</span> <span style="color:#ff79c6">*</span>ip) {  
+</span></span><span style="display:flex;"><span>	cregex expression <span style="color:#ff79c6">=</span> cregex<span style="color:#ff79c6">::</span>compile(<span style="color:#f1fa8c">&#34;(25[0-4]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[1-9])[.](25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])[.](25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])[.](25[0-4]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[1-9])&#34;</span>);   
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">return</span> regex_match(ip, expression);  
+</span></span><span style="display:flex;"><span>}  
+</span></span></code></pre></div><h1 id="42-udp如何实现可靠连接">42. udp如何实现可靠连接</h1>
+<p>在应用层参照TCP实现超时重传、有序接受、应答确认、滑动窗口、流量控制等功能。</p>
+<p>现已实现的程序有RUDP、RTP、UDT。</p>
+<h1 id="43mysql-查询以135开头的手机号">43.MySQL 查询以135开头的手机号</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mysql" data-lang="mysql"><span style="display:flex;"><span><span style="color:#ff79c6">select</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">from</span> test <span style="color:#ff79c6">where</span> shouji <span style="color:#ff79c6">like</span> <span style="color:#f1fa8c">&#39;135%&#39;</span>;
+</span></span></code></pre></div>
+
+                
+
+                
+                <hr>
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/publications/" data-toggle="tooltip" data-placement="top" title="">&larr;
+                            Previous Post</a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/leetcode/" data-toggle="tooltip" data-placement="top" title="">Next
+                            Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+                
+
+                
+
+
+
+            </div>
+
+            
+            
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+            
+
+            
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                        
+                        
+                        <a href="/tags/algorithm" title="algorithm">
+                            algorithm
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/c&#43;&#43;" title="c&#43;&#43;">
+                            c&#43;&#43;
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/notes" title="notes">
+                            notes
+                        </a>
+                        
+                        
+                        
+                        
+                        
+                        <a href="/tags/tom-show" title="tom-show">
+                            tom-show
+                        </a>
+                        
+                        
+                        
+                        
+                    </div>
+                </section>
+                
+
+                
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">                  
+                    
+                    <li>
+                        <a href="mailto:junyubian@gmail.com">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    <li>
+                        <a href="https://twitter.com/junyu_bian">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/profile.php?id=100010301021817">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+
+		            
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/JunyuBian">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		            
+                    
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://www.linkedin.com/in/junyu-bian-942336191/">
+                            <span class="fa-stack fa-lg">
+                                <i class="fas fa-circle fa-stack-2x"></i>
+                                <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+		           
+                    
+                    
+                    
+                    
+                    
+                    
+            
+            
+            
+           
+                   <li>
+                       <a href='' rel="alternate" type="application/rss+xml" title="Junyu Blog" >
+                           <span class="fa-stack fa-lg">
+                               <i class="fas fa-circle fa-stack-2x"></i>
+                               <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+                           </span>
+                       </a>
+                   </li>
+            
+             </ul>
+		<p class="copyright text-muted">
+                    Copyright &copy; Junyu Blog 2024
+                    
+                    <br>
+                    <a href="https://themes.gohugo.io/hugo-theme-cleanwhite">CleanWhite Hugo Theme</a> by <a href="https://zhaohuabing.com">Huabing</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=zhaohuabing&repo=hugo-theme-cleanwhite&type=star&count=true" >
+                    </iframe>
+                    
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+
+<script>
+    function loadAsync(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+
+
+
+
+<script>
+    
+    if($('#tag_cloud').length !== 0){
+        loadAsync("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+
+<script>
+    loadAsync("https://cdn.jsdelivr.net/npm/fastclick@1.0.6/lib/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+
+
+
+
+<script type="text/javascript">
+    function generateCatalog(selector) {
+
+        
+        
+        
+        
+            _containerSelector = 'div.post-container'
+        
+
+        
+        var P = $(_containerSelector), a, n, t, l, i, c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+
+        
+        $(selector).html('')
+
+        
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#" + $(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="' + i + '" rel="nofollow">' + t + '</a>');
+            l = $('<li class="' + n + '_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;
+    }
+
+    generateCatalog(".catalog-body");
+
+    
+    $(".catalog-toggle").click((function (e) {
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    
+
+
+    loadAsync("\/js\/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+
+</body>
+</html>
